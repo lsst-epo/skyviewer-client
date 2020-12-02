@@ -9,4 +9,4 @@
   publish = "out"
 
 # Default build command.
-  command = "yarn deploy"
+  command = "yarn static"
