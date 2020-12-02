@@ -1,0 +1,63 @@
+@use 'abstracts/mixins/appearance';
+@use 'abstracts/mixins/base';
+@use 'abstracts/functions';
+
+.c-search-bar {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  font-size: 0.818em;
+  font-weight: functions.font-weight(bold);
+  color: functions.palette(white);
+
+  &__toggle {
+    @include base.fluid-scale(
+      width,
+      functions.header(button-width-tablet),
+      functions.header(button-width-mobile),
+      functions.break(tablet),
+      functions.break(mobile)
+    );
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+
+  &__form {
+    @include base.fluid-scale(
+      width,
+      functions.header(button-width-tablet),
+      functions.header(button-width-mobile),
+      functions.break(tablet),
+      functions.break(mobile)
+    );
+    display: flex;
+    align-items: center;
+    height: 100%;
+    transition: width 0.35s ease-in-out, background-color 0.35s ease-in-out;
+
+    &--is-open {
+      width: 468px;
+      background-color: functions.palette(black);
+
+      @include base.respond(functions.header(breakpoint-for-search-bar)) {
+        // overlap logo
+        width: calc(var(--header-width, 100vw) - var(--width));
+      }
+    }
+  }
+
+  &__input {
+    @include appearance.input-unstyled;
+    @include base.fluid-scale(
+      width,
+      functions.header(button-width-tablet),
+      functions.header(button-width-mobile),
+      functions.break(tablet),
+      functions.break(mobile)
+    );
+    width: calc(100% - var(--width));
+    margin-left: var(--width);
+  }
+}

@@ -1,7 +1,21 @@
-import '../styles/globals.css'
+import PropTypes from "prop-types";
+import "@/lib/i18n";
+import GlobalStyles from "@/styles/globalStyles";
+import styles from "@/styles/styles.scss";
+import "focus-visible";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function Skyviewer({ Component, pageProps }) {
+  return (
+    <>
+      <GlobalStyles />
+      <Component {...pageProps} />
+    </>
+  );
 }
 
-export default MyApp
+Skyviewer.propTypes = {
+  Component: PropTypes.any,
+  pageProps: PropTypes.any,
+};
+
+export default Skyviewer;

@@ -1,0 +1,45 @@
+@use 'abstracts/functions';
+@use 'abstracts/mixins/appearance';
+
+.c-language-select {
+  padding: 0;
+  padding-right: functions.header(gap);
+  font-size: 0.545em;
+  border: none;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    height: var(--height);
+
+    > * + * {
+      &::after {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: block;
+        width: 1px;
+        height: 30%;
+        content: '';
+        background-color: currentColor;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &__label {
+    position: relative;
+    padding: 1.25em;
+    cursor: pointer;
+  }
+
+  &__input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    &:focus-visible ~ .c-language-select__text {
+      @include appearance.focus-default-style;
+    }
+  }
+}

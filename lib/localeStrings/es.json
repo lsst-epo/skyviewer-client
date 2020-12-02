@@ -1,0 +1,31 @@
+{
+  "key": "es",
+  "translation": {
+    "contact-us": "Contacta con nosotros",
+    "email": "Correo electrónico",
+    "inquiry": "Investigación",
+    "localize-content": "Localizar el contenido del sitio",
+    "search-placeholder": "Escribe tu búsqueda y presiona enter…",
+    "search-site": "Buscar en el sitio web",
+    "send": "Enviar",
+    "skip-to-content": "Saltar al contenido principal",
+    "submit-search": "Enviar búsqueda",
+    "toggle-nav": "Alternar menú de navegación",
+    "toggle-search": "Alternar búsqueda",
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "showing": "Showing {{from}} to {{to}} of {{total}}"
+    },
+    "social": {
+      "email-rubin": "Envíanos un correo electrónico",
+      "visit-rubin": "Visítanos en"
+    },
+    "staff": {
+      "scientific": "Scientific Staff Profile",
+      "non-scientific": "Non-scientific Staff Profile",
+      "browse-more": "Browse More Profiles",
+      "back-to-profiles": "Go Back to Profiles"
+    }
+  }
+}

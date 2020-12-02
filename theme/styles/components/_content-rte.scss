@@ -1,0 +1,26 @@
+@use 'abstracts/functions';
+
+.c-content-rte {
+  > * + * {
+    margin-top: 1em;
+  }
+
+  a:not([class^='c-']) {
+    color: functions.palette(turquoise50);
+    text-decoration: none;
+  }
+
+  ul {
+    padding-left: 1em;
+    list-style-type: disc;
+  }
+
+  ol {
+    padding-left: 1em;
+    list-style-type: decimal;
+  }
+
+  li {
+    padding-left: 0.5em;
+  }
+}
