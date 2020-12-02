@@ -1,0 +1,96 @@
+module.exports = {
+  root: true,
+  parser: "@babel/eslint-parser",
+  parserOptions: {
+    sourceType: "module",
+    requireConfigFile: false,
+    babelOptions: {
+      plugins: [
+        "@babel/plugin-transform-react-jsx",
+        "@babel/plugin-proposal-class-properties",
+      ],
+    },
+  },
+  env: {
+    browser: true,
+  },
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
+
+  // add your custom rules here
+  rules: {
+    "global-require": 0,
+    "arrow-body-style": 0,
+    "consistent-return": 0,
+    "prefer-template": 0,
+    "no-useless-concat": 0,
+    "no-useless-constructor": 0,
+    "jsx-a11y/img-has-alt": 0,
+    "jsx-a11y/no-onchange": 0,
+    "array-callback-return": 0,
+    quotes: 0,
+    "no-duplicate-imports": 0,
+    "no-unneeded-ternary": 0,
+    "no-whitespace-before-property": 0,
+    "import/default": 0,
+    "import/no-duplicates": 0,
+    "import/named": 0,
+    "import/namespace": 0,
+    "import/no-unresolved": 0,
+    "import/no-named-as-default": 0,
+    "import/no-named-default": 0,
+    "jsx-quotes": 2,
+    "block-scoped-var": 0,
+    "padded-blocks": 0,
+    "comma-dangle": 0,
+    "comma-spacing": 2,
+    indent: [1, 2, { SwitchCase: 1 }],
+    "no-console": ["error", { allow: ["warn", "error"] }],
+    "no-alert": 2,
+    "prefer-const": 2,
+    semi: 0,
+    "no-unused-semi": 0,
+    "no-unused-vars": [
+      0,
+      {
+        args: "after-used",
+        varsIgnorePattern: "PropTypes",
+        argsIgnorePattern: "[iI]gnored",
+      },
+    ],
+    "no-trailing-spaces": 2,
+    "no-multiple-empty-lines": 2,
+    "spaced-comment": 2,
+    "no-underscore-dangle": 0,
+    "max-len": [
+      "error",
+      {
+        ignoreComments: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true,
+      },
+    ],
+    "no-extra-semi": 0,
+    "space-before-function-paren": 0,
+    "no-debugger": 2,
+    "generator-star-spacing": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/react-in-jsx-scope": 0,
+    // let next/link package handle anchor attributes
+    "jsx-a11y/anchor-is-valid": 0,
+    // next/link handles the href, so anchors without href are still interactive
+    "jsx-a11y/no-noninteractive-tabindex": ["error", { tags: ["a"] }],
+  },
+  plugins: ["jsx-a11y", "react", "react-hooks"],
+  extends: [
+    "standard",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "prettier/standard",
+  ],
+};

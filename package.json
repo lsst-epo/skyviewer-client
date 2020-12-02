@@ -3,13 +3,63 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "npm-run-all --parallel tokens dev:*",
+    "dev:next": "next dev",
+    "static": "run-s tokens static:*",
+    "static:build": "next build",
+    "static:export": "next export",
+    "start": "next start",
+    "tokens": "npx json-to-scss theme/tokens.json theme/styles/abstracts/_tokens.scss",
+    "lint": "npm-run-all lint:*",
+    "lint:js": "eslint -c .eslintrc.js \"**/*.{js,jsx}\"",
+    "lint:scss": "stylelint --config .stylelintrc.js \"**/*.scss\" --syntax scss",
+    "fix": "npm-run-all fix:js fix:scss",
+    "fix:js": "eslint -c .eslintrc.js \"**/*.{js,jsx}\" --fix",
+    "fix:scss": "stylelint --config .stylelintrc.js \"**/*.scss\" --syntax scss --fix",
+    "fix:staged": "lint-staged"
+  },
+  "babel": {
+    "presets": [
+      "next/babel"
+    ],
+    "plugins": [
+      [
+        "styled-components",
+        {
+          "ssr": true
+        }
+      ]
+    ]
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "lint-staged": {
+    "*.{js,jsx}": "yarn fix:js",
+    "*.scss": "yarn fix:scss"
   },
   "dependencies": {
-    "next": "10.0.1",
-    "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "@babel/eslint-parser": "^7.11.5",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-transform-react-jsx": "^7.10.4",
+    "@babel/runtime": "7.11.2",
+    "classnames": "^2.2.6",
+    "focus-trap": "^6.1.2",
+    "focus-visible": "^5.1.0",
+    "hoist-non-react-statics": "^3.3.2",
+    "i18next": "^19.8.2",
+    "json-to-scss": "^1.6.2",
+    "next": "^9.5.2",
+    "npm-run-all": "^4.1.5",
+    "postcss-normalize": "^9.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-i18next": "^11.7.3",
+    "sass": "^1.26.12",
+    "striptags": "^3.1.1",
+    "styled-components": "^5.2.0",
+    "swr": "^0.3.5",
+    "use-resize-observer": "^6.1.0"
   }
 }
