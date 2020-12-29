@@ -11,8 +11,6 @@
 @forward 'components/global/Header/subnavigation.scss';
 @forward 'components/global/Header/search-bar.scss';
 @forward 'components/global/Header/LanguageSelect/styles';
-@forward 'components/global/Footer/footer';
-@forward 'components/global/Footer/social.scss';
-@forward 'components/global/Footer/nav.scss';
-@forward 'components/global/Footer/contact-form.scss';
-@forward 'components/global/ContactInfo/styles';
+
+// Aladin
+@forward 'components/viewer/Aladin/overrides.scss';
