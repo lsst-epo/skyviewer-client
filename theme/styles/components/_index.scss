@@ -3,14 +3,13 @@
 
 // Primitives
 @forward 'components/primitives/Buttonish/styles';
+@forward 'components/primitives/Button/styles';
 @forward 'components/primitives/Accordion/styles';
 
-// Globals
-@forward 'components/global/Header/header';
-@forward 'components/global/Header/navigation.scss';
-@forward 'components/global/Header/subnavigation.scss';
-@forward 'components/global/Header/search-bar.scss';
-@forward 'components/global/Header/LanguageSelect/styles';
+// Viewer
+@forward 'components/viewer/viewer.scss';
+@forward 'components/viewer/Header/styles';
+@forward 'components/viewer/Controls/styles';
 
 // Aladin
-@forward 'components/viewer/Aladin/overrides.scss';
+@forward 'components/viewer/Aladin/styles';

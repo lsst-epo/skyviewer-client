@@ -1,0 +1,19 @@
+@use 'abstracts/functions';
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: functions.palette(black);
+  z-index: functions.z-stack(header);
+}
+
+.close-button, .menu-button {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 15px;
+
+  svg {
+    fill: functions.palette(white);
+  }
+}

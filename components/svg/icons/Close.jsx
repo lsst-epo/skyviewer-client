@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 import { svgInternalShape } from "@/shapes/svg";
 import defaultProps from "./defaultProps";
 
-export default function Close({ className, size = 36, fill = "currentColor" }) {
+export default function Close({ className, size = 20, fill = "currentColor" }) {
   const uniqueProps = {
-    viewBox: "0 0 36 36",
+    viewBox: "0 0 20 20",
     width: size,
     height: size,
     fill,

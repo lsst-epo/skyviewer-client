@@ -139,9 +139,7 @@ export default function Aladin({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [aladin, aladinGlobal]);
 
-  return (
-    <div id="aladin-lite-div" style={{ width: "100vw", height: "100vh" }} />
-  );
+  return <div id="aladin-lite-div" className="aladin-container" />;
 }
 
 Aladin.propTypes = {

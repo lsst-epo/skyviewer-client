@@ -1,0 +1,13 @@
+@use 'abstracts/functions';
+
+.filters-button {
+  top: calc(50% + 12px);
+  right: 0;
+  background-color: functions.palette(turquoise55);
+
+  svg {
+    width: 22px;
+    height: 22px;
+    fill: functions.palette(white);
+  }
+}

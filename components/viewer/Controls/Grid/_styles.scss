@@ -1,0 +1,13 @@
+@use 'abstracts/functions';
+
+.grid-button {
+  top: 52px;
+  right: 0;
+  background-color: functions.palette(neutral90);
+
+  svg {
+    width: 22px;
+    height: 22px;
+    fill: functions.palette(white);
+  }
+}

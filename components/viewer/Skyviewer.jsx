@@ -1,5 +1,8 @@
 import { useEffect } from "react";
 import Aladin from "./Aladin";
+import Header from "./Header";
+import Controls from "./Controls";
+
 import testMarkerLayers from "./Aladin/testData/testMarkerLayers";
 import testHiPSCatalogs from "./Aladin/testData/testHiPSCatalogs";
 import testJpgs from "./Aladin/testData/testJpgs";
@@ -56,8 +59,10 @@ export default function Skyviewer() {
   // };
 
   return (
-    <div>
-      <main>
+    <>
+      <Header />
+      <main className="viewer-container">
+        <Controls />
         <Aladin
           selector="#aladin-lite-div"
           survey="allwise"
@@ -71,6 +76,6 @@ export default function Skyviewer() {
           jpgs={testJpgs}
         />
       </main>
-    </div>
+    </>
   );
 }
