@@ -1,0 +1,15 @@
+@use 'abstracts/functions';
+
+.orientation-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: functions.z-stack(controls);
+  background-color: functions.palette(neutral90);
+}

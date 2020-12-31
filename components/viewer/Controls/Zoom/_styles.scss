@@ -1,0 +1,25 @@
+@use 'abstracts/functions';
+
+.controls {
+  .zoom-controls {
+    position: absolute;
+    bottom: 50%;
+    right: 0;
+    z-index: functions.z-stack(controls);
+
+    .zoom-in-button, .zoom-out-button {
+      position: static;
+      background-color: functions.palette(neutral90);
+
+      svg {
+        width: 22px;
+        height: 22px;
+        fill: functions.palette(white);
+      }
+    }
+
+    .zoom-in-button {
+      margin-bottom: 12px;
+    }
+  }
+}

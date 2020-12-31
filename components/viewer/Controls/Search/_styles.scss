@@ -1,0 +1,11 @@
+@use 'abstracts/functions';
+
+.search-button {
+  background-color: functions.palette(white);
+
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: functions.palette(black);
+  }
+}

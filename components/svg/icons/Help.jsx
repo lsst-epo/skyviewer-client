@@ -2,13 +2,13 @@ import PropTypes from "prop-types";
 import { svgInternalShape } from "@/shapes/svg";
 import defaultProps from "./defaultProps";
 
-export default function Hamburger({
+export default function Help({
   className,
-  size = 22,
+  size = 19.883,
   fill = "currentColor",
 }) {
   const uniqueProps = {
-    viewBox: "0 0 22 22",
+    viewBox: "0 0 19.883 19.883",
     width: size,
     height: size,
     fill,
@@ -18,44 +18,44 @@ export default function Hamburger({
   const mergedSvgProps = Object.assign(defaultProps, uniqueProps);
   return (
     <svg {...mergedSvgProps}>
-      <title>Mobile menu (hamburger) icon</title>
-      <g transform="translate(1.5 1.5)">
+      <title>Help icon</title>
+      <g transform="translate(1 1)">
         <path
-          d="M4.5,18h22"
-          transform="translate(-4.5 -10.667)"
+          d="M20.883,11.941A8.941,8.941,0,1,1,11.941,3a8.941,8.941,0,0,1,8.941,8.941Z"
+          transform="translate(-3 -3)"
           fill="none"
-          stroke="#f5f5f5"
+          stroke="#00babc"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="3"
+          strokeWidth="2"
         />
         <path
-          d="M4.5,9h22"
-          transform="translate(-4.5 -9)"
+          d="M13.635,12.285a2.682,2.682,0,0,1,5.213.894c0,1.788-2.682,2.682-2.682,2.682"
+          transform="translate(-7.295 -6.026)"
           fill="none"
-          stroke="#f5f5f5"
+          stroke="#00babc"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="3"
+          strokeWidth="2"
         />
         <path
-          d="M4.5,27h22"
-          transform="translate(-4.5 -12.333)"
+          d="M18,25.5h0"
+          transform="translate(-9.059 -12.088)"
           fill="none"
-          stroke="#f5f5f5"
+          stroke="#00babc"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="3"
+          strokeWidth="2"
         />
       </g>
     </svg>
   );
 }
 
-Hamburger.displayName = "SVG.Hamburger";
+Help.displayName = "SVG.Help";
 
-Hamburger.propTypes = {
+Help.propTypes = {
   ...svgInternalShape,
 };
 
-Hamburger.defaultProps = defaultProps;
+Help.defaultProps = defaultProps;

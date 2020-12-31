@@ -1,3 +1,4 @@
+// Overrides
 .aladin-logo-container,
 .aladin-fov,
 .aladin-location,
@@ -7,4 +8,18 @@
 
 .aladin-measurement-div {
   display: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+.aladin-zoomControl {
+  display: none;
+}
+
+// Layout
+.aladin-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 0;
 }

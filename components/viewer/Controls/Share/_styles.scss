@@ -1,0 +1,14 @@
+@use 'abstracts/functions';
+
+.share-button, {
+  bottom: 0;
+  left: 0;
+  background-color: functions.palette(neutral90);
+  border-radius: 50%;
+
+  svg {
+    width: 22px;
+    height: 22px;
+    fill: functions.palette(white);
+  }
+}

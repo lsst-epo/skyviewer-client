@@ -1,0 +1,31 @@
+@forward './Filters/styles';
+@forward './Goals/styles';
+@forward './Grid/styles';
+@forward './Landmarks/styles';
+@forward './Markers/styles';
+@forward './Orientation/styles';
+@forward './Search/styles';
+@forward './Share/styles';
+@forward './Zoom/styles';
+@use 'abstracts/functions';
+
+.controls {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 0;
+  margin: 20px 15px;
+
+  .control-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    z-index: functions.z-stack(controls);
+  }
+}

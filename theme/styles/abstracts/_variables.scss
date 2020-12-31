@@ -15,6 +15,7 @@
 $sass-palette: (
   neutral80: color.adjust(#000, $lightness: 20%),
   neutral60: color.adjust(#000, $lightness: 40%),
+  neutral30: color.adjust(#000, $lightness: 70%),
   neutral08: color.adjust(#000, $lightness: 92%),
   neutral02: color.adjust(#000, $lightness: 98%),
 );
@@ -44,7 +45,8 @@ $padding-sizes: (
 );
 
 $z-stack: (
-  header: 25,
+  header: 26,
+  controls: 5,
 );
 
 // Typography
@@ -67,15 +69,16 @@ $font-weights: (
 // Cross-component variables
 // --------------------------------------------------------
 $header: (
-  height-tablet: 110px,
-  height-mobile: 60px,
-  gap: 0px,
-  layout-breakpoint: 1500px,
-  breakpoint-for-search-bar: 850px,
-  nav-link-padding-lateral: 1.364em,
-  nav-width: 300px,
-  button-width-tablet: 114px,
-  button-width-mobile: 60px,
+  height: 40px,
+  // height-tablet: 110px,
+  // height-mobile: 60px,
+  // gap: 0px,
+  // layout-breakpoint: 1500px,
+  // breakpoint-for-search-bar: 850px,
+  // nav-link-padding-lateral: 1.364em,
+  // nav-width: 300px,
+  // button-width-tablet: 114px,
+  // button-width-mobile: 60px,
 );
 
 $cta: (
