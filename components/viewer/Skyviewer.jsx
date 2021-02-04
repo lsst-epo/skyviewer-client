@@ -1,4 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState, useMemo } from "react";
+import PropTypes from "prop-types";
+import defaultOptions from "./Aladin/defaultOptions";
+import { AladinGlobalProvider } from "@/contexts/AladinGlobal";
 import Aladin from "./Aladin";
 import Header from "./Header";
 import Controls from "./Controls";
@@ -7,7 +10,32 @@ import testMarkerLayers from "./Aladin/testData/testMarkerLayers";
 import testHiPSCatalogs from "./Aladin/testData/testHiPSCatalogs";
 import testJpgs from "./Aladin/testData/testJpgs";
 
-export default function Skyviewer() {
+export default function Skyviewer({
+  selector,
+  options,
+  survey,
+  fov,
+  fovRange,
+  target,
+}) {
+  const [aladins, setAladins] = useState(null);
+
+  useEffect(() => {
+    setAladins({
+      // Initialize aladin Global
+      aladinGlobal: window.A,
+      // Initialize aladin instance
+      aladin: window.A.aladin(
+        selector,
+        Object.assign(options, {
+          survey,
+          fov,
+          target,
+        })
+      ),
+    });
+  }, [selector, survey, fov, target, options]);
+
   const onClick = (event) => {
     // eslint-disable-next-line no-console
     console.log("Clicked", event);
@@ -62,20 +90,32 @@ export default function Skyviewer() {
     <>
       <Header />
       <main className="viewer-container">
-        <Controls />
-        <Aladin
-          selector="#aladin-lite-div"
-          survey="allwise"
-          fov={100}
-          fovRange={[0.03, 180]}
-          target="267.0208333333 -24.7800000000"
-          onClick={onClick}
-          onObjectClicked={onObjectClicked}
-          catalogs={testHiPSCatalogs}
-          markerLayers={testMarkerLayers}
-          jpgs={testJpgs}
-        />
+        <AladinGlobalProvider value={aladins}>
+          <Controls />
+          <Aladin
+            {...{ target, selector, survey, fov, fovRange, options }}
+            onClick={onClick}
+            onObjectClicked={onObjectClicked}
+            catalogs={testHiPSCatalogs}
+            markerLayers={testMarkerLayers}
+            jpgs={testJpgs}
+          />
+        </AladinGlobalProvider>
       </main>
     </>
   );
 }
+
+Skyviewer.propTypes = {
+  selector: PropTypes.string,
+  survey: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  target: PropTypes.string,
+  fov: PropTypes.number,
+  fovRange: PropTypes.array,
+  options: PropTypes.object,
+};
+
+Skyviewer.defaultProps = {
+  fov: 20,
+  options: defaultOptions,
+};

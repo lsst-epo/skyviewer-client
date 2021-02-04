@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext, useCallback } from "react";
 import PropTypes from "prop-types";
-import defaultOptions from "./defaultOptions";
 import { getSourceCatalogOptions } from "./utilities";
+import AladinGlobalContext from "@/contexts/AladinGlobal";
 
 export default function Aladin({
   selector,
@@ -24,8 +24,23 @@ export default function Aladin({
   onMouseMove,
   onFullScreenToggled,
 }) {
-  const [aladinGlobal, setAladinGlobal] = useState(null);
-  const [aladin, setAladin] = useState(null);
+  const { aladinGlobal, aladin } = useContext(AladinGlobalContext) || {};
+
+  useEffect(() => {
+    if (!aladin && !aladinGlobal) return;
+    // Restrict FOV
+    aladin.setFovRange(fovRange[0], fovRange[1]);
+    // Add Event Listeners
+    addEventHandlers();
+    // Add Catalogs
+    addCatalogs(catalogs);
+    // Add Markers
+    addMarkers(markerLayers);
+    addJpgs(jpgs);
+    // eslint-disable-next-line no-console
+    console.log("mount");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [aladinGlobal, aladin]);
 
   const addEventHandlers = () => {
     const eventHandlers = {
@@ -105,39 +120,23 @@ export default function Aladin({
   //   console.log('update');
   // });
 
-  useEffect(() => {
-    // Initialize aladin Global
-    setAladinGlobal(window.A);
-    // Initialize aladin instance
-    setAladin(
-      window.A.aladin(
-        selector,
-        Object.assign(options, {
-          survey,
-          fov,
-          target,
-        })
-      )
-    );
-  }, [selector, survey, fov, target, options]);
-
-  useEffect(() => {
-    // Initialize viewer
-    // Do nothing if Global or instance have not been set
-    if (!aladin && !aladinGlobal) return;
-    // Restrict FOV
-    aladin.setFovRange(fovRange[0], fovRange[1]);
-    // Add Event Listeners
-    addEventHandlers();
-    // Add Catalogs
-    addCatalogs(catalogs);
-    // Add Markers
-    addMarkers(markerLayers);
-    addJpgs(jpgs);
-    // eslint-disable-next-line no-console
-    console.log("mount");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [aladin, aladinGlobal]);
+  // useEffect(() => {
+  //   // Initialize viewer
+  //   // Do nothing if Global or instance have not been set
+  //   if (!aladin && !aladinGlobal) return;
+  //   // Restrict FOV
+  //   aladin.setFovRange(fovRange[0], fovRange[1]);
+  //   // Add Event Listeners
+  //   addEventHandlers();
+  //   // Add Catalogs
+  //   addCatalogs(catalogs);
+  //   // Add Markers
+  //   addMarkers(markerLayers);
+  //   addJpgs(jpgs);
+  //   // eslint-disable-next-line no-console
+  //   console.log("mount");
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [aladin, aladinGlobal]);
 
   return <div id="aladin-lite-div" className="aladin-container" />;
 }
@@ -162,10 +161,4 @@ Aladin.propTypes = {
   onPositionChanged: PropTypes.func,
   onMouseMove: PropTypes.func,
   onFullScreenToggled: PropTypes.func,
-};
-
-Aladin.defaultProps = {
-  fov: 20,
-  options: defaultOptions,
-  fovRange: [0.03, 80],
 };
