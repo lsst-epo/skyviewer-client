@@ -36,6 +36,10 @@ export default function Skyviewer({
     });
   }, [selector, survey, fov, target, options]);
 
+  // useEffect(() => {
+  //   console.log(aladins);
+  // }, [aladins]);
+
   const onClick = (event) => {
     // eslint-disable-next-line no-console
     console.log("Clicked", event);
