@@ -4,10 +4,15 @@
   top: 52px;
   right: 0;
   background-color: functions.palette(neutral90);
+  transition: background-color 0.4s;
 
   svg {
     width: 22px;
     height: 22px;
     fill: functions.palette(white);
+  }
+
+  &.active, &:hover {
+    background-color: functions.palette(turquoise55);
   }
 }

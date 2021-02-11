@@ -38,7 +38,7 @@ export default function Aladin({
     addMarkers(markerLayers);
     addJpgs(jpgs);
     // eslint-disable-next-line no-console
-    console.log("mount");
+    // console.log("mount");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [aladinGlobal, aladin]);
 
