@@ -10,3 +10,6 @@
 
 # Default build command.
   command = "yarn static"
+
+[[plugins]]
+package = "netlify-plugin-cache-nextjs"
