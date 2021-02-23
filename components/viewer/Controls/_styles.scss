@@ -7,6 +7,7 @@
 @forward './Search/styles';
 @forward './Share/styles';
 @forward './Zoom/styles';
+@use 'abstracts/mixins/typography';
 @use 'abstracts/functions';
 
 .controls {
@@ -17,15 +18,69 @@
   right: 0;
   border: 0;
   margin: 20px 15px;
+  $controlDim: 40px;
+  $controlSpacing: 12px;
+
+  .controls-submenu {
+    @include typography.list-unstyled;
+    position: absolute;
+    z-index: functions.z-stack(controls);
+
+    > li {
+      display: block;
+    }
+  }
 
   .control-button {
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    z-index: functions.z-stack(controls);
+    width: $controlDim;
+    height: $controlDim;
+  }
+
+  .zooms, .wayfinding, .find {
+    > li {
+      + li {
+        margin-top: $controlSpacing;
+      }
+    }
+  }
+
+  .zooms {
+    bottom: calc(50% - #{$controlDim} - (#{$controlSpacing}));
+    right: 0;
+  }
+
+  .find {
+    top: 0;
+    left: 0;
+  }
+
+  .wayfinding {
+    bottom: calc(50% - #{$controlDim} - (#{$controlSpacing}));
+    left: 0;
+  }
+
+  .overlays {
+    display: flex;
+    flex-wrap: wrap;
+    top: 0;
+    right: 0;
+    width: (2 * $controlDim) + $controlSpacing;
+
+    li {
+      margin-left: $controlSpacing;
+    }
+
+    li:first-child {
+      margin-left: 0;
+    }
+
+    li:last-child {
+      margin-top: $controlSpacing;
+      margin-left: $controlDim + $controlSpacing;
+    }
   }
 }

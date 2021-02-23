@@ -1,8 +1,7 @@
 @use 'abstracts/functions';
 
 .filters-button {
-  top: calc(50% + 12px);
-  right: 0;
+  position: static;
   background-color: functions.palette(turquoise55);
 
   svg {

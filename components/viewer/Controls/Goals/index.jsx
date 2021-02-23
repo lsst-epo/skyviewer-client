@@ -10,7 +10,7 @@ export default function Goals() {
     <Button
       icon={<IconComposer icon="Target" />}
       onClick={toggleGoals}
-      text="Toggle Search"
+      text="Toggle Goals Menu"
       isIcon
       classes="goals-button control-button"
     />

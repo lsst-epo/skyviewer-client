@@ -9,21 +9,25 @@ export default function Zoom() {
   const zoomOut = () => console.log("Out");
 
   return (
-    <div className="zoom-controls">
-      <Button
-        icon={<IconComposer icon="Plus" />}
-        onClick={zoomIn}
-        text="Zoom In"
-        isIcon
-        classes="zoom-in-button control-button"
-      />
-      <Button
-        icon={<IconComposer icon="Minus" />}
-        onClick={zoomOut}
-        text="Zoom Out"
-        isIcon
-        classes="zoom-out-button control-button"
-      />
-    </div>
+    <ul role="menu" className="zooms controls-submenu" aria-label="Zoom">
+      <li role="menuitem">
+        <Button
+          icon={<IconComposer icon="Plus" />}
+          onClick={zoomIn}
+          text="Zoom In"
+          isIcon
+          classes="zoom-in-button control-button"
+        />
+      </li>
+      <li role="menuitem">
+        <Button
+          icon={<IconComposer icon="Minus" />}
+          onClick={zoomOut}
+          text="Zoom Out"
+          isIcon
+          classes="zoom-out-button control-button"
+        />
+      </li>
+    </ul>
   );
 }

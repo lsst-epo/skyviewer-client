@@ -1,8 +1,6 @@
 @use 'abstracts/functions';
 
 .landmarks-button {
-  top: calc(50% + 12px);
-  left: 0;
   background-color: functions.palette(neutral90);
 
   svg {

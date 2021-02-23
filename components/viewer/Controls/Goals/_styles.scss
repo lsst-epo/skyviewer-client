@@ -1,8 +1,6 @@
 @use 'abstracts/functions';
 
 .goals-button {
-  left: 0;
-  bottom: 50%;
   background-color: functions.palette(neutral90);
 
   svg {
