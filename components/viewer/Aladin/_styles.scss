@@ -1,3 +1,6 @@
+@use 'abstracts/mixins/appearance';
+@use 'abstracts/functions';
+
 // Overrides
 .aladin-logo-container,
 .aladin-fov,
@@ -19,4 +22,23 @@
   left: 0;
   right: 0;
   border: 0;
+}
+
+
+.shadow-canvas-container {
+  // @include appearance.hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: white;
+
+  .info-button, .close-button {
+    background-color: functions.palette(turquoise55);
+  }
+
+  .info-button {
+    margin: 5px;
+  }
 }

@@ -1,7 +1,9 @@
 import { useEffect, useState, useContext, useCallback } from "react";
 import PropTypes from "prop-types";
 import { getSourceCatalogOptions } from "./utilities";
+import debounce from "lodash.debounce";
 import AladinGlobalContext from "@/contexts/AladinGlobal";
+import ShadowCanvas from "./ShadowCanvas";
 
 export default function Aladin({
   selector,
@@ -20,7 +22,7 @@ export default function Aladin({
   onObjectHovered,
   onFootprintClicked,
   onFootprintHovered,
-  onPositionChanged,
+  // onPositionChanged,
   onMouseMove,
   onFullScreenToggled,
 }) {
@@ -42,6 +44,40 @@ export default function Aladin({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [aladinGlobal, aladin]);
 
+  const filterFn = (catItem) => {
+    // eslint-disable-next-line no-console
+    return true;
+  };
+
+  const catFiltByVisReg = () => {
+    if (!catalogs) return;
+
+    catalogs.forEach((catalog) => {
+      const { type, url, options: catOpts } = catalog;
+      const corners = aladin.getFovCorners();
+      const filteredCat = createCatalog({
+        ...catalog,
+        options: { ...getSourceCatalogOptions(catOpts), filter: filterFn },
+      });
+      // filteredCat.reportChange();
+      // eslint-disable-next-line no-console
+      // console.log(filteredCat);
+    });
+  };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debouncedPositionChange = useCallback(
+    debounce((event) => {
+      catFiltByVisReg();
+    }, 1000),
+    [aladin]
+  );
+
+  const onPositionChanged = (event) => {
+    debouncedPositionChange(event);
+    // event.persist();
+  };
+
   const addEventHandlers = () => {
     const eventHandlers = {
       click: onClick || null,
@@ -61,16 +97,11 @@ export default function Aladin({
     }
   };
 
-  const createHiPSCatalog = (catalog) => {
-    const { url, options: catOpts } = catalog;
-    return aladinGlobal.catalogHiPS(url, getSourceCatalogOptions(catOpts));
-  };
-
   const createCatalog = (catalog) => {
-    const { type, options: catOpts } = catalog;
+    const { type, url, options: catOpts } = catalog;
 
     if (type === "HiPS") {
-      return createHiPSCatalog(catalog);
+      return aladinGlobal.catalogHiPS(url, getSourceCatalogOptions(catOpts));
     }
 
     if (type === "markers") {
@@ -138,7 +169,12 @@ export default function Aladin({
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [aladin, aladinGlobal]);
 
-  return <div id="aladin-lite-div" className="aladin-container" />;
+  return (
+    <div>
+      <ShadowCanvas catalog={markerLayers ? markerLayers[0].markers : null} />
+      <div id="aladin-lite-div" className="aladin-container" />
+    </div>
+  );
 }
 
 Aladin.propTypes = {
@@ -158,7 +194,7 @@ Aladin.propTypes = {
   onObjectHovered: PropTypes.func,
   onFootprintClicked: PropTypes.func,
   onFootprintHovered: PropTypes.func,
-  onPositionChanged: PropTypes.func,
+  // onPositionChanged: PropTypes.func,
   onMouseMove: PropTypes.func,
   onFullScreenToggled: PropTypes.func,
 };

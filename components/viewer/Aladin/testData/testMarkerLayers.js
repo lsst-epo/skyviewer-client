@@ -29,6 +29,30 @@ export default [
         popupTitle: "HD 164492",
         popupDesc: "Object type: Double star",
       },
+      {
+        position: {
+          ra: 207.332621,
+          dec: -16.078944,
+        },
+        popupTitle: "HD 162",
+        popupDesc: "Object type: Galaxy",
+      },
+      {
+        position: {
+          ra: 100.63206,
+          dec: -18.90555,
+        },
+        popupTitle: "HD 4",
+        popupDesc: "Object type: Star in cluster",
+      },
+      {
+        position: {
+          ra: 272.598121,
+          dec: -27.030819,
+        },
+        popupTitle: "HD 92",
+        popupDesc: "Object type: Double star",
+      },
     ],
   },
 ];

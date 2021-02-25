@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import defaultOptions from "./Aladin/defaultOptions";
 import { AladinGlobalProvider } from "@/contexts/AladinGlobal";
@@ -75,9 +75,19 @@ export default function Skyviewer({
   //   console.log("Footprint Hovered", event);
   // };
 
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // const debouncedPositionChange = useCallback(
+  //   debounce((event) => {
+  //     const { aladin } = aladins;
+  //     // eslint-disable-next-line no-console
+  //     console.log("Position Changed", event, aladin);
+  //   }, 1000),
+  //   [aladins]
+  // );
+
   // const onPositionChanged = (event) => {
-  //   // eslint-disable-next-line no-console
-  //   console.log("Posiiton Changed", event);
+  //   debouncedPositionChange(event);
+  //   // event.persist();
   // };
 
   // const onMouseMove = (event) => {
