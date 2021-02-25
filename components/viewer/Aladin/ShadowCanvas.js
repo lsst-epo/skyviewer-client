@@ -21,7 +21,7 @@ export default function ShadowCanvas({ catalog }) {
   const objects = catalog.map((object) => {
     const { popupTitle, popupDesc } = object;
     return (
-      <li key={popupTitle} role="menuitem">
+      <li key={popupTitle}>
         <Button
           onClick={() => setDetails(object)}
           text={`Open Object Details for ${popupTitle}`}
@@ -34,7 +34,7 @@ export default function ShadowCanvas({ catalog }) {
   return (
     <div className="shadow-canvas-container">
       <h4 id="vis-obj-label">Objects in current region</h4>
-      <ul role="menu" aria-labelledby="vis-obj-label">{objects}</ul>
+      <ul aria-labelledby="vis-obj-label">{objects}</ul>
       {details && (
         <div
           role="dialog"
