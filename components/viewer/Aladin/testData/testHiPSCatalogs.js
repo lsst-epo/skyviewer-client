@@ -1,7 +1,7 @@
 export default [
   {
     type: "HiPS",
-    url: "https://axel.u-strasbg.fr/HiPSCatService/Simbad",
+    url: "https://data.darts.isas.jaxa.jp/pub/judo2/HiPS/SWIFT-BAT_CAT",
     options: {
       // displayLabel: true,
       // labelColumn: "main_id",
