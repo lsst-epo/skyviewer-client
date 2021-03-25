@@ -2,9 +2,9 @@ import { useEffect, useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import defaultOptions from "./Aladin/defaultOptions";
 import { AladinGlobalProvider } from "@/contexts/AladinGlobal";
+import { FiltersProvider } from "@/contexts/Filters";
 import Aladin from "./Aladin";
 import Header from "./Header";
-import Controls from "./Controls";
 
 import testMarkerLayers from "./Aladin/testData/testMarkerLayers";
 import testHiPSCatalogs from "./Aladin/testData/testHiPSCatalogs";
@@ -19,6 +19,7 @@ export default function Skyviewer({
   target,
 }) {
   const [aladins, setAladins] = useState(null);
+  const [filters, setFilters] = useState({ score: 10 });
 
   useEffect(() => {
     setAladins({
@@ -86,8 +87,9 @@ export default function Skyviewer({
   // );
 
   // const onPositionChanged = (event) => {
-  //   debouncedPositionChange(event);
-  //   // event.persist();
+  //   // eslint-disable-next-line no-console
+  //   console.log(aladins.aladin.getFovCorners());
+  //   console.log("Position Changed", event);
   // };
 
   // const onMouseMove = (event) => {
@@ -105,15 +107,16 @@ export default function Skyviewer({
       <Header />
       <main className="viewer-container">
         <AladinGlobalProvider value={aladins}>
-          <Controls />
-          <Aladin
-            {...{ target, selector, survey, fov, fovRange, options }}
-            onClick={onClick}
-            onObjectClicked={onObjectClicked}
-            catalogs={testHiPSCatalogs}
-            markerLayers={testMarkerLayers}
-            jpgs={testJpgs}
-          />
+          <FiltersProvider value={{ setFilters, filters }}>
+            <Aladin
+              {...{ target, selector, survey, fov, fovRange, options }}
+              onClick={onClick}
+              onObjectClicked={onObjectClicked}
+              catalogs={testHiPSCatalogs}
+              markerLayers={testMarkerLayers}
+              jpgs={testJpgs}
+            />
+          </FiltersProvider>
         </AladinGlobalProvider>
       </main>
     </>

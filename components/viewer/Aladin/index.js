@@ -1,9 +1,12 @@
-import { useEffect, useState, useContext, useCallback } from "react";
+import { useEffect, useState, useContext, useCallback, useRef } from "react";
 import PropTypes from "prop-types";
 import { getSourceCatalogOptions } from "./utilities";
 import debounce from "lodash.debounce";
 import AladinGlobalContext from "@/contexts/AladinGlobal";
 import ShadowCanvas from "./ShadowCanvas";
+import FiltersContext from "@/contexts/Filters";
+import { AladinCatalogsProvider } from "@/contexts/AladinCatalogs";
+import Controls from "../Controls";
 
 export default function Aladin({
   selector,
@@ -25,13 +28,17 @@ export default function Aladin({
   // onPositionChanged,
   onMouseMove,
   onFullScreenToggled,
+  filterFunc,
 }) {
   const { aladinGlobal, aladin } = useContext(AladinGlobalContext) || {};
+  const { filters } = useContext(FiltersContext) || {};
+  const [cats, setCats] = useState(null);
 
   useEffect(() => {
     if (!aladin && !aladinGlobal) return;
     // Restrict FOV
     aladin.setFovRange(fovRange[0], fovRange[1]);
+    aladin.setFov(fov);
     // Add Event Listeners
     addEventHandlers();
     // Add Catalogs
@@ -44,24 +51,29 @@ export default function Aladin({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [aladinGlobal, aladin]);
 
-  const filterFn = (catItem) => {
-    // eslint-disable-next-line no-console
-    return true;
-  };
+  useEffect(() => {
+    if (!aladin) return;
+
+    cats.forEach((cat) => {
+      cat.filterFn = filter;
+      cat.reportChange();
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters]);
 
   const catFiltByVisReg = () => {
     if (!catalogs) return;
 
     catalogs.forEach((catalog) => {
-      const { type, url, options: catOpts } = catalog;
-      const corners = aladin.getFovCorners();
-      const filteredCat = createCatalog({
-        ...catalog,
-        options: { ...getSourceCatalogOptions(catOpts), filter: filterFn },
-      });
+      // const { type, url, options: catOpts } = catalog;
+      // const corners = aladin.getFovCorners();
+      // const filteredCat = createCatalog({
+      //   ...catalog,
+      //   options: { ...getSourceCatalogOptions(catOpts), filter: filterFn },
+      // });
       // filteredCat.reportChange();
       // eslint-disable-next-line no-console
-      // console.log(filteredCat);
+      console.log(catalog);
     });
   };
 
@@ -97,6 +109,14 @@ export default function Aladin({
     }
   };
 
+  const createHiPSCatalog = (catalog) => {
+    const { url, options: catOpts } = catalog;
+    return aladinGlobal.catalogHiPS(
+      url,
+      getSourceCatalogOptions(catOpts, filter)
+    );
+  };
+
   const createCatalog = (catalog) => {
     const { type, url, options: catOpts } = catalog;
 
@@ -113,9 +133,16 @@ export default function Aladin({
 
   const addCatalogs = (catalogs) => {
     if (!catalogs) return;
-    catalogs.forEach((catalog) => {
-      aladin.addCatalog(createCatalog(catalog));
+
+    const aladinCats = catalogs.map((cat) => {
+      return createCatalog(cat);
     });
+
+    aladinCats.forEach((cat) => {
+      aladin.addCatalog(cat);
+    });
+
+    setCats(aladinCats);
   };
 
   const getMarkerSources = (markers) => {
@@ -138,6 +165,7 @@ export default function Aladin({
 
       aladin.addCatalog(markerLayerCatalog);
       markerLayerCatalog.addSources(markerSources);
+      // console.log('marks', markerLayerCatalog);
     });
   };
 
@@ -147,33 +175,18 @@ export default function Aladin({
     });
   };
 
-  // useEffect(() => {
-  //   console.log('update');
-  // });
-
-  // useEffect(() => {
-  //   // Initialize viewer
-  //   // Do nothing if Global or instance have not been set
-  //   if (!aladin && !aladinGlobal) return;
-  //   // Restrict FOV
-  //   aladin.setFovRange(fovRange[0], fovRange[1]);
-  //   // Add Event Listeners
-  //   addEventHandlers();
-  //   // Add Catalogs
-  //   addCatalogs(catalogs);
-  //   // Add Markers
-  //   addMarkers(markerLayers);
-  //   addJpgs(jpgs);
-  //   // eslint-disable-next-line no-console
-  //   console.log("mount");
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [aladin, aladinGlobal]);
+  const filter = (source) => {
+    return source.data.score < filters.score;
+  };
 
   return (
-    <div>
-      <ShadowCanvas catalog={markerLayers ? markerLayers[0].markers : null} />
-      <div id="aladin-lite-div" className="aladin-container" />
-    </div>
+    <>
+      <AladinCatalogsProvider value={{ cats, setCats }}>
+        <Controls />
+        <div id="aladin-lite-div" className="aladin-container" />
+        <ShadowCanvas catalog={markerLayers ? markerLayers[0].markers : null} />
+      </AladinCatalogsProvider>
+    </>
   );
 }
 
@@ -197,4 +210,5 @@ Aladin.propTypes = {
   // onPositionChanged: PropTypes.func,
   onMouseMove: PropTypes.func,
   onFullScreenToggled: PropTypes.func,
+  filterFunc: PropTypes.func,
 };
