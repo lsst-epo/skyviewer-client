@@ -121,6 +121,7 @@ export default function Aladin({
     const { type, url, options: catOpts } = catalog;
 
     if (type === "HiPS") {
+      //return aladin.setImageSurvey(aladin.createImageSurvey('AKARI FIS Color', 'AKARI FIS Color', url, 'equatorial', 5, {imgFormat: 'png'}));
       return aladinGlobal.catalogHiPS(url, getSourceCatalogOptions(catOpts));
     }
 
@@ -141,6 +142,8 @@ export default function Aladin({
     aladinCats.forEach((cat) => {
       aladin.addCatalog(cat);
     });
+
+    //aladin.setImageSurvey(aladin.createImageSurvey('AKARI FIS Color', 'AKARI FIS Color',"http://localhost:5000", 'equatorial', 5, {imgFormat: 'png'}));
 
     setCats(aladinCats);
   };

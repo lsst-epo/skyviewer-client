@@ -1,13 +1,14 @@
 export default [
   {
     type: "HiPS",
-    url: "https://data.darts.isas.jaxa.jp/pub/judo2/HiPS/SWIFT-BAT_CAT",
+    url: "http://localhost:5000",
+    //url: "https://axel.u-strasbg.fr/HiPSCatService/Simbad",
     options: {
       // displayLabel: true,
       // labelColumn: "main_id",
       // labelColor: "#987654",
       // labelFont: "16px sans-serif",
-      name: "Test HiPS 1",
+      name: "CDS_P_AKARI_FIS_Color",
       color: "#ffff00",
       shape: "triangle",
       onClick: "showPopup",
@@ -27,3 +28,6 @@ export default [
   //   },
   // },
 ];
+
+//url: "https://data.darts.isas.jaxa.jp/pub/judo2/HiPS/SWIFT-BAT_CAT",
+// https://axel.u-strasbg.fr/HiPSCatService/Simbad/Norder3/Dir0/Npix451.tsv

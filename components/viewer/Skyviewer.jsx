@@ -25,16 +25,29 @@ export default function Skyviewer({
     setAladins({
       // Initialize aladin Global
       aladinGlobal: window.A,
-      // Initialize aladin instance
+      //Initialize aladin instance
       aladin: window.A.aladin(
         selector,
         Object.assign(options, {
-          survey,
+          //survey,
           fov,
           target,
         })
       ),
     });
+    if(aladins) {
+      aladins.aladin.setImageSurvey(aladins.aladin.createImageSurvey('AKARI FIS Color', 'AKARI FIS Color',"http://localhost:5000", 'equatorial', 5, {imgFormat: 'png'}));
+      // console.log("rosas - logging aladins");
+      // console.log("aladins:");
+      // console.log(aladins);
+      // console.log("aladins.aladin:");
+      // console.log(aladins.aladin);
+      console.log("aladins.aladin.createImageSurvey()");
+      console.log(aladins.aladin.createImageSurvey);
+      console.log("aladins.aladin.setImageSurvey()");
+      console.log(aladins.aladin.setImageSurvey);
+    }
+
   }, [selector, survey, fov, target, options]);
 
   // useEffect(() => {

@@ -13,7 +13,7 @@ export default function AladinHeadMatter() {
       {/* Aladin Lite JS code */}
       <script
         type="text/javascript"
-        src="aladin-lite/aladin.min.js"
+        src="aladin-lite/aladin.js"
         charSet="utf-8"
       ></script>
     </>

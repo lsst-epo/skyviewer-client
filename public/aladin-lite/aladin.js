@@ -3735,8 +3735,7 @@ HiPSDefinition = (function() {
     "hips_service_url_2": "http://alaskybis.unistra.fr/SSC/xmmallsky",
     "hips_service_url_3": "https://alaskybis.unistra.fr/SSC/xmmallsky"
 }, {
-    "ID": "xcatdb/P/XMM/PN/color",
-    "obs_title": "False color X-ray images (Red=0.5-1 Green=1-2 Blue=2-4.5)Kev",
+    "ID": "xcatdb/P/XMM/PN/color", 
     "hips_order": "7",
     "hips_frame": "equatorial",
     "hips_tile_format": "png jpeg",
@@ -3779,7 +3778,9 @@ HiPSDefinition = (function() {
         return true;
     };
 
-    var MOCSERVER_MIRRORS_HTTP = ['http://alasky.u-strasbg.fr/MocServer/query', 'http://alaskybis.u-strasbg.fr/MocServer/query']; // list of base URL for MocServer mirrors, available in HTTP
+    // rosas - experimental code
+    //var MOCSERVER_MIRRORS_HTTP = ['http://alasky.u-strasbg.fr/MocServer/query', 'http://alaskybis.u-strasbg.fr/MocServer/query']; // list of base URL for MocServer mirrors, available in HTTP
+    var MOCSERVER_MIRRORS_HTTP = ["http://localhost:5000/MocServer/query"]
     var MOCSERVER_MIRRORS_HTTPS = ['https://alasky.u-strasbg.fr/MocServer/query', 'https://alaskybis.unistra.fr/MocServer/query']; // list of base URL for MocServer mirrors, available in HTTPS
 
     // get HiPS definitions, by querying the MocServer
