@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { getSourceCatalogOptions } from "./utilities";
 import debounce from "lodash.debounce";
 import AladinGlobalContext from "@/contexts/AladinGlobal";
-import ShadowCanvas from "./ShadowCanvas";
+// import ShadowCanvas from "./ShadowCanvas";
 import FiltersContext from "@/contexts/Filters";
 import { AladinCatalogsProvider } from "@/contexts/AladinCatalogs";
 import Controls from "../Controls";
@@ -184,7 +184,7 @@ export default function Aladin({
       <AladinCatalogsProvider value={{ cats, setCats }}>
         <Controls />
         <div id="aladin-lite-div" className="aladin-container" />
-        <ShadowCanvas catalog={markerLayers ? markerLayers[0].markers : null} />
+        {/* <ShadowCanvas catalog={markerLayers ? markerLayers[0].markers : null} /> */}
       </AladinCatalogsProvider>
     </>
   );

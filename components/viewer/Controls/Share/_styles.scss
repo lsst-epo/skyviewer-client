@@ -4,9 +4,9 @@
   position: absolute;
   bottom: 0;
   left: 0;
+  z-index: functions.z-stack(controls);
   background-color: functions.palette(neutral90);
   border-radius: 50%;
-  z-index: functions.z-stack(controls);
 
   svg {
     width: 22px;
