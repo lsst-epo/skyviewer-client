@@ -29,6 +29,12 @@
 );
 @include embedFont(
   'Open Sans',
+  'open-sans-light',
+  functions.font-weight(light),
+  normal
+);
+@include embedFont(
+  'Open Sans',
   'open-sans-regular-italic',
   functions.font-weight(regular),
   italic

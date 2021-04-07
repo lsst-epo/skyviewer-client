@@ -47,6 +47,7 @@ $padding-sizes: (
 $z-stack: (
   header: 26,
   controls: 5,
+  modal: 30,
 );
 
 // Typography
@@ -58,6 +59,7 @@ $line-height-base: 1.636;
 $font-stack-base: "Open Sans", system-ui;
 
 $font-weights: (
+  light: 300,
   regular: 400,
   bold: 700,
   extra-bold: 800,

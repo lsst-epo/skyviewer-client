@@ -13,11 +13,11 @@
 .controls {
   position: absolute;
   top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  border: 0;
   margin: 20px 15px;
+  border: 0;
   $controlDim: 40px;
   $controlSpacing: 12px;
 
@@ -35,9 +35,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
     width: $controlDim;
     height: $controlDim;
+    border-radius: 50%;
   }
 
   .zooms, .wayfinding, .find {
@@ -49,13 +49,12 @@
   }
 
   .zooms {
-    bottom: calc(50% - #{$controlDim} - (#{$controlSpacing}));
     right: 0;
+    bottom: calc(50% - #{$controlDim} - (#{$controlSpacing}));
   }
 
   .find {
-    top: 0;
-    left: 0;
+    position: static;
   }
 
   .wayfinding {
@@ -64,10 +63,10 @@
   }
 
   .overlays {
-    display: flex;
-    flex-wrap: wrap;
     top: 0;
     right: 0;
+    display: flex;
+    flex-wrap: wrap;
     width: (2 * $controlDim) + $controlSpacing;
 
     li {
