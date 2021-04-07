@@ -77,6 +77,5 @@ module.exports = {
     // Arbitrary media values can be used, but explicitly
     "scss/media-feature-value-dollar-variable": "always",
     "scss/selector-no-redundant-nesting-selector": true,
-    "order/properties-order": null,
   },
 };
