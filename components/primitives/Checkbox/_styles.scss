@@ -1,0 +1,38 @@
+@use 'abstracts/functions';
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  + .checkbox-wrapper {
+    margin-top: 15px;
+  }
+
+  .checkbox-indicator {
+    width: 30px;
+    height: 30px;
+    margin-right: 23px;
+    background-color: functions.palette(white);
+    border: 5px solid functions.palette(white);
+    border-radius: 50%;
+    transition: background-color 0.2s ease-out;
+  }
+
+  .checkbox-label {
+    font-size: 16px;
+    font-weight: functions.font-weight(bold);
+    line-height: 1.6;
+    color: functions.palette(white);
+  }
+
+  .checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    &:checked ~ .checkbox-indicator {
+      background-color: functions.palette(turquoise55);
+    }
+  }
+}
