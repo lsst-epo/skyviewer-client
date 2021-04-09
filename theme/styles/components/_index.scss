@@ -2,13 +2,15 @@
 @forward 'page-header';
 
 // Primitives
+@forward 'components/primitives/Accordion/styles';
 @forward 'components/primitives/Buttonish/styles';
 @forward 'components/primitives/Button/styles';
-@forward 'components/primitives/Accordion/styles';
+@forward 'components/primitives/Checkbox/styles';
 @forward 'components/primitives/Modal/styles';
+@forward 'components/primitives/Slider/styles';
 
 // Viewer
-@forward 'components/viewer/viewer.scss';
+@forward 'components/viewer/styles.scss';
 @forward 'components/viewer/Header/styles';
 @forward 'components/viewer/Controls/styles';
 

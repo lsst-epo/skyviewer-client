@@ -50,9 +50,6 @@ export default function Checkbox({
   );
 }
 
-// Checkbox.defaultProps = {
-// };
-
 Checkbox.propTypes = {
   defaultChecked: PropTypes.bool,
   checked: PropTypes.bool,

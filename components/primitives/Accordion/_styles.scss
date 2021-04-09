@@ -13,7 +13,7 @@ $_toggle-padding: calc(#{$_toggle-width} + 1em);
     padding-left: $_toggle-padding;
     cursor: pointer;
 
-    &::-webkit-details-marker {
+    &::marker {
       display: none;
     }
 

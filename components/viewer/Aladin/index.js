@@ -28,7 +28,7 @@ export default function Aladin({
   // onPositionChanged,
   onMouseMove,
   onFullScreenToggled,
-  filterFunc,
+  // filterFunc,
 }) {
   const { aladinGlobal, aladin } = useContext(AladinGlobalContext) || {};
   const { filters } = useContext(FiltersContext) || {};
@@ -55,7 +55,7 @@ export default function Aladin({
     if (!aladin) return;
 
     cats.forEach((cat) => {
-      cat.filterFn = filter;
+      cat.filterFn = filtersChecker;
       cat.reportChange();
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -113,7 +113,7 @@ export default function Aladin({
     const { url, options: catOpts } = catalog;
     return aladinGlobal.catalogHiPS(
       url,
-      getSourceCatalogOptions(catOpts, filter)
+      getSourceCatalogOptions(catOpts, filtersChecker)
     );
   };
 
@@ -175,8 +175,10 @@ export default function Aladin({
     });
   };
 
-  const filter = (source) => {
-    return source.data.score < filters.score;
+  const filtersChecker = (source) => {
+    const types = filters.types;
+    // return types[source.data.type];
+    return true;
   };
 
   return (
@@ -210,5 +212,5 @@ Aladin.propTypes = {
   // onPositionChanged: PropTypes.func,
   onMouseMove: PropTypes.func,
   onFullScreenToggled: PropTypes.func,
-  filterFunc: PropTypes.func,
+  // filterFunc: PropTypes.func,
 };
