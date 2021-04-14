@@ -51,6 +51,18 @@ export default function Skyviewer({
         step: 1,
         value: [0, 626],
       },
+      score: {
+        min: {
+          label: "Low Score",
+          value: 0,
+        },
+        max: {
+          label: "High Score",
+          value: 10,
+        },
+        step: 0.1,
+        value: [0, 10],
+      },
     },
   });
 
@@ -76,7 +88,7 @@ export default function Skyviewer({
 
   const onClick = (event) => {
     // eslint-disable-next-line no-console
-    console.log("Clicked", event);
+    // console.log("Clicked", event);
   };
 
   // const onSelect = (event) => {

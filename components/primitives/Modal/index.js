@@ -14,6 +14,8 @@ export default function Modal({
   closeCallback,
   labelledbyId,
   describedbyId,
+  secondaryCloseButton,
+  secondaryCloseButtonOpts,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef(null);
@@ -50,6 +52,9 @@ export default function Modal({
         >
           <Button {...closeButtonOpts} onClick={handleClose} />
           <div className="modal-inner">{children}</div>
+          {secondaryCloseButton && (
+            <Button {...secondaryCloseButtonOpts} onClick={handleClose} />
+          )}
         </div>
       )}
     </div>
@@ -71,6 +76,8 @@ Modal.propTypes = {
   describedbyId: PropTypes.string,
   openButtonOpts: PropTypes.object,
   closeButtonOpts: PropTypes.object,
+  secondaryCloseButton: PropTypes.bool,
+  secondaryCloseButtonOpts: PropTypes.object,
   openCallback: PropTypes.func,
   closeCallback: PropTypes.func,
   classes: PropTypes.string,
