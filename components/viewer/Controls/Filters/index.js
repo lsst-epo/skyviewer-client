@@ -30,13 +30,6 @@ export default function Filters() {
     });
   };
 
-  // const handleFilter = () => {
-  //   if (!filters) return;
-  //   const { score: oldScore } = filters || {};
-  //   const newScore = oldScore + 0.25;
-  //   setFilters({ ...filters, score: newScore >= 10 ? 4.5 : newScore });
-  // };
-
   return (
     <Modal
       labelledbyId={modalLabelId}
@@ -46,6 +39,11 @@ export default function Filters() {
         text: "Open Filters Modal Dialog",
         isIcon: true,
         classes: "filters-button control-button",
+      }}
+      secondaryCloseButton
+      secondaryCloseButtonOpts={{
+        text: "Apply Filters",
+        classes: "filters-modal-close-button",
       }}
     >
       <div className="filters-modal">

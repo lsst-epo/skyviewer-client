@@ -65,3 +65,16 @@
     }
   }
 }
+
+.filters-modal-close-button {
+  display: block;
+  min-width: 160px;
+  padding: 16px;
+  margin: 50px auto;
+  font-size: 16px;
+  font-weight: functions.font-weight(bold);
+  line-height: 1.6;
+  color: functions.palette(white);
+  background-color: functions.palette(turquoise85);
+  border-radius: 5px;
+}

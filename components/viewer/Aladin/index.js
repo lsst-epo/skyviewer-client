@@ -73,7 +73,7 @@ export default function Aladin({
       // });
       // filteredCat.reportChange();
       // eslint-disable-next-line no-console
-      console.log(catalog);
+      // console.log(catalog);
     });
   };
 
@@ -177,8 +177,12 @@ export default function Aladin({
 
   const filtersChecker = (source) => {
     const types = filters.types;
+    const {
+      score: { value },
+    } = filters.characteristics;
+    const [min, max] = value;
     // return types[source.data.type];
-    return true;
+    return source.data.score >= min && source.data.score <= max;
   };
 
   return (
