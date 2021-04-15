@@ -1,5 +1,4 @@
 import { useEffect, useState, useContext } from "react";
-import AladinCatalogsContext from "@/contexts/AladinCatalogs";
 import FiltersContext from "@/contexts/Filters";
 import Button from "@/primitives/Button";
 import Modal from "@/primitives/Modal";
