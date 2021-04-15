@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { getSourceCatalogOptions } from "./utilities";
 import debounce from "lodash.debounce";
 import AladinGlobalContext from "@/contexts/AladinGlobal";
-// import ShadowCanvas from "./ShadowCanvas";
+import SourcesList from "./SourcesList";
 import FiltersContext from "@/contexts/Filters";
-import { AladinCatalogsProvider } from "@/contexts/AladinCatalogs";
+// import { AladinCatalogsProvider } from "@/contexts/AladinCatalogs";
 import Controls from "../Controls";
 
 export default function Aladin({
@@ -20,19 +20,17 @@ export default function Aladin({
   jpgs,
   onClick,
   onSelect,
-  onZoomChanged,
   onObjectClicked,
   onObjectHovered,
   onFootprintClicked,
   onFootprintHovered,
-  // onPositionChanged,
   onMouseMove,
   onFullScreenToggled,
   // filterFunc,
 }) {
   const { aladinGlobal, aladin } = useContext(AladinGlobalContext) || {};
   const { filters } = useContext(FiltersContext) || {};
-  const [cats, setCats] = useState(null);
+  const [srcsInRegion, setSrcsInRegion] = useState(null);
 
   useEffect(() => {
     if (!aladin && !aladinGlobal) return;
@@ -44,7 +42,7 @@ export default function Aladin({
     // Add Catalogs
     addCatalogs(catalogs);
     // Add Markers
-    addMarkers(markerLayers);
+    // addMarkers(markerLayers);
     addJpgs(jpgs);
     // eslint-disable-next-line no-console
     // console.log("mount");
@@ -54,39 +52,88 @@ export default function Aladin({
   useEffect(() => {
     if (!aladin) return;
 
-    cats.forEach((cat) => {
+    aladin.view.catalogs.forEach((cat) => {
       cat.filterFn = filtersChecker;
       cat.reportChange();
     });
+
+    setSrcsInRegion(getSrcsInRegion(aladin.getFovCorners()));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
 
-  const catFiltByVisReg = () => {
-    if (!catalogs) return;
+  function posIsInRegion(position, region) {
+    // console.log(position, region);
+    // dec: up = +; down = -  and  ra: left = +; right = -
+    const [
+      [topLeftRa, topLeftDec],
+      [topRightRa, topRightDec],
+      [bottomRightRa, bottomRightDec],
+      [bottomLeftRa, bottomLeftDec],
+    ] = region;
+    const [ra, dec] = position;
 
-    catalogs.forEach((catalog) => {
-      // const { type, url, options: catOpts } = catalog;
-      // const corners = aladin.getFovCorners();
-      // const filteredCat = createCatalog({
-      //   ...catalog,
-      //   options: { ...getSourceCatalogOptions(catOpts), filter: filterFn },
-      // });
-      // filteredCat.reportChange();
-      // eslint-disable-next-line no-console
-      // console.log(catalog);
+    if (
+      ra > topLeftRa ||
+      ra < topRightRa ||
+      ra > bottomLeftRa ||
+      ra < bottomRightRa
+    ) {
+      return false;
+    }
+
+    if (
+      dec > topLeftDec ||
+      dec > topRightDec ||
+      dec < bottomLeftDec ||
+      dec < bottomRightDec
+    ) {
+      return false;
+    }
+
+    return true;
+  }
+
+  function getSrcsInRegion(region) {
+    if (!aladin) return;
+    const srcsInRegion = [];
+
+    aladin.view.catalogs.forEach((catalog) => {
+      const { order1Sources, order2Sources, sources: catSources } = catalog;
+      const sources = [
+        ...new Set([
+          ...(order1Sources || []),
+          ...(order2Sources || []),
+          ...(catSources || []),
+        ]),
+      ];
+
+      sources.forEach((source) => {
+        const { ra, dec } = source;
+        if (posIsInRegion([ra, dec], region)) {
+          filtersChecker(source);
+          srcsInRegion.push(source);
+        }
+      });
     });
-  };
+
+    return srcsInRegion;
+  }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const debouncedPositionChange = useCallback(
+  const debouncedRegionSrcsSetter = useCallback(
     debounce((event) => {
-      catFiltByVisReg();
+      setSrcsInRegion(getSrcsInRegion(aladin.getFovCorners()));
     }, 1000),
     [aladin]
   );
 
   const onPositionChanged = (event) => {
-    debouncedPositionChange(event);
+    debouncedRegionSrcsSetter(event);
+    // event.persist();
+  };
+
+  const onZoomChanged = (event) => {
+    debouncedRegionSrcsSetter(event);
     // event.persist();
   };
 
@@ -94,12 +141,12 @@ export default function Aladin({
     const eventHandlers = {
       click: onClick || null,
       select: onSelect || null,
-      zoomChanged: onZoomChanged || null,
+      zoomChanged: onZoomChanged,
       objectClicked: onObjectClicked || null,
       objectHovered: onObjectHovered || null,
       footprintClicked: onFootprintClicked || null,
       footprintHovered: onFootprintHovered || null,
-      positionChanged: onPositionChanged || null,
+      positionChanged: onPositionChanged,
       mouseMove: onMouseMove || null,
       fullScreenToggled: onFullScreenToggled || null,
     };
@@ -141,15 +188,14 @@ export default function Aladin({
     aladinCats.forEach((cat) => {
       aladin.addCatalog(cat);
     });
-
-    setCats(aladinCats);
   };
 
   const getMarkerSources = (markers) => {
     return markers.map((marker) => {
-      const { position, popupTitle, popupDesc } = marker;
-      const { ra, dec } = position;
+      const { data, popupTitle, popupDesc } = marker;
+      const { ra, dec } = data;
       return aladinGlobal.marker(ra, dec, {
+        data,
         popupTitle,
         popupDesc,
       });
@@ -176,7 +222,7 @@ export default function Aladin({
   };
 
   const filtersChecker = (source) => {
-    const types = filters.types;
+    // const types = filters.types;
     const {
       score: { value },
     } = filters.characteristics;
@@ -187,11 +233,9 @@ export default function Aladin({
 
   return (
     <>
-      <AladinCatalogsProvider value={{ cats, setCats }}>
-        <Controls />
-        <div id="aladin-lite-div" className="aladin-container" />
-        {/* <ShadowCanvas catalog={markerLayers ? markerLayers[0].markers : null} /> */}
-      </AladinCatalogsProvider>
+      <Controls />
+      <div id="aladin-lite-div" className="aladin-container" />
+      <SourcesList sources={srcsInRegion} />
     </>
   );
 }
