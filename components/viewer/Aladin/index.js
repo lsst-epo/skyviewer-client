@@ -40,10 +40,10 @@ export default function Aladin({
     // Add Event Listeners
     addEventHandlers();
     // Add Catalogs
-    addCatalogs(catalogs);
+    if (catalogs) addCatalogs(catalogs);
     // Add Markers
     // addMarkers(markerLayers);
-    addJpgs(jpgs);
+    if (jpgs) addJpgs(jpgs);
     // eslint-disable-next-line no-console
     // console.log("mount");
     // eslint-disable-next-line react-hooks/exhaustive-deps
