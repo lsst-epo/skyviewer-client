@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import Button from "@/primitives/Button";
 import IconComposer from "@/svg/IconComposer";
-import AladinGlobalContext from "@/contexts/AladinGlobal";
 import useFocusTrap from "@/hooks/useFocusTrap";
 import { useKeyDownEvent } from "@/hooks/listeners";
 

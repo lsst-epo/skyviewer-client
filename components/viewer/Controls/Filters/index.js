@@ -5,7 +5,6 @@ import Modal from "@/primitives/Modal";
 import Checkbox from "@/primitives/Checkbox";
 import Slider from "@/primitives/Slider";
 import IconComposer from "@/svg/IconComposer";
-import AladinGlobalContext from "@/contexts/AladinGlobal";
 
 export default function Filters() {
   const modalLabelId = "filters-modal-label";
