@@ -67,18 +67,34 @@ export default function Skyviewer({
   });
 
   useEffect(() => {
-    setAladins({
-      // Initialize aladin Global
-      aladinGlobal: window.A,
-      // Initialize aladin instance
-      aladin: window.A.aladin(
-        selector,
-        Object.assign(options, {
-          survey,
-          fov,
-          target,
-        })
-      ),
+    let aladin;
+    window.A.init.then(() => {
+      setAladins({
+        // Initialize aladin Global
+        aladinGlobal: window.A,
+        // Initialize aladin instance
+        // aladin: window.A.aladin("#aladin-lite-div", {
+        //   target: "M51",
+        //   fov: 180,
+        //   survey: "P/DSS2/color",
+        //   fullScreen: true,
+        // }),
+        aladin: window.A.aladin(
+          selector,
+          Object.assign(options, {
+            survey,
+            fov,
+            target,
+          })
+        ),
+      });
+      // Start up Aladin Lite
+      // aladin = window.A.aladin("#aladin-lite-div", {
+      //   target: "M51",
+      //   fov: 180,
+      //   survey: "P/DSS2/color",
+      //   fullScreen: true,
+      // });
     });
   }, [selector, survey, fov, target, options]);
 
@@ -147,6 +163,9 @@ export default function Skyviewer({
   //   console.log("Fullscreen Toggled", event);
   // };
 
+  // <div id="aladin-lite-div" className="aladin-container" />
+  // markerLayers={testMarkerLayers}
+  // jpgs={testJpgs}
   return (
     <>
       <Header />
@@ -158,8 +177,6 @@ export default function Skyviewer({
               onClick={onClick}
               onObjectClicked={onObjectClicked}
               catalogs={testHiPSCatalogs}
-              markerLayers={testMarkerLayers}
-              jpgs={testJpgs}
             />
           </FiltersProvider>
         </AladinGlobalProvider>
