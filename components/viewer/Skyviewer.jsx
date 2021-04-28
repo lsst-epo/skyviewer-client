@@ -67,34 +67,31 @@ export default function Skyviewer({
   });
 
   useEffect(() => {
-    let aladin;
-    window.A.init.then(() => {
-      setAladins({
-        // Initialize aladin Global
-        aladinGlobal: window.A,
-        // Initialize aladin instance
-        // aladin: window.A.aladin("#aladin-lite-div", {
-        //   target: "M51",
-        //   fov: 180,
-        //   survey: "P/DSS2/color",
-        //   fullScreen: true,
-        // }),
-        aladin: window.A.aladin(
-          selector,
-          Object.assign(options, {
-            survey,
-            fov,
-            target,
-          })
-        ),
-      });
-      // Start up Aladin Lite
-      // aladin = window.A.aladin("#aladin-lite-div", {
-      //   target: "M51",
-      //   fov: 180,
-      //   survey: "P/DSS2/color",
-      //   fullScreen: true,
-      // });
+    // window.A.init.then(() => {
+    //   setAladins({
+    //     // Initialize aladin Global
+    //     aladinGlobal: window.A,
+    //     aladin: window.A.aladin(
+    //       selector,
+    //       Object.assign(options, {
+    //         survey,
+    //         fov,
+    //         target,
+    //       })
+    //     ),
+    //   });
+    // });
+    setAladins({
+      // Initialize aladin Global
+      aladinGlobal: window.A,
+      aladin: window.A.aladin(
+        selector,
+        Object.assign(options, {
+          survey,
+          fov,
+          target,
+        })
+      ),
     });
   }, [selector, survey, fov, target, options]);
 
