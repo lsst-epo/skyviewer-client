@@ -6,7 +6,7 @@
       "@/api/*": ["lib/api/*"],
       "@/components/*": ["components/*"],
       "@/primitives/*": ["components/primitives/*"],
-      "@/layout/*": ["components/layout/*"],
+      "@/layouts/*": ["components/layouts/*"],
       "@/global/*": ["components/global/*"],
       // "@/page/*": ["components/page/*"],
       "@/viewer/*": ["components/viewer/*"],

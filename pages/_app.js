@@ -1,21 +1,22 @@
 import PropTypes from "prop-types";
 import "@/lib/i18n";
+import { LayoutTree } from "@moxy/next-layout";
 import GlobalStyles from "@/styles/globalStyles";
 import styles from "@/styles/styles.scss";
 import "focus-visible";
 
-function Skyviewer({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyles />
-      <Component {...pageProps} />
+      <LayoutTree Component={Component} pageProps={pageProps} />
     </>
   );
 }
 
-Skyviewer.propTypes = {
+App.propTypes = {
   Component: PropTypes.any,
   pageProps: PropTypes.any,
 };
 
-export default Skyviewer;
+export default App;

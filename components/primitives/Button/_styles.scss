@@ -3,7 +3,3 @@
 .button {
   @include appearance.proto-button;
 }
-
-.screen-reader-only {
-  @include appearance.hidden;
-}

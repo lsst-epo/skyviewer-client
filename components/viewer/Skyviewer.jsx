@@ -4,7 +4,7 @@ import defaultOptions from "./Aladin/defaultOptions";
 import { AladinGlobalProvider } from "@/contexts/AladinGlobal";
 import { FiltersProvider } from "@/contexts/Filters";
 import Aladin from "./Aladin";
-import Header from "./Header";
+import { waitForGlobal } from "@/helpers";
 
 import testMarkerLayers from "./Aladin/testData/testMarkerLayers";
 import testHiPSCatalogs from "./Aladin/testData/testHiPSCatalogs";
@@ -67,31 +67,34 @@ export default function Skyviewer({
   });
 
   useEffect(() => {
-    // window.A.init.then(() => {
-    //   setAladins({
-    //     // Initialize aladin Global
-    //     aladinGlobal: window.A,
-    //     aladin: window.A.aladin(
-    //       selector,
-    //       Object.assign(options, {
-    //         survey,
-    //         fov,
-    //         target,
-    //       })
-    //     ),
-    //   });
-    // });
-    setAladins({
-      // Initialize aladin Global
-      aladinGlobal: window.A,
-      aladin: window.A.aladin(
-        selector,
-        Object.assign(options, {
-          survey,
-          fov,
-          target,
-        })
-      ),
+    waitForGlobal("A", () => {
+      setAladins({
+        // window.A.init.then(() => {
+        //   setAladins({
+        //     // Initialize aladin Global
+        //     aladinGlobal: window.A,
+        //     aladin: window.A.aladin(
+        //       selector,
+        //       Object.assign(options, {
+        //         survey,
+        //         fov,
+        //         target,
+        //       })
+        //     ),
+        //   });
+        // });
+
+        // Initialize aladin Global
+        aladinGlobal: window.A,
+        aladin: window.A.aladin(
+          selector,
+          Object.assign(options, {
+            survey,
+            fov,
+            target,
+          })
+        ),
+      });
     });
   }, [selector, survey, fov, target, options]);
 
@@ -165,19 +168,16 @@ export default function Skyviewer({
   // jpgs={testJpgs}
   return (
     <>
-      <Header />
-      <main className="viewer-container">
-        <AladinGlobalProvider value={aladins}>
-          <FiltersProvider value={{ setFilters, filters }}>
-            <Aladin
-              {...{ target, selector, survey, fov, fovRange, options }}
-              onClick={onClick}
-              onObjectClicked={onObjectClicked}
-              catalogs={testHiPSCatalogs}
-            />
-          </FiltersProvider>
-        </AladinGlobalProvider>
-      </main>
+      <AladinGlobalProvider value={aladins}>
+        <FiltersProvider value={{ setFilters, filters }}>
+          <Aladin
+            {...{ target, selector, survey, fov, fovRange, options }}
+            onClick={onClick}
+            onObjectClicked={onObjectClicked}
+            catalogs={testHiPSCatalogs}
+          />
+        </FiltersProvider>
+      </AladinGlobalProvider>
     </>
   );
 }

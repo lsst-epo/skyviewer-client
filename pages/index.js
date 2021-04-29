@@ -1,13 +1,22 @@
 import { useEffect } from "react";
-import Skyviewer from "@/viewer/Skyviewer";
-export default function Main() {
+import Link from "next/link";
+
+export default function Home() {
   return (
-    <Skyviewer
-      selector="#aladin-lite-div"
-      survey="P/DSS2/color"
-      fov={100}
-      fovRange={[0.03, 180]}
-      target="267.0208333333 -24.7800000000"
-    />
+    <div>
+      <h1>I am the homepage</h1>
+      <ul>
+        <li>
+          <Link href="/explorer">
+            <a>I want to explore</a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/guided-experiences">
+            <a>Please guide me</a>
+          </Link>
+        </li>
+      </ul>
+    </div>
   );
 }
