@@ -3,18 +3,6 @@
 
 .c-buttonish {
   @include appearance.proto-button;
-  padding: 1.188em 2.125em;
-  font-size: 16px;
-  font-weight: functions.font-weight(bold);
-  color: functions.palette(white);
-  text-decoration: none;
-  background-color: functions.palette(turquoise60);
-  border-radius: 0.375em;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: functions.palette(turquoise80);
-  }
 
   &--block {
     display: block;

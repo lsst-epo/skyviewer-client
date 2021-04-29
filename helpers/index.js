@@ -5,3 +5,13 @@ export const capitalize = (string) => {
 
 export const hasImage = (imageArray) =>
   !!(imageArray && imageArray.length >= 1 && imageArray[0].url);
+
+export const waitForGlobal = (key, callback) => {
+  if (window[key]) {
+    callback();
+  } else {
+    setTimeout(() => {
+      waitForGlobal(key, callback);
+    }, 100);
+  }
+};

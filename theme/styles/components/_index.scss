@@ -9,9 +9,15 @@
 @forward 'components/primitives/Modal/styles';
 @forward 'components/primitives/Slider/styles';
 
+// Globals
+@forward 'components/global/PrimaryHeader/styles';
+
+// Layouts
+@forward 'components/layouts/Primary/styles';
+@forward 'components/layouts/Explorer/styles';
+
 // Viewer
-@forward 'components/viewer/styles.scss';
-@forward 'components/viewer/Header/styles';
+@forward 'components/viewer/styles';
 @forward 'components/viewer/Controls/styles';
 
 // Aladin

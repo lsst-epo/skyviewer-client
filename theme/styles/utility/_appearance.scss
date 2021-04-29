@@ -19,7 +19,7 @@
   position: absolute;
 }
 
-.a-hidden {
+.a-hidden, .screen-reader-only {
   @include appearance.hidden;
 }
 
