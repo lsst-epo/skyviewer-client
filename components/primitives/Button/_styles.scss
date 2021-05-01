@@ -1,5 +1,21 @@
 @use 'abstracts/mixins/appearance';
+@use 'abstracts/functions';
 
 .button {
   @include appearance.proto-button;
+  display: block;
+  min-width: 160px;
+  padding: 16px;
+  // margin: 50px auto;
+  font-size: 16px;
+  font-weight: functions.font-weight(bold);
+  line-height: 1.6;
+  color: functions.palette(white);
+  text-align: center;
+  background-color: functions.palette(turquoise85);
+  border-radius: 5px;
+
+  &.full-width {
+    width: 100%;
+  }
 }

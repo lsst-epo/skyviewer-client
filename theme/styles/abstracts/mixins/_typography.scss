@@ -17,6 +17,13 @@
 
 // Headings
 // --------------------------------------------------------
+@mixin headline {
+  @include type-scale(28px, 28px);
+  font-weight: functions.font-weight(regular);
+  line-height: 2;
+  letter-spacing: 17px;
+}
+
 @mixin heading-primary {
   @include type-scale(40px, 24px);
   font-weight: functions.font-weight(extra-bold);

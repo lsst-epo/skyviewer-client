@@ -8,4 +8,8 @@
     display: block;
     text-align: center;
   }
+
+  &.primary {
+    background-color: functions.palette(turquoise85);
+  }
 }

@@ -1,20 +1,30 @@
 import { useEffect } from "react";
 import Link from "next/link";
+import Logo from "@/svg/unique/Logo";
+import Buttonish from "@/primitives/Buttonish";
 
 export default function Home() {
   return (
-    <div>
-      <h1>I am the homepage</h1>
-      <ul>
-        <li>
-          <Link href="/explorer">
-            <a>I want to explore</a>
-          </Link>
+    <div className="home">
+      <div className="logo-stack">
+        <Logo className="full-logo" />
+        <h1 className="headline">SKYVIEWER</h1>
+      </div>
+      <div className="spacer" />
+      <ul className="home-nav">
+        <li className="home-nav-item">
+          <Buttonish
+            url="/explorer"
+            classes="button primary"
+            text="I want to explore"
+          />
         </li>
-        <li>
-          <Link href="/guided-experiences">
-            <a>Please guide me</a>
-          </Link>
+        <li className="home-nav-item">
+          <Buttonish
+            url="/guided-experiences"
+            text="Please guide me"
+            classes="button primary"
+          />
         </li>
       </ul>
     </div>
