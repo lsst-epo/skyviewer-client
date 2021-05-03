@@ -6,6 +6,7 @@
 @forward 'components/primitives/Buttonish/styles';
 @forward 'components/primitives/Button/styles';
 @forward 'components/primitives/Checkbox/styles';
+@forward 'components/primitives/Menu/styles';
 @forward 'components/primitives/Modal/styles';
 @forward 'components/primitives/Slider/styles';
 
@@ -14,6 +15,7 @@
 
 // Globals
 @forward 'components/global/PrimaryHeader/styles';
+@forward 'components/global/MainMenu/styles';
 
 // Layouts
 @forward 'components/layouts/Primary/styles';

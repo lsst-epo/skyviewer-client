@@ -1,14 +1,13 @@
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import FiltersContext from "@/contexts/Filters";
-import Button from "@/primitives/Button";
-import Modal from "@/primitives/Modal";
+import Menu from "@/primitives/Menu";
 import Checkbox from "@/primitives/Checkbox";
 import Slider from "@/primitives/Slider";
 import IconComposer from "@/svg/IconComposer";
 
 export default function Filters() {
-  const modalLabelId = "filters-modal-label";
-  const modalDescriptionId = "filters-modal-description";
+  const menuLabelId = "filters-menu-label";
+  const menuDescriptionId = "filters-menu-description";
   const { setFilters, filters } = useContext(FiltersContext) || {};
   const [isOpen, setIsOpen] = useState(false);
   const handleTypeFilter = (checked, type) => {
@@ -29,9 +28,13 @@ export default function Filters() {
   };
 
   return (
-    <Modal
-      labelledbyId={modalLabelId}
-      describedbyId={modalDescriptionId}
+    <Menu
+      classes="filters-menu"
+      labelledbyId={menuLabelId}
+      describedbyId={menuDescriptionId}
+      headerIcon="Filters"
+      heading="Filtering Tool"
+      subheading="Customize your view"
       openButtonOpts={{
         icon: <IconComposer icon="Filters" />,
         text: "Open Filters Modal Dialog",
@@ -41,26 +44,12 @@ export default function Filters() {
       secondaryCloseButton
       secondaryCloseButtonOpts={{
         text: "Apply Filters",
-        classes: "filters-modal-close-button",
+        classes: "filters-menu-close-button",
       }}
     >
-      <div className="filters-modal">
-        <div className="filters-modal-header">
-          <IconComposer icon="Filters" className="filters-modal-header-icon" />
-          <div>
-            <h2 id={modalLabelId} className="filters-modal-header-heading">
-              Filtering Tool
-            </h2>
-            <div
-              id={modalDescriptionId}
-              className="filters-modal-header-subheading"
-            >
-              Customize your view
-            </div>
-          </div>
-        </div>
-        <div className="filters-modal-section">
-          <h3 className="filters-modal-section-heading">Object type</h3>
+      <>
+        <div className="menu-section">
+          <h3 className="menu-section-heading">Object type</h3>
           {filters.types && (
             <div className="checkboxes">
               {Object.keys(filters.types).map((type, i) => {
@@ -76,10 +65,8 @@ export default function Filters() {
             </div>
           )}
         </div>
-        <div className="filters-modal-section">
-          <h3 className="filters-modal-section-heading">
-            Object characteristics
-          </h3>
+        <div className="menu-section">
+          <h3 className="menu-section-heading">Object characteristics</h3>
           {filters.characteristics && (
             <div className="sliders">
               {Object.keys(filters.characteristics).map((charKey, i) => {
@@ -104,7 +91,7 @@ export default function Filters() {
             </div>
           )}
         </div>
-      </div>
-    </Modal>
+      </>
+    </Menu>
   );
 }

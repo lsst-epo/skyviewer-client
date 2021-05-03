@@ -16,7 +16,7 @@ const Explorer = () => {
 };
 
 export default withLayout(
-  <PrimaryLayout>
+  <PrimaryLayout route="/explorer">
     <ExplorerLayout />
   </PrimaryLayout>
 )(Explorer);

@@ -55,6 +55,29 @@
 // Links
 // --------------------------------------------------------
 
+// Navs & Menus
+// --------------------------------------------------------
+@mixin heading-menu {
+  font-size: 14px;
+  font-weight: functions.font-weight(regular);
+  line-height: 1.5;
+  color: functions.palette(white);
+}
+
+@mixin subheading-menu {
+  font-size: 16px;
+  font-weight: functions.font-weight(bold);
+  line-height: 1.6;
+  color: functions.palette(white);
+}
+
+@mixin heading-menu-section {
+  font-size: 16px;
+  font-weight: functions.font-weight(regular);
+  line-height: 1.4;
+  color: functions.palette(white);
+}
+
 // Lists
 // --------------------------------------------------------
 @mixin list-unstyled {
