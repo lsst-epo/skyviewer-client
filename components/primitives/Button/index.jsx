@@ -5,7 +5,8 @@ export default function Button({ icon, text, onClick, isIcon, classes }) {
   return (
     <button
       onClick={onClick}
-      className={classnames("button", {
+      className={classnames({
+        button: !isIcon,
         "icon-button": isIcon,
         [classes]: classes,
       })}

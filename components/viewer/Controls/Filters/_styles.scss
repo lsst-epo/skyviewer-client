@@ -1,4 +1,5 @@
 @use 'abstracts/functions';
+@use 'abstracts/mixins/appearance';
 
 .filters-button {
   position: absolute;
@@ -14,59 +15,17 @@
   }
 }
 
-.filters-modal {
-  padding: 30px 34px;
+.filters-menu {
+  @include appearance.menu;
 
-  .filters-modal-header {
-    display: flex;
-    align-items: center;
-    padding: 0 10px 12px;
-
-    .filters-modal-header-icon {
-      width: 44px;
-      height: 34px;
-      margin-right: 18px;
-      fill: functions.palette(white);
-    }
-
-    .filters-modal-header-heading {
-      font-size: 14px;
-      font-weight: functions.font-weight(light);
-      line-height: 1.5;
-      color: functions.palette(white);
-    }
-
-    .filters-modal-header-subheading {
-      font-size: 16px;
-      font-weight: functions.font-weight(bold);
-      line-height: 1.6;
-      color: functions.palette(white);
-    }
-  }
-
-  .filters-modal-section {
-    padding-top: 20px;
-    border-top: 1px solid functions.palette(neutral50);
-
-    + .filters-modal-section {
-      margin-top: 50px;
-    }
-
-    .filters-modal-section-heading {
-      padding-bottom: 20px;
-      font-size: 16px;
-      font-weight: functions.font-weight(regular);
-      line-height: 1.4;
-      color: functions.palette(white);
-    }
-
+  .menu-section {
     .checkboxes {
       padding-top: 20px;
     }
   }
 }
 
-.filters-modal-close-button {
+.filters-menu-close-button {
   display: block;
   min-width: 160px;
   padding: 16px;

@@ -1,0 +1,11 @@
+@use 'abstracts/functions';
+@use 'abstracts/mixins/appearance';
+
+.menu-modal {
+  @include appearance.modal;
+  height: 3000px;
+}
+
+.menu {
+  @include appearance.menu;
+}
