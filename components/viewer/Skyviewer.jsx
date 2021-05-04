@@ -68,6 +68,23 @@ export default function Skyviewer({
 
   useEffect(() => {
     waitForGlobal("A", () => {
+      const aladin = window.A.aladin(
+        selector,
+        Object.assign(options, {
+          fov,
+          target,
+        })
+      );
+      const customSurvey = aladin.setImageSurvey(
+        aladin.createImageSurvey(
+          "Custom Test",
+          "Custom Test Color",
+          survey,
+          "equatorial",
+          5,
+          { imgFormat: "jpg" }
+        )
+      );
       setAladins({
         // window.A.init.then(() => {
         //   setAladins({
@@ -86,14 +103,7 @@ export default function Skyviewer({
 
         // Initialize aladin Global
         aladinGlobal: window.A,
-        aladin: window.A.aladin(
-          selector,
-          Object.assign(options, {
-            survey,
-            fov,
-            target,
-          })
-        ),
+        aladin,
       });
     });
   }, [selector, survey, fov, target, options]);
