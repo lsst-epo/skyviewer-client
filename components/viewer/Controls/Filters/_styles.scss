@@ -1,5 +1,4 @@
 @use 'abstracts/functions';
-@use 'abstracts/mixins/appearance';
 
 .filters-button {
   position: absolute;
@@ -16,8 +15,6 @@
 }
 
 .filters-menu {
-  @include appearance.menu;
-
   .menu-section {
     .checkboxes {
       padding-top: 20px;
