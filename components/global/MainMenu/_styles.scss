@@ -1,10 +1,7 @@
 @use 'abstracts/functions';
-@use 'abstracts/mixins/appearance';
 @use 'abstracts/mixins/typography';
 
 .main-menu {
-  @include appearance.menu;
-
   .main-menu-nav, .quick-access-nav {
     @include typography.list-unstyled;
   }

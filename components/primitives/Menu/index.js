@@ -58,6 +58,12 @@ export default function Menu({
     }
   }
 
+  const handleClick = (e) => {
+    if (menuRef.current.contains(e.target)) return;
+
+    handleClose();
+  };
+
   useEffect(() => {
     const isOpenOverride = typeof openOverride === "boolean";
     if (isOpenOverride) {
@@ -65,51 +71,64 @@ export default function Menu({
     }
   }, [openOverride]);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener("click", handleClick);
+    } else {
+      document.removeEventListener("click", handleClick);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleClick);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
+
   return (
     <div className="menu-container">
       <Button {...openButtonOpts} onClick={handleOpen} />
-      {isOpen && (
-        <div
-          ref={menuRef}
-          role="dialog"
-          aria-modal={true}
-          aria-labelledby={labelledbyId}
-          aria-describedby={describedbyId}
-          className="menu-modal"
-        >
-          <div className="modal-inner">
-            <div
-              className={classnames("menu", {
-                [classes]: classes,
-              })}
-            >
-              <div className="menu-header">
-                <div className="menu-header-matter">
-                  {headerIcon && (
-                    <IconComposer
-                      icon={headerIcon}
-                      className="menu-header-icon"
-                    />
-                  )}
-                  <div>
-                    <h2 id={labelledbyId} className="menu-header-heading">
-                      {heading}
-                    </h2>
-                    <div id={describedbyId} className="menu-header-subheading">
-                      {subheading}
-                    </div>
+      <div
+        role="dialog"
+        aria-modal={true}
+        aria-labelledby={labelledbyId}
+        aria-describedby={describedbyId}
+        className={classnames("menu-modal", {
+          "is-open": isOpen,
+        })}
+      >
+        <div className="modal-inner">
+          <div
+            ref={menuRef}
+            className={classnames("menu", {
+              [classes]: classes,
+            })}
+          >
+            <div className="menu-header">
+              <div className="menu-header-matter">
+                {headerIcon && (
+                  <IconComposer
+                    icon={headerIcon}
+                    className="menu-header-icon"
+                  />
+                )}
+                <div>
+                  <h2 id={labelledbyId} className="menu-header-heading">
+                    {heading}
+                  </h2>
+                  <div id={describedbyId} className="menu-header-subheading">
+                    {subheading}
                   </div>
                 </div>
-                <Button {...closeButtonOpts} onClick={handleClose} />
               </div>
-              {children}
-              {secondaryCloseButton && (
-                <Button {...secondaryCloseButtonOpts} onClick={handleClose} />
-              )}
+              <Button {...closeButtonOpts} onClick={handleClose} />
             </div>
+            {children}
+            {secondaryCloseButton && (
+              <Button {...secondaryCloseButtonOpts} onClick={handleClose} />
+            )}
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
