@@ -57,7 +57,7 @@ export default function Aladin({
       cat.reportChange();
     });
 
-    setSrcsInRegion(getSrcsInRegion(aladin.getFovCorners()));
+    // setSrcsInRegion(getSrcsInRegion(aladin.getFovCorners()));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
 
@@ -122,7 +122,7 @@ export default function Aladin({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedRegionSrcsSetter = useCallback(
     debounce((event) => {
-      setSrcsInRegion(getSrcsInRegion(aladin.getFovCorners()));
+      // setSrcsInRegion(getSrcsInRegion(aladin.getFovCorners()));
     }, 1000),
     [aladin]
   );
