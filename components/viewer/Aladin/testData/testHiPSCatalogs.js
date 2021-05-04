@@ -1,7 +1,16 @@
+// other working catalog url
+// "https://data.darts.isas.jaxa.jp/pub/judo2/HiPS/SWIFT-BAT_CAT"
+
+// staging catalog url
+// "https://epo-hips.netlify.app/catalog_skyviewer"
+
+// localhost catalog url
+// "http://localhost:5000/catalog"
+
 export default [
   {
     type: "HiPS",
-    url: "https://data.darts.isas.jaxa.jp/pub/judo2/HiPS/SWIFT-BAT_CAT",
+    url: "https://epo-hips.netlify.app/catalog_skyviewer",
     options: {
       // displayLabel: true,
       // labelColumn: "main_id",
