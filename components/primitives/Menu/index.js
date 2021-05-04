@@ -1,6 +1,7 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useContext, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
+import MenuContext from "@/contexts/Menu";
 import Button from "@/primitives/Button";
 import IconComposer from "@/svg/IconComposer";
 import useFocusTrap from "@/hooks/useFocusTrap";
@@ -22,6 +23,8 @@ export default function Menu({
   secondaryCloseButton,
   secondaryCloseButtonOpts,
 }) {
+  const { setMenusOpen, menusOpen } = useContext(MenuContext) || {};
+
   const [isOpen, setIsOpen] = useState(
     typeof openOverride === "boolean" ? openOverride : false
   );
@@ -43,18 +46,36 @@ export default function Menu({
     if (isOpenOverride && closeCallback) {
       closeCallback(false);
     } else if (closeCallback) {
-      closeCallback(isOpen);
+      closeCallback(false);
+    }
+
+    if (menusOpen && setMenusOpen) {
+      if (menusOpen.includes(labelledbyId)) {
+        setMenusOpen(
+          menusOpen.filter((menuId, index) => {
+            return menuId !== labelledbyId;
+          })
+        );
+      }
     }
   }
 
   function handleOpen() {
     const isOpenOverride = typeof openOverride === "boolean";
-    if (!isOpenOverride) setIsOpen(true);
+    if (!isOpenOverride) {
+      setIsOpen(true);
+    }
 
     if (isOpenOverride && openCallback) {
       openCallback(true);
-    } else if (closeCallback) {
-      openCallback(isOpen);
+    } else if (openCallback) {
+      openCallback(true);
+    }
+
+    if (menusOpen && setMenusOpen) {
+      if (!menusOpen.includes(labelledbyId)) {
+        setMenusOpen([...menusOpen, labelledbyId]);
+      }
     }
   }
 

@@ -16,5 +16,14 @@
       fill: functions.palette(white);
     }
   }
+
+  .close-button {
+    opacity: 1;
+    transition: opacity 0.2s ease-out;
+
+    &.menus-open {
+      opacity: 0;
+    }
+  }
 }
 
