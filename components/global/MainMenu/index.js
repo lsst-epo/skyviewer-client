@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import Button from "@/primitives/Button";
