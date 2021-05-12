@@ -1,11 +1,13 @@
 import { useEffect, useState, useContext, useCallback, useRef } from "react";
 import PropTypes from "prop-types";
-import { getSourceCatalogOptions } from "./utilities";
 import debounce from "lodash.debounce";
+import classnames from "classnames";
+import { getSourceCatalogOptions } from "./utilities";
+import ExplorerContext from "@/contexts/Explorer";
 import AladinGlobalContext from "@/contexts/AladinGlobal";
-import SourcesList from "./SourcesList";
+import AladinCatalogsContext from "@/contexts/AladinCatalogs";
 import FiltersContext from "@/contexts/Filters";
-// import { AladinCatalogsProvider } from "@/contexts/AladinCatalogs";
+import SourcesList from "./SourcesList";
 import Controls from "../Controls";
 
 export default function Aladin({
@@ -28,6 +30,7 @@ export default function Aladin({
   onFullScreenToggled,
   // filterFunc,
 }) {
+  const { settings, setSettings } = useContext(ExplorerContext) || {};
   const { aladinGlobal, aladin } = useContext(AladinGlobalContext) || {};
   const { filters } = useContext(FiltersContext) || {};
   const [srcsInRegion, setSrcsInRegion] = useState(null);
@@ -39,15 +42,26 @@ export default function Aladin({
     aladin.setFov(fov);
     // Add Event Listeners
     addEventHandlers();
-    // Add Catalogs
-    if (catalogs) addCatalogs(catalogs);
-    // Add Markers
+
+    // Update Catalogs
+    if (catalogs) addCatalogs(aladinizeCats(catalogs));
+
+    // Update Markers
     // addMarkers(markerLayers);
+
     if (jpgs) addJpgs(jpgs);
-    // eslint-disable-next-line no-console
-    // console.log("mount");
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [aladinGlobal, aladin]);
+  }, [aladinGlobal, aladin, catalogs, jpgs]);
+
+  useEffect(() => {
+    if (!aladin) return;
+
+    const { showCatalogs, showGrid } = settings;
+
+    aladin.showCatalog(showCatalogs);
+    aladin.showHealpixGrid(showGrid);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [settings]);
 
   useEffect(() => {
     if (!aladin) return;
@@ -178,14 +192,15 @@ export default function Aladin({
     return aladinGlobal.catalog(getSourceCatalogOptions(catOpts));
   };
 
-  const addCatalogs = (catalogs) => {
-    if (!catalogs) return;
-
-    const aladinCats = catalogs.map((cat) => {
+  const aladinizeCats = (catalogs) => {
+    return catalogs.map((cat) => {
       return createCatalog(cat);
     });
+  };
 
-    aladinCats.forEach((cat) => {
+  const addCatalogs = (catalogs) => {
+    catalogs.forEach((cat) => {
+      // cat.isShowing = false;
       aladin.addCatalog(cat);
     });
   };
@@ -234,7 +249,12 @@ export default function Aladin({
   return (
     <>
       <Controls />
-      <div id="aladin-lite-div" className="aladin-container" />
+      <div
+        id="aladin-lite-div"
+        className={classnames("aladin-container", {
+          "show-catalogs": settings.showCatalogs,
+        })}
+      />
       <SourcesList sources={srcsInRegion} />
     </>
   );

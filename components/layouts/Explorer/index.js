@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import AladinHeadMatter from "@/viewer/Aladin/AladinHeadMatter";
+import AladinHeadMatter from "@/components/explorer/Aladin/AladinHeadMatter";
 
 export default function ExplorerLayout({ children }) {
   return (

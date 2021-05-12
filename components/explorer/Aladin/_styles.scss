@@ -24,6 +24,12 @@
   border: 0 !important; /* stylelint-disable-line declaration-no-important */
 }
 
+.show-catalogs {
+  .aladin-reticleCanvas {
+    cursor: pointer !important; /* stylelint-disable-line declaration-no-important */
+  }
+}
+
 
 .sources-list-container {
   @include appearance.hidden;

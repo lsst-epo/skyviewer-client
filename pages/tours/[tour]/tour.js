@@ -1,7 +1,7 @@
 import { withLayout } from "@moxy/next-layout";
 import PrimaryLayout from "@/layouts/Primary";
 import ExplorerLayout from "@/layouts/Explorer";
-import Skyviewer from "@/viewer/Skyviewer";
+import Explorer from "@/components/explorer/index.js";
 
 // staging survey url
 // "https://epo-hips.netlify.app/images"
@@ -11,7 +11,7 @@ import Skyviewer from "@/viewer/Skyviewer";
 
 const Tour = () => {
   return (
-    <Skyviewer
+    <Explorer
       selector="#aladin-lite-div"
       survey="https://epo-hips.netlify.app/images"
       fov={100}
