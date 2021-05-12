@@ -19,7 +19,7 @@ export default [
       name: "Test HiPS 1",
       color: "#ffff00",
       shape: "triangle",
-      onClick: "showPopup",
+      // onClick: "showPopup",
     },
   },
   // {

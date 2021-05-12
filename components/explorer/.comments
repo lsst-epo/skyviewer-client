@@ -1,0 +1,56 @@
+
+  // const onObjectHovered = (event) => {
+  //   // eslint-disable-next-line no-console
+  //   console.log("Object Hovered", event);
+  // };
+
+  // const onFootprintClicked = (event) => {
+  //   // eslint-disable-next-line no-console
+  //   console.log("Footprint Clicked", event);
+  // };
+
+  // const onFootprintHovered = (event) => {
+  //   // eslint-disable-next-line no-console
+  //   console.log("Footprint Hovered", event);
+  // };
+
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // const debouncedPositionChange = useCallback(
+  //   debounce((event) => {
+  //     const { aladin } = aladins;
+  //     // eslint-disable-next-line no-console
+  //     console.log("Position Changed", event, aladin);
+  //   }, 1000),
+  //   [aladins]
+  // );
+
+  // const onPositionChanged = (event) => {
+  //   // eslint-disable-next-line no-console
+  //   console.log(aladins.aladin.getFovCorners());
+  //   console.log("Position Changed", event);
+  // };
+
+  // const onMouseMove = (event) => {
+  //   // eslint-disable-next-line no-console
+  //   console.log("Mouse Moved", event);
+  // };
+
+  // const onFullScreenToggled = (event) => {
+  //   // eslint-disable-next-line no-console
+  //   console.log("Fullscreen Toggled", event);
+  // };
+
+  // <div id="aladin-lite-div" className="aladin-container" />
+  // markerLayers={testMarkerLayers}
+  // jpgs={testJpgs}
+
+
+  // const onSelect = (event) => {
+  //   // eslint-disable-next-line no-console
+  //   console.log("Selected", event);
+  // };
+
+  // const onZoomChanged = (event) => {
+  //   // eslint-disable-next-line no-console
+  //   console.log("Zoom Changed", event);
+  // };

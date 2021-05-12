@@ -9,7 +9,6 @@
       "@/layouts/*": ["components/layouts/*"],
       "@/global/*": ["components/global/*"],
       // "@/page/*": ["components/page/*"],
-      "@/viewer/*": ["components/viewer/*"],
       "@/shapes/*": ["components/shapes/*"],
       "@/hooks/*": ["hooks/*"],
       "@/contexts/*": ["contexts/*"],

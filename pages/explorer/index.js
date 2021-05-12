@@ -1,7 +1,7 @@
 import { withLayout } from "@moxy/next-layout";
 import PrimaryLayout from "@/layouts/Primary";
 import ExplorerLayout from "@/layouts/Explorer";
-import Skyviewer from "@/viewer/Skyviewer";
+import Explorer from "@/components/explorer/index.js";
 
 // other working survey url
 // http://alasky.u-strasbg.fr/DSS/DSSColor
@@ -11,9 +11,9 @@ import Skyviewer from "@/viewer/Skyviewer";
 // localhost survey url
 // "http://localhost:5000/images"
 
-const Explorer = () => {
+const ExplorerPage = () => {
   return (
-    <Skyviewer
+    <Explorer
       selector="#aladin-lite-div"
       survey="https://epo-hips.netlify.app/images"
       fov={100}
@@ -27,4 +27,4 @@ export default withLayout(
   <PrimaryLayout route="/explorer">
     <ExplorerLayout />
   </PrimaryLayout>
-)(Explorer);
+)(ExplorerPage);

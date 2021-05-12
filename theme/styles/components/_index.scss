@@ -21,8 +21,6 @@
 @forward 'components/layouts/Primary/styles';
 @forward 'components/layouts/Explorer/styles';
 
-// Viewer
-@forward 'components/viewer/Controls/styles';
-
-// Aladin
-@forward 'components/viewer/Aladin/styles';
+// Explorer
+@forward 'components/explorer/Aladin/styles';
+@forward 'components/explorer/Controls/styles';
