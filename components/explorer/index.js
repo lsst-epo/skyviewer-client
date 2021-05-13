@@ -23,6 +23,7 @@ export default function Explorer({
   const [settings, setSettings] = useState({
     showCatalogs: true,
     showGrid: false,
+    showLandmarks: true,
   });
   const [aladins, setAladins] = useState(null);
   const [filters, setFilters] = useState(defaultFilters);

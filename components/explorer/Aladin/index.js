@@ -1,7 +1,6 @@
 import { useEffect, useState, useContext, useCallback, useRef } from "react";
 import PropTypes from "prop-types";
 import debounce from "lodash.debounce";
-import classnames from "classnames";
 import { getSourceCatalogOptions } from "./utilities";
 import ExplorerContext from "@/contexts/Explorer";
 import AladinGlobalContext from "@/contexts/AladinGlobal";
@@ -28,7 +27,6 @@ export default function Aladin({
   onFootprintHovered,
   onMouseMove,
   onFullScreenToggled,
-  // filterFunc,
 }) {
   const { settings, setSettings } = useContext(ExplorerContext) || {};
   const { aladinGlobal, aladin } = useContext(AladinGlobalContext) || {};
@@ -56,10 +54,12 @@ export default function Aladin({
   useEffect(() => {
     if (!aladin) return;
 
-    const { showCatalogs, showGrid } = settings;
+    const { showCatalogs, showGrid, showLandmarks } = settings;
 
-    aladin.showCatalog(showCatalogs);
     aladin.showHealpixGrid(showGrid);
+
+    toggleAll(showCatalogs);
+    toggleLandmarks(showLandmarks);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings]);
 
@@ -74,6 +74,33 @@ export default function Aladin({
     // setSrcsInRegion(getSrcsInRegion(aladin.getFovCorners()));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
+
+  function toggleAll(show) {
+    const cats = aladin.view.catalogs;
+
+    if (cats.length < 1) return;
+
+    cats.forEach((cat) => {
+      show ? cat.show() : cat.hide();
+      cat.reportChange();
+    });
+  }
+
+  function toggleLandmarks(show) {
+    const cats = aladin.view.catalogs;
+
+    const landmarkCats = cats.filter((cat) => {
+      const { name } = cat;
+
+      return name === "landmark";
+    });
+    if (landmarkCats.length < 1) return;
+
+    landmarkCats.forEach((cat) => {
+      show ? cat.show() : cat.hide();
+      cat.reportChange();
+    });
+  }
 
   function posIsInRegion(position, region) {
     // console.log(position, region);
@@ -246,16 +273,11 @@ export default function Aladin({
     return source.data.score >= min && source.data.score <= max;
   };
 
+  // <SourcesList sources={srcsInRegion} />
   return (
     <>
       <Controls />
-      <div
-        id="aladin-lite-div"
-        className={classnames("aladin-container", {
-          "show-catalogs": settings.showCatalogs,
-        })}
-      />
-      <SourcesList sources={srcsInRegion} />
+      <div id="aladin-lite-div" className="aladin-container" />
     </>
   );
 }
@@ -277,8 +299,6 @@ Aladin.propTypes = {
   onObjectHovered: PropTypes.func,
   onFootprintClicked: PropTypes.func,
   onFootprintHovered: PropTypes.func,
-  // onPositionChanged: PropTypes.func,
   onMouseMove: PropTypes.func,
   onFullScreenToggled: PropTypes.func,
-  // filterFunc: PropTypes.func,
 };

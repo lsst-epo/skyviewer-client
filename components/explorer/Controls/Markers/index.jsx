@@ -9,11 +9,13 @@ export default function Markers() {
   const { showCatalogs } = settings;
 
   const toggleMarkers = () => {
-    const { showCatalogs } = settings;
+    const { showCatalogs, showLandmarks } = settings;
+    const visibility = !showCatalogs;
 
     setSettings({
       ...settings,
-      showCatalogs: !showCatalogs,
+      showCatalogs: visibility,
+      showLandmarks: visibility,
     });
   };
 
@@ -23,7 +25,7 @@ export default function Markers() {
       onClick={toggleMarkers}
       text="Toggle Markers"
       isIcon
-      classes={classnames("markers-button control-button", {
+      classes={classnames("markers-button", "control-button", {
         active: showCatalogs,
       })}
     />
