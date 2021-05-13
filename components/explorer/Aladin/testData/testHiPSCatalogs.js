@@ -12,19 +12,23 @@ export default [
     type: "HiPS",
     url: "https://epo-hips.netlify.app/catalog_skyviewer",
     options: {
-      // displayLabel: true,
-      // labelColumn: "main_id",
-      // labelColor: "#987654",
-      // labelFont: "16px sans-serif",
       name: "Test HiPS 1",
-      color: "#ffff00",
-      shape: "triangle",
-      // onClick: "showPopup",
+      sourceSize: "20",
+      shape: "/shapes/landmark-icon.svg",
+    },
+  },
+  {
+    type: "HiPS",
+    url: "https://epo-hips.netlify.app/catalog_akari",
+    options: {
+      name: "Test HiPS 2",
+      sourceSize: "20",
+      shape: "/shapes/galaxy-icon.svg",
     },
   },
   // {
   //   type: "HiPS",
-  //   url: "http://axel.u-strasbg.fr/HiPSCatService/I/345/gaia2",
+  //   url: "https://epo-hips.netlify.app/catalog_akari",
   //   options: {
   //     // labelColumn: "name",
   //     // labelColor: "#987654",
@@ -32,7 +36,6 @@ export default [
   //     name: "Test HiPS 2",
   //     color: "#190",
   //     shape: "square",
-  //     onClick: "showPopup",
   //   },
   // },
 ];
