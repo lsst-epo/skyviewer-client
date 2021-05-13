@@ -1,8 +1,6 @@
 @use 'abstracts/functions';
 
 .zoom-in-button, .zoom-out-button {
-  background-color: functions.palette(neutral90);
-
   svg {
     width: 22px;
     height: 22px;

@@ -37,7 +37,12 @@
     justify-content: center;
     width: $controlDim;
     height: $controlDim;
+    background-color: functions.palette(neutral90);
     border-radius: 50%;
+
+    &.active {
+      background-color: functions.palette(turquoise55);
+    }
   }
 
   .zooms, .wayfinding, .find {

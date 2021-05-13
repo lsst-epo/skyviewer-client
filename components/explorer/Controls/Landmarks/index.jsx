@@ -1,10 +1,21 @@
-import { useState } from "react";
+import { useContext } from "react";
+import classnames from "classnames";
+import ExplorerContext from "@/contexts/Explorer";
 import Button from "@/primitives/Button";
 import IconComposer from "@/svg/IconComposer";
 
 export default function Landmarks() {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleLandmarks = () => setIsOpen(!isOpen);
+  const { settings, setSettings } = useContext(ExplorerContext) || {};
+  const { showLandmarks } = settings;
+
+  const toggleLandmarks = () => {
+    const { showLandmarks } = settings;
+
+    setSettings({
+      ...settings,
+      showLandmarks: !showLandmarks,
+    });
+  };
 
   return (
     <Button
@@ -12,7 +23,9 @@ export default function Landmarks() {
       onClick={toggleLandmarks}
       text="Toggle Landmarks"
       isIcon
-      classes="landmarks-button control-button"
+      classes={classnames("landmarks-button", "control-button", {
+        active: showLandmarks,
+      })}
     />
   );
 }

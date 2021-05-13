@@ -12,7 +12,7 @@ export default [
     type: "HiPS",
     url: "https://epo-hips.netlify.app/catalog_skyviewer",
     options: {
-      name: "Test HiPS 1",
+      name: "landmark",
       sourceSize: "20",
       shape: "/shapes/landmark-icon.png",
     },
@@ -21,7 +21,7 @@ export default [
     type: "HiPS",
     url: "https://epo-hips.netlify.app/catalog_akari",
     options: {
-      name: "Test HiPS 2",
+      name: "galaxy",
       sourceSize: "20",
       shape: "/shapes/galaxy-icon.png",
     },
