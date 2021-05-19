@@ -45,7 +45,7 @@
     }
   }
 
-  .zooms, .wayfinding, .find {
+  .wayfinding, .find {
     > li {
       + li {
         margin-top: $controlSpacing;
@@ -54,8 +54,15 @@
   }
 
   .zooms {
-    right: 0;
-    bottom: calc(50% - #{$controlDim} - (#{$controlSpacing}));
+    top: 230px;
+    right: ($controlDim / 2) - 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    min-height: 238px;
+    max-height: 400px;
   }
 
   .find {

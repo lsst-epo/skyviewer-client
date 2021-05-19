@@ -1,9 +1,31 @@
 @use 'abstracts/functions';
 
-.zoom-in-button, .zoom-out-button {
-  svg {
-    width: 22px;
-    height: 22px;
-    fill: functions.palette(white);
-  }
+.zoom-in, .zoom-out {
+  width: 20px;
+  height: 20px;
+  fill: functions.palette(white);
+}
+
+.zoom-in {
+  margin-bottom: 20px;
+}
+
+.zoom-out {
+  margin-top: 20px;
+}
+
+.zoom-track {
+  flex-grow: 1;
+  width: 14px;
+  height: 100%;
+  background-color: rgba(functions.palette(neutral10), 0.6);
+  border-radius: 7px;
+}
+
+.zoom-thumb {
+  width: 30px;
+  height: 30px;
+  background-color: functions.palette(turquoise55);
+  border: 4px solid functions.palette(white);
+  border-radius: 50%;
 }

@@ -57,7 +57,6 @@ export default function Aladin({
     const { showCatalogs, showGrid, showLandmarks } = settings;
 
     aladin.showHealpixGrid(showGrid);
-
     toggleAll(showCatalogs);
     toggleLandmarks(showLandmarks);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -102,63 +101,63 @@ export default function Aladin({
     });
   }
 
-  function posIsInRegion(position, region) {
-    // console.log(position, region);
-    // dec: up = +; down = -  and  ra: left = +; right = -
-    const [
-      [topLeftRa, topLeftDec],
-      [topRightRa, topRightDec],
-      [bottomRightRa, bottomRightDec],
-      [bottomLeftRa, bottomLeftDec],
-    ] = region;
-    const [ra, dec] = position;
+  // function posIsInRegion(position, region) {
+  //   // console.log(position, region);
+  //   // dec: up = +; down = -  and  ra: left = +; right = -
+  //   const [
+  //     [topLeftRa, topLeftDec],
+  //     [topRightRa, topRightDec],
+  //     [bottomRightRa, bottomRightDec],
+  //     [bottomLeftRa, bottomLeftDec],
+  //   ] = region;
+  //   const [ra, dec] = position;
 
-    if (
-      ra > topLeftRa ||
-      ra < topRightRa ||
-      ra > bottomLeftRa ||
-      ra < bottomRightRa
-    ) {
-      return false;
-    }
+  //   if (
+  //     ra > topLeftRa ||
+  //     ra < topRightRa ||
+  //     ra > bottomLeftRa ||
+  //     ra < bottomRightRa
+  //   ) {
+  //     return false;
+  //   }
 
-    if (
-      dec > topLeftDec ||
-      dec > topRightDec ||
-      dec < bottomLeftDec ||
-      dec < bottomRightDec
-    ) {
-      return false;
-    }
+  //   if (
+  //     dec > topLeftDec ||
+  //     dec > topRightDec ||
+  //     dec < bottomLeftDec ||
+  //     dec < bottomRightDec
+  //   ) {
+  //     return false;
+  //   }
 
-    return true;
-  }
+  //   return true;
+  // }
 
-  function getSrcsInRegion(region) {
-    if (!aladin) return;
-    const srcsInRegion = [];
+  // function getSrcsInRegion(region) {
+  //   if (!aladin) return;
+  //   const srcsInRegion = [];
 
-    aladin.view.catalogs.forEach((catalog) => {
-      const { order1Sources, order2Sources, sources: catSources } = catalog;
-      const sources = [
-        ...new Set([
-          ...(order1Sources || []),
-          ...(order2Sources || []),
-          ...(catSources || []),
-        ]),
-      ];
+  //   aladin.view.catalogs.forEach((catalog) => {
+  //     const { order1Sources, order2Sources, sources: catSources } = catalog;
+  //     const sources = [
+  //       ...new Set([
+  //         ...(order1Sources || []),
+  //         ...(order2Sources || []),
+  //         ...(catSources || []),
+  //       ]),
+  //     ];
 
-      sources.forEach((source) => {
-        const { ra, dec } = source;
-        if (posIsInRegion([ra, dec], region)) {
-          filtersChecker(source);
-          srcsInRegion.push(source);
-        }
-      });
-    });
+  //     sources.forEach((source) => {
+  //       const { ra, dec } = source;
+  //       if (posIsInRegion([ra, dec], region)) {
+  //         filtersChecker(source);
+  //         srcsInRegion.push(source);
+  //       }
+  //     });
+  //   });
 
-    return srcsInRegion;
-  }
+  //   return srcsInRegion;
+  // }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedRegionSrcsSetter = useCallback(
@@ -169,12 +168,18 @@ export default function Aladin({
   );
 
   const onPositionChanged = (event) => {
-    debouncedRegionSrcsSetter(event);
+    // debouncedRegionSrcsSetter(event);
     // event.persist();
   };
 
   const onZoomChanged = (event) => {
-    debouncedRegionSrcsSetter(event);
+    if (isNaN(Number(event))) return;
+
+    setSettings({
+      ...settings,
+      zoomLevel: Number(event).toFixed(1),
+    });
+    // debouncedRegionSrcsSetter(event);
     // event.persist();
   };
 
