@@ -24,6 +24,7 @@ export default function Explorer({
     showCatalogs: true,
     showGrid: false,
     showLandmarks: true,
+    showGoals: false,
     zoomLevel: fov,
     zoomRange: fovRange,
   });

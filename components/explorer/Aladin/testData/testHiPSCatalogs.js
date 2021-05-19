@@ -10,20 +10,56 @@
 export default [
   {
     type: "HiPS",
-    url: "https://epo-hips.netlify.app/catalog_skyviewer",
+    url: "https://epo-hips.netlify.app/catalog_stars",
     options: {
-      name: "landmark",
+      name: "star",
       sourceSize: "20",
-      shape: "/shapes/landmark-icon.png",
+      shape: "/shapes/star-icon.png",
     },
   },
   {
     type: "HiPS",
-    url: "https://epo-hips.netlify.app/catalog_akari",
+    url: "https://epo-hips.netlify.app/catalog_galaxies",
     options: {
       name: "galaxy",
       sourceSize: "20",
       shape: "/shapes/galaxy-icon.png",
+    },
+  },
+  {
+    type: "HiPS",
+    url: "https://epo-hips.netlify.app/catalog_nebulae",
+    options: {
+      name: "nebula",
+      sourceSize: "20",
+      shape: "/shapes/nebula-icon.png",
+    },
+  },
+  {
+    type: "HiPS",
+    url: "https://epo-hips.netlify.app/catalog_transients",
+    options: {
+      name: "transient",
+      sourceSize: "20",
+      shape: "/shapes/transient-icon.png",
+    },
+  },
+  {
+    type: "HiPS",
+    url: "https://epo-hips.netlify.app/catalog_goals",
+    options: {
+      name: "goal",
+      sourceSize: "20",
+      shape: "/shapes/fun-goal-icon.png",
+    },
+  },
+  {
+    type: "HiPS",
+    url: "https://epo-hips.netlify.app/catalog_landmarks",
+    options: {
+      name: "landmark",
+      sourceSize: "20",
+      shape: "/shapes/landmark-icon.png",
     },
   },
   // {

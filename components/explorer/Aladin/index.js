@@ -54,11 +54,12 @@ export default function Aladin({
   useEffect(() => {
     if (!aladin) return;
 
-    const { showCatalogs, showGrid, showLandmarks } = settings;
+    const { showCatalogs, showGrid, showLandmarks, showGoals } = settings;
 
     aladin.showHealpixGrid(showGrid);
     toggleAll(showCatalogs);
     toggleLandmarks(showLandmarks);
+    toggleGoals(showGoals);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings]);
 
@@ -96,6 +97,22 @@ export default function Aladin({
     if (landmarkCats.length < 1) return;
 
     landmarkCats.forEach((cat) => {
+      show ? cat.show() : cat.hide();
+      cat.reportChange();
+    });
+  }
+
+  function toggleGoals(show) {
+    const cats = aladin.view.catalogs;
+
+    const goalCats = cats.filter((cat) => {
+      const { name } = cat;
+
+      return name === "goal";
+    });
+    if (goalCats.length < 1) return;
+
+    goalCats.forEach((cat) => {
       show ? cat.show() : cat.hide();
       cat.reportChange();
     });

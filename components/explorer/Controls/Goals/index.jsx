@@ -1,10 +1,21 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import classnames from "classnames";
+import ExplorerContext from "@/contexts/Explorer";
 import Button from "@/primitives/Button";
 import IconComposer from "@/svg/IconComposer";
 
 export default function Goals() {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleGoals = () => setIsOpen(!isOpen);
+  const { settings, setSettings } = useContext(ExplorerContext) || {};
+  const { showGoals } = settings;
+
+  const toggleGoals = () => {
+    const { showGoals } = settings;
+
+    setSettings({
+      ...settings,
+      showGoals: !showGoals,
+    });
+  };
 
   return (
     <Button
@@ -12,7 +23,9 @@ export default function Goals() {
       onClick={toggleGoals}
       text="Toggle Goals Menu"
       isIcon
-      classes="goals-button control-button"
+      classes={classnames("goals-button", "control-button", {
+        active: showGoals,
+      })}
     />
   );
 }
