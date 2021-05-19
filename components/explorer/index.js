@@ -24,6 +24,8 @@ export default function Explorer({
     showCatalogs: true,
     showGrid: false,
     showLandmarks: true,
+    zoomLevel: fov,
+    zoomRange: fovRange,
   });
   const [aladins, setAladins] = useState(null);
   const [filters, setFilters] = useState(defaultFilters);
