@@ -15,9 +15,9 @@ const ExplorerPage = () => {
   return (
     <Explorer
       selector="#aladin-lite-div"
-      survey="https://epo-hips.netlify.app/images"
-      fov={100}
-      fovRange={[0.03, 180]}
+      survey="http://alasky.u-strasbg.fr/DSS/DSSColor"
+      fov={60}
+      fovRange={[2, 90]}
       target="267.0208333333 -24.7800000000"
     />
   );
