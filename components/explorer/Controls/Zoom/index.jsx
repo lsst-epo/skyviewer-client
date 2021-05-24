@@ -10,7 +10,7 @@ const STEP = 0.1;
 export default function Zoom() {
   const { settings } = useContext(ExplorerContext) || {};
   const { aladin } = useContext(AladinGlobalContext) || {};
-  const { zoomLevel, zoomRange } = settings;
+  const { zoomLevel, zoomRange, hasFocus } = settings;
   const [min, max] = zoomRange;
 
   function getZoomInLevel(zoom, step) {
@@ -43,7 +43,7 @@ export default function Zoom() {
     }
   }
 
-  useKeyDownEvent(handleKeyDown);
+  useKeyDownEvent(hasFocus ? handleKeyDown : null);
 
   return (
     <div className="zooms controls-submenu">

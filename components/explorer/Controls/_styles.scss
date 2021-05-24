@@ -4,6 +4,7 @@
 @forward './Landmarks/styles';
 @forward './Markers/styles';
 @forward './Orientation/styles';
+@forward './Pan/styles';
 @forward './Search/styles';
 @forward './Share/styles';
 @forward './Zoom/styles';
@@ -63,6 +64,18 @@
     height: 100vh;
     min-height: 238px;
     max-height: 400px;
+  }
+
+  .pan {
+    right: 10px;
+    bottom: 0;
+    display: flex;
+
+    > li {
+      + li {
+        margin-left: $controlSpacing;
+      }
+    }
   }
 
   .find {
