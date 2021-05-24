@@ -19,7 +19,6 @@ export default function Aladin({
   catalogs,
   markerLayers,
   jpgs,
-  onClick,
   onSelect,
   onObjectClicked,
   onObjectHovered,
@@ -32,6 +31,15 @@ export default function Aladin({
   const { aladinGlobal, aladin } = useContext(AladinGlobalContext) || {};
   const { filters } = useContext(FiltersContext) || {};
   const [srcsInRegion, setSrcsInRegion] = useState(null);
+  const aladinContainer = useRef(null);
+  const aladinReticleCanvas = useRef(null);
+
+  useEffect(() => {
+    const { hasFocus } = settings;
+    if (!aladinReticleCanvas.current && aladinContainer.current) {
+      setAladinReticleCanvas();
+    }
+  });
 
   useEffect(() => {
     if (!aladin && !aladinGlobal) return;
@@ -39,7 +47,7 @@ export default function Aladin({
     aladin.setFovRange(fovRange[0], fovRange[1]);
     aladin.setFov(fov);
     // Add Event Listeners
-    addEventHandlers();
+    addAladinEventHandlers();
 
     // Update Catalogs
     if (catalogs) addCatalogs(aladinizeCats(catalogs));
@@ -55,11 +63,12 @@ export default function Aladin({
     if (!aladin) return;
 
     const { showCatalogs, showGrid, showLandmarks, showGoals } = settings;
-
     aladin.showHealpixGrid(showGrid);
     toggleAll(showCatalogs);
     toggleLandmarks(showLandmarks);
     toggleGoals(showGoals);
+
+    addAladinEventHandlers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings]);
 
@@ -74,6 +83,18 @@ export default function Aladin({
     // setSrcsInRegion(getSrcsInRegion(aladin.getFovCorners()));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
+
+  function setAladinReticleCanvas() {
+    const els = aladinContainer.current.getElementsByClassName(
+      "aladin-reticleCanvas"
+    );
+    const el = els[0];
+    if (!el) return;
+    el.tabIndex = 0;
+    el.addEventListener("focus", onFocus);
+    el.addEventListener("blur", onBlur);
+    aladinReticleCanvas.current = el;
+  }
 
   function toggleAll(show) {
     const cats = aladin.view.catalogs;
@@ -184,6 +205,24 @@ export default function Aladin({
     [aladin]
   );
 
+  const onFocus = () => {
+    setSettings({
+      ...settings,
+      hasFocus: true,
+    });
+  };
+
+  const onBlur = () => {
+    setSettings({
+      ...settings,
+      hasFocus: false,
+    });
+  };
+
+  const onClick = (event) => {
+    aladinReticleCanvas.current.focus();
+  };
+
   const onPositionChanged = (event) => {
     // debouncedRegionSrcsSetter(event);
     // event.persist();
@@ -200,7 +239,7 @@ export default function Aladin({
     // event.persist();
   };
 
-  const addEventHandlers = () => {
+  const addAladinEventHandlers = () => {
     const eventHandlers = {
       click: onClick || null,
       select: onSelect || null,
@@ -299,7 +338,11 @@ export default function Aladin({
   return (
     <>
       <Controls />
-      <div id="aladin-lite-div" className="aladin-container" />
+      <div
+        ref={aladinContainer}
+        id="aladin-lite-div"
+        className="aladin-container"
+      />
     </>
   );
 }

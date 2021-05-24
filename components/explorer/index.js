@@ -27,6 +27,7 @@ export default function Explorer({
     showGoals: false,
     zoomLevel: fov,
     zoomRange: fovRange,
+    hasFocus: false,
   });
   const [aladins, setAladins] = useState(null);
   const [filters, setFilters] = useState(defaultFilters);
@@ -95,7 +96,6 @@ export default function Explorer({
         <FiltersProvider value={{ setFilters, filters }}>
           <Aladin
             {...{ target, selector, survey, fov, fovRange, options }}
-            onClick={onClick}
             onObjectClicked={onObjectClicked}
             catalogs={testHiPSCatalogs}
           />

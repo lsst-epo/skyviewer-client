@@ -25,6 +25,10 @@
   border: 0 !important; /* stylelint-disable-line declaration-no-important */
 }
 
+.aladin-reticleCanvas:focus {
+  outline: none;
+}
+
 .show-catalogs {
   .aladin-reticleCanvas {
     cursor: pointer !important; /* stylelint-disable-line declaration-no-important */

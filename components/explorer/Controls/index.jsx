@@ -7,6 +7,7 @@ import Markers from "./Markers";
 import Orientation from "./Orientation";
 import Search from "./Search";
 import Share from "./Share";
+import Pan from "./Pan";
 import Zoom from "./Zoom";
 
 export default function Controls() {
@@ -25,6 +26,7 @@ export default function Controls() {
         </li>
       </ul>
       <Zoom />
+      <Pan />
       <ul
         role="menu"
         aria-label="Wayfinding"
