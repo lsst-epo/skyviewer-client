@@ -46,6 +46,35 @@
   appearance: none;
 }
 
+@mixin button-primary {
+  @include proto-button;
+  display: block;
+  min-width: 160px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: functions.font-weight(bold);
+  line-height: 1.6;
+  color: functions.palette(white);
+  text-align: center;
+  background-color: functions.palette(turquoise85);
+  border: 2px solid functions.palette(turquoise85);
+  border-radius: 5px;
+  transition: background-color 0.2s, border-color 0.2s;
+
+  &.full-width {
+    width: 100%;
+  }
+
+  &:hover, &:focus {
+    background-color: functions.palette(turquoise55);
+  }
+
+  &:focus {
+    border-color: functions.palette(blue20);
+    outline: 0;
+  }
+}
+
 // Hidden elements for screen readers
 // --------------------------------------------------------
 @mixin hidden {

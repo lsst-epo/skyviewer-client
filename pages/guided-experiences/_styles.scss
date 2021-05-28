@@ -1,0 +1,10 @@
+@use 'abstracts/functions';
+@use 'abstracts/mixins/layout';
+
+.guided-experiences-container {
+  @include layout.container-full-bleed(max);
+  min-height: 100vh;
+  padding: 15px;
+  color: functions.palette(white);
+  background-color: functions.palette(black);
+}

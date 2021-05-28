@@ -1,5 +1,8 @@
 @use 'abstracts/functions';
 
+// Pages
+@forward 'guided-experiences/styles';
+
 .home {
   display: flex;
   flex-direction: column;

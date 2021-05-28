@@ -1,3 +1,5 @@
+import ArrowLeft from "./ArrowLeft";
+import ArrowRight from "./ArrowRight";
 import Bell from "./Bell";
 import Caret from "./Caret";
 import Chain from "./Chain";
@@ -34,6 +36,8 @@ import Target from "./Target";
 import Twitter from "./Twitter";
 
 export default {
+  ArrowLeft,
+  ArrowRight,
   Bell,
   Caret,
   Chain,

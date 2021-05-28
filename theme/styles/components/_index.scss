@@ -8,10 +8,8 @@
 @forward 'components/primitives/Checkbox/styles';
 @forward 'components/primitives/Menu/styles';
 @forward 'components/primitives/Modal/styles';
+@forward 'components/primitives/NavLink/styles';
 @forward 'components/primitives/Slider/styles';
-
-// Pages
-@forward 'pages/styles';
 
 // Globals
 @forward 'components/global/PrimaryHeader/styles';
@@ -20,6 +18,9 @@
 // Layouts
 @forward 'components/layouts/Primary/styles';
 @forward 'components/layouts/Explorer/styles';
+
+// Guided Experiences
+@forward 'components/guidedExperiences/styles';
 
 // Explorer
 @forward 'components/explorer/Aladin/styles';

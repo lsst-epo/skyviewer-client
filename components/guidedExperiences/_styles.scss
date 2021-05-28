@@ -1,0 +1,101 @@
+@use 'abstracts/functions';
+@use 'abstracts/mixins/base';
+@use 'abstracts/mixins/typography';
+
+.guided-experiences-heading {
+  @include typography.heading-guided-experiences;
+  text-align: center;
+}
+
+.guided-experiences {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 0 0 30px;
+}
+
+.guided-experience {
+  width: 100%;
+  max-width: 700px;
+  margin: 30px 20px 0;
+}
+
+.guided-experience-heading {
+  margin: 0 10px 10px;
+  font-size: 19px;
+  font-weight: functions.font-weight(bold);
+  line-height: 1.57;
+  color: functions.palette(white);
+  text-align: center;
+}
+
+.guided-experience-link {
+  display: flex;
+  flex-flow: column nowrap;
+  text-decoration: none;
+
+  &:focus {
+    outline: 0;
+
+    .guided-experience-thumbnail {
+      box-shadow: 0 0 0 3px functions.palette(blue20);
+    }
+  }
+}
+
+.guided-experience-thumbnail {
+  position: relative;
+  width: 100%;
+  padding-top: 73%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: functions.palette(turquoise55) solid 1px;
+  border-radius: 4%;
+  transition: box-shadow 0.2s;
+}
+
+.guided-experience-count {
+  position: absolute;
+  top: 0;
+  right: 7%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  padding: 12px;
+  text-align: center;
+  background-color: functions.palette(red10);
+
+  .count-num {
+  }
+
+  .count-label {
+    font-size: 10px;
+    font-weight: functions.font-weight(regular);
+    line-height: 1.6;
+    color: functions.palette(white);
+  }
+
+  .angle-right,
+  .angle-left {
+    position: absolute;
+    top: calc(100% - 1px);
+    width: 0;
+    height: 0; // no height, no content, just border
+    border-top: 15px solid functions.palette(red10); // angle degree, reduce to reduce degree of angles
+  }
+
+  .angle-right {
+    // right angle
+    right: 0;
+    border-left: 50px solid transparent;
+  }
+
+  .angle-left {
+    // left angle
+    left: 0;
+    border-right: 50px solid transparent;
+  }
+}

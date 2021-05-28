@@ -78,6 +78,40 @@
   color: functions.palette(white);
 }
 
+// Guided Experiencess
+@mixin heading-guided-experiences {
+  @include type-scale(40px, 14px);
+  font-weight: functions.font-weight(regular);
+  line-height: 1.5;
+  color: functions.palette(white);
+  text-transform: uppercase;
+
+  @include base.fluid-scale(
+    letter-spacing,
+    20px,
+    2px,
+    functions.break(tablet),
+    functions.break(mobile)
+  );
+
+  @include base.fluid-scale(
+    line-height,
+    1.4,
+    1.5,
+    functions.break(tablet),
+    functions.break(mobile)
+  );
+}
+
+
+@mixin heading-guided-experience {
+  font-size: 19px;
+  font-weight: functions.font-weight(bold);
+  line-height: 1.57;
+  color: functions.palette(white);
+  text-align: center;
+}
+
 // Lists
 // --------------------------------------------------------
 @mixin list-unstyled {
