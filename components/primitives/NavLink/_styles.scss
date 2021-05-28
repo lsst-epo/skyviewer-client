@@ -1,0 +1,41 @@
+@use 'abstracts/mixins/appearance';
+@use 'abstracts/functions';
+@use 'abstracts/mixins/base';
+
+.nav-link {
+  @include appearance.button-primary;
+  display: flex;
+  align-items: cetner;
+  justify-content: center;
+  margin: 17px auto 0;
+
+  @include base.respond(functions.break(mobile), min) {
+    max-width: 369px;
+  }
+
+  @include base.respond(functions.break(desktop), min) {
+    margin-top: 31px;
+  }
+
+  &.icon-before, &.icon-after {
+    .a-svg {
+      display: none;
+
+      @include base.respond(functions.break(desktop), min) {
+        display: block;
+      }
+    }
+  }
+
+  &.icon-before {
+    .a-svg {
+      margin-right: 14px;
+    }
+  }
+
+  &.icon-after {
+    .a-svg {
+      margin-left: 14px;
+    }
+  }
+}

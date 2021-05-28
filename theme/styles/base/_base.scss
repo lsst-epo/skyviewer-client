@@ -26,7 +26,7 @@ html {
 body {
   @include layout.container-full-bleed(max);
   color: functions.sass-palette(neutral80);
-  background-color: functions.palette(white);
+  background-color: functions.palette(black);
 }
 
 // next.js nests a `div#__next` inside `body`
