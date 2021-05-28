@@ -24,7 +24,6 @@ export default function Help({
           d="M20.883,11.941A8.941,8.941,0,1,1,11.941,3a8.941,8.941,0,0,1,8.941,8.941Z"
           transform="translate(-3 -3)"
           fill="none"
-          stroke="#00babc"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="2"
