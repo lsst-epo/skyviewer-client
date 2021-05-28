@@ -43,7 +43,11 @@ export default function Modal({
   useOnClickOutside(modalRef, handleClose);
 
   return (
-    <div className={classnames("modal-container", classes)}>
+    <div
+      className={classnames("modal-container", classes, {
+        "is-open": isOpen,
+      })}
+    >
       <Button {...openButtonOpts} onClick={handleOpen} />
       <div
         role="dialog"
