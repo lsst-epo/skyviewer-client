@@ -17,6 +17,20 @@
     }
   }
 
+  .close-button {
+    @include base.respond(functions.break(desktop-height), min, height) {
+      @include appearance.hidden;
+    }
+  }
+
+  &.is-open {
+    .open-share-button {
+      @include base.respond(functions.break(desktop-height), min, height) {
+        z-index: 6;
+      }
+    }
+  }
+
   .modal {
     left: -100vw;
     z-index: functions.z-stack(controls);
@@ -25,6 +39,12 @@
 
     &.is-open {
       left: 0;
+
+      @include base.respond(functions.break(desktop-height), min, height) {
+        bottom: 70px;
+        padding: 0 16px;
+        background-color: transparent;
+      }
     }
 
     .modal-inner {
@@ -40,11 +60,21 @@
       @include base.respond(functions.break(mobile), min) {
         max-width: 375px;
       }
+
+      @include base.respond(functions.break(desktop-height), min, height) {
+        bottom: 70px;
+        padding: 0 16px;
+        background-color: transparent;
+      }
     }
   }
 
   .modal-heading {
     @include typography.subheading-menu;
+
+    @include base.respond(functions.break(desktop-height), min, height) {
+      @include appearance.hidden;
+    }
   }
 
   .share-buttons {
@@ -53,19 +83,41 @@
     justify-content: center;
     margin-top: 15px;
 
+    @include base.respond(functions.break(desktop-height), min, height) {
+      flex-flow: column nowrap;
+      margin-top: 0;
+    }
+
     > li {
       + li {
         margin-left: 20px;
+
+        @include base.respond(functions.break(desktop-height), min, height) { /* stylelint-disable-line max-nesting-depth */
+          margin-top: 20px;
+          margin-left: 0;
+        }
       }
     }
   }
 
   .share-button {
     @include appearance.proto-button;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
     width: 52px;
 
-    &:hover, &:focus {
-      .url, .image {
+    @include base.respond(functions.break(desktop-height), min, height) {
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+    }
+
+    &:hover,
+    &:focus {
+      .url,
+      .image {
         background-color: #7ac1c2;
       }
 
@@ -97,6 +149,11 @@
     font-weight: functions.font-weight(light);
     line-height: 1.6;
     color: functions.palette(white);
+
+    @include base.respond(functions.break(desktop-height), min, height) {
+      margin-top: 0;
+      margin-left: 10px;
+    }
   }
 
   .share-icon {
