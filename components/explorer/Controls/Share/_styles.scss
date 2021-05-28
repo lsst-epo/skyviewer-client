@@ -1,14 +1,179 @@
 @use 'abstracts/functions';
+@use 'abstracts/mixins/base';
+@use 'abstracts/mixins/appearance';
+@use 'abstracts/mixins/typography';
 
-.share-button, {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: functions.z-stack(controls);
+.share-menu {
+  .open-share-button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: functions.z-stack(controls);
 
-  svg {
-    width: 22px;
-    height: 22px;
-    fill: functions.palette(white);
+    svg {
+      width: 22px;
+      height: 22px;
+      fill: functions.palette(white);
+    }
+  }
+
+  .modal {
+    left: -100vw;
+    z-index: functions.z-stack(controls);
+    background-color: transparent;
+    transition: left 0.4s ease-in-out;
+
+    &.is-open {
+      left: 0;
+    }
+
+    .modal-inner {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+      padding: 6px 18px 12px;
+      background-color: functions.palette(black);
+      border-radius: 2px;
+
+      @include base.respond(functions.break(mobile), min) {
+        max-width: 375px;
+      }
+    }
+  }
+
+  .modal-heading {
+    @include typography.subheading-menu;
+  }
+
+  .share-buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    margin-top: 15px;
+
+    > li {
+      + li {
+        margin-left: 20px;
+      }
+    }
+  }
+
+  .share-button {
+    @include appearance.proto-button;
+    width: 52px;
+
+    &:hover, &:focus {
+      .url, .image {
+        background-color: #7ac1c2;
+      }
+
+      .facebook {
+        background-color: #98a5cb;
+      }
+
+      .twitter {
+        background-color: #98d0f1;
+      }
+
+      .email {
+        background-color: #7fb3b1;
+      }
+    }
+
+    &:focus {
+      outline: none;
+
+      .share-icon {
+        border-color: functions.palette(blue20);
+      }
+    }
+  }
+
+  .share-network {
+    margin-top: 10px;
+    font-size: 10px;
+    font-weight: functions.font-weight(light);
+    line-height: 1.6;
+    color: functions.palette(white);
+  }
+
+  .share-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border: transparent solid 2px;
+    border-radius: 26px;
+    transition: background-color 0.2s, border-color 0.2s;
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+
+    &.url {
+      background-color: functions.palette(turquoise70);
+
+      svg {
+        width: 26px;
+        height: 26px;
+        fill: functions.palette(white);
+      }
+    }
+
+    &.facebook {
+      background-color: #3d5a99;
+
+      svg {
+        width: 37px;
+        height: 37px;
+        margin-left: 2px;
+        fill: functions.palette(white);
+      }
+    }
+
+    &.twitter {
+      background-color: #38a8e0;
+
+      svg {
+        width: 46px;
+        height: 46px;
+        margin-left: 2px;
+        fill: functions.palette(white);
+      }
+    }
+
+    &.image {
+      background-color: functions.palette(turquoise70);
+
+      svg {
+        width: 23px;
+        height: 23px;
+        margin-left: 2px;
+        stroke: functions.palette(white);
+      }
+    }
+
+    &.email {
+      background-color: functions.palette(turquoise85);
+
+      svg {
+        width: 40px;
+        height: 40px;
+        margin-left: 1px;
+      }
+
+      line,
+      .envelope-top {
+        stroke: functions.palette(white);
+      }
+
+      .envelope-outline {
+        fill: functions.palette(white);
+      }
+    }
   }
 }

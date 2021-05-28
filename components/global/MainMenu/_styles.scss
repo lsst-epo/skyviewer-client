@@ -28,10 +28,21 @@
     .a-svg {
       width: 20px;
       height: 20px;
-      stroke: functions.palette(turquoise40);
 
       + span {
         padding-left: 15px;
+      }
+    }
+
+    .notifications-item {
+      .a-svg {
+        fill: functions.palette(turquoise50);
+      }
+    }
+
+    .share-item, .adjustments-item, .help-item, .info-item {
+      .a-svg {
+        stroke: functions.palette(turquoise50);
       }
     }
 

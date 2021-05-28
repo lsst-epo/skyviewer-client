@@ -76,6 +76,7 @@ export default function MainMenu({ route }) {
                   url="#"
                   icon={<IconComposer icon="Gear" />}
                   text="Adjustments"
+                  classes="adjustments-item"
                 />
               </li>
               <li className="main-menu-nav-item">
@@ -83,6 +84,7 @@ export default function MainMenu({ route }) {
                   url="#"
                   icon={<IconComposer icon="Bell" />}
                   text="Notifications"
+                  classes="notifications-item"
                 />
               </li>
               <li className="main-menu-nav-item">
@@ -90,6 +92,7 @@ export default function MainMenu({ route }) {
                   url="#"
                   icon={<IconComposer icon="ShareSimple" />}
                   text="Share"
+                  classes="share-item"
                 />
               </li>
               <li className="main-menu-nav-item">
@@ -97,6 +100,7 @@ export default function MainMenu({ route }) {
                   url="#"
                   icon={<IconComposer icon="Help" />}
                   text="Help"
+                  classes="help-item"
                 />
               </li>
               <li className="main-menu-nav-item">
@@ -104,6 +108,7 @@ export default function MainMenu({ route }) {
                   url="#"
                   icon={<IconComposer icon="Info" />}
                   text="Info"
+                  classes="info-item"
                 />
               </li>
             </ul>

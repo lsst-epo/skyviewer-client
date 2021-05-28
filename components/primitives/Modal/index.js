@@ -1,9 +1,10 @@
 import { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
+import classnames from "classnames";
 import Button from "@/primitives/Button";
 import IconComposer from "@/svg/IconComposer";
 import useFocusTrap from "@/hooks/useFocusTrap";
-import { useKeyDownEvent } from "@/hooks/listeners";
+import { useKeyDownEvent, useOnClickOutside } from "@/hooks/listeners";
 
 export default function Modal({
   children,
@@ -15,47 +16,52 @@ export default function Modal({
   describedbyId,
   secondaryCloseButton,
   secondaryCloseButtonOpts,
+  classes,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef(null);
 
-  useFocusTrap(modalRef, isOpen);
-  useKeyDownEvent(handleKeyDown);
-
   function handleKeyDown({ key }) {
     if (!isOpen || key !== "Escape") return;
-    setIsOpen(false);
+    handleClose();
   }
 
   function handleClose() {
+    if (!isOpen) return;
     setIsOpen(false);
-    if (closeCallback) closeCallback();
+    if (closeCallback) closeCallback(false);
   }
 
   function handleOpen() {
+    if (isOpen) return;
     setIsOpen(true);
     if (openCallback) openCallback();
   }
 
+  useFocusTrap(modalRef, isOpen);
+  useKeyDownEvent(handleKeyDown);
+  useOnClickOutside(modalRef, handleClose);
+
   return (
-    <div className="modal-container">
+    <div className={classnames("modal-container", classes)}>
       <Button {...openButtonOpts} onClick={handleOpen} />
-      {isOpen && (
-        <div
-          ref={modalRef}
-          role="dialog"
-          aria-modal={true}
-          aria-labelledby={labelledbyId}
-          aria-describedby={describedbyId}
-          className="modal"
-        >
+      <div
+        role="dialog"
+        aria-modal={true}
+        aria-labelledby={labelledbyId}
+        aria-describedby={describedbyId}
+        className={classnames("modal", {
+          "is-open": isOpen,
+        })}
+      >
+        <div ref={modalRef} className="modal-inner">
           <Button {...closeButtonOpts} onClick={handleClose} />
-          <div className="modal-inner">{children}</div>
+          {children}
           {secondaryCloseButton && (
             <Button {...secondaryCloseButtonOpts} onClick={handleClose} />
           )}
         </div>
-      )}
+      </div>
     </div>
   );
 }

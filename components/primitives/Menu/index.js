@@ -5,7 +5,7 @@ import MenuContext from "@/contexts/Menu";
 import Button from "@/primitives/Button";
 import IconComposer from "@/svg/IconComposer";
 import useFocusTrap from "@/hooks/useFocusTrap";
-import { useKeyDownEvent } from "@/hooks/listeners";
+import { useKeyDownEvent, useOnClickOutside } from "@/hooks/listeners";
 
 export default function Menu({
   children,
@@ -29,9 +29,6 @@ export default function Menu({
     typeof openOverride === "boolean" ? openOverride : false
   );
   const menuRef = useRef(null);
-
-  useFocusTrap(menuRef, isOpen);
-  useKeyDownEvent(handleKeyDown);
 
   function handleKeyDown({ key }) {
     if (!isOpen || key !== "Escape") return;
@@ -79,12 +76,6 @@ export default function Menu({
     }
   }
 
-  const handleClick = (e) => {
-    if (menuRef.current.contains(e.target)) return;
-
-    handleClose();
-  };
-
   useEffect(() => {
     const isOpenOverride = typeof openOverride === "boolean";
     if (isOpenOverride) {
@@ -92,18 +83,9 @@ export default function Menu({
     }
   }, [openOverride]);
 
-  useEffect(() => {
-    if (isOpen) {
-      document.addEventListener("click", handleClick);
-    } else {
-      document.removeEventListener("click", handleClick);
-    }
-
-    return () => {
-      document.removeEventListener("click", handleClick);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  useFocusTrap(menuRef, isOpen);
+  useKeyDownEvent(handleKeyDown);
+  useOnClickOutside(menuRef, handleClose);
 
   return (
     <div className="menu-container">

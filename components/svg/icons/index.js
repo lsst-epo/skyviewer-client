@@ -1,5 +1,6 @@
 import Bell from "./Bell";
 import Caret from "./Caret";
+import Chain from "./Chain";
 import Close from "./Close";
 import Compass from "./Compass";
 import Email from "./Email";
@@ -35,6 +36,7 @@ import Twitter from "./Twitter";
 export default {
   Bell,
   Caret,
+  Chain,
   Close,
   Compass,
   Email,
