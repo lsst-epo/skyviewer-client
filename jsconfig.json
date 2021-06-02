@@ -14,7 +14,8 @@
       "@/contexts/*": ["contexts/*"],
       "@/styles/*": ["theme/styles/*"],
       "@/svg/*": ["components/svg/*"],
-      "@/helpers": ["helpers"]
+      "@/helpers": ["helpers"],
+      "@/fixtures/*": ["fixtures/*"]
     }
   }
 }

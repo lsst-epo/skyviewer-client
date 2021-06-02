@@ -61,6 +61,23 @@
   );
 }
 
+@mixin container-guided {
+  @include container-full-bleed(max);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  min-height: 100vh;
+  padding: 15px 24px;
+  color: functions.palette(white);
+  background-color: functions.palette(black);
+
+  @include base.respond(functions.break(tablet), min) {
+    justify-content: space-between;
+  };
+}
+
+// Grids
+// --------------------------------------------------------
 @mixin gap($property: 'gap', $gap-desktop, $gap-mobile) {
   @if ($gap-desktop == $gap-mobile) {
     #{$property}: $gap-desktop;

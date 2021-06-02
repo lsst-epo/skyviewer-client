@@ -2,11 +2,11 @@ import PropTypes from "prop-types";
 import { svgInternalShape } from "@/shapes/svg";
 import defaultProps from "./defaultProps";
 
-export default function Caret({ className, fill = "currentColor" }) {
+export default function CaretLeft({ className, fill = "currentColor" }) {
   const uniqueProps = {
-    viewBox: "0 0 111.503 22.073",
-    width: 11.503,
-    height: 22.073,
+    viewBox: "0 0 29.081 60.485",
+    width: 29.081,
+    height: 60.485,
     fill,
     className,
   };
@@ -14,23 +14,21 @@ export default function Caret({ className, fill = "currentColor" }) {
   const mergedSvgProps = Object.assign(defaultProps, uniqueProps);
   return (
     <svg {...mergedSvgProps}>
-      <title>Caret icon</title>
+      <title>Left Caret icon</title>
       <path
-        d="M1.5,21.652,9.9,11.576,1.5,1.5"
-        transform="translate(-0.348 -0.54)"
+        d="M1.5,59.994,27.454,30.747,1.5,1.5"
+        transform="translate(29.459 60.989) rotate(180)"
         fill="none"
-        stroke="#fff"
         strokeMiterlimit="10"
-        strokWidth="3"
       />
     </svg>
   );
 }
 
-Caret.displayName = "SVG.Caret";
+CaretLeft.displayName = "SVG.CaretLeft";
 
-Caret.propTypes = {
+CaretLeft.propTypes = {
   ...svgInternalShape,
 };
 
-Caret.defaultProps = defaultProps;
+CaretLeft.defaultProps = defaultProps;

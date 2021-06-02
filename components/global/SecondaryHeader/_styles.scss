@@ -1,0 +1,23 @@
+@use 'abstracts/functions';
+
+@forward './filters';
+@forward './sort';
+
+.secondary-header {
+  padding: 2px 0;
+  border-top: functions.palette(neutral50) solid 1px;
+  border-bottom: functions.palette(neutral50) solid 1px;
+
+  .secondary-items {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+    .secondary-item {
+      + .secondary-item {
+
+      }
+    }
+  }
+}
