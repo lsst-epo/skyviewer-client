@@ -1,0 +1,27 @@
+@use 'abstracts/mixins/base';
+@use 'abstracts/functions';
+
+@forward './tour';
+
+.tours-list-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 22px auto 26px;
+
+  @include base.respond(functions.break(tablet), min) {
+    justify-content: start;
+    overflow-x: scroll;
+  };
+}
+
+.tours-list {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+
+  @include base.respond(functions.break(tablet), min) {
+    flex-flow: row nowrap;
+    padding: 0 24px;
+  };
+}

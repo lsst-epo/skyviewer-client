@@ -12,15 +12,21 @@
 @forward 'components/primitives/Slider/styles';
 
 // Globals
-@forward 'components/global/PrimaryHeader/styles';
+@forward 'components/global/GuidedExperienceHeader/styles';
 @forward 'components/global/MainMenu/styles';
+@forward 'components/global/PrimaryHeader/styles';
+@forward 'components/global/SecondaryHeader/styles';
 
 // Layouts
-@forward 'components/layouts/Primary/styles';
 @forward 'components/layouts/Explorer/styles';
+@forward 'components/layouts/GuidedExperience/styles';
+@forward 'components/layouts/Primary/styles';
 
 // Guided Experiences
 @forward 'components/guidedExperiences/styles';
+
+// Tours
+@forward 'components/tours/styles';
 
 // Explorer
 @forward 'components/explorer/Aladin/styles';

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import GuidedExperience from "./GuidedExperience";
+import GuidedExperience from "./GuidedExperienceListItem";
 
 export default function GuidedExperiences({ guidedExperiences }) {
   return (

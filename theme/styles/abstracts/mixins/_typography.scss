@@ -80,36 +80,114 @@
 
 // Guided Experiencess
 @mixin heading-guided-experiences {
-  @include type-scale(40px, 14px);
   font-weight: functions.font-weight(regular);
-  line-height: 1.5;
   color: functions.palette(white);
   text-transform: uppercase;
+
+  @include base.fluid-scale(
+    font-size,
+    40px,
+    14px,
+    functions.break(desktop),
+    functions.break(tablet)
+  );
 
   @include base.fluid-scale(
     letter-spacing,
     20px,
     2px,
-    functions.break(tablet),
-    functions.break(mobile)
+    functions.break(desktop),
+    functions.break(tablet)
   );
 
   @include base.fluid-scale(
     line-height,
     1.4,
     1.5,
-    functions.break(tablet),
-    functions.break(mobile)
+    functions.break(desktop),
+    functions.break(tablet)
+  );
+}
+
+@mixin subheading-guided-experiences {
+  font-weight: functions.font-weight(regular);
+  color: functions.palette(white);
+  text-transform: uppercase;
+
+  @include base.fluid-scale(
+    font-size,
+    20px,
+    14px,
+    functions.break(desktop),
+    functions.break(tablet)
+  );
+
+  @include base.fluid-scale(
+    letter-spacing,
+    10px,
+    2px,
+    functions.break(desktop),
+    functions.break(tablet)
+  );
+
+  @include base.fluid-scale(
+    line-height,
+    1.4,
+    1.5,
+    functions.break(desktop),
+    functions.break(tablet)
   );
 }
 
 
 @mixin heading-guided-experience {
-  font-size: 19px;
   font-weight: functions.font-weight(bold);
   line-height: 1.57;
   color: functions.palette(white);
   text-align: center;
+
+  @include base.fluid-scale(
+    font-size,
+    36px,
+    19px,
+    functions.break(desktop),
+    functions.break(tablet)
+  );
+}
+
+@mixin heading-tour-list {
+  font-size: 12px;
+  font-weight: functions.font-weight(bold);
+  line-height: 1.6;
+  color: functions.palette(white);
+}
+
+@mixin heading-tour-list-fluid {
+  font-weight: functions.font-weight(bold);
+  line-height: 1.6;
+  color: functions.palette(white);
+
+  @include base.fluid-scale(
+    font-size,
+    22px,
+    12px,
+    functions.break(tablet),
+    functions.break(mobile)
+  );
+}
+
+@mixin subheading-tour-list {
+  font-weight: functions.font-weight(light);
+  line-height: 1.6;
+  color: functions.palette(white);
+
+  @include base.fluid-scale(
+    font-size,
+    14px,
+    10px,
+    functions.break(tablet),
+    functions.break(mobile)
+  );
 }
 
 // Lists

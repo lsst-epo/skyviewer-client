@@ -1,7 +1,8 @@
 import ArrowLeft from "./ArrowLeft";
 import ArrowRight from "./ArrowRight";
 import Bell from "./Bell";
-import Caret from "./Caret";
+import CaretLeft from "./CaretLeft";
+import CaretRight from "./CaretRight";
 import Chain from "./Chain";
 import Close from "./Close";
 import Compass from "./Compass";
@@ -39,7 +40,8 @@ export default {
   ArrowLeft,
   ArrowRight,
   Bell,
-  Caret,
+  CaretLeft,
+  CaretRight,
   Chain,
   Close,
   Compass,
