@@ -1,23 +1,46 @@
 @use 'abstracts/functions';
+@use 'abstracts/mixins/base';
 
-@forward './filters';
-@forward './sort';
+@import './filters';
+@import './search';
+@import './sort';
 
 .secondary-header {
   padding: 2px 0;
   border-top: functions.palette(neutral50) solid 1px;
   border-bottom: functions.palette(neutral50) solid 1px;
 
+  @include base.respond(functions.break(tablet), min) {
+    margin: 0 auto;
+    border: 0;
+  }
+
   .secondary-items {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-between;
+    max-width: 100%;
+    margin: 0 15px;
+    transition: max-width 0.2s;
 
-    .secondary-item {
-      + .secondary-item {
+    @include base.respond(functions.break(tablet), min) {
+      max-width: 330px;
+      margin: 0 auto;
+    }
+  }
 
-      }
+  .guided-experience-sort-button,
+  .guided-experience-filters-button,
+  .guided-experience-search-button {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    .icon-text {
+      font-size: 14px;
+      font-weight: functions.font-weight(light);
+      line-height: 1.5;
     }
   }
 }

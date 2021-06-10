@@ -1,0 +1,112 @@
+@use 'abstracts/functions';
+@use 'abstracts/mixins/base';
+@use 'abstracts/mixins/appearance';
+
+.guided-experience-search-button,
+.search-menu-close-button {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  .a-svg {
+    width: 16px;
+
+    + .icon-text {
+      margin-left: 10px;
+      font-size: 14px;
+      font-weight: functions.font-weight(light);
+      line-height: 1.5;
+    }
+  }
+}
+
+.search-menu {
+  .modal {
+    top: 100%;
+    background-color: transparent;
+    transition: top 0.4s, background-color 1s;
+
+    &.is-open {
+      top: 0;
+      background-color: rgba(functions.palette(black), 0.9);
+    }
+  }
+
+  .modal-inner {
+    position: absolute;
+    top: 89px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-end;
+    padding-right: 24px;
+    padding-left: 24px;
+
+    @include base.respond(functions.break(tablet), min) {
+      position: static;
+      margin-top: calc(50vh - 42px) !important; /* stylelint-disable-line declaration-no-important */
+    }
+  }
+
+  .search-menu-close-button {
+    margin-right: 15px;
+
+    @include base.respond(functions.break(tablet), min) {
+      display: none;
+    }
+  }
+
+  .text-input-container {
+    position: relative;
+    width: 100%;
+    margin-top: 2px;
+
+    @include base.respond(functions.break(tablet), min) {
+      max-width: 330px;
+      margin: 0 auto;
+    }
+
+    &::before {
+      position: absolute;
+      top: -8px;
+      right: 28px;
+      width: 0;
+      height: 0;
+      content: "";
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid functions.palette(white);
+      border-left: 8px solid transparent;
+
+      @include base.respond(functions.break(tablet), min) {
+        display: none;
+      }
+    }
+
+    .text-input-label {
+      @include appearance.hidden;
+      font-size: 18px;
+      font-weight: functions.font-weight(light);
+      line-height: 1.5;
+
+      @include base.respond(functions.break(tablet), min) {
+        position: static;
+        margin-left: 20px;
+      }
+    }
+
+    .search-input {
+      display: block;
+      width: 100%;
+      height: 42px;
+      padding: 6px 20px;
+      border: 0;
+      border-radius: 20px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}

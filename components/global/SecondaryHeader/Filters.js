@@ -10,12 +10,21 @@ export default function Filters({ context }) {
   const menuDescriptionId = "guided-experience-filters-menu-description";
   const { setFilters, filters } = useContext(context) || {};
   const [isOpen, setIsOpen] = useState(false);
-  const handleThemeFilter = (checked, type) => {
-    console.log("handleThemeFilter");
+  const handleThemeFilter = (checked, theme) => {
+    setFilters({ ...filters, themes: { ...filters.themes, [theme]: checked } });
   };
 
   const handleCharacteristicFilter = (value, characteristic) => {
-    console.log("handleCharacteristicFilter");
+    setFilters({
+      ...filters,
+      characteristics: {
+        ...filters.characteristics,
+        [characteristic]: {
+          ...filters.characteristics[characteristic],
+          value,
+        },
+      },
+    });
   };
 
   return (

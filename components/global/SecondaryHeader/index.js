@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
-import classnames from "classnames";
-import IconComposer from "@/svg/IconComposer";
+// import classnames from "classnames";
 import Filters from "./Filters";
 import Sort from "./Sort";
+import Search from "./Search";
 
 export default function SecondaryHeader({ context }) {
   return (
@@ -15,7 +15,7 @@ export default function SecondaryHeader({ context }) {
           <Filters context={context} />
         </li>
         <li role="menuitem" className="secondary-item">
-          Search
+          <Search context={context} />
         </li>
       </ul>
     </header>

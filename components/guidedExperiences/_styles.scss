@@ -1,5 +1,7 @@
 @use 'abstracts/functions';
 @use 'abstracts/mixins/typography';
+@use 'abstracts/mixins/base';
+@use 'abstracts/mixins/appearance';
 
 .guided-experiences-heading {
   @include typography.heading-guided-experiences;
@@ -22,6 +24,10 @@
 .guided-experience-heading {
   margin: 0 10px 10px;
   @include typography.heading-guided-experience;
+
+  @include base.respond(functions.break(tablet), min) {
+    font-weight: functions.font-weight(regular);
+  }
 }
 
 .guided-experience-link {

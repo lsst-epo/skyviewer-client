@@ -1,3 +1,11 @@
-.guided-experiences-filters-button {
+.guided-experience-filters-button {
+  display: flex;
 
+  .a-svg {
+    width: 18px;
+
+    + .icon-text {
+      margin-left: 10px;
+    }
+  }
 }
