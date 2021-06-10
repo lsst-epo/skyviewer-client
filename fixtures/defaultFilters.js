@@ -1,33 +1,33 @@
 export default {
-  sortBy: 0,
+  sortBy: "0",
   possibleSorts: [
     {
-      id: 0,
+      id: "0",
       type: "release",
       label: "Newest First",
     },
     {
-      id: 1,
+      id: "1",
       type: "release",
       label: "Oldest First",
     },
     {
-      id: 2,
+      id: "2",
       type: "tour",
       label: "Less Duration First",
     },
     {
-      id: 3,
+      id: "3",
       type: "tour",
       label: "More Duration First",
     },
     {
-      id: 4,
+      id: "4",
       type: "tour",
       label: "Less Complexity First",
     },
     {
-      id: 5,
+      id: "5",
       type: "tour",
       label: "More Complexity First",
     },
@@ -46,7 +46,7 @@ export default {
         value: 5,
       },
       max: {
-        label: "Far",
+        label: "20 min",
         value: 20,
       },
       step: 1,

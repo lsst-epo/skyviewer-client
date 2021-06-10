@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import Menu from "@/primitives/Menu";
-import Checkbox from "@/primitives/Checkbox";
+import Radio from "@/primitives/Radio";
 import Slider from "@/primitives/Slider";
 import IconComposer from "@/svg/IconComposer";
 
@@ -11,8 +11,8 @@ export default function Sort({ context }) {
   const { setFilters, filters } = useContext(context) || {};
   const { possibleSorts, sortBy } = filters;
   const [isOpen, setIsOpen] = useState(false);
-  const handleSort = (checked, type) => {
-    console.log("handleSort");
+  const handleSort = (checked, sort, id) => {
+    setFilters({ ...filters, sortBy: id });
   };
 
   return (
@@ -42,9 +42,11 @@ export default function Sort({ context }) {
               {possibleSorts.map((sort) => {
                 const { id, label } = sort;
                 return (
-                  <Checkbox
+                  <Radio
+                    id={id}
                     key={sort + id}
                     label={label}
+                    name="sort-tours"
                     checked={id === sortBy}
                     toggleCallback={handleSort}
                   />
