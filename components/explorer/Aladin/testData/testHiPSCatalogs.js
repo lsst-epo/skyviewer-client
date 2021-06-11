@@ -13,7 +13,7 @@ export default [
     url: "https://epo-hips.netlify.app/catalog_stars",
     options: {
       name: "star",
-      sourceSize: "20",
+      sourceSize: 20,
       shape: "/shapes/star-icon.png",
     },
   },
@@ -22,7 +22,7 @@ export default [
     url: "https://epo-hips.netlify.app/catalog_galaxies",
     options: {
       name: "galaxy",
-      sourceSize: "20",
+      sourceSize: 20,
       shape: "/shapes/galaxy-icon.png",
     },
   },
@@ -31,7 +31,7 @@ export default [
     url: "https://epo-hips.netlify.app/catalog_nebulae",
     options: {
       name: "nebula",
-      sourceSize: "20",
+      sourceSize: 20,
       shape: "/shapes/nebula-icon.png",
     },
   },
@@ -40,7 +40,7 @@ export default [
     url: "https://epo-hips.netlify.app/catalog_transients",
     options: {
       name: "transient",
-      sourceSize: "20",
+      sourceSize: 20,
       shape: "/shapes/transient-icon.png",
     },
   },
@@ -49,7 +49,7 @@ export default [
     url: "https://epo-hips.netlify.app/catalog_goals",
     options: {
       name: "goal",
-      sourceSize: "20",
+      sourceSize: 20,
       shape: "/shapes/fun-goal-icon.png",
     },
   },
@@ -58,7 +58,7 @@ export default [
     url: "https://epo-hips.netlify.app/catalog_landmarks",
     options: {
       name: "landmark",
-      sourceSize: "20",
+      sourceSize: 20,
       shape: "/shapes/landmark-icon.png",
     },
   },

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { withLayout } from "@moxy/next-layout";
+import ToursContext from "@/contexts/Tours";
 import TourSortFilterContext from "@/contexts/TourSortFilter";
 import GuidedExperienceLayout from "@/layouts/GuidedExperience";
 import Tours from "@/components/tours";
@@ -11,7 +12,8 @@ const ToursPage = () => {
 
 export default withLayout(
   <GuidedExperienceLayout
-    context={TourSortFilterContext}
+    guidedExperienceContext={ToursContext}
+    sortFilterContext={TourSortFilterContext}
     defaultFilters={DEFAULT_FILTERS}
     className="tours-container"
     heading="Astronomical Tours"
