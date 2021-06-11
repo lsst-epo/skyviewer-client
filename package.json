@@ -58,6 +58,8 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "focus-trap": "^6.1.2",
     "focus-visible": "^5.1.0",
+    "graphql": "^15.5.0",
+    "graphql-request": "^3.4.0",
     "hoist-non-react-statics": "^3.3.2",
     "i18next": "^19.8.2",
     "json-to-scss": "^1.6.2",
@@ -78,7 +80,7 @@
     "stylelint": "^13.8.0",
     "stylelint-config-recess-order": "^2.3.0",
     "stylelint-scss": "^3.18.0",
-    "swr": "^0.3.5",
+    "swr": "^0.5.6",
     "use-resize-observer": "^6.1.0"
   }
 }

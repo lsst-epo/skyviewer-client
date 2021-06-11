@@ -15,6 +15,7 @@ import testJpgs from "./Aladin/testData/testJpgs";
 export default function Explorer({
   selector,
   options,
+  catalogs,
   survey,
   fov,
   fovRange,
@@ -97,7 +98,7 @@ export default function Explorer({
           <Aladin
             {...{ target, selector, survey, fov, fovRange, options }}
             onObjectClicked={onObjectClicked}
-            catalogs={testHiPSCatalogs}
+            catalogs={catalogs || testHiPSCatalogs}
           />
         </FiltersProvider>
       </AladinGlobalProvider>
@@ -108,6 +109,7 @@ export default function Explorer({
 Explorer.propTypes = {
   selector: PropTypes.string,
   survey: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  catalogs: PropTypes.array,
   target: PropTypes.string,
   fov: PropTypes.number,
   fovRange: PropTypes.array,

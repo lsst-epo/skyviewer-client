@@ -6,33 +6,39 @@ import NavLink from "@/primitives/NavLink";
 import IconComposer from "@/svg/IconComposer";
 
 export default function GuidedExperienceLayout({
-  context,
   className,
   heading,
   nextLink,
   backLink,
-  children,
   defaultFilters,
+  guidedExperienceContext,
+  sortFilterContext,
+  children,
 }) {
   const [filters, setFilters] = useState(defaultFilters);
+  const [exps, setExps] = useState(null);
 
-  const { Provider } = context;
+  const { Provider: SortFilterProvider } = sortFilterContext;
+  const { Provider: ExpsProvider } = guidedExperienceContext;
+
   return (
-    <Provider value={{ filters, setFilters }}>
-      <div className={className}>
-        <div>
-          <Header {...{ nextLink, backLink, heading }} />
-          <SecondaryHeader context={context} />
+    <SortFilterProvider value={{ filters, setFilters }}>
+      <ExpsProvider value={{ exps, setExps }}>
+        <div className={className}>
+          <div>
+            <Header {...{ nextLink, backLink, heading }} />
+            <SecondaryHeader context={sortFilterContext} />
+          </div>
+          <div className="children">{children}</div>
+          <NavLink
+            url="/guided-experiences"
+            text="Back to Guided Experiences"
+            iconBefore
+            icon={<IconComposer icon="ArrowLeft" />}
+          />
         </div>
-        <div className="children">{children}</div>
-        <NavLink
-          url="/guided-experiences"
-          text="Back to Guided Experiences"
-          iconBefore
-          icon={<IconComposer icon="ArrowLeft" />}
-        />
-      </div>
-    </Provider>
+      </ExpsProvider>
+    </SortFilterProvider>
   );
 }
 
@@ -42,6 +48,7 @@ GuidedExperienceLayout.propTypes = {
   nextLink: PropTypes.object,
   backLink: PropTypes.object,
   children: PropTypes.node,
-  context: PropTypes.object,
+  guidedExperienceContext: PropTypes.object,
+  sortFilterContext: PropTypes.object,
   defaultFilters: PropTypes.object,
 };

@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import Link from "next/link";
 import Logo from "@/svg/unique/Logo";
 import Buttonish from "@/primitives/Buttonish";
 
