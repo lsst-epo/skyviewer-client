@@ -7,48 +7,46 @@ import IconComposer from "@/svg/IconComposer";
 
 export default function GuidedExperienceLayout({
   className,
-  heading,
   nextLink,
   backLink,
-  defaultFilters,
-  guidedExperienceContext,
-  sortFilterContext,
   children,
 }) {
-  const [filters, setFilters] = useState(defaultFilters);
-  const [exps, setExps] = useState(null);
-
-  const { Provider: SortFilterProvider } = sortFilterContext;
-  const { Provider: ExpsProvider } = guidedExperienceContext;
-
   return (
-    <SortFilterProvider value={{ filters, setFilters }}>
-      <ExpsProvider value={{ exps, setExps }}>
-        <div className={className}>
-          <div>
-            <Header {...{ nextLink, backLink, heading }} />
-            <SecondaryHeader context={sortFilterContext} />
-          </div>
-          <div className="children">{children}</div>
-          <NavLink
-            url="/guided-experiences"
-            text="Back to Guided Experiences"
-            iconBefore
-            icon={<IconComposer icon="ArrowLeft" />}
-          />
-        </div>
-      </ExpsProvider>
-    </SortFilterProvider>
+    <div className={className}>
+      <div className="children">{children}</div>
+      <div className="guided-experience-nav-container">
+        <ul className="guided-experience-nav">
+          {backLink && (
+            <li className="guided-experience-nav-item">
+              <NavLink
+                url={backLink.url}
+                text={backLink.text}
+                iconBefore
+                small
+                icon={<IconComposer icon="ArrowLeft" />}
+              />
+            </li>
+          )}
+          {nextLink && (
+            <li className="guided-experience-nav-item">
+              <NavLink
+                url={nextLink.url}
+                text={nextLink.text}
+                iconAfter
+                small
+                icon={<IconComposer icon="ArrowRight" />}
+              />
+            </li>
+          )}
+        </ul>
+      </div>
+    </div>
   );
 }
 
 GuidedExperienceLayout.propTypes = {
-  heading: PropTypes.string,
   className: PropTypes.string,
   nextLink: PropTypes.object,
   backLink: PropTypes.object,
   children: PropTypes.node,
-  guidedExperienceContext: PropTypes.object,
-  sortFilterContext: PropTypes.object,
-  defaultFilters: PropTypes.object,
 };

@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import classnames from "classnames";
 import IconComposer from "@/svg/IconComposer";
+import Bubbles from "@/components/Bubbles";
 
 export default function Tour({ id, name, duration, complexity, thumbnail }) {
   function getBubble(complexity, bubble) {
@@ -52,7 +53,7 @@ export default function Tour({ id, name, duration, complexity, thumbnail }) {
               <div className="divider"></div>
               <div className="complexity">
                 <div>Complexity </div>
-                {getBubbles(complexity)}
+                <Bubbles val={complexity} />
                 <div className="tablet-only-label">{getTerm(complexity)}</div>
               </div>
             </div>

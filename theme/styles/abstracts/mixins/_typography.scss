@@ -78,7 +78,7 @@
   color: functions.palette(white);
 }
 
-// Guided Experiencess
+// Guided Experiences
 @mixin heading-guided-experiences {
   font-weight: functions.font-weight(regular);
   color: functions.palette(white);
@@ -188,6 +188,51 @@
     functions.break(tablet),
     functions.break(mobile)
   );
+}
+
+
+@mixin heading-guided-experience-landing {
+  font-weight: functions.font-weight(bold);
+
+  @include base.fluid-scale(
+    font-size,
+    43px,
+    22px,
+    functions.break(desktop),
+    functions.break(tablet)
+  );
+
+  @include base.fluid-scale(
+    line-height,
+    0.8,
+    1.6,
+    functions.break(desktop),
+    functions.break(tablet)
+  );
+}
+
+@mixin subheading-guided-experience-landing {
+  font-weight: functions.font-weight(light);
+
+  @include base.fluid-scale(
+    font-size,
+    16px,
+    14px,
+    functions.break(desktop),
+    functions.break(tablet)
+  );
+
+  @include base.fluid-scale(
+    line-height,
+    0.8,
+    1.5,
+    functions.break(desktop),
+    functions.break(tablet)
+  );
+
+  @include base.respond(functions.break(desktop), min) {
+    font-weight: functions.font-weight(regular);
+  }
 }
 
 // Lists

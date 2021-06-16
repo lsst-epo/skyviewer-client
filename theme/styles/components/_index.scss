@@ -22,9 +22,12 @@
 // Layouts
 @forward 'components/layouts/Explorer/styles';
 @forward 'components/layouts/GuidedExperience/styles';
+@forward 'components/layouts/GuidedExperiences/styles';
 @forward 'components/layouts/Primary/styles';
 
+
 // Guided Experiences
+@forward 'components/bubbles/styles';
 @forward 'components/guidedExperiences/styles';
 
 // Tours

@@ -69,9 +69,6 @@
   text-align: center;
   background-color: functions.palette(red10);
 
-  .count-num {
-  }
-
   .count-label {
     font-size: 10px;
     font-weight: functions.font-weight(regular);
@@ -98,5 +95,92 @@
     // left angle
     left: 0;
     border-right: 50px solid transparent;
+  }
+}
+
+.guided-experience-landing-container {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: calc(100vh - 42px);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  .background-opacitizer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: functions.palette(black);
+    opacity: 0.65;
+  }
+}
+
+.guided-experience-landing {
+  position: relative;
+  margin-top: -42px;
+  color: functions.palette(white);
+
+  .guided-experience-landing-heading {
+    @include typography.heading-guided-experience-landing;
+    text-align: center;
+  }
+
+  .guided-experience-landing-details {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    margin-top: 20px;
+
+    .details-heading {
+      @include typography.subheading-guided-experience-landing;
+    }
+
+    .detail {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px;
+
+      + .detail {
+        border-left: 2px solid functions.palette(white);
+      }
+    }
+
+    .duration-details {
+      .a-svg {
+        width: 23px;
+        margin-top: 4px;
+      }
+    }
+
+    .complexity-details {
+      .bubbles .bubble {
+        width: 7px;
+        height: 7px;
+      }
+    }
+
+    .duration,
+    .complexity {
+      margin-top: 4px;
+      font-weight: functions.font-weight(bold);
+      line-height: 1.6;
+      color: functions.palette(white);
+
+      @include base.fluid-scale(
+        font-size,
+        14px,
+        12px,
+        functions.break(tablet),
+        functions.break(mobile)
+      );
+    }
   }
 }

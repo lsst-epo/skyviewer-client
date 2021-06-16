@@ -2,16 +2,18 @@ import Link from "next/link";
 import { withLayout } from "@moxy/next-layout";
 import ToursContext from "@/contexts/Tours";
 import TourSortFilterContext from "@/contexts/TourSortFilter";
-import GuidedExperienceLayout from "@/layouts/GuidedExperience";
+import GuidedExperiencesLayout from "@/layouts/GuidedExperiences";
 import Tours from "@/components/tours";
+
 import DEFAULT_FILTERS from "@/fixtures/defaultFilters";
 import PLACEHOLDER_TOURS from "@/fixtures/placeholderTours";
+
 const ToursPage = () => {
   return <Tours tours={PLACEHOLDER_TOURS} />;
 };
 
 export default withLayout(
-  <GuidedExperienceLayout
+  <GuidedExperiencesLayout
     guidedExperienceContext={ToursContext}
     sortFilterContext={TourSortFilterContext}
     defaultFilters={DEFAULT_FILTERS}
