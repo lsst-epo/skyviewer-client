@@ -19,6 +19,10 @@
     margin-bottom: 31px;
   }
 
+  &.small {
+    margin: 0;
+  }
+
   &.icon-before, &.icon-after {
     .a-svg {
       display: none;

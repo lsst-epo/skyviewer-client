@@ -16,9 +16,9 @@ import Explorer from "@/components/explorer/index.js";
 const ExplorerPage = ({ catalogs }) => {
   const data = useCatalogsData();
   // eslint-disable-next-line no-console
-  console.log("serverside", catalogs);
+  // console.log("serverside", catalogs);
   // eslint-disable-next-line no-console
-  console.log("clientside", data);
+  // console.log("clientside", data);
 
   return (
     <Explorer

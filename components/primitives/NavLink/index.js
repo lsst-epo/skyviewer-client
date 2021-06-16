@@ -2,13 +2,21 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 import Link from "next/link";
 
-export default function NavLink({ url, icon, text, iconBefore, classes }) {
+export default function NavLink({
+  url,
+  icon,
+  text,
+  iconBefore,
+  small,
+  classes,
+}) {
   return (
     <Link href={url}>
       <a
         className={classnames("nav-link", {
           "icon-before": iconBefore && icon,
           "icon-after": !iconBefore && icon,
+          small,
           [classes]: classes,
         })}
       >
@@ -25,5 +33,6 @@ NavLink.propTypes = {
   text: PropTypes.string.isRequired,
   icon: PropTypes.element,
   iconBefore: PropTypes.bool,
+  small: PropTypes.bool,
   classes: PropTypes.string,
 };

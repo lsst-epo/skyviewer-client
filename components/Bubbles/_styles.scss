@@ -1,0 +1,23 @@
+@use 'abstracts/mixins/base';
+@use 'abstracts/functions';
+
+.bubbles {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: baseline;
+
+  .bubble {
+    width: 5px;
+    height: 5px;
+    background-color: functions.palette(neutral50);
+    border-radius: 50%;
+
+    &.full {
+      background-color: functions.palette(white);
+    }
+
+    + .bubble {
+      margin-left: 7px;
+    }
+  }
+}
