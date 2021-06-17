@@ -2,7 +2,7 @@ export default [
   {
     id: 1,
     variety: "tour",
-    name: "Messier's Survey",
+    title: "Messier's Survey",
     duration: 5,
     complexity: 1,
     thumbnail: "https://placem.at/places?w=200&h=200&random=people&txt=0",
@@ -35,7 +35,7 @@ export default [
   {
     id: 2,
     variety: "tour",
-    name: "Galaxies Observed by Vera Rubin",
+    title: "Galaxies Observed by Vera Rubin",
     duration: 8,
     complexity: 1,
     thumbnail: "https://placem.at/places?w=200&h=200&random=people&txt=0",
@@ -68,7 +68,7 @@ export default [
   {
     id: 3,
     variety: "tour",
-    name: "Dwarf Galaxies",
+    title: "Dwarf Galaxies",
     duration: 12,
     complexity: 2,
     thumbnail: "https://placem.at/places?w=200&h=200&random=galaxy&txt=0",
@@ -101,7 +101,7 @@ export default [
   {
     id: 4,
     variety: "tour",
-    name: "Stellar Streams",
+    title: "Stellar Streams",
     duration: 15,
     complexity: 3,
     thumbnail: "https://placem.at/places?w=200&h=200&random=stars&txt=0",
@@ -134,7 +134,7 @@ export default [
   {
     id: 5,
     variety: "tour",
-    name: "Southern Sky Constellations",
+    title: "Southern Sky Constellations",
     duration: 10,
     complexity: 3,
     thumbnail:
@@ -168,7 +168,7 @@ export default [
   {
     id: 6,
     variety: "tour",
-    name: "Federica Bianco's Top 10 Favorite Objects",
+    title: "Federica Bianco's Top 10 Favorite Objects",
     duration: 8,
     complexity: 1,
     thumbnail: "https://placem.at/places?w=200&h=200&random=people&txt=0",
@@ -201,7 +201,7 @@ export default [
   {
     id: 7,
     variety: "tour",
-    name: "The Most Variable Stars",
+    title: "The Most Variable Stars",
     duration: 7,
     complexity: 2,
     thumbnail: "https://placem.at/places?w=200&h=200&random=supernova&txt=0",

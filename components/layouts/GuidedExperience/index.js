@@ -7,31 +7,59 @@ import IconComposer from "@/svg/IconComposer";
 
 export default function GuidedExperienceLayout({
   className,
-  nextLink,
-  backLink,
+  mobileNextLink,
+  mobileBackLink,
+  desktopNextLink,
+  desktopBackLink,
   children,
 }) {
   return (
     <div className={className}>
       <div className="children">{children}</div>
-      <div className="guided-experience-nav-container">
+      <div className="guided-experience-nav-container mobile-only">
         <ul className="guided-experience-nav">
-          {backLink && (
+          {mobileBackLink && (
             <li className="guided-experience-nav-item">
               <NavLink
-                url={backLink.url}
-                text={backLink.text}
+                url={mobileBackLink.url}
+                text={mobileBackLink.text}
                 iconBefore
                 small
                 icon={<IconComposer icon="ArrowLeft" />}
               />
             </li>
           )}
-          {nextLink && (
+          {mobileNextLink && (
             <li className="guided-experience-nav-item">
               <NavLink
-                url={nextLink.url}
-                text={nextLink.text}
+                url={mobileNextLink.url}
+                text={mobileNextLink.text}
+                iconAfter
+                small
+                icon={<IconComposer icon="ArrowRight" />}
+              />
+            </li>
+          )}
+        </ul>
+      </div>
+      <div className="guided-experience-nav-container desktop-only">
+        <ul className="guided-experience-nav">
+          {desktopBackLink && (
+            <li className="guided-experience-nav-item">
+              <NavLink
+                url={desktopBackLink.url}
+                text={desktopBackLink.text}
+                iconBefore
+                small
+                icon={<IconComposer icon="ArrowLeft" />}
+              />
+            </li>
+          )}
+          {desktopNextLink && (
+            <li className="guided-experience-nav-item">
+              <NavLink
+                url={desktopNextLink.url}
+                text={desktopNextLink.text}
                 iconAfter
                 small
                 icon={<IconComposer icon="ArrowRight" />}
@@ -46,7 +74,9 @@ export default function GuidedExperienceLayout({
 
 GuidedExperienceLayout.propTypes = {
   className: PropTypes.string,
-  nextLink: PropTypes.object,
-  backLink: PropTypes.object,
+  mobileNextLink: PropTypes.object,
+  mobileBackLink: PropTypes.object,
+  desktopNextLink: PropTypes.object,
+  desktopBackLink: PropTypes.object,
   children: PropTypes.node,
 };

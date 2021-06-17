@@ -6,11 +6,13 @@ import Link from "next/link";
 import PrimaryLayout from "@/layouts/Primary";
 import GuidedExperienceLayout from "@/layouts/GuidedExperience";
 import GuidedExperienceLanding from "@/components/guidedExperiences/GuidedExperienceLanding";
+import Intro from "@/components/tours/Intro";
+import FunFact from "@/components/tours/FunFact";
 
 import PLACEHOLDER_TOURS from "@/fixtures/placeholderTours";
 
 const DEFAULT_NEXT = { url: "/intro/", text: "Let's Start" };
-const DEFAULT_BACK = { url: "/", text: "Back" };
+const DEFAULT_BACK = { url: "/tours/", text: "Back" };
 
 const TourPage = ({ setLayoutState }) => {
   const router = useRouter();
@@ -19,10 +21,19 @@ const TourPage = ({ setLayoutState }) => {
     query: { tour: tourId, intro: introId, fact: factId },
   } = router;
   const [tourData, setTourData] = useState(getTourData(tourId));
+  const [isLanding, setIsLanding] = useState(!introId && !factId);
   const [nextLink, setNextLink] = useState(DEFAULT_NEXT);
   const [backLink, setBackLink] = useState(DEFAULT_BACK);
-  const { id, name, complexity, duration, thumbnail, backgroundImage } =
-    tourData || {};
+  const {
+    id,
+    title,
+    complexity,
+    duration,
+    thumbnail,
+    backgroundImage,
+    intro,
+    fact,
+  } = tourData || {};
 
   function getTourData(id) {
     return PLACEHOLDER_TOURS.find((tour) => +id === tour.id);
@@ -42,7 +53,7 @@ const TourPage = ({ setLayoutState }) => {
 
       const nextId = id + 1;
       const previousId = +id > 1 ? id - 1 : 1;
-
+      // Middle page
       if (id > 1 && id < totalPages) {
         return [
           {
@@ -52,8 +63,8 @@ const TourPage = ({ setLayoutState }) => {
           { url: `/tours/${tourId}/?${type}=${nextId}`, text: "Next" },
         ];
       }
-
-      if (id === 1) {
+      // First of many pages
+      if (id === 1 && totalPages > 1) {
         return [
           {
             url:
@@ -65,7 +76,26 @@ const TourPage = ({ setLayoutState }) => {
           { url: `/tours/${tourId}/?${type}=${nextId}`, text: "Next" },
         ];
       }
-
+      // Only page
+      if (id === 1 && totalPages === 1) {
+        return [
+          {
+            url:
+              type === "intro"
+                ? `/tours/${tourId}/`
+                : `/tours/${tourId}/?intro=${tourData.intro.blocks.length}`,
+            text: "Back",
+          },
+          {
+            url:
+              type === "intro"
+                ? `/tours/${tourId}/?fact=1`
+                : `/tours/${tourId}/tour`,
+            text: type === "intro" ? "Next" : "Start the Tour",
+          },
+        ];
+      }
+      // Last of many pages
       if (id >= totalPages) {
         return [
           {
@@ -90,6 +120,10 @@ const TourPage = ({ setLayoutState }) => {
   }, [tourId]);
 
   useEffect(() => {
+    setIsLanding(!introId && !factId);
+  }, [introId, factId]);
+
+  useEffect(() => {
     if (!tourData) return;
     const {
       intro: { blocks: introBlocks },
@@ -100,41 +134,61 @@ const TourPage = ({ setLayoutState }) => {
     if (introId) {
       navLinks = getNavLinks(+introId, introBlocks.length, "intro");
     } else if (factId) {
-      navLinks = getNavLinks(+factId, introBlocks.length, "fact");
+      navLinks = getNavLinks(+factId, factBlocks.length, "fact");
     }
 
-    const [backLink, nextLink] = navLinks;
-    setBackLink(backLink);
-    setNextLink(nextLink);
-    // console.log(intro, fact);
+    setBackLink(navLinks[0]);
+    setNextLink(navLinks[1]);
   }, [tourId, introId, factId, tourData, getNavLinks]);
 
   useEffect(() => {
-    setLayoutState({ nextLink, backLink });
-  }, [setLayoutState, nextLink, backLink]);
+    setLayoutState({
+      desktopBackLink: {
+        url: isLanding ? `/tours` : `/tours/${tourId}`,
+        text: "Back",
+      },
+      desktopNextLink: {
+        url: isLanding ? `/tours/${tourId}/?intro=1` : `/tours/${tourId}/tour`,
+        text: isLanding ? "Let's Start" : "Start the Tour",
+      },
+      mobileBackLink: backLink,
+      mobileNextLink: nextLink,
+    });
+  }, [setLayoutState, nextLink, backLink, tourId, isLanding]);
 
   if (!tourData) return <div>loading</div>;
 
-  if (introId) {
-    return (
-      <div>
-        <h2>This is an Intro Page: {introId}</h2>
-      </div>
-    );
-  }
-
-  if (factId) {
-    return (
-      <div>
-        <h2>This is a Fact Page: {factId}</h2>
-      </div>
-    );
-  }
-
   return (
-    <GuidedExperienceLanding
-      {...{ name, thumbnail, backgroundImage, duration, complexity }}
-    />
+    <>
+      {isLanding && (
+        <GuidedExperienceLanding
+          {...{ title, thumbnail, backgroundImage, duration, complexity }}
+        />
+      )}
+
+      {(introId || factId) && (
+        <div className="tour-intro-container">
+          <div className="content-wrapper">
+            {intro && (
+              <Intro
+                id={introId}
+                data={intro}
+                thumbnail={thumbnail}
+                skipUrl={`/tours/${tourId}/tour`}
+              />
+            )}
+
+            {fact && (
+              <FunFact
+                id={factId}
+                data={fact}
+                skipUrl={`/tours/${tourId}/tour`}
+              />
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
@@ -142,17 +196,25 @@ TourPage.propTypes = {
   setLayoutState: PropTypes.func,
 };
 
-const mapLayoutStateToLayoutTree = ({ nextLink, backLink, className }) => (
+const mapLayoutStateToLayoutTree = ({
+  desktopNextLink,
+  desktopBackLink,
+  mobileNextLink,
+  mobileBackLink,
+}) => (
   <PrimaryLayout closeUrl="/tours">
     <GuidedExperienceLayout
-      nextLink={nextLink}
-      backLink={backLink}
-      className={className}
+      desktopNextLink={desktopNextLink}
+      desktopBackLink={desktopBackLink}
+      mobileNextLink={mobileNextLink}
+      mobileBackLink={mobileBackLink}
     />
   </PrimaryLayout>
 );
 
 export default withLayout(mapLayoutStateToLayoutTree, {
-  nextLink: DEFAULT_NEXT,
-  backLink: DEFAULT_BACK,
+  mobileNextLink: DEFAULT_NEXT,
+  mobileBackLink: DEFAULT_BACK,
+  desktopNextLink: DEFAULT_NEXT,
+  desktopBackLink: DEFAULT_BACK,
 })(TourPage);

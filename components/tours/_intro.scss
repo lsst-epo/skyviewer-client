@@ -1,0 +1,89 @@
+@use 'abstracts/mixins/base';
+@use 'abstracts/functions';
+@use 'abstracts/mixins/typography';
+
+.tour-intro {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 66px 55px 38px;
+  color: functions.palette(white);
+
+  @include base.respond(functions.break(tablet), min) {
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    justify-content: stretch;
+    width: 60%;
+    margin: 0 55px 0;
+  }
+
+  .top {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
+  .tour-intro-thumbnail {
+    width: 120px;
+    height: 120px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+
+    @include base.fluid-scale(
+      [width, height, min-width, min-height],
+      190px,
+      120px,
+      functions.break(desktop),
+      functions.break(tablet)
+    );
+
+    @include base.respond(functions.break(tablet), min) {
+      margin-right: 55px;
+    }
+  }
+
+  .main {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  .bubbles {
+    @include base.respond(functions.break(tablet), min) {
+      display: none;
+    }
+
+    .bubble {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .tour-intro-heading {
+    @include typography.heading-tour-intro;
+    margin-top: 26px;
+  }
+
+  .tour-intro-subheading {
+    @include typography.subheading-tour-intro;
+    margin-top: 5px;
+  }
+
+  .tour-intro-body {
+
+    @include base.fluid-scale(
+      margin-top,
+      20px,
+      39px,
+      functions.break(desktop),
+      functions.break(tablet)
+    );
+
+    @include base.respond(functions.break(tablet), min) {
+      padding-bottom: 55px;
+    }
+  }
+}
