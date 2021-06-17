@@ -50,10 +50,33 @@
 // Copy
 // --------------------------------------------------------
 @mixin copy-primary {
+  font-weight: functions.font-weight(regular);
+
+  @include base.fluid-scale(
+    font-size,
+    16px,
+    14px,
+    functions.break(tablet),
+    functions.break(mobile)
+  );
+
+  @include base.fluid-scale(
+    line-height,
+    1.4,
+    1.6,
+    functions.break(tablet),
+    functions.break(mobile)
+  );
 }
 
 // Links
 // --------------------------------------------------------
+@mixin skip-link {
+  font-size: 10px;
+  font-weight: functions.font-weight(light);
+  line-height: 1;
+}
+
 
 // Navs & Menus
 // --------------------------------------------------------
@@ -155,42 +178,6 @@
   );
 }
 
-@mixin heading-tour-list {
-  font-size: 12px;
-  font-weight: functions.font-weight(bold);
-  line-height: 1.6;
-  color: functions.palette(white);
-}
-
-@mixin heading-tour-list-fluid {
-  font-weight: functions.font-weight(bold);
-  line-height: 1.6;
-  color: functions.palette(white);
-
-  @include base.fluid-scale(
-    font-size,
-    22px,
-    12px,
-    functions.break(tablet),
-    functions.break(mobile)
-  );
-}
-
-@mixin subheading-tour-list {
-  font-weight: functions.font-weight(light);
-  line-height: 1.6;
-  color: functions.palette(white);
-
-  @include base.fluid-scale(
-    font-size,
-    14px,
-    10px,
-    functions.break(tablet),
-    functions.break(mobile)
-  );
-}
-
-
 @mixin heading-guided-experience-landing {
   font-weight: functions.font-weight(bold);
 
@@ -233,6 +220,109 @@
   @include base.respond(functions.break(desktop), min) {
     font-weight: functions.font-weight(regular);
   }
+}
+
+// Tours
+// --------------------------------------------------------
+
+@mixin heading-tour-list {
+  font-size: 12px;
+  font-weight: functions.font-weight(bold);
+  line-height: 1.6;
+  color: functions.palette(white);
+}
+
+@mixin heading-tour-list-fluid {
+  font-weight: functions.font-weight(bold);
+  line-height: 1.6;
+  color: functions.palette(white);
+
+  @include base.fluid-scale(
+    font-size,
+    22px,
+    12px,
+    functions.break(tablet),
+    functions.break(mobile)
+  );
+}
+
+@mixin subheading-tour-list {
+  font-weight: functions.font-weight(light);
+  line-height: 1.6;
+  color: functions.palette(white);
+
+  @include base.fluid-scale(
+    font-size,
+    14px,
+    10px,
+    functions.break(tablet),
+    functions.break(mobile)
+  );
+}
+
+@mixin heading-tour-intro {
+  font-weight: functions.font-weight(bold);
+
+  @include base.fluid-scale(
+    font-size,
+    40px,
+    22px,
+    functions.break(desktop),
+    functions.break(tablet)
+  );
+
+  @include base.fluid-scale(
+    line-height,
+    1.4,
+    1.6,
+    functions.break(desktop),
+    functions.break(tablet)
+  );
+
+  @include base.respond(functions.break(desktop), min) {
+    font-weight: functions.font-weight(regular);
+    text-transform: uppercase;
+    letter-spacing: 17px;
+  }
+}
+
+@mixin heading-tour-fact {
+  font-weight: functions.font-weight(bold);
+
+  @include base.fluid-scale(
+    font-size,
+    30px,
+    22px,
+    functions.break(desktop),
+    functions.break(tablet)
+  );
+
+  @include base.fluid-scale(
+    line-height,
+    1.8,
+    1.6,
+    functions.break(desktop),
+    functions.break(tablet)
+  );
+
+  @include base.respond(functions.break(desktop), min) {
+    font-weight: functions.font-weight(regular);
+    text-transform: uppercase;
+    letter-spacing: 10px;
+  }
+}
+
+@mixin subheading-tour-intro {
+  font-weight: functions.font-weight(bold);
+  line-height: 1.6;
+
+  @include base.fluid-scale(
+    font-size,
+    22px,
+    14px,
+    functions.break(desktop),
+    functions.break(tablet)
+  );
 }
 
 // Lists

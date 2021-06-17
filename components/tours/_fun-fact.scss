@@ -1,0 +1,45 @@
+@use 'abstracts/functions';
+@use 'abstracts/mixins/typography';
+@use 'abstracts/mixins/base';
+
+.tour-fact {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 66px 55px 38px;
+  color: functions.palette(white);
+
+  @include base.respond(functions.break(tablet), min) {
+    justify-content: flex-start;
+    width: 40%;
+    padding-left: 55px;
+    margin: 0 55px 38px 0;
+    border-left: 2px solid functions.palette(white);
+  }
+
+  .fact-icon {
+    width: 67px;
+
+    @include base.respond(functions.break(tablet), min) {
+      width: 39px;
+      height: 39px;
+      margin-top: -5px;
+    }
+  }
+
+  .tour-fact-heading {
+    @include typography.heading-tour-fact;
+    margin-top: 26px;
+  }
+
+  .tour-fact-body {
+    margin-top: 65px;
+
+    @include base.respond(functions.break(tablet), min) {
+      padding-bottom: 55px;
+      margin-top: 30px;
+    }
+  }
+}

@@ -4,28 +4,13 @@ import classnames from "classnames";
 import IconComposer from "@/svg/IconComposer";
 import Bubbles from "@/components/Bubbles";
 
-export default function Tour({ id, name, duration, complexity, thumbnail }) {
-  function getBubble(complexity, bubble) {
-    return (
-      <div
-        key={bubble}
-        className={classnames("bubble", {
-          full: complexity >= bubble,
-        })}
-      />
-    );
-  }
-
-  function getBubbles(complexity) {
-    return (
-      <div className="bubbles">
-        {[1, 2, 3, 4, 5].map((bubble) => {
-          return getBubble(complexity, bubble);
-        })}
-      </div>
-    );
-  }
-
+export default function TourListItem({
+  id,
+  title,
+  duration,
+  complexity,
+  thumbnail,
+}) {
   function getTerm(complexity) {
     if (complexity <= 2) return "Easy";
     if (complexity <= 4) return "Medium";
@@ -43,7 +28,7 @@ export default function Tour({ id, name, duration, complexity, thumbnail }) {
             style={{ backgroundImage: `url("${thumbnail}")` }}
           />
           <div className="details">
-            <h3 className="name">{name}</h3>
+            <h3 className="name">{title}</h3>
             <div className="characteristics">
               <div className="duration">
                 <div className="tablet-only-label">Duration</div>
@@ -64,9 +49,9 @@ export default function Tour({ id, name, duration, complexity, thumbnail }) {
   );
 }
 
-Tour.propTypes = {
+TourListItem.propTypes = {
   id: PropTypes.number.isRequired,
-  name: PropTypes.string,
+  title: PropTypes.string,
   complexity: PropTypes.number,
   duration: PropTypes.number,
   thumbnail: PropTypes.string,

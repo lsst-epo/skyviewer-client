@@ -4,16 +4,18 @@ import IconComposer from "@/svg/IconComposer";
 import Bubbles from "@/components/Bubbles";
 
 export default function GuidedExperienceLanding({
-  name,
+  title,
   thumbnail,
   backgroundImage,
   duration,
   complexity,
 }) {
-  function getComplexityWord(val) {
-    if (val === 5) return "Hard";
-    if (val >= 3) return "Medium";
-    return "Easy";
+  function getTerm(val) {
+    if (val <= 2) return "Easy";
+    if (val <= 4) return "Medium";
+    if (val >= 5) return "Hard";
+
+    return "Medium";
   }
 
   return (
@@ -23,7 +25,7 @@ export default function GuidedExperienceLanding({
     >
       <div className="background-opacitizer" />
       <div className="guided-experience-landing">
-        <h2 className="guided-experience-landing-heading">{name}</h2>
+        <h2 className="guided-experience-landing-heading">{title}</h2>
         <div className="guided-experience-landing-details">
           {duration && (
             <div className="detail duration-details">
@@ -36,7 +38,7 @@ export default function GuidedExperienceLanding({
             <div className="detail complexity-details">
               <h3 className="details-heading">Complexity</h3>
               <Bubbles val={complexity} />
-              <div className="complexity">{getComplexityWord(complexity)}</div>
+              <div className="complexity">{getTerm(complexity)}</div>
             </div>
           )}
         </div>
@@ -46,7 +48,7 @@ export default function GuidedExperienceLanding({
 }
 
 GuidedExperienceLanding.propTypes = {
-  name: PropTypes.string,
+  title: PropTypes.string,
   thumbnail: PropTypes.string,
   backgroundImage: PropTypes.string,
   duration: PropTypes.number,
