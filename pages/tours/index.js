@@ -5,7 +5,7 @@ import TourSortFilterContext from "@/contexts/TourSortFilter";
 import GuidedExperiencesLayout from "@/layouts/GuidedExperiences";
 import Tours from "@/components/tours";
 
-import DEFAULT_FILTERS from "@/fixtures/defaultFilters";
+import DEFAULT_FILTERS from "@/fixtures/defaultGEFilters";
 import PLACEHOLDER_TOURS from "@/fixtures/placeholderTours";
 
 const ToursPage = () => {

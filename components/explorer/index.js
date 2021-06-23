@@ -1,16 +1,16 @@
 import { useEffect, useState, useCallback } from "react";
 import PropTypes from "prop-types";
-import defaultOptions from "./Aladin/defaultOptions";
-import defaultFilters from "./Aladin/defaultFilters";
+import defaultOptions from "@/fixtures/defaultAladinOptions";
+import defaultFilters from "@/fixtures/defaultExplorerFilters";
 import { ExplorerProvider } from "@/contexts/Explorer";
 import { AladinGlobalProvider } from "@/contexts/AladinGlobal";
 import { FiltersProvider } from "@/contexts/Filters";
-import Aladin from "./Aladin";
+import Aladin from "@/components/explorer/Aladin";
 import { waitForGlobal } from "@/helpers";
 
-import testMarkerLayers from "./Aladin/testData/testMarkerLayers";
-import testHiPSCatalogs from "./Aladin/testData/testHiPSCatalogs";
-import testJpgs from "./Aladin/testData/testJpgs";
+import testMarkerLayers from "@/fixtures/testMarkerLayers";
+import testHiPSCatalogs from "@/fixtures/testHiPSCatalogs";
+import testJpgs from "@/fixtures/testJpgs";
 
 export default function Explorer({
   selector,

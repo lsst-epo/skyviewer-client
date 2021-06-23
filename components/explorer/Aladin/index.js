@@ -6,8 +6,8 @@ import ExplorerContext from "@/contexts/Explorer";
 import AladinGlobalContext from "@/contexts/AladinGlobal";
 import AladinCatalogsContext from "@/contexts/AladinCatalogs";
 import FiltersContext from "@/contexts/Filters";
-import SourcesList from "./SourcesList";
-import Controls from "../Controls";
+import SourcesList from "@/components/explorer/Aladin/SourcesList";
+import Controls from "@/components/explorer/Controls";
 
 export default function Aladin({
   selector,
