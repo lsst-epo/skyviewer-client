@@ -33,7 +33,7 @@ export default function Aladin({
   const [srcsInRegion, setSrcsInRegion] = useState(null);
   const aladinContainer = useRef(null);
   const aladinReticleCanvas = useRef(null);
-
+  // console.log(aladin);
   useEffect(() => {
     const { hasFocus } = settings;
     if (!aladinReticleCanvas.current && aladinContainer.current) {
