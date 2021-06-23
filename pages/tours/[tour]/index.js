@@ -8,8 +8,7 @@ import GuidedExperienceLayout from "@/layouts/GuidedExperience";
 import GuidedExperienceLanding from "@/components/guidedExperiences/GuidedExperienceLanding";
 import Intro from "@/components/tours/Intro";
 import FunFact from "@/components/tours/FunFact";
-
-import PLACEHOLDER_TOURS from "@/fixtures/placeholderTours";
+import { getTourData } from "@/helpers";
 
 const DEFAULT_NEXT = { url: "/intro/", text: "Let's Start" };
 const DEFAULT_BACK = { url: "/tours/", text: "Back" };
@@ -21,6 +20,7 @@ const TourPage = ({ setLayoutState }) => {
     query: { tour: tourId, intro: introId, fact: factId },
   } = router;
   const [tourData, setTourData] = useState(getTourData(tourId));
+  const [firstPoiId, setFirstPoiId] = useState(1);
   const [isLanding, setIsLanding] = useState(!introId && !factId);
   const [nextLink, setNextLink] = useState(DEFAULT_NEXT);
   const [backLink, setBackLink] = useState(DEFAULT_BACK);
@@ -33,11 +33,8 @@ const TourPage = ({ setLayoutState }) => {
     backgroundImage,
     intro,
     fact,
+    pois,
   } = tourData || {};
-
-  function getTourData(id) {
-    return PLACEHOLDER_TOURS.find((tour) => +id === tour.id);
-  }
 
   const getNavLinks = useCallback(
     (id, totalPages, type) => {
@@ -90,7 +87,7 @@ const TourPage = ({ setLayoutState }) => {
             url:
               type === "intro"
                 ? `/tours/${tourId}/?fact=1`
-                : `/tours/${tourId}/tour`,
+                : `/tours/${tourId}/tour?poi=${firstPoiId}`,
             text: type === "intro" ? "Next" : "Start the Tour",
           },
         ];
@@ -106,17 +103,21 @@ const TourPage = ({ setLayoutState }) => {
             url:
               type === "intro"
                 ? `/tours/${tourId}/?fact=1`
-                : `/tours/${tourId}/tour`,
+                : `/tours/${tourId}/tour?poi=${firstPoiId}`,
             text: type === "intro" ? "Next" : "Start the Tour",
           },
         ];
       }
     },
-    [tourId, tourData?.intro?.blocks?.length]
+    [tourId, firstPoiId, tourData?.intro?.blocks?.length]
   );
 
   useEffect(() => {
+    if (!tourId) return;
+    const tour = getTourData(tourId);
+    const { pois } = tour;
     setTourData(getTourData(tourId));
+    setFirstPoiId(pois[0].id);
   }, [tourId]);
 
   useEffect(() => {
@@ -148,15 +149,19 @@ const TourPage = ({ setLayoutState }) => {
         text: "Back",
       },
       desktopNextLink: {
-        url: isLanding ? `/tours/${tourId}/?intro=1` : `/tours/${tourId}/tour`,
+        url: isLanding
+          ? `/tours/${tourId}/?intro=1`
+          : `/tours/${tourId}/tour?poi=${firstPoiId}`,
         text: isLanding ? "Let's Start" : "Start the Tour",
       },
       mobileBackLink: backLink,
       mobileNextLink: nextLink,
     });
-  }, [setLayoutState, nextLink, backLink, tourId, isLanding]);
+  }, [setLayoutState, firstPoiId, nextLink, backLink, tourId, isLanding]);
 
-  if (!tourData) return <div>loading</div>;
+  if (!tourData || Object.keys(tourData).length === 0) {
+    return <div>loading</div>;
+  }
 
   return (
     <>
@@ -174,7 +179,7 @@ const TourPage = ({ setLayoutState }) => {
                 id={introId}
                 data={intro}
                 thumbnail={thumbnail}
-                skipUrl={`/tours/${tourId}/tour`}
+                skipUrl={`/tours/${tourId}/tour?poi=${firstPoiId}`}
               />
             )}
 
@@ -182,7 +187,7 @@ const TourPage = ({ setLayoutState }) => {
               <FunFact
                 id={factId}
                 data={fact}
-                skipUrl={`/tours/${tourId}/tour`}
+                skipUrl={`/tours/${tourId}/tour?poi=${firstPoiId}`}
               />
             )}
           </div>
