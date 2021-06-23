@@ -1,10 +1,10 @@
 export default {
   cooFrame: "ICRS",
   showReticle: false,
-  showZoomControl: true,
+  showZoomControl: false,
   showFullscreenControl: false,
   showLayersControl: false,
-  showGotoControl: true,
+  showGotoControl: false,
   showShareControl: false,
   showSimbadPointerControl: false,
   showFrame: false,

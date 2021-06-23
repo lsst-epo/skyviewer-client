@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { withLayout } from "@moxy/next-layout";
 import PrimaryLayout from "@/layouts/Primary";
-import ExplorerLayout from "@/layouts/Explorer";
+import AladinLayout from "@/layouts/Aladin";
 import { getCatalogsData, useCatalogsData } from "@/lib/api/catalogs";
 import Explorer from "@/components/explorer/index.js";
 
@@ -34,7 +34,7 @@ const ExplorerPage = ({ catalogs }) => {
 
 export default withLayout(
   <PrimaryLayout route="/explorer">
-    <ExplorerLayout />
+    <AladinLayout />
   </PrimaryLayout>
 )(ExplorerPage);
 

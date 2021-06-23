@@ -20,7 +20,7 @@
 @forward 'components/global/SecondaryHeader/styles';
 
 // Layouts
-@forward 'components/layouts/Explorer/styles';
+@forward 'components/layouts/Aladin/styles';
 @forward 'components/layouts/GuidedExperience/styles';
 @forward 'components/layouts/GuidedExperiences/styles';
 @forward 'components/layouts/Primary/styles';
@@ -32,6 +32,7 @@
 
 // Tours
 @forward 'components/tours/styles';
+@forward 'components/Pois/styles';
 
 // Explorer
 @forward 'components/explorer/Aladin/styles';

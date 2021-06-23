@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Head from "next/head";
 
-export default function ExplorerLayout({ children }) {
+export default function AladinLayout({ children }) {
   return (
     <>
       <Head>
@@ -32,6 +32,6 @@ export default function ExplorerLayout({ children }) {
   );
 }
 
-ExplorerLayout.propTypes = {
+AladinLayout.propTypes = {
   children: PropTypes.node,
 };
