@@ -10,7 +10,7 @@
 export default [
   {
     type: "HiPS",
-    url: "https://epo-hips.netlify.app/catalog_stars",
+    url: "https://storage.googleapis.com/epo-hips-data/catalog_stars",
     options: {
       name: "star",
       sourceSize: 20,
@@ -19,7 +19,7 @@ export default [
   },
   {
     type: "HiPS",
-    url: "https://epo-hips.netlify.app/catalog_galaxies",
+    url: "https://storage.googleapis.com/epo-hips-data/catalog_galaxies",
     options: {
       name: "galaxy",
       sourceSize: 20,
@@ -28,7 +28,7 @@ export default [
   },
   {
     type: "HiPS",
-    url: "https://epo-hips.netlify.app/catalog_nebulae",
+    url: "https://storage.googleapis.com/epo-hips-data/catalog_nebulae",
     options: {
       name: "nebula",
       sourceSize: 20,
@@ -37,7 +37,7 @@ export default [
   },
   {
     type: "HiPS",
-    url: "https://epo-hips.netlify.app/catalog_transients",
+    url: "https://storage.googleapis.com/epo-hips-data/catalog_transients",
     options: {
       name: "transient",
       sourceSize: 20,
@@ -46,7 +46,7 @@ export default [
   },
   {
     type: "HiPS",
-    url: "https://epo-hips.netlify.app/catalog_goals",
+    url: "https://storage.googleapis.com/epo-hips-data/catalog_goals",
     options: {
       name: "goal",
       sourceSize: 20,
@@ -55,7 +55,7 @@ export default [
   },
   {
     type: "HiPS",
-    url: "https://epo-hips.netlify.app/catalog_landmarks",
+    url: "https://storage.googleapis.com/epo-hips-data/catalog_landmarks",
     options: {
       name: "landmark",
       sourceSize: 20,
