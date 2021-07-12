@@ -1,63 +1,56 @@
-import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import { useEffect, useState, useMemo } from "react";
 import { withLayout } from "@moxy/next-layout";
 import { useRouter } from "next/router";
 import PrimaryLayout from "@/layouts/Primary";
 import AladinLayout from "@/layouts/Aladin";
-import TourLayout from "@/layouts/Tour";
 import Pois from "@/components/Pois";
+import Nav from "@/components/Pois/Nav";
 import { getTourData, getPoiData } from "@/helpers";
 
 const DEFAULT_NEXT = { url: "/intro/", text: "Next" };
 const DEFAULT_BACK = { url: "/tours/", text: "Back" };
 
-const PoiPage = ({ setLayoutState }) => {
+const PoiPage = () => {
   const router = useRouter();
   const {
     query,
-    query: { tour: tourId, poi: poiId },
+    query: { tour: tourId, poi },
   } = router;
-  const [tourData, setTourData] = useState(null);
-  const [poiData, setPoiData] = useState(null);
+
+  const [tourData, setTourData] = useState(getTourData(tourId));
+  const navLinks = useMemo(() => getNavLinks(poi, tourData), [poi, tourData]);
 
   useEffect(() => {
-    if (!tourId) return;
     setTourData(getTourData(tourId));
   }, [tourId]);
 
-  useEffect(() => {
+  function getNavLinks(poi, tourData) {
     if (!tourData) return;
-    setPoiData(getPoiData(tourData.pois, poiId));
-  }, [tourData, poiId]);
+    const { id, pois, fact } = tourData;
+    const last = pois.length;
+    const current = +poi;
+    const next = current < pois.length ? current + 1 : null;
+    const previous = current > 1 ? current - 1 : null;
 
-  useEffect(() => {
-    if (!tourData || !poiData) return;
-
-    const { pois, fact } = tourData;
-    const lastIndex = pois.length - 1;
-    const currentIndex = pois.indexOf(poiData);
-    const nextIndex = currentIndex < lastIndex ? currentIndex + 1 : null;
-    const previousIndex = currentIndex > 0 ? currentIndex - 1 : null;
-
-    setLayoutState({
+    return {
       backLink: {
         url:
-          previousIndex === null
-            ? `/tours/${tourId}/?fact=${fact.blocks.length}`
-            : `/tours/${tourId}/tour?poi=${pois[previousIndex].id}`,
+          previous === null
+            ? `/tours/${id}/?fact=${fact.blocks.length}`
+            : `/tours/${id}/tour?poi=${previous}`,
         text: "Back",
       },
       nextLink: {
         url:
-          nextIndex === null
-            ? `/tours/${tourId}/tour?summary=1`
-            : `/tours/${tourId}/tour?poi=${pois[nextIndex].id}`,
+          next === null
+            ? `/tours/${id}/tour?summary=1`
+            : `/tours/${id}/tour?poi=${next}`,
         text: "Next",
       },
-    });
-  }, [setLayoutState, tourId, tourData, poiData]);
+    };
+  }
 
-  if (!poiData) {
+  if (!tourData || !poi) {
     return <div>loading</div>;
   }
 
@@ -68,25 +61,16 @@ const PoiPage = ({ setLayoutState }) => {
         survey="http://alasky.u-strasbg.fr/DSS/DSSColor"
         fov={100}
         fovRange={[0.03, 180]}
-        poi={poiData}
+        poi={tourData?.pois[+poi - 1]}
+        tourTitle={tourData.title}
       />
+      {navLinks && <Nav {...navLinks} />}
     </>
   );
 };
 
-PoiPage.propTypes = {
-  setLayoutState: PropTypes.func,
-};
-
-const mapLayoutStateToLayoutTree = ({ shareLink, nextLink, backLink }) => (
+export default withLayout(
   <PrimaryLayout closeUrl="/tours">
-    <TourLayout {...{ nextLink, backLink }}>
-      <AladinLayout />
-    </TourLayout>
+    <AladinLayout />
   </PrimaryLayout>
-);
-
-export default withLayout(mapLayoutStateToLayoutTree, {
-  nextLink: DEFAULT_NEXT,
-  backLink: DEFAULT_BACK,
-})(PoiPage);
+)(PoiPage);

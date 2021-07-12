@@ -33,12 +33,8 @@ export const getDownloadLink = (uri, name = "download") => {
 };
 
 export const getTourData = (id) => {
-  if (!id) return;
+  if (!id) return null;
   const tour = PLACEHOLDER_TOURS.find((tour) => +id === tour.id);
   tour.pois = PLACEHOLDER_POIS;
   return tour;
-};
-
-export const getPoiData = (pois, id) => {
-  return pois.find((poi) => +id === poi.id);
 };
