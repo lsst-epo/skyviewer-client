@@ -20,7 +20,6 @@ const TourPage = ({ setLayoutState }) => {
     query: { tour: tourId, intro: introId, fact: factId },
   } = router;
   const [tourData, setTourData] = useState(getTourData(tourId));
-  const [firstPoiId, setFirstPoiId] = useState(1);
   const [isLanding, setIsLanding] = useState(!introId && !factId);
   const [nextLink, setNextLink] = useState(DEFAULT_NEXT);
   const [backLink, setBackLink] = useState(DEFAULT_BACK);
@@ -87,7 +86,7 @@ const TourPage = ({ setLayoutState }) => {
             url:
               type === "intro"
                 ? `/tours/${tourId}/?fact=1`
-                : `/tours/${tourId}/tour?poi=${firstPoiId}`,
+                : `/tours/${tourId}/tour?poi=1`,
             text: type === "intro" ? "Next" : "Start the Tour",
           },
         ];
@@ -103,13 +102,13 @@ const TourPage = ({ setLayoutState }) => {
             url:
               type === "intro"
                 ? `/tours/${tourId}/?fact=1`
-                : `/tours/${tourId}/tour?poi=${firstPoiId}`,
+                : `/tours/${tourId}/tour?poi=1`,
             text: type === "intro" ? "Next" : "Start the Tour",
           },
         ];
       }
     },
-    [tourId, firstPoiId, tourData?.intro?.blocks?.length]
+    [tourId, tourData?.intro?.blocks?.length]
   );
 
   useEffect(() => {
@@ -117,7 +116,6 @@ const TourPage = ({ setLayoutState }) => {
     const tour = getTourData(tourId);
     const { pois } = tour;
     setTourData(getTourData(tourId));
-    setFirstPoiId(pois[0].id);
   }, [tourId]);
 
   useEffect(() => {
@@ -151,13 +149,13 @@ const TourPage = ({ setLayoutState }) => {
       desktopNextLink: {
         url: isLanding
           ? `/tours/${tourId}/?intro=1`
-          : `/tours/${tourId}/tour?poi=${firstPoiId}`,
+          : `/tours/${tourId}/tour?poi=1`,
         text: isLanding ? "Let's Start" : "Start the Tour",
       },
       mobileBackLink: backLink,
       mobileNextLink: nextLink,
     });
-  }, [setLayoutState, firstPoiId, nextLink, backLink, tourId, isLanding]);
+  }, [setLayoutState, nextLink, backLink, tourId, isLanding]);
 
   if (!tourData || Object.keys(tourData).length === 0) {
     return <div>loading</div>;
@@ -179,7 +177,7 @@ const TourPage = ({ setLayoutState }) => {
                 id={introId}
                 data={intro}
                 thumbnail={thumbnail}
-                skipUrl={`/tours/${tourId}/tour?poi=${firstPoiId}`}
+                skipUrl={`/tours/${tourId}/tour?poi=1`}
               />
             )}
 
@@ -187,7 +185,7 @@ const TourPage = ({ setLayoutState }) => {
               <FunFact
                 id={factId}
                 data={fact}
-                skipUrl={`/tours/${tourId}/tour?poi=${firstPoiId}`}
+                skipUrl={`/tours/${tourId}/tour?poi=1`}
               />
             )}
           </div>

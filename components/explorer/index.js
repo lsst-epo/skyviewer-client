@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import defaultOptions from "@/fixtures/defaultAladinOptions";
 import defaultFilters from "@/fixtures/defaultExplorerFilters";

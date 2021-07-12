@@ -1,17 +1,19 @@
-import { useEffect, useContext, useCallback } from "react";
+import { useEffect, useContext, useState } from "react";
 import PropTypes from "prop-types";
 import AladinGlobalContext from "@/contexts/AladinGlobal";
+import Overlay from "@/components/Pois/Overlay";
 
 export default function Aladin({
   selector,
   survey,
-  target,
-  fov,
+  tourTitle,
+  poi,
   fovRange,
   options,
   onClick,
 }) {
   const { aladinGlobal, aladin } = useContext(AladinGlobalContext) || {};
+  const [showDetails, setShowDetails] = useState(false);
 
   useEffect(() => {
     if (!aladin) return;
@@ -25,24 +27,62 @@ export default function Aladin({
   }, [aladin]);
 
   useEffect(() => {
-    if (!aladin || !target) return;
-    // console.log(aladin);
-    const [ra, dec] = target;
+    setShowDetails(false);
+  }, [poi]);
+
+  useEffect(() => {
+    if (!aladin || !poi) return;
     aladin.zoomToFoV(100, 0.5, () => {
-      aladin.animateToRaDec(ra, dec, 2, () => {
-        // console.log("oh hey");
-        aladin.zoomToFoV(fov, 0.5);
+      aladin.animateToRaDec(poi.ra, poi.dec, 1.8, () => {
+        aladin.zoomToFoV(poi.fov, 0.5, () => {
+          const [aladinWidthDegrees, aladinHeightDegrees] = aladin.getFov();
+          const [aladinWidthPixels, aladinHeightPixels] = aladin.getSize();
+          const [
+            topLeft,
+            topRight,
+            bottomRight,
+            bottomLeft,
+          ] = aladin.getFovCorners();
+          let offsetRa = poi.ra;
+          let offsetDec = poi.dec;
+
+          if (aladinWidthPixels >= 1280) {
+            offsetRa = poi.ra - aladinWidthDegrees / 4;
+          } else {
+            const offset =
+              topRight[1] < bottomRight[1]
+                ? aladinHeightDegrees / 5
+                : aladinHeightDegrees / -5;
+            offsetDec = poi.dec + offset;
+          }
+
+          aladin.animateToRaDec(offsetRa, offsetDec, 0.6, () => {
+            setShowDetails(true);
+          });
+        });
       });
     });
-  }, [aladin, target, fov]);
+  }, [aladin, poi]);
 
-  return <div id="aladin-lite-div" className="aladin-container" />;
+  return (
+    <>
+      <div className="poi-container">
+        <Overlay
+          isOpen={showDetails}
+          tourTitle={tourTitle}
+          title={poi?.title}
+          description={poi?.description}
+        />
+      </div>
+      <div id="aladin-lite-div" className="aladin-container" />
+    </>
+  );
 }
 Aladin.propTypes = {
   selector: PropTypes.string,
   survey: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  target: PropTypes.array,
-  fov: PropTypes.number,
+  tourTitle: PropTypes.string,
+  poi: PropTypes.object,
   fovRange: PropTypes.array,
   options: PropTypes.object,
   onClick: PropTypes.func,

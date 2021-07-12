@@ -1,4 +1,5 @@
 @use 'abstracts/functions';
+@use 'abstracts/mixins/base';
 
 .poi-nav-container {
   position: absolute;
@@ -6,13 +7,24 @@
   bottom: 0;
   left: 0;
   z-index: 4;
+  display: flex;
+  justify-content: center;
+
+  @include base.fluid-scale(
+    bottom,
+    50px,
+    0px,
+    functions.break(desktop),
+    810px,
+  );
 }
 
 .poi-nav {
   display: flex;
   flex-flow: row nowrap;
   justify-content: stretch;
-  // background-color: functions.palette(turquoise70);
+  width: 100%;
+  max-width: 810px;
 
   .poi-nav-item {
     display: flex;
@@ -25,7 +37,7 @@
     justify-content: center;
     width: 100%;
     padding: 15px;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: functions.font-weight(bold);
     line-height: 1.6;
     color: functions.palette(white);
@@ -42,5 +54,32 @@
       border-right: 1px solid functions.palette(turquoise55);
       border-left: 1px solid functions.palette(turquoise55);
     }
+
+    @include base.respond(functions.break(tablet), min) {
+      font-size: 16px;
+      border: none;
+
+      &:hover, &:focus {
+        background-color: functions.palette(turquoise55);
+        border: none;
+      }
+    }
+
+    @include base.fluid-scale(
+      padding,
+      22px,
+      15px,
+      functions.break(tablet),
+      functions.break(mobile)
+    );
+
+
+    @include base.fluid-scale(
+      margin,
+      8px,
+      0px,
+      functions.break(desktop),
+      functions.break(tablet)
+    );
   }
 }
