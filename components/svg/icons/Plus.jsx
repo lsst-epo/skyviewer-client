@@ -23,7 +23,7 @@ export default function Plus({
         <path
           d="M14,1.306,12.693,0,7,5.693,1.306,0,0,1.306,5.693,7,0,12.693,1.306,14,7,8.306,12.693,14,14,12.693,8.306,7Z"
           transform="translate(0 0)"
-          fill="#fff"
+          fill={fill}
         />
       </g>
     </svg>

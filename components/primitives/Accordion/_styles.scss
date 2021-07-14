@@ -1,51 +1,40 @@
 @use 'abstracts/functions';
 @use 'abstracts/mixins/typography';
 
-$_toggle-width: 1.333em;
-$_toggle-padding: calc(#{$_toggle-width} + 1em);
+.accordion {
+  background-color: functions.palette(neutral10);
 
-.c-accordion {
-  &__summary {
-    @include typography.type-scale(24px, 18px);
-    position: relative;
-    display: flex;
-    align-self: baseline;
-    padding-left: $_toggle-padding;
-    cursor: pointer;
+  + .accordion {
+    border-top: 1px solid functions.palette(neutral30);
 
-    &::marker {
-      display: none;
-    }
-
-    &::before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: flex;
-      width: $_toggle-width;
-      height: $_toggle-width;
-      font-size: 1.25em;
-      font-weight: functions.font-weight(extra-bold);
-      line-height: $_toggle-width;
-      color: functions.palette(white);
-      content: '+';
-      background-color: functions.palette(turquoise55);
-      transition: background-color 0.2s;
-      place-content: center;
-    }
-
-    &:focus {
-      outline: none;
-    }
-
-    &:hover::before,
-    &:focus-visible::before {
-      background-color: functions.palette(turquoise85);
-    }
   }
 
-  &__details {
-    padding-left: $_toggle-padding;
-    margin-top: 1.5em;
+  &.is-expanded + .accordion {
+    border-top: 0;
   }
+}
+
+.accordion-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 7px 12px;
+  background-color: functions.palette(neutral20);
+
+  .accordion-title {
+    font-size: 12px;
+    font-weight: functions.font-weight(bold);
+    color: functions.palette(black);
+  }
+
+  .accordion-icon {
+    width: 10px;
+    height: 10px;
+    fill: functions.palette(black);
+  }
+}
+
+.accordion-inner {
+  padding: 12px;
 }
