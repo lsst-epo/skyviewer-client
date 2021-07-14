@@ -3,6 +3,7 @@
 
 // Primitives
 @forward 'components/primitives/Accordion/styles';
+@forward 'components/primitives/AccordionGroup/styles';
 @forward 'components/primitives/Buttonish/styles';
 @forward 'components/primitives/Button/styles';
 @forward 'components/primitives/Checkbox/styles';
@@ -37,3 +38,4 @@
 // Explorer
 @forward 'components/explorer/Aladin/styles';
 @forward 'components/explorer/Controls/styles';
+@forward 'components/explorer/SourceDetails/styles';

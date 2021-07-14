@@ -9,7 +9,6 @@ export default function useFocusTrap(elementRef, active, ...options) {
 
     function focusElement() {
       if (!elementRef.current) return;
-
       trap = createFocusTrap(elementRef.current, {
         escapeDeactivates: true,
         clickOutsideDeactivates: true,

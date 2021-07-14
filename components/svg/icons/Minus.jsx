@@ -24,7 +24,7 @@ export default function Plus({
           width="17.951"
           height="1.848"
           transform="translate(0 12.693) rotate(-45)"
-          fill="#fff"
+          fill={fill}
         />
       </g>
     </svg>

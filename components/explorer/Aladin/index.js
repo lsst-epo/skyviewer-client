@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext, useCallback, useRef } from "react";
 import PropTypes from "prop-types";
 import debounce from "lodash.debounce";
+import useResizeObserver from "use-resize-observer";
 import { getSourceCatalogOptions } from "./utilities";
 import ExplorerContext from "@/contexts/Explorer";
 import AladinGlobalContext from "@/contexts/AladinGlobal";
@@ -8,6 +9,7 @@ import AladinCatalogsContext from "@/contexts/AladinCatalogs";
 import FiltersContext from "@/contexts/Filters";
 import SourcesList from "@/components/explorer/Aladin/SourcesList";
 import Controls from "@/components/explorer/Controls";
+import SourceDetails from "@/components/explorer/SourceDetails";
 
 export default function Aladin({
   selector,
@@ -20,7 +22,6 @@ export default function Aladin({
   markerLayers,
   jpgs,
   onSelect,
-  onObjectClicked,
   onObjectHovered,
   onFootprintClicked,
   onFootprintHovered,
@@ -31,9 +32,22 @@ export default function Aladin({
   const { aladinGlobal, aladin } = useContext(AladinGlobalContext) || {};
   const { filters } = useContext(FiltersContext) || {};
   const [srcsInRegion, setSrcsInRegion] = useState(null);
-  const aladinContainer = useRef(null);
+  const [sourceData, setSourceData] = useState(null);
+  // const aladinContainer = useRef(null);
   const aladinReticleCanvas = useRef(null);
-  // console.log(aladin);
+
+  const { ref: aladinContainer } = useResizeObserver({
+    onResize: () => {
+      if (!sourceData) return;
+
+      const currentSourceData = { ...sourceData };
+      const { _RA: ra, _DEC: dec } = currentSourceData;
+
+      currentSourceData.position = getPixelPos([ra, dec]);
+      setSourceData(currentSourceData);
+    },
+  });
+
   useEffect(() => {
     const { hasFocus } = settings;
     if (!aladinReticleCanvas.current && aladinContainer.current) {
@@ -220,7 +234,27 @@ export default function Aladin({
   };
 
   const onClick = (event) => {
+    if (!event) return;
     aladinReticleCanvas.current.focus();
+  };
+
+  function getPixelPos(worldPos) {
+    const [ra, dec] = worldPos;
+    const pixelPos = aladin.world2pix(ra, dec);
+    return [pixelPos[1], pixelPos[0]];
+  }
+
+  const showSourceDetails = (event) => {
+    if (!event) return;
+    const { data } = event;
+    const { _RA: ra, _DEC: dec } = data;
+
+    data.position = getPixelPos([ra, dec]);
+    setSourceData(data);
+  };
+
+  const hideSourceDetails = () => {
+    setSourceData(null);
   };
 
   const onPositionChanged = (event) => {
@@ -244,7 +278,7 @@ export default function Aladin({
       click: onClick || null,
       select: onSelect || null,
       zoomChanged: onZoomChanged,
-      objectClicked: onObjectClicked || null,
+      objectClicked: showSourceDetails,
       objectHovered: onObjectHovered || null,
       footprintClicked: onFootprintClicked || null,
       footprintHovered: onFootprintHovered || null,
@@ -338,6 +372,7 @@ export default function Aladin({
   return (
     <>
       <Controls />
+      <SourceDetails data={sourceData} handleClose={hideSourceDetails} />
       <div
         ref={aladinContainer}
         id="aladin-lite-div"
@@ -360,7 +395,6 @@ Aladin.propTypes = {
   onClick: PropTypes.func,
   onSelect: PropTypes.func,
   onZoomChanged: PropTypes.func,
-  onObjectClicked: PropTypes.func,
   onObjectHovered: PropTypes.func,
   onFootprintClicked: PropTypes.func,
   onFootprintHovered: PropTypes.func,

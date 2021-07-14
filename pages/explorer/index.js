@@ -14,7 +14,7 @@ import Explorer from "@/components/explorer/index.js";
 // "http://localhost:5000/images"
 
 const ExplorerPage = ({ catalogs }) => {
-  const data = useCatalogsData();
+  // const data = useCatalogsData();
   // eslint-disable-next-line no-console
   // console.log("serverside", catalogs);
   // eslint-disable-next-line no-console

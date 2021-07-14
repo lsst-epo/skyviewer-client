@@ -65,6 +65,10 @@
     width: 100%;
   }
 
+  &:hover {
+    border-color: functions.palette(turquoise55);
+  }
+
   &:hover, &:focus {
     background-color: functions.palette(turquoise55);
   }
