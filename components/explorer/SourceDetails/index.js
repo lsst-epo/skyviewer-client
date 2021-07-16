@@ -37,6 +37,10 @@ export default function SourceDetails({ data, handleClose }) {
   useKeyDownEvent(handleKeyDown);
   useOnClickOutside(modalRef, handleClose);
 
+  useEffect(() => {
+    setActiveAccordion("overview");
+  }, [data]);
+
   return (
     <div
       className={classnames("source-details-modal-container", {
