@@ -6,10 +6,12 @@ import GuidedExperiencesLayout from "@/layouts/GuidedExperiences";
 import Tours from "@/components/tours";
 
 import DEFAULT_FILTERS from "@/fixtures/defaultGEFilters";
-import PLACEHOLDER_TOURS from "@/fixtures/placeholderTours";
+// import PLACEHOLDER_TOURS from "@/fixtures/placeholderTours";
+import { useToursByVarietyData } from "@/lib/api/tours";
 
 const ToursPage = () => {
-  return <Tours tours={PLACEHOLDER_TOURS} />;
+  const tours = useToursByVarietyData("tours")?.data;
+  return <Tours tours={tours} />;
 };
 
 export default withLayout(
