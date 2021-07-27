@@ -2,9 +2,7 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import IconComposer from "@/svg/IconComposer";
 
-export default function FunFact({ skipUrl, id, data }) {
-  const { heading, blocks } = data;
-
+export default function FunFact({ skipUrl, id, heading, blocks }) {
   return (
     <>
       {id && (
@@ -15,7 +13,7 @@ export default function FunFact({ skipUrl, id, data }) {
           </div>
           <div
             className="tour-fact-body"
-            dangerouslySetInnerHTML={{ __html: blocks[+id - 1].block }}
+            dangerouslySetInnerHTML={{ __html: blocks[+id - 1].body }}
           />
           {skipUrl && (
             <Link href={skipUrl}>
@@ -30,13 +28,15 @@ export default function FunFact({ skipUrl, id, data }) {
           <h2 className="tour-fact-heading">{heading}</h2>
         </div>
         <div className="tour-fact-body">
-          {blocks.map((block, index) => {
+          {blocks.map((block) => {
+            const { id, body } = block;
+
             return (
               <div
                 className="block"
-                key={`block-${index}`}
+                key={`block-${id}`}
                 dangerouslySetInnerHTML={{
-                  __html: blocks[index].block,
+                  __html: body,
                 }}
               />
             );
@@ -48,7 +48,8 @@ export default function FunFact({ skipUrl, id, data }) {
 }
 
 FunFact.propTypes = {
-  data: PropTypes.object,
+  heading: PropTypes.string,
+  blocks: PropTypes.array,
   id: PropTypes.any,
   skipUrl: PropTypes.string,
 };

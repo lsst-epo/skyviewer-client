@@ -2,9 +2,14 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import Bubbles from "@/components/Bubbles";
 
-export default function Intro({ skipUrl, id, data, thumbnail }) {
-  const { heading, subheading, blocks } = data;
-
+export default function Intro({
+  skipUrl,
+  id,
+  heading,
+  subheading,
+  blocks,
+  thumbnail,
+}) {
   return (
     <>
       {id && (
@@ -12,7 +17,9 @@ export default function Intro({ skipUrl, id, data, thumbnail }) {
           <div className="top">
             <div
               className="tour-intro-thumbnail"
-              style={{ backgroundImage: `url(${thumbnail})` }}
+              style={{
+                backgroundImage: `url(${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${thumbnail[0].url})`,
+              }}
             />
             <div className="main">
               <div>
@@ -21,7 +28,7 @@ export default function Intro({ skipUrl, id, data, thumbnail }) {
               </div>
               <div
                 className="tour-intro-body"
-                dangerouslySetInnerHTML={{ __html: blocks[+id - 1].block }}
+                dangerouslySetInnerHTML={{ __html: blocks[+id - 1]?.body }}
               />
             </div>
           </div>
@@ -36,7 +43,9 @@ export default function Intro({ skipUrl, id, data, thumbnail }) {
       <div className="tour-intro desktop-only">
         <div
           className="tour-intro-thumbnail"
-          style={{ backgroundImage: `url(${thumbnail})` }}
+          style={{
+            backgroundImage: `url(${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${thumbnail[0].url})`,
+          }}
         />
         <div className="main">
           <div>
@@ -44,13 +53,15 @@ export default function Intro({ skipUrl, id, data, thumbnail }) {
             <h3 className="tour-intro-subheading">{subheading}</h3>
           </div>
           <div className="tour-intro-body">
-            {blocks.map((block, index) => {
+            {blocks.map((block) => {
+              const { id, body } = block;
+
               return (
                 <div
                   className="block"
-                  key={`block-${index}`}
+                  key={`block-${id}`}
                   dangerouslySetInnerHTML={{
-                    __html: blocks[index].block,
+                    __html: body,
                   }}
                 />
               );
@@ -63,8 +74,10 @@ export default function Intro({ skipUrl, id, data, thumbnail }) {
 }
 
 Intro.propTypes = {
-  data: PropTypes.object,
   id: PropTypes.any,
-  thumbnail: PropTypes.string,
+  heading: PropTypes.string,
+  subheading: PropTypes.string,
+  blocks: PropTypes.array,
+  thumbnail: PropTypes.array,
   skipUrl: PropTypes.string,
 };

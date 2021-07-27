@@ -5,7 +5,7 @@ import IconComposer from "@/svg/IconComposer";
 import Bubbles from "@/components/Bubbles";
 
 export default function TourListItem({
-  id,
+  slug,
   title,
   duration,
   complexity,
@@ -21,11 +21,13 @@ export default function TourListItem({
 
   return (
     <li className="tour-list-item">
-      <Link href={`/tours/${id}`}>
+      <Link href={`/tours/${slug}`}>
         <a className="tour-link">
           <div
             className="thumbnail"
-            style={{ backgroundImage: `url("${thumbnail}")` }}
+            style={{
+              backgroundImage: `url(${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${thumbnail[0].url})`,
+            }}
           />
           <div className="details">
             <h3 className="name">{title}</h3>
@@ -50,9 +52,9 @@ export default function TourListItem({
 }
 
 TourListItem.propTypes = {
-  id: PropTypes.number.isRequired,
+  slug: PropTypes.string,
   title: PropTypes.string,
   complexity: PropTypes.number,
   duration: PropTypes.number,
-  thumbnail: PropTypes.string,
+  thumbnail: PropTypes.array,
 };
