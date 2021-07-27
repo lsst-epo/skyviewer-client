@@ -32,9 +32,12 @@ export default function Aladin({
 
   useEffect(() => {
     if (!aladin || !poi) return;
+    const { astroObject, fov } = poi;
+    if (!astroObject || astroObject?.length < 1) return;
+    const { ra, dec } = astroObject[0];
     aladin.zoomToFoV(100, 0.5, () => {
-      aladin.animateToRaDec(poi.ra, poi.dec, 1.8, () => {
-        aladin.zoomToFoV(poi.fov, 0.5, () => {
+      aladin.animateToRaDec(ra, dec, 1.8, () => {
+        aladin.zoomToFoV(fov, 0.5, () => {
           const [aladinWidthDegrees, aladinHeightDegrees] = aladin.getFov();
           const [aladinWidthPixels, aladinHeightPixels] = aladin.getSize();
           const [
@@ -70,7 +73,7 @@ export default function Aladin({
         <Overlay
           isOpen={showDetails}
           tourTitle={tourTitle}
-          title={poi?.title}
+          title={poi?.astroObject[0]?.title}
           description={poi?.description}
         />
       </div>

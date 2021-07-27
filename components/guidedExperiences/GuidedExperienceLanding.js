@@ -5,7 +5,6 @@ import Bubbles from "@/components/Bubbles";
 
 export default function GuidedExperienceLanding({
   title,
-  thumbnail,
   backgroundImage,
   duration,
   complexity,
@@ -21,7 +20,7 @@ export default function GuidedExperienceLanding({
   return (
     <div
       className="guided-experience-landing-container"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+      style={{ backgroundImage: `url(${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${backgroundImage[0].url})` }}
     >
       <div className="background-opacitizer" />
       <div className="guided-experience-landing">
@@ -49,8 +48,7 @@ export default function GuidedExperienceLanding({
 
 GuidedExperienceLanding.propTypes = {
   title: PropTypes.string,
-  thumbnail: PropTypes.string,
-  backgroundImage: PropTypes.string,
+  backgroundImage: PropTypes.array,
   duration: PropTypes.number,
   complexity: PropTypes.number,
 };

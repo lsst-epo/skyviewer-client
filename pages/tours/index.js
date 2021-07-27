@@ -11,7 +11,9 @@ import { useToursByVarietyData } from "@/lib/api/tours";
 
 const ToursPage = () => {
   const tours = useToursByVarietyData("tours")?.data;
-  return <Tours tours={tours} />;
+
+  if (tours) return <Tours tours={tours} />;
+  return null;
 };
 
 export default withLayout(

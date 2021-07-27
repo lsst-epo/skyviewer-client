@@ -5,14 +5,12 @@ import TourListItem from "./ListItem";
 export default function Tours({ tours }) {
   return (
     <div className="tours-list-container">
-      {tours && (
-        <ul className="tours-list">
-          {tours.map((tour) => {
-            const { id } = tour;
-            return <TourListItem key={id} {...tour} />;
-          })}
-        </ul>
-      )}
+      <ul className="tours-list">
+        {tours.map((tour) => {
+          const { id } = tour;
+          return <TourListItem key={id} {...tour} />;
+        })}
+      </ul>
     </div>
   );
 }

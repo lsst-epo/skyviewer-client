@@ -8,7 +8,8 @@ import GuidedExperienceLayout from "@/layouts/GuidedExperience";
 import GuidedExperienceLanding from "@/components/guidedExperiences/GuidedExperienceLanding";
 import Intro from "@/components/tours/Intro";
 import FunFact from "@/components/tours/FunFact";
-import { getTourData } from "@/helpers";
+// import { getTourData } from "@/helpers";
+import { useTourData } from "@/lib/api/tour";
 
 const DEFAULT_NEXT = { url: "/intro/", text: "Let's Start" };
 const DEFAULT_BACK = { url: "/tours/", text: "Back" };
@@ -17,12 +18,14 @@ const TourPage = ({ setLayoutState }) => {
   const router = useRouter();
   const {
     query,
-    query: { tour: tourId, intro: introId, fact: factId },
+    query: { tour: tourSlug, intro: introId, fact: factId },
   } = router;
-  const [tourData, setTourData] = useState(getTourData(tourId));
+
+  const { data: tourData } = useTourData(tourSlug);
   const [isLanding, setIsLanding] = useState(!introId && !factId);
   const [nextLink, setNextLink] = useState(DEFAULT_NEXT);
   const [backLink, setBackLink] = useState(DEFAULT_BACK);
+
   const {
     id,
     title,
@@ -32,7 +35,11 @@ const TourPage = ({ setLayoutState }) => {
     backgroundImage,
     intro,
     fact,
-    pois,
+    introHeading,
+    introSubheading,
+    introContentBlocks,
+    factsHeading,
+    factsContentBlocks,
   } = tourData || {};
 
   const getNavLinks = useCallback(
@@ -43,7 +50,7 @@ const TourPage = ({ setLayoutState }) => {
             url: `/tours/`,
             text: "Back",
           },
-          { url: `/tours/${tourId}/?intro=1`, text: "Let's Start" },
+          { url: `/tours/${tourSlug}/?intro=1`, text: "Let's Start" },
         ];
       }
 
@@ -53,10 +60,10 @@ const TourPage = ({ setLayoutState }) => {
       if (id > 1 && id < totalPages) {
         return [
           {
-            url: `/tours/${tourId}/?${type}=${previousId}`,
+            url: `/tours/${tourSlug}/?${type}=${previousId}`,
             text: "Back",
           },
-          { url: `/tours/${tourId}/?${type}=${nextId}`, text: "Next" },
+          { url: `/tours/${tourSlug}/?${type}=${nextId}`, text: "Next" },
         ];
       }
       // First of many pages
@@ -65,11 +72,11 @@ const TourPage = ({ setLayoutState }) => {
           {
             url:
               type === "intro"
-                ? `/tours/${tourId}/`
-                : `/tours/${tourId}/?intro=${tourData.intro.blocks.length}`,
+                ? `/tours/${tourSlug}/`
+                : `/tours/${tourSlug}/?intro=${introContentBlocks.length}`,
             text: "Back",
           },
-          { url: `/tours/${tourId}/?${type}=${nextId}`, text: "Next" },
+          { url: `/tours/${tourSlug}/?${type}=${nextId}`, text: "Next" },
         ];
       }
       // Only page
@@ -78,15 +85,15 @@ const TourPage = ({ setLayoutState }) => {
           {
             url:
               type === "intro"
-                ? `/tours/${tourId}/`
-                : `/tours/${tourId}/?intro=${tourData.intro.blocks.length}`,
+                ? `/tours/${tourSlug}/`
+                : `/tours/${tourSlug}/?intro=${introContentBlocks.length}`,
             text: "Back",
           },
           {
             url:
               type === "intro"
-                ? `/tours/${tourId}/?fact=1`
-                : `/tours/${tourId}/tour?poi=1`,
+                ? `/tours/${tourSlug}/?fact=1`
+                : `/tours/${tourSlug}/tour?poi=1`,
             text: type === "intro" ? "Next" : "Start the Tour",
           },
         ];
@@ -95,28 +102,21 @@ const TourPage = ({ setLayoutState }) => {
       if (id >= totalPages) {
         return [
           {
-            url: `/tours/${tourId}/?${type}=${previousId}`,
+            url: `/tours/${tourSlug}/?${type}=${previousId}`,
             text: "Back",
           },
           {
             url:
               type === "intro"
-                ? `/tours/${tourId}/?fact=1`
-                : `/tours/${tourId}/tour?poi=1`,
+                ? `/tours/${tourSlug}/?fact=1`
+                : `/tours/${tourSlug}/tour?poi=1`,
             text: type === "intro" ? "Next" : "Start the Tour",
           },
         ];
       }
     },
-    [tourId, tourData?.intro?.blocks?.length]
+    [tourSlug, introContentBlocks?.length]
   );
-
-  useEffect(() => {
-    if (!tourId) return;
-    const tour = getTourData(tourId);
-    const { pois } = tour;
-    setTourData(getTourData(tourId));
-  }, [tourId]);
 
   useEffect(() => {
     setIsLanding(!introId && !factId);
@@ -124,38 +124,33 @@ const TourPage = ({ setLayoutState }) => {
 
   useEffect(() => {
     if (!tourData) return;
-    const {
-      intro: { blocks: introBlocks },
-      fact: { blocks: factBlocks },
-    } = tourData;
-
     let navLinks = getNavLinks();
     if (introId) {
-      navLinks = getNavLinks(+introId, introBlocks.length, "intro");
+      navLinks = getNavLinks(+introId, introContentBlocks.length, "intro");
     } else if (factId) {
-      navLinks = getNavLinks(+factId, factBlocks.length, "fact");
+      navLinks = getNavLinks(+factId, factsContentBlocks.length, "fact");
     }
 
     setBackLink(navLinks[0]);
     setNextLink(navLinks[1]);
-  }, [tourId, introId, factId, tourData, getNavLinks]);
+  }, [tourSlug, introId, factId, tourData, getNavLinks]);
 
   useEffect(() => {
     setLayoutState({
       desktopBackLink: {
-        url: isLanding ? `/tours` : `/tours/${tourId}`,
+        url: isLanding ? `/tours` : `/tours/${tourSlug}`,
         text: "Back",
       },
       desktopNextLink: {
         url: isLanding
-          ? `/tours/${tourId}/?intro=1`
-          : `/tours/${tourId}/tour?poi=1`,
+          ? `/tours/${tourSlug}/?intro=1`
+          : `/tours/${tourSlug}/tour?poi=1`,
         text: isLanding ? "Let's Start" : "Start the Tour",
       },
       mobileBackLink: backLink,
       mobileNextLink: nextLink,
     });
-  }, [setLayoutState, nextLink, backLink, tourId, isLanding]);
+  }, [setLayoutState, nextLink, backLink, tourSlug, isLanding]);
 
   if (!tourData || Object.keys(tourData).length === 0) {
     return <div>loading</div>;
@@ -172,20 +167,23 @@ const TourPage = ({ setLayoutState }) => {
       {(introId || factId) && (
         <div className="tour-intro-container">
           <div className="content-wrapper">
-            {intro && (
+            {introContentBlocks && (
               <Intro
                 id={introId}
-                data={intro}
+                heading={introHeading}
+                subheading={introSubheading}
+                blocks={introContentBlocks}
                 thumbnail={thumbnail}
-                skipUrl={`/tours/${tourId}/tour?poi=1`}
+                skipUrl={`/tours/${tourSlug}/tour?poi=1`}
               />
             )}
 
-            {fact && (
+            {factsContentBlocks && (
               <FunFact
                 id={factId}
-                data={fact}
-                skipUrl={`/tours/${tourId}/tour?poi=1`}
+                blocks={factsContentBlocks}
+                heading={factsHeading}
+                skipUrl={`/tours/${tourSlug}/tour?poi=1`}
               />
             )}
           </div>
