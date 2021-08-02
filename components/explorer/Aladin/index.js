@@ -293,25 +293,33 @@ export default function Aladin({
   };
 
   const createHiPSCatalog = (catalog) => {
-    const { url, options: catOpts } = catalog;
+    const { path, icon } = catalog;
     return aladinGlobal.catalogHiPS(
-      url,
-      getSourceCatalogOptions(catOpts, filtersChecker)
+      path,
+      getSourceCatalogOptions(
+        `${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${icon[0].url}`,
+        filtersChecker
+      )
     );
   };
 
   const createCatalog = (catalog) => {
-    const { type, url, options: catOpts } = catalog;
+    const { path, icon } = catalog;
 
-    if (type === "HiPS") {
-      return aladinGlobal.catalogHiPS(url, getSourceCatalogOptions(catOpts));
-    }
+    // if (type === "HiPS") {
+    return aladinGlobal.catalogHiPS(
+      path,
+      getSourceCatalogOptions(
+        `${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${icon[0].url}`
+      )
+    );
+    // }
 
-    if (type === "markers") {
-      return aladinGlobal.catalog(getSourceCatalogOptions(catOpts));
-    }
+    // if (type === "markers") {
+    //   return aladinGlobal.catalog(getSourceCatalogOptions(catOpts));
+    // }
 
-    return aladinGlobal.catalog(getSourceCatalogOptions(catOpts));
+    // return aladinGlobal.catalog(getSourceCatalogOptions(catOpts));
   };
 
   const aladinizeCats = (catalogs) => {
