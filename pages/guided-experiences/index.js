@@ -2,10 +2,14 @@ import NavLink from "@/primitives/NavLink";
 import GuidedExperiences from "@/components/guidedExperiences";
 import IconComposer from "@/svg/IconComposer";
 // import TEST_EXPERIENCES from "@/fixtures/placeholderExperiences";
+// import {
+//   useGuidedExpsData,
+//   useGuidedExpsCounts,
+// } from "@/lib/api/guidedExperiences";
 import {
   useGuidedExpsData,
   useGuidedExpsCounts,
-} from "@/lib/api/guidedExperiences";
+} from "@/lib/api/tourCategories";
 
 export default function GuidedExperiencesPage() {
   const guidedExps = useGuidedExpsData()?.data?.guidedExps;

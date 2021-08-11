@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import Link from "next/link";
 import { withLayout } from "@moxy/next-layout";
 import ToursContext from "@/contexts/Tours";
@@ -11,7 +12,6 @@ import { useToursByVarietyData } from "@/lib/api/tours";
 
 const ToursPage = () => {
   const tours = useToursByVarietyData("tours")?.data;
-
   if (tours) return <Tours tours={tours} />;
   return null;
 };

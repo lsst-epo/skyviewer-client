@@ -13,7 +13,7 @@
   margin: 22px auto 26px;
 
   @include base.respond(functions.break(tablet), min) {
-    justify-content: flex-start;
+    max-width: 100vw;
     overflow-x: scroll;
   }
 }

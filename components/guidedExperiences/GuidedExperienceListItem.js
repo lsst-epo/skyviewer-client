@@ -1,17 +1,12 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
 
-export default function GuidedExperience({
-  varietyName,
-  slug,
-  thumbnail,
-  count,
-}) {
+export default function GuidedExperience({ title, slug, thumbnail, count }) {
   return (
     <li className="guided-experience">
       <Link href={slug}>
         <a className="guided-experience-link">
-          <h2 className="guided-experience-heading">{varietyName}</h2>
+          <h2 className="guided-experience-heading">{title}</h2>
           <div
             className="guided-experience-thumbnail"
             style={{
@@ -33,7 +28,7 @@ export default function GuidedExperience({
 }
 
 GuidedExperience.propTypes = {
-  varietyName: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   thumbnail: PropTypes.array.isRequired,
   count: PropTypes.number,
