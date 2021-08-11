@@ -1,0 +1,12 @@
+runtime: custom
+env: flex
+service: skyviewer-client
+
+vm_health_check:
+ enable_health_check: False
+
+manual_scaling:
+  instances: 1
+
+resources:
+  memory_gb: 4
