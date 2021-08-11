@@ -20,7 +20,9 @@ export default function GuidedExperienceLanding({
   return (
     <div
       className="guided-experience-landing-container"
-      style={{ backgroundImage: `url(${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${backgroundImage[0].url})` }}
+      style={{
+        backgroundImage: `url(${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${backgroundImage[0].url})`,
+      }}
     >
       <div className="background-opacitizer" />
       <div className="guided-experience-landing">
