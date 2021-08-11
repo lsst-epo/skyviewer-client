@@ -8,6 +8,7 @@
     "static": "run-s tokens static:*",
     "static:build": "next build",
     "static:export": "next export",
+    "cloud-start": "next start -p 8080",
     "start": "next start",
     "tokens": "npx json-to-scss theme/tokens.json theme/styles/abstracts/_tokens.scss",
     "lint": "npm-run-all lint:*",
