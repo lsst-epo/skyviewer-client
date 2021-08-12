@@ -372,15 +372,13 @@ export default function Aladin({
     const [minDistance, maxDistance] = distanceRange;
     const [minBrightness, maxBrightness] = brightnessRange;
 
-    if (!types[type]) {
-      return false;
-    }
-
-    if (distance < minDistance || distance > maxDistance) {
-      return false;
-    }
-
-    if (brightness < minBrightness || brightness > maxBrightness) {
+    if (
+      !types[type] ||
+      distance < minDistance ||
+      distance > maxDistance ||
+      brightness < minBrightness ||
+      brightness > maxBrightness
+    ) {
       return false;
     }
 
