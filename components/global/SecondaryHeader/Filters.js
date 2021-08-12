@@ -5,13 +5,18 @@ import Checkbox from "@/primitives/Checkbox";
 import Slider from "@/primitives/Slider";
 import IconComposer from "@/svg/IconComposer";
 
-export default function Filters({ context }) {
+export default function Filters({ context, defaultFilters }) {
   const menuLabelId = "guided-experience-filters-menu-label";
   const menuDescriptionId = "guided-experience-filters-menu-description";
   const { setFilters, filters } = useContext(context) || {};
   const [isOpen, setIsOpen] = useState(false);
+  const [showFiltersReset, setShowFiltersReset] = useState(false);
   const handleThemeFilter = (checked, theme) => {
     setFilters({ ...filters, themes: { ...filters.themes, [theme]: checked } });
+
+    if (!showFiltersReset) {
+      setShowFiltersReset(true);
+    }
   };
 
   const handleCharacteristicFilter = (value, characteristic) => {
@@ -25,6 +30,19 @@ export default function Filters({ context }) {
         },
       },
     });
+
+    if (!showFiltersReset) {
+      setShowFiltersReset(true);
+    }
+  };
+
+  const resetSort = () => {
+    setFilters({
+      ...filters,
+      themes: { ...defaultFilters.themes },
+      characteristics: { ...defaultFilters.characteristics },
+    });
+    setShowFiltersReset(false);
   };
 
   return (
@@ -45,6 +63,12 @@ export default function Filters({ context }) {
       secondaryCloseButtonOpts={{
         text: "Apply Filters",
         classes: "filters-menu-close-button",
+      }}
+      actionButton={showFiltersReset}
+      actionButtonHandler={resetSort}
+      actionButtonOpts={{
+        text: "Reset Filters",
+        classes: "filters-menu-reset-button",
       }}
     >
       <>
@@ -98,4 +122,5 @@ export default function Filters({ context }) {
 
 Filters.propTypes = {
   context: PropTypes.object,
+  defaultFilters: PropTypes.object,
 };

@@ -12,6 +12,7 @@ export default function Modal({
   openCallback,
   closeButtonOpts,
   closeCallback,
+  closeKey,
   labelledbyId,
   describedbyId,
   secondaryCloseButton,
@@ -22,8 +23,14 @@ export default function Modal({
   const modalRef = useRef(null);
 
   function handleKeyDown({ key }) {
-    if (!isOpen || key !== "Escape") return;
-    handleClose();
+    if (!isOpen) return;
+    if (key === "Escape") {
+      handleClose();
+    }
+
+    if (closeKey && key === closeKey) {
+      handleClose();
+    }
   }
 
   function handleClose() {
@@ -89,5 +96,6 @@ Modal.propTypes = {
   secondaryCloseButtonOpts: PropTypes.object,
   openCallback: PropTypes.func,
   closeCallback: PropTypes.func,
+  closeKey: PropTypes.string,
   classes: PropTypes.string,
 };

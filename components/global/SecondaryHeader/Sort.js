@@ -11,8 +11,18 @@ export default function Sort({ context }) {
   const { setFilters, filters } = useContext(context) || {};
   const { possibleSorts, sortBy } = filters;
   const [isOpen, setIsOpen] = useState(false);
+  const [showSortReset, setShowSortReset] = useState(false);
   const handleSort = (checked, sort, id) => {
     setFilters({ ...filters, sortBy: id });
+
+    if (!showSortReset) {
+      setShowSortReset(true);
+    }
+  };
+
+  const resetSort = () => {
+    setFilters({ ...filters, sortBy: "0" });
+    setShowSortReset(false);
   };
 
   return (
@@ -32,6 +42,12 @@ export default function Sort({ context }) {
       secondaryCloseButtonOpts={{
         text: "Apply Sort",
         classes: "sort-menu-close-button",
+      }}
+      actionButton={showSortReset}
+      actionButtonHandler={resetSort}
+      actionButtonOpts={{
+        text: "Reset Sort",
+        classes: "sort-menu-reset-button",
       }}
     >
       <>
@@ -55,9 +71,9 @@ export default function Sort({ context }) {
             </div>
           )}
         </div>
-        <div className="menu-section">
+        {/*        <div className="menu-section">
           <h3 className="menu-section-heading">Tour Characteristics</h3>
-        </div>
+        </div>*/}
       </>
     </Menu>
   );
