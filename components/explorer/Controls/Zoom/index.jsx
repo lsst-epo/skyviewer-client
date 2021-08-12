@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import ExplorerContext from "@/contexts/Explorer";
 import AladinGlobalContext from "@/contexts/AladinGlobal";
+import AladinFocusContext from "@/contexts/AladinFocus";
 import { useKeyDownEvent } from "@/hooks/listeners";
 import IconComposer from "@/svg/IconComposer";
 import { Range, Direction } from "react-range";
@@ -10,7 +11,8 @@ const STEP = 0.1;
 export default function Zoom() {
   const { settings } = useContext(ExplorerContext) || {};
   const { aladin } = useContext(AladinGlobalContext) || {};
-  const { zoomLevel, zoomRange, hasFocus } = settings;
+  const { hasFocus } = useContext(AladinFocusContext) || {};
+  const { zoomLevel, zoomRange } = settings;
   const [min, max] = zoomRange;
 
   function getZoomInLevel(zoom, step) {

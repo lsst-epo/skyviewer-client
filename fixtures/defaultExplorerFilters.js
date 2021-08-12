@@ -1,9 +1,9 @@
 export default {
   types: {
-    stars: true,
-    galaxies: true,
-    nebulae: true,
-    transients: true,
+    star: true,
+    galaxy: true,
+    nebula: true,
+    transient: true,
   },
   characteristics: {
     distance: {
@@ -29,18 +29,6 @@ export default {
       },
       step: 1,
       value: [0, 626],
-    },
-    score: {
-      min: {
-        label: "Low Score",
-        value: 0,
-      },
-      max: {
-        label: "High Score",
-        value: 10,
-      },
-      step: 0.1,
-      value: [0, 10],
     },
   },
 };

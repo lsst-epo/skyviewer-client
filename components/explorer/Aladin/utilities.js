@@ -12,6 +12,6 @@ export const getMarkerShape = (shapeSource) => {
   return newShape;
 };
 
-export const getSourceCatalogOptions = (iconPath, filterFunc) => {
-  return { shape: getMarkerShape(iconPath), filter: filterFunc };
+export const getSourceCatalogOptions = (iconPath, name, filter) => {
+  return { name, shape: getMarkerShape(iconPath), filter };
 };

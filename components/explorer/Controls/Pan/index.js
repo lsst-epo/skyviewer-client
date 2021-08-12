@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import ExplorerContext from "@/contexts/Explorer";
 import AladinGlobalContext from "@/contexts/AladinGlobal";
+import AladinFocusContext from "@/contexts/AladinFocus";
 import { useKeyDownEvent } from "@/hooks/listeners";
 import { getKeyByValue } from "@/helpers";
 import Button from "@/primitives/Button";
@@ -15,7 +16,7 @@ const KEY_MAP = {
 
 export default function Pan() {
   const { settings } = useContext(ExplorerContext) || {};
-  const { hasFocus } = settings;
+  const { hasFocus } = useContext(AladinFocusContext) || {};
   const { aladin } = useContext(AladinGlobalContext) || {};
 
   const goTo = (direction) => {

@@ -52,7 +52,7 @@ export default function Explorer({
           <Aladin
             {...{ target, selector, survey, fov, fovRange, options }}
             onObjectClicked={onObjectClicked}
-            catalogs={catalogs || testHiPSCatalogs}
+            catalogs={catalogs}
           />
         </FiltersProvider>
       </AladinGlobalProvider>
