@@ -3,13 +3,12 @@ import PropTypes from "prop-types";
 import Modal from "@/primitives/Modal";
 import TextInput from "@/primitives/TextInput";
 import IconComposer from "@/svg/IconComposer";
+import useDebounce from "@/hooks/useDebounce";
 
 export default function Search({ context }) {
   const menuLabelId = "guided-experience-search-menu-label";
-  const { setFilters, filters } = useContext(context) || {};
-  const handleSearch = (criteria) => {
-    console.log("handleSearch");
-  };
+  const { setSearchTerm, searchTerm } = useContext(context) || {};
+  const debouncedSearchHandler = useDebounce(setSearchTerm, 500);
 
   return (
     <Modal
@@ -28,12 +27,15 @@ export default function Search({ context }) {
         isIcon: true,
         classes: "search-menu-close-button",
       }}
+      closeKey={"Enter"}
     >
       <TextInput
         id="search-field"
         className="search-input"
         labelledbyId={menuLabelId}
-        onChange={handleSearch}
+        handleChange={(e) => {
+          debouncedSearchHandler(e.target.value);
+        }}
         label="Search"
       />
     </Modal>

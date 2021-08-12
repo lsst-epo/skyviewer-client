@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import GuidedExperience from "./GuidedExperienceListItem";
 
 export default function GuidedExperiences({ guidedExperiences, counts }) {
-  // console.log("GuidedExps", guidedExperiences);
   return (
     <>
       <h1 className="guided-experiences-heading">Guided Experiences</h1>

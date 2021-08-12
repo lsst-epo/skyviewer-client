@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Header from "@/global/GuidedExperienceHeader";
 import SecondaryHeader from "@/global/SecondaryHeader";
 import NavLink from "@/primitives/NavLink";
 import IconComposer from "@/svg/IconComposer";
+import { useToursByVarietyData } from "@/lib/api/tours";
 
 export default function GuidedExperiencesLayout({
   className,
@@ -11,23 +12,27 @@ export default function GuidedExperiencesLayout({
   nextLink,
   backLink,
   defaultFilters,
-  guidedExperienceContext,
   sortFilterContext,
+  searchContext,
   children,
 }) {
   const [filters, setFilters] = useState(defaultFilters);
-  const [exps, setExps] = useState(null);
+  const [searchTerm, setSearchTerm] = useState(null);
 
   const { Provider: SortFilterProvider } = sortFilterContext;
-  const { Provider: ExpsProvider } = guidedExperienceContext;
+  const { Provider: SearchProvider } = searchContext;
 
   return (
     <SortFilterProvider value={{ filters, setFilters }}>
-      <ExpsProvider value={{ exps, setExps }}>
+      <SearchProvider value={{ searchTerm, setSearchTerm }}>
         <div className={className}>
           <div>
             <Header {...{ nextLink, backLink, heading }} />
-            <SecondaryHeader context={sortFilterContext} />
+            <SecondaryHeader
+              defaultFilters={defaultFilters}
+              sortFilterContext={sortFilterContext}
+              searchContext={searchContext}
+            />
           </div>
           <div className="children">{children}</div>
           <NavLink
@@ -37,7 +42,7 @@ export default function GuidedExperiencesLayout({
             icon={<IconComposer icon="ArrowLeft" />}
           />
         </div>
-      </ExpsProvider>
+      </SearchProvider>
     </SortFilterProvider>
   );
 }
@@ -48,7 +53,7 @@ GuidedExperiencesLayout.propTypes = {
   nextLink: PropTypes.object,
   backLink: PropTypes.object,
   children: PropTypes.node,
-  guidedExperienceContext: PropTypes.object,
   sortFilterContext: PropTypes.object,
+  searchContext: PropTypes.object,
   defaultFilters: PropTypes.object,
 };

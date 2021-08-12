@@ -14,7 +14,7 @@ import {
 export default function GuidedExperiencesPage() {
   const guidedExps = useGuidedExpsData()?.data?.guidedExps;
   const guidedExpCounts = useGuidedExpsCounts(["tours", "astronomers"])?.counts;
-
+  console.log(guidedExps);
   return (
     <div className="guided-experiences-container">
       <GuidedExperiences

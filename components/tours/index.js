@@ -1,15 +1,23 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import TourListItem from "./ListItem";
 import TourSortFilterContext from "@/contexts/TourSortFilter";
+import TourSearchContext from "@/contexts/TourSearch";
+import { useToursBySearch } from "@/lib/api/tours";
 
 export default function Tours({ tours }) {
   const { filters } = useContext(TourSortFilterContext) || {};
-  const sortedFilteredTours = getSortedTours(
-    getFilteredTours(tours, filters),
-    filters
-  );
+  const [sortedFilteredTours, setSortedFilteredTours] = useState(tours);
+
+  useEffect(() => {
+    const newlySortedFilteredTours = getSortedTours(
+      getFilteredTours(tours, filters),
+      filters
+    );
+
+    setSortedFilteredTours(newlySortedFilteredTours);
+  }, [tours, filters, setSortedFilteredTours]);
 
   function getFilteredTours(tours, filters) {
     const {
@@ -65,12 +73,16 @@ export default function Tours({ tours }) {
 
   return (
     <div className="tours-list-container">
-      <ul className="tours-list">
-        {sortedFilteredTours.map((tour) => {
-          const { id } = tour;
-          return <TourListItem key={id} {...tour} />;
-        })}
-      </ul>
+      {sortedFilteredTours?.length > 0 ? (
+        <ul className="tours-list">
+          {sortedFilteredTours.map((tour) => {
+            const { id } = tour;
+            return <TourListItem key={id} {...tour} />;
+          })}
+        </ul>
+      ) : (
+        <div>No Tours</div>
+      )}
     </div>
   );
 }

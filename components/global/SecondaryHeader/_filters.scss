@@ -9,3 +9,30 @@
     }
   }
 }
+
+.filters-menu {
+  .lower-buttons-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+    .filters-menu-close-button, .filters-menu-reset-button {
+      width: calc(50% - 10px);
+      min-width: 0;
+    }
+  }
+
+  .filters-menu-close-button, .filters-menu-reset-button {
+    margin: 50px auto;
+  }
+
+  .filters-menu-reset-button {
+    background-color: functions.palette(blue20);
+    border-color: functions.palette(blue20);
+
+    &:focus, &:hover {
+      background-color: functions.palette(blue30);
+      border-color: functions.palette(blue30);
+    }
+  }
+}

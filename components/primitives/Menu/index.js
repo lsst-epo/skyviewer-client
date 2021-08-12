@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 import MenuContext from "@/contexts/Menu";
 import Button from "@/primitives/Button";
+import ConditionalWrapper from "@/primitives/ConditionalWrapper";
 import IconComposer from "@/svg/IconComposer";
 import useFocusTrap from "@/hooks/useFocusTrap";
 import { useKeyDownEvent, useOnClickOutside } from "@/hooks/listeners";
@@ -22,6 +23,9 @@ export default function Menu({
   describedbyId,
   secondaryCloseButton,
   secondaryCloseButtonOpts,
+  actionButton,
+  actionButtonHandler,
+  actionButtonOpts,
 }) {
   const { setMenusOpen, menusOpen } = useContext(MenuContext) || {};
 
@@ -126,9 +130,21 @@ export default function Menu({
               <Button {...closeButtonOpts} onClick={handleClose} />
             </div>
             {children}
-            {secondaryCloseButton && (
-              <Button {...secondaryCloseButtonOpts} onClick={handleClose} />
-            )}
+            <ConditionalWrapper
+              condition={
+                secondaryCloseButton && actionButton
+              }
+              wrapper={(children) => (
+                <div className="lower-buttons-wrapper">{children}</div>
+              )}
+            >
+              {secondaryCloseButton && (
+                <Button {...secondaryCloseButtonOpts} onClick={handleClose} />
+              )}
+              {actionButton && (
+                <Button {...actionButtonOpts} onClick={actionButtonHandler} />
+              )}
+            </ConditionalWrapper>
           </div>
         </div>
       </div>
@@ -157,6 +173,9 @@ Menu.propTypes = {
   closeButtonOpts: PropTypes.object,
   secondaryCloseButton: PropTypes.bool,
   secondaryCloseButtonOpts: PropTypes.object,
+  actionButton: PropTypes.bool,
+  actionButtonOpts: PropTypes.object,
+  actionButtonHandler: PropTypes.func,
   openCallback: PropTypes.func,
   closeCallback: PropTypes.func,
   openOverride: PropTypes.bool,
