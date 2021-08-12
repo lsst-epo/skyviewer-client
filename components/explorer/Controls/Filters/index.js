@@ -11,10 +11,12 @@ export default function Filters() {
   const { setFilters, filters } = useContext(FiltersContext) || {};
   const [isOpen, setIsOpen] = useState(false);
   const handleTypeFilter = (checked, type) => {
+    console.log("handleTypeFilter", checked, type);
     setFilters({ ...filters, types: { ...filters.types, [type]: checked } });
   };
 
   const handleCharacteristicFilter = (value, characteristic) => {
+    console.log("handleCharacteristicFilter", value, characteristic);
     setFilters({
       ...filters,
       characteristics: {

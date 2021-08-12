@@ -6,6 +6,7 @@ import { getSourceCatalogOptions } from "./utilities";
 import ExplorerContext from "@/contexts/Explorer";
 import AladinGlobalContext from "@/contexts/AladinGlobal";
 import AladinCatalogsContext from "@/contexts/AladinCatalogs";
+import { AladinFocusProvider } from "@/contexts/AladinFocus";
 import FiltersContext from "@/contexts/Filters";
 import SourcesList from "@/components/explorer/Aladin/SourcesList";
 import Controls from "@/components/explorer/Controls";
@@ -29,6 +30,7 @@ export default function Aladin({
   onFullScreenToggled,
 }) {
   const { settings, setSettings } = useContext(ExplorerContext) || {};
+  const [hasFocus, setHasFocus] = useState(false);
   const { aladinGlobal, aladin } = useContext(AladinGlobalContext) || {};
   const { filters } = useContext(FiltersContext) || {};
   const [srcsInRegion, setSrcsInRegion] = useState(null);
@@ -77,6 +79,7 @@ export default function Aladin({
     if (!aladin) return;
 
     const { showCatalogs, showGrid, showLandmarks, showGoals } = settings;
+
     aladin.showHealpixGrid(showGrid);
     toggleAll(showCatalogs);
     toggleLandmarks(showLandmarks);
@@ -126,7 +129,6 @@ export default function Aladin({
 
     const landmarkCats = cats.filter((cat) => {
       const { name } = cat;
-
       return name === "landmark";
     });
     if (landmarkCats.length < 1) return;
@@ -212,25 +214,19 @@ export default function Aladin({
   // }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const debouncedRegionSrcsSetter = useCallback(
-    debounce((event) => {
-      // setSrcsInRegion(getSrcsInRegion(aladin.getFovCorners()));
-    }, 1000),
-    [aladin]
-  );
+  // const debouncedRegionSrcsSetter = useCallback(
+  //   debounce((event) => {
+  //     // setSrcsInRegion(getSrcsInRegion(aladin.getFovCorners()));
+  //   }, 1000),
+  //   [aladin]
+  // );
 
   const onFocus = () => {
-    setSettings({
-      ...settings,
-      hasFocus: true,
-    });
+    setHasFocus(true);
   };
 
   const onBlur = () => {
-    setSettings({
-      ...settings,
-      hasFocus: false,
-    });
+    setHasFocus(false);
   };
 
   const onClick = (event) => {
@@ -257,10 +253,10 @@ export default function Aladin({
     setSourceData(null);
   };
 
-  const onPositionChanged = (event) => {
-    // debouncedRegionSrcsSetter(event);
-    // event.persist();
-  };
+  // const onPositionChanged = (event) => {
+  //   debouncedRegionSrcsSetter(event);
+  //   event.persist();
+  // };
 
   const onZoomChanged = (event) => {
     if (isNaN(Number(event))) return;
@@ -282,7 +278,7 @@ export default function Aladin({
       objectHovered: onObjectHovered || null,
       footprintClicked: onFootprintClicked || null,
       footprintHovered: onFootprintHovered || null,
-      positionChanged: onPositionChanged,
+      positionChanged: null,
       mouseMove: onMouseMove || null,
       fullScreenToggled: onFullScreenToggled || null,
     };
@@ -292,25 +288,26 @@ export default function Aladin({
     }
   };
 
-  const createHiPSCatalog = (catalog) => {
-    const { path, icon } = catalog;
-    return aladinGlobal.catalogHiPS(
-      path,
-      getSourceCatalogOptions(
-        `${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${icon[0].url}`,
-        filtersChecker
-      )
-    );
-  };
+  // const createHiPSCatalog = (catalog) => {
+  //   const { path, icon } = catalog;
+  //   return aladinGlobal.catalogHiPS(
+  //     path,
+  //     getSourceCatalogOptions(
+  //       `${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${icon[0].url}`,
+  //       filtersChecker
+  //     )
+  //   );
+  // };
 
   const createCatalog = (catalog) => {
-    const { path, icon } = catalog;
+    const { path, icon, title } = catalog;
 
     // if (type === "HiPS") {
     return aladinGlobal.catalogHiPS(
       path,
       getSourceCatalogOptions(
-        `${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${icon[0].url}`
+        `${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${icon[0].url}`,
+        title
       )
     );
     // }
@@ -335,30 +332,29 @@ export default function Aladin({
     });
   };
 
-  const getMarkerSources = (markers) => {
-    return markers.map((marker) => {
-      const { data, popupTitle, popupDesc } = marker;
-      const { ra, dec } = data;
-      return aladinGlobal.marker(ra, dec, {
-        data,
-        popupTitle,
-        popupDesc,
-      });
-    });
-  };
+  // const getMarkerSources = (markers) => {
+  //   return markers.map((marker) => {
+  //     const { data, popupTitle, popupDesc } = marker;
+  //     const { ra, dec } = data;
+  //     return aladinGlobal.marker(ra, dec, {
+  //       data,
+  //       popupTitle,
+  //       popupDesc,
+  //     });
+  //   });
+  // };
 
-  const addMarkers = (markerLayers) => {
-    if (!markerLayers) return;
-    markerLayers.forEach((markerLayer) => {
-      const { markers } = markerLayer;
-      const markerLayerCatalog = createCatalog(markerLayer);
-      const markerSources = getMarkerSources(markers);
+  // const addMarkers = (markerLayers) => {
+  //   if (!markerLayers) return;
+  //   markerLayers.forEach((markerLayer) => {
+  //     const { markers } = markerLayer;
+  //     const markerLayerCatalog = createCatalog(markerLayer);
+  //     const markerSources = getMarkerSources(markers);
 
-      aladin.addCatalog(markerLayerCatalog);
-      markerLayerCatalog.addSources(markerSources);
-      // console.log('marks', markerLayerCatalog);
-    });
-  };
+  //     aladin.addCatalog(markerLayerCatalog);
+  //     markerLayerCatalog.addSources(markerSources);
+  //   });
+  // };
 
   const addJpgs = (jpgs) => {
     jpgs.forEach((jpg) => {
@@ -367,18 +363,33 @@ export default function Aladin({
   };
 
   const filtersChecker = (source) => {
-    // const types = filters.types;
+    const types = filters.types;
     const {
-      score: { value },
+      distance: { value: distanceRange },
+      brightness: { value: brightnessRange },
     } = filters.characteristics;
-    const [min, max] = value;
-    // return types[source.data.type];
-    return source.data.score >= min && source.data.score <= max;
+    const { type, brightness, distance } = source?.data;
+    const [minDistance, maxDistance] = distanceRange;
+    const [minBrightness, maxBrightness] = brightnessRange;
+
+    if (!types[type]) {
+      return false;
+    }
+
+    if (distance < minDistance || distance > maxDistance) {
+      return false;
+    }
+
+    if (brightness < minBrightness || brightness > maxBrightness) {
+      return false;
+    }
+
+    return true;
   };
 
   // <SourcesList sources={srcsInRegion} />
   return (
-    <>
+    <AladinFocusProvider value={{ hasFocus, setHasFocus }}>
       <Controls />
       <SourceDetails data={sourceData} handleClose={hideSourceDetails} />
       <div
@@ -386,7 +397,7 @@ export default function Aladin({
         id="aladin-lite-div"
         className="aladin-container"
       />
-    </>
+    </AladinFocusProvider>
   );
 }
 
