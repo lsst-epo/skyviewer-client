@@ -22,7 +22,6 @@ export default function Pois({
     showGoals: false,
     zoomLevel: fov,
     zoomRange: fovRange,
-    hasFocus: false,
   });
   const [aladins, setAladins] = useState(null);
 

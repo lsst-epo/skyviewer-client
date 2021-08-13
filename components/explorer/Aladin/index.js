@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext, useCallback, useRef } from "react";
 import PropTypes from "prop-types";
+import { useRouter } from "next/router";
 import debounce from "lodash.debounce";
 import useResizeObserver from "use-resize-observer";
 import { getSourceCatalogOptions } from "./utilities";
@@ -29,13 +30,14 @@ export default function Aladin({
   onMouseMove,
   onFullScreenToggled,
 }) {
+  const router = useRouter();
+  const { pathname, query } = router;
   const { settings, setSettings } = useContext(ExplorerContext) || {};
   const [hasFocus, setHasFocus] = useState(false);
   const { aladinGlobal, aladin } = useContext(AladinGlobalContext) || {};
   const { filters } = useContext(FiltersContext) || {};
   const [srcsInRegion, setSrcsInRegion] = useState(null);
   const [sourceData, setSourceData] = useState(null);
-  // const aladinContainer = useRef(null);
   const aladinReticleCanvas = useRef(null);
 
   const { ref: aladinContainer } = useResizeObserver({
@@ -51,7 +53,6 @@ export default function Aladin({
   });
 
   useEffect(() => {
-    const { hasFocus } = settings;
     if (!aladinReticleCanvas.current && aladinContainer.current) {
       setAladinReticleCanvas();
     }
@@ -74,6 +75,13 @@ export default function Aladin({
     if (jpgs) addJpgs(jpgs);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [aladinGlobal, aladin, catalogs, jpgs]);
+
+  useEffect(() => {
+    router.replace({
+      pathname,
+      query: { ...query, objId: sourceData?.id || null },
+    });
+  }, [sourceData]);
 
   useEffect(() => {
     if (!aladin) return;

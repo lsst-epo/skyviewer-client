@@ -29,7 +29,10 @@ export default function NavLink({
 }
 
 NavLink.propTypes = {
-  url: PropTypes.string.isRequired,
+  url: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.object.isRequired,
+  ]),
   text: PropTypes.string.isRequired,
   icon: PropTypes.element,
   iconBefore: PropTypes.bool,

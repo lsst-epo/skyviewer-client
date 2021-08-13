@@ -14,7 +14,7 @@ const ExplorerPage = ({ catalogs, survey }) => {
       selector="#aladin-lite-div"
       catalogs={catalogs}
       survey={path}
-      fov={fov || 60}
+      fov={+fov || 60}
       fovRange={[minFov, maxFov] || [2, 90]}
       target={target || "267.0208333333 -24.7800000000"}
     />
