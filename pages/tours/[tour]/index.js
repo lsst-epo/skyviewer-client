@@ -2,7 +2,6 @@ import { useEffect, useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import { useRouter } from "next/router";
 import { withLayout } from "@moxy/next-layout";
-import Link from "next/link";
 import PrimaryLayout from "@/layouts/Primary";
 import GuidedExperienceLayout from "@/layouts/GuidedExperience";
 import GuidedExperienceLanding from "@/components/guidedExperiences/GuidedExperienceLanding";
@@ -17,10 +16,10 @@ const DEFAULT_BACK = { url: "/tours/", text: "Back" };
 const TourPage = ({ setLayoutState }) => {
   const router = useRouter();
   const {
+    pathname,
     query,
     query: { tour: tourSlug, intro: introId, fact: factId },
   } = router;
-
   const { data: tourData } = useTourData(tourSlug);
   const [isLanding, setIsLanding] = useState(!introId && !factId);
   const [nextLink, setNextLink] = useState(DEFAULT_NEXT);
@@ -50,66 +49,80 @@ const TourPage = ({ setLayoutState }) => {
             url: `/tours/`,
             text: "Back",
           },
-          { url: `/tours/${tourSlug}/?intro=1`, text: "Let's Start" },
+          {
+            url: { pathname, query: { tour: tourSlug, intro: 1 } },
+            text: "Let's Start",
+          },
         ];
       }
 
       const nextId = id + 1;
       const previousId = +id > 1 ? id - 1 : 1;
-      // Middle page
+      // Middle Page
       if (id > 1 && id < totalPages) {
         return [
           {
-            url: `/tours/${tourSlug}/?${type}=${previousId}`,
+            url: { pathname, query: { tour: tourSlug, [type]: previousId } },
             text: "Back",
           },
-          { url: `/tours/${tourSlug}/?${type}=${nextId}`, text: "Next" },
+          {
+            url: { pathname, query: { tour: tourSlug, [type]: nextId } },
+            text: "Next",
+          },
         ];
       }
-      // First of many pages
-      if (id === 1 && totalPages > 1) {
+      // First Page
+      if (id === 1) {
+        const backUrl = {
+          pathname,
+          query: { tour: tourSlug, intro: introContentBlocks.length },
+        };
+        const nextUrl = { pathname, query: { tour: tourSlug, [type]: nextId } };
+        let nextText = "Next";
+
+        if (type === "intro") {
+          backUrl.query = { tour: tourSlug };
+        }
+
+        if (type === "intro" && totalPages === 1) {
+          nextUrl.pathname = pathname;
+          nextUrl.query = { tour: tourSlug, fact: 1 };
+        } else if (totalPages === 1) {
+          nextUrl.pathname = `${pathname}/tour`;
+          nextUrl.query = { tour: tourSlug, poi: 1 };
+          nextText = "Start the Tour";
+        }
+
         return [
           {
-            url:
-              type === "intro"
-                ? `/tours/${tourSlug}/`
-                : `/tours/${tourSlug}/?intro=${introContentBlocks.length}`,
-            text: "Back",
-          },
-          { url: `/tours/${tourSlug}/?${type}=${nextId}`, text: "Next" },
-        ];
-      }
-      // Only page
-      if (id === 1 && totalPages === 1) {
-        return [
-          {
-            url:
-              type === "intro"
-                ? `/tours/${tourSlug}/`
-                : `/tours/${tourSlug}/?intro=${introContentBlocks.length}`,
+            url: backUrl,
             text: "Back",
           },
           {
-            url:
-              type === "intro"
-                ? `/tours/${tourSlug}/?fact=1`
-                : `/tours/${tourSlug}/tour?poi=1`,
-            text: type === "intro" ? "Next" : "Start the Tour",
+            url: nextUrl,
+            text: nextText,
           },
         ];
       }
-      // Last of many pages
+      // Last Page
       if (id >= totalPages) {
+        const nextUrl = {
+          pathname: `${pathname}/tour`,
+          query: { tour: tourSlug, poi: 1 },
+        };
+
+        if (type === "intro") {
+          nextUrl.pathname = pathname;
+          nextUrl.query = { tour: tourSlug, fact: 1 };
+        }
+
         return [
           {
-            url: `/tours/${tourSlug}/?${type}=${previousId}`,
+            url: { pathname, query: { tour: tourSlug, [type]: previousId } },
             text: "Back",
           },
           {
-            url:
-              type === "intro"
-                ? `/tours/${tourSlug}/?fact=1`
-                : `/tours/${tourSlug}/tour?poi=1`,
+            url: nextUrl,
             text: type === "intro" ? "Next" : "Start the Tour",
           },
         ];
@@ -136,21 +149,35 @@ const TourPage = ({ setLayoutState }) => {
   }, [tourSlug, introId, factId, tourData, getNavLinks]);
 
   useEffect(() => {
-    setLayoutState({
+    const updatedLayoutState = {
       desktopBackLink: {
-        url: isLanding ? `/tours` : `/tours/${tourSlug}`,
+        url: { pathname, query: { tour: tourSlug } },
         text: "Back",
       },
       desktopNextLink: {
-        url: isLanding
-          ? `/tours/${tourSlug}/?intro=1`
-          : `/tours/${tourSlug}/tour?poi=1`,
-        text: isLanding ? "Let's Start" : "Start the Tour",
+        url: {
+          pathname: `${pathname}/tour`,
+          query: { tour: tourSlug, poi: 1 },
+        },
+        text: "Start the Tour",
       },
       mobileBackLink: backLink,
       mobileNextLink: nextLink,
-    });
-  }, [setLayoutState, nextLink, backLink, tourSlug, isLanding]);
+    };
+
+    if (isLanding) {
+      updatedLayoutState.desktopBackLink = {
+        url: `/tours`,
+        text: "Back",
+      };
+      updatedLayoutState.desktopNextLink = {
+        url: { pathname, query: { tour: tourSlug, intro: 1 } },
+        text: "Let's Start",
+      };
+    }
+
+    setLayoutState(updatedLayoutState);
+  }, [setLayoutState, nextLink, backLink, tourSlug, isLanding, pathname]);
 
   if (!tourData || Object.keys(tourData).length === 0) {
     return <div>loading</div>;

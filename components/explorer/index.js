@@ -8,10 +8,6 @@ import { FiltersProvider } from "@/contexts/Filters";
 import Aladin from "@/components/explorer/Aladin";
 import useAladin from "@/hooks/useAladin";
 
-import testMarkerLayers from "@/fixtures/testMarkerLayers";
-import testHiPSCatalogs from "@/fixtures/testHiPSCatalogs";
-import testJpgs from "@/fixtures/testJpgs";
-
 export default function Explorer({
   selector,
   options,
@@ -28,7 +24,6 @@ export default function Explorer({
     showGoals: false,
     zoomLevel: fov,
     zoomRange: fovRange,
-    hasFocus: false,
   });
   const [aladins, setAladins] = useState(null);
   const [filters, setFilters] = useState(defaultFilters);
