@@ -12,6 +12,7 @@ import FiltersContext from "@/contexts/Filters";
 import SourcesList from "@/components/explorer/Aladin/SourcesList";
 import Controls from "@/components/explorer/Controls";
 import SourceDetails from "@/components/explorer/SourceDetails";
+import { useAstroObjectData, getAstroObjectData } from "@/lib/api/astroObject";
 
 export default function Aladin({
   selector,
@@ -38,6 +39,7 @@ export default function Aladin({
   const { filters } = useContext(FiltersContext) || {};
   const [srcsInRegion, setSrcsInRegion] = useState(null);
   const [sourceData, setSourceData] = useState(null);
+  const astroObjectData = useAstroObjectData(sourceData?.id);
   const aladinReticleCanvas = useRef(null);
 
   const { ref: aladinContainer } = useResizeObserver({
@@ -251,10 +253,12 @@ export default function Aladin({
   const showSourceDetails = (event) => {
     if (!event) return;
     const { data } = event;
-    const { _RA: ra, _DEC: dec } = data;
+    const { _RA: ra, _DEC: dec, id } = data;
 
     data.position = getPixelPos([ra, dec]);
-    setSourceData(data);
+    getAstroObjectData(id).then((response) => {
+      setSourceData({ ...data, ...response?.astroObject });
+    });
   };
 
   const hideSourceDetails = () => {
@@ -268,7 +272,6 @@ export default function Aladin({
 
   const onZoomChanged = (event) => {
     if (isNaN(Number(event))) return;
-
     setSettings({
       ...settings,
       zoomLevel: Number(event).toFixed(1),
@@ -397,7 +400,11 @@ export default function Aladin({
   return (
     <AladinFocusProvider value={{ hasFocus, setHasFocus }}>
       <Controls />
-      <SourceDetails data={sourceData} handleClose={hideSourceDetails} />
+      <SourceDetails
+        data={sourceData}
+        setData={setSourceData}
+        handleClose={hideSourceDetails}
+      />
       <div
         ref={aladinContainer}
         id="aladin-lite-div"

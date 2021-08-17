@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import Button from "@/primitives/Button";
 import Buttonish from "@/primitives/Buttonish";
@@ -9,7 +8,6 @@ import IconComposer from "@/svg/IconComposer";
 export default function MainMenu({ route }) {
   const modalLabelId = "main-menu-modal-label";
   const modalDescriptionId = "main-menu-modal-description";
-  const { route: currentRoute } = useRouter();
   const [openOverride, setOpenOverride] = useState(false);
 
   const toggleCallback = (isOpen) => {
@@ -20,13 +18,11 @@ export default function MainMenu({ route }) {
     return (
       <ul className="list-unstyled quick-access-nav-items">
         <li className="quick-access-nav-item">
-          {currentRoute.includes(route) ? (
-            <Button
-              onClick={() => {
-                setOpenOverride(false);
-              }}
-              icon={<IconComposer icon="Sparkle" />}
-              text="Skyviewer Explorer"
+          {route === "/explorer" ? (
+            <Buttonish
+              url="/tours"
+              icon={<IconComposer icon="Suitcase" />}
+              text="Astronomical Tours"
             />
           ) : (
             <Buttonish
