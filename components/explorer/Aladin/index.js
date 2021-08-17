@@ -256,6 +256,7 @@ export default function Aladin({
     const { _RA: ra, _DEC: dec, id } = data;
 
     data.position = getPixelPos([ra, dec]);
+    setSourceData(data);
     getAstroObjectData(id).then((response) => {
       setSourceData({ ...data, ...response?.astroObject });
     });
