@@ -72,6 +72,8 @@
 
   .source-characteristics * {
     @include typography.source-detail-label;
+    max-height: 200px;
+    overflow-y: scroll;
   }
 
   .buttons-wrapper {

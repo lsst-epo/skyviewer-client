@@ -1,6 +1,8 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
+import AladinGlobalContext from "@/contexts/AladinGlobal";
+import ExplorerContext from "@/contexts/Explorer";
 import Accordion from "@/primitives/Accordion";
 import AccordionGroup from "@/primitives/AccordionGroup";
 import Button from "@/primitives/Button";
@@ -24,9 +26,42 @@ const placeholderFilters = [
   { label: "y", value: 99.91 },
 ];
 
-export default function SourceDetails({ data, handleClose }) {
+const STEP = 0.1;
+
+export default function SourceDetails({ data, setData, handleClose }) {
+  const { aladin } = useContext(AladinGlobalContext) || {};
+  const { settings } = useContext(ExplorerContext) || {};
+  const { zoomLevel, zoomRange } = settings;
+  const [min, max] = zoomRange;
   const [activeAccordion, setActiveAccordion] = useState("overview");
   const modalRef = useRef(null);
+  const {
+    position,
+    astroImage,
+    type,
+    id,
+    brightness,
+    distance,
+    title,
+    characteristics,
+    _RA: ra,
+    _DEC: dec,
+  } = data || {};
+  const [top, left] = position || ["auto", "auto"];
+
+  function getPixelPos(worldPos) {
+    const [ra, dec] = worldPos;
+    const pixelPos = aladin.world2pix(ra, dec);
+    return [pixelPos[1], pixelPos[0]];
+  }
+
+  const handleZoom = () => {
+    aladin.animateToRaDec(ra, dec, 0.5, () => {
+      aladin.zoomToFoV(min, 0.5, () => {
+        setData({ ...data, position: getPixelPos([ra, dec]) });
+      });
+    });
+  };
 
   function handleKeyDown({ key }) {
     if (!!data || key !== "Escape") return;
@@ -56,8 +91,8 @@ export default function SourceDetails({ data, handleClose }) {
           "is-open": !!data,
         })}
         style={{
-          top: data ? data.position[0] : "auto",
-          left: data ? data.position[1] : "auto",
+          top,
+          left,
         }}
       >
         <div ref={modalRef} className="source-details-modal-inner">
@@ -68,115 +103,102 @@ export default function SourceDetails({ data, handleClose }) {
             classes="close-button"
             onClick={handleClose}
           />
-          {data && (
-            <div className="source-details">
-              {data.img && (
-                <div
-                  className="source-img"
-                  style={{ backgroundImage: `url(${data.img})` }}
-                />
+          <div className="source-details">
+            {astroImage?.length >= 1 && (
+              <div
+                className="source-img"
+                style={{
+                  backgroundImage: `url(${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${astroImage[0].url})`,
+                }}
+              />
+            )}
+            <AccordionGroup className="source-details-accordions">
+              {(type || id || brightness || distance) && (
+                <Accordion
+                  id="overview"
+                  isExpanded={activeAccordion === "overview"}
+                  handleToggle={setActiveAccordion}
+                  title="Overview"
+                >
+                  {type && (
+                    <DetailsSection label="Type of Object" value={type} />
+                  )}
+                  {title && <DetailsSection label="Name" value={title} />}
+                  {(brightness || distance) && (
+                    <DetailsSection isFullWidth label="Context Info">
+                      <>
+                        {distance && (
+                          <CharBar
+                            labels={["Dim", "Bright"]}
+                            range={[0, 626]}
+                            value={+brightness}
+                          />
+                        )}
+                        {distance && (
+                          <CharBar
+                            labels={["Near", "Far"]}
+                            range={[0, 384]}
+                            value={+distance}
+                          />
+                        )}
+                      </>
+                    </DetailsSection>
+                  )}
+                  <div className="buttons-wrapper">
+                    <Button
+                      text="Zoom In"
+                      classes="source-details-zoom-button"
+                      onClick={handleZoom}
+                    />
+                    <Button
+                      text="Share"
+                      classes="source-details-share-button"
+                      onClick={() => {
+                        console.log("sharing it");
+                      }}
+                    />
+                  </div>
+                </Accordion>
               )}
-              <AccordionGroup className="source-details-accordions">
-                {(data.type || data.id || data.brightness || data.distance) && (
-                  <Accordion
-                    id="overview"
-                    isExpanded={activeAccordion === "overview"}
-                    handleToggle={setActiveAccordion}
-                    title="Overview"
-                  >
-                    {data.type && (
-                      <DetailsSection
-                        label="Type of Object"
-                        value={data.type}
-                      />
-                    )}
-                    {data.id && <DetailsSection label="Name" value={data.id} />}
-                    {(data.brightness || data.distance) && (
-                      <DetailsSection isFullWidth label="Context Info">
-                        <>
-                          {data.distance && (
-                            <CharBar
-                              labels={["Dim", "Bright"]}
-                              range={[0, 626]}
-                              value={+data.brightness}
-                            />
-                          )}
-                          {data.distance && (
-                            <CharBar
-                              labels={["Near", "Far"]}
-                              range={[0, 384]}
-                              value={+data.distance}
-                            />
-                          )}
-                        </>
-                      </DetailsSection>
-                    )}
-                    <div className="buttons-wrapper">
-                      <Button
-                        text="Zoom In"
-                        classes="source-details-zoom-button"
-                        onClick={() => {
-                          console.log("zooming in");
-                        }}
-                      />
-                      <Button
-                        text="Share"
-                        classes="source-details-share-button"
-                        onClick={() => {
-                          console.log("sharing it");
-                        }}
-                      />
-                    </div>
-                  </Accordion>
-                )}
+              {characteristics && (
                 <Accordion
                   id="characteristics"
                   isExpanded={activeAccordion === "characteristics"}
                   handleToggle={setActiveAccordion}
                   title="Unique Characteristics"
                 >
-                  <div className="source-characteristics">
-                    <p>
-                      Venture white dwarf hundreds of thousands concept of the
-                      number one decipherment hydrogen atoms? Kindling the
-                      energy hidden in matter kindling the energy hidden in
-                      matter inconspicuous motes of rock and gas invent the
-                      universe not a sunrise but a galaxyrise Jean-François
-                      Champollion?
-                    </p>
-                  </div>
+                  <div
+                    className="source-characteristics"
+                    dangerouslySetInnerHTML={{ __html: characteristics }}
+                  />
                   <Buttonish
                     text="Explore Similar Objects"
                     url="/explorer"
                     classes="source-details-similar-button primary --block"
                   />
                 </Accordion>
-                <Accordion
-                  id="data"
-                  isExpanded={activeAccordion === "data"}
-                  handleToggle={setActiveAccordion}
-                  title="Detailed Data"
-                >
-                  {data.id && (
-                    <DetailsSection label="Object Id" value={data.id} />
-                  )}
-                  {data._RA && data._DEC && (
-                    <PositionSection position={[+data._RA, +data._DEC]} />
-                  )}
-                  <DetailsSection isFullWidth label="Color Filters">
-                    <DetailsSectionValue isFullWidth>
-                      <SourceFilters filters={placeholderFilters} />
-                    </DetailsSectionValue>
-                  </DetailsSection>
-                  <DetailsSection isFullWidth label="Cross Identifications">
-                    <DetailsSectionValue isFullWidth>
-                      <AltNames names={["M323", "M100"]} />
-                    </DetailsSectionValue>
-                  </DetailsSection>
-                </Accordion>
-              </AccordionGroup>
-            </div>
-          )}
+              )}
+              <Accordion
+                id="data"
+                isExpanded={activeAccordion === "data"}
+                handleToggle={setActiveAccordion}
+                title="Detailed Data"
+              >
+                {id && <DetailsSection label="Object Id" value={id} />}
+                {ra && dec && <PositionSection position={[+ra, +dec]} />}
+                <DetailsSection isFullWidth label="Color Filters">
+                  <DetailsSectionValue isFullWidth>
+                    <SourceFilters filters={placeholderFilters} />
+                  </DetailsSectionValue>
+                </DetailsSection>
+                <DetailsSection isFullWidth label="Cross Identifications">
+                  <DetailsSectionValue isFullWidth>
+                    <AltNames names={["M323", "M100"]} />
+                  </DetailsSectionValue>
+                </DetailsSection>
+              </Accordion>
+            </AccordionGroup>
+          </div>
         </div>
       </div>
     </div>
@@ -189,4 +211,5 @@ SourceDetails.propTypes = {
   handleOpen: PropTypes.func,
   handleClose: PropTypes.func,
   data: PropTypes.object,
+  setData: PropTypes.func,
 };
