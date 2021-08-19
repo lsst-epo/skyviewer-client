@@ -69,12 +69,14 @@ export default function Aladin({
     addAladinEventHandlers();
 
     // Update Catalogs
-    if (catalogs) addCatalogs(aladinizeCats(catalogs));
+    if (catalogs && aladin.view.catalogs.length === 0) {
+      addCatalogs(aladinizeCats(catalogs));
+    }
 
     // Update Markers
     // addMarkers(markerLayers);
 
-    if (jpgs) addJpgs(jpgs);
+    // if (jpgs) addJpgs(jpgs);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [aladinGlobal, aladin, catalogs, jpgs]);
 
@@ -136,11 +138,11 @@ export default function Aladin({
 
   function toggleLandmarks(show) {
     const cats = aladin.view.catalogs;
-
     const landmarkCats = cats.filter((cat) => {
       const { name } = cat;
       return name === "landmark";
     });
+
     if (landmarkCats.length < 1) return;
 
     landmarkCats.forEach((cat) => {
@@ -151,12 +153,12 @@ export default function Aladin({
 
   function toggleGoals(show) {
     const cats = aladin.view.catalogs;
-
     const goalCats = cats.filter((cat) => {
       const { name } = cat;
 
       return name === "goal";
     });
+
     if (goalCats.length < 1) return;
 
     goalCats.forEach((cat) => {

@@ -3,6 +3,7 @@ import { withLayout } from "@moxy/next-layout";
 import PrimaryLayout from "@/layouts/Primary";
 import AladinLayout from "@/layouts/Aladin";
 import { getCatalogsSurveysData } from "@/lib/api/catalogsSurveys";
+import { moveInArray } from "@/helpers";
 import Explorer from "@/components/explorer/index.js";
 
 const ExplorerPage = ({ catalogs, survey }) => {
@@ -28,6 +29,24 @@ export default withLayout(
 
 export async function getStaticProps() {
   const { catalogs, surveys } = await getCatalogsSurveysData();
+  const lastCatsIndex = catalogs.length - 1;
+  const goalsCatIndex = catalogs.findIndex((cat) => {
+    return cat.title === "goal";
+  });
+
+  const landmarksCatIndex = catalogs.findIndex((cat) => {
+    return cat.title === "landmark";
+  });
+
+  if (landmarksCatIndex >= 0) {
+    moveInArray(catalogs, landmarksCatIndex, lastCatsIndex);
+  }
+
+  if (goalsCatIndex >= 0) {
+    moveInArray(catalogs, goalsCatIndex, lastCatsIndex);
+  }
+
+  // moveInArray();
   return { props: { catalogs, survey: surveys[0] } };
 }
 
