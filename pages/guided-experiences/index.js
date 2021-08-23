@@ -1,18 +1,17 @@
+import PropTypes from "prop-types";
 import NavLink from "@/primitives/NavLink";
 import GuidedExperiences from "@/components/guidedExperiences";
 import IconComposer from "@/svg/IconComposer";
-// import TEST_EXPERIENCES from "@/fixtures/placeholderExperiences";
-// import {
-//   useGuidedExpsData,
-//   useGuidedExpsCounts,
-// } from "@/lib/api/guidedExperiences";
 import {
   useGuidedExpsData,
   useGuidedExpsCounts,
+  getGuidedExpsData,
 } from "@/lib/api/tourCategories";
 
-export default function GuidedExperiencesPage() {
-  const guidedExps = useGuidedExpsData()?.data?.guidedExps;
+export default function GuidedExperiencesPage({ guidedExps }) {
+  // eslint-disable-next-line no-console
+  console.log(guidedExps);
+  // const guidedExps = useGuidedExpsData()?.data?.guidedExps;
   const guidedExpCounts = useGuidedExpsCounts(["tours", "astronomers"])?.counts;
 
   return (
@@ -30,3 +29,13 @@ export default function GuidedExperiencesPage() {
     </div>
   );
 }
+
+export async function getStaticProps() {
+  const { guidedExps } = await getGuidedExpsData();
+
+  return { props: { guidedExps } };
+}
+
+GuidedExperiencesPage.propTypes = {
+  guidedExps: PropTypes.array,
+};
