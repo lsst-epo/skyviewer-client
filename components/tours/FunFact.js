@@ -11,15 +11,19 @@ export default function FunFact({ skipUrl, id, heading, blocks }) {
             <IconComposer icon="Info" className="fact-icon" />
             <h2 className="tour-intro-heading">{heading}</h2>
           </div>
-          <div
-            className="tour-fact-body"
-            dangerouslySetInnerHTML={{ __html: blocks[+id - 1].body }}
-          />
-          {skipUrl && (
-            <Link href={skipUrl}>
-              <a className="skip-link">Skip Intro</a>
-            </Link>
-          )}
+          <div className="main">
+            <div
+              className="tour-fact-body"
+              dangerouslySetInnerHTML={{ __html: blocks[+id - 1].body }}
+            />
+          </div>
+          <div className="bottom">
+            {skipUrl && (
+              <Link href={skipUrl}>
+                <a className="skip-link">Skip Intro</a>
+              </Link>
+            )}
+          </div>
         </div>
       )}
       <div className="tour-fact desktop-only">

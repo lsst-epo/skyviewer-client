@@ -66,8 +66,8 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: stretch;
-  min-height: 100vh;
-  padding: 15px 24px;
+  height: var(--window-height, 100vh);
+  padding: 0 24px;
   color: functions.palette(white);
   background-color: functions.palette(black);
 

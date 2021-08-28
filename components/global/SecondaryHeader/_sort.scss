@@ -7,6 +7,13 @@
 }
 
 .sort-menu {
+  display: flex;
+  flex-flow: column nowrap;
+
+  .sort-menu-content-wrapper {
+    overflow-y: scroll;
+  }
+
   .lower-buttons-wrapper {
     display: flex;
     flex-flow: row nowrap;
@@ -19,7 +26,7 @@
   }
 
   .sort-menu-close-button, .sort-menu-reset-button {
-    margin: 50px auto;
+    margin: 30px auto 0;
   }
 
   .sort-menu-reset-button {

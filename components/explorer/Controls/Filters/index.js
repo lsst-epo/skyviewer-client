@@ -47,7 +47,7 @@ export default function Filters() {
         classes: "filters-menu-close-button",
       }}
     >
-      <>
+      <div className="filters-menu-content-wrapper">
         <div className="menu-section">
           <h3 className="menu-section-heading">Object type</h3>
           {filters.types && (
@@ -91,7 +91,7 @@ export default function Filters() {
             </div>
           )}
         </div>
-      </>
+      </div>
     </Menu>
   );
 }

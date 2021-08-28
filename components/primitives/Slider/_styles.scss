@@ -23,29 +23,13 @@
   .slider-container {
     $h: 10px;
     position: relative;
+    left: 2%;
     display: grid;
     grid-template-rows: max-content $h;
-    width: 100%;
+    width: 96%;
     background-color: functions.palette(neutral10);
     border: 6px solid functions.palette(neutral40);
     border-radius: 20px;
-
-    // .selected-left, .selected-right {
-    //   position: absolute;
-    //   height: $h;
-    //   // background-color: functions.palette(turquoise55);
-    //   // border-radius: $h;
-    // }
-
-    // .selected-left {
-    //   background-color: functions.palette(turquoise55);
-    //   // border-radius: $h;
-    // }
-
-    // .selected-right {
-    //   background-color: functions.palette(white);
-    //   // border-radius: $h;
-    // }
   }
 
   @mixin track() {
@@ -56,14 +40,10 @@
 
   @mixin thumb() {
     width: 26px;
-    // height: 26px;
     height: 38.013px;
     pointer-events: auto;
     cursor: pointer;
     background: url('/handle.svg');
-    // background-color: functions.palette(turquoise55);
-    // border: 4px solid functions.palette(white);
-    // border-radius: 50%;
   }
 
   .slider-left,

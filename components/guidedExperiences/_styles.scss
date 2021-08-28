@@ -5,21 +5,35 @@
 
 .guided-experiences-heading {
   @include typography.heading-guided-experiences;
+  padding: 15px 0;
   text-align: center;
 }
 
-.guided-experiences {
+.guided-experiences-list-container {
+  height: calc(
+    var(--window-height, 100vh) - var(--ge-nav-link-height, 95px) - var(--ge-heading-height, 56px)
+  );
+  overflow-y: scroll;
+}
+
+.guided-experiences-list {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   padding: 0 0 30px;
+
+  .guided-experience {
+    width: 100%;
+    max-width: 700px;
+    margin-right: 20px;
+    margin-left: 20px;
+
+    + .guided-experience {
+      margin-top: 30px;
+    }
+  }
 }
 
-.guided-experience {
-  width: 100%;
-  max-width: 700px;
-  margin: 30px 20px 0;
-}
 
 .guided-experience-heading {
   margin: 0 10px 10px;

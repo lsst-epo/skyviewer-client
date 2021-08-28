@@ -2,6 +2,13 @@
 @use 'abstracts/mixins/typography';
 
 .main-menu {
+  display: flex;
+  flex-flow: column nowrap;
+
+  .main-menu-content-wrapper {
+    overflow-y: scroll;
+  }
+
   .main-menu-nav, .quick-access-nav {
     @include typography.list-unstyled;
   }

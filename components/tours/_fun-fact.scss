@@ -8,38 +8,48 @@
   flex-flow: column nowrap;
   align-items: flex-start;
   justify-content: center;
-  margin: 66px 55px 38px;
+  padding: 66px 55px 0px;
   color: functions.palette(white);
 
   @include base.respond(functions.break(tablet), min) {
     justify-content: flex-start;
     width: 40%;
-    padding-left: 55px;
-    margin: 0 55px 38px 0;
+    padding: 0 55px 38px;
     border-left: 2px solid functions.palette(white);
   }
 
-  .fact-icon {
-    width: 67px;
+  .top {
+    padding-bottom: 9px;
 
-    @include base.respond(functions.break(tablet), min) {
-      width: 39px;
-      height: 39px;
-      margin-top: -5px;
+    .fact-icon {
+      width: 67px;
+
+      @include base.respond(functions.break(tablet), min) {
+        width: 39px;
+        height: 39px;
+        margin-top: -5px;
+      }
+    }
+
+    .tour-fact-heading {
+      @include typography.heading-tour-fact;
+      margin-top: 26px;
     }
   }
 
-  .tour-fact-heading {
-    @include typography.heading-tour-fact;
-    margin-top: 26px;
+  .main {
+    .tour-fact-body {
+      padding-top: 30px;
+
+      @include base.respond(functions.break(tablet), min) {
+        padding-bottom: 55px;
+      }
+    }
   }
 
-  .tour-fact-body {
-    margin-top: 65px;
-
-    @include base.respond(functions.break(tablet), min) {
-      padding-bottom: 55px;
-      margin-top: 30px;
-    }
+  .bottom {
+    position: relative;
+    width: 100%;
+    padding-top: 24px;
   }
 }

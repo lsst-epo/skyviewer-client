@@ -35,7 +35,7 @@ body {
   // ensure page is always at least 100vh tall; `main` expands to fill space
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: var(--window-height, 100vh);
 }
 
 main {

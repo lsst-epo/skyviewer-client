@@ -21,23 +21,25 @@ export default function Intro({
                 backgroundImage: `url(${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${thumbnail[0].url})`,
               }}
             />
-            <div className="main">
-              <div>
-                <h2 className="tour-intro-heading">{heading}</h2>
-                <h3 className="tour-intro-subheading">{subheading}</h3>
-              </div>
-              <div
-                className="tour-intro-body"
-                dangerouslySetInnerHTML={{ __html: blocks[+id - 1]?.body }}
-              />
+            <div className="tour-intro-headings">
+              <h2 className="tour-intro-heading">{heading}</h2>
+              <h3 className="tour-intro-subheading">{subheading}</h3>
             </div>
           </div>
-          {blocks.length > 1 && <Bubbles val={+id} max={blocks.length} />}
-          {id && skipUrl && (
-            <Link href={skipUrl}>
-              <a className="skip-link">Skip Intro</a>
-            </Link>
-          )}
+          <div className="main">
+            <div
+              className="tour-intro-body"
+              dangerouslySetInnerHTML={{ __html: blocks[+id - 1]?.body }}
+            />
+          </div>
+          <div className="bottom">
+            {blocks.length > 1 && <Bubbles val={+id} max={blocks.length} />}
+            {id && skipUrl && (
+              <Link href={skipUrl}>
+                <a className="skip-link">Skip Intro</a>
+              </Link>
+            )}
+          </div>
         </div>
       )}
       <div className="tour-intro desktop-only">

@@ -4,6 +4,7 @@ import Header from "@/global/GuidedExperienceHeader";
 import SecondaryHeader from "@/global/SecondaryHeader";
 import NavLink from "@/primitives/NavLink";
 import IconComposer from "@/svg/IconComposer";
+import useResizeObserver from "use-resize-observer";
 import { useToursByVarietyData } from "@/lib/api/tours";
 
 export default function GuidedExperiencesLayout({
@@ -22,11 +23,29 @@ export default function GuidedExperiencesLayout({
   const { Provider: SortFilterProvider } = sortFilterContext;
   const { Provider: SearchProvider } = searchContext;
 
+  const { ref: navRef } = useResizeObserver({
+    onResize: ({ height }) => {
+      document.documentElement.style.setProperty(
+        "--ges-nav-height",
+        `${navRef.current.offsetHeight}px`
+      );
+    },
+  });
+
+  const { ref: headerRef } = useResizeObserver({
+    onResize: ({ height }) => {
+      document.documentElement.style.setProperty(
+        "--ges-header-height",
+        `${headerRef.current.offsetHeight}px`
+      );
+    },
+  });
+
   return (
     <SortFilterProvider value={{ filters, setFilters }}>
       <SearchProvider value={{ searchTerm, setSearchTerm }}>
         <div className={className}>
-          <div>
+          <div ref={headerRef} className="guided-experiences-header-container">
             <Header {...{ nextLink, backLink, heading }} />
             <SecondaryHeader
               defaultFilters={defaultFilters}
@@ -34,13 +53,15 @@ export default function GuidedExperiencesLayout({
               searchContext={searchContext}
             />
           </div>
-          <div className="children">{children}</div>
-          <NavLink
-            url="/guided-experiences"
-            text="Back to Guided Experiences"
-            iconBefore
-            icon={<IconComposer icon="ArrowLeft" />}
-          />
+          {children}
+          <div ref={navRef} className="guided-experiences-nav-container">
+            <NavLink
+              url="/guided-experiences"
+              text="Back to Guided Experiences"
+              iconBefore
+              icon={<IconComposer icon="ArrowLeft" />}
+            />
+          </div>
         </div>
       </SearchProvider>
     </SortFilterProvider>

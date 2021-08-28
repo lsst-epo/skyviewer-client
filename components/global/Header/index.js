@@ -24,7 +24,7 @@ export default function Header({ navItems, localized, language }) {
     onResize: ({ width }) => {
       document.documentElement.style.setProperty(
         "--header-width",
-        `${width}px`
+        `${ref.current.offsetWidth}px`
       );
     },
   });

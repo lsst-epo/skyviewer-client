@@ -6,8 +6,22 @@
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+.guided-experience-nav {
+  display: flex;
+  flex-flow: column-reverse;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  @include base.respond(functions.break(mobile-small), min) {
+    flex-flow: row nowrap;
+  }
 
   &.mobile-only {
+    display: flex;
+
     @include base.respond(functions.break(tablet), min) {
       display: none;
     }
@@ -17,21 +31,23 @@
     display: none;
 
     @include base.respond(functions.break(tablet), min) {
-      display: block;
+      display: flex;
     }
   }
-}
-
-.guided-experience-nav {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
 
   .guided-experience-nav-item {
+    width: 100%;
+    margin-top: 16px;
+
+    @include base.respond(functions.break(mobile-small), min) {
+      width: auto;
+      margin-top: 0;
+    }
+
     + .guided-experience-nav-item {
-      margin-left: 16px;
+      @include base.respond(functions.break(mobile-small), min) {
+        margin-left: 16px;
+      }
     }
   }
 }

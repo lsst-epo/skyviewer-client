@@ -8,16 +8,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  justify-content: center;
+  height: calc(var(--window-height, 100vh) - var(--home-nav-height, 95px));
   padding: 18px;
   background-color: functions.palette(black);
+
 
   .logo-stack {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 30vh;
+    // margin-top: 30vh;
 
     .full-logo {
       width: 150px;
@@ -30,11 +32,14 @@
     }
   }
 
-  .spacer {
-    flex-grow: 2;
+  .home-nav-container {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
-    max-height: 200px;
+    padding: 17px;
+    background-color: functions.palette(black);
   }
 
   .home-nav {
