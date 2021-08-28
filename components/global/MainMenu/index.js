@@ -53,7 +53,7 @@ export default function MainMenu({ route }) {
         classes: "main-menu-button",
       }}
     >
-      <>
+      <div className="main-menu-content-wrapper">
         <div className="menu-section">
           <nav aria-labelledby="settings-label" className="main-menu-nav">
             <h3 id="settings-label" className="menu-section-heading">
@@ -118,7 +118,7 @@ export default function MainMenu({ route }) {
             {getQuickAccess()}
           </nav>
         </div>
-      </>
+      </div>
     </Menu>
   );
 }

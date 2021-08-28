@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import PropTypes from "prop-types";
+import classnames from "classnames";
 import { useRouter } from "next/router";
 import { withLayout } from "@moxy/next-layout";
 import PrimaryLayout from "@/layouts/Primary";
@@ -245,4 +246,5 @@ export default withLayout(mapLayoutStateToLayoutTree, {
   mobileBackLink: DEFAULT_BACK,
   desktopNextLink: DEFAULT_NEXT,
   desktopBackLink: DEFAULT_BACK,
+  isLanding: true,
 })(TourPage);

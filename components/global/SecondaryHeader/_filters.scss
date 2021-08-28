@@ -11,6 +11,13 @@
 }
 
 .filters-menu {
+  display: flex;
+  flex-flow: column nowrap;
+
+  .filters-menu-content-wrapper {
+    overflow-y: scroll;
+  }
+
   .lower-buttons-wrapper {
     display: flex;
     flex-flow: row nowrap;
@@ -23,7 +30,7 @@
   }
 
   .filters-menu-close-button, .filters-menu-reset-button {
-    margin: 50px auto;
+    margin: 30px auto 0;
   }
 
   .filters-menu-reset-button {

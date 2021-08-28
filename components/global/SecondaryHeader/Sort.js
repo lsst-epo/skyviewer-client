@@ -50,7 +50,7 @@ export default function Sort({ context }) {
         classes: "sort-menu-reset-button",
       }}
     >
-      <>
+      <div className="sort-menu-content-wrapper">
         <div className="menu-section">
           <h3 className="menu-section-heading">Release Characteristics</h3>
           {possibleSorts && (
@@ -71,10 +71,7 @@ export default function Sort({ context }) {
             </div>
           )}
         </div>
-        {/*        <div className="menu-section">
-          <h3 className="menu-section-heading">Tour Characteristics</h3>
-        </div>*/}
-      </>
+      </div>
     </Menu>
   );
 }

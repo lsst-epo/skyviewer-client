@@ -71,7 +71,7 @@ export default function Filters({ context, defaultFilters }) {
         classes: "filters-menu-reset-button",
       }}
     >
-      <>
+      <div className="filters-menu-content-wrapper">
         <div className="menu-section">
           <h3 className="menu-section-heading">Themes</h3>
           {filters.themes && (
@@ -115,7 +115,7 @@ export default function Filters({ context, defaultFilters }) {
             </div>
           )}
         </div>
-      </>
+      </div>
     </Menu>
   );
 }

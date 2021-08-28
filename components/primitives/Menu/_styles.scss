@@ -10,7 +10,7 @@
   left: -100vw;
   z-index: functions.z-stack(modal);
   width: 100vw;
-  height: 100vh;
+  height: var(--window-height, 100vh);
   background-color: functions.palette(black);
   transition: left 0.4s ease-in-out;
 
@@ -33,7 +33,7 @@
 }
 
 .menu {
-  height: 100vh;
+  height: var(--window-height, 100vh);
   padding: 30px 34px;
   background-color: functions.palette(black);
 

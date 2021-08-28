@@ -2,6 +2,7 @@ import { useEffect, useContext, useState } from "react";
 import MenuContext from "@/contexts/Menu";
 import PropTypes from "prop-types";
 import classnames from "classnames";
+import useResizeObserver from "use-resize-observer";
 import Buttonish from "@/primitives/Buttonish";
 import MainMenu from "@/global/MainMenu";
 import IconComposer from "@/svg/IconComposer";
@@ -11,6 +12,14 @@ import Hamburger from "@/svg/icons/Hamburger";
 const quickAccessItems = [{}];
 
 export default function Header({ closeUrl = "/", route }) {
+  const { ref } = useResizeObserver({
+    onResize: ({ height }) => {
+      document.documentElement.style.setProperty(
+        "--main-header-height",
+        `${ref.current.offsetHeight}px`
+      );
+    },
+  });
   const { menusOpen } = useContext(MenuContext) || {};
   const [isOpen, setIsOpen] = useState(true);
   const [isMenu, setIsMenu] = useState(false);
@@ -19,7 +28,7 @@ export default function Header({ closeUrl = "/", route }) {
   const onMenuToggle = () => setIsOpen(!isMenu);
 
   return (
-    <header className="main-header">
+    <header ref={ref} className="main-header">
       <MainMenu route={route} />
       <Buttonish
         url={closeUrl}

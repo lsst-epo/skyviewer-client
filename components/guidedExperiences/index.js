@@ -1,21 +1,39 @@
 import PropTypes from "prop-types";
+import useResizeObserver from "use-resize-observer";
 import GuidedExperience from "./GuidedExperienceListItem";
 
 export default function GuidedExperiences({ guidedExperiences, counts }) {
+  const { ref } = useResizeObserver({
+    onResize: ({ height }) => {
+      document.documentElement.style.setProperty(
+        "--ge-heading-height",
+        `${ref.current.offsetHeight}px`
+      );
+    },
+  });
+
   return (
     <>
-      <h1 className="guided-experiences-heading">Guided Experiences</h1>
+      <h1 ref={ref} className="guided-experiences-heading">
+        Guided Experiences
+      </h1>
       {guidedExperiences && (
-        <ul className="guided-experiences">
-          {guidedExperiences.map((guidedExperience) => {
-            const { id, varietyHandle } = guidedExperience;
-            const count = counts[varietyHandle];
+        <div className="guided-experiences-list-container">
+          <ul className="guided-experiences-list">
+            {guidedExperiences.map((guidedExperience) => {
+              const { id, varietyHandle } = guidedExperience;
+              const count = counts[varietyHandle];
 
-            return (
-              <GuidedExperience {...guidedExperience} count={count} key={id} />
-            );
-          })}
-        </ul>
+              return (
+                <GuidedExperience
+                  {...guidedExperience}
+                  count={count}
+                  key={id}
+                />
+              );
+            })}
+          </ul>
+        </div>
       )}
     </>
   );

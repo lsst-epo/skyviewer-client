@@ -1,7 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import Header from "@/global/GuidedExperienceHeader";
-import SecondaryHeader from "@/global/SecondaryHeader";
+import useResizeObserver from "use-resize-observer";
 import NavLink from "@/primitives/NavLink";
 import IconComposer from "@/svg/IconComposer";
 
@@ -13,11 +12,20 @@ export default function GuidedExperienceLayout({
   desktopBackLink,
   children,
 }) {
+  const { ref } = useResizeObserver({
+    onResize: ({ height }) => {
+      document.documentElement.style.setProperty(
+        "--ge-nav-height",
+        `${ref.current.offsetHeight}px`
+      );
+    },
+  });
+
   return (
     <div className={className}>
-      <div className="children">{children}</div>
-      <div className="guided-experience-nav-container mobile-only">
-        <ul className="guided-experience-nav">
+      {children}
+      <div ref={ref} className="guided-experience-nav-container">
+        <ul className="guided-experience-nav mobile-only">
           {mobileBackLink && (
             <li className="guided-experience-nav-item">
               <NavLink
@@ -41,9 +49,7 @@ export default function GuidedExperienceLayout({
             </li>
           )}
         </ul>
-      </div>
-      <div className="guided-experience-nav-container desktop-only">
-        <ul className="guided-experience-nav">
+        <ul className="guided-experience-nav desktop-only">
           {desktopBackLink && (
             <li className="guided-experience-nav-item">
               <NavLink
