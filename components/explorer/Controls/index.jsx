@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import Filters from "./Filters";
 import Goals from "./Goals";
 import Grid from "./Grid";
@@ -10,7 +11,7 @@ import Share from "./Share";
 import Pan from "./Pan";
 import Zoom from "./Zoom";
 
-export default function Controls() {
+export default function Controls({ defaultFilters }) {
   return (
     <div className="controls">
       <ul
@@ -22,7 +23,7 @@ export default function Controls() {
           <Search />
         </li>
         <li role="menuitem">
-          <Filters />
+          <Filters defaultFilters={defaultFilters} />
         </li>
       </ul>
       <Zoom />
@@ -58,3 +59,7 @@ export default function Controls() {
     </div>
   );
 }
+
+Controls.propTypes = {
+  defaultFilters: PropTypes.object,
+};

@@ -8,6 +8,7 @@
   bottom: 0;
   left: 0;
   z-index: 4;
+  display: flex;
   max-height: 0%;
   overflow: hidden;
   color: functions.palette(white);
@@ -26,7 +27,6 @@
 
   &.is-open {
     max-height: 66%;
-    overflow-y: scroll;
     transition: max-height 0.6s ease-out;
 
     @include base.respond(functions.break(desktop), min) {
@@ -41,7 +41,9 @@
   }
 
   .poi-inner {
-    padding: 50px 70px 90px;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 30px 50px 70px;
     opacity: 0;
     transition: padding-bottom 0.2s;
 
@@ -53,8 +55,22 @@
       810px,
     );
 
+    @include base.respond(functions.break(mobile-small), min) {
+      padding: 50px 70px 90px;
+    }
+
     @include base.respond(functions.break(desktop), min) {
       padding: 50px 70px;
+    }
+
+
+
+    .poi-inner-header {
+      padding-bottom: 12px;
+    }
+
+    .poi-description {
+      overflow-y: scroll;
     }
   }
 }

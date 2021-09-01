@@ -43,8 +43,8 @@ export default function Sort({ context }) {
         text: "Apply Sort",
         classes: "sort-menu-close-button",
       }}
-      actionButton={showSortReset}
-      actionButtonHandler={resetSort}
+      actionButton
+      actionButtonHandler={showSortReset ? resetSort : null}
       actionButtonOpts={{
         text: "Reset Sort",
         classes: "sort-menu-reset-button",
