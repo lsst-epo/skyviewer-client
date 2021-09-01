@@ -1,17 +1,23 @@
 import { useState, useContext } from "react";
+import PropTypes from "prop-types";
 import FiltersContext from "@/contexts/Filters";
 import Menu from "@/primitives/Menu";
 import Checkbox from "@/primitives/Checkbox";
 import Slider from "@/primitives/Slider";
 import IconComposer from "@/svg/IconComposer";
 
-export default function Filters() {
+export default function Filters({ defaultFilters }) {
   const menuLabelId = "filters-menu-label";
   const menuDescriptionId = "filters-menu-description";
   const { setFilters, filters } = useContext(FiltersContext) || {};
   const [isOpen, setIsOpen] = useState(false);
+  const [showFiltersReset, setShowFiltersReset] = useState(false);
   const handleTypeFilter = (checked, type) => {
     setFilters({ ...filters, types: { ...filters.types, [type]: checked } });
+
+    if (!showFiltersReset) {
+      setShowFiltersReset(true);
+    }
   };
 
   const handleCharacteristicFilter = (value, characteristic) => {
@@ -25,6 +31,19 @@ export default function Filters() {
         },
       },
     });
+
+    if (!showFiltersReset) {
+      setShowFiltersReset(true);
+    }
+  };
+
+  const resetFilters = () => {
+    setFilters({
+      ...filters,
+      types: { ...defaultFilters.types },
+      characteristics: { ...defaultFilters.characteristics },
+    });
+    setShowFiltersReset(false);
   };
 
   return (
@@ -45,6 +64,12 @@ export default function Filters() {
       secondaryCloseButtonOpts={{
         text: "Apply Filters",
         classes: "filters-menu-close-button",
+      }}
+      actionButton
+      actionButtonHandler={showFiltersReset ? resetFilters : null}
+      actionButtonOpts={{
+        text: "Reset Filters",
+        classes: "filters-menu-reset-button",
       }}
     >
       <div className="filters-menu-content-wrapper">
@@ -95,3 +120,7 @@ export default function Filters() {
     </Menu>
   );
 }
+
+Filters.propTypes = {
+  defaultFilters: PropTypes.object,
+};

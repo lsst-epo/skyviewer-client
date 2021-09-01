@@ -131,9 +131,7 @@ export default function Menu({
             </div>
             {children}
             <ConditionalWrapper
-              condition={
-                secondaryCloseButton && actionButton
-              }
+              condition={secondaryCloseButton && actionButton}
               wrapper={(children) => (
                 <div className="lower-buttons-wrapper">{children}</div>
               )}

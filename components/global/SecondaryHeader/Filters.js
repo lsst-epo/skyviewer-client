@@ -64,8 +64,8 @@ export default function Filters({ context, defaultFilters }) {
         text: "Apply Filters",
         classes: "filters-menu-close-button",
       }}
-      actionButton={showFiltersReset}
-      actionButtonHandler={resetSort}
+      actionButton
+      actionButtonHandler={showFiltersReset ? resetSort : null}
       actionButtonOpts={{
         text: "Reset Filters",
         classes: "filters-menu-reset-button",

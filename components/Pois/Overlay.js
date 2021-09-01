@@ -9,8 +9,10 @@ export default function Overlay({ isOpen, tourTitle, title, description }) {
       })}
     >
       <div className="poi-inner">
-        <div className="tour-title">{tourTitle}</div>
-        <h2 className="poi-title">{title}</h2>
+        <div className="poi-inner-header">
+          <div className="tour-title">{tourTitle}</div>
+          <h2 className="poi-title">{title}</h2>
+        </div>
         <div
           className="poi-description"
           dangerouslySetInnerHTML={{ __html: description }}

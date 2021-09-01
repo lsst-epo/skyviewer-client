@@ -1,4 +1,6 @@
+@use 'abstracts/mixins/appearance';
 @use 'abstracts/functions';
+@use 'abstracts/mixins/base';
 
 .guided-experience-sort-button {
   .a-svg + .icon-text {
@@ -9,33 +11,41 @@
 .sort-menu {
   display: flex;
   flex-flow: column nowrap;
+  justify-content: space-between;
 
   .sort-menu-content-wrapper {
+    flex-grow: 3;
     overflow-y: scroll;
-  }
-
-  .lower-buttons-wrapper {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-
-    .sort-menu-close-button, .sort-menu-reset-button {
-      width: calc(50% - 10px);
-      min-width: 0;
-    }
   }
 
   .sort-menu-close-button, .sort-menu-reset-button {
     margin: 30px auto 0;
   }
 
-  .sort-menu-reset-button {
-    background-color: functions.palette(blue20);
-    border-color: functions.palette(blue20);
+  .sort-menu-close-button {
+    width: 100%;
+  }
 
-    &:focus, &:hover {
-      background-color: functions.palette(blue30);
-      border-color: functions.palette(blue30);
+  .sort-menu-reset-button {
+    @include appearance.button-secondary;
+  }
+
+  .lower-buttons-wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+
+    @include base.respond(functions.break(mobile-small), min) {
+      flex-flow: row nowrap;
+    }
+
+    .sort-menu-close-button, .sort-menu-reset-button {
+      width: 100%;
+      min-width: 0;
+
+      @include base.respond(functions.break(mobile-small), min) {
+        width: calc(50% - 10px);
+      }
     }
   }
 }

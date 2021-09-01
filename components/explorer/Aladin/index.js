@@ -12,6 +12,7 @@ import FiltersContext from "@/contexts/Filters";
 import SourcesList from "@/components/explorer/Aladin/SourcesList";
 import Controls from "@/components/explorer/Controls";
 import SourceDetails from "@/components/explorer/SourceDetails";
+import defaultFilters from "@/fixtures/defaultExplorerFilters";
 import { useAstroObjectData, getAstroObjectData } from "@/lib/api/astroObject";
 
 export default function Aladin({
@@ -402,7 +403,7 @@ export default function Aladin({
   // <SourcesList sources={srcsInRegion} />
   return (
     <AladinFocusProvider value={{ hasFocus, setHasFocus }}>
-      <Controls />
+      <Controls defaultFilters={defaultFilters} />
       <SourceDetails
         data={sourceData}
         setData={setSourceData}
