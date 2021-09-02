@@ -8,7 +8,7 @@ RUN apt-get update -y && \
 
 ENV NEXT_PUBLIC_API_URL https://skyviewer.uw.r.appspot.com/api
 ENV NEXT_PUBLIC_ASSETS_BASE_URL https://skyviewer.uw.r.appspot.com/assets/
-NEXT_PUBLIC_ASTRO_API_URL="https://us-central1-skyviewer.cloudfunctions.net/astro-objects-api"
+ENV NEXT_PUBLIC_ASTRO_API_URL="https://us-central1-skyviewer.cloudfunctions.net/astro-objects-api"
 
 COPY . /app
 WORKDIR /app
