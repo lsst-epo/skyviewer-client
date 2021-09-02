@@ -13,7 +13,11 @@ import SourcesList from "@/components/explorer/Aladin/SourcesList";
 import Controls from "@/components/explorer/Controls";
 import SourceDetails from "@/components/explorer/SourceDetails";
 import defaultFilters from "@/fixtures/defaultExplorerFilters";
-import { useAstroObjectData, getAstroObjectData } from "@/lib/api/astroObject";
+import {
+  useAstroObjectContent,
+  getAstroObjectContent,
+  getAstroObjectData,
+} from "@/lib/api/astroObject";
 
 export default function Aladin({
   selector,
@@ -40,7 +44,7 @@ export default function Aladin({
   const { filters } = useContext(FiltersContext) || {};
   const [srcsInRegion, setSrcsInRegion] = useState(null);
   const [sourceData, setSourceData] = useState(null);
-  const astroObjectData = useAstroObjectData(sourceData?.id);
+  const astroObjectData = useAstroObjectContent(sourceData?.id);
   const aladinReticleCanvas = useRef(null);
 
   const { ref: aladinContainer } = useResizeObserver({
@@ -260,8 +264,15 @@ export default function Aladin({
 
     data.position = getPixelPos([ra, dec]);
     setSourceData(data);
-    getAstroObjectData(id).then((response) => {
-      setSourceData({ ...data, ...response?.astroObject });
+    getAstroObjectContent(id).then((contentResponse) => {
+      getAstroObjectData(id).then((dataResponse) => {
+        setSourceData({
+          ...data,
+          ...contentResponse?.astroObject,
+          ...dataResponse?.astroObjects,
+          position: getPixelPos([ra, dec]),
+        });
+      });
     });
   };
 

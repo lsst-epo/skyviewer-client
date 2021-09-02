@@ -30,23 +30,12 @@ export default function Explorer({
 
   useAladin(selector, survey, fov, target, options, setAladins);
 
-  const onClick = (event) => {
-    // eslint-disable-next-line no-console
-    // console.log("Clicked", event);
-  };
-
-  const onObjectClicked = (event) => {
-    // eslint-disable-next-line no-console
-    console.log("Object Clicked", event);
-  };
-
   return (
     <ExplorerProvider value={{ settings, setSettings }}>
       <AladinGlobalProvider value={aladins}>
         <FiltersProvider value={{ setFilters, filters }}>
           <Aladin
             {...{ target, selector, survey, fov, fovRange, options }}
-            onObjectClicked={onObjectClicked}
             catalogs={catalogs}
           />
         </FiltersProvider>
