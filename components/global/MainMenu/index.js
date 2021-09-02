@@ -67,7 +67,7 @@ export default function MainMenu({ route }) {
                   text="Language"
                 />
               </li>
-              <li className="main-menu-nav-item">
+              {/* <li className="main-menu-nav-item">
                 <Buttonish
                   url="#"
                   icon={<IconComposer icon="Gear" />}
@@ -82,7 +82,7 @@ export default function MainMenu({ route }) {
                   text="Notifications"
                   classes="notifications-item"
                 />
-              </li>
+              </li> */}
               <li className="main-menu-nav-item">
                 <Buttonish
                   url="#"
@@ -103,7 +103,7 @@ export default function MainMenu({ route }) {
                 <Buttonish
                   url="#"
                   icon={<IconComposer icon="Info" />}
-                  text="Info"
+                  text="About"
                   classes="info-item"
                 />
               </li>

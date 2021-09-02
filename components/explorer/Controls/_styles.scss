@@ -99,7 +99,8 @@
     }
 
     li:first-child {
-      margin-left: 0;
+      // margin-left: 0;
+      margin-left: $controlDim + $controlSpacing;
     }
 
     li:last-child {

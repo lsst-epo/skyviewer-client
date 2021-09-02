@@ -28,7 +28,7 @@ export default function Home() {
           </li>
           <li className="home-nav-item">
             <Buttonish
-              url="/guided-experiences"
+              url="/tours"
               text="Please guide me"
               classes="button primary"
             />
