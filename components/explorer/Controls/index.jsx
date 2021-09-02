@@ -33,9 +33,9 @@ export default function Controls({ defaultFilters }) {
         aria-label="Wayfinding"
         className="wayfinding controls-submenu"
       >
-        <li role="menuitem">
+        {/* <li role="menuitem">
           <Goals />
-        </li>
+        </li> */}
         <li role="menuitem">
           <Landmarks />
         </li>
@@ -49,9 +49,9 @@ export default function Controls({ defaultFilters }) {
         <li role="menuitem">
           <Markers />
         </li>
-        <li role="menuitem">
+        {/* <li role="menuitem">
           <Orientation />
-        </li>
+        </li>*/}
         <li role="menuitem">
           <Grid />
         </li>

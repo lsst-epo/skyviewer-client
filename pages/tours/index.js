@@ -25,6 +25,6 @@ export default withLayout(
     defaultFilters={DEFAULT_FILTERS}
     className="tours-container"
     heading="Astronomical Tours"
-    nextLink={{ url: "/astronomers-hall-of-fame", text: "Got to Hall of Fame" }}
+    nextLink={{ url: "/astronomers-hall-of-fame", text: "Go to Hall of Fame" }}
   />
 )(ToursPage);

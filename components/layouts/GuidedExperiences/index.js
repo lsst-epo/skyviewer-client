@@ -46,7 +46,8 @@ export default function GuidedExperiencesLayout({
       <SearchProvider value={{ searchTerm, setSearchTerm }}>
         <div className={className}>
           <div ref={headerRef} className="guided-experiences-header-container">
-            <Header {...{ nextLink, backLink, heading }} />
+            {/* <Header {...{ nextLink, backLink, heading }} /> */}
+            <Header {...{ heading }} />
             <SecondaryHeader
               defaultFilters={defaultFilters}
               sortFilterContext={sortFilterContext}
@@ -56,8 +57,8 @@ export default function GuidedExperiencesLayout({
           {children}
           <div ref={navRef} className="guided-experiences-nav-container">
             <NavLink
-              url="/guided-experiences"
-              text="Back to Guided Experiences"
+              url="/"
+              text="Back to Main Menu"
               iconBefore
               icon={<IconComposer icon="ArrowLeft" />}
             />
