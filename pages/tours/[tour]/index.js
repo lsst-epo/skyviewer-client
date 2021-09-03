@@ -10,25 +10,26 @@ import GuidedExperienceLanding from "@/components/guidedExperiences/GuidedExperi
 import Intro from "@/components/tours/Intro";
 import FunFact from "@/components/tours/FunFact";
 // import { getTourData } from "@/helpers";
-import { useTourData } from "@/lib/api/tour";
+import { useTourData, getTourData } from "@/lib/api/tour";
+import { getToursPaths } from "@/lib/api/tours";
 
 const DEFAULT_NEXT = { url: "/intro/", text: "Let's Start" };
 const DEFAULT_BACK = { url: "/tours/", text: "Back" };
 
-const TourPage = ({ setLayoutState }) => {
+const TourPage = ({ setLayoutState, tour }) => {
   const router = useRouter();
   const {
     pathname,
-    query,
-    query: { tour: tourSlug, intro: introId, fact: factId },
+    query: { intro: introId, fact: factId },
   } = router;
-  const { data: tourData } = useTourData(tourSlug);
+  // const { data: tour } = useTourData(slug);
   const [isLanding, setIsLanding] = useState(!introId && !factId);
   const [nextLink, setNextLink] = useState(DEFAULT_NEXT);
   const [backLink, setBackLink] = useState(DEFAULT_BACK);
 
   const {
     id,
+    slug,
     title,
     complexity,
     duration,
@@ -41,7 +42,7 @@ const TourPage = ({ setLayoutState }) => {
     introContentBlocks,
     factsHeading,
     factsContentBlocks,
-  } = tourData || {};
+  } = tour || {};
 
   const getNavLinks = useCallback(
     (id, totalPages, type) => {
@@ -52,7 +53,7 @@ const TourPage = ({ setLayoutState }) => {
             text: "Back",
           },
           {
-            url: { pathname, query: { tour: tourSlug, intro: 1 } },
+            url: { pathname, query: { tour: slug, intro: 1 } },
             text: "Let's Start",
           },
         ];
@@ -64,11 +65,11 @@ const TourPage = ({ setLayoutState }) => {
       if (id > 1 && id < totalPages) {
         return [
           {
-            url: { pathname, query: { tour: tourSlug, [type]: previousId } },
+            url: { pathname, query: { tour: slug, [type]: previousId } },
             text: "Back",
           },
           {
-            url: { pathname, query: { tour: tourSlug, [type]: nextId } },
+            url: { pathname, query: { tour: slug, [type]: nextId } },
             text: "Next",
           },
         ];
@@ -77,21 +78,21 @@ const TourPage = ({ setLayoutState }) => {
       if (id === 1) {
         const backUrl = {
           pathname,
-          query: { tour: tourSlug, intro: introContentBlocks.length },
+          query: { tour: slug, intro: introContentBlocks.length },
         };
-        const nextUrl = { pathname, query: { tour: tourSlug, [type]: nextId } };
+        const nextUrl = { pathname, query: { tour: slug, [type]: nextId } };
         let nextText = "Next";
 
         if (type === "intro") {
-          backUrl.query = { tour: tourSlug };
+          backUrl.query = { tour: slug };
         }
 
         if (type === "intro" && totalPages === 1) {
           nextUrl.pathname = pathname;
-          nextUrl.query = { tour: tourSlug, fact: 1 };
+          nextUrl.query = { tour: slug, fact: 1 };
         } else if (totalPages === 1) {
           nextUrl.pathname = `${pathname}/tour`;
-          nextUrl.query = { tour: tourSlug, poi: 1 };
+          nextUrl.query = { tour: slug, poi: 1 };
           nextText = "Start the Tour";
         }
 
@@ -110,17 +111,17 @@ const TourPage = ({ setLayoutState }) => {
       if (id >= totalPages) {
         const nextUrl = {
           pathname: `${pathname}/tour`,
-          query: { tour: tourSlug, poi: 1 },
+          query: { tour: slug, poi: 1 },
         };
 
         if (type === "intro") {
           nextUrl.pathname = pathname;
-          nextUrl.query = { tour: tourSlug, fact: 1 };
+          nextUrl.query = { tour: slug, fact: 1 };
         }
 
         return [
           {
-            url: { pathname, query: { tour: tourSlug, [type]: previousId } },
+            url: { pathname, query: { tour: slug, [type]: previousId } },
             text: "Back",
           },
           {
@@ -130,7 +131,7 @@ const TourPage = ({ setLayoutState }) => {
         ];
       }
     },
-    [tourSlug, introContentBlocks?.length]
+    [slug, introContentBlocks?.length]
   );
 
   useEffect(() => {
@@ -138,7 +139,7 @@ const TourPage = ({ setLayoutState }) => {
   }, [introId, factId]);
 
   useEffect(() => {
-    if (!tourData) return;
+    if (!tour) return;
     let navLinks = getNavLinks();
     if (introId) {
       navLinks = getNavLinks(+introId, introContentBlocks.length, "intro");
@@ -148,18 +149,18 @@ const TourPage = ({ setLayoutState }) => {
 
     setBackLink(navLinks[0]);
     setNextLink(navLinks[1]);
-  }, [tourSlug, introId, factId, tourData, getNavLinks]);
+  }, [slug, introId, factId, tour, getNavLinks]);
 
   useEffect(() => {
     const updatedLayoutState = {
       desktopBackLink: {
-        url: { pathname, query: { tour: tourSlug } },
+        url: { pathname, query: { tour: slug } },
         text: "Back",
       },
       desktopNextLink: {
         url: {
           pathname: `${pathname}/tour`,
-          query: { tour: tourSlug, poi: 1 },
+          query: { tour: slug, poi: 1 },
         },
         text: "Start the Tour",
       },
@@ -173,15 +174,15 @@ const TourPage = ({ setLayoutState }) => {
         text: "Back",
       };
       updatedLayoutState.desktopNextLink = {
-        url: { pathname, query: { tour: tourSlug, intro: 1 } },
+        url: { pathname, query: { tour: slug, intro: 1 } },
         text: "Let's Start",
       };
     }
 
     setLayoutState(updatedLayoutState);
-  }, [setLayoutState, nextLink, backLink, tourSlug, isLanding, pathname]);
+  }, [setLayoutState, nextLink, backLink, slug, isLanding, pathname]);
 
-  if (!tourData || Object.keys(tourData).length === 0) {
+  if (!tour || Object.keys(tour).length === 0 || router.isFallback) {
     return <LoadingSpinner />;
   }
 
@@ -203,7 +204,7 @@ const TourPage = ({ setLayoutState }) => {
                 subheading={introSubheading}
                 blocks={introContentBlocks}
                 thumbnail={thumbnail}
-                skipUrl={`/tours/${tourSlug}/tour?poi=1`}
+                skipUrl={`/tours/${slug}/tour?poi=1`}
               />
             )}
 
@@ -212,7 +213,7 @@ const TourPage = ({ setLayoutState }) => {
                 id={factId}
                 blocks={factsContentBlocks}
                 heading={factsHeading}
-                skipUrl={`/tours/${tourSlug}/tour?poi=1`}
+                skipUrl={`/tours/${slug}/tour?poi=1`}
               />
             )}
           </div>
@@ -222,8 +223,32 @@ const TourPage = ({ setLayoutState }) => {
   );
 };
 
+export async function getStaticPaths() {
+  const data = await getToursPaths();
+  const toursPaths = data?.tours.map((tour) => {
+    const { slug } = tour;
+    return { params: { tour: slug } };
+  });
+
+  return {
+    paths: toursPaths,
+    fallback: true,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const { tour } = params;
+  const data = await getTourData(tour);
+
+  return {
+    props: data,
+    revalidate: 30,
+  };
+}
+
 TourPage.propTypes = {
   setLayoutState: PropTypes.func,
+  tour: PropTypes.object,
 };
 
 const mapLayoutStateToLayoutTree = ({
