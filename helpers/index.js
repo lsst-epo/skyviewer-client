@@ -1,6 +1,3 @@
-import PLACEHOLDER_TOURS from "@/fixtures/placeholderTours";
-import PLACEHOLDER_POIS from "@/fixtures/testPois";
-
 export const capitalize = (string) => {
   if (typeof string !== "string") return "";
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -30,13 +27,6 @@ export const getDownloadLink = (uri, name = "download") => {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-};
-
-export const getTourData = (id) => {
-  if (!id) return null;
-  const tour = PLACEHOLDER_TOURS.find((tour) => +id === tour.id);
-  tour.pois = PLACEHOLDER_POIS;
-  return tour;
 };
 
 export const moveInArray = (arr, from, to) => {
