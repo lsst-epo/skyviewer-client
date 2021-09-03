@@ -43,9 +43,17 @@
   .poi-inner {
     display: flex;
     flex-flow: column nowrap;
-    padding: 30px 50px 70px;
+    padding: 50px 70px 90px;
     opacity: 0;
     transition: padding-bottom 0.2s;
+
+    @include base.respond(functions.break(mobile-small), max) {
+      padding: 30px 50px 70px;
+    }
+
+    @include base.respond(functions.break(desktop), min) {
+      padding: 50px 70px;
+    }
 
     @include base.fluid-scale(
       padding-bottom,
@@ -54,16 +62,6 @@
       functions.break(desktop),
       810px,
     );
-
-    @include base.respond(functions.break(mobile-small), min) {
-      padding: 50px 70px 90px;
-    }
-
-    @include base.respond(functions.break(desktop), min) {
-      padding: 50px 70px;
-    }
-
-
 
     .poi-inner-header {
       padding-bottom: 12px;

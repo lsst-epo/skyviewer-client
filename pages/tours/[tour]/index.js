@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { withLayout } from "@moxy/next-layout";
 import PrimaryLayout from "@/layouts/Primary";
 import GuidedExperienceLayout from "@/layouts/GuidedExperience";
+import LoadingSpinner from "@/primitives/LoadingSpinner";
 import GuidedExperienceLanding from "@/components/guidedExperiences/GuidedExperienceLanding";
 import Intro from "@/components/tours/Intro";
 import FunFact from "@/components/tours/FunFact";
@@ -181,7 +182,7 @@ const TourPage = ({ setLayoutState }) => {
   }, [setLayoutState, nextLink, backLink, tourSlug, isLanding, pathname]);
 
   if (!tourData || Object.keys(tourData).length === 0) {
-    return <div>loading</div>;
+    return <LoadingSpinner />;
   }
 
   return (
