@@ -1,14 +1,16 @@
 import { useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
+import LoadingSpinner from "@/primitives/LoadingSpinner";
 import TourListItem from "./ListItem";
 import TourSortFilterContext from "@/contexts/TourSortFilter";
 import TourSearchContext from "@/contexts/TourSearch";
 import { useToursBySearch } from "@/lib/api/tours";
 
-export default function Tours({ tours }) {
+export default function Tours({ tours, isToursLoading }) {
   const { filters } = useContext(TourSortFilterContext) || {};
   const [sortedFilteredTours, setSortedFilteredTours] = useState(tours);
+  const [loading, setLoading] = useState(tours);
 
   useEffect(() => {
     const newlySortedFilteredTours = getSortedTours(
@@ -71,6 +73,14 @@ export default function Tours({ tours }) {
     });
   }
 
+  if (isToursLoading) {
+    return (
+      <div className="tours-list-container">
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
   return (
     <div className="tours-list-container">
       {sortedFilteredTours?.length > 0 ? (
@@ -81,7 +91,7 @@ export default function Tours({ tours }) {
           })}
         </ul>
       ) : (
-        <div>No Tours</div>
+        <div className="no-tours-list">No Tours</div>
       )}
     </div>
   );
@@ -89,4 +99,5 @@ export default function Tours({ tours }) {
 
 Tours.propTypes = {
   tours: PropTypes.array.isRequired,
+  isToursLoading: PropTypes.bool,
 };
