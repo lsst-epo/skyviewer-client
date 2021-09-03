@@ -12,10 +12,15 @@ import DEFAULT_FILTERS from "@/fixtures/defaultGEFilters";
 
 const ToursPage = () => {
   const { searchTerm } = useContext(TourSearchContext) || {};
-  const tours = useToursByVarietyData("tours")?.data || [];
+  const { isLoading, data: tours } = useToursByVarietyData("tours");
   const searchResults = useToursBySearch(searchTerm, "tours")?.data || null;
 
-  return <Tours tours={searchResults && searchTerm ? searchResults : tours} />;
+  return (
+    <Tours
+      isToursLoading={isLoading}
+      tours={searchResults && searchTerm ? searchResults : tours || []}
+    />
+  );
 };
 
 export default withLayout(
