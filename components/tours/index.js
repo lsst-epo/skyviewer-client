@@ -73,25 +73,23 @@ export default function Tours({ tours, isToursLoading }) {
     });
   }
 
-  if (isToursLoading) {
-    return (
-      <div className="tours-list-container">
-        <LoadingSpinner />
-      </div>
-    );
-  }
-
   return (
     <div className="tours-list-container">
-      {sortedFilteredTours?.length > 0 ? (
-        <ul className="tours-list">
-          {sortedFilteredTours.map((tour) => {
-            const { id } = tour;
-            return <TourListItem key={id} {...tour} />;
-          })}
-        </ul>
+      {isToursLoading ? (
+        <LoadingSpinner />
       ) : (
-        <div className="no-tours-list">No Tours</div>
+        <>
+          {sortedFilteredTours?.length > 0 ? (
+            <ul className="tours-list">
+              {sortedFilteredTours.map((tour) => {
+                const { id } = tour;
+                return <TourListItem key={id} {...tour} />;
+              })}
+            </ul>
+          ) : (
+            <div className="no-tours-list">No Tours</div>
+          )}
+        </>
       )}
     </div>
   );
