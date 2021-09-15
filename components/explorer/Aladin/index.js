@@ -85,12 +85,12 @@ export default function Aladin({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [aladinGlobal, aladin, catalogs, jpgs]);
 
-  useEffect(() => {
-    router.replace({
-      pathname,
-      query: { ...query, objId: sourceData?.id || null },
-    });
-  }, [sourceData]);
+  // useEffect(() => {
+  //   router.replace({
+  //     pathname,
+  //     query: { ...query, objId: sourceData?.id || null },
+  //   });
+  // }, [sourceData]);
 
   useEffect(() => {
     if (!aladin) return;
