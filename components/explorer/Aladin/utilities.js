@@ -1,17 +1,29 @@
-export const getMarkerShape = (shapeSource) => {
-  const shapes = ["circle", "plus", "rhomb", "cross", "triangle", "square"];
+const SHAPES = ["circle", "plus", "rhomb", "cross", "triangle", "square"];
 
-  if (!shapeSource) return "square";
+export async function getMarkerShape(shapeSource) {
+  return new Promise((resolve, reject) => {
+    const newShape = new Image();
+    newShape.onload = () => resolve(newShape);
+    newShape.onerror = reject;
+    newShape.src = shapeSource;
+  });
+}
 
-  if (shapes.indexOf(shapeSource) > -1) {
-    return shapeSource;
+export async function addCat(aladinGlobal, aladin, cat) {
+  const { path, icon, title } = cat;
+  let shape = "square";
+
+  if (SHAPES.indexOf(icon) < 0) {
+    shape = await getMarkerShape(
+      `${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${icon[0].url}`
+    );
   }
 
-  const newShape = new Image();
-  newShape.src = shapeSource;
-  return newShape;
-};
+  aladin.addCatalog(aladinGlobal.catalogHiPS(path, { name: title, shape }));
+}
 
-export const getSourceCatalogOptions = (iconPath, name, filter) => {
-  return { name, shape: getMarkerShape(iconPath), filter };
+export const addCats = (aladinGlobal, aladin, catalogs) => {
+  catalogs.forEach((cat) => {
+    addCat(aladinGlobal, aladin, cat);
+  });
 };

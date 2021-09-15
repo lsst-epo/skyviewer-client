@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useRouter } from "next/router";
 import debounce from "lodash.debounce";
 import useResizeObserver from "use-resize-observer";
-import { getSourceCatalogOptions } from "./utilities";
+import { createCatalog, aladinizeCats, addCats } from "./utilities";
 import ExplorerContext from "@/contexts/Explorer";
 import AladinGlobalContext from "@/contexts/AladinGlobal";
 import AladinCatalogsContext from "@/contexts/AladinCatalogs";
@@ -74,8 +74,8 @@ export default function Aladin({
     addAladinEventHandlers();
 
     // Update Catalogs
-    if (catalogs && aladin.view.catalogs.length === 0) {
-      addCatalogs(aladinizeCats(catalogs));
+    if (catalogs) {
+      addCats(aladinGlobal, aladin, catalogs);
     }
 
     // Update Markers
@@ -312,50 +312,6 @@ export default function Aladin({
     for (const [event, eventHandler] of Object.entries(eventHandlers)) {
       if (eventHandler) aladin.on(event, eventHandler);
     }
-  };
-
-  // const createHiPSCatalog = (catalog) => {
-  //   const { path, icon } = catalog;
-  //   return aladinGlobal.catalogHiPS(
-  //     path,
-  //     getSourceCatalogOptions(
-  //       `${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${icon[0].url}`,
-  //       filtersChecker
-  //     )
-  //   );
-  // };
-
-  const createCatalog = (catalog) => {
-    const { path, icon, title } = catalog;
-
-    // if (type === "HiPS") {
-    return aladinGlobal.catalogHiPS(
-      path,
-      getSourceCatalogOptions(
-        `${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${icon[0].url}`,
-        title
-      )
-    );
-    // }
-
-    // if (type === "markers") {
-    //   return aladinGlobal.catalog(getSourceCatalogOptions(catOpts));
-    // }
-
-    // return aladinGlobal.catalog(getSourceCatalogOptions(catOpts));
-  };
-
-  const aladinizeCats = (catalogs) => {
-    return catalogs.map((cat) => {
-      return createCatalog(cat);
-    });
-  };
-
-  const addCatalogs = (catalogs) => {
-    catalogs.forEach((cat) => {
-      // cat.isShowing = false;
-      aladin.addCatalog(cat);
-    });
   };
 
   // const getMarkerSources = (markers) => {

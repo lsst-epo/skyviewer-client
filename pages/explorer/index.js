@@ -46,7 +46,6 @@ export async function getStaticProps() {
     moveInArray(catalogs, goalsCatIndex, lastCatsIndex);
   }
 
-  // moveInArray();
   return { props: { catalogs, survey: surveys[0] } };
 }
 

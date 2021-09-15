@@ -11,7 +11,7 @@ export default function AladinLayout({ children }) {
         {/* Aladin Lite has a dependency on the jQuery library */}
         <script
           type="text/javascript"
-          src="https://code.jquery.com/jquery-1.9.1.min.js"
+          src="https://code.jquery.com/jquery-1.12.1.min.js"
           charSet="utf-8"
         ></script>
         {/* Aladin Lite JS code */}
