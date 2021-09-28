@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - 'develop'
-  
+
 jobs:
   build-push-deploy:
     name: 'Build, Publish, and Deploy'
@@ -20,7 +20,7 @@ jobs:
     - name: Login to GCP
       uses: google-github-actions/setup-gcloud@master
       with:
-        service_account_key: ${{ secrets.SA_DEV_KEY }}
+        service_account_key: ${{ secrets.DEV_SA_KEY }}
         project_id: ${{ secrets.SV_PROJ_NAME }}
         export_default_credentials: true
 
