@@ -17,7 +17,7 @@ COPY --from=deps /app/node_modules ./node_modules
 # ENV NEXT_PUBLIC_API_URL https://skyviewer-api-e3g4rcii3q-uc.a.run.app/api
 # ENV NEXT_PUBLIC_ASSETS_BASE_URL https://skyviewer-api-e3g4rcii3q-uc.a.run.app/assets
 ENV NEXT_PUBLIC_API_URL https://skyviewer.uw.r.appspot.com/api
-ENV NEXT_PUBLIC_ASSETS_BASE_URL https://skyviewer.uw.r.appspot.com/assets/
+ENV NEXT_PUBLIC_ASSETS_BASE_URL https://skyviewer.uw.r.appspot.com/assets
 ENV NEXT_PUBLIC_ASTRO_API_URL https://us-central1-skyviewer.cloudfunctions.net/astro-objects-api
 
 RUN yarn tokens && yarn cloud-start:build
