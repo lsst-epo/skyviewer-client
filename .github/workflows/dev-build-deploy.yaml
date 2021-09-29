@@ -39,8 +39,8 @@ jobs:
       run: docker push gcr.io/${{ secrets.SV_PROJ_NAME }}/skyviewer-client:${{ github.sha }}
 
     - name: Deploy to App Engine
-      uses: google-github-actions/deploy-appengine@main
-      with:
-        project_id: ${{ secrets.SV_PROJ_NAME }}
-        image_url: gcr.io/${{ secrets.SV_PROJ_NAME }}/skyviewer-client:${{ github.sha }}
- 
+      run: |-
+        gcloud app deploy app.yaml \
+        --image-url=gcr.io/${{ secrets.SV_PROJ_NAME }}/skyviewer-client:${{ github.sha }} \
+        --promote \
+        --project=${{ secrets.SV_PROJ_NAME }}
