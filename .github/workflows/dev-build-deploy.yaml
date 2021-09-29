@@ -24,22 +24,7 @@ jobs:
         project_id: ${{ secrets.SV_PROJ_NAME }}
         export_default_credentials: true
 
-    - name: Build Container Image
-      run: |-
-        docker build \
-        -t "gcr.io/${{ secrets.SV_PROJ_NAME }}/skyviewer-client:${{ github.sha }}" \
-        -e NEXT_PUBLIC_API_URL=https://skyviewer.uw.r.appspot.com/api \
-        -e NEXT_PUBLIC_ASSETS_BASE_URL=https://skyviewer.uw.r.appspot.com/assets \
-        -e NEXT_PUBLIC_ASTRO_API_URL=https://us-central1-skyviewer.cloudfunctions.net/astro-objects-api \
-        .
-    - name: Configure Docker Auth
-      run: gcloud --quiet auth configure-docker
-
-    - name: Push Container Image to GCR
-      run: docker push gcr.io/${{ secrets.SV_PROJ_NAME }}/skyviewer-client:${{ github.sha }}
-
     - name: Deploy to App Engine
       uses: google-github-actions/deploy-appengine@main
       with:
         project_id: ${{ secrets.SV_PROJ_NAME }}
-        image_url: gcr.io/${{ secrets.SV_PROJ_NAME }}/skyviewer-client:${{ github.sha }}
