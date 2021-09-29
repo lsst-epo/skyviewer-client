@@ -28,13 +28,13 @@ jobs:
       run: |-
         docker build \
         -t "gcr.io/${{ secrets.SV_PROJ_NAME }}/skyviewer-client:${{ github.sha }}" \
-        -e NEXT_PUBLIC_API_URL=https://skyviewer-api-e3g4rcii3q-uc.a.run.app/api \
-        -e NEXT_PUBLIC_ASSETS_BASE_URL=https://skyviewer-api-e3g4rcii3q-uc.a.run.app/assets \
-        -e NEXT_PUBLIC_ASTRO_API_URL=https://us-central1-skyviewer.cloudfunctions.net/astro-objects-api \
+        --build-arg NEXT_PUBLIC_API_URL=https://skyviewer-api-e3g4rcii3q-uc.a.run.app/api \
+        --build-arg NEXT_PUBLIC_ASSETS_BASE_URL=https://skyviewer-api-e3g4rcii3q-uc.a.run.app/assets \
+        --build-arg NEXT_PUBLIC_ASTRO_API_URL=https://us-central1-skyviewer.cloudfunctions.net/astro-objects-api \
         .
     - name: Configure Docker Auth
       run: gcloud --quiet auth configure-docker
-      
+
     - name: Push Container Image to GCR
       run: docker push gcr.io/${{ secrets.SV_PROJ_NAME }}/skyviewer-client:${{ github.sha }}
 
