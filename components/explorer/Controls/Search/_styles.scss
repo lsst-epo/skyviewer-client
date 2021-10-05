@@ -11,5 +11,12 @@
     width: 16px;
     height: 16px;
     fill: functions.palette(black);
+    transition: fill 0.4s;
+  }
+
+  &.active, &:hover {
+    svg {
+      fill: functions.palette(white);
+    }
   }
 }
