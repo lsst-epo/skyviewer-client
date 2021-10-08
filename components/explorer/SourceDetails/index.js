@@ -108,7 +108,7 @@ export default function SourceDetails({ data, setData, handleClose }) {
               <div
                 className="source-img"
                 style={{
-                  backgroundImage: `url(${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${astroImage[0].url})`,
+                  backgroundImage: `url(${astroImage[0].url})`,
                 }}
               />
             )}
