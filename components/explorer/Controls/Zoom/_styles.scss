@@ -20,6 +20,14 @@
         fill: functions.palette(white);
       }
     }
+
+    &:focus {
+      background-color: functions.palette(blue15);
+
+      &.active, &:hover {
+        background-color: functions.palette(turquoise55);
+      }
+    }
   }
 }
 

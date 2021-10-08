@@ -40,7 +40,11 @@
     height: $controlDim;
     background-color: functions.palette(neutral90);
     border-radius: 50%;
-    transition: background-color 0.4s;
+    transition: background-color 0.4s, outline 0.4s;
+
+    &:focus {
+      outline: 2px solid functions.palette(blue20);
+    }
 
     &.active, &:hover {
       background-color: functions.palette(turquoise55);
@@ -56,8 +60,8 @@
   }
 
   .zooms {
-    top: 50%;
-    // top: calc((var(--window-height, 100vh) - var(--main-header-height, 42px)) / 3);
+    top: calc(50% - 50px);
+    // top: calc((var(--window-height, 100vh) - var(--main-header-height, 42px)) / 2);
     right: 0;
     // bottom: ($controlDim / 2) - 10px;
     // display: flex;

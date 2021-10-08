@@ -19,9 +19,9 @@ export default function Controls({ defaultFilters }) {
         aria-label="Search and Filter"
         className="find controls-submenu"
       >
-        <li role="menuitem">
+        {/* <li role="menuitem">
           <Search />
-        </li>
+        </li> */}
         <li role="menuitem">
           <Filters defaultFilters={defaultFilters} />
         </li>
@@ -51,7 +51,7 @@ export default function Controls({ defaultFilters }) {
         </li>
         {/* <li role="menuitem">
           <Orientation />
-        </li>*/}
+        </li> */}
         <li role="menuitem">
           <Grid />
         </li>
