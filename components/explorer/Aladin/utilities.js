@@ -13,7 +13,7 @@ export async function addCat(aladinGlobal, aladin, cat) {
   const { path, icon, title } = cat;
   let shape = "square";
 
-  if (SHAPES.indexOf(icon) < 0) {
+  if (SHAPES.indexOf(icon) < 0 && icon.length > 0) {
     shape = await getMarkerShape(
       `${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${icon[0].url}`
     ).catch((e) => "square");
