@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import copy from "copy-to-clipboard";
-import ShareButton from "./ShareButton.js";
+import ShareButton from "@/components/ShareButton";
 
 export default function CopyUrlButton({ icon, text, network }) {
   return (

@@ -1,0 +1,23 @@
+@use 'abstracts/functions';
+
+.share-button {
+  &:hover,
+  &:focus {
+    .image {
+      background-color: #7ac1c2;
+    }
+  }
+}
+
+.share-icon {
+  &.image {
+    background-color: functions.palette(turquoise70);
+
+    svg {
+      width: 23px;
+      height: 23px;
+      margin-left: 2px;
+      stroke: functions.palette(white);
+    }
+  }
+}
