@@ -18,6 +18,7 @@ import Hamburger from "./Hamburger";
 import Help from "./Help";
 import Info from "./Info";
 import InfoFull from "./InfoFull";
+import InfoSmall from "./InfoSmall";
 import Instagram from "./Instagram";
 import Minus from "./Minus";
 import Nebula from "./Nebula";
@@ -35,6 +36,7 @@ import Stopwatch from "./Stopwatch";
 import Suitcase from "./Suitcase";
 import Target from "./Target";
 import Twitter from "./Twitter";
+import World from "./World";
 
 export default {
   ArrowLeft,
@@ -57,6 +59,7 @@ export default {
   Help,
   Info,
   InfoFull,
+  InfoSmall,
   Instagram,
   Minus,
   Nebula,
@@ -74,4 +77,5 @@ export default {
   Suitcase,
   Target,
   Twitter,
+  World,
 };

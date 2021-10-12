@@ -1,17 +1,36 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import IconComposer from "@/svg/IconComposer";
 import Button from "@/primitives/Button";
 import Buttonish from "@/primitives/Buttonish";
+import ShareButtons from "@/components/ShareButtons";
+import Radio from "@/primitives/Radio";
 import Menu from "@/primitives/Menu";
-import IconComposer from "@/svg/IconComposer";
+import AboutMenu from "./AboutMenu.js";
+import LocaleMenu from "./LocaleMenu.js";
+import ShareMenu from "./ShareMenu.js";
+import QuickAccess from "./QuickAccess.js";
 
 export default function MainMenu({ route }) {
-  const modalLabelId = "main-menu-modal-label";
-  const modalDescriptionId = "main-menu-modal-description";
   const [openOverride, setOpenOverride] = useState(false);
+  const [localeOpenOverride, setLocaleOpenOverride] = useState(false);
+  const [shareOpenOverride, setShareOpenOverride] = useState(false);
+  const [aboutOpenOverride, setAboutOpenOverride] = useState(false);
 
-  const toggleCallback = (isOpen) => {
+  const toggleMainMenuCallback = (isOpen) => {
     setOpenOverride(isOpen);
+  };
+
+  const toggleLocaleModalCallback = (isOpen) => {
+    setLocaleOpenOverride(isOpen);
+  };
+
+  const toggleShareModalCallback = (isOpen) => {
+    setShareOpenOverride(isOpen);
+  };
+
+  const toggleAboutModalCallback = (isOpen) => {
+    setAboutOpenOverride(isOpen);
   };
 
   function getQuickAccess() {
@@ -39,12 +58,12 @@ export default function MainMenu({ route }) {
   return (
     <Menu
       classes="main-menu"
-      labelledbyId={modalLabelId}
-      describedbyId={modalDescriptionId}
+      labelledbyId="main-menu-modal-label"
+      describedbyId="main-menu-modal-description"
       heading="Main Menu"
       subheading="Settings and more"
-      openCallback={toggleCallback}
-      closeCallback={toggleCallback}
+      openCallback={toggleMainMenuCallback}
+      closeCallback={toggleMainMenuCallback}
       openOverride={openOverride}
       openButtonOpts={{
         icon: <IconComposer icon="Hamburger" />,
@@ -61,34 +80,29 @@ export default function MainMenu({ route }) {
             </h3>
             <ul className="list-unstyled main-menu-nav-items">
               <li className="main-menu-nav-item">
-                <Buttonish
-                  url="#"
-                  icon={<IconComposer icon="Globe" />}
+                <Button
+                  isIcon={false}
+                  icon={<IconComposer icon="World" />}
                   text="Language"
+                  classes="language-item"
+                  onClick={() => setLocaleOpenOverride(true)}
                 />
-              </li>
-              {/* <li className="main-menu-nav-item">
-                <Buttonish
-                  url="#"
-                  icon={<IconComposer icon="Gear" />}
-                  text="Adjustments"
-                  classes="adjustments-item"
+                <LocaleMenu
+                  isOpen={localeOpenOverride}
+                  toggleMenuCallback={toggleLocaleModalCallback}
                 />
               </li>
               <li className="main-menu-nav-item">
-                <Buttonish
-                  url="#"
-                  icon={<IconComposer icon="Bell" />}
-                  text="Notifications"
-                  classes="notifications-item"
-                />
-              </li> */}
-              <li className="main-menu-nav-item">
-                <Buttonish
-                  url="#"
+                <Button
+                  isIcon={false}
                   icon={<IconComposer icon="ShareSimple" />}
-                  text="Share"
+                  text="Share Skyviewer"
                   classes="share-item"
+                  onClick={() => setShareOpenOverride(true)}
+                />
+                <ShareMenu
+                  isOpen={shareOpenOverride}
+                  toggleMenuCallback={toggleShareModalCallback}
                 />
               </li>
               <li className="main-menu-nav-item">
@@ -100,23 +114,23 @@ export default function MainMenu({ route }) {
                 />
               </li>
               <li className="main-menu-nav-item">
-                <Buttonish
-                  url="#"
-                  icon={<IconComposer icon="Info" />}
+                <Button
+                  isIcon={false}
+                  icon={<IconComposer icon="InfoSmall" />}
                   text="About"
-                  classes="info-item"
+                  classes="about-item"
+                  onClick={() => setAboutOpenOverride(true)}
+                />
+                <AboutMenu
+                  isOpen={aboutOpenOverride}
+                  toggleMenuCallback={toggleAboutModalCallback}
                 />
               </li>
             </ul>
           </nav>
         </div>
         <div className="menu-section">
-          <nav aria-labelledby="settings-label" className="quick-access-nav">
-            <h3 id="settings-label" className="menu-section-heading">
-              Quick Access
-            </h3>
-            {getQuickAccess()}
-          </nav>
+          <QuickAccess route={route} />
         </div>
       </div>
     </Menu>

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import PropTypes from "prop-types";
 import copy from "copy-to-clipboard";
 import AladinGlobalContext from "@/contexts/AladinGlobal";
-import ShareButton from "./ShareButton.js";
+import ShareButton from "@/components/ShareButton";
 import { getDownloadLink } from "@/helpers";
 
 export default function GetImageButton({ icon, text, network }) {

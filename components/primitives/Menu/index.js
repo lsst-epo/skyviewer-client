@@ -93,7 +93,7 @@ export default function Menu({
 
   return (
     <div className="menu-container">
-      <Button {...openButtonOpts} onClick={handleOpen} />
+      {openButtonOpts && <Button {...openButtonOpts} onClick={handleOpen} />}
       <div
         role="dialog"
         aria-modal={true}

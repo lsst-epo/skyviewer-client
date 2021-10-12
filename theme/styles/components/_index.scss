@@ -27,6 +27,11 @@
 @forward 'components/layouts/GuidedExperiences/styles';
 @forward 'components/layouts/Primary/styles';
 
+//Share
+@forward 'components/ShareButtons/styles';
+@forward 'components/ShareButton/styles';
+@forward 'components/CopyUrlButton/styles';
+@forward 'components/GetImageButton/styles';
 
 // Guided Experiences
 @forward 'components/Bubbles/styles';
