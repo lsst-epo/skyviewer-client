@@ -26,7 +26,7 @@ export default function TourListItem({
           <div
             className="thumbnail"
             style={{
-              backgroundImage: `url(${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${thumbnail[0].url})`,
+              backgroundImage: `url(${thumbnail[0].url})`,
             }}
           />
           <div className="details">

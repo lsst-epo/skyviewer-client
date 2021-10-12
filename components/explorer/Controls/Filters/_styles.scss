@@ -2,7 +2,8 @@
 
 .filters-button {
   position: absolute;
-  top: 52px;
+  // top: 52px;
+  top: 0;
   left: 0;
   z-index: functions.z-stack(controls);
 

@@ -13,10 +13,8 @@ export async function addCat(aladinGlobal, aladin, cat) {
   const { path, icon, title } = cat;
   let shape = "square";
 
-  if (SHAPES.indexOf(icon) < 0) {
-    shape = await getMarkerShape(
-      `${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${icon[0].url}`
-    ).catch((e) => "square");
+  if (SHAPES.indexOf(icon) < 0 && icon.length > 0) {
+    shape = await getMarkerShape(icon[0].url).catch((e) => "square");
   }
 
   aladin.addCatalog(aladinGlobal.catalogHiPS(path, { name: title, shape }));

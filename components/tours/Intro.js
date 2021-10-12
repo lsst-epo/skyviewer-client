@@ -18,7 +18,7 @@ export default function Intro({
             <div
               className="tour-intro-thumbnail"
               style={{
-                backgroundImage: `url(${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${thumbnail[0].url})`,
+                backgroundImage: `url(${thumbnail[0].url})`,
               }}
             />
             <div className="tour-intro-headings">
@@ -46,7 +46,7 @@ export default function Intro({
         <div
           className="tour-intro-thumbnail"
           style={{
-            backgroundImage: `url(${process.env.NEXT_PUBLIC_ASSETS_BASE_URL}${thumbnail[0].url})`,
+            backgroundImage: `url(${thumbnail[0].url})`,
           }}
         />
         <div className="main">

@@ -11,5 +11,16 @@
     width: 16px;
     height: 16px;
     fill: functions.palette(black);
+    transition: fill 0.4s;
+  }
+
+  &:focus {
+    background-color: functions.palette(blue15);
+  }
+
+  &.active, &:hover {
+    svg {
+      fill: functions.palette(white);
+    }
   }
 }

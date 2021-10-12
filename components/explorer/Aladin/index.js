@@ -286,11 +286,11 @@ export default function Aladin({
   // };
 
   const onZoomChanged = (event) => {
-    if (isNaN(Number(event))) return;
-    setSettings({
-      ...settings,
-      zoomLevel: Number(event).toFixed(1),
-    });
+    // if (isNaN(Number(event))) return;
+    // setSettings({
+    //   ...settings,
+    //   zoomLevel: Number(event).toFixed(2),
+    // });
     // debouncedRegionSrcsSetter(event);
     // event.persist();
   };
@@ -299,7 +299,7 @@ export default function Aladin({
     const eventHandlers = {
       click: onClick || null,
       select: onSelect || null,
-      zoomChanged: onZoomChanged,
+      zoomChanged: null,
       objectClicked: showSourceDetails,
       objectHovered: onObjectHovered || null,
       footprintClicked: onFootprintClicked || null,

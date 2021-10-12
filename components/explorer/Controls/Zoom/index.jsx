@@ -1,34 +1,20 @@
 import { useContext } from "react";
-import ExplorerContext from "@/contexts/Explorer";
 import AladinGlobalContext from "@/contexts/AladinGlobal";
 import AladinFocusContext from "@/contexts/AladinFocus";
 import { useKeyDownEvent } from "@/hooks/listeners";
+import Button from "@/primitives/Button";
 import IconComposer from "@/svg/IconComposer";
-import { Range, Direction } from "react-range";
-
-const STEP = 0.1;
 
 export default function Zoom() {
-  const { settings } = useContext(ExplorerContext) || {};
   const { aladin } = useContext(AladinGlobalContext) || {};
   const { hasFocus } = useContext(AladinFocusContext) || {};
-  const { zoomLevel, zoomRange } = settings;
-  const [min, max] = zoomRange;
 
-  function getZoomInLevel(zoom, step) {
-    const newZoomLevel = zoom - step;
-    if (newZoomLevel < min) return min;
-    return newZoomLevel;
-  }
+  const handleZoomIn = () => {
+    aladin.increaseZoom(1);
+  };
 
-  function getZoomOutLevel(zoom, step) {
-    const newZoomLevel = zoom + step;
-    if (newZoomLevel > max) return max;
-    return newZoomLevel;
-  }
-
-  const handleZoom = (values) => {
-    aladin.setZoom(Number(values[0]).toFixed(1));
+  const handleZoomOut = () => {
+    aladin.decreaseZoom(1);
   };
 
   function handleKeyDown(event) {
@@ -36,12 +22,10 @@ export default function Zoom() {
 
     if (key !== "+" && key !== "=" && key !== "-" && key !== "_") return;
 
-    const bigStep = STEP * 100;
-
     if (key === "+" || key === "=") {
-      handleZoom([getZoomInLevel(+zoomLevel, bigStep)]);
+      handleZoomIn();
     } else if (key === "-" || key === "_") {
-      handleZoom([getZoomOutLevel(+zoomLevel, bigStep)]);
+      handleZoomOut();
     }
   }
 
@@ -49,24 +33,20 @@ export default function Zoom() {
 
   return (
     <div className="zooms controls-submenu">
-      <IconComposer icon="Plus" className="zoom-in" />
-      <Range
-        step={0.1}
-        min={min}
-        max={max}
-        direction={Direction.Down}
-        values={[zoomLevel]}
-        onChange={handleZoom}
-        renderTrack={({ props, children }) => (
-          <div {...props} className="zoom-track">
-            {children}
-          </div>
-        )}
-        renderThumb={({ props, children }) => (
-          <div {...props} className="zoom-thumb" />
-        )}
+      <Button
+        icon={<IconComposer icon="Plus" />}
+        onClick={handleZoomIn}
+        text="Zoom In"
+        isIcon
+        classes="zoom-in control-button"
       />
-      <IconComposer icon="Minus" className="zoom-out" />
+      <Button
+        icon={<IconComposer icon="Minus" />}
+        onClick={handleZoomOut}
+        text="Zoom Out"
+        isIcon
+        classes="zoom-out control-button"
+      />
     </div>
   );
 }

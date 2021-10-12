@@ -2,7 +2,7 @@
 @use 'abstracts/functions';
 
 // Overrides
-.aladin-logo-container,
+// .aladin-logo-container,
 .aladin-fov,
 .aladin-location,
 .aladin-gotoControl-container,
@@ -27,6 +27,11 @@
 
 .aladin-reticleCanvas:focus {
   outline: none;
+}
+
+.aladin-logo-container {
+  margin-right: 15px;
+  margin-bottom: 10px;
 }
 
 .show-catalogs {
