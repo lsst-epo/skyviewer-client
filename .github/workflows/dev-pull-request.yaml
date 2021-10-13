@@ -1,5 +1,5 @@
-  # Builds, pushes, and deploys the Skyviewer API container
-name: 'Build and deploy branch-tagged Skyviewer API in Dev'
+  # Builds, pushes, and deploys the Skyviewer Client container
+name: 'Build and deploy branch-tagged Skyviewer Client in Dev'
 
 on:
   pull_request:
