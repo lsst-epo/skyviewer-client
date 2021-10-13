@@ -9,8 +9,7 @@ import LoadingSpinner from "@/primitives/LoadingSpinner";
 import GuidedExperienceLanding from "@/components/guidedExperiences/GuidedExperienceLanding";
 import Intro from "@/components/tours/Intro";
 import FunFact from "@/components/tours/FunFact";
-// import { getTourData } from "@/helpers";
-import { useTourData, getTourData } from "@/lib/api/tour";
+import { getTourData } from "@/lib/api/tour";
 import { getToursPaths } from "@/lib/api/tours";
 
 const DEFAULT_NEXT = { url: "/intro/", text: "Let's Start" };
@@ -22,7 +21,6 @@ const TourPage = ({ setLayoutState, tour }) => {
     pathname,
     query: { intro: introId, fact: factId },
   } = router;
-  // const { data: tour } = useTourData(slug);
   const [isLanding, setIsLanding] = useState(!introId && !factId);
   const [nextLink, setNextLink] = useState(DEFAULT_NEXT);
   const [backLink, setBackLink] = useState(DEFAULT_BACK);
