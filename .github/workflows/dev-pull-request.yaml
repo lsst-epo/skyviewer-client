@@ -61,5 +61,27 @@ jobs:
       with:
         issue-number: ${{ github.event.pull_request.number }}
         body: |
-          A preview of this PR is available at ${{ env.version_url }}
+          A preview of this PR will be available at ${{ env.version_url }} until the request is closed.
         reactions: '+1'
+
+  cleanup:
+    name: 'Cleanup PR Preview'
+    runs-on: ubuntu-latest
+    if: ${{ github.event.action != 'closed'}}
+
+    # Checkout the repository to the GitHub Actions runner
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # gcloud CLI setup
+    - name: Login to GCP
+      uses: google-github-actions/setup-gcloud@master
+      with:
+        service_account_key: ${{ secrets.DEV_SA_KEY }}
+        project_id: ${{ secrets.SV_PROJ_NAME }}
+        export_default_credentials: true        
+
+    # Destruct!
+    - name: Destroy version
+      run: gcloud app version delete ${{ github.head_ref }} --service=skyviewer-client
