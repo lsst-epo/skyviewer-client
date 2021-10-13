@@ -56,12 +56,9 @@ jobs:
       run: echo "version_url=$(gcloud app versions list --uri --service=skyviewer-client --filter=version.id:${{ github.head_ref }})" >> $GITHUB_ENV
 
     - name: Post the URL to the PR
-      uses: actions/github-script@v5
+      uses: peter-evans/create-or-update-comment@v1
       with:
-        script: |
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: 'A preview of this pull can be accessed at ${{ steps.get_version.outputs.version_url }}''
-          })
+        issue-number: ${{github.event.issue.number}}
+        body: |
+          A preview of this PR is available at ${{ steps.get_version.outputs.version_url }}
+        reactions: '+1'
