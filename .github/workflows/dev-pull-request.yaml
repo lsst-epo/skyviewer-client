@@ -61,5 +61,5 @@ jobs:
       with:
         issue-number: ${{ github.event.pull_request.number }}
         body: |
-          A preview of this PR is available at ${{ steps.get_version.outputs.version_url }}
+          A preview of this PR is available at ${{ env.version_url }}
         reactions: '+1'
