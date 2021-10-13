@@ -2,17 +2,48 @@ import PropTypes from "prop-types";
 import { withLayout } from "@moxy/next-layout";
 import PrimaryLayout from "@/layouts/Primary";
 import AladinLayout from "@/layouts/Aladin";
-import { getCatalogsSurveysData } from "@/lib/api/catalogsSurveys";
+import { useCatalogsSurveysData } from "@/lib/api/catalogsSurveys";
 import { moveInArray } from "@/helpers";
+import LoadingSpinner from "@/primitives/LoadingSpinner";
 import Explorer from "@/components/explorer/index.js";
 
-const ExplorerPage = ({ catalogs, survey }) => {
-  const { fov, fovMin, fovMax, path, target } = survey;
+const ExplorerPage = () => {
+  const { data, isLoading } = useCatalogsSurveysData();
+
+  if (isLoading) return <LoadingSpinner />
+
+  const { catalogs, surveys } = data;
+  const sortedCats = sortCats(catalogs);
+  const { fov, fovMin, fovMax, path, target } = surveys[0];
+
+
+  function sortCats(cats) {
+    if (!cats) return null;
+
+    const lastCatsIndex = cats.length - 1;
+    const goalsCatIndex = cats.findIndex((cat) => {
+      return cat.title === "goal";
+    });
+
+    const landmarksCatIndex = cats.findIndex((cat) => {
+      return cat.title === "landmark";
+    });
+
+    if (landmarksCatIndex >= 0) {
+      moveInArray(cats, landmarksCatIndex, lastCatsIndex);
+    }
+
+    if (goalsCatIndex >= 0) {
+      moveInArray(cats, goalsCatIndex, lastCatsIndex);
+    }
+
+    return cats;
+  }
 
   return (
     <Explorer
       selector="#aladin-lite-div"
-      catalogs={catalogs}
+      catalogs={sortedCats}
       survey={path}
       fov={+fov || 60}
       fovRange={[fovMin, fovMax] || [2, 90]}
@@ -27,27 +58,27 @@ export default withLayout(
   </PrimaryLayout>
 )(ExplorerPage);
 
-export async function getStaticProps() {
-  const { catalogs, surveys } = await getCatalogsSurveysData();
-  const lastCatsIndex = catalogs.length - 1;
-  const goalsCatIndex = catalogs.findIndex((cat) => {
-    return cat.title === "goal";
-  });
+// export async function getStaticProps() {
+//   const { catalogs, surveys } = await getCatalogsSurveysData();
+//   const lastCatsIndex = catalogs.length - 1;
+//   const goalsCatIndex = catalogs.findIndex((cat) => {
+//     return cat.title === "goal";
+//   });
 
-  const landmarksCatIndex = catalogs.findIndex((cat) => {
-    return cat.title === "landmark";
-  });
+//   const landmarksCatIndex = catalogs.findIndex((cat) => {
+//     return cat.title === "landmark";
+//   });
 
-  if (landmarksCatIndex >= 0) {
-    moveInArray(catalogs, landmarksCatIndex, lastCatsIndex);
-  }
+//   if (landmarksCatIndex >= 0) {
+//     moveInArray(catalogs, landmarksCatIndex, lastCatsIndex);
+//   }
 
-  if (goalsCatIndex >= 0) {
-    moveInArray(catalogs, goalsCatIndex, lastCatsIndex);
-  }
+//   if (goalsCatIndex >= 0) {
+//     moveInArray(catalogs, goalsCatIndex, lastCatsIndex);
+//   }
 
-  return { props: { catalogs, survey: surveys[0] } };
-}
+//   return { props: { catalogs, survey: surveys[0] } };
+// }
 
 ExplorerPage.propTypes = {
   catalogs: PropTypes.array,
