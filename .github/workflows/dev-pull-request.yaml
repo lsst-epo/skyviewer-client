@@ -49,6 +49,7 @@ jobs:
         gcloud app deploy app.yaml \
         --image-url=gcr.io/${{ secrets.SV_PROJ_NAME }}/skyviewer-client:${{ github.sha }} \
         --version=${{ github.head_ref }} \
+        --no-promote \
         --project=${{ secrets.SV_PROJ_NAME }}
     
     - name: Get the version URL
