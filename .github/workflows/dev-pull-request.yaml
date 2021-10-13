@@ -59,7 +59,7 @@ jobs:
     - name: Post the URL to the PR
       uses: peter-evans/create-or-update-comment@v1
       with:
-        issue-number: ${{github.event.issue.number}}
+        issue-number: ${{ github.event.pull_request.number }}
         body: |
           A preview of this PR is available at ${{ steps.get_version.outputs.version_url }}
         reactions: '+1'
