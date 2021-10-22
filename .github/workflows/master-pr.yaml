@@ -1,0 +1,87 @@
+  # Builds, pushes, and deploys the Skyviewer API container
+name: 'Build and deploy branch-tagged Skyviewer API in Integration'
+
+on:
+  pull_request:
+    types:
+      - 'opened'
+      - 'synchronize'
+      - 'reopened'
+      - 'closed'
+    branches:
+      - 'master'
+
+jobs:
+  build-push-deploy:
+    name: 'Build, Publish, and Deploy'
+    runs-on: ubuntu-latest
+    if: ${{ github.event.action != 'closed'}}
+
+    # Checkout the repository to the GitHub Actions runner
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # gcloud CLI setup
+    - name: Login to GCP
+      uses: google-github-actions/setup-gcloud@master
+      with:
+        service_account_key: ${{ secrets.SKYVIEWER_INT_SERVICE_ACCOUNT }}
+        project_id: epo-integration-0e42
+        export_default_credentials: true
+    
+    - name: Build Container Image
+      run: |-
+        docker build \
+        -t "gcr.io/epo-integration-0e42/skyviewer-client:${{ github.sha }}" \
+        --build-arg NEXT_PUBLIC_API_URL=https://skyviewer-api-e3g4rcii3q-uc.a.run.app/api \
+        --build-arg NEXT_PUBLIC_ASSETS_BASE_URL=https://skyviewer-api-e3g4rcii3q-uc.a.run.app/assets \
+        --build-arg NEXT_PUBLIC_ASTRO_API_URL=https://us-central1-skyviewer.cloudfunctions.net/astro-objects-api \
+        .
+    - name: Configure Docker Auth
+      run: gcloud --quiet auth configure-docker
+
+    - name: Push Container Image to GCR
+      run: docker push gcr.io/epo-integration-0e42/skyviewer-client:${{ github.sha }}
+
+    - name: Deploy branch-tagged version to App Engine
+      run: |-
+        gcloud app deploy app.yaml \
+        --image-url=gcr.io/epo-integration-0e42/skyviewer-client:${{ github.sha }} \
+        --version=${{ github.head_ref }} \
+        --no-promote \
+        --project=epo-integration-0e42
+    
+    - name: Get the version URL
+      id: get_version
+      run: echo "version_url=$(gcloud app versions list --uri --service=skyviewer-client --filter=version.id:${{ github.head_ref }})" >> $GITHUB_ENV
+
+    - name: Post the URL to the PR
+      uses: peter-evans/create-or-update-comment@v1
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        body: |
+          A preview of this PR will be available at ${{ env.version_url }} until the request is closed.
+        reactions: '+1'
+
+  cleanup:
+    name: 'Cleanup PR Preview'
+    runs-on: ubuntu-latest
+    if: ${{ github.event.action == 'closed'}}
+
+    # Checkout the repository to the GitHub Actions runner
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # gcloud CLI setup
+    - name: Login to GCP
+      uses: google-github-actions/setup-gcloud@master
+      with:
+        service_account_key: ${{ secrets.SKYVIEWER_INT_SERVICE_ACCOUNT }}
+        project_id: epo-integration-0e42
+        export_default_credentials: true        
+
+    # Destruct!
+    - name: Destroy version
+      run: gcloud app versions delete ${{ github.head_ref }} --service=skyviewer-client
