@@ -1,5 +1,5 @@
-  # Builds, pushes, and deploys the Skyviewer API container
-name: 'Build and deploy branch-tagged Skyviewer API in Integration'
+  # Builds, pushes, and deploys the Skyviewer Client container
+name: 'Build and deploy branch-tagged Skyviewer Client in Integration'
 
 on:
   pull_request:
@@ -54,7 +54,7 @@ jobs:
     
     - name: Get the version URL
       id: get_version
-      run: echo "version_url=$(gcloud app versions list --uri --service=skyviewer-client --filter=version.id:${{ github.head_ref }})" >> $GITHUB_ENV
+      run: echo "version_url=$(gcloud app versions list --uri --service=skyviewer-client --filter=version.id:${{ github.head_ref }} | sed 's/^..\(.{16\}\).*/\1/')" >> $GITHUB_ENV
 
     - name: Post the URL to the PR
       uses: peter-evans/create-or-update-comment@v1

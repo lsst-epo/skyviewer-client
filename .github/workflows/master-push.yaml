@@ -1,4 +1,4 @@
-# Builds, pushes, and deploys the Skyviewer API container
+# Builds, pushes, and deploys the Skyviewer Client container
 name: 'Build and deploy Skyviewer Client to Google App Engine in Dev'
 
 on:
