@@ -43,6 +43,14 @@ jobs:
 
     - name: Push Container Image to GCR
       run: docker push gcr.io/epo-integration-0e42/skyviewer-client:${{ github.sha }}
+    
+    - name: Update app.yaml
+      run: |-
+        cat <<EOF >> app.yaml
+        network:
+          name: projects/epo-integration-0e42/global/networks/epo-integration-vpc
+          subnetwork_name: serverless-subnet
+        EOF
 
     - name: Deploy branch-tagged version to App Engine
       run: |-
