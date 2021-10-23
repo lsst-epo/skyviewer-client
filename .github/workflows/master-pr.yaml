@@ -56,7 +56,7 @@ jobs:
       run: |-
         gcloud app deploy app.yaml \
         --image-url=gcr.io/epo-integration-0e42/skyviewer-client:${{ github.sha }} \
-        --version=${{ github.head_ref }} \
+        --version=$(echo "${{ github.head_ref }}" | cut -c -12) \
         --no-promote \
         --project=epo-integration-0e42
     
