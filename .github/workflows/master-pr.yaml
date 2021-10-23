@@ -62,11 +62,20 @@ jobs:
     
     - name: Get the version URL
       id: get_version
-      run: echo "version_url=$(gcloud app versions list --uri --service=skyviewer-client --filter=version.id:${{ github.head_ref }})" >> $GITHUB_ENV
+      run: echo "version_url=$(gcloud app versions list --uri --service=skyviewer-client --filter=version.id:$(echo "${{ github.head_ref }}" | cut -c -12))" >> $GITHUB_ENV
 
-    - name: Post the URL to the PR
+    - name: Find Comment
+      uses: peter-evans/find-comment@v1
+      id: fc
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        comment-author: 'github-actions[bot]'
+        body-includes: A preview of this PR
+
+    - name: Create or update a comment with the URL to the PR
       uses: peter-evans/create-or-update-comment@v1
       with:
+        comment-id: ${{ steps.fc.outputs.comment-id }}
         issue-number: ${{ github.event.pull_request.number }}
         body: |
           A preview of this PR will be available at ${{ env.version_url }} until the request is closed.
