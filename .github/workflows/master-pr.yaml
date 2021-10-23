@@ -65,7 +65,7 @@ jobs:
     
     - name: Get the version URL
       id: get_version
-      run: echo "version_url=$(gcloud app versions list --uri --service=skyviewer-client --filter=version.id=${{ env.version_name }}" >> $GITHUB_ENV
+      run: echo "version_url=$(gcloud app versions list --uri --service=skyviewer-client --filter=version.id=${{ env.version_name }})" >> $GITHUB_ENV
 
     - name: Find Comment
       uses: peter-evans/find-comment@v1
