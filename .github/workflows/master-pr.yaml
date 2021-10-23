@@ -62,7 +62,7 @@ jobs:
     
     - name: Get the version URL
       id: get_version
-      run: echo "version_url=$(gcloud app versions list --uri --service=skyviewer-client --filter=version.id:${{ github.head_ref }} | sed 's/^..\(.{16\}\).*/\1/')" >> $GITHUB_ENV
+      run: echo "version_url=$(gcloud app versions list --uri --service=skyviewer-client --filter=version.id:${{ github.head_ref }})" >> $GITHUB_ENV
 
     - name: Post the URL to the PR
       uses: peter-evans/create-or-update-comment@v1
