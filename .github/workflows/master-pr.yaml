@@ -51,18 +51,21 @@ jobs:
           name: projects/epo-integration-0e42/global/networks/epo-integration-vpc
           subnetwork_name: serverless-subnet
         EOF
+      
+    - name: Truncate the version name if needed
+      run: echo "version_name=$(echo "${{ github.head_ref }}" | cut -c -12)" >> $GITHUB_ENV
 
     - name: Deploy branch-tagged version to App Engine
       run: |-
         gcloud app deploy app.yaml \
         --image-url=gcr.io/epo-integration-0e42/skyviewer-client:${{ github.sha }} \
-        --version=$(echo "${{ github.head_ref }}" | cut -c -12) \
+        --version=${{ env.version_name }} \
         --no-promote \
         --project=epo-integration-0e42
     
     - name: Get the version URL
       id: get_version
-      run: echo "version_url=$(gcloud app versions list --uri --service=skyviewer-client --filter=version.id:$(echo "${{ github.head_ref }}" | cut -c -12))" >> $GITHUB_ENV
+      run: echo "version_url=$(gcloud app versions list --uri --service=skyviewer-client --filter=version.id=${{ env.version_name }}" >> $GITHUB_ENV
 
     - name: Find Comment
       uses: peter-evans/find-comment@v1
