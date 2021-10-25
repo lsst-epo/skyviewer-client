@@ -56,6 +56,8 @@ jobs:
     
     - name: Get the version URL
       id: get_version
+      env:
+        BRANCH_NAME: ${{ github.head_ref }}
       run: echo "version_url=$(gcloud app versions list --uri --service=skyviewer-client --filter=version.id:${BRANCH_NAME,,})" >> $GITHUB_ENV
 
     - name: Post the URL to the PR
