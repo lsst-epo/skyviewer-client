@@ -60,6 +60,7 @@ jobs:
       uses: peter-evans/create-or-update-comment@v1
       with:
         issue-number: ${{ github.event.pull_request.number }}
+        edit-mode: replace
         body: |
           A preview of this PR will be available at ${{ env.version_url }} until the request is closed.
         reactions: '+1'
