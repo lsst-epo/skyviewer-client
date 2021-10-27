@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import IconComposer from "@/svg/IconComposer";
 import NavLink from "./NavLink";
 
 export default function GuidedExperienceHeader({

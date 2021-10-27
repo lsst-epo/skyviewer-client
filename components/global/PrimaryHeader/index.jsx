@@ -11,7 +11,7 @@ import Hamburger from "@/svg/icons/Hamburger";
 
 const quickAccessItems = [{}];
 
-export default function Header({ closeUrl = "/", route }) {
+export default function Header({ closeUrl = "/", backgroundColor, route }) {
   const { ref } = useResizeObserver({
     onResize: ({ height }) => {
       document.documentElement.style.setProperty(
@@ -28,7 +28,7 @@ export default function Header({ closeUrl = "/", route }) {
   const onMenuToggle = () => setIsOpen(!isMenu);
 
   return (
-    <header ref={ref} className="main-header">
+    <header ref={ref} className={classnames("main-header", backgroundColor)}>
       <MainMenu route={route} />
       <Buttonish
         url={closeUrl}
@@ -44,6 +44,7 @@ export default function Header({ closeUrl = "/", route }) {
 }
 
 Header.propTypes = {
+  backgroundColor: PropTypes.string,
   closeUrl: PropTypes.string,
   route: PropTypes.string,
 };
