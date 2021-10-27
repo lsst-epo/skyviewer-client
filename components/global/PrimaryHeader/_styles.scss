@@ -7,6 +7,14 @@
   justify-content: space-between;
   background-color: functions.palette(black);
 
+  &.primary {
+    background-color: functions.palette(black);
+  }
+
+  &.secondary {
+    background-color: functions.palette(turquoise95);
+  }
+
   .close-button, .main-menu-button {
     display: flex;
     flex-direction: column;

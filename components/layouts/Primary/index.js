@@ -3,19 +3,33 @@ import { MenuProvider } from "@/contexts/Menu";
 import PropTypes from "prop-types";
 import Header from "@/global/PrimaryHeader";
 
-export default function PrimaryLayout({ closeUrl, route, children }) {
+export default function PrimaryLayout({
+  closeUrl,
+  route,
+  backgroundColor,
+  children,
+}) {
   const [menusOpen, setMenusOpen] = useState([]);
 
   return (
     <MenuProvider value={{ setMenusOpen, menusOpen }}>
-      <Header closeUrl={closeUrl} route={route} />
+      <Header
+        backgroundColor={backgroundColor}
+        closeUrl={closeUrl}
+        route={route}
+      />
       {children}
     </MenuProvider>
   );
 }
 
+PrimaryLayout.defaultProps = {
+  backgroundColor: "primary",
+};
+
 PrimaryLayout.propTypes = {
   closeUrl: PropTypes.string,
   route: PropTypes.string,
+  backgroundColor: PropTypes.string,
   children: PropTypes.node,
 };

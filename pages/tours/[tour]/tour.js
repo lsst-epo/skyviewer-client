@@ -23,7 +23,6 @@ const PoiPage = ({ tour }) => {
   function getNavLinks(poi, tour) {
     if (!tour) return;
     const { slug, tourPois, factsContentBlocks } = tour;
-    const last = tourPois.length;
     const current = +poi;
     const next = current < tourPois.length ? current + 1 : null;
     const previous = current > 1 ? current - 1 : null;
@@ -39,7 +38,7 @@ const PoiPage = ({ tour }) => {
       nextLink: {
         url:
           next === null
-            ? `/tours/${slug}/tour?summary=1`
+            ? `/tours/${slug}/summary`
             : `/tours/${slug}/tour?poi=${next}`,
         text: "Next",
       },

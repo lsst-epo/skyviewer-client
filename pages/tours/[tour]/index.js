@@ -255,7 +255,7 @@ const mapLayoutStateToLayoutTree = ({
   mobileNextLink,
   mobileBackLink,
 }) => (
-  <PrimaryLayout closeUrl="/tours">
+  <PrimaryLayout backgroundColor="secondary" closeUrl="/tours">
     <GuidedExperienceLayout
       desktopNextLink={desktopNextLink}
       desktopBackLink={desktopBackLink}

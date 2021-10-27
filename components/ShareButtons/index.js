@@ -7,6 +7,7 @@ import GetImageButton from "@/components/GetImageButton";
 
 export default function ShareButtons({
   classes,
+  showLabels,
   url,
   facebook,
   twitter,
@@ -25,6 +26,7 @@ export default function ShareButtons({
             icon={<IconComposer icon="Chain" />}
             text="Get Url"
             network="url"
+            showLabel={showLabels}
           />
         </li>
       )}
@@ -35,6 +37,7 @@ export default function ShareButtons({
             text="Facebook"
             network="facebook"
             description="Example Facebook post description"
+            showLabel={showLabels}
           />
         </li>
       )}
@@ -45,6 +48,7 @@ export default function ShareButtons({
             text="Twitter"
             network="twitter"
             description="Example Tweet description"
+            showLabel={showLabels}
           />
         </li>
       )}
@@ -54,6 +58,7 @@ export default function ShareButtons({
             icon={<IconComposer icon="ShareSimple" />}
             text="Get Image"
             network="image"
+            showLabel={showLabels}
           />
         </li>
       )}
@@ -64,6 +69,7 @@ export default function ShareButtons({
             text="Email"
             network="email"
             message="Example Email message"
+            showLabel={showLabels}
           />
         </li>
       )}
@@ -73,6 +79,7 @@ export default function ShareButtons({
 
 ShareButtons.defaultProps = {
   url: true,
+  showLabels: true,
   facebook: true,
   twitter: true,
   image: true,
@@ -81,6 +88,7 @@ ShareButtons.defaultProps = {
 
 ShareButtons.propTypes = {
   classes: PropTypes.string,
+  showLabels: PropTypes.bool,
   url: PropTypes.bool,
   facebook: PropTypes.bool,
   twitter: PropTypes.bool,
