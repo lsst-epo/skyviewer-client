@@ -48,7 +48,8 @@ jobs:
       run: |-
         echo "
         network:
-          name: epo-integration-vpc" >> app.yaml
+          name: epo-integration-vpc
+          subnetwork_name: subnet-us-central1-01" >> app.yaml
 
     - name: Deploy branch-tagged version to App Engine
       env:
