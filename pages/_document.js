@@ -30,12 +30,6 @@ class CustomDocument extends Document {
             src="/aladin-lite/v2/aladin.js"
             charSet="utf-8"
           ></script>
-          {/* ShareThis JS code */}
-          <script
-            type="text/javascript"
-            src="https://platform-api.sharethis.com/js/sharethis.js#property=60ad29953c756700118ae97f&product=sop"
-            async="async"
-          ></script>
           <link rel="shortcut icon" href="/favicon.ico" />
         </Head>
         <body>
