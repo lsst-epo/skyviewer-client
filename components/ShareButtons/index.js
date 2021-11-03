@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import IconComposer from "@/svg/IconComposer";
-import ShareButton from "@/components/ShareButton";
-import CopyUrlButton from "@/components/CopyUrlButton";
-import GetImageButton from "@/components/GetImageButton";
+import CopyUrlButton from "@/components/ShareButtons/CopyUrlButton";
+import GetImageButton from "@/components/ShareButtons/GetImageButton";
+import FacebookShareButton from "@/components/ShareButtons/FacebookShareButton";
+import TwitterShareButton from "@/components/ShareButtons/TwitterShareButton";
+import EmailShareButton from "@/components/ShareButtons/EmailShareButton";
 
 export default function ShareButtons({
   classes,
@@ -22,53 +24,33 @@ export default function ShareButtons({
     >
       {url && (
         <li role="menuitem">
-          <CopyUrlButton
-            icon={<IconComposer icon="Chain" />}
-            text="Get Url"
-            network="url"
-            showLabel={showLabels}
-          />
+          <CopyUrlButton showLabel={showLabels} />
         </li>
       )}
       {facebook && (
         <li role="menuitem">
-          <ShareButton
-            icon={<IconComposer icon="Facebook" />}
-            text="Facebook"
-            network="facebook"
-            description="Example Facebook post description"
-            showLabel={showLabels}
-          />
+          <FacebookShareButton hashtag="#skyviewer" showLabel={showLabels} />
         </li>
       )}
       {twitter && (
         <li role="menuitem">
-          <ShareButton
-            icon={<IconComposer icon="Twitter" />}
-            text="Twitter"
-            network="twitter"
-            description="Example Tweet description"
+          <TwitterShareButton
+            title="Example Tweet"
+            hashtags={["#skyviewer"]}
             showLabel={showLabels}
           />
         </li>
       )}
       {image && (
         <li role="menuitem">
-          <GetImageButton
-            icon={<IconComposer icon="ShareSimple" />}
-            text="Get Image"
-            network="image"
-            showLabel={showLabels}
-          />
+          <GetImageButton showLabel={showLabels} />
         </li>
       )}
       {email && (
         <li role="menuitem">
-          <ShareButton
-            icon={<IconComposer icon="Email" />}
-            text="Email"
-            network="email"
-            message="Example Email message"
+          <EmailShareButton
+            subject="Example Email Subject"
+            body="Example Email Body"
             showLabel={showLabels}
           />
         </li>
