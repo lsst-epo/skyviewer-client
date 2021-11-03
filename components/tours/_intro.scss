@@ -24,44 +24,6 @@
     align-items: center;
     width: 100%;
     padding-bottom: 9px;
-
-    .tour-intro-thumbnail {
-      width: 120px;
-      height: 120px;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      border-radius: 50%;
-
-      @include base.fluid-scale(
-        [width,
-        height,
-        min-width,
-        min-height],
-        190px,
-        120px,
-        functions.break(desktop),
-        functions.break(tablet)
-      );
-
-      @include base.respond(functions.break(tablet), min) {
-        margin-right: 55px;
-      }
-    }
-
-    .tour-intro-headings {
-      align-self: flex-start;
-
-      .tour-intro-heading {
-        @include typography.heading-tour-intro;
-        margin-top: 26px;
-      }
-
-      .tour-intro-subheading {
-        @include typography.subheading-tour-intro;
-        margin-top: 5px;
-      }
-    }
   }
 
   .main {
@@ -85,18 +47,56 @@
     position: relative;
     width: 100%;
     padding-top: 12px;
+  }
 
-    .bubbles {
-      justify-content: center;
+  .tour-intro-thumbnail {
+    width: 120px;
+    height: 120px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
 
-      @include base.respond(functions.break(tablet), min) {
-        display: none;
-      }
+    @include base.fluid-scale(
+      [width,
+      height,
+      min-width,
+      min-height],
+      190px,
+      120px,
+      functions.break(desktop),
+      functions.break(tablet)
+    );
 
-      .bubble {
-        width: 14px;
-        height: 14px;
-      }
+    @include base.respond(functions.break(tablet), min) {
+      margin-right: 55px;
+    }
+  }
+
+  .tour-intro-headings {
+    align-self: flex-start;
+
+    .tour-intro-heading {
+      @include typography.heading-tour-intro;
+      margin-top: 26px;
+    }
+
+    .tour-intro-subheading {
+      @include typography.subheading-tour-intro;
+      margin-top: 5px;
+    }
+  }
+
+  .bubbles {
+    justify-content: center;
+
+    @include base.respond(functions.break(tablet), min) {
+      display: none;
+    }
+
+    .bubble {
+      width: 14px;
+      height: 14px;
     }
   }
 }
