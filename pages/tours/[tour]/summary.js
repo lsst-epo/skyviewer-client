@@ -23,7 +23,6 @@ const SummaryPage = ({ setLayoutState, tour }) => {
   const { slug, title, tourPois } = tour || {};
 
   useEffect(() => {
-    console.log('setBackLink');
     setBackLink({
       url: `/tours/${slug}/tour?poi=${tourPois?.length}`,
       text: "Back",
@@ -31,7 +30,6 @@ const SummaryPage = ({ setLayoutState, tour }) => {
   }, [slug, tourPois]);
 
   useEffect(() => {
-    console.log('setLayoutState');
     setLayoutState({
       backLink,
       nextLink: DEFAULT_NEXT,
@@ -41,7 +39,7 @@ const SummaryPage = ({ setLayoutState, tour }) => {
   if (!tour || Object.keys(tour).length === 0 || router.isFallback) {
     return <LoadingSpinner />;
   }
-  console.log(tour);
+
   return (
     <div className="tour-summary-container">
       <div className="tour-summary">
@@ -62,7 +60,7 @@ const SummaryPage = ({ setLayoutState, tour }) => {
           <h3 className="summary-links-list-heading">Explore</h3>
           <ol className="summary-links-list">
             <li className="summary-link-item">
-              <Link href="#">
+              <Link href="/#">
                 <a className="summary-link">
                   <div className="summary-link-number">1</div>
                   <div className="summary-link-text">
@@ -72,7 +70,7 @@ const SummaryPage = ({ setLayoutState, tour }) => {
               </Link>
             </li>
             <li className="summary-link-item">
-              <Link href="#">
+              <Link href="/#">
                 <a className="summary-link">
                   <div className="summary-link-number">2</div>
                   <div className="summary-link-text">
@@ -84,18 +82,6 @@ const SummaryPage = ({ setLayoutState, tour }) => {
           </ol>
         </div>
       </div>
-{/*      <NavLink
-        url={`/tours/${slug}/tour?poi=${tourPois?.length}`}
-        text="Back"
-        iconBefore
-        icon={<IconComposer icon="ArrowLeft" />}
-      />
-      <NavLink
-        url="/tours"
-        text="Go to Tours"
-        iconAfter
-        icon={<IconComposer icon="ArrowRight" />}
-      />*/}
     </div>
   );
 };
