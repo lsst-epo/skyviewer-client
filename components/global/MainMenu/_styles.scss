@@ -1,9 +1,11 @@
 @use 'abstracts/functions';
+@use 'abstracts/mixins/appearance';
 @use 'abstracts/mixins/typography';
 
 .main-menu {
   display: flex;
   flex-flow: column nowrap;
+  justify-content: flex-start;
 
   .main-menu-content-wrapper {
     overflow-y: scroll;
@@ -18,7 +20,7 @@
   }
 
   .main-menu-nav-item, .quick-access-nav-item {
-    a, .button {
+    > a, > .button {
       display: flex;
       align-items: center;
       width: 100%;
@@ -41,14 +43,14 @@
       }
     }
 
-    .notifications-item {
+    .notifications-item, .language-item {
       .a-svg {
         fill: functions.palette(turquoise50);
       }
     }
 
-    .share-item, .adjustments-item, .help-item, .info-item {
-      .a-svg {
+    .share-item, .adjustments-item, .help-item, .about-item {
+      .a-svg path {
         stroke: functions.palette(turquoise50);
       }
     }
@@ -65,6 +67,38 @@
 
       + span {
         padding-left: 12px;
+      }
+    }
+  }
+}
+
+.locale-menu {
+  position: relative;
+
+  .buttons-wrapper {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 30px 34px;
+
+    .apply-locale-button, .reset-locale-button {
+      width: 100%;
+    }
+
+    .reset-locale-button {
+      @include appearance.button-secondary;
+    }
+  }
+}
+
+.about-menu {
+  .menu-section {
+    p {
+      color: functions.palette(white);
+
+      + p {
+        margin-top: 14px;
       }
     }
   }

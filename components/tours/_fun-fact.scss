@@ -20,21 +20,6 @@
 
   .top {
     padding-bottom: 9px;
-
-    .fact-icon {
-      width: 67px;
-
-      @include base.respond(functions.break(tablet), min) {
-        width: 39px;
-        height: 39px;
-        margin-top: -5px;
-      }
-    }
-
-    .tour-fact-heading {
-      @include typography.heading-tour-fact;
-      margin-top: 26px;
-    }
   }
 
   .main {
@@ -51,5 +36,20 @@
     position: relative;
     width: 100%;
     padding-top: 24px;
+  }
+
+  .fact-icon {
+    width: 67px;
+
+    @include base.respond(functions.break(tablet), min) {
+      width: 39px;
+      height: 39px;
+      margin-top: -5px;
+    }
+  }
+
+  .tour-fact-heading {
+    @include typography.heading-tour-fact;
+    margin-top: 26px;
   }
 }

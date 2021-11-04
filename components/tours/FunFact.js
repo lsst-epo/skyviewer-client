@@ -9,7 +9,7 @@ export default function FunFact({ skipUrl, id, heading, blocks }) {
         <div className="tour-fact mobile-only">
           <div className="top">
             <IconComposer icon="Info" className="fact-icon" />
-            <h2 className="tour-intro-heading">{heading}</h2>
+            <h2 className="tour-fact-heading">{heading}</h2>
           </div>
           <div className="main">
             <div

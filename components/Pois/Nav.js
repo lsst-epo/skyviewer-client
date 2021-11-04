@@ -6,9 +6,9 @@ export default function Nav({ nextLink, backLink }) {
   return (
     <div className="poi-nav-container">
       <ul className="poi-nav">
-        <li className="poi-nav-item">
+        {/* <li className="poi-nav-item">
           <Button text="Share" classes="poi-nav-button" />
-        </li>
+        </li> */}
         <li className="poi-nav-item">
           <Buttonish
             url={backLink.url}

@@ -8,6 +8,7 @@ export default function ShareButton({
   onClick,
   message,
   description,
+  showLabel,
 }) {
   return (
     <button
@@ -18,7 +19,13 @@ export default function ShareButton({
       data-description={description}
     >
       <div className={classnames("share-icon", network)}>{icon}</div>
-      <div className="share-network">{text}</div>
+      <div
+        className={classnames("share-network", {
+          "screen-reader-only": !showLabel,
+        })}
+      >
+        {text}
+      </div>
     </button>
   );
 }
@@ -30,4 +37,5 @@ ShareButton.propTypes = {
   message: PropTypes.string,
   description: PropTypes.string,
   onClick: PropTypes.func,
+  showLabel: PropTypes.bool,
 };

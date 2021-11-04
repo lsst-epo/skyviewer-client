@@ -2,17 +2,19 @@ import { useContext } from "react";
 import PropTypes from "prop-types";
 import copy from "copy-to-clipboard";
 import AladinGlobalContext from "@/contexts/AladinGlobal";
-import ShareButton from "./ShareButton.js";
+import IconComposer from "@/svg/IconComposer";
+import ShareButton from "@/components/ShareButtons/ShareButton";
 import { getDownloadLink } from "@/helpers";
 
-export default function GetImageButton({ icon, text, network }) {
+export default function GetImageButton({ showLabel }) {
   const { aladin } = useContext(AladinGlobalContext) || {};
 
   return (
     <ShareButton
-      icon={icon}
-      text={text}
-      network={network}
+      showLabel={showLabel}
+      icon={<IconComposer icon="ShareSimple" />}
+      text="Get Image"
+      network="image"
       onClick={() => {
         getDownloadLink(aladin.getViewDataURL(), "sky image");
       }}
@@ -21,7 +23,5 @@ export default function GetImageButton({ icon, text, network }) {
 }
 
 GetImageButton.propTypes = {
-  icon: PropTypes.element,
-  text: PropTypes.string.isRequired,
-  network: PropTypes.string,
+  showLabel: PropTypes.bool,
 };
