@@ -61,7 +61,7 @@ jobs:
       run: echo "version_url=$(gcloud app versions list --uri --service=skyviewer-client --filter=version.id:${BRANCH_NAME,,})" >> $GITHUB_ENV
 
     # Create or update a comment with the URL
-    - name: Find Comment
+    - name: Find Commentblash
       uses: peter-evans/find-comment@v1
       id: fc
       with:
