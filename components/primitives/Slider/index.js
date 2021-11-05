@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 import { capitalize } from "@/helpers";
+import ReactSlider from "react-slider";
 
 export default function Slider({
   min,
@@ -17,157 +18,41 @@ export default function Slider({
   describedbyId,
   classes,
 }) {
-  const sliderLeftRef = useRef(null);
-  const sliderRightRef = useRef(null);
-  const sliderRightLabelRef = useRef(null);
-  const [selectedLeft, setSelectedLeft] = useState(0);
-  const [selectedRight, setSelectedRight] = useState(0);
-  const [labelRightPos, setlabelRightPos] = useState(0);
-  const [labelLeftPos, setlabelLeftPos] = useState(0);
-  // const [selectedWidth, setSelectedWidth] = useState("100%");
+  const [showThumbLabels, setShowThumbLabels] = useState(false);
 
-  useEffect(() => {
-    if (!sliderLeftRef.current) return;
+  const handleBeforeChange = (val, i) => {
+    setShowThumbLabels(true);
+  };
 
-    setSelectedLeft(getSelectedLeft());
-    setSelectedRight(getSelectedRight());
-    setlabelRightPos(getLabelRightPos());
-    setlabelLeftPos(getLabelLeftPos());
-    // setSelectedWidth(getSelectedWidth());
-  }, [min, max, value]);
-
-  function handleDoubleChange() {
-    const leftVal = +sliderLeftRef.current.value;
-    const rightVal = +sliderRightRef.current.value;
-
-    if (leftVal > rightVal) return;
-    if (onChangeCallback) onChangeCallback([leftVal, rightVal], label);
-  }
-
-  function getSelectedLeft() {
-    const range = max - min;
-    const rangeWidth = sliderLeftRef.current.offsetWidth - 26;
-
-    return `${(value[0] / range) * rangeWidth}px`;
-  }
-
-  function getSelectedRight() {
-    const range = max - min;
-    const rangeWidth = sliderRightRef.current.offsetWidth - 26;
-
-    return `${(value[1] / range) * rangeWidth}px`;
-  }
-
-  function getLabelRightPos() {
-    const range = max - min;
-    const rangeWidth = sliderRightRef.current.offsetWidth - 26;
-
-    return `${
-      (value[1] / range) * rangeWidth - sliderRightLabelRef.current.offsetWidth
-    }px`;
-  }
-
-  function getLabelLeftPos() {
-    const range = max - min;
-    const rangeWidth = sliderRightRef.current.offsetWidth - 26;
-
-    return `${(value[0] / range) * rangeWidth + 26}px`;
-  }
-
-  // function getSelectedWidth() {
-  //   const valDiff = value[1] - value[0];
-  //   const range = max - min;
-  //   const offset = getOffset(valDiff / range, 26);
-  //   const rangeWidth = sliderLeftRef.current.offsetWidth + offset;
-  //   return `${(valDiff / range) * rangeWidth}px`;
-  // }
-
-  // function getOffset(percent, handleWidth) {
-  //   if (percent === 0.5) {
-  //     return 0;
-  //   }
-
-  //   if (percent > 0.5) {
-  //     return handleWidth;
-  //   }
-
-  //   if (percent < 0.5) {
-  //     // return -1 * handleWidth;
-  //     return -1 * (handleWidth * 2);
-  //   }
-  // }
+  const handleChange = (val, i) => {
+    setShowThumbLabels(false);
+    if (onChangeCallback) onChangeCallback(val, label);
+  };
 
   return (
-    <>
-      {doubleHandle && (
-        <div className="double-handle-slider">
-          <div className="track-labels">
-            <div className="min-label">{minLabel}</div>
-            <div className="max-label">{maxLabel}</div>
+    <div className="horizontal-slider-container">
+      <div className="track-labels">
+        <div className="min-label">{minLabel}</div>
+        <div className="max-label">{maxLabel}</div>
+      </div>
+      <ReactSlider
+        {...{ min, max, step, value }}
+        onChange={() => {
+          setShowThumbLabels(true);
+        }}
+        onAfterChange={handleChange}
+        className={classnames("horizontal-slider", {
+          "show-thumb-labels": showThumbLabels,
+        })}
+        thumbClassName={"thumb"}
+        trackClassName="track"
+        renderThumb={(props, state) => (
+          <div {...props}>
+            <span className="thumb-label">{state.valueNow}</span>
           </div>
-          {/* <label className="screen-reader-only">{label}</label> */}
-          <div className="slider-container">
-            {/* <div
-              className="selected-left"
-              style={{
-                left: selectedLeft,
-                width: selectedWidth,
-              }}
-            />
-            <div
-              className="selected-right"
-              style={{
-                left: selectedRight,
-                right: 0,
-              }}
-            /> */}
-            <input
-              ref={sliderLeftRef}
-              type="range"
-              min={min}
-              max={max}
-              step={step}
-              value={value[0]}
-              onChange={handleDoubleChange}
-              className="slider-left"
-              labelledby="#slider-label-left"
-            />
-            <input
-              ref={sliderRightRef}
-              type="range"
-              min={min}
-              max={max}
-              step={step}
-              value={value[1]}
-              onChange={handleDoubleChange}
-              className="slider-right"
-              labelledby="#slider-label-right"
-            />
-            <label
-              id="slider-label-left"
-              className="slider-label slider-label-left"
-              style={{
-                top: 20,
-                left: labelLeftPos,
-              }}
-            >
-              {value[0]}
-            </label>
-            <label
-              ref={sliderRightLabelRef}
-              id="slider-label-right"
-              className="slider-label slider-label-right"
-              style={{
-                top: 20,
-                left: labelRightPos,
-              }}
-            >
-              {value[1]}
-            </label>
-          </div>
-        </div>
-      )}
-    </>
+        )}
+      />
+    </div>
   );
 }
 
