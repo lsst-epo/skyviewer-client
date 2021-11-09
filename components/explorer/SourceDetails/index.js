@@ -39,13 +39,13 @@ export default function SourceDetails({ data, setData, handleClose }) {
     position,
     astroImage,
     type,
-    id,
+    objectId,
     brightness,
     distance,
     title,
     characteristics,
-    _RA: ra,
-    _DEC: dec,
+    ra,
+    dec,
   } = data || {};
   const [top, left] = position || ["auto", "auto"];
 
@@ -113,7 +113,7 @@ export default function SourceDetails({ data, setData, handleClose }) {
               />
             )}
             <AccordionGroup className="source-details-accordions">
-              {(type || id || brightness || distance) && (
+              {(type || objectId || brightness || distance) && (
                 <Accordion
                   id="overview"
                   isExpanded={activeAccordion === "overview"}
@@ -184,7 +184,9 @@ export default function SourceDetails({ data, setData, handleClose }) {
                 handleToggle={setActiveAccordion}
                 title="Detailed Data"
               >
-                {id && <DetailsSection label="Object Id" value={id} />}
+                {objectId && (
+                  <DetailsSection label="Object Id" value={objectId} />
+                )}
                 {ra && dec && <PositionSection position={[+ra, +dec]} />}
                 <DetailsSection isFullWidth label="Color Filters">
                   <DetailsSectionValue isFullWidth>
