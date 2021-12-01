@@ -8,6 +8,8 @@ First, get the node stuff you need:
 ```bash
 yarn
 ```
+Create `.env.local` file in the project root, copy the contents of `.example.env` and uncomment the API URLs to use a local [skyviewer-api](https://github.com/lsst-epo/skyviewer-api) instance
+
 Then run the development server:
 ```bash
 yarn dev
