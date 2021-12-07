@@ -42,7 +42,7 @@ jobs:
       run: |-
         echo "
         network:
-          name: epo-integration-vpc
+          name: edc-int-vpc
           subnetwork_name: subnet-us-central1-01" >> app.yaml
 
     - name: Deploy to App Engine
