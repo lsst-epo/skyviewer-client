@@ -1,3 +1,4 @@
+@use 'sass:math';
 @use 'abstracts/functions';
 @use 'abstracts/mixins/base';
 @use 'abstracts/mixins/layout';
@@ -18,7 +19,7 @@
 
 .tour-summary-container {
   $summaryLinkNumberSize: 34px;
-  $summarySpacing: $summaryLinkNumberSize / 2;
+  $summarySpacing: math.div($summaryLinkNumberSize,2);
   position: relative;
   display: flex;
   flex-flow: column nowrap;
