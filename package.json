@@ -17,10 +17,10 @@
     "tokens": "npx json-to-scss theme/tokens.json theme/styles/abstracts/_tokens.scss",
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint -c .eslintrc.js \"**/*.{js,jsx}\"",
-    "lint:scss": "stylelint --config .stylelintrc.js \"**/*.scss\" --syntax scss",
+    "lint:scss": "stylelint --config .stylelintrc.js \"**/*.scss\"",
     "fix": "npm-run-all fix:js fix:scss",
     "fix:js": "eslint -c .eslintrc.js \"**/*.{js,jsx}\" --fix",
-    "fix:scss": "stylelint --config .stylelintrc.js \"**/*.scss\" --syntax scss --fix",
+    "fix:scss": "stylelint --config .stylelintrc.js \"**/*.scss\" --fix",
     "fix:staged": "lint-staged"
   },
   "babel": {
@@ -86,10 +86,11 @@
     "json-to-scss": "^1.6.2",
     "npm-run-all": "^4.1.5",
     "postcss-normalize": "^10.0.1",
-    "postcss-preset-env": "^6.7.0",
-    "stylelint": "^13.8.0",
-    "stylelint-config-recess-order": "^2.3.0",
-    "stylelint-scss": "^3.18.0"
+    "postcss-preset-env": "^7.0.1",
+    "stylelint": "^14.1.0",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-scss": "^4.0.1"
   },
   "resolutions": {
     "**/ansi-regex": "^5.0.1",

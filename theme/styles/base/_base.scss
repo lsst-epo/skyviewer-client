@@ -18,6 +18,7 @@
 html {
   // Applies a natural box layout model to all the things
   box-sizing: border-box;
+
   // Set the base font size here, which will correspond to 1em inside <body>
   font-size: 100%;
   background-color: functions.palette(offwhite);
@@ -30,7 +31,7 @@ body {
 }
 
 // next.js nests a `div#__next` inside `body`
-/* stylelint-disable-next-line selector-max-id */
+/* stylelint-disable-next-line selector-max-id, selector-id-pattern */
 #__next {
   // ensure page is always at least 100vh tall; `main` expands to fill space
   display: flex;

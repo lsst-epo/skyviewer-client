@@ -2,9 +2,9 @@
 @use 'abstracts/functions';
 @use 'abstracts/mixins/typography';
 
-@import "./list-item";
-@import "./intro";
-@import "./fun-fact";
+@import './list-item';
+@import './intro';
+@import './fun-fact';
 
 .tours-list-container {
   display: flex;
@@ -27,6 +27,7 @@
 
   @include base.respond(functions.break(tablet), min) {
     flex-flow: row nowrap;
+
     // align-items: flex-start;
     padding: 0 24px;
   }

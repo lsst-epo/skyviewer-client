@@ -2,16 +2,26 @@ const projectName = "rubin";
 
 module.exports = {
   plugins: ["stylelint-scss"],
-  extends: "stylelint-config-recess-order",
+  extends: ["stylelint-config-standard-scss", "stylelint-config-recess-order"],
   ignoreFiles: ["theme/styles/base/_resets.scss"],
   defaultSeverity: "error",
   rules: {
+    "declaration-empty-line-before": "never",
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        except: ["first-nested", "after-same-name", "blockless-after-same-name-blockless"],
+        ignore: ["after-comment"],
+        ignoreAtRules: ["mixin", "include", "use", "else"]
+      },
+    ],
+    "string-quotes": "single",
     "function-calc-no-unspaced-operator": true,
     "shorthand-property-no-redundant-values": true,
     "declaration-block-no-redundant-longhand-properties": true,
     // SCSS compiler shouldn't allow this
     // 'block-no-empty': true,
-    "comment-no-empty": true,
+    // "comment-no-empty": false,
     "max-nesting-depth": 3,
     // SCSS compiler shouldn't allow this
     // 'no-extra-semicolons': true,

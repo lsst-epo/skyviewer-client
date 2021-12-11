@@ -9,7 +9,7 @@
   left: 0;
   z-index: -1;
   overflow: hidden;
-  background-color: rgba(functions.palette(black), 0.4);
+  background-color: rgba(0 0 0 / 40%);
 
   &.is-open {
     z-index: functions.z-stack(modal);
@@ -35,7 +35,7 @@
     left: -14px;
     width: 0;
     height: 0;
-    content: "";
+    content: '';
     border-top: 9px solid transparent;
     border-right: 14px solid functions.palette(neutral30);
     border-bottom: 9px solid transparent;
@@ -85,6 +85,7 @@
 
 .source-details-accordions {
   width: 180px;
+
   // height: 100%;
   min-height: 250px;
   overflow: scroll;
@@ -92,16 +93,19 @@
   .accordion-panel {
     max-height: 0;
     overflow: hidden;
+
     // transition: max-height 0.2s ease-out;
 
     &.is-expanded {
       max-height: 341px;
+
       // transition: max-height 0.4s ease-out;
     }
 
     .accordion-inner {
       display: flex;
       flex-flow: column nowrap;
+
       // align-items: stretch;
       // justify-content: stretch;
     }
@@ -126,6 +130,7 @@
 
   .source-details-section-label {
     margin-right: 5px;
+
     @include typography.source-detail-label;
 
     &.top-padded {

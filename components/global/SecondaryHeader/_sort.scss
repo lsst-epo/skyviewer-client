@@ -18,7 +18,8 @@
     overflow-y: scroll;
   }
 
-  .sort-menu-close-button, .sort-menu-reset-button {
+  .sort-menu-close-button,
+  .sort-menu-reset-button {
     margin: 30px auto 0;
   }
 
@@ -39,7 +40,8 @@
       flex-flow: row nowrap;
     }
 
-    .sort-menu-close-button, .sort-menu-reset-button {
+    .sort-menu-close-button,
+    .sort-menu-reset-button {
       width: 100%;
       min-width: 0;
 

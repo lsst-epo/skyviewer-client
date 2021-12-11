@@ -10,9 +10,10 @@
 }
 
 .guided-experiences-list-container {
-  height: calc(
-    var(--window-height, 100vh) - var(--ge-nav-link-height, 95px) - var(--ge-heading-height, 56px)
-  );
+  height:
+    calc(
+      var(--window-height, 100vh) - var(--ge-nav-link-height, 95px) - var(--ge-heading-height, 56px)
+    );
   overflow-y: scroll;
 }
 
@@ -37,11 +38,24 @@
 
 .guided-experience-heading {
   margin: 0 10px 10px;
+
   @include typography.heading-guided-experience;
 
   @include base.respond(functions.break(tablet), min) {
     font-weight: functions.font-weight(regular);
   }
+}
+
+.guided-experience-thumbnail {
+  position: relative;
+  width: 100%;
+  padding-top: 73%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: functions.palette(turquoise55) solid 1px;
+  border-radius: 4%;
+  transition: box-shadow 0.2s;
 }
 
 .guided-experience-link {
@@ -56,18 +70,6 @@
       box-shadow: 0 0 0 3px functions.palette(blue20);
     }
   }
-}
-
-.guided-experience-thumbnail {
-  position: relative;
-  width: 100%;
-  padding-top: 73%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  border: functions.palette(turquoise55) solid 1px;
-  border-radius: 4%;
-  transition: box-shadow 0.2s;
 }
 
 .guided-experience-count {

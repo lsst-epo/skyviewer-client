@@ -12,23 +12,25 @@
 
   @return $number;
 }
-
 @function token($map) {
   @return map.get(tokens.$tokens, $map);
 }
 
 // convert px to em
 @function px-to-em($px, $base: variables.$font-size-base-desktop) {
+  /* stylelint-disable-next-line length-zero-no-unit */
   @return (strip-unit($px) / strip-unit($base) + 0em);
 }
 
 // encode colors
 @function encode-color($string) {
   @if type-of($string) == 'color' {
-    $hex: str-slice(ie-hex-str($string), 4);
-    $string: unquote('#{$hex}');
+    $hex: string.slice(color.ie-hex-str($string), 4);
+    $string: string.unquote('#{$hex}');
   }
+
   $string: '%23' + $string;
+
   @return $string;
 }
 
@@ -45,8 +47,7 @@
   $min-vw: break(60)
 ) {
   @return calc(
-    #{$min-value} + #{strip-unit($max-value - $min-value)} *
-    (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}
+    #{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}
   );
 }
 
@@ -54,7 +55,6 @@
 @function palette($color) {
   @return map.get(token(colors), $color);
 }
-
 @function sass-palette($color) {
   @return map.get(variables.$sass-palette, $color);
 }

@@ -1,3 +1,4 @@
+/* stylelint-disable custom-property-pattern */
 @use 'sass:math';
 @use 'abstracts/functions';
 
@@ -25,15 +26,15 @@
 
   @media (max-width: $max-vw) {
     @each $property in $properties {
-      --#{$property}: #{functions.fluid-scale-calc(
-        $max-value,
-        $min-value,
-        $max-vw,
-        $min-vw
-      )};
+      --#{$property}:
+        #{functions.fluid-scale-calc(
+          $max-value,
+          $min-value,
+          $max-vw,
+          $min-vw
+        )};
     }
   }
-
   @media (max-width: $min-vw) {
     @each $property in $properties {
       --#{$property}: #{$min-value};
@@ -43,29 +44,31 @@
   @supports (width: clamp(1px, 2px, 3px)) {
     @if $min-value > $max-value {
       @each $property in $properties {
-        --#{$property}: clamp(
-          #{$max-value},
-          #{functions.fluid-scale-calc(
-            $max-value,
-            $min-value,
-            $max-vw,
-            $min-vw
-          )},
-          #{$min-value}
-        );
+        --#{$property}:
+          clamp(
+            #{$max-value},
+            #{functions.fluid-scale-calc(
+              $max-value,
+              $min-value,
+              $max-vw,
+              $min-vw
+            )},
+            #{$min-value}
+          );
       }
     } @else {
       @each $property in $properties {
-        --#{$property}: clamp(
-          #{$min-value},
-          #{functions.fluid-scale-calc(
-            $max-value,
-            $min-value,
-            $max-vw,
-            $min-vw
-          )},
-          #{$max-value}
-        );
+        --#{$property}:
+          clamp(
+            #{$min-value},
+            #{functions.fluid-scale-calc(
+              $max-value,
+              $min-value,
+              $max-vw,
+              $min-vw
+            )},
+            #{$max-value}
+          );
       }
     }
   }

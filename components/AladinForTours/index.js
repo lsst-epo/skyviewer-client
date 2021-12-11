@@ -40,12 +40,8 @@ export default function Aladin({
         aladin.zoomToFoV(fov, 0.5, () => {
           const [aladinWidthDegrees, aladinHeightDegrees] = aladin.getFov();
           const [aladinWidthPixels, aladinHeightPixels] = aladin.getSize();
-          const [
-            topLeft,
-            topRight,
-            bottomRight,
-            bottomLeft,
-          ] = aladin.getFovCorners();
+          // eslint-disable-next-line prettier/prettier
+          const [ , topRight, bottomRight, , ] = aladin.getFovCorners();
           let offsetRa = poi.ra;
           let offsetDec = poi.dec;
 
