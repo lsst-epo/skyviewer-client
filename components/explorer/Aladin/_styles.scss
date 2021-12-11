@@ -43,6 +43,7 @@
 
 .sources-list-container {
   @include appearance.hidden;
+
   // position: fixed;
   // bottom: 0;
   // left: 0;
@@ -50,7 +51,8 @@
   // z-index: 100;
   // background: white;
 
-  .info-button, .close-button {
+  .info-button,
+  .close-button {
     background-color: functions.palette(turquoise55);
   }
 

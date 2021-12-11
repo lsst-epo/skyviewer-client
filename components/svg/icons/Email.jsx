@@ -2,11 +2,7 @@ import PropTypes from "prop-types";
 import { svgInternalShape } from "@/shapes/svg";
 import defaultProps from "./defaultProps";
 
-export default function Email({
-  className,
-  size = 52,
-  fill = "currentColor",
-}) {
+export default function Email({ className, size = 52, fill = "currentColor" }) {
   const uniqueProps = {
     viewBox: "0 0 52 52",
     width: size,

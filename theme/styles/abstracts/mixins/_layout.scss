@@ -17,6 +17,7 @@
     $max-width + 2 * $wide-padding,
     $max-width + 2 * $narrow-padding
   );
+
   @include base.fluid-scale(
     padding-right padding-left,
     $wide-padding,
@@ -73,13 +74,13 @@
 
   @include base.respond(functions.break(tablet), min) {
     justify-content: space-between;
-  };
+  }
 }
 
 // Grids
 // --------------------------------------------------------
 @mixin gap($property: 'gap', $gap-desktop, $gap-mobile) {
-  @if ($gap-desktop == $gap-mobile) {
+  @if $gap-desktop == $gap-mobile {
     #{$property}: $gap-desktop;
   } @else {
     @include base.fluid-scale($property, $gap-desktop, $gap-mobile);
@@ -93,13 +94,11 @@
   $break: functions.break(tablet)
 ) {
   $supports-query: '(grid-auto-columns: min-content)';
-
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
 
   // Use CSS Grid if supported
-  //
   // Autoprefixer does not support autoplacement (mostly)
   // so test for a newer grid spec property to limit implementation,
   // with Flexbox as fallback
@@ -108,6 +107,7 @@
     /* autoprefixer: off */
     display: grid;
     grid-template-columns: repeat($columns, 1fr);
+
     @include gap(gap, $gap-desktop, $gap-mobile);
   }
 

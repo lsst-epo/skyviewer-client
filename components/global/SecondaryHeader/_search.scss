@@ -28,7 +28,7 @@
 
     &.is-open {
       top: 0;
-      background-color: rgba(functions.palette(black), 0.9);
+      background-color: rgba(0 0 0 / 90%);
     }
   }
 
@@ -74,7 +74,7 @@
       right: 28px;
       width: 0;
       height: 0;
-      content: "";
+      content: '';
       border-right: 8px solid transparent;
       border-bottom: 8px solid functions.palette(white);
       border-left: 8px solid transparent;
