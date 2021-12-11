@@ -15,7 +15,8 @@
     background-color: functions.palette(turquoise95);
   }
 
-  .close-button, .main-menu-button {
+  .close-button,
+  .main-menu-button {
     display: flex;
     flex-direction: column;
     margin: 10px 15px;

@@ -3,7 +3,6 @@
 
 // Primitives
 @forward 'components/primitives/Accordion/styles';
-@forward 'components/primitives/AccordionGroup/styles';
 @forward 'components/primitives/Buttonish/styles';
 @forward 'components/primitives/Button/styles';
 @forward 'components/primitives/Checkbox/styles';
@@ -13,7 +12,6 @@
 @forward 'components/primitives/NavLink/styles';
 @forward 'components/primitives/Radio/styles';
 @forward 'components/primitives/Slider/styles';
-@forward 'components/primitives/TextInput/styles';
 
 // Globals
 @forward 'components/global/FiltersMenu/styles';
@@ -26,9 +24,8 @@
 @forward 'components/layouts/Aladin/styles';
 @forward 'components/layouts/GuidedExperience/styles';
 @forward 'components/layouts/GuidedExperiences/styles';
-@forward 'components/layouts/Primary/styles';
 
-//Share
+// Share
 @forward 'components/ShareButtons/styles';
 
 // Guided Experiences

@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 @use 'abstracts/functions';
 
 .horizontal-slider-container {
@@ -59,7 +60,8 @@
     border: 4px solid functions.palette(neutral10);
     border-radius: 50%;
 
-    &:focus, &.active {
+    &:focus,
+    &.active {
       outline: none;
 
       .thumb-label {
@@ -74,7 +76,7 @@
       display: block;
       width: 4px;
       height: 10px;
-      content: "";
+      content: '';
       background-color: functions.palette(neutral10);
     }
 

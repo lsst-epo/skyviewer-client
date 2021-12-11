@@ -18,7 +18,8 @@
     background-color: functions.palette(blue15);
   }
 
-  &.active, &:hover {
+  &.active,
+  &:hover {
     svg {
       fill: functions.palette(white);
     }

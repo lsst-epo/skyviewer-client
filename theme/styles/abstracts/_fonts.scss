@@ -12,7 +12,8 @@
     font-family: $font-name;
     font-style: $font-style;
     font-weight: $font-weight;
-    src: url('../../fonts/#{$font-filepath-and-name}.woff2') format('woff2'),
+    src:
+      url('../../fonts/#{$font-filepath-and-name}.woff2') format('woff2'),
       url('../../fonts/#{$font-filepath-and-name}.woff') format('woff');
   }
 }
@@ -27,36 +28,42 @@
   functions.font-weight(regular),
   normal
 );
+
 @include embedFont(
   'Open Sans',
   'open-sans-light',
   functions.font-weight(light),
   normal
 );
+
 @include embedFont(
   'Open Sans',
   'open-sans-regular-italic',
   functions.font-weight(regular),
   italic
 );
+
 @include embedFont(
   'Open Sans',
   'open-sans-bold',
   functions.font-weight(bold),
   normal
 );
+
 @include embedFont(
   'Open Sans',
   'open-sans-bold-italic',
   functions.font-weight(bold),
   italic
 );
+
 @include embedFont(
   'Open Sans',
   'open-sans-extra-bold',
   functions.font-weight(extra-bold),
   normal
 );
+
 @include embedFont(
   'Open Sans',
   'open-sans-extra-bold-italic',

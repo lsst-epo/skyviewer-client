@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 @use 'abstracts/functions';
 @use 'abstracts/mixins/appearance';
 @use 'abstracts/mixins/typography';
@@ -11,16 +12,20 @@
     overflow-y: scroll;
   }
 
-  .main-menu-nav, .quick-access-nav {
+  .main-menu-nav,
+  .quick-access-nav {
     @include typography.list-unstyled;
   }
 
-  .main-menu-nav-items, .quick-access-nav-items {
+  .main-menu-nav-items,
+  .quick-access-nav-items {
     padding: 12px 0 0 25px;
   }
 
-  .main-menu-nav-item, .quick-access-nav-item {
-    > a, > .button {
+  .main-menu-nav-item,
+  .quick-access-nav-item {
+    > a,
+    > .button {
       display: flex;
       align-items: center;
       width: 100%;
@@ -43,13 +48,17 @@
       }
     }
 
-    .notifications-item, .language-item {
+    .notifications-item,
+    .language-item {
       .a-svg {
         fill: functions.palette(turquoise50);
       }
     }
 
-    .share-item, .adjustments-item, .help-item, .about-item {
+    .share-item,
+    .adjustments-item,
+    .help-item,
+    .about-item {
       .a-svg path {
         stroke: functions.palette(turquoise50);
       }
@@ -82,7 +91,8 @@
     left: 0;
     padding: 30px 34px;
 
-    .apply-locale-button, .reset-locale-button {
+    .apply-locale-button,
+    .reset-locale-button {
       width: 100%;
     }
 

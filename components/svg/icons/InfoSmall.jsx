@@ -23,7 +23,8 @@ export default function InfoSmall({ className, fill = "currentColor" }) {
           stroke={fill}
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="2"/>
+          strokeWidth="2"
+        />
         <path
           d="M18,21.577V18"
           transform="translate(-9.059 -9.059)"
@@ -31,7 +32,8 @@ export default function InfoSmall({ className, fill = "currentColor" }) {
           stroke={fill}
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="2"/>
+          strokeWidth="2"
+        />
         <path
           d="M18,12h0"
           transform="translate(-9.059 -6.635)"
@@ -39,7 +41,8 @@ export default function InfoSmall({ className, fill = "currentColor" }) {
           stroke={fill}
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="2"/>
+          strokeWidth="2"
+        />
       </g>
     </svg>
   );

@@ -19,7 +19,8 @@
   position: absolute;
 }
 
-.a-hidden, .screen-reader-only {
+.a-hidden,
+.screen-reader-only {
   @include appearance.hidden;
 }
 

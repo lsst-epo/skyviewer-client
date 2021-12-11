@@ -1,4 +1,4 @@
-import { useEffect, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import MenuContext from "@/contexts/Menu";
 import PropTypes from "prop-types";
 import classnames from "classnames";

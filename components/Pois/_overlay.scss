@@ -12,7 +12,7 @@
   max-height: 0%;
   overflow: hidden;
   color: functions.palette(white);
-  background-color: rgba(functions.palette(black), 0.7);
+  background-color: rgba(0 0 0 / 70%);
   transition: max-height 0.25s ease-out;
 
   @include base.respond(functions.break(desktop), min) {
@@ -23,21 +23,6 @@
     max-height: 700px;
     transition: right 0.25s ease-out;
     transform: translateY(50%);
-  }
-
-  &.is-open {
-    max-height: 66%;
-    transition: max-height 0.6s ease-out;
-
-    @include base.respond(functions.break(desktop), min) {
-      right: 0;
-      transition: right 0.6s ease-out;
-    }
-
-    .poi-inner {
-      opacity: 1;
-      transition: opacity 0.6s 0.4s;
-    }
   }
 
   .poi-inner {
@@ -69,6 +54,21 @@
 
     .poi-description {
       overflow-y: scroll;
+    }
+  }
+
+  &.is-open {
+    max-height: 66%;
+    transition: max-height 0.6s ease-out;
+
+    @include base.respond(functions.break(desktop), min) {
+      right: 0;
+      transition: right 0.6s ease-out;
+    }
+
+    .poi-inner {
+      opacity: 1;
+      transition: opacity 0.6s 0.4s;
     }
   }
 }

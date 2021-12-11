@@ -38,7 +38,7 @@
   background-color: functions.palette(black);
 
   @include base.respond(functions.break(mobile), min) {
-    background-color: rgba(functions.palette(black), 0.9);
+    background-color: rgba(0 0 0 / 90%);
   }
 
   .menu-header {

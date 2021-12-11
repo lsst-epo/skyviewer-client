@@ -154,6 +154,7 @@ export default function SourceDetails({ data, setData, handleClose }) {
                       text="Share"
                       classes="source-details-share-button"
                       onClick={() => {
+                        // eslint-disable-next-line no-console
                         console.log("sharing it");
                       }}
                     />

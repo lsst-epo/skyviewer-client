@@ -1,7 +1,8 @@
 @use 'abstracts/functions';
 
 .controls {
-  .control-button.zoom-in, .control-button.zoom-out {
+  .control-button.zoom-in,
+  .control-button.zoom-out {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,13 +11,15 @@
     background-color: functions.palette(white);
     border-radius: 50%;
 
-    path, rect {
+    path,
+    rect {
       fill: functions.palette(black);
       transition: fill 0.4s;
     }
 
     &:hover {
-      path, rect {
+      path,
+      rect {
         fill: functions.palette(white);
       }
     }
@@ -24,7 +27,8 @@
     &:focus {
       background-color: functions.palette(blue15);
 
-      &.active, &:hover {
+      &.active,
+      &:hover {
         background-color: functions.palette(turquoise55);
       }
     }
@@ -36,7 +40,7 @@
 }
 
 // .zoom-out {
-  // margin-top: 20px;
+// margin-top: 20px;
 // }
 
 // only needed for broken siilder impementation
