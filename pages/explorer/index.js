@@ -10,12 +10,11 @@ import Explorer from "@/components/explorer/index.js";
 const ExplorerPage = () => {
   const { data, isLoading } = useCatalogsSurveysData();
 
-  if (isLoading) return <LoadingSpinner />
+  if (isLoading) return <LoadingSpinner />;
 
   const { catalogs, surveys } = data;
   const sortedCats = sortCats(catalogs);
   const { fov, fovMin, fovMax, path, target } = surveys[0];
-
 
   function sortCats(cats) {
     if (!cats) return null;
