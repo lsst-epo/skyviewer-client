@@ -7,7 +7,7 @@ export default function GuidedExperiences({ guidedExperiences, counts }) {
     onResize: ({ height }) => {
       document.documentElement.style.setProperty(
         "--ge-heading-height",
-        `${ref.current.offsetHeight}px`
+        `${height}px`
       );
     },
   });
