@@ -27,24 +27,26 @@ export default function FunFact({ skipUrl, id, heading, blocks }) {
         </div>
       )}
       <div className="tour-fact desktop-only">
-        <div>
-          <IconComposer icon="Info" className="fact-icon" />
-          <h2 className="tour-fact-heading">{heading}</h2>
-        </div>
-        <div className="tour-fact-body">
-          {blocks.map((block) => {
-            const { id, body } = block;
+        <div className="main">
+          <div>
+            <IconComposer icon="Info" className="fact-icon" />
+            <h2 className="tour-fact-heading">{heading}</h2>
+          </div>
+          <div className="tour-fact-body">
+            {blocks.map((block) => {
+              const { id, body } = block;
 
-            return (
-              <div
-                className="block"
-                key={`block-${id}`}
-                dangerouslySetInnerHTML={{
-                  __html: body,
-                }}
-              />
-            );
-          })}
+              return (
+                <div
+                  className="block"
+                  key={`block-${id}`}
+                  dangerouslySetInnerHTML={{
+                    __html: body,
+                  }}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </>
