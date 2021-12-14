@@ -44,8 +44,8 @@ export default function SourceDetails({ data, setData, handleClose }) {
     distance,
     title,
     characteristics,
-    ra,
-    dec,
+    _RA: ra,
+    _DEC: dec,
   } = data || {};
   const [top, left] = position || ["auto", "auto"];
 

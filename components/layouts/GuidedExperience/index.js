@@ -16,7 +16,7 @@ export default function GuidedExperienceLayout({
     onResize: ({ height }) => {
       document.documentElement.style.setProperty(
         "--ge-nav-height",
-        `${ref.current.offsetHeight}px`
+        `${height}px`
       );
     },
   });

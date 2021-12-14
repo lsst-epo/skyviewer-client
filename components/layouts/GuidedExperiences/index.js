@@ -27,7 +27,7 @@ export default function GuidedExperiencesLayout({
     onResize: ({ height }) => {
       document.documentElement.style.setProperty(
         "--ges-nav-height",
-        `${navRef.current.offsetHeight}px`
+        `${height}px`
       );
     },
   });
@@ -36,7 +36,7 @@ export default function GuidedExperiencesLayout({
     onResize: ({ height }) => {
       document.documentElement.style.setProperty(
         "--ges-header-height",
-        `${headerRef.current.offsetHeight}px`
+        `${height}px`
       );
     },
   });

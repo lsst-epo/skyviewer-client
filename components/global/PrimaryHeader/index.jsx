@@ -16,7 +16,7 @@ export default function Header({ closeUrl = "/", backgroundColor, route }) {
     onResize: ({ height }) => {
       document.documentElement.style.setProperty(
         "--main-header-height",
-        `${ref.current.offsetHeight}px`
+        `${height}px`
       );
     },
   });
