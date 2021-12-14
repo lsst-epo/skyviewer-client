@@ -2,9 +2,9 @@
 @use 'abstracts/functions';
 @use 'abstracts/mixins/typography';
 
-@import './list-item';
-@import './intro';
-@import './fun-fact';
+@forward './list-item';
+@forward './intro';
+@forward './fun-fact';
 
 .tours-list-container {
   display: flex;
@@ -37,38 +37,36 @@
   margin: 0 auto;
 }
 
-.tour-intro-container {
-  position: relative;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: stretch;
-  justify-content: center;
-  width: 100vw;
-  height: calc(var(--window-height, 100vh) - var(--ge-nav-height, 95px) - 42px);
-  background-color: functions.palette(turquoise90);
-
-  @include base.respond(functions.break(tablet), min) {
-    align-items: flex-start;
-    overflow: scroll;
-  }
-
-  + .guided-experience-nav-container {
-    background-color: functions.palette(turquoise90);
-  }
-
-  .content-wrapper {
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-
-    @include base.respond(functions.break(tablet), min) {
-      padding-top: 42px;
-    }
-  }
-}
-
 .tour-intro,
 .tour-fact {
+  .main {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
+    overflow-y: scroll;
+  }
+
+  .tour-intro-body,
+  .tour-fact-body {
+    @include base.fluid-scale(
+      [padding-top,
+      padding-bottom],
+      20px,
+      29px,
+      functions.break(desktop),
+      functions.break(tablet)
+    );
+
+    @include base.respond(functions.break(tablet), min) {
+      padding-bottom: 55px;
+    }
+
+    p + p,
+    .block + .block {
+      margin-top: 14px;
+    }
+  }
+
   &.mobile-only {
     display: flex;
 
@@ -85,7 +83,7 @@
 
   &.desktop-only {
     display: none;
-
+    padding: 0 55px 38px;
 
     @include base.respond(functions.break(tablet), min) {
       display: flex;
@@ -102,15 +100,5 @@
     @include base.respond(functions.break(tablet), min) {
       display: none;
     }
-  }
-}
-
-.tour-intro-body {
-  max-height: 400px;
-  overflow: scroll;
-
-  p + p,
-  .block + .block {
-    margin-top: 14px;
   }
 }

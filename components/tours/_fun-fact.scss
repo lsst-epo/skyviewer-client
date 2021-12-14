@@ -22,16 +22,6 @@
     padding-bottom: 9px;
   }
 
-  .main {
-    .tour-fact-body {
-      padding-top: 30px;
-
-      @include base.respond(functions.break(tablet), min) {
-        padding-bottom: 55px;
-      }
-    }
-  }
-
   .bottom {
     position: relative;
     width: 100%;
@@ -44,7 +34,6 @@
     @include base.respond(functions.break(tablet), min) {
       width: 39px;
       height: 39px;
-      margin-top: -5px;
     }
   }
 

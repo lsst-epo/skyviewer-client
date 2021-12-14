@@ -8,14 +8,6 @@
 .tours-container {
   @include layout.container-guided;
   padding-top: 0;
-
-  // .children {
-  //   flex-grow: 1;
-
-  //   @include base.respond(functions.break(tablet), min) {
-  //     flex-grow: 0;
-  //   };
-  // }
 }
 
 .tour-summary-container {
@@ -218,3 +210,4 @@
     }
   }
 }
+
