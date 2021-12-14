@@ -26,23 +26,6 @@
     padding-bottom: 9px;
   }
 
-  .main {
-    .tour-intro-body {
-      @include base.fluid-scale(
-        [padding-top,
-        padding-bottom],
-        20px,
-        29px,
-        functions.break(desktop),
-        functions.break(tablet)
-      );
-
-      @include base.respond(functions.break(tablet), min) {
-        padding-bottom: 55px;
-      }
-    }
-  }
-
   .bottom {
     position: relative;
     width: 100%;

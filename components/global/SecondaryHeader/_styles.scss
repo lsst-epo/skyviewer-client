@@ -1,8 +1,8 @@
 @use 'abstracts/functions';
 @use 'abstracts/mixins/base';
 
-@import './search';
-@import './sort';
+@forward './search';
+@forward './sort';
 
 .secondary-header {
   padding: 2px 0;

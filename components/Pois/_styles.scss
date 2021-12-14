@@ -1,5 +1,5 @@
-@import 'overlay';
-@import 'nav';
+@forward 'overlay';
+@forward 'nav';
 
 .poi-container {
   position: absolute;
