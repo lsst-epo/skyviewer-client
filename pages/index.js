@@ -7,7 +7,7 @@ export default function Home() {
     onResize: ({ height }) => {
       document.documentElement.style.setProperty(
         "--home-nav-height",
-        `${ref.current.offsetHeight}px`
+        `${height}px`
       );
     },
   });
