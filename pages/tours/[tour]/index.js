@@ -129,7 +129,7 @@ const TourPage = ({ setLayoutState, tour }) => {
         ];
       }
     },
-    [slug, introContentBlocks?.length]
+    [slug, pathname, introContentBlocks?.length]
   );
 
   useEffect(() => {
@@ -147,7 +147,15 @@ const TourPage = ({ setLayoutState, tour }) => {
 
     setBackLink(navLinks[0]);
     setNextLink(navLinks[1]);
-  }, [slug, introId, factId, tour, getNavLinks]);
+  }, [
+    slug,
+    introId,
+    factId,
+    tour,
+    getNavLinks,
+    introContentBlocks?.length,
+    factsContentBlocks?.length,
+  ]);
 
   useEffect(() => {
     const updatedLayoutState = {
