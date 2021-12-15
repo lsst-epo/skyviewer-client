@@ -10,13 +10,9 @@
   display: flex;
   justify-content: center;
 
-  @include base.fluid-scale(
-    bottom,
-    50px,
-    0,
-    functions.break(desktop),
-    810px,
-  );
+  @include base.respond(functions.break(desktop), min) {
+    bottom: 50px;
+  }
 }
 
 .poi-nav {
@@ -29,6 +25,7 @@
   .poi-nav-item {
     display: flex;
     width: 100%;
+    margin: 0 3px;
   }
 
   .poi-nav-button {
