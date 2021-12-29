@@ -98,6 +98,7 @@
 
     .reset-locale-button {
       @include appearance.button-secondary;
+      margin-top: 15px;
     }
   }
 }
