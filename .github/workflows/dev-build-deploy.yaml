@@ -28,8 +28,8 @@ jobs:
       run: |-
         docker build \
         -t "gcr.io/${{ secrets.SV_PROJ_NAME }}/skyviewer-client:${{ github.sha }}" \
-        --build-arg NEXT_PUBLIC_API_URL=https://skyviewer-api-e3g4rcii3q-uc.a.run.app/api \
-        --build-arg NEXT_PUBLIC_ASSETS_BASE_URL=https://skyviewer-api-e3g4rcii3q-uc.a.run.app/assets \
+        --build-arg NEXT_PUBLIC_API_URL=https://skyviewer-api-dot-skyviewer.uw.r.appspot.com/api \
+        --build-arg NEXT_PUBLIC_ASSETS_BASE_URL=https://skyviewer-api-dot-skyviewer.uw.r.appspot.com/assets \
         --build-arg NEXT_PUBLIC_ASTRO_API_URL=https://us-central1-skyviewer.cloudfunctions.net/astro-objects-api \
         .
     - name: Configure Docker Auth
