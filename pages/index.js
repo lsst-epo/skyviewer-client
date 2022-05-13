@@ -1,6 +1,5 @@
 import useResizeObserver from "use-resize-observer";
 import Buttonish from "@/primitives/Buttonish";
-import Image from "@/components/primitives/Image";
 import ResponsiveImage from "@/components/primitives/ResponsiveImage";
 import logo from "../public/rubin-nsf-logo.png";
 
@@ -18,7 +17,7 @@ export default function Home() {
     <div className="home">
       <div className="logo-stack">
         <ResponsiveImage
-          image={{ width, height, url: src }}
+          image={{ width, height, url: src, url2x: src, url3x: src }}
           ratio={`${width}:${height}`}
         />
         <h1 className="headline">SKYVIEWER</h1>
