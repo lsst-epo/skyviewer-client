@@ -1,6 +1,8 @@
 import useResizeObserver from "use-resize-observer";
-import Logo from "@/svg/unique/Logo";
 import Buttonish from "@/primitives/Buttonish";
+import Image from "@/components/primitives/Image";
+import ResponsiveImage from "@/components/primitives/ResponsiveImage";
+import logo from "../public/rubin-nsf-logo.png";
 
 export default function Home() {
   const { ref } = useResizeObserver({
@@ -11,10 +13,14 @@ export default function Home() {
       );
     },
   });
+  const { width, height, src } = logo;
   return (
     <div className="home">
       <div className="logo-stack">
-        <Logo className="full-logo" />
+        <ResponsiveImage
+          image={{ width, height, url: src }}
+          ratio={`${width}:${height}`}
+        />
         <h1 className="headline">SKYVIEWER</h1>
       </div>
       <div ref={ref} className="home-nav-container">
