@@ -18,12 +18,12 @@ jobs:
 
     # gcloud CLI setup
     - name: Login to GCP
-      uses: google-github-actions/setup-gcloud@master
+      uses: google-github-actions/setup-gcloud@v2
       with:
         service_account_key: ${{ secrets.DEV_SA_KEY }}
         project_id: ${{ secrets.SV_PROJ_NAME }}
         export_default_credentials: true
-    
+
     - name: Build Container Image
       run: |-
         docker build \
