@@ -21,12 +21,12 @@ export default function useAladin(
         );
         const customSurvey = aladin.setImageSurvey(
           aladin.createImageSurvey(
-            "Custom Test",
-            "Custom Test Color",
+            "Color Survey",
+            "Color Survey",
             survey,
             "equatorial",
-            5,
-            { imgFormat: "jpg" }
+            11,
+            { imgFormat: "png" }
           )
         );
         setAladins({
