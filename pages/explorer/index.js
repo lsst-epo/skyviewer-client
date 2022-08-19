@@ -14,7 +14,7 @@ const ExplorerPage = () => {
 
   const { catalogs, surveys } = data;
   const sortedCats = sortCats(catalogs);
-  const { fov, fovMin, fovMax, path, target } = surveys[0];
+  const { fov, fovMin, fovMax, path, target, imgFormat } = surveys[0];
 
   function sortCats(cats) {
     if (!cats) return null;
@@ -47,6 +47,7 @@ const ExplorerPage = () => {
       fov={+fov || 60}
       fovRange={[fovMin, fovMax] || [2, 90]}
       target={target || "267.0208333333 -24.7800000000"}
+      imgFormat={imgFormat}
     />
   );
 };

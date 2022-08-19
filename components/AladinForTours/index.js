@@ -9,6 +9,7 @@ export default function Aladin({
   tourTitle,
   poi,
   fovRange,
+  initialFov,
   options,
   onClick,
 }) {
@@ -35,7 +36,7 @@ export default function Aladin({
     const { astroObject, fov } = poi;
     if (!astroObject || astroObject?.length < 1) return;
     const { ra, dec } = astroObject[0];
-    aladin.zoomToFoV(100, 0.5, () => {
+    aladin.zoomToFoV(initialFov, 0.5, () => {
       aladin.animateToRaDec(ra, dec, 1.8, () => {
         aladin.zoomToFoV(fov, 0.5, () => {
           const [aladinWidthDegrees, aladinHeightDegrees] = aladin.getFov();
@@ -82,6 +83,7 @@ Aladin.propTypes = {
   survey: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   tourTitle: PropTypes.string,
   poi: PropTypes.object,
+  initialFov: PropTypes.number,
   fovRange: PropTypes.array,
   options: PropTypes.object,
   onClick: PropTypes.func,
