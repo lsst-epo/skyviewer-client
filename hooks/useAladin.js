@@ -4,6 +4,7 @@ import { waitForGlobal } from "@/helpers";
 export default function useAladin(
   selector,
   survey,
+  imgFormat,
   fov,
   target,
   options,
@@ -26,7 +27,7 @@ export default function useAladin(
             survey,
             "equatorial",
             11,
-            { imgFormat: "png" }
+            { imgFormat }
           )
         );
         setAladins({
