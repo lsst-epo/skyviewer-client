@@ -16,6 +16,7 @@ export default function Explorer({
   fov,
   fovRange,
   target,
+  imgFormat,
 }) {
   const [settings, setSettings] = useState({
     showCatalogs: true,
@@ -28,14 +29,14 @@ export default function Explorer({
   const [aladins, setAladins] = useState(null);
   const [filters, setFilters] = useState(defaultFilters);
 
-  useAladin(selector, survey, fov, target, options, setAladins);
+  useAladin(selector, survey, imgFormat, fov, target, options, setAladins);
 
   return (
     <ExplorerProvider value={{ settings, setSettings }}>
       <AladinGlobalProvider value={aladins}>
         <FiltersProvider value={{ setFilters, filters }}>
           <Aladin
-            {...{ target, selector, survey, fov, fovRange, options }}
+            {...{ target, selector, survey, fov, fovRange, options, imgFormat }}
             catalogs={catalogs}
           />
         </FiltersProvider>
@@ -49,6 +50,7 @@ Explorer.propTypes = {
   survey: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   catalogs: PropTypes.array,
   target: PropTypes.string,
+  imgFormat: PropTypes.string,
   fov: PropTypes.number,
   fovRange: PropTypes.array,
   options: PropTypes.object,
