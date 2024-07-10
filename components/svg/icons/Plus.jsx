@@ -35,5 +35,3 @@ Plus.displayName = "SVG.Plus";
 Plus.propTypes = {
   ...svgInternalShape,
 };
-
-Plus.defaultProps = defaultProps;

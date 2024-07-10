@@ -28,5 +28,3 @@ Grid.displayName = "SVG.Grid";
 Grid.propTypes = {
   ...svgInternalShape,
 };
-
-Grid.defaultProps = defaultProps;

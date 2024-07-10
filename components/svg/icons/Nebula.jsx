@@ -29,5 +29,3 @@ Nebula.displayName = "SVG.Nebula";
 Nebula.propTypes = {
   ...svgInternalShape,
 };
-
-Nebula.defaultProps = defaultProps;

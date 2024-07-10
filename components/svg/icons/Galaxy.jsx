@@ -36,5 +36,3 @@ Galaxy.displayName = "SVG.Galaxy";
 Galaxy.propTypes = {
   ...svgInternalShape,
 };
-
-Galaxy.defaultProps = defaultProps;

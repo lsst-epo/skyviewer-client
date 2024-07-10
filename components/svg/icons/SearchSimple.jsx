@@ -28,5 +28,3 @@ SearchSimple.displayName = "SVG.SearchSimple";
 SearchSimple.propTypes = {
   ...svgInternalShape,
 };
-
-SearchSimple.defaultProps = defaultProps;

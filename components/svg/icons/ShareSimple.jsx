@@ -50,5 +50,3 @@ ShareSimple.displayName = "SVG.ShareSimple";
 ShareSimple.propTypes = {
   ...svgInternalShape,
 };
-
-ShareSimple.defaultProps = defaultProps;

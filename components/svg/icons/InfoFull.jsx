@@ -28,5 +28,3 @@ InfoFull.displayName = "SVG.InfoFull";
 InfoFull.propTypes = {
   ...svgInternalShape,
 };
-
-InfoFull.defaultProps = defaultProps;

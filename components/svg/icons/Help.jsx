@@ -56,5 +56,3 @@ Help.displayName = "SVG.Help";
 Help.propTypes = {
   ...svgInternalShape,
 };
-
-Help.defaultProps = defaultProps;

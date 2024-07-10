@@ -5,9 +5,9 @@ import { capitalize } from "@/helpers";
 import ReactSlider from "react-slider";
 
 export default function Slider({
-  min,
-  max,
-  step,
+  min = 0,
+  max = 100,
+  step = 1,
   value,
   doubleHandle,
   onChangeCallback,
@@ -55,12 +55,6 @@ export default function Slider({
     </div>
   );
 }
-
-Slider.defaultProps = {
-  min: 0,
-  max: 100,
-  step: 1,
-};
 
 Slider.propTypes = {
   min: PropTypes.number,

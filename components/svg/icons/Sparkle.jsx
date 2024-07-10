@@ -29,5 +29,3 @@ Sparkle.displayName = "SVG.Sparkle";
 Sparkle.propTypes = {
   ...svgInternalShape,
 };
-
-Sparkle.defaultProps = defaultProps;
