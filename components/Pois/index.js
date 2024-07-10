@@ -10,7 +10,6 @@ export default function Pois({
   selector,
   options,
   survey,
-  imgFormat,
   fov,
   fovRange,
   poi,
@@ -29,9 +28,8 @@ export default function Pois({
   useAladin(
     selector,
     survey,
-    imgFormat,
     fov,
-    "04 08 15.873 -34 35 56.46",
+    "267.0208333333 -24.7800000000",
     options,
     setAladins
   );
@@ -41,7 +39,6 @@ export default function Pois({
       <AladinForTours
         tourTitle={tourTitle}
         poi={poi}
-        initialFov={fov}
         {...{ selector, survey, fovRange, options }}
       />
     </AladinGlobalProvider>
@@ -56,7 +53,6 @@ Pois.propTypes = {
   options: PropTypes.object,
   poi: PropTypes.object,
   tourTitle: PropTypes.string,
-  imgFormat: PropTypes.string,
 };
 
 Pois.defaultProps = {

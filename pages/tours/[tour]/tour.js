@@ -51,9 +51,8 @@ const PoiPage = ({ tour }) => {
       ) : (
         <Pois
           selector="#aladin-lite-div"
-          survey="https://storage.googleapis.com/hips-data/dm-hips/color_riz"
-          imgFormat="png"
-          fov={10}
+          survey="http://alasky.u-strasbg.fr/DSS/DSSColor"
+          fov={100}
           fovRange={[0.03, 180]}
           poi={tour?.tourPois[+poi - 1]}
           tourTitle={tour.title}
