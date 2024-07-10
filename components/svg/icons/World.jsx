@@ -32,5 +32,3 @@ World.displayName = "SVG.World";
 World.propTypes = {
   ...svgInternalShape,
 };
-
-World.defaultProps = defaultProps;

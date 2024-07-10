@@ -30,5 +30,3 @@ CaretRight.displayName = "SVG.CaretRight";
 CaretRight.propTypes = {
   ...svgInternalShape,
 };
-
-CaretRight.defaultProps = defaultProps;

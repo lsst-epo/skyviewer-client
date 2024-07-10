@@ -60,5 +60,3 @@ Alert.displayName = "SVG.Alert";
 Alert.propTypes = {
   ...svgInternalShape,
 };
-
-Alert.defaultProps = defaultProps;

@@ -6,7 +6,7 @@ import Header from "@/global/PrimaryHeader";
 export default function PrimaryLayout({
   closeUrl,
   route,
-  backgroundColor,
+  backgroundColor = "primary",
   children,
 }) {
   const [menusOpen, setMenusOpen] = useState([]);
@@ -22,10 +22,6 @@ export default function PrimaryLayout({
     </MenuProvider>
   );
 }
-
-PrimaryLayout.defaultProps = {
-  backgroundColor: "primary",
-};
 
 PrimaryLayout.propTypes = {
   closeUrl: PropTypes.string,

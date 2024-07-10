@@ -33,5 +33,3 @@ GlobeSimple.displayName = "SVG.GlobeSimple";
 GlobeSimple.propTypes = {
   ...svgInternalShape,
 };
-
-GlobeSimple.defaultProps = defaultProps;

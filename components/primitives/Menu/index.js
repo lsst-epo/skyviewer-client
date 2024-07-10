@@ -17,7 +17,12 @@ export default function Menu({
   openOverride,
   openButtonOpts,
   openCallback,
-  closeButtonOpts,
+  closeButtonOpts = {
+    icon: <IconComposer icon="Close" />,
+    text: "Close Menu Dialog",
+    isIcon: true,
+    classes: "close-button",
+  },
   closeCallback,
   labelledbyId,
   describedbyId,
@@ -149,15 +154,6 @@ export default function Menu({
     </div>
   );
 }
-
-Menu.defaultProps = {
-  closeButtonOpts: {
-    icon: <IconComposer icon="Close" />,
-    text: "Close Menu Dialog",
-    isIcon: true,
-    classes: "close-button",
-  },
-};
 
 Menu.propTypes = {
   children: PropTypes.element,

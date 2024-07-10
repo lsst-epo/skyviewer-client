@@ -25,5 +25,3 @@ Close.displayName = "SVG.Close";
 Close.propTypes = {
   ...svgInternalShape,
 };
-
-Close.defaultProps = defaultProps;

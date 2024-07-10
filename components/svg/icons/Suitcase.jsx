@@ -29,5 +29,3 @@ Suitcase.displayName = "SVG.Suitcase";
 Suitcase.propTypes = {
   ...svgInternalShape,
 };
-
-Suitcase.defaultProps = defaultProps;

@@ -56,5 +56,3 @@ Email.displayName = "SVG.Email";
 Email.propTypes = {
   ...svgInternalShape,
 };
-
-Email.defaultProps = defaultProps;

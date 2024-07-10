@@ -48,5 +48,3 @@ Chain.displayName = "SVG.Chain";
 Chain.propTypes = {
   ...svgInternalShape,
 };
-
-Chain.defaultProps = defaultProps;

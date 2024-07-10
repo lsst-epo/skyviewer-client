@@ -4,7 +4,12 @@ import classnames from "classnames";
 import { EmailShareButton } from "react-share";
 import IconComposer from "@/svg/IconComposer";
 
-export default function ShareButton({ subject, body, separator, showLabel }) {
+export default function ShareButton({
+  subject,
+  body,
+  separator = " ",
+  showLabel,
+}) {
   return (
     <EmailShareButton
       url={
@@ -30,10 +35,6 @@ export default function ShareButton({ subject, body, separator, showLabel }) {
     </EmailShareButton>
   );
 }
-
-ShareButton.defaultProps = {
-  separator: " ",
-};
 
 ShareButton.propTypes = {
   subject: PropTypes.string,

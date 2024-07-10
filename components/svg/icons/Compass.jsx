@@ -42,5 +42,3 @@ Compass.displayName = "SVG.Compass";
 Compass.propTypes = {
   ...svgInternalShape,
 };
-
-Compass.defaultProps = defaultProps;

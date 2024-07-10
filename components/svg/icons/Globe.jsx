@@ -28,5 +28,3 @@ Globe.displayName = "SVG.Globe";
 Globe.propTypes = {
   ...svgInternalShape,
 };
-
-Globe.defaultProps = defaultProps;

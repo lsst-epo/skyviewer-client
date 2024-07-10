@@ -46,5 +46,3 @@ Gear.displayName = "SVG.Gear";
 Gear.propTypes = {
   ...svgInternalShape,
 };
-
-Gear.defaultProps = defaultProps;

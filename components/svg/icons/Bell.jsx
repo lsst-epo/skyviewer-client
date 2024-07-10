@@ -28,5 +28,3 @@ Bell.displayName = "SVG.Bell";
 Bell.propTypes = {
   ...svgInternalShape,
 };
-
-Bell.defaultProps = defaultProps;

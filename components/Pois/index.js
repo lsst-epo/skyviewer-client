@@ -8,10 +8,10 @@ import useAladin from "@/hooks/useAladin";
 
 export default function Pois({
   selector,
-  options,
+  options = defaultOptions,
   survey,
   imgFormat,
-  fov,
+  fov = 20,
   fovRange,
   poi,
   tourTitle,
@@ -57,9 +57,4 @@ Pois.propTypes = {
   poi: PropTypes.object,
   tourTitle: PropTypes.string,
   imgFormat: PropTypes.string,
-};
-
-Pois.defaultProps = {
-  fov: 20,
-  options: defaultOptions,
 };

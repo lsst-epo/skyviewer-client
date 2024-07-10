@@ -36,5 +36,3 @@ Stopwatch.displayName = "SVG.Stopwatch";
 Stopwatch.propTypes = {
   ...svgInternalShape,
 };
-
-Stopwatch.defaultProps = defaultProps;

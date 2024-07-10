@@ -10,10 +10,10 @@ import useAladin from "@/hooks/useAladin";
 
 export default function Explorer({
   selector,
-  options,
+  options = defaultOptions,
   catalogs,
   survey,
-  fov,
+  fov = 20,
   fovRange,
   target,
   imgFormat,
@@ -54,9 +54,4 @@ Explorer.propTypes = {
   fov: PropTypes.number,
   fovRange: PropTypes.array,
   options: PropTypes.object,
-};
-
-Explorer.defaultProps = {
-  fov: 20,
-  options: defaultOptions,
 };

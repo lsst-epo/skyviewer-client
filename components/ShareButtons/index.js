@@ -9,12 +9,12 @@ import EmailShareButton from "@/components/ShareButtons/EmailShareButton";
 
 export default function ShareButtons({
   classes,
-  showLabels,
-  url,
-  facebook,
-  twitter,
-  image,
-  email,
+  url = true,
+  showLabels = true,
+  facebook = true,
+  twitter = true,
+  image = true,
+  email = true,
 }) {
   return (
     <ul
@@ -58,15 +58,6 @@ export default function ShareButtons({
     </ul>
   );
 }
-
-ShareButtons.defaultProps = {
-  url: true,
-  showLabels: true,
-  facebook: true,
-  twitter: true,
-  image: true,
-  email: true,
-};
 
 ShareButtons.propTypes = {
   classes: PropTypes.string,
