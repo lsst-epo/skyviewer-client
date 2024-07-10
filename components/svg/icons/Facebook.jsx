@@ -32,5 +32,3 @@ Facebook.displayName = "SVG.Facebook";
 Facebook.propTypes = {
   ...svgInternalShape,
 };
-
-Facebook.defaultProps = defaultProps;

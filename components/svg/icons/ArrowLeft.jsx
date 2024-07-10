@@ -29,5 +29,3 @@ ArrowLeft.displayName = "SVG.ArrowLeft";
 ArrowLeft.propTypes = {
   ...svgInternalShape,
 };
-
-ArrowLeft.defaultProps = defaultProps;

@@ -10,7 +10,12 @@ export default function Modal({
   children,
   openButtonOpts,
   openCallback,
-  closeButtonOpts,
+  closeButtonOpts = {
+    icon: <IconComposer icon="Close" />,
+    text: "Close Modal Dialog",
+    isIcon: true,
+    classes: "close-button",
+  },
   closeCallback,
   closeKey,
   labelledbyId,
@@ -76,15 +81,6 @@ export default function Modal({
     </div>
   );
 }
-
-Modal.defaultProps = {
-  closeButtonOpts: {
-    icon: <IconComposer icon="Close" />,
-    text: "Close Modal Dialog",
-    isIcon: true,
-    classes: "close-button",
-  },
-};
 
 Modal.propTypes = {
   children: PropTypes.element,

@@ -31,5 +31,3 @@ Star.displayName = "SVG.Star";
 Star.propTypes = {
   ...svgInternalShape,
 };
-
-Star.defaultProps = defaultProps;

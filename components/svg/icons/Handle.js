@@ -41,5 +41,3 @@ Handle.displayName = "SVG.Handle";
 Handle.propTypes = {
   ...svgInternalShape,
 };
-
-Handle.defaultProps = defaultProps;

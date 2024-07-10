@@ -32,5 +32,3 @@ Twitter.displayName = "SVG.Twitter";
 Twitter.propTypes = {
   ...svgInternalShape,
 };
-
-Twitter.defaultProps = defaultProps;

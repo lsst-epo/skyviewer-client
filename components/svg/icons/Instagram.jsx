@@ -53,5 +53,3 @@ Instagram.displayName = "SVG.Instagram";
 Instagram.propTypes = {
   ...svgInternalShape,
 };
-
-Instagram.defaultProps = defaultProps;

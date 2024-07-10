@@ -53,5 +53,3 @@ InfoSmall.displayName = "SVG.InfoSmall";
 InfoSmall.propTypes = {
   ...svgInternalShape,
 };
-
-InfoSmall.defaultProps = defaultProps;

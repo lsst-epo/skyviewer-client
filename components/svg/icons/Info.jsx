@@ -28,5 +28,3 @@ Info.displayName = "SVG.Info";
 Info.propTypes = {
   ...svgInternalShape,
 };
-
-Info.defaultProps = defaultProps;

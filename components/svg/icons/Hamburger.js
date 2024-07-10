@@ -57,5 +57,3 @@ Hamburger.displayName = "SVG.Hamburger";
 Hamburger.propTypes = {
   ...svgInternalShape,
 };
-
-Hamburger.defaultProps = defaultProps;

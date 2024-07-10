@@ -29,5 +29,3 @@ Sort.displayName = "SVG.Sort";
 Sort.propTypes = {
   ...svgInternalShape,
 };
-
-Sort.defaultProps = defaultProps;

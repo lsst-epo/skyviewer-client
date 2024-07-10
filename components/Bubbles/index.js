@@ -2,7 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import Bubble from "./Bubble";
 
-export default function Bubbles({ val, max }) {
+export default function Bubbles({ val, max = 5 }) {
   const [range] = useState(Array.from({ length: max }, (_, i) => i + 1));
   return (
     <div className="bubbles">
@@ -12,10 +12,6 @@ export default function Bubbles({ val, max }) {
     </div>
   );
 }
-
-Bubbles.defaultProps = {
-  max: 5,
-};
 
 Bubbles.propTypes = {
   val: PropTypes.number,
