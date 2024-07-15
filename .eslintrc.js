@@ -85,7 +85,7 @@ module.exports = {
     // next/link handles the href, so anchors without href are still interactive
     "jsx-a11y/no-noninteractive-tabindex": ["error", { tags: ["a"] }],
   },
-  plugins: ["jsx-a11y", "react", "react-hooks"],
+  plugins: ["jsx-a11y", "react", "react-hooks", "next"],
   extends: [
     "standard",
     "plugin:jsx-a11y/recommended",
