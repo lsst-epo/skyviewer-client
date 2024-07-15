@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
 import locales, { getCurrentLocale } from "@/lib/locales";
 
 class CustomDocument extends Document {
@@ -15,21 +16,18 @@ class CustomDocument extends Document {
     return (
       <Html lang={this.props.lang}>
         <Head>
-          {/* Aladin Lite CSS style file */}
-          <link rel="stylesheet" href="/aladin-lite/v2/aladin.css" />
-
           {/* Aladin Lite has a dependency on the jQuery library */}
-          <script
+          <Script
             type="text/javascript"
             src="https://code.jquery.com/jquery-1.12.1.min.js"
-            charSet="utf-8"
-          ></script>
+            strategy="beforeInteractive"
+          ></Script>
           {/* Aladin Lite JS code */}
-          <script
+          <Script
             type="text/javascript"
             src="/aladin-lite/v2/aladin.js"
-            charSet="utf-8"
-          ></script>
+            strategy="beforeInteractive"
+          ></Script>
           <link rel="shortcut icon" href="/favicon.ico" />
         </Head>
         <body>

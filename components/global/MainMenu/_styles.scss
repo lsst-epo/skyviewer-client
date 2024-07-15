@@ -1,7 +1,7 @@
 /* stylelint-disable no-descending-specificity */
-@use 'abstracts/functions';
-@use 'abstracts/mixins/appearance';
-@use 'abstracts/mixins/typography';
+@use "abstracts/functions";
+@use "abstracts/mixins/appearance";
+@use "abstracts/mixins/typography";
 
 .main-menu {
   display: flex;
@@ -9,6 +9,7 @@
   justify-content: flex-start;
 
   .main-menu-content-wrapper {
+    flex-grow: 1;
     overflow-y: scroll;
   }
 
