@@ -80,17 +80,14 @@ module.exports = {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/react-in-jsx-scope": 0,
-    // let next/link package handle anchor attributes
-    "jsx-a11y/anchor-is-valid": 0,
-    // next/link handles the href, so anchors without href are still interactive
-    "jsx-a11y/no-noninteractive-tabindex": ["error", { tags: ["a"] }],
   },
-  plugins: ["jsx-a11y", "react", "react-hooks"],
   extends: [
     "standard",
     "plugin:jsx-a11y/recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
+    "next",
     "prettier",
   ],
+  plugins: ["jsx-a11y", "react"],
 };

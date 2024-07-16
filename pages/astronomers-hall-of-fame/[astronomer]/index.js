@@ -52,14 +52,10 @@ const Astronomer = () => {
         {concept && <p>Take away concept #{concept}</p>}
         <ul>
           <li>
-            <Link href={getBackUrl(query)}>
-              <a>Back</a>
-            </Link>
+            <Link href={getBackUrl(query)}>Back</Link>
           </li>
           <li>
-            <Link href={getNextUrl(query)}>
-              <a>Next</a>
-            </Link>
+            <Link href={getNextUrl(query)}>Next</Link>
           </li>
         </ul>
       </div>
@@ -71,14 +67,10 @@ const Astronomer = () => {
       <h1>I am Astronomer #{astronomer}</h1>
       <ul>
         <li>
-          <Link href={getBackUrl(query)}>
-            <a>Back</a>
-          </Link>
+          <Link href={getBackUrl(query)}>Back</Link>
         </li>
         <li>
-          <Link href={getNextUrl(query)}>
-            <a>Let&apos;s Start</a>
-          </Link>
+          <Link href={getNextUrl(query)}>Let&apos;s Start</Link>
         </li>
       </ul>
     </div>

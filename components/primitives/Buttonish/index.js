@@ -32,17 +32,15 @@ export default function Buttonish({
 
   if (url)
     return (
-      <Link href={url}>
-        <a className={linkClasses}>
-          {icon}
-          <span
-            className={classnames({
-              "screen-reader-only": isIcon,
-            })}
-          >
-            {text}
-          </span>
-        </a>
+      <Link href={url} className={linkClasses}>
+        {icon}
+        <span
+          className={classnames({
+            "screen-reader-only": isIcon,
+          })}
+        >
+          {text}
+        </span>
       </Link>
     );
 

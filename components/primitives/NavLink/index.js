@@ -11,19 +11,18 @@ export default function NavLink({
   classes,
 }) {
   return (
-    <Link href={url}>
-      <a
-        className={classnames("nav-link", {
-          "icon-before": iconBefore && icon,
-          "icon-after": !iconBefore && icon,
-          small,
-          [classes]: classes,
-        })}
-      >
-        {iconBefore && icon}
-        <span className="text">{text}</span>
-        {!iconBefore && icon}
-      </a>
+    <Link
+      href={url}
+      className={classnames("nav-link", {
+        "icon-before": iconBefore && icon,
+        "icon-after": !iconBefore && icon,
+        small,
+        [classes]: classes,
+      })}
+    >
+      {iconBefore && icon}
+      <span className="text">{text}</span>
+      {!iconBefore && icon}
     </Link>
   );
 }

@@ -12,18 +12,14 @@ export default function Astronomer() {
       <ul>
         <li>
           <Link href="/astronomers-hall-of-fame">
-            <a>Back to Astronomers Hall of Fame</a>
+            Back to Astronomers Hall of Fame
           </Link>
         </li>
         <li>
-          <Link href="/astronomers-hall-of-fame">
-            <a>Back</a>
-          </Link>
+          <Link href="/astronomers-hall-of-fame">Back</Link>
         </li>
         <li>
-          <Link href="/astronomers-hall-of-fame">
-            <a>Next</a>
-          </Link>
+          <Link href="/astronomers-hall-of-fame">Next</Link>
         </li>
       </ul>
     </div>
