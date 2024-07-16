@@ -35,8 +35,8 @@ export default function Intro({
           <div className="bottom">
             {blocks.length > 1 && <Bubbles val={+id} max={blocks.length} />}
             {id && skipUrl && (
-              <Link href={skipUrl}>
-                <a className="skip-link">Skip Intro</a>
+              <Link href={skipUrl} className="skip-link">
+                Skip Intro
               </Link>
             )}
           </div>

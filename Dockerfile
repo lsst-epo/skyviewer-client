@@ -1,7 +1,7 @@
 # This file is based on the official Next.js Docker example. https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile
 
 # Install dependencies only when needed
-FROM node:14-alpine as deps
+FROM node:20-alpine as deps
 
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
@@ -9,7 +9,7 @@ COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
 # Rebuild the source code only when needed
-FROM node:14-alpine AS builder
+FROM node:20-alpine AS builder
 WORKDIR /app
 COPY . /app
 COPY --from=deps /app/node_modules ./node_modules
@@ -21,7 +21,7 @@ ARG NEXT_PUBLIC_ASTRO_API_URL=https://us-central1-skyviewer.cloudfunctions.net/a
 RUN yarn tokens && yarn cloud-start:build
 
 # Production image, copy all the files and run next
-FROM node:14-alpine AS runner
+FROM node:20-alpine AS runner
 WORKDIR /app
 
 RUN addgroup -g 1001 -S nodejs

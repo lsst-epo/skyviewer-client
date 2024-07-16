@@ -6,19 +6,13 @@ export default function HallOfFame() {
       <h1>I am the Astronomers Hall of Fame</h1>
       <ul>
         <li>
-          <Link href="/guided-experiences">
-            <a>Back to Guided Experiences</a>
-          </Link>
+          <Link href="/guided-experiences">Back to Guided Experiences</Link>
         </li>
         <li>
-          <Link href="/astronomers-hall-of-fame/1">
-            <a>Astronomer 1</a>
-          </Link>
+          <Link href="/astronomers-hall-of-fame/1">Astronomer 1</Link>
         </li>
         <li>
-          <Link href="/astronomers-hall-of-fame/2">
-            <a>Astronomer 2</a>
-          </Link>
+          <Link href="/astronomers-hall-of-fame/2">Astronomer 2</Link>
         </li>
       </ul>
     </div>

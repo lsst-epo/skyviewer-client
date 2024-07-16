@@ -8,22 +8,22 @@
 // @forward '../../public/aladin-lite/aladin.css';
 
 // @fontface
-@forward 'abstracts/fonts';
+@forward "abstracts/fonts";
 
 // Base styles
-@forward 'base/resets';
-@forward 'base/base';
-@forward 'base/typography';
+@forward "base/resets";
+@forward "base/base";
+@forward "base/typography";
 
 // Modules
 // --------------------
 // Self-contained, reuseable blocks of markup.
 // Indicated by the class prefix `.m-`.
-@forward 'components/index';
+@forward "components/index";
 
 // Pages
 // --------------------
-@forward 'pages/index';
+@forward "pages/index";
 
 // Utility
 // --------------------
@@ -36,14 +36,16 @@
 // * `a-` - appearance
 // * `l-` - layout
 // * `is-`/`has-` - state
-@forward 'utility/typography';
-@forward 'utility/appearance';
-@forward 'utility/layout';
-@forward 'utility/state';
+@forward "utility/typography";
+@forward "utility/appearance";
+@forward "utility/layout";
+@forward "utility/state";
+
+@forward "vendor/aladin.css";
 
 // Z-Stack
 // @forward 'z-stack';
-
-#__next-prerender-indicator { /* stylelint-disable-line selector-max-id, selector-id-pattern */
+#__next-prerender-indicator {
+  /* stylelint-disable-line selector-max-id, selector-id-pattern */
   display: none;
 }

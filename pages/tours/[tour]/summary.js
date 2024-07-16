@@ -60,23 +60,19 @@ const SummaryPage = ({ setLayoutState, tour }) => {
           <h3 className="summary-links-list-heading">Explore</h3>
           <ol className="summary-links-list">
             <li className="summary-link-item">
-              <Link href="/#">
-                <a className="summary-link">
-                  <div className="summary-link-number">1</div>
-                  <div className="summary-link-text">
-                    Classify galaxies as a part of a citizen science project
-                  </div>
-                </a>
+              <Link href="/#" className="summary-link">
+                <div className="summary-link-number">1</div>
+                <div className="summary-link-text">
+                  Classify galaxies as a part of a citizen science project
+                </div>
               </Link>
             </li>
             <li className="summary-link-item">
-              <Link href="/#">
-                <a className="summary-link">
-                  <div className="summary-link-number">2</div>
-                  <div className="summary-link-text">
-                    Read about new galaxies found by our astronomers
-                  </div>
-                </a>
+              <Link href="/#" className="summary-link">
+                <div className="summary-link-number">2</div>
+                <div className="summary-link-text">
+                  Read about new galaxies found by our astronomers
+                </div>
               </Link>
             </li>
           </ol>

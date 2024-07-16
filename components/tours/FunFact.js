@@ -19,8 +19,8 @@ export default function FunFact({ skipUrl, id, heading, blocks }) {
           </div>
           <div className="bottom">
             {skipUrl && (
-              <Link href={skipUrl}>
-                <a className="skip-link">Skip Intro</a>
+              <Link href={skipUrl} className="skip-link">
+                Skip Intro
               </Link>
             )}
           </div>

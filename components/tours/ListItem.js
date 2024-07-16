@@ -21,31 +21,29 @@ export default function TourListItem({
 
   return (
     <li className="tour-list-item">
-      <Link href={`/tours/${slug}`}>
-        <a className="tour-link">
-          <div
-            className="thumbnail"
-            style={{
-              backgroundImage: `url(${thumbnail[0].url})`,
-            }}
-          />
-          <div className="details">
-            <h3 className="name">{title}</h3>
-            <div className="characteristics">
-              <div className="duration">
-                <div className="tablet-only-label">Duration</div>
-                <IconComposer icon="Stopwatch" />
-                <div className="time">{duration} min</div>
-              </div>
-              <div className="divider"></div>
-              <div className="complexity">
-                <div>Complexity </div>
-                <Bubbles val={complexity} />
-                <div className="tablet-only-label">{getTerm(complexity)}</div>
-              </div>
+      <Link href={`/tours/${slug}`} className="tour-link">
+        <div
+          className="thumbnail"
+          style={{
+            backgroundImage: `url(${thumbnail[0].url})`,
+          }}
+        />
+        <div className="details">
+          <h3 className="name">{title}</h3>
+          <div className="characteristics">
+            <div className="duration">
+              <div className="tablet-only-label">Duration</div>
+              <IconComposer icon="Stopwatch" />
+              <div className="time">{duration} min</div>
+            </div>
+            <div className="divider"></div>
+            <div className="complexity">
+              <div>Complexity </div>
+              <Bubbles val={complexity} />
+              <div className="tablet-only-label">{getTerm(complexity)}</div>
             </div>
           </div>
-        </a>
+        </div>
       </Link>
     </li>
   );

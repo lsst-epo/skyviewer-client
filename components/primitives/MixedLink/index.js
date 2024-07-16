@@ -35,11 +35,9 @@ export default function MixedLink({
     };
 
     return (
-      <Link href={href}>
-        <a className={className} target={target}>
-          {!children && (customText ?? text)}
-          {children}
-        </a>
+      <Link href={href} className={className} target={target}>
+        {!children && (customText ?? text)}
+        {children}
       </Link>
     );
   }
