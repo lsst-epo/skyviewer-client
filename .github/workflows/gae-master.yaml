@@ -1,14 +1,13 @@
-# Builds, pushes, and deploys the Skyviewer API container
-name: 'Build and deploy Skyviewer Client to Google App Engine in Dev'
+name: 'Deploy to Int'
 
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
 
 jobs:
   build-push-deploy:
-    name: 'Build, Publish, and Deploy'
+    name: 'Build and Deploy to Integration'
     runs-on: ubuntu-latest
 
     # Checkout the repository to the GitHub Actions runner
@@ -28,8 +27,10 @@ jobs:
       run: |-
         docker build \
         -t "gcr.io/edc-int-6c5e/skyviewer-client:${{ github.sha }}" \
-        --build-arg NEXT_PUBLIC_API_URL=https://skyviewer-api-int-2eici5myiq-uc.a.run.app/api \
-        --build-arg NEXT_PUBLIC_ASSETS_BASE_URL=https://skyviewer-api-int-2eici5myiq-uc.a.run.app/assets \
+        --build-arg NEXT_PUBLIC_API_URL=https://skyviewer-api-dot-edc-int-6c5e.uc.r.appspot.com/api \
+        --build-arg NEXT_PUBLIC_BASE_URL=https://skyviewer-client-dot-edc-int-6c5e.uc.r.appspot.com \
+        --build-arg CRAFT_SECRET_TOKEN=abcdef0123456789 \
+        --build-arg NEXT_PUBLIC_ASSETS_BASE_URL=https://skyviewer-api-dot-edc-int-6c5e.uc.r.appspot.com/assets  \
         --build-arg NEXT_PUBLIC_ASTRO_API_URL=https://us-central1-skyviewer.cloudfunctions.net/astro-objects-api \
         .
     - name: Configure Docker Auth
@@ -38,16 +39,13 @@ jobs:
     - name: Push Container Image to GCR
       run: docker push gcr.io/edc-int-6c5e/skyviewer-client:${{ github.sha }}
 
-    - name: Update app.yaml
-      run: |-
-        echo "
-        network:
-          name: edc-int-vpc
-          subnetwork_name: subnet-us-central1-01" >> app.yaml
+    - name: Get app.yaml
+      run: gcloud secrets versions access latest --secret=skyviewer-client-appyaml > app.yaml
 
     - name: Deploy to App Engine
       run: |-
         gcloud app deploy app.yaml \
+        --quiet \
         --image-url=gcr.io/edc-int-6c5e/skyviewer-client:${{ github.sha }} \
         --promote \
         --project=edc-int-6c5e
