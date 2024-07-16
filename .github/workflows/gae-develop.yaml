@@ -1,5 +1,4 @@
-# Builds, pushes, and deploys the Skyviewer API container
-name: 'Build and deploy Skyviewer Client to Google App Engine in Dev'
+name: 'Deploy to Dev'
 
 on:
   push:
@@ -8,7 +7,7 @@ on:
 
 jobs:
   build-push-deploy:
-    name: 'Build, Publish, and Deploy'
+    name: 'Build and Deploy to Development'
     runs-on: ubuntu-latest
 
     # Checkout the repository to the GitHub Actions runner
@@ -29,6 +28,7 @@ jobs:
         docker build \
         -t "gcr.io/${{ secrets.SV_PROJ_NAME }}/skyviewer-client:${{ github.sha }}" \
         --build-arg NEXT_PUBLIC_API_URL=https://skyviewer-api-dot-skyviewer.uw.r.appspot.com/api \
+        --build-arg NEXT_PUBLIC_BASE_URL=https://skyviewer-client-dot-skyviewer.uw.r.appspot.com \
         --build-arg NEXT_PUBLIC_ASSETS_BASE_URL=https://skyviewer-api-dot-skyviewer.uw.r.appspot.com/assets \
         --build-arg NEXT_PUBLIC_ASTRO_API_URL=https://us-central1-skyviewer.cloudfunctions.net/astro-objects-api \
         .
@@ -38,9 +38,13 @@ jobs:
     - name: Push Container Image to GCR
       run: docker push gcr.io/${{ secrets.SV_PROJ_NAME }}/skyviewer-client:${{ github.sha }}
 
+    - name: Get app.yaml
+      run: gcloud secrets versions access latest --secret=skyviewer-client-appyaml > app.yaml
+
     - name: Deploy to App Engine
       run: |-
         gcloud app deploy app.yaml \
+        --quiet \
         --image-url=gcr.io/${{ secrets.SV_PROJ_NAME }}/skyviewer-client:${{ github.sha }} \
         --promote \
         --project=${{ secrets.SV_PROJ_NAME }}
