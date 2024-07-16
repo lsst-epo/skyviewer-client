@@ -1,5 +1,5 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/base';
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
 
 .poi-nav-container {
   position: absolute;
@@ -26,59 +26,5 @@
     display: flex;
     width: 100%;
     margin: 0 3px;
-  }
-
-  .poi-nav-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 15px;
-    font-size: 16px;
-    font-weight: functions.font-weight(bold);
-    line-height: 1.6;
-    color: functions.palette(white);
-    background-color: functions.palette(turquoise70);
-    border-top: 0;
-    border-right: 1px solid functions.palette(turquoise80);
-    border-bottom: 0;
-    border-left: 1px solid functions.palette(turquoise80);
-    border-radius: 0;
-    transition: background-color 0.2s ease-in-out, border-right 0.2s ease-in-out, border-left 0.2s ease-in-out;
-
-    &:hover,
-    &:focus {
-      background-color: functions.palette(turquoise55);
-      border-right: 1px solid functions.palette(turquoise55);
-      border-left: 1px solid functions.palette(turquoise55);
-    }
-
-    @include base.respond(functions.break(tablet), min) {
-      font-size: 16px;
-      border: none;
-
-      &:hover,
-      &:focus {
-        background-color: functions.palette(turquoise55);
-        border: none;
-      }
-    }
-
-    @include base.fluid-scale(
-      padding,
-      22px,
-      15px,
-      functions.break(tablet),
-      functions.break(mobile)
-    );
-
-
-    @include base.fluid-scale(
-      margin,
-      8px,
-      0,
-      functions.break(desktop),
-      functions.break(tablet)
-    );
   }
 }

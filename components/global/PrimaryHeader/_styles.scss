@@ -1,4 +1,4 @@
-@use 'abstracts/functions';
+@use "abstracts/functions";
 
 .main-header {
   z-index: functions.z-stack(header);
@@ -22,17 +22,25 @@
     margin: 10px 15px;
 
     svg {
-      fill: functions.palette(white);
+      color: functions.palette(white);
     }
   }
 
   .close-button {
+    --button-border-color: transparent;
+    --button-background-color: transparent;
+
+    padding: 0;
     opacity: 1;
     transition: opacity 0.2s ease-out;
+
+    &:hover,
+    &:focus {
+      outline: none;
+    }
 
     &.menus-open {
       opacity: 0;
     }
   }
 }
-

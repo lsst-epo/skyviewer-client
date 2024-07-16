@@ -6,7 +6,7 @@ import ExplorerContext from "@/contexts/Explorer";
 import Accordion from "@/primitives/Accordion";
 import AccordionGroup from "@/primitives/AccordionGroup";
 import Button from "@/primitives/Button";
-import Buttonish from "@/primitives/Buttonish";
+import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
 import IconComposer from "@/svg/IconComposer";
 import SourceFilters from "./SourceFilters";
 import DetailsSection from "./DetailsSection";
@@ -97,7 +97,7 @@ export default function SourceDetails({ data, setData, handleClose }) {
       >
         <div ref={modalRef} className="source-details-modal-inner">
           <Button
-            icon={<IconComposer icon="Close" />}
+            icon={<IconComposer size={10} icon="Close" />}
             text="Close Details Modal Dialog"
             isIcon
             classes="close-button"
@@ -175,7 +175,7 @@ export default function SourceDetails({ data, setData, handleClose }) {
                   <Buttonish
                     text="Explore Similar Objects"
                     url="/explorer"
-                    classes="source-details-similar-button primary --block"
+                    className="source-details-similar-button primary --block"
                   />
                 </Accordion>
               )}

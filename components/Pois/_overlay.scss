@@ -1,5 +1,5 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/base';
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
 
 .poi-overlay {
   position: absolute;
@@ -45,7 +45,7 @@
       175px,
       90px,
       functions.break(desktop),
-      810px,
+      810px
     );
 
     .poi-inner-header {
@@ -53,7 +53,7 @@
     }
 
     .poi-description {
-      overflow-y: scroll;
+      overflow-y: auto;
     }
   }
 

@@ -1,11 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import ExplorerContext from "@/contexts/Explorer";
 import AladinGlobalContext from "@/contexts/AladinGlobal";
 import AladinFocusContext from "@/contexts/AladinFocus";
 import { useKeyDownEvent } from "@/hooks/listeners";
 import { getKeyByValue } from "@/helpers";
 import Button from "@/primitives/Button";
-// import IconComposer from "@/svg/IconComposer";
 
 const KEY_MAP = {
   left: "ArrowLeft",

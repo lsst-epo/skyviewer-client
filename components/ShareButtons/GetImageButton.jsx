@@ -12,7 +12,7 @@ export default function GetImageButton({ showLabel }) {
   return (
     <ShareButton
       showLabel={showLabel}
-      icon={<IconComposer icon="ShareSimple" />}
+      icon={<IconComposer size={100} icon="ArrowUpFromBracket" />}
       text="Get Image"
       network="image"
       onClick={() => {

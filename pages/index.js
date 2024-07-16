@@ -1,6 +1,6 @@
 import useResizeObserver from "use-resize-observer";
-import Buttonish from "@/primitives/Buttonish";
-import ResponsiveImage from "@/components/primitives/ResponsiveImage";
+import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
+import ResponsiveImage from "@rubin-epo/epo-react-lib/ResponsiveImage";
 import logo from "../public/rubin-nsf-logo.png";
 
 export default function Home() {
@@ -25,18 +25,10 @@ export default function Home() {
       <div ref={ref} className="home-nav-container">
         <ul className="home-nav">
           <li className="home-nav-item">
-            <Buttonish
-              url="/explorer"
-              classes="button primary"
-              text="I want to explore"
-            />
+            <Buttonish url="/explorer" text="I want to explore" isBlock />
           </li>
           <li className="home-nav-item">
-            <Buttonish
-              url="/tours"
-              text="Please guide me"
-              classes="button primary"
-            />
+            <Buttonish url="/tours" text="Please guide me" isBlock />
           </li>
         </ul>
       </div>

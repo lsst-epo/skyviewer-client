@@ -1,7 +1,7 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/typography';
-@use 'abstracts/mixins/base';
-@use 'abstracts/mixins/appearance';
+@use "abstracts/functions";
+@use "abstracts/mixins/typography";
+@use "abstracts/mixins/base";
+@use "abstracts/mixins/appearance";
 
 .guided-experiences-heading {
   @include typography.heading-guided-experiences;
@@ -10,10 +10,10 @@
 }
 
 .guided-experiences-list-container {
-  height:
-    calc(
-      var(--window-height, 100vh) - var(--ge-nav-link-height, 95px) - var(--ge-heading-height, 56px)
-    );
+  height: calc(
+    var(--window-height, 100vh) - var(--ge-nav-link-height, 95px) -
+      var(--ge-heading-height, 56px)
+  );
   overflow-y: scroll;
 }
 
@@ -34,7 +34,6 @@
     }
   }
 }
-
 
 .guided-experience-heading {
   margin: 0 10px 10px;
@@ -170,7 +169,7 @@
     }
 
     .duration-details {
-      .a-svg {
+      svg {
         width: 23px;
         margin-top: 4px;
       }

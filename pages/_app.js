@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import "@/lib/i18n";
 import { LayoutTree } from "@moxy/next-layout";
 import useResizeObserver from "use-resize-observer";
-import GlobalStyles from "@/styles/globalStyles";
+import { GlobalStyles } from "@rubin-epo/epo-react-lib/styles";
 import styles from "@/styles/styles.scss";
 import "focus-visible";
 

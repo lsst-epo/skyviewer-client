@@ -1,42 +1,41 @@
-@forward 'content-rte';
-@forward 'page-header';
+@forward "content-rte";
+@forward "page-header";
 
 // Primitives
-@forward 'components/primitives/Accordion/styles';
-@forward 'components/primitives/Buttonish/styles';
-@forward 'components/primitives/Button/styles';
-@forward 'components/primitives/Checkbox/styles';
-@forward 'components/primitives/LoadingSpinner/styles';
-@forward 'components/primitives/Menu/styles';
-@forward 'components/primitives/Modal/styles';
-@forward 'components/primitives/NavLink/styles';
-@forward 'components/primitives/Radio/styles';
-@forward 'components/primitives/Slider/styles';
+@forward "components/primitives/Accordion/styles";
+@forward "components/primitives/Buttonish/styles";
+@forward "components/primitives/Button/styles";
+@forward "components/primitives/Checkbox/styles";
+@forward "components/primitives/LoadingSpinner/styles";
+@forward "components/primitives/Menu/styles";
+@forward "components/primitives/Modal/styles";
+@forward "components/primitives/NavLink/styles";
+@forward "components/primitives/Radio/styles";
 
 // Globals
-@forward 'components/global/FiltersMenu/styles';
-@forward 'components/global/GuidedExperienceHeader/styles';
-@forward 'components/global/MainMenu/styles';
-@forward 'components/global/PrimaryHeader/styles';
-@forward 'components/global/SecondaryHeader/styles';
+@forward "components/global/FiltersMenu/styles";
+@forward "components/global/GuidedExperienceHeader/styles";
+@forward "components/global/MainMenu/styles";
+@forward "components/global/PrimaryHeader/styles";
+@forward "components/global/SecondaryHeader/styles";
 
 // Layouts
-@forward 'components/layouts/Aladin/styles';
-@forward 'components/layouts/GuidedExperience/styles';
-@forward 'components/layouts/GuidedExperiences/styles';
+@forward "components/layouts/Aladin/styles";
+@forward "components/layouts/GuidedExperience/styles";
+@forward "components/layouts/GuidedExperiences/styles";
 
 // Share
-@forward 'components/ShareButtons/styles';
+@forward "components/ShareButtons/styles";
 
 // Guided Experiences
-@forward 'components/Bubbles/styles';
-@forward 'components/guidedExperiences/styles';
+@forward "components/Bubbles/styles";
+@forward "components/guidedExperiences/styles";
 
 // Tours
-@forward 'components/tours/styles';
-@forward 'components/Pois/styles';
+@forward "components/tours/styles";
+@forward "components/Pois/styles";
 
 // Explorer
-@forward 'components/explorer/Aladin/styles';
-@forward 'components/explorer/Controls/styles';
-@forward 'components/explorer/SourceDetails/styles';
+@forward "components/explorer/Aladin/styles";
+@forward "components/explorer/Controls/styles";
+@forward "components/explorer/SourceDetails/styles";

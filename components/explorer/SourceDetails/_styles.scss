@@ -1,5 +1,5 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/typography';
+@use "abstracts/functions";
+@use "abstracts/mixins/typography";
 
 .source-details-modal-container {
   position: absolute;
@@ -35,13 +35,14 @@
     left: -14px;
     width: 0;
     height: 0;
-    content: '';
+    content: "";
     border-top: 9px solid transparent;
     border-right: 14px solid functions.palette(neutral30);
     border-bottom: 9px solid transparent;
   }
 
   .close-button {
+    color: functions.palette(white);
     position: absolute;
     top: 1px;
     right: 0;
@@ -52,12 +53,6 @@
     margin-right: -10px;
     background-color: functions.palette(red10);
     border-radius: 50%;
-
-    svg {
-      width: 10px;
-      height: 10px;
-      fill: functions.palette(white);
-    }
   }
 }
 
@@ -88,7 +83,7 @@
 
   // height: 100%;
   min-height: 250px;
-  overflow: scroll;
+  overflow-y: auto;
 
   .accordion-panel {
     max-height: 0;

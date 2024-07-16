@@ -23,7 +23,7 @@ export default function ShareButton({
       className="share-button"
     >
       <div className="share-icon email">
-        <IconComposer icon="Email" />
+        <IconComposer icon="ShareEmail" />
       </div>
       <div
         className={classnames("share-network", {

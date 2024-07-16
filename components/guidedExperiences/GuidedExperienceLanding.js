@@ -31,7 +31,7 @@ export default function GuidedExperienceLanding({
           {duration && (
             <div className="detail duration-details">
               <h3 className="details-heading">Duration</h3>
-              <IconComposer icon="Stopwatch" />
+              <IconComposer size={26} icon="Timer" />
               <div className="duration">{duration} min</div>
             </div>
           )}

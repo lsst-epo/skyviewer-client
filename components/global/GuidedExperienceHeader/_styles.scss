@@ -1,6 +1,6 @@
-@use 'abstracts/mixins/typography';
-@use 'abstracts/functions';
-@use 'abstracts/mixins/base';
+@use "abstracts/mixins/typography";
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
 
 .guided-experience-header {
   display: flex;
@@ -44,9 +44,7 @@
       opacity: 0.45;
     }
 
-    .a-svg {
-      // stroke-width: 7px;
-
+    svg {
       @include base.fluid-scale(
         height,
         58px,
@@ -62,10 +60,6 @@
         functions.break(desktop),
         functions.break(tablet)
       );
-
-      // @include base.respond(functions.break(desktop), min) {
-      //   stroke-width: 3px;
-      // }
     }
   }
 }

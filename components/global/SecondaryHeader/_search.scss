@@ -1,6 +1,6 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/base';
-@use 'abstracts/mixins/appearance';
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
+@use "abstracts/mixins/appearance";
 
 .guided-experience-search-button,
 .search-menu-close-button {
@@ -8,7 +8,7 @@
   flex-flow: row nowrap;
   align-items: center;
 
-  .a-svg {
+  svg {
     width: 16px;
 
     + .icon-text {
@@ -46,7 +46,9 @@
 
     @include base.respond(functions.break(tablet), min) {
       position: static;
-      margin-top: calc(50vh - 42px) !important; /* stylelint-disable-line declaration-no-important */
+      margin-top: calc(
+        50vh - 42px
+      ) !important; /* stylelint-disable-line declaration-no-important */
     }
   }
 
@@ -74,7 +76,7 @@
       right: 28px;
       width: 0;
       height: 0;
-      content: '';
+      content: "";
       border-right: 8px solid transparent;
       border-bottom: 8px solid functions.palette(white);
       border-left: 8px solid transparent;

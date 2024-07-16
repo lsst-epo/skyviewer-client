@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import Checkbox from "@/primitives/Checkbox";
-import Slider from "@/primitives/Slider";
+import Slider from "@rubin-epo/epo-react-lib/HorizontalSlider";
 import IconComposer from "@/svg/IconComposer";
 import FiltersMenu from "@/global/FiltersMenu";
 
@@ -85,7 +85,7 @@ export default function Filters({ context, defaultFilters }) {
 
               return (
                 <Slider
-                  key={charKey + i}
+                  key={charKey}
                   label={charKey}
                   minLabel={min.label}
                   maxLabel={max.label}
@@ -93,8 +93,10 @@ export default function Filters({ context, defaultFilters }) {
                   max={max.value}
                   step={step}
                   value={value}
-                  doubleHandle
-                  onChangeCallback={handleCharacteristicFilter}
+                  darkMode
+                  onChangeCallback={(value) =>
+                    handleCharacteristicFilter(value, charKey)
+                  }
                 />
               );
             })}

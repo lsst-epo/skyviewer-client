@@ -23,7 +23,7 @@ export default function ShareButton({
       className="share-button"
     >
       <div className="share-icon twitter">
-        <IconComposer icon="Twitter" />
+        <IconComposer icon="ShareTwitter" />
       </div>
       <div
         className={classnames("share-network", {

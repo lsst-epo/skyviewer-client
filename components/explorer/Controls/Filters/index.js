@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import FiltersContext from "@/contexts/Filters";
 import Checkbox from "@/primitives/Checkbox";
-import Slider from "@/primitives/Slider";
+import Slider from "@rubin-epo/epo-react-lib/HorizontalSlider";
 import IconComposer from "@/svg/IconComposer";
 import FiltersMenu from "@/global/FiltersMenu";
 
@@ -10,7 +10,6 @@ export default function Filters({ defaultFilters }) {
   const menuLabelId = "filters-menu-label";
   const menuDescriptionId = "filters-menu-description";
   const { setFilters, filters } = useContext(FiltersContext) || {};
-  const [isOpen, setIsOpen] = useState(false);
   const [showFiltersReset, setShowFiltersReset] = useState(false);
   const handleTypeFilter = (checked, type) => {
     setFilters({ ...filters, types: { ...filters.types, [type]: checked } });
@@ -21,6 +20,8 @@ export default function Filters({ defaultFilters }) {
   };
 
   const handleCharacteristicFilter = (value, characteristic) => {
+    console.log({ value, characteristic });
+
     setFilters({
       ...filters,
       characteristics: {
@@ -45,6 +46,8 @@ export default function Filters({ defaultFilters }) {
     });
     setShowFiltersReset(false);
   };
+
+  console.log({ filters });
 
   return (
     <FiltersMenu
@@ -87,7 +90,7 @@ export default function Filters({ defaultFilters }) {
 
               return (
                 <Slider
-                  key={charKey + i}
+                  key={charKey}
                   label={charKey}
                   minLabel={min.label}
                   maxLabel={max.label}
@@ -95,8 +98,10 @@ export default function Filters({ defaultFilters }) {
                   max={max.value}
                   step={step}
                   value={value}
-                  doubleHandle
-                  onChangeCallback={handleCharacteristicFilter}
+                  onChangeCallback={(value) =>
+                    handleCharacteristicFilter(value, charKey)
+                  }
+                  darkMode
                 />
               );
             })}

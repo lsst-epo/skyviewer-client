@@ -1,9 +1,9 @@
 /* stylelint-disable no-descending-specificity */
-@use 'sass:math';
-@use 'abstracts/functions';
-@use 'abstracts/mixins/base';
-@use 'abstracts/mixins/layout';
-@use 'abstracts/mixins/typography';
+@use "sass:math";
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
+@use "abstracts/mixins/layout";
+@use "abstracts/mixins/typography";
 
 .tours-container {
   @include layout.container-guided;
@@ -23,7 +23,7 @@
   padding-top: 70px;
   padding-right: 15px;
   padding-left: 15px;
-  overflow: scroll;
+  overflow: auto;
   color: functions.palette(white);
   background-color: functions.palette(turquoise90);
 
@@ -210,4 +210,3 @@
     }
   }
 }
-

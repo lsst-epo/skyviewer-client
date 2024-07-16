@@ -1,6 +1,5 @@
-@use 'abstracts/mixins/base';
-@use 'abstracts/functions';
-
+@use "abstracts/mixins/base";
+@use "abstracts/functions";
 
 .tour-intro-container {
   position: relative;
@@ -14,7 +13,7 @@
 
   @include base.respond(functions.break(tablet), min) {
     align-items: flex-start;
-    overflow: scroll;
+    overflow: auto;
   }
 
   + .guided-experience-nav-container {

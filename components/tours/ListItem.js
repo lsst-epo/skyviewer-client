@@ -33,7 +33,7 @@ export default function TourListItem({
           <div className="characteristics">
             <div className="duration">
               <div className="tablet-only-label">Duration</div>
-              <IconComposer icon="Stopwatch" />
+              <IconComposer size={26} icon="Timer" />
               <div className="time">{duration} min</div>
             </div>
             <div className="divider"></div>

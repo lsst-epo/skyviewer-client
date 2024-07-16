@@ -7,7 +7,7 @@ export default function CopyUrlButton({ showLabel }) {
   return (
     <ShareButton
       showLabel={showLabel}
-      icon={<IconComposer icon="Chain" />}
+      icon={<IconComposer icon="ShareCopyUrl" />}
       text="Get Url"
       network="url"
       onClick={() => {

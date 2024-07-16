@@ -1,6 +1,6 @@
-@use 'abstracts/mixins/appearance';
-@use 'abstracts/functions';
-@use 'abstracts/mixins/base';
+@use "abstracts/mixins/appearance";
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
 
 .nav-link {
   @include appearance.button-primary;
@@ -25,7 +25,7 @@
 
   &.icon-before,
   &.icon-after {
-    .a-svg {
+    svg {
       display: none;
 
       @include base.respond(functions.break(desktop), min) {
@@ -35,13 +35,13 @@
   }
 
   &.icon-before {
-    .a-svg {
+    svg {
       margin-right: 14px;
     }
   }
 
   &.icon-after {
-    .a-svg {
+    svg {
       margin-left: 14px;
     }
   }

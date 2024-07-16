@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import classnames from "classnames";
 import ExplorerContext from "@/contexts/Explorer";
 import Button from "@/primitives/Button";

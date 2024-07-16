@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import Button from "@/primitives/Button";
+import Button from "@rubin-epo/epo-react-lib/Button";
 import Menu from "@/primitives/Menu";
 import Radio from "@/primitives/Radio";
 
@@ -44,16 +44,16 @@ export default function LocaleMenu({ toggleMenuCallback, isOpen }) {
           </div>
         </div>
         <div className="buttons-wrapper">
+          <Button onClick={() => toggleMenuCallback(false)} isBlock>
+            Apply Selection
+          </Button>
           <Button
-            classes="apply-locale-button"
-            text="Apply Selection"
-            onClick={() => toggleMenuCallback(false)}
-          />
-          <Button
-            classes="reset-locale-button"
-            text="Reset to Default"
+            styleAs="tertiary"
             onClick={locale !== DEFAULT ? () => setLocale(DEFAULT) : null}
-          />
+            isBlock
+          >
+            Reset to Default
+          </Button>
         </div>
       </div>
     </Menu>

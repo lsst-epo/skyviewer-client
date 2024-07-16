@@ -1,16 +1,15 @@
 /* stylelint-disable no-descending-specificity */
-@forward './Goals/styles';
-@forward './Grid/styles';
-@forward './Landmarks/styles';
-@forward './Markers/styles';
-@forward './Orientation/styles';
-@forward './Pan/styles';
-@forward './Search/styles';
-@forward './Share/styles';
-@forward './Zoom/styles';
+@forward "./Grid/styles";
+@forward "./Landmarks/styles";
+@forward "./Markers/styles";
+@forward "./Orientation/styles";
+@forward "./Pan/styles";
+@forward "./Search/styles";
+@forward "./Share/styles";
+@forward "./Zoom/styles";
 
-@use 'abstracts/mixins/typography';
-@use 'abstracts/functions';
+@use "abstracts/mixins/typography";
+@use "abstracts/functions";
 
 .controls {
   position: absolute;

@@ -1,6 +1,6 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/appearance';
-@use 'abstracts/mixins/base';
+@use "abstracts/functions";
+@use "abstracts/mixins/appearance";
+@use "abstracts/mixins/base";
 
 .filters-button {
   position: absolute;
@@ -18,7 +18,7 @@
 .guided-experience-filters-button {
   display: flex;
 
-  .a-svg {
+  svg {
     width: 18px;
 
     + .icon-text {
@@ -34,7 +34,8 @@
 
   .filters-menu-content-wrapper {
     flex-grow: 3;
-    overflow-y: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .menu-section {
