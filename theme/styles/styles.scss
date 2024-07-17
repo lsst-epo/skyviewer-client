@@ -14,6 +14,8 @@
 // Indicated by the class prefix `.m-`.
 @forward "components/index";
 
+@forward "global/index.css";
+
 // Pages
 // --------------------
 @forward "pages/index";
@@ -29,10 +31,7 @@
 // * `a-` - appearance
 // * `l-` - layout
 // * `is-`/`has-` - state
-@forward "utility/typography";
 @forward "utility/appearance";
-@forward "utility/layout";
-@forward "utility/state";
 
 @forward "vendor/aladin.css";
 
