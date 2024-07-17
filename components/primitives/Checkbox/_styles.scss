@@ -1,4 +1,4 @@
-@use 'abstracts/functions';
+@use "abstracts/functions";
 
 .checkbox-wrapper {
   display: flex;
@@ -13,8 +13,8 @@
     width: 30px;
     height: 30px;
     margin-right: 23px;
-    background-color: functions.palette(white);
-    border: 5px solid functions.palette(white);
+    background-color: var(--white);
+    border: 5px solid var(--white);
     border-radius: 50%;
     transition: background-color 0.2s ease-out;
   }
@@ -23,7 +23,7 @@
     font-size: 16px;
     font-weight: functions.font-weight(bold);
     line-height: 1.6;
-    color: functions.palette(white);
+    color: var(--white);
   }
 
   .checkbox {
@@ -32,7 +32,7 @@
     opacity: 0;
 
     &:checked ~ .checkbox-indicator {
-      background-color: functions.palette(turquoise55);
+      background-color: var(--turquoise55);
     }
   }
 }

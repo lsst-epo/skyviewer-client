@@ -1,7 +1,7 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/base';
-@use 'abstracts/mixins/appearance';
-@use 'abstracts/mixins/typography';
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
+@use "abstracts/mixins/appearance";
+@use "abstracts/mixins/typography";
 
 .share-menu {
   .open-share-button {
@@ -13,7 +13,7 @@
     svg {
       width: 22px;
       height: 22px;
-      fill: functions.palette(white);
+      fill: var(--white);
     }
   }
 
@@ -54,7 +54,7 @@
       width: 100%;
       height: auto;
       padding: 6px 18px 12px;
-      background-color: functions.palette(black);
+      background-color: var(--black);
       border-radius: 2px;
 
       @include base.respond(functions.break(mobile), min) {

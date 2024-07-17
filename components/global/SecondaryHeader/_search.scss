@@ -78,7 +78,7 @@
       height: 0;
       content: "";
       border-right: 8px solid transparent;
-      border-bottom: 8px solid functions.palette(white);
+      border-bottom: 8px solid var(--white);
       border-left: 8px solid transparent;
 
       @include base.respond(functions.break(tablet), min) {

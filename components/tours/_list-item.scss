@@ -87,7 +87,7 @@
   }
 
   .duration {
-    color: functions.palette(white);
+    color: var(--white);
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -130,10 +130,10 @@
     height: 100%;
     min-height: 17px;
     margin: 0 15px;
-    background-color: functions.palette(turquoise55);
+    background-color: var(--turquoise55);
 
     @include base.respond(functions.break(tablet), min) {
-      background-color: functions.palette(white);
+      background-color: var(--white);
     }
   }
 

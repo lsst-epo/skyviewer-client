@@ -38,7 +38,7 @@
   .guided-experience-link {
     background-color: transparent;
     border: 0;
-    stroke: functions.palette(white);
+    stroke: var(--white);
 
     &:disabled {
       opacity: 0.45;

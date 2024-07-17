@@ -11,7 +11,7 @@
   svg {
     width: 22px;
     height: 22px;
-    fill: functions.palette(white);
+    fill: var(--white);
   }
 }
 
@@ -58,8 +58,8 @@
     font-size: 16px;
     font-weight: functions.font-weight(bold);
     line-height: 1.6;
-    color: functions.palette(white);
-    background-color: functions.palette(turquoise85);
+    color: var(--white);
+    background-color: var(--turquoise85);
     border-radius: 5px;
   }
 

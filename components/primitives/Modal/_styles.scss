@@ -1,5 +1,5 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/appearance';
+@use "abstracts/functions";
+@use "abstracts/mixins/appearance";
 
 .modal-container {
   .close-button {
@@ -13,7 +13,7 @@
     svg {
       width: 25px;
       height: 25px;
-      fill: functions.palette(white);
+      fill: var(--white);
     }
 
     &.small {

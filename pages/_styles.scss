@@ -1,9 +1,9 @@
-@use 'abstracts/functions';
+@use "abstracts/functions";
 
 // Pages
-@forward 'guided-experiences/styles';
-@forward 'tours/styles';
-@forward 'tours/[tour]/styles';
+@forward "guided-experiences/styles";
+@forward "tours/styles";
+@forward "tours/[tour]/styles";
 
 .home {
   display: flex;
@@ -12,8 +12,7 @@
   justify-content: center;
   height: calc(var(--window-height, 100vh) - var(--home-nav-height, 95px));
   padding: 18px;
-  background-color: functions.palette(black);
-
+  background-color: var(--black);
 
   .logo-stack {
     display: flex;
@@ -28,7 +27,7 @@
     .headline {
       margin-top: 42px;
       margin-left: 19px;
-      color: functions.palette(white);
+      color: var(--white);
     }
   }
 
@@ -39,7 +38,7 @@
     left: 0;
     width: 100%;
     padding: 17px;
-    background-color: functions.palette(black);
+    background-color: var(--black);
   }
 
   .home-nav {

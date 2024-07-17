@@ -1,6 +1,6 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/base';
-@use 'abstracts/variables';
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
+@use "abstracts/variables";
 
 // Layout mixins
 // -------------------
@@ -47,7 +47,7 @@
   @include proto-container(functions.container-width(narrow));
 }
 
-@mixin container-full-bleed($width: 'max') {
+@mixin container-full-bleed($width: "max") {
   width: 100%;
   max-width: functions.container-width($width);
   margin-right: auto;
@@ -69,8 +69,8 @@
   align-items: stretch;
   height: var(--window-height, 100vh);
   padding: 0 24px;
-  color: functions.palette(white);
-  background-color: functions.palette(black);
+  color: var(--white);
+  background-color: var(--black);
 
   @include base.respond(functions.break(tablet), min) {
     justify-content: space-between;
@@ -79,7 +79,7 @@
 
 // Grids
 // --------------------------------------------------------
-@mixin gap($property: 'gap', $gap-desktop, $gap-mobile) {
+@mixin gap($property: "gap", $gap-desktop, $gap-mobile) {
   @if $gap-desktop == $gap-mobile {
     #{$property}: $gap-desktop;
   } @else {
@@ -93,7 +93,7 @@
   $gap-mobile: functions.padding(small),
   $break: functions.break(tablet)
 ) {
-  $supports-query: '(grid-auto-columns: min-content)';
+  $supports-query: "(grid-auto-columns: min-content)";
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;

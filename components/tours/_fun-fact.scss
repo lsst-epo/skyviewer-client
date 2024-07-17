@@ -1,6 +1,6 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/typography';
-@use 'abstracts/mixins/base';
+@use "abstracts/functions";
+@use "abstracts/mixins/typography";
+@use "abstracts/mixins/base";
 
 .tour-fact {
   position: relative;
@@ -9,13 +9,13 @@
   align-items: flex-start;
   justify-content: center;
   padding: 66px 55px 0;
-  color: functions.palette(white);
+  color: var(--white);
 
   @include base.respond(functions.break(tablet), min) {
     justify-content: flex-start;
     width: 40%;
     padding: 0 55px 38px;
-    border-left: 2px solid functions.palette(white);
+    border-left: 2px solid var(--white);
   }
 
   .top {

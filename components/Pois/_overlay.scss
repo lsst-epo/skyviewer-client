@@ -11,7 +11,7 @@
   display: flex;
   max-height: 0%;
   overflow: hidden;
-  color: functions.palette(white);
+  color: var(--white);
   background-color: rgba(0 0 0 / 70%);
   transition: max-height 0.25s ease-out;
 

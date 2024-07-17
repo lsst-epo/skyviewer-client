@@ -20,8 +20,6 @@ export default function Filters({ defaultFilters }) {
   };
 
   const handleCharacteristicFilter = (value, characteristic) => {
-    console.log({ value, characteristic });
-
     setFilters({
       ...filters,
       characteristics: {
@@ -46,8 +44,6 @@ export default function Filters({ defaultFilters }) {
     });
     setShowFiltersReset(false);
   };
-
-  console.log({ filters });
 
   return (
     <FiltersMenu

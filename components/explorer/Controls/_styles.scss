@@ -39,17 +39,17 @@
     justify-content: center;
     width: $controlDim;
     height: $controlDim;
-    background-color: functions.palette(neutral90);
+    background-color: var(--neutral90);
     border-radius: 50%;
     transition: background-color 0.4s, outline 0.4s;
 
     &:focus {
-      outline: 2px solid functions.palette(blue20);
+      outline: 2px solid var(--blue20);
     }
 
     &.active,
     &:hover {
-      background-color: functions.palette(turquoise55);
+      background-color: var(--turquoise55);
     }
   }
 

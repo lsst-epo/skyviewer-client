@@ -5,14 +5,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: functions.palette(black);
+  background-color: var(--black);
 
   &.primary {
-    background-color: functions.palette(black);
+    background-color: var(--black);
   }
 
   &.secondary {
-    background-color: functions.palette(turquoise95);
+    background-color: var(--turquoise95);
   }
 
   .close-button,
@@ -22,7 +22,7 @@
     margin: 10px 15px;
 
     svg {
-      color: functions.palette(white);
+      color: var(--white);
     }
   }
 

@@ -1,7 +1,7 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/appearance';
-@use 'abstracts/mixins/base';
-@use 'abstracts/mixins/layout';
+@use "abstracts/functions";
+@use "abstracts/mixins/appearance";
+@use "abstracts/mixins/base";
+@use "abstracts/mixins/layout";
 
 // Base
 // --------------------------------------------------------
@@ -21,13 +21,13 @@ html {
 
   // Set the base font size here, which will correspond to 1em inside <body>
   font-size: 100%;
-  background-color: functions.palette(offwhite);
+  background-color: var(--offwhite);
 }
 
 body {
   @include layout.container-full-bleed(max);
   color: functions.sass-palette(neutral80);
-  background-color: functions.palette(black);
+  background-color: var(--black);
 }
 
 // next.js nests a `div#__next` inside `body`

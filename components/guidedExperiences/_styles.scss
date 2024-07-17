@@ -52,7 +52,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  border: functions.palette(turquoise55) solid 1px;
+  border: var(--turquoise55) solid 1px;
   border-radius: 4%;
   transition: box-shadow 0.2s;
 }
@@ -66,7 +66,7 @@
     outline: 0;
 
     .guided-experience-thumbnail {
-      box-shadow: 0 0 0 3px functions.palette(blue20);
+      box-shadow: 0 0 0 3px var(--blue20);
     }
   }
 }
@@ -82,13 +82,13 @@
   min-width: 48px;
   padding: 12px;
   text-align: center;
-  background-color: functions.palette(red10);
+  background-color: var(--red10);
 
   .count-label {
     font-size: 10px;
     font-weight: functions.font-weight(regular);
     line-height: 1.6;
-    color: functions.palette(white);
+    color: var(--white);
   }
 
   .angle-right,
@@ -97,7 +97,7 @@
     top: calc(100% - 1px);
     width: 0;
     height: 0; // no height, no content, just border
-    border-top: 15px solid functions.palette(red10); // angle degree, reduce to reduce degree of angles
+    border-top: 15px solid var(--red10); // angle degree, reduce to reduce degree of angles
   }
 
   .angle-right {
@@ -131,7 +131,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: functions.palette(black);
+    background-color: var(--black);
     opacity: 0.65;
   }
 }
@@ -139,7 +139,7 @@
 .guided-experience-landing {
   position: relative;
   margin-top: -42px;
-  color: functions.palette(white);
+  color: var(--white);
 
   .guided-experience-landing-heading {
     @include typography.heading-guided-experience-landing;
@@ -164,7 +164,7 @@
       padding: 15px;
 
       + .detail {
-        border-left: 2px solid functions.palette(white);
+        border-left: 2px solid var(--white);
       }
     }
 
@@ -187,7 +187,7 @@
       margin-top: 4px;
       font-weight: functions.font-weight(bold);
       line-height: 1.6;
-      color: functions.palette(white);
+      color: var(--white);
 
       @include base.fluid-scale(
         font-size,

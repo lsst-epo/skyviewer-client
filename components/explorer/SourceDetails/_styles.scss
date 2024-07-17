@@ -22,7 +22,7 @@
   margin-top: -115px;
   margin-left: 27px;
   visibility: hidden;
-  background-color: functions.palette(neutral10);
+  background-color: var(--neutral10);
   transition: top 0.3s linear, left 0.3s linear;
 
   &.is-open {
@@ -37,12 +37,12 @@
     height: 0;
     content: "";
     border-top: 9px solid transparent;
-    border-right: 14px solid functions.palette(neutral30);
+    border-right: 14px solid var(--neutral30);
     border-bottom: 9px solid transparent;
   }
 
   .close-button {
-    color: functions.palette(white);
+    color: var(--white);
     position: absolute;
     top: 1px;
     right: 0;
@@ -51,7 +51,7 @@
     padding: 5px;
     margin-top: -10px;
     margin-right: -10px;
-    background-color: functions.palette(red10);
+    background-color: var(--red10);
     border-radius: 50%;
   }
 }
@@ -115,7 +115,7 @@
   + .source-details-section {
     padding-top: 7px;
     margin-top: 10px;
-    border-top: 1px solid functions.palette(neutral20);
+    border-top: 1px solid var(--neutral20);
   }
 
   &.full-width {
@@ -169,14 +169,14 @@
     position: relative;
     width: 100%;
     height: 12px;
-    background-color: functions.palette(neutral20);
+    background-color: var(--neutral20);
 
     .char-bar-val {
       position: absolute;
       top: 0;
       bottom: 0;
       width: 6px;
-      background-color: functions.palette(neutral50);
+      background-color: var(--neutral50);
     }
   }
 }
@@ -188,7 +188,7 @@
   margin-top: 25px;
   font-size: 12px;
   font-weight: functions.font-weight(bold);
-  color: functions.palette(white);
+  color: var(--white);
 }
 
 .source-details-zoom-button,
@@ -216,7 +216,7 @@
     max-width: calc((100% - 10px) / 3);
     padding: 2px 4px;
     margin-top: 5px;
-    background-color: functions.palette(neutral20);
+    background-color: var(--neutral20);
     border-radius: 4px;
 
     .source-filter-label {
@@ -235,7 +235,7 @@
   width: 100%;
   padding: 2px 4px;
   margin-top: 5px;
-  background-color: functions.palette(neutral20);
+  background-color: var(--neutral20);
   border-radius: 4px;
 
   .source-alt-name-label {

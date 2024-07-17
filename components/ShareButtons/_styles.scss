@@ -11,7 +11,7 @@
   width: 52px;
 
   .share-icon {
-    color: functions.palette(white);
+    color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,24 +35,24 @@
     }
 
     &.email {
-      background-color: functions.palette(turquoise85);
+      background-color: var(--turquoise85);
 
       line,
       .envelope-top {
-        stroke: functions.palette(white);
+        stroke: var(--white);
       }
 
       .envelope-outline {
-        fill: functions.palette(white);
+        fill: var(--white);
       }
     }
 
     &.image {
-      background-color: functions.palette(turquoise70);
+      background-color: var(--turquoise70);
     }
 
     &.url {
-      background-color: functions.palette(turquoise70);
+      background-color: var(--turquoise70);
 
       svg {
         width: 26px;
@@ -88,7 +88,7 @@
     outline: none;
 
     .share-icon {
-      border-color: functions.palette(blue20);
+      border-color: var(--blue20);
     }
   }
 }
@@ -112,7 +112,7 @@
     font-size: 10px;
     font-weight: functions.font-weight(light);
     line-height: 1.6;
-    color: functions.palette(white);
+    color: var(--white);
 
     @include base.respond(functions.break(desktop-height), min, height) {
       margin-top: 0;

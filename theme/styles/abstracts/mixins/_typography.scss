@@ -1,6 +1,6 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/base';
-@use 'abstracts/variables';
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
+@use "abstracts/variables";
 
 // Typography mixins
 // -----------------------------------
@@ -77,34 +77,33 @@
   line-height: 1;
 }
 
-
 // Navs & Menus
 // --------------------------------------------------------
 @mixin heading-menu {
   font-size: 14px;
   font-weight: functions.font-weight(regular);
   line-height: 1.5;
-  color: functions.palette(white);
+  color: var(--white);
 }
 
 @mixin subheading-menu {
   font-size: 16px;
   font-weight: functions.font-weight(bold);
   line-height: 1.6;
-  color: functions.palette(white);
+  color: var(--white);
 }
 
 @mixin heading-menu-section {
   font-size: 16px;
   font-weight: functions.font-weight(regular);
   line-height: 1.4;
-  color: functions.palette(white);
+  color: var(--white);
 }
 
 // Guided Experiences
 @mixin heading-guided-experiences {
   font-weight: functions.font-weight(regular);
-  color: functions.palette(white);
+  color: var(--white);
   text-transform: uppercase;
 
   @include base.fluid-scale(
@@ -134,7 +133,7 @@
 
 @mixin subheading-guided-experiences {
   font-weight: functions.font-weight(regular);
-  color: functions.palette(white);
+  color: var(--white);
   text-transform: uppercase;
 
   @include base.fluid-scale(
@@ -162,11 +161,10 @@
   );
 }
 
-
 @mixin heading-guided-experience {
   font-weight: functions.font-weight(bold);
   line-height: 1.57;
-  color: functions.palette(white);
+  color: var(--white);
   text-align: center;
 
   @include base.fluid-scale(
@@ -229,13 +227,13 @@
   font-size: 12px;
   font-weight: functions.font-weight(bold);
   line-height: 1.6;
-  color: functions.palette(white);
+  color: var(--white);
 }
 
 @mixin heading-tour-list-fluid {
   font-weight: functions.font-weight(bold);
   line-height: 1.6;
-  color: functions.palette(white);
+  color: var(--white);
 
   @include base.fluid-scale(
     font-size,
@@ -249,7 +247,7 @@
 @mixin subheading-tour-list {
   font-weight: functions.font-weight(light);
   line-height: 1.6;
-  color: functions.palette(white);
+  color: var(--white);
 
   @include base.fluid-scale(
     font-size,
@@ -331,14 +329,14 @@
   font-size: 10px;
   font-weight: functions.font-weight(light);
   line-height: 1.6;
-  color: functions.palette(black);
+  color: var(--black);
 }
 
 @mixin source-detail-value {
   font-size: 11px;
   font-weight: functions.font-weight(regular);
   line-height: 1.6;
-  color: functions.palette(black);
+  color: var(--black);
 }
 
 // Lists

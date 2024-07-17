@@ -33,7 +33,7 @@
 
       display: flex;
       align-items: center;
-      color: functions.palette(white);
+      color: var(--white);
       padding: 4px 0;
       font-size: 16px;
       font-weight: functions.font-weight(bold);
@@ -49,7 +49,7 @@
     .notifications-item,
     .language-item {
       svg {
-        color: functions.palette(turquoise50);
+        color: var(--turquoise50);
       }
     }
 
@@ -58,7 +58,7 @@
     .help-item,
     .about-item {
       svg path {
-        stroke: functions.palette(turquoise50);
+        stroke: var(--turquoise50);
       }
     }
 
@@ -97,7 +97,7 @@
 .about-menu {
   .menu-section {
     p {
-      color: functions.palette(white);
+      color: var(--white);
 
       + p {
         margin-top: 14px;

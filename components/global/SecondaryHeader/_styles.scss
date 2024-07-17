@@ -1,13 +1,13 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/base';
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
 
-@forward './search';
-@forward './sort';
+@forward "./search";
+@forward "./sort";
 
 .secondary-header {
   padding: 2px 0;
-  border-top: functions.palette(neutral50) solid 1px;
-  border-bottom: functions.palette(neutral50) solid 1px;
+  border-top: var(--neutral50) solid 1px;
+  border-bottom: var(--neutral50) solid 1px;
 
   @include base.respond(functions.break(tablet), min) {
     margin: 0 auto;

@@ -24,11 +24,11 @@
   padding-right: 15px;
   padding-left: 15px;
   overflow: auto;
-  color: functions.palette(white);
-  background-color: functions.palette(turquoise90);
+  color: var(--white);
+  background-color: var(--turquoise90);
 
   + .guided-experience-nav-container {
-    background-color: functions.palette(turquoise90);
+    background-color: var(--turquoise90);
   }
 
   .tour-summary {
@@ -127,7 +127,7 @@
     width: auto;
     height: 2px;
     margin: 33px $summarySpacing 43px;
-    background-color: functions.palette(white);
+    background-color: var(--white);
 
     @include base.respond(functions.break(tablet), min) {
       width: 2px;
@@ -200,7 +200,7 @@
       font-size: 22px;
       font-weight: functions.font-weight(bold);
       line-height: $summaryLinkNumberSize;
-      background-color: functions.palette(turquoise70);
+      background-color: var(--turquoise70);
       border-radius: 50%;
     }
 

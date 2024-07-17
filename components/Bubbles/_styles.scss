@@ -1,5 +1,5 @@
-@use 'abstracts/mixins/base';
-@use 'abstracts/functions';
+@use "abstracts/mixins/base";
+@use "abstracts/functions";
 
 .bubbles {
   display: flex;
@@ -9,11 +9,11 @@
   .bubble {
     width: 5px;
     height: 5px;
-    background-color: functions.palette(neutral50);
+    background-color: var(--neutral50);
     border-radius: 50%;
 
     &.full {
-      background-color: functions.palette(white);
+      background-color: var(--white);
     }
 
     + .bubble {
