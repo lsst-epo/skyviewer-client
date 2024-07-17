@@ -1,4 +1,3 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
 import useResizeObserver from "use-resize-observer";
 import NavLink from "@/primitives/NavLink";

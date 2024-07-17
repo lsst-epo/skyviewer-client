@@ -198,7 +198,7 @@
       min-height: $summaryLinkNumberSize;
       margin-right: 14px;
       font-size: 22px;
-      font-weight: functions.font-weight(bold);
+      font-weight: var(--weight-font-bold);
       line-height: $summaryLinkNumberSize;
       background-color: var(--turquoise70);
       border-radius: 50%;

@@ -51,7 +51,7 @@
     padding: 5px;
     margin-top: -10px;
     margin-right: -10px;
-    background-color: var(--red10);
+    background-color: var(--color-rubin-red-200);
     border-radius: 50%;
   }
 }
@@ -176,7 +176,7 @@
       top: 0;
       bottom: 0;
       width: 6px;
-      background-color: var(--neutral50);
+      background-color: var(--color-rubin-gray-200);
     }
   }
 }
@@ -187,7 +187,7 @@
   min-width: calc(50% - 4px);
   margin-top: 25px;
   font-size: 12px;
-  font-weight: functions.font-weight(bold);
+  font-weight: var(--weight-font-bold);
   color: var(--white);
 }
 

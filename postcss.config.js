@@ -10,11 +10,5 @@ module.exports = {
         stage: 2,
       },
     ],
-    [
-      "postcss-normalize",
-      {
-        forceImport: true,
-      },
-    ],
   ],
 };

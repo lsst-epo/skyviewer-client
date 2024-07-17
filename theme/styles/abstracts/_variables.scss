@@ -55,14 +55,6 @@ $z-stack: (
 // --------------------------------------------------------
 $font-size-base-desktop: 22px;
 $font-size-base-mobile: 16px;
-$line-height-base: 1.636;
-$font-stack-base: "Open Sans", system-ui;
-$font-weights: (
-  light: 300,
-  regular: 400,
-  bold: 700,
-  extra-bold: 800,
-);
 
 // Appearance
 // --------------------------------------------------------
@@ -79,7 +71,7 @@ $header: (
   // nav-link-padding-lateral: 1.364em,
   // nav-width: 300px,
   // button-width-tablet: 114px,
-  // button-width-mobile: 60px,,
+  // button-width-mobile: 60px,,,,,
 );
 $cta: (
   breakpoint: 600px,

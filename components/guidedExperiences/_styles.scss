@@ -41,7 +41,7 @@
   @include typography.heading-guided-experience;
 
   @include base.respond(functions.break(tablet), min) {
-    font-weight: functions.font-weight(regular);
+    font-weight: var(--weight-font-normal);
   }
 }
 
@@ -82,11 +82,11 @@
   min-width: 48px;
   padding: 12px;
   text-align: center;
-  background-color: var(--red10);
+  background-color: var(--color-rubin-red-200);
 
   .count-label {
     font-size: 10px;
-    font-weight: functions.font-weight(regular);
+    font-weight: var(--weight-font-normal);
     line-height: 1.6;
     color: var(--white);
   }
@@ -97,7 +97,7 @@
     top: calc(100% - 1px);
     width: 0;
     height: 0; // no height, no content, just border
-    border-top: 15px solid var(--red10); // angle degree, reduce to reduce degree of angles
+    border-top: 15px solid var(--color-rubin-red-200); // angle degree, reduce to reduce degree of angles
   }
 
   .angle-right {
@@ -185,7 +185,7 @@
     .duration,
     .complexity {
       margin-top: 4px;
-      font-weight: functions.font-weight(bold);
+      font-weight: var(--weight-font-bold);
       line-height: 1.6;
       color: var(--white);
 

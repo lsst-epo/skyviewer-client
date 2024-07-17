@@ -19,38 +19,38 @@
 // --------------------------------------------------------
 @mixin headline {
   @include type-scale(28px, 28px);
-  font-weight: functions.font-weight(regular);
+  font-weight: var(--weight-font-normal);
   line-height: 2;
   letter-spacing: 17px;
 }
 
 @mixin heading-primary {
   @include type-scale(40px, 24px);
-  font-weight: functions.font-weight(extra-bold);
+  font-weight: var(--weight-font-black);
   line-height: 1.15;
 }
 
 @mixin heading-secondary {
   @include type-scale(30px, 20px);
-  font-weight: functions.font-weight(extra-bold);
+  font-weight: var(--weight-font-black);
   line-height: 1.2;
 }
 
 @mixin heading-tertiary {
   @include type-scale(24px, 18px);
-  font-weight: functions.font-weight(extra-bold);
+  font-weight: var(--weight-font-black);
   line-height: 1.417;
 }
 
 @mixin heading-quaternary {
   @include type-scale(18px, 16px);
-  font-weight: functions.font-weight(bold);
+  font-weight: var(--weight-font-bold);
 }
 
 // Copy
 // --------------------------------------------------------
 @mixin copy-primary {
-  font-weight: functions.font-weight(regular);
+  font-weight: var(--weight-font-normal);
 
   @include base.fluid-scale(
     font-size,
@@ -73,7 +73,7 @@
 // --------------------------------------------------------
 @mixin skip-link {
   font-size: 10px;
-  font-weight: functions.font-weight(light);
+  font-weight: var(--weight-font-normal);
   line-height: 1;
 }
 
@@ -81,28 +81,28 @@
 // --------------------------------------------------------
 @mixin heading-menu {
   font-size: 14px;
-  font-weight: functions.font-weight(regular);
+  font-weight: var(--weight-font-normal);
   line-height: 1.5;
   color: var(--white);
 }
 
 @mixin subheading-menu {
   font-size: 16px;
-  font-weight: functions.font-weight(bold);
+  font-weight: var(--weight-font-bold);
   line-height: 1.6;
   color: var(--white);
 }
 
 @mixin heading-menu-section {
   font-size: 16px;
-  font-weight: functions.font-weight(regular);
+  font-weight: var(--weight-font-normal);
   line-height: 1.4;
   color: var(--white);
 }
 
 // Guided Experiences
 @mixin heading-guided-experiences {
-  font-weight: functions.font-weight(regular);
+  font-weight: var(--weight-font-normal);
   color: var(--white);
   text-transform: uppercase;
 
@@ -132,7 +132,7 @@
 }
 
 @mixin subheading-guided-experiences {
-  font-weight: functions.font-weight(regular);
+  font-weight: var(--weight-font-normal);
   color: var(--white);
   text-transform: uppercase;
 
@@ -162,7 +162,7 @@
 }
 
 @mixin heading-guided-experience {
-  font-weight: functions.font-weight(bold);
+  font-weight: var(--weight-font-bold);
   line-height: 1.57;
   color: var(--white);
   text-align: center;
@@ -177,7 +177,7 @@
 }
 
 @mixin heading-guided-experience-landing {
-  font-weight: functions.font-weight(bold);
+  font-weight: var(--weight-font-bold);
 
   @include base.fluid-scale(
     font-size,
@@ -197,7 +197,7 @@
 }
 
 @mixin subheading-guided-experience-landing {
-  font-weight: functions.font-weight(light);
+  font-weight: var(--weight-font-normal);
 
   @include base.fluid-scale(
     font-size,
@@ -216,7 +216,7 @@
   );
 
   @include base.respond(functions.break(desktop), min) {
-    font-weight: functions.font-weight(regular);
+    font-weight: var(--weight-font-normal);
   }
 }
 
@@ -225,13 +225,13 @@
 
 @mixin heading-tour-list {
   font-size: 12px;
-  font-weight: functions.font-weight(bold);
+  font-weight: var(--weight-font-bold);
   line-height: 1.6;
   color: var(--white);
 }
 
 @mixin heading-tour-list-fluid {
-  font-weight: functions.font-weight(bold);
+  font-weight: var(--weight-font-bold);
   line-height: 1.6;
   color: var(--white);
 
@@ -245,7 +245,7 @@
 }
 
 @mixin subheading-tour-list {
-  font-weight: functions.font-weight(light);
+  font-weight: var(--weight-font-normal);
   line-height: 1.6;
   color: var(--white);
 
@@ -259,7 +259,7 @@
 }
 
 @mixin heading-tour-intro {
-  font-weight: functions.font-weight(bold);
+  font-weight: var(--weight-font-bold);
 
   @include base.fluid-scale(
     font-size,
@@ -278,14 +278,14 @@
   );
 
   @include base.respond(functions.break(desktop), min) {
-    font-weight: functions.font-weight(regular);
+    font-weight: var(--weight-font-normal);
     text-transform: uppercase;
     letter-spacing: 17px;
   }
 }
 
 @mixin heading-tour-fact {
-  font-weight: functions.font-weight(bold);
+  font-weight: var(--weight-font-bold);
 
   @include base.fluid-scale(
     font-size,
@@ -304,14 +304,14 @@
   );
 
   @include base.respond(functions.break(desktop), min) {
-    font-weight: functions.font-weight(regular);
+    font-weight: var(--weight-font-normal);
     text-transform: uppercase;
     letter-spacing: 10px;
   }
 }
 
 @mixin subheading-tour-intro {
-  font-weight: functions.font-weight(bold);
+  font-weight: var(--weight-font-bold);
   line-height: 1.6;
 
   @include base.fluid-scale(
@@ -327,22 +327,14 @@
 // --------------------------------------------------------
 @mixin source-detail-label {
   font-size: 10px;
-  font-weight: functions.font-weight(light);
+  font-weight: var(--weight-font-normal);
   line-height: 1.6;
   color: var(--black);
 }
 
 @mixin source-detail-value {
   font-size: 11px;
-  font-weight: functions.font-weight(regular);
+  font-weight: var(--weight-font-normal);
   line-height: 1.6;
   color: var(--black);
-}
-
-// Lists
-// --------------------------------------------------------
-@mixin list-unstyled {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
 }

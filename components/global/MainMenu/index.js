@@ -54,7 +54,7 @@ export default function MainMenu({ route }) {
             <h3 id="settings-label" className="menu-section-heading">
               Settings
             </h3>
-            <ul className="list-unstyled main-menu-nav-items">
+            <ul className="main-menu-nav-items">
               <li className="main-menu-nav-item">
                 <Button
                   icon="Globe"

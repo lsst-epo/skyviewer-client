@@ -49,6 +49,7 @@
 
     &.image {
       background-color: var(--turquoise70);
+      padding: 10px;
     }
 
     &.url {
@@ -97,6 +98,7 @@
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
+  list-style: none;
 
   .share-button {
     @include base.respond(functions.break(desktop-height), min, height) {
@@ -110,7 +112,7 @@
   .share-network {
     margin-top: 10px;
     font-size: 10px;
-    font-weight: functions.font-weight(light);
+    font-weight: var(--weight-font-normal);
     line-height: 1.6;
     color: var(--white);
 
@@ -125,6 +127,7 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
+  list-style: none;
 
   li {
     + li {

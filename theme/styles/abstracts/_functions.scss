@@ -68,11 +68,6 @@
   @return map.get(variables.$padding-sizes, $size);
 }
 
-// get value from $font-weights map
-@function font-weight($weight) {
-  @return map.get(variables.$font-weights, $weight);
-}
-
 // get z-stack value
 @function z-stack($name) {
   @return map.get(variables.$z-stack, $name);

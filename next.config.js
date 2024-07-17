@@ -9,6 +9,7 @@ module.exports = {
   },
   sassOptions: {
     includePaths: [
+      path.join(__dirname, "node_modules"),
       path.join(__dirname, "theme/styles"),
       path.join(__dirname, "components"),
     ],

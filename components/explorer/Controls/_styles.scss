@@ -24,7 +24,6 @@
   $controlSpacing: 12px;
 
   .controls-submenu {
-    @include typography.list-unstyled;
     position: absolute;
     z-index: functions.z-stack(controls);
 

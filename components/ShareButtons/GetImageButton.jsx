@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import PropTypes from "prop-types";
-import copy from "copy-to-clipboard";
 import AladinGlobalContext from "@/contexts/AladinGlobal";
 import IconComposer from "@/svg/IconComposer";
 import ShareButton from "@/components/ShareButtons/ShareButton";
@@ -12,7 +11,7 @@ export default function GetImageButton({ showLabel }) {
   return (
     <ShareButton
       showLabel={showLabel}
-      icon={<IconComposer size={100} icon="ArrowUpFromBracket" />}
+      icon={<IconComposer icon="ArrowUpFromBracket" />}
       text="Get Image"
       network="image"
       onClick={() => {

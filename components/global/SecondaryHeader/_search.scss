@@ -14,7 +14,7 @@
     + .icon-text {
       margin-left: 10px;
       font-size: 14px;
-      font-weight: functions.font-weight(light);
+      font-weight: var(--weight-font-normal);
       line-height: 1.5;
     }
   }
@@ -89,7 +89,7 @@
     .text-input-label {
       @include appearance.hidden;
       font-size: 18px;
-      font-weight: functions.font-weight(light);
+      font-weight: var(--weight-font-normal);
       line-height: 1.5;
 
       @include base.respond(functions.break(tablet), min) {

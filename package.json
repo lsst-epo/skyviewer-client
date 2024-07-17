@@ -58,7 +58,7 @@
   "dependencies": {
     "@babel/runtime": "7.11.2",
     "@moxy/next-layout": "^2.2.3",
-    "@rubin-epo/epo-react-lib": "^2.0.32",
+    "@rubin-epo/epo-react-lib": "^2.1.0-beta.3",
     "classnames": "^2.2.6",
     "copy-to-clipboard": "^3.3.1",
     "focus-trap": "^6.1.2",
@@ -75,7 +75,7 @@
     "react-dom": "^18.3.1",
     "react-i18next": "13",
     "react-share": "^4.4.0",
-    "sass": "^1.26.12",
+    "sass": "^1.77.8",
     "striptags": "^3.1.1",
     "styled-components": "^6.1.11",
     "swr": "^0.5.6",

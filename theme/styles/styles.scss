@@ -6,9 +6,7 @@
 */
 
 // Base styles
-@forward "base/resets";
-@forward "base/base";
-@forward "base/typography";
+@forward "@rubin-epo/epo-react-lib/dist/style.css";
 
 // Modules
 // --------------------

@@ -37,7 +37,7 @@ export default function SourceDetails({ data, setData, handleClose }) {
   const modalRef = useRef(null);
   const {
     position,
-    astroImage,
+    astroImage = [],
     type,
     objectId,
     brightness,
@@ -76,6 +76,8 @@ export default function SourceDetails({ data, setData, handleClose }) {
     setActiveAccordion("overview");
   }, [data]);
 
+  const previewImage = astroImage[0] ? astroImage[0]?.url : undefined;
+
   return (
     <div
       className={classnames("source-details-modal-container", {
@@ -104,11 +106,11 @@ export default function SourceDetails({ data, setData, handleClose }) {
             onClick={handleClose}
           />
           <div className="source-details">
-            {astroImage?.length >= 1 && (
+            {previewImage && (
               <div
                 className="source-img"
                 style={{
-                  backgroundImage: `url(${astroImage[0].url})`,
+                  backgroundImage: `url(${previewImage})`,
                 }}
               />
             )}
