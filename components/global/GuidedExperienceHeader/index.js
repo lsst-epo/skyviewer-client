@@ -1,11 +1,6 @@
 import PropTypes from "prop-types";
 
-export default function GuidedExperienceHeader({
-  backLink = {},
-  nextLink = {},
-  heading,
-  children,
-}) {
+export default function GuidedExperienceHeader({ heading }) {
   return (
     <header className="guided-experience-header">
       <div className="middle">

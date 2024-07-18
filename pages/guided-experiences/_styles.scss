@@ -8,15 +8,9 @@
 }
 
 .guided-experiences-nav-link-container {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  padding: 0 17px 17px;
   background-color: var(--black);
-
-  @include base.respond(functions.break(tablet), min) {
-    padding: 0 31px;
-  }
+  display: flex;
+  justify-content: center;
+  padding: 1em;
 }

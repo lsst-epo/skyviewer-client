@@ -1,17 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
+import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
 import Header from "@/global/GuidedExperienceHeader";
 import SecondaryHeader from "@/global/SecondaryHeader";
-import NavLink from "@/primitives/NavLink";
-import IconComposer from "@/svg/IconComposer";
 import useResizeObserver from "use-resize-observer";
-import { useToursByVarietyData } from "@/lib/api/tours";
 
 export default function GuidedExperiencesLayout({
   className,
   heading,
-  nextLink,
-  backLink,
   defaultFilters,
   sortFilterContext,
   searchContext,
@@ -46,7 +42,6 @@ export default function GuidedExperiencesLayout({
       <SearchProvider value={{ searchTerm, setSearchTerm }}>
         <div className={className}>
           <div ref={headerRef} className="guided-experiences-header-container">
-            {/* <Header {...{ nextLink, backLink, heading }} /> */}
             <Header {...{ heading }} />
             <SecondaryHeader
               defaultFilters={defaultFilters}
@@ -56,12 +51,7 @@ export default function GuidedExperiencesLayout({
           </div>
           {children}
           <div ref={navRef} className="guided-experiences-nav-container">
-            <NavLink
-              url="/"
-              text="Back to Main Menu"
-              iconBefore
-              icon={<IconComposer icon="ArrowLeft" />}
-            />
+            <Buttonish styleAs="tertiary" url="/" text="Back to Main Menu" />
           </div>
         </div>
       </SearchProvider>
