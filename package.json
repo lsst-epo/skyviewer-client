@@ -1,27 +1,40 @@
 {
-  "name": "skyviewer-next",
+  "name": "skyviewer-client",
   "version": "0.1.0",
+  "author": "Rubin EPO",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lsst-epo/skyviewer-client"
+  },
   "scripts": {
-    "dev": "npm-run-all --parallel tokens dev:*",
+    "dev": "npm-run-all --parallel dev:*",
     "dev:next": "next dev",
-    "static": "run-s tokens static:*",
-    "static:build": "next build",
+    "static": "run-run-all static:*",
+    "static:build": "next build --debug",
     "static:export": "next export",
-    "cloud-start": "run-s tokens cloud-start:*",
-    "cloud-start:build": "next build",
-    "cloud-start:start": "next start -p 8080",
-    "start": "run-s tokens start:*",
-    "start:build": "next build",
-    "start:start": "next start",
-    "tokens": "npx json-to-scss theme/tokens.json theme/styles/abstracts/_tokens.scss",
+    "start": "next start -p 8080",
+    "bs": "next build && next start -p 3000",
+    "commitlint": "commitlint --edit",
+    "prepare": "husky install",
+    "precommit": "lint-staged",
     "lint": "npm-run-all lint:*",
-    "lint:js": "eslint -c .eslintrc.js \"**/*.{js,jsx}\"",
-    "lint:scss": "stylelint --config .stylelintrc.js \"**/*.scss\"",
-    "fix": "npm-run-all fix:js fix:scss",
-    "fix:js": "eslint -c .eslintrc.js \"**/*.{js,jsx}\" --fix",
-    "fix:scss": "stylelint --config .stylelintrc.js \"**/*.scss\" --fix",
-    "fix:staged": "lint-staged"
+    "lint:js": "prettier --check \"**/*.{js,jsx}\" & eslint -c .eslintrc.js \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:scss": "stylelint --config scss.stylelintrc.js \"**/*.scss\"",
+    "lint:styled": "stylelint --config styled.stylelintrc.js \"**/styles.js\"",
+    "fix": "npm-run-all fix:js fix:scss fix:styled",
+    "fix:js": "prettier --write \"**/*.{js,jsx}\" && eslint -c .eslintrc.js \"**/*.{js,jsx,ts,tsx}\" --fix",
+    "fix:scss": "stylelint --config scss.stylelintrc.js \"**/*.scss\" --fix",
+    "fix:styled": "stylelint --config styled.stylelintrc.js \"**/styles.js\" --fix",
+    "release": "commit-and-tag-version",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "codegen": "graphql-codegen"
+  },
+  "commit-and-tag-version": {
+    "skip": {
+      "commit": true
+    }
   },
   "babel": {
     "presets": [
@@ -31,17 +44,20 @@
       [
         "styled-components",
         {
-          "ssr": true
+          "ssr": true,
+          "displayName": true
         }
       ]
     ]
   },
   "browserslist": [
-    "defaults"
+    "defaults",
+    "not IE 11"
   ],
   "lint-staged": {
     "*.{js,jsx}": "yarn fix:js",
-    "*.scss": "yarn fix:scss"
+    "*.scss": "yarn fix:scss",
+    "**/styles.js": "yarn fix:styled"
   },
   "dependencies": {
     "@babel/runtime": "7.11.2",
@@ -86,16 +102,19 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "json-to-scss": "^1.6.2",
+    "husky": "^8.0.3",
     "npm-run-all": "^4.1.5",
     "postcss-normalize": "^10.0.1",
     "postcss-preset-env": "^7.0.1",
     "stylelint": "^14.1.0",
     "stylelint-config-recess-order": "^3.0.0",
     "stylelint-config-standard-scss": "^3.0.0",
-    "stylelint-scss": "^4.0.1"
+    "stylelint-scss": "^4.0.1",
+    "commit-and-tag-version": "^12.4.1"
   },
   "resolutions": {
     "**/ansi-regex": "^5.0.1",
     "**/glob-parent": "^5.1.2"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
