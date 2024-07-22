@@ -33,8 +33,5 @@ yarn-error.log*
 # vercel
 .vercel
 
-# Ignore generated token scss file
-_tokens.scss
-
 # Environment config
 .env

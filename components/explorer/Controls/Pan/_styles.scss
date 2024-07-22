@@ -1,7 +1,7 @@
-@use 'abstracts/functions';
+@use "abstracts/functions";
 
 .pan {
   .direction-button {
-    color: functions.palette(white);
+    color: var(--white);
   }
 }

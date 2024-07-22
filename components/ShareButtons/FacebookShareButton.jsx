@@ -17,7 +17,7 @@ export default function ShareButton({ quote, hashtag, showLabel }) {
       className="share-button"
     >
       <div className="share-icon facebook">
-        <IconComposer icon="Facebook" />
+        <IconComposer icon="ShareFacebook" />
       </div>
       <div
         className={classnames("share-network", {

@@ -1,19 +1,15 @@
-@use 'sass:map';
-@use 'sass:math';
-@use 'sass:meta';
-@use 'variables';
-@use 'tokens';
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
+@use "variables";
 
 // used by fluid-scale mixin
 @function strip-unit($number) {
-  @if meta.type-of($number) == 'number' and not math.is-unitless($number) {
-    @return math.div($number,($number * 0 + 1));
+  @if meta.type-of($number) == "number" and not math.is-unitless($number) {
+    @return math.div($number, ($number * 0 + 1));
   }
 
   @return $number;
-}
-@function token($map) {
-  @return map.get(tokens.$tokens, $map);
 }
 
 // convert px to em
@@ -24,19 +20,19 @@
 
 // encode colors
 @function encode-color($string) {
-  @if type-of($string) == 'color' {
+  @if type-of($string) == "color" {
     $hex: string.slice(color.ie-hex-str($string), 4);
-    $string: string.unquote('#{$hex}');
+    $string: string.unquote("#{$hex}");
   }
 
-  $string: '%23' + $string;
+  $string: "%23" + $string;
 
   @return $string;
 }
 
 // convert hex to rgb value
 @function hex-to-rgb($string) {
-  @return '#{red($string)}, #{green($string), #{blue($string)}}';
+  @return "#{red($string)}, #{green($string), #{blue($string)}}";
 }
 
 // return fluid-scale calc value
@@ -47,14 +43,12 @@
   $min-vw: break(60)
 ) {
   @return calc(
-    #{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}
+    #{$min-value} + #{strip-unit($max-value - $min-value)} *
+      (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}
   );
 }
 
 // get value from tokens colors map
-@function palette($color) {
-  @return map.get(token(colors), $color);
-}
 @function sass-palette($color) {
   @return map.get(variables.$sass-palette, $color);
 }
@@ -72,11 +66,6 @@
 // get value from $break map
 @function padding($size) {
   @return map.get(variables.$padding-sizes, $size);
-}
-
-// get value from $font-weights map
-@function font-weight($weight) {
-  @return map.get(variables.$font-weights, $weight);
 }
 
 // get z-stack value

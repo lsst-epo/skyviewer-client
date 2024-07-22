@@ -1,6 +1,6 @@
-@use 'abstracts/mixins/base';
-@use 'abstracts/functions';
-@use 'abstracts/mixins/typography';
+@use "abstracts/mixins/base";
+@use "abstracts/functions";
+@use "abstracts/mixins/typography";
 
 .tour-intro {
   position: relative;
@@ -8,7 +8,7 @@
   flex-flow: column nowrap;
   align-items: center;
   padding: 66px 55px 25px;
-  color: functions.palette(white);
+  color: var(--white);
 
   @include base.respond(functions.break(tablet), min) {
     flex-flow: row nowrap;

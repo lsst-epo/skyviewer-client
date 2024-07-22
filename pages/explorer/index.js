@@ -58,28 +58,6 @@ export default withLayout(
   </PrimaryLayout>
 )(ExplorerPage);
 
-// export async function getStaticProps() {
-//   const { catalogs, surveys } = await getCatalogsSurveysData();
-//   const lastCatsIndex = catalogs.length - 1;
-//   const goalsCatIndex = catalogs.findIndex((cat) => {
-//     return cat.title === "goal";
-//   });
-
-//   const landmarksCatIndex = catalogs.findIndex((cat) => {
-//     return cat.title === "landmark";
-//   });
-
-//   if (landmarksCatIndex >= 0) {
-//     moveInArray(catalogs, landmarksCatIndex, lastCatsIndex);
-//   }
-
-//   if (goalsCatIndex >= 0) {
-//     moveInArray(catalogs, goalsCatIndex, lastCatsIndex);
-//   }
-
-//   return { props: { catalogs, survey: surveys[0] } };
-// }
-
 ExplorerPage.propTypes = {
   catalogs: PropTypes.array,
   survey: PropTypes.object,

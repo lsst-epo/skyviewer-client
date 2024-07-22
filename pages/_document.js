@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import Script from "next/script";
-import locales, { getCurrentLocale } from "@/lib/locales";
+import { getCurrentLocale } from "@/lib/locales";
 
 class CustomDocument extends Document {
   static async getInitialProps(ctx) {

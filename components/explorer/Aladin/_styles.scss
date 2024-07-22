@@ -1,5 +1,5 @@
-@use 'abstracts/mixins/appearance';
-@use 'abstracts/functions';
+@use "abstracts/mixins/appearance";
+@use "abstracts/functions";
 
 // Overrides
 // .aladin-logo-container,
@@ -21,7 +21,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: functions.palette(black);
+  background-color: var(--black);
   border: 0 !important; /* stylelint-disable-line declaration-no-important */
 }
 
@@ -40,7 +40,6 @@
   }
 }
 
-
 .sources-list-container {
   @include appearance.hidden;
 
@@ -53,7 +52,7 @@
 
   .info-button,
   .close-button {
-    background-color: functions.palette(turquoise55);
+    background-color: var(--turquoise55);
   }
 
   .info-button {

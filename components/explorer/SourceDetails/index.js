@@ -6,7 +6,7 @@ import ExplorerContext from "@/contexts/Explorer";
 import Accordion from "@/primitives/Accordion";
 import AccordionGroup from "@/primitives/AccordionGroup";
 import Button from "@/primitives/Button";
-import Buttonish from "@/primitives/Buttonish";
+import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
 import IconComposer from "@/svg/IconComposer";
 import SourceFilters from "./SourceFilters";
 import DetailsSection from "./DetailsSection";
@@ -37,7 +37,7 @@ export default function SourceDetails({ data, setData, handleClose }) {
   const modalRef = useRef(null);
   const {
     position,
-    astroImage,
+    astroImage = [],
     type,
     objectId,
     brightness,
@@ -76,6 +76,8 @@ export default function SourceDetails({ data, setData, handleClose }) {
     setActiveAccordion("overview");
   }, [data]);
 
+  const previewImage = astroImage[0] ? astroImage[0]?.url : undefined;
+
   return (
     <div
       className={classnames("source-details-modal-container", {
@@ -97,18 +99,18 @@ export default function SourceDetails({ data, setData, handleClose }) {
       >
         <div ref={modalRef} className="source-details-modal-inner">
           <Button
-            icon={<IconComposer icon="Close" />}
+            icon={<IconComposer size={10} icon="Close" />}
             text="Close Details Modal Dialog"
             isIcon
             classes="close-button"
             onClick={handleClose}
           />
           <div className="source-details">
-            {astroImage?.length >= 1 && (
+            {previewImage && (
               <div
                 className="source-img"
                 style={{
-                  backgroundImage: `url(${astroImage[0].url})`,
+                  backgroundImage: `url(${previewImage})`,
                 }}
               />
             )}
@@ -175,7 +177,7 @@ export default function SourceDetails({ data, setData, handleClose }) {
                   <Buttonish
                     text="Explore Similar Objects"
                     url="/explorer"
-                    classes="source-details-similar-button primary --block"
+                    className="source-details-similar-button primary --block"
                   />
                 </Accordion>
               )}

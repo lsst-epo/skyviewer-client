@@ -1,4 +1,4 @@
-@use 'abstracts/functions';
+@use "abstracts/functions";
 
 .grid-button {
   top: 52px;
@@ -7,6 +7,6 @@
   svg {
     width: 22px;
     height: 22px;
-    fill: functions.palette(white);
+    fill: var(--white);
   }
 }

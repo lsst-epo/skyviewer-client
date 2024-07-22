@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import "@/lib/i18n";
 import { LayoutTree } from "@moxy/next-layout";
+import { SourceSansPro } from "@/lib/fonts";
 import useResizeObserver from "use-resize-observer";
-import GlobalStyles from "@/styles/globalStyles";
 import styles from "@/styles/styles.scss";
 import "focus-visible";
 
@@ -17,8 +17,7 @@ function App({ Component, pageProps }) {
   });
 
   return (
-    <div ref={ref}>
-      <GlobalStyles />
+    <div className={SourceSansPro.className} ref={ref}>
       <LayoutTree Component={Component} pageProps={pageProps} />
     </div>
   );

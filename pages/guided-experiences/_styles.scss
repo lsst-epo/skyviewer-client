@@ -1,6 +1,6 @@
-@use 'abstracts/mixins/layout';
-@use 'abstracts/functions';
-@use 'abstracts/mixins/base';
+@use "abstracts/mixins/layout";
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
 
 .guided-experiences-container {
   @include layout.container-guided;
@@ -8,15 +8,9 @@
 }
 
 .guided-experiences-nav-link-container {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  padding: 0 17px 17px;
-  background-color: functions.palette(black);
-
-  @include base.respond(functions.break(tablet), min) {
-    padding: 0 31px;
-  }
+  background-color: var(--black);
+  display: flex;
+  justify-content: center;
+  padding: 1em;
 }

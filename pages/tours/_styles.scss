@@ -1,9 +1,9 @@
 /* stylelint-disable no-descending-specificity */
-@use 'sass:math';
-@use 'abstracts/functions';
-@use 'abstracts/mixins/base';
-@use 'abstracts/mixins/layout';
-@use 'abstracts/mixins/typography';
+@use "sass:math";
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
+@use "abstracts/mixins/layout";
+@use "abstracts/mixins/typography";
 
 .tours-container {
   @include layout.container-guided;
@@ -23,12 +23,12 @@
   padding-top: 70px;
   padding-right: 15px;
   padding-left: 15px;
-  overflow: scroll;
-  color: functions.palette(white);
-  background-color: functions.palette(turquoise90);
+  overflow: auto;
+  color: var(--white);
+  background-color: var(--turquoise90);
 
   + .guided-experience-nav-container {
-    background-color: functions.palette(turquoise90);
+    background-color: var(--turquoise90);
   }
 
   .tour-summary {
@@ -127,7 +127,7 @@
     width: auto;
     height: 2px;
     margin: 33px $summarySpacing 43px;
-    background-color: functions.palette(white);
+    background-color: var(--white);
 
     @include base.respond(functions.break(tablet), min) {
       width: 2px;
@@ -198,9 +198,9 @@
       min-height: $summaryLinkNumberSize;
       margin-right: 14px;
       font-size: 22px;
-      font-weight: functions.font-weight(bold);
+      font-weight: var(--weight-font-bold);
       line-height: $summaryLinkNumberSize;
-      background-color: functions.palette(turquoise70);
+      background-color: var(--turquoise70);
       border-radius: 50%;
     }
 
@@ -210,4 +210,3 @@
     }
   }
 }
-

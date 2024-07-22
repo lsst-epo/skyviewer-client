@@ -1,5 +1,5 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/base';
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
 
 .poi-overlay {
   position: absolute;
@@ -11,7 +11,7 @@
   display: flex;
   max-height: 0%;
   overflow: hidden;
-  color: functions.palette(white);
+  color: var(--white);
   background-color: rgba(0 0 0 / 70%);
   transition: max-height 0.25s ease-out;
 
@@ -45,7 +45,7 @@
       175px,
       90px,
       functions.break(desktop),
-      810px,
+      810px
     );
 
     .poi-inner-header {
@@ -53,7 +53,7 @@
     }
 
     .poi-description {
-      overflow-y: scroll;
+      overflow-y: auto;
     }
   }
 

@@ -4,22 +4,17 @@
 	By Cast Iron Coding (office@castironcoding.com)
 
 */
-// Vendors
-// @forward '../../public/aladin-lite/aladin.css';
-
-// @fontface
-@forward "abstracts/fonts";
 
 // Base styles
-@forward "base/resets";
-@forward "base/base";
-@forward "base/typography";
+@forward "@rubin-epo/epo-react-lib/dist/style.css";
 
 // Modules
 // --------------------
 // Self-contained, reuseable blocks of markup.
 // Indicated by the class prefix `.m-`.
 @forward "components/index";
+
+@forward "global/index.css";
 
 // Pages
 // --------------------
@@ -36,10 +31,7 @@
 // * `a-` - appearance
 // * `l-` - layout
 // * `is-`/`has-` - state
-@forward "utility/typography";
 @forward "utility/appearance";
-@forward "utility/layout";
-@forward "utility/state";
 
 @forward "vendor/aladin.css";
 

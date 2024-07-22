@@ -1,8 +1,6 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
 import useResizeObserver from "use-resize-observer";
-import NavLink from "@/primitives/NavLink";
-import IconComposer from "@/svg/IconComposer";
+import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
 
 export default function GuidedExperienceLayout({
   className,
@@ -28,23 +26,20 @@ export default function GuidedExperienceLayout({
         <ul className="guided-experience-nav mobile-only">
           {mobileBackLink && (
             <li className="guided-experience-nav-item">
-              <NavLink
+              <Buttonish
+                styleAs="tertiary"
                 url={mobileBackLink.url}
                 text={mobileBackLink.text}
-                iconBefore
-                small
-                icon={<IconComposer icon="ArrowLeft" />}
+                isBlock
               />
             </li>
           )}
           {mobileNextLink && (
             <li className="guided-experience-nav-item">
-              <NavLink
+              <Buttonish
                 url={mobileNextLink.url}
                 text={mobileNextLink.text}
-                iconAfter
-                small
-                icon={<IconComposer icon="ArrowRight" />}
+                isBlock
               />
             </li>
           )}
@@ -52,23 +47,18 @@ export default function GuidedExperienceLayout({
         <ul className="guided-experience-nav desktop-only">
           {desktopBackLink && (
             <li className="guided-experience-nav-item">
-              <NavLink
+              <Buttonish
+                styleAs="tertiary"
                 url={desktopBackLink.url}
                 text={desktopBackLink.text}
-                iconBefore
-                small
-                icon={<IconComposer icon="ArrowLeft" />}
               />
             </li>
           )}
           {desktopNextLink && (
             <li className="guided-experience-nav-item">
-              <NavLink
+              <Buttonish
                 url={desktopNextLink.url}
                 text={desktopNextLink.text}
-                iconAfter
-                small
-                icon={<IconComposer icon="ArrowRight" />}
               />
             </li>
           )}

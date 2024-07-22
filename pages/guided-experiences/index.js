@@ -1,10 +1,8 @@
 import PropTypes from "prop-types";
-import NavLink from "@/primitives/NavLink";
+import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
 import useResizeObserver from "use-resize-observer";
 import GuidedExperiences from "@/components/guidedExperiences";
-import IconComposer from "@/svg/IconComposer";
 import {
-  useGuidedExpsData,
   useGuidedExpsCounts,
   getGuidedExpsData,
 } from "@/lib/api/tourCategories";
@@ -28,12 +26,7 @@ export default function GuidedExperiencesPage({ guidedExps }) {
         counts={guidedExpCounts}
       />
       <div ref={ref} className="guided-experiences-nav-link-container">
-        <NavLink
-          url="/"
-          text="Back to main screen"
-          iconBefore
-          icon={<IconComposer icon="ArrowLeft" />}
-        />
+        <Buttonish styleAs="tertiary" url="/" text="Back to main screen" />
       </div>
     </div>
   );

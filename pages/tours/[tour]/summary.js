@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { withLayout } from "@moxy/next-layout";
 import PrimaryLayout from "@/layouts/Primary";
 import GuidedExperienceLayout from "@/layouts/GuidedExperience";
-import IconComposer from "@/svg/IconComposer";
 import ShareButtons from "@/components/ShareButtons";
-import NavLink from "@/primitives/NavLink";
 import LoadingSpinner from "@/primitives/LoadingSpinner";
 import { getTourPoisData } from "@/lib/api/tour";
 import { getToursPaths } from "@/lib/api/tours";

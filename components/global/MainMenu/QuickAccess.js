@@ -8,7 +8,7 @@ export default function QuickAccess({ route }) {
       <h3 id="settings-label" className="menu-section-heading">
         Quick Access
       </h3>
-      <ul className="list-unstyled quick-access-nav-items">
+      <ul className="quick-access-nav-items">
         <li className="quick-access-nav-item">
           {route === "/explorer" ? (
             <Buttonish

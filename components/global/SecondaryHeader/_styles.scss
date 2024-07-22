@@ -1,13 +1,13 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/base';
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
 
-@forward './search';
-@forward './sort';
+@forward "./search";
+@forward "./sort";
 
 .secondary-header {
   padding: 2px 0;
-  border-top: functions.palette(neutral50) solid 1px;
-  border-bottom: functions.palette(neutral50) solid 1px;
+  border-top: var(--color-rubin-gray-200) solid 1px;
+  border-bottom: var(--color-rubin-gray-200) solid 1px;
 
   @include base.respond(functions.break(tablet), min) {
     margin: 0 auto;
@@ -22,6 +22,7 @@
     max-width: 100%;
     margin: 0 15px;
     transition: max-width 0.2s;
+    list-style: none;
 
     @include base.respond(functions.break(tablet), min) {
       max-width: 330px;
@@ -38,7 +39,7 @@
 
     .icon-text {
       font-size: 14px;
-      font-weight: functions.font-weight(light);
+      font-weight: var(--weight-font-normal);
       line-height: 1.5;
     }
   }

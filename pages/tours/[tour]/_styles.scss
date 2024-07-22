@@ -1,6 +1,5 @@
-@use 'abstracts/mixins/base';
-@use 'abstracts/functions';
-
+@use "abstracts/mixins/base";
+@use "abstracts/functions";
 
 .tour-intro-container {
   position: relative;
@@ -10,15 +9,15 @@
   justify-content: center;
   width: 100vw;
   height: calc(var(--window-height, 100vh) - var(--ge-nav-height, 95px) - 42px);
-  background-color: functions.palette(turquoise90);
+  background-color: var(--turquoise90);
 
   @include base.respond(functions.break(tablet), min) {
     align-items: flex-start;
-    overflow: scroll;
+    overflow: auto;
   }
 
   + .guided-experience-nav-container {
-    background-color: functions.palette(turquoise90);
+    background-color: var(--turquoise90);
   }
 
   .content-wrapper {

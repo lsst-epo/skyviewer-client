@@ -1,10 +1,14 @@
-@use 'abstracts/functions';
+@use "abstracts/functions";
 
 .guided-experiences-header-container {
   padding-top: 15px;
 }
 
 .guided-experiences-nav-container {
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+
   .nav-link {
     margin-bottom: 17px;
   }
