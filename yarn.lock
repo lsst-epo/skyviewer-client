@@ -1049,10 +1049,10 @@
   resolved "https://registry.yarnpkg.com/@react-types/shared/-/shared-3.23.1.tgz#2f23c81d819d0ef376df3cd4c944be4d6bce84c3"
   integrity sha512-5d+3HbFDxGZjhbMBeFHRQhexMFt4pUce3okyRtUVKbbedQFUrtXSBg9VszgF2RTeQDKDkMCIQDtz5ccP/Lk1gw==
 
-"@rubin-epo/epo-react-lib@^2.1.0-beta.5":
-  version "2.1.0-beta.5"
-  resolved "https://registry.yarnpkg.com/@rubin-epo/epo-react-lib/-/epo-react-lib-2.1.0-beta.5.tgz#226e5967da455307ba1b3fa2983f59e62cf92eca"
-  integrity sha512-EoID/23hs/upIA9D1ZsS5c03xz04kVT1rGpnfXVTvPFsiLu1NWkgT/TrmhX75sqWaJQ7N7tP96rvK7o06m0CYg==
+"@rubin-epo/epo-react-lib@^2.1.0-beta.6":
+  version "2.1.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@rubin-epo/epo-react-lib/-/epo-react-lib-2.1.0-beta.6.tgz#2efff16a202a12ef492c07fd9eadc94d314e955f"
+  integrity sha512-0bxLgeq7tNlgTafLkK8h/FG6O3eOpDG+EN56x3p8vjk07a0HIJhHjsOuJKey9o6apAXTkRsNhqdqM000+6Ti+A==
   dependencies:
     "@castiron/style-mixins" "^1.0.6"
     "@headlessui/react" "^2.0.3"
