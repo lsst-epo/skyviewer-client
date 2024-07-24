@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import FullwidthWithNav from "@/components/templates/FullwidthWithNav";
 import NavigationList from "@/components/molecules/NavigationList";
 import { useTranslation } from "@/lib/i18n";
-import LogoCover from "@/components/layouts/LogoCover";
+import LogoCover from "@/components/organisms/LogoCover";
 
 interface HomeProps {
   locale: string;

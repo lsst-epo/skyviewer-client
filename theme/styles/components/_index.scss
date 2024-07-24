@@ -18,15 +18,16 @@
 @forward "components/global/SecondaryHeader/styles";
 
 // Layouts
-@forward "components/layouts/Aladin/styles";
-@forward "components/layouts/GuidedExperience/styles";
-@forward "components/layouts/GuidedExperiences/styles";
+@forward "components/organisms/Aladin/styles";
+@forward "components/organisms/GuidedExperience/styles";
+@forward "components/organisms/GuidedExperiences/styles";
 
 // Share
 @forward "components/ShareButtons/styles";
 
 // Guided Experiences
 @forward "components/Bubbles/styles";
+@forward "components/guidedExperiences/styles";
 
 // Tours
 @forward "components/tours/styles";

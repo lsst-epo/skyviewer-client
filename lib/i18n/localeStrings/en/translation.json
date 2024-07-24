@@ -2,8 +2,10 @@
   "title": "Skyviewer",
   "navigation": {
     "cta": {
+      "back": "Back",
       "explore": "I want to explore",
-      "tours": "Please guide me"
+      "tours": "Please guide me",
+      "go_to_tours": "Go to tours"
     }
   }
 }

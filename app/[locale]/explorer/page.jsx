@@ -1,7 +1,7 @@
 "use client";
 
-import PrimaryLayout from "@/layouts/Primary";
-import AladinLayout from "@/layouts/Aladin";
+import PrimaryLayout from "@/components/organisms/Primary";
+import AladinLayout from "@/components/organisms/Aladin";
 import { useCatalogsSurveysData } from "@/lib/api/catalogsSurveys";
 import { moveInArray } from "@/helpers";
 import LoadingSpinner from "@/primitives/LoadingSpinner";

@@ -1,37 +1,29 @@
-import { useEffect, useState, useMemo } from "react";
-import PropTypes from "prop-types";
-import { withLayout } from "@moxy/next-layout";
-import { useRouter } from "next/router";
-import PrimaryLayout from "@/layouts/Primary";
-import AladinLayout from "@/layouts/Aladin";
+"use client";
+import { useMemo } from "react";
+import { useSearchParams } from "next/navigation";
 import LoadingSpinner from "@/primitives/LoadingSpinner";
 import Pois from "@/components/Pois";
 import Nav from "@/components/Pois/Nav";
-import { getTourPoisData } from "@/lib/api/tour";
-import { getToursPaths } from "@/lib/api/tours";
+import useTourPoiData from "@/hooks/useTourPoiData";
 
-const DEFAULT_NEXT = { url: "/intro/", text: "Next" };
-const DEFAULT_BACK = { url: "/tours/", text: "Back" };
-
-const PoiPage = ({ tour }) => {
-  const router = useRouter();
-  const {
-    query: { poi },
-  } = router;
-  const navLinks = useMemo(() => getNavLinks(poi, tour), [poi, tour]);
+const PoiPage = ({ params: { tour } }) => {
+  const { data, isLoading } = useTourPoiData(tour);
+  const searchParams = useSearchParams();
+  const poi = searchParams.get("poi");
+  const navLinks = useMemo(() => getNavLinks(poi, data), [poi, data]);
 
   function getNavLinks(poi, tour) {
     if (!tour) return;
     const { slug, tourPois, factsContentBlocks } = tour;
     const current = +poi;
-    const next = current < tourPois.length ? current + 1 : null;
+    const next = current < tourPois?.length ? current + 1 : null;
     const previous = current > 1 ? current - 1 : null;
 
     return {
       backLink: {
         url:
           previous === null
-            ? `/tours/${slug}/?fact=${factsContentBlocks.length}`
+            ? `/tours/${slug}/?fact=${factsContentBlocks?.length}`
             : `/tours/${slug}/tour?poi=${previous}`,
         text: "Back",
       },
@@ -44,9 +36,10 @@ const PoiPage = ({ tour }) => {
       },
     };
   }
+
   return (
     <>
-      {!tour || !poi || router.isFallback ? (
+      {isLoading ? (
         <LoadingSpinner />
       ) : (
         <Pois
@@ -55,8 +48,8 @@ const PoiPage = ({ tour }) => {
           imgFormat="png"
           fov={10}
           fovRange={[0.03, 180]}
-          poi={tour?.tourPois[+poi - 1]}
-          tourTitle={tour.title}
+          poi={data?.tourPois[+poi - 1]}
+          tourTitle={data.title}
         />
       )}
       {navLinks && <Nav {...navLinks} />}
@@ -64,35 +57,4 @@ const PoiPage = ({ tour }) => {
   );
 };
 
-export async function getStaticPaths() {
-  const data = await getToursPaths();
-  const toursPaths = data?.tours.map((tour) => {
-    const { slug } = tour;
-    return { params: { tour: slug } };
-  });
-
-  return {
-    paths: toursPaths,
-    fallback: true,
-  };
-}
-
-export async function getStaticProps({ params }) {
-  const { tour } = params;
-  const data = await getTourPoisData(tour);
-
-  return {
-    props: data,
-    revalidate: 30,
-  };
-}
-
-PoiPage.propTypes = {
-  tour: PropTypes.object,
-};
-
-export default withLayout(
-  <PrimaryLayout closeUrl="/tours">
-    <AladinLayout />
-  </PrimaryLayout>
-)(PoiPage);
+export default PoiPage;

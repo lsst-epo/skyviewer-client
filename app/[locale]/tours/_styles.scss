@@ -169,7 +169,12 @@
     flex-flow: column nowrap;
     margin-top: 30px;
 
+    list-style: none;
+    counter-reset: summary-links;
+
     .summary-link-item {
+      counter-increment: summary-links;
+
       + .summary-link-item {
         margin-top: 30px;
       }
@@ -177,10 +182,23 @@
   }
 
   .summary-link {
-    display: flex;
-    flex-flow: row nowrap;
+    display: inline-flex;
     align-items: center;
+    gap: var(--size-spacing-xs);
     text-decoration: none;
+
+    &::before {
+      content: counter(summary-links);
+      aspect-ratio: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 1.5em;
+      font-weight: var(--weight-font-bold);
+      line-height: $summaryLinkNumberSize;
+      background-color: var(--turquoise70);
+      border-radius: 50%;
+    }
 
     &:hover {
       .summary-link-text {
@@ -189,19 +207,6 @@
     }
 
     .summary-link-number {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: $summaryLinkNumberSize;
-      min-width: $summaryLinkNumberSize;
-      height: $summaryLinkNumberSize;
-      min-height: $summaryLinkNumberSize;
-      margin-right: 14px;
-      font-size: 22px;
-      font-weight: var(--weight-font-bold);
-      line-height: $summaryLinkNumberSize;
-      background-color: var(--turquoise70);
-      border-radius: 50%;
     }
 
     .summary-link-text {

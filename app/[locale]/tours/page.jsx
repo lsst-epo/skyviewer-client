@@ -2,7 +2,7 @@
 import { useContext } from "react";
 import TourSortFilterContext from "@/contexts/TourSortFilter";
 import TourSearchContext from "@/contexts/TourSearch";
-import GuidedExperiencesLayout from "@/layouts/GuidedExperiences";
+import GuidedExperiencesLayout from "@/components/organisms/GuidedExperiences";
 import Tours from "@/components/tours";
 import { useToursBySearch, useToursByVarietyData } from "@/lib/api/tours";
 

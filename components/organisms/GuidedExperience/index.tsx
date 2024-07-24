@@ -1,16 +1,32 @@
-import PropTypes from "prop-types";
+"use client";
+import { FunctionComponent, PropsWithChildren } from "react";
 import useResizeObserver from "use-resize-observer";
 import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
 
-export default function GuidedExperienceLayout({
+type Link = {
+  url: string;
+  text: string;
+};
+
+interface GuidedExperienceProps {
+  className?: string;
+  mobileNextLink: Link;
+  mobileBackLink: Link;
+  desktopNextLink: Link;
+  desktopBackLink: Link;
+}
+
+const GuidedExperience: FunctionComponent<
+  PropsWithChildren<GuidedExperienceProps>
+> = ({
   className,
   mobileNextLink,
   mobileBackLink,
   desktopNextLink,
   desktopBackLink,
   children,
-}) {
-  const { ref } = useResizeObserver({
+}) => {
+  const { ref } = useResizeObserver<HTMLDivElement>({
     onResize: ({ height }) => {
       document.documentElement.style.setProperty(
         "--ge-nav-height",
@@ -66,13 +82,6 @@ export default function GuidedExperienceLayout({
       </div>
     </div>
   );
-}
-
-GuidedExperienceLayout.propTypes = {
-  className: PropTypes.string,
-  mobileNextLink: PropTypes.object,
-  mobileBackLink: PropTypes.object,
-  desktopNextLink: PropTypes.object,
-  desktopBackLink: PropTypes.object,
-  children: PropTypes.node,
 };
+
+export default GuidedExperience;

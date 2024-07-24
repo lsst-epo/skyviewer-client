@@ -1,6 +1,6 @@
+"use client";
 import PropTypes from "prop-types";
 import classnames from "classnames";
-import IconComposer from "@/svg/IconComposer";
 import CopyUrlButton from "@/components/ShareButtons/CopyUrlButton";
 import GetImageButton from "@/components/ShareButtons/GetImageButton";
 import FacebookShareButton from "@/components/ShareButtons/FacebookShareButton";

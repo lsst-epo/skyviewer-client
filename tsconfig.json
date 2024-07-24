@@ -18,7 +18,7 @@
       "@/api/*": ["lib/api/*"],
       "@/components/*": ["components/*"],
       "@/primitives/*": ["components/primitives/*"],
-      "@/layouts/*": ["components/layouts/*"],
+      "@/organisms/*": ["components/organisms/*"],
       "@/global/*": ["components/global/*"],
       "@/shapes/*": ["components/shapes/*"],
       "@/hooks/*": ["hooks/*"],

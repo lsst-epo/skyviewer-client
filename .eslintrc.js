@@ -1,16 +1,6 @@
 module.exports = {
   root: true,
-  parser: "@babel/eslint-parser",
-  parserOptions: {
-    sourceType: "module",
-    requireConfigFile: false,
-    babelOptions: {
-      plugins: [
-        "@babel/plugin-transform-react-jsx",
-        "@babel/plugin-proposal-class-properties",
-      ],
-    },
-  },
+  parser: "@typescript-eslint/parser",
   env: {
     browser: true,
   },

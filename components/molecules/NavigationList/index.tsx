@@ -27,7 +27,7 @@ const NavigationList: FunctionComponent<NavigationListProps> = ({
     >
       {links.map(({ text, ...link }) => (
         <li key={text}>
-          <Button as={Link} {...link} isBlock>
+          <Button as={Link as any} {...(link as any)} isBlock>
             {text}
           </Button>
         </li>
