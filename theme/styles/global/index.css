@@ -1,3 +1,4 @@
 body {
   background-color: var(--color-background-page-invert);
+  color: var(--color-font-invert);
 }

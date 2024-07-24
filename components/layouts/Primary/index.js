@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { MenuProvider } from "@/contexts/Menu";
 import PropTypes from "prop-types";

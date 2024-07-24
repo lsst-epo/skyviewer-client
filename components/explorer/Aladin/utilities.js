@@ -1,4 +1,3 @@
-// const ALADIN_SHAPES = ["circle", "plus", "rhomb", "cross", "triangle", "square"];
 const CUSTOM_SHAPES = {
   star: "/shapes/star-icon.png",
   galaxy: "/shapes/galaxy-icon.png",

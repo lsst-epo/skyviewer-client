@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import "@/lib/i18n";
+import "@/lib/i18n/client";
 import { LayoutTree } from "@moxy/next-layout";
 import { SourceSansPro } from "@/lib/fonts";
 import useResizeObserver from "use-resize-observer";
