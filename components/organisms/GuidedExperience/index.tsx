@@ -2,9 +2,10 @@
 import { FunctionComponent, PropsWithChildren } from "react";
 import useResizeObserver from "use-resize-observer";
 import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
+import { UrlObject } from "url";
 
 type Link = {
-  url: string;
+  url: string | UrlObject;
   text: string;
 };
 
@@ -44,7 +45,7 @@ const GuidedExperience: FunctionComponent<
             <li className="guided-experience-nav-item">
               <Buttonish
                 styleAs="tertiary"
-                url={mobileBackLink.url}
+                url={mobileBackLink.url as string}
                 text={mobileBackLink.text}
                 isBlock
               />
@@ -53,7 +54,7 @@ const GuidedExperience: FunctionComponent<
           {mobileNextLink && (
             <li className="guided-experience-nav-item">
               <Buttonish
-                url={mobileNextLink.url}
+                url={mobileNextLink.url as string}
                 text={mobileNextLink.text}
                 isBlock
               />
@@ -65,7 +66,7 @@ const GuidedExperience: FunctionComponent<
             <li className="guided-experience-nav-item">
               <Buttonish
                 styleAs="tertiary"
-                url={desktopBackLink.url}
+                url={desktopBackLink.url as string}
                 text={desktopBackLink.text}
               />
             </li>
@@ -73,7 +74,7 @@ const GuidedExperience: FunctionComponent<
           {desktopNextLink && (
             <li className="guided-experience-nav-item">
               <Buttonish
-                url={desktopNextLink.url}
+                url={desktopNextLink.url as string}
                 text={desktopNextLink.text}
               />
             </li>

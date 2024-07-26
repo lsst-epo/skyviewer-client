@@ -1,7 +1,0 @@
-.loading-spinner {
-  $margin: calc((var(--window-height, 100vh) - var(--ges-header-height, 128px) - var(--ges-nav-height, 95px)) / 2);
-  align-self: center;
-  width: 100px;
-  height: 100px;
-  margin: $margin auto;
-}

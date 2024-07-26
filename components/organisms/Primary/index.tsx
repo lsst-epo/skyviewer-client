@@ -5,7 +5,7 @@ import Header from "@/global/PrimaryHeader";
 interface PrimaryLayoutProps {
   closeUrl?: string;
   route?: string;
-  backgroundColor: "primary" | "secondary";
+  backgroundColor?: "primary" | "secondary";
 }
 
 const PrimaryLayout: FunctionComponent<

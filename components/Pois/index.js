@@ -1,9 +1,9 @@
+"use client";
 import { useState } from "react";
 import PropTypes from "prop-types";
 import defaultOptions from "@/fixtures/defaultAladinOptions";
 import { AladinGlobalProvider } from "@/contexts/AladinGlobal";
 import AladinForTours from "@/components/AladinForTours";
-import Overlay from "./Overlay";
 import useAladin from "@/hooks/useAladin";
 
 export default function Pois({

@@ -11,8 +11,7 @@
 
 .guided-experiences-list-container {
   height: calc(
-    var(--window-height, 100vh) - var(--ge-nav-link-height, 95px) -
-      var(--ge-heading-height, 56px)
+    100vh - var(--ge-nav-link-height, 95px) - var(--ge-heading-height, 56px)
   );
   overflow-y: scroll;
 }

@@ -3,9 +3,10 @@ import Link from "next/link";
 import IconComposer from "@/svg/IconComposer";
 
 export default function FunFact({ skipUrl, id, heading, blocks }) {
+  const mobileContent = blocks[id - 1]?.body;
   return (
     <>
-      {id && (
+      {mobileContent && (
         <div className="tour-fact mobile-only">
           <div className="top">
             <IconComposer icon="Info" className="fact-icon" />
@@ -14,7 +15,7 @@ export default function FunFact({ skipUrl, id, heading, blocks }) {
           <div className="main">
             <div
               className="tour-fact-body"
-              dangerouslySetInnerHTML={{ __html: blocks[+id - 1].body }}
+              dangerouslySetInnerHTML={{ __html: mobileContent }}
             />
           </div>
           <div className="bottom">
@@ -56,6 +57,6 @@ export default function FunFact({ skipUrl, id, heading, blocks }) {
 FunFact.propTypes = {
   heading: PropTypes.string,
   blocks: PropTypes.array,
-  id: PropTypes.any,
+  id: PropTypes.number,
   skipUrl: PropTypes.string,
 };

@@ -1,16 +1,9 @@
-"use client";
-
-import PrimaryLayout from "@/components/organisms/Primary";
-import AladinLayout from "@/components/organisms/Aladin";
-import { useCatalogsSurveysData } from "@/lib/api/catalogsSurveys";
+import { getCatalogsSurveysData } from "@/lib/api/catalogsSurveys";
 import { moveInArray } from "@/helpers";
-import LoadingSpinner from "@/primitives/LoadingSpinner";
-import Explorer from "@/components/explorer/index.js";
+import Explorer from "@/components/explorer";
 
-const ExplorerPage = () => {
-  const { data, isLoading } = useCatalogsSurveysData();
-
-  if (isLoading) return <LoadingSpinner />;
+const ExplorerPage = async () => {
+  const data = await getCatalogsSurveysData();
 
   const { catalogs, surveys } = data;
   const sortedCats = sortCats(catalogs);
@@ -40,19 +33,15 @@ const ExplorerPage = () => {
   }
 
   return (
-    <PrimaryLayout route="/explorer">
-      <AladinLayout>
-        <Explorer
-          selector="#aladin-lite-div"
-          catalogs={sortedCats}
-          survey={path}
-          fov={+fov || 60}
-          fovRange={[fovMin, fovMax] || [2, 90]}
-          target={target || "267.0208333333 -24.7800000000"}
-          imgFormat={imgFormat}
-        />
-      </AladinLayout>
-    </PrimaryLayout>
+    <Explorer
+      selector="#aladin-lite-div"
+      catalogs={sortedCats}
+      survey={path}
+      fov={+fov || 60}
+      fovRange={[fovMin, fovMax] || [2, 90]}
+      target={target || "267.0208333333 -24.7800000000"}
+      imgFormat={imgFormat}
+    />
   );
 };
 

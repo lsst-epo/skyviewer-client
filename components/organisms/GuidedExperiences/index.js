@@ -62,8 +62,6 @@ export default function GuidedExperiencesLayout({
 GuidedExperiencesLayout.propTypes = {
   heading: PropTypes.string,
   className: PropTypes.string,
-  nextLink: PropTypes.object,
-  backLink: PropTypes.object,
   children: PropTypes.node,
   sortFilterContext: PropTypes.object,
   searchContext: PropTypes.object,

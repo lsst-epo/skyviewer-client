@@ -4,7 +4,7 @@ import TourSortFilterContext from "@/contexts/TourSortFilter";
 import TourSearchContext from "@/contexts/TourSearch";
 import GuidedExperiencesLayout from "@/components/organisms/GuidedExperiences";
 import Tours from "@/components/tours";
-import { useToursBySearch, useToursByVarietyData } from "@/lib/api/tours";
+import { useToursBySearch, useToursByVarietyData } from "@/hooks/useTours";
 
 import DEFAULT_FILTERS from "@/fixtures/defaultGEFilters";
 

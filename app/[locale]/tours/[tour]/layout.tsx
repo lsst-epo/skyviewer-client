@@ -1,8 +1,7 @@
 import { FunctionComponent, PropsWithChildren } from "react";
-import { gql } from "graphql-request";
-import { queryAPI } from "@/lib/fetch";
-import PrimaryLayout from "@/components/organisms/Primary";
+import { getToursPaths } from "@/lib/api/tours";
 import { RootParams } from "app/[locale]/layout";
+import PrimaryLayout from "@/components/organisms/Primary";
 
 type TourParams = {
   tour: string;
@@ -19,22 +18,12 @@ const TourLayout: FunctionComponent<PropsWithChildren> = ({ children }) => {
   );
 };
 
-export async function generateStaticParams() {
-  const query = gql`
-    {
-      tours: entries(section: "tours") {
-        ... on tours_tour_Entry {
-          slug
-        }
-      }
-    }
-  `;
-  const data = await queryAPI(query);
+export const generateStaticParams = async () => {
+  const { tours } = await getToursPaths();
 
-  return data?.tours.map((tour) => {
-    const { slug } = tour;
-    return { params: { tour: slug } };
+  return tours.map(({ slug }) => {
+    return { tour: slug };
   });
-}
+};
 
 export default TourLayout;

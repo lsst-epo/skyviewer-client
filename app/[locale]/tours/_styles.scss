@@ -19,7 +19,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100vw;
-  height: calc(var(--window-height, 100vh) - var(--ge-nav-height, 95px) - 42px);
+  height: calc(100vh - var(--ge-nav-height, 95px) - 42px);
   padding-top: 70px;
   padding-right: 15px;
   padding-left: 15px;

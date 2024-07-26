@@ -1,0 +1,5 @@
+@use "abstracts/functions";
+
+// Pages
+@forward "tours/styles";
+@forward "tours/[tour]/styles";

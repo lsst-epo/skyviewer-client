@@ -8,7 +8,7 @@
   align-items: stretch;
   justify-content: center;
   width: 100vw;
-  height: calc(var(--window-height, 100vh) - var(--ge-nav-height, 95px) - 42px);
+  height: calc(100vh - var(--ge-nav-height, 95px) - 42px);
   background-color: var(--turquoise90);
 
   @include base.respond(functions.break(tablet), min) {
@@ -30,4 +30,8 @@
       padding-top: 42px;
     }
   }
+}
+
+.tour-not-found {
+  padding: var(--size-spacing-xl);
 }
