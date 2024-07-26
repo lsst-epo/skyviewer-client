@@ -33,19 +33,15 @@ const ExplorerPage = async () => {
   }
 
   return (
-    <PrimaryLayout route="/explorer">
-      <AladinLayout>
-        <Explorer
-          selector="#aladin-lite-div"
-          catalogs={sortedCats}
-          survey={path}
-          fov={+fov || 60}
-          fovRange={[fovMin, fovMax] || [2, 90]}
-          target={target || "267.0208333333 -24.7800000000"}
-          imgFormat={imgFormat}
-        />
-      </AladinLayout>
-    </PrimaryLayout>
+    <Explorer
+      selector="#aladin-lite-div"
+      catalogs={sortedCats}
+      survey={path}
+      fov={+fov || 60}
+      fovRange={[fovMin, fovMax] || [2, 90]}
+      target={target || "267.0208333333 -24.7800000000"}
+      imgFormat={imgFormat}
+    />
   );
 };
 
