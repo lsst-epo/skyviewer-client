@@ -56,6 +56,7 @@ const GuidedExperience: FunctionComponent<
               <Buttonish
                 url={mobileNextLink.url as string}
                 text={mobileNextLink.text}
+                prefetch
                 isBlock
               />
             </li>
@@ -76,6 +77,7 @@ const GuidedExperience: FunctionComponent<
               <Buttonish
                 url={desktopNextLink.url as string}
                 text={desktopNextLink.text}
+                prefetch
               />
             </li>
           )}

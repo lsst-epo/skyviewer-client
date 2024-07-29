@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
-import classnames from "classnames";
 import IconComposer from "@/svg/IconComposer";
 import Bubbles from "@/components/Bubbles";
 
@@ -21,7 +20,7 @@ export default function TourListItem({
 
   return (
     <li className="tour-list-item">
-      <Link href={`/tours/${slug}`} className="tour-link">
+      <Link href={`/tours/${slug}`} className="tour-link" prefetch>
         <div
           className="thumbnail"
           style={{
