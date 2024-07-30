@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import AladinGlobalContext from "@/contexts/AladinGlobal";
+import { useAladin } from "@/contexts/Aladin";
 import AladinFocusContext from "@/contexts/AladinFocus";
 import { useKeyDownEvent } from "@/hooks/listeners";
 import Button from "@/primitives/Button";
 import IconComposer from "@/svg/IconComposer";
 
 export default function Zoom() {
-  const { aladin } = useContext(AladinGlobalContext) || {};
+  const { aladin } = useAladin();
   const { hasFocus } = useContext(AladinFocusContext) || {};
 
   const handleZoomIn = () => {

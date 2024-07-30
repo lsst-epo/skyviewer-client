@@ -1,11 +1,10 @@
-import { useEffect, useContext, useState } from "react";
 import classnames from "classnames";
-import ExplorerContext from "@/contexts/Explorer";
+import { useExplorerSettings } from "@/contexts/Explorer";
 import Button from "@/primitives/Button";
 import IconComposer from "@/svg/IconComposer";
 
 export default function Markers() {
-  const { settings, setSettings } = useContext(ExplorerContext) || {};
+  const { settings, setSettings } = useExplorerSettings();
   const { showCatalogs } = settings;
 
   const toggleMarkers = () => {

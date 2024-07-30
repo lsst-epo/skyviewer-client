@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import ExplorerContext from "@/contexts/Explorer";
-import AladinGlobalContext from "@/contexts/AladinGlobal";
+import { useExplorerSettings } from "@/contexts/Explorer";
+import { useAladin } from "@/contexts/Aladin";
 import AladinFocusContext from "@/contexts/AladinFocus";
 import { useKeyDownEvent } from "@/hooks/listeners";
 import IconComposer from "@/svg/IconComposer";
@@ -9,8 +9,8 @@ import { Range, Direction } from "react-range";
 const STEP = 0.01;
 
 export default function Zoom() {
-  const { settings } = useContext(ExplorerContext) || {};
-  const { aladin } = useContext(AladinGlobalContext) || {};
+  const { settings } = useExplorerSettings();
+  const { aladin } = useAladin();
   const { hasFocus } = useContext(AladinFocusContext) || {};
   const { zoomLevel, zoomRange } = settings;
   const [min, max] = zoomRange;

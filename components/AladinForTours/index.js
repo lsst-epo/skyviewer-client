@@ -1,6 +1,6 @@
-import { useEffect, useContext, useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import AladinGlobalContext from "@/contexts/AladinGlobal";
+import { useAladin } from "@/contexts/Aladin";
 import Overlay from "@/components/Pois/Overlay";
 
 export default function Aladin({
@@ -13,7 +13,7 @@ export default function Aladin({
   options,
   onClick,
 }) {
-  const { aladinGlobal, aladin } = useContext(AladinGlobalContext) || {};
+  const { aladin } = useAladin();
   const [showDetails, setShowDetails] = useState(false);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function Aladin({
           const [aladinWidthDegrees, aladinHeightDegrees] = aladin.getFov();
           const [aladinWidthPixels, aladinHeightPixels] = aladin.getSize();
           // eslint-disable-next-line prettier/prettier
-          const [ , topRight, bottomRight, , ] = aladin.getFovCorners();
+          const [, topRight, bottomRight, ,] = aladin.getFovCorners();
           let offsetRa = poi.ra;
           let offsetDec = poi.dec;
 

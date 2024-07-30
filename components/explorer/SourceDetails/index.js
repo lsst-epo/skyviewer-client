@@ -1,8 +1,8 @@
-import { useEffect, useState, useRef, useContext } from "react";
+import { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
-import AladinGlobalContext from "@/contexts/AladinGlobal";
-import ExplorerContext from "@/contexts/Explorer";
+import { useAladin } from "@/contexts/Aladin";
+import { useExplorerSettings } from "@/contexts/Explorer";
 import Accordion from "@/primitives/Accordion";
 import AccordionGroup from "@/primitives/AccordionGroup";
 import Button from "@/primitives/Button";
@@ -29,8 +29,8 @@ const placeholderFilters = [
 const STEP = 0.1;
 
 export default function SourceDetails({ data, setData, handleClose }) {
-  const { aladin } = useContext(AladinGlobalContext) || {};
-  const { settings } = useContext(ExplorerContext) || {};
+  const { aladin } = useAladin();
+  const { settings } = useExplorerSettings();
   const { zoomLevel, zoomRange } = settings;
   const [min, max] = zoomRange;
   const [activeAccordion, setActiveAccordion] = useState("overview");

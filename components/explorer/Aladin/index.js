@@ -1,30 +1,23 @@
 import { useEffect, useState, useContext, useRef } from "react";
 import PropTypes from "prop-types";
-import { useRouter } from "next/navigation";
 import useResizeObserver from "use-resize-observer";
 import { addCats } from "./utilities";
-import ExplorerContext from "@/contexts/Explorer";
-import AladinGlobalContext from "@/contexts/AladinGlobal";
+import { useExplorerSettings } from "@/contexts/Explorer";
+import { useAladin } from "@/contexts/Aladin";
 import { AladinFocusProvider } from "@/contexts/AladinFocus";
 import FiltersContext from "@/contexts/Filters";
 import Controls from "@/components/explorer/Controls";
 import SourceDetails from "@/components/explorer/SourceDetails";
 import defaultFilters from "@/fixtures/defaultExplorerFilters";
 import {
-  useAstroObjectContent,
   getAstroObjectContent,
   getAstroObjectData,
 } from "@/lib/api/astroObject";
 
 export default function Aladin({
-  selector,
-  survey,
-  target,
   fov,
   fovRange,
-  options,
   catalogs,
-  markerLayers,
   jpgs,
   onSelect,
   onObjectHovered,
@@ -33,9 +26,9 @@ export default function Aladin({
   onMouseMove,
   onFullScreenToggled,
 }) {
-  const { settings } = useContext(ExplorerContext) || {};
+  const { settings } = useExplorerSettings;
   const [hasFocus, setHasFocus] = useState(false);
-  const { aladinGlobal, aladin } = useContext(AladinGlobalContext) || {};
+  const { A: aladinGlobal, aladin } = useAladin();
   const { filters } = useContext(FiltersContext) || {};
   const [sourceData, setSourceData] = useState(null);
   const aladinReticleCanvas = useRef(null);
@@ -59,7 +52,7 @@ export default function Aladin({
   });
 
   useEffect(() => {
-    if (!aladin && !aladinGlobal) return;
+    if (!aladin || !aladinGlobal) return;
     // Restrict FOV
     aladin.setFovRange(fovRange[0], fovRange[1]);
     aladin.setFov(fov);
