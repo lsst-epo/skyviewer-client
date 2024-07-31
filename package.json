@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "static": "run-run-all static:*",
+    "static": "npm-run-all static:*",
     "static:build": "next build --debug",
     "static:export": "next export",
     "start": "next start -p 8080",

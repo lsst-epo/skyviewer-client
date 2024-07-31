@@ -90,4 +90,6 @@ const TourIntro: FunctionComponent<IntroProps> = async ({
   );
 };
 
+export const dynamic = "force-dynamic";
+
 export default TourIntro;

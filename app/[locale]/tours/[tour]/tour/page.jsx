@@ -50,4 +50,6 @@ const PoiPage = async ({ params: { tour }, searchParams }) => {
   );
 };
 
+export const dynamic = "force-dynamic";
+
 export default PoiPage;
