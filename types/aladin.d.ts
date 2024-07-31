@@ -1,5 +1,7 @@
 // Aladin SkyView Lite is declared as `A` in the global scope
 
+import { Catalog } from "./catalog";
+
 type CooFrame = "equatorial" | "ICRS" | "ICRSd" | "j2000" | "gal" | "galactic";
 export type HiPSImageFormat = "jpg" | "png" | "fits" | "webp";
 
@@ -44,6 +46,27 @@ export interface AladinHipsImageFormat {
 }
 
 type AladinProjection = "SIN" | "MOL" | "AIT" | "ZEA" | "MER";
+
+type AladinEvent =
+  | "select"
+  | "objectsSelected"
+  | "objectClicked"
+  | "objectHovered"
+  | "objectHoveredStop"
+  | "footprintClicked"
+  | "footprintHovered"
+  | "positionChanged"
+  | "zoomChanged"
+  | "click"
+  | "rightClickMove"
+  | "mouseMove"
+  | "fullScreenToggled"
+  | "cooFrameChanged"
+  | "resizeChanged"
+  | "projectionChanged"
+  | "layerChanged";
+
+type AladinEventHandler = (...args: any) => void;
 
 interface GridOptions {
   /** Color of the grid. Can be specified as a named color (see named colors), as rgb (ex: "rgb(178, 50, 178)"), or as a hex color (ex: "#86D6AE").
@@ -224,7 +247,7 @@ interface AladinInstance {
   readonly getFovCorners: (nbSteps?: number) => [number, number][];
   readonly setFov: (degrees: number) => void;
   readonly adjustFovForObject: (target: string) => void;
-  readonly setFovRange: (minFov: number, maxFov: number) => void;
+  readonly setFoVRange: (minFov: number, maxFov: number) => void;
   readonly gotoRaDec: (ra: number, dec: number) => void;
   readonly gotoObject: (target: string, callback?: AladinCallback) => void;
   readonly setImageSurvey: (
@@ -236,10 +259,7 @@ interface AladinInstance {
   readonly addCatalog: (catalog: AladinCatalog) => void;
   readonly removeLayers: () => void;
   // TODO: check if listener can be "cancelled"
-  readonly on: (
-    type: "objectHovered" | "objectClicked" | "positionChanged",
-    handler: (obj: any) => void
-  ) => void;
+  readonly on: (type: AladinEvent, handler: AladinEventHandler) => void;
   /** @deprecated */
   readonly createImageSurvey: (
     id: string,
@@ -248,18 +268,27 @@ interface AladinInstance {
     maxOrder: number,
     options: any
   ) => any;
+  readonly getOverlays: () => Array<Catalog>;
+  readonly setCooGrid: (options: {
+    color?: string;
+    opacity?: number;
+    labelSize?: number;
+    thickness?: number;
+    enabled?: boolean;
+  }) => void;
 }
+
+type CatalogSourceShape =
+  | "circle"
+  | "plus"
+  | "rhomb"
+  | "cross"
+  | "triangle"
+  | "square";
 
 interface AladinCatalogOptions {
   name?: string;
-  shape?:
-    | "circle"
-    | "plus"
-    | "rhomb"
-    | "cross"
-    | "triangle"
-    | "square"
-    | HTMLCanvasElement; // JPEG/PNG also supported, but how?
+  shape?: CatalogSourceShape | HTMLCanvasElement | HTMLImageElement; // JPEG/PNG also supported, but how?
   color?: string;
   sourceSize?: number;
   raField?: string;
@@ -288,6 +317,10 @@ export interface Aladin {
     options?: AladinCatalogOptions,
     successCallback: AladinCatalogCallback,
     useProxy?: boolean
+  ) => AladinCatalog;
+  readonly catalogHiPS: (
+    url: string,
+    options: AladinCatalogOptions
   ) => AladinCatalog;
   readonly imageHiPS: (id: string, options: ImageHiPSOptions) => ImageHiPS;
   // TODO Add other catalog methods

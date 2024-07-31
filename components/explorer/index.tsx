@@ -1,14 +1,15 @@
 "use client";
-import { FunctionComponent, useRef, useState } from "react";
-import defaultOptions from "@/fixtures/defaultAladinOptions";
+import { FunctionComponent, useState } from "react";
 import defaultFilters from "@/fixtures/defaultExplorerFilters";
 import { ExplorerProvider } from "@/contexts/Explorer";
 import { AladinProvider } from "@/contexts/Aladin";
 import { FiltersProvider } from "@/contexts/Filters";
-import Aladin from "@/components/explorer/Aladin";
+import Aladin from "@/components/organisms/Aladin";
 import { AladinOptions, HiPSImageFormat } from "types/aladin";
+import { Catalog } from "@/types/catalog";
 
 interface ExplorerProps {
+  catalogs: Array<Catalog>;
   survey: string;
   target: string;
   imgFormat: HiPSImageFormat;
@@ -18,23 +19,19 @@ interface ExplorerProps {
 }
 
 const Explorer: FunctionComponent<ExplorerProps> = ({
-  options = defaultOptions,
+  options,
   survey,
   fov = 20,
   fovRange,
   target,
   imgFormat,
+  catalogs,
 }) => {
   const [filters, setFilters] = useState(defaultFilters);
-  // const aladinRef = useRef<HTMLDivElement>(null);
-  const [aladinRef, setAladinRef] = useState<HTMLDivElement | null>(null);
-
-  console.log({ aladinRef });
 
   return (
     <AladinProvider
       {...{
-        selector: aladinRef,
         survey,
         imgFormat,
         fov,
@@ -43,7 +40,7 @@ const Explorer: FunctionComponent<ExplorerProps> = ({
       }}
     >
       <ExplorerProvider {...{ zoomLevel: fov, zoomRange: fovRange }}>
-        <div ref={(node) => setAladinRef(node)} />
+        <Aladin {...{ fov, fovRange, target, options, catalogs }} />
       </ExplorerProvider>
     </AladinProvider>
   );

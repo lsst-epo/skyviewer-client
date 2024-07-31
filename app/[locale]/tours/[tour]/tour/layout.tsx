@@ -1,8 +1,8 @@
 import { FunctionComponent, PropsWithChildren } from "react";
-import AladinLayout from "@/components/organisms/Aladin";
+import AladinTemplate from "@/components/templates/Aladin";
 
 const TourLayout: FunctionComponent<PropsWithChildren> = ({ children }) => {
-  return <AladinLayout>{children}</AladinLayout>;
+  return <AladinTemplate>{children}</AladinTemplate>;
 };
 
 export default TourLayout;

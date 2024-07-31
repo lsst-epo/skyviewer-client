@@ -34,7 +34,6 @@ const ExplorerPage = async () => {
 
   return (
     <Explorer
-      selector="#aladin-lite-div"
       catalogs={sortedCats}
       survey={path}
       fov={+fov || 60}

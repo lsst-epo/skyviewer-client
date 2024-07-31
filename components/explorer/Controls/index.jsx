@@ -16,29 +16,25 @@ export default function Controls({ defaultFilters }) {
         className="find controls-submenu"
       >
         <li role="menuitem">
-          <Filters defaultFilters={defaultFilters} />
+          {/* <Filters defaultFilters={defaultFilters} /> */}
         </li>
       </ul>
-      <Zoom />
-      <Pan />
+      {/* <Zoom /> */}
+      {/* <Pan /> */}
       <ul
         role="menu"
         aria-label="Wayfinding"
         className="wayfinding controls-submenu"
       >
-        <li role="menuitem">
-          <Landmarks />
-        </li>
+        <li role="menuitem">{/* <Landmarks /> */}</li>
       </ul>
-      <Share />
+      {/* <Share /> */}
       <ul
         role="menu"
         aria-label="Toggle overlays"
         className="overlays controls-submenu"
       >
-        <li role="menuitem">
-          <Markers />
-        </li>
+        <li role="menuitem">{/* <Markers /> */}</li>
         <li role="menuitem">
           <Grid />
         </li>

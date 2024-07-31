@@ -4,7 +4,7 @@ import Button from "@/primitives/Button";
 import IconComposer from "@/svg/IconComposer";
 
 export default function Grid() {
-  const { settings, setSettings } = useExplorerSettings;
+  const { settings, setSettings } = useExplorerSettings();
   const { showGrid } = settings;
   const toggleGrid = () => {
     const { showGrid } = settings;
