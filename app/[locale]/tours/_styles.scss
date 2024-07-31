@@ -1,0 +1,217 @@
+/* stylelint-disable no-descending-specificity */
+@use "sass:math";
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
+@use "abstracts/mixins/layout";
+@use "abstracts/mixins/typography";
+
+.tours-container {
+  @include layout.container-guided;
+  padding-top: 0;
+}
+
+.tour-summary-container {
+  $summaryLinkNumberSize: 34px;
+  $summarySpacing: math.div($summaryLinkNumberSize, 2);
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  height: calc(100vh - var(--ge-nav-height, 95px) - 42px);
+  padding-top: 70px;
+  padding-right: 15px;
+  padding-left: 15px;
+  overflow: auto;
+  color: var(--white);
+  background-color: var(--turquoise90);
+
+  + .guided-experience-nav-container {
+    background-color: var(--turquoise90);
+  }
+
+  .tour-summary {
+    @include base.respond(functions.break(tablet), min) {
+      display: flex;
+      flex-flow: row nowrap;
+    }
+  }
+
+  .summary-header {
+    max-width: 655px;
+    margin-right: $summarySpacing;
+    margin-left: $summarySpacing;
+
+    @include base.respond(functions.break(tablet), min) {
+      padding-top: 7px;
+      padding-bottom: 32px;
+    }
+
+    .summary-heading {
+      @include typography.heading-tour-intro;
+      text-align: center;
+
+      @include base.respond(functions.break(tablet), min) {
+        margin-bottom: 12px;
+      }
+    }
+
+    p {
+      @include typography.subheading-tour-intro;
+      text-align: center;
+    }
+  }
+
+  .share-buttons-horizontal {
+    margin-top: 38px;
+
+    @include base.respond(functions.break(tablet), min) {
+      margin-left: 43px;
+    }
+
+    > li + li {
+      @include base.fluid-scale(
+        margin-left,
+        43px,
+        20px,
+        functions.break(desktop),
+        functions.break(tablet)
+      );
+    }
+  }
+
+  .share-icon {
+    $dims: width, height;
+
+    @include base.fluid-scale(
+      $dims,
+      67px,
+      52px,
+      functions.break(desktop),
+      functions.break(tablet)
+    );
+
+    &.facebook svg {
+      @include base.fluid-scale(
+        $dims,
+        48px,
+        37px,
+        functions.break(desktop),
+        functions.break(tablet)
+      );
+    }
+
+    &.twitter svg {
+      @include base.fluid-scale(
+        $dims,
+        59px,
+        46px,
+        functions.break(desktop),
+        functions.break(tablet)
+      );
+    }
+
+    &.email svg {
+      @include base.fluid-scale(
+        $dims,
+        52px,
+        40px,
+        functions.break(desktop),
+        functions.break(tablet)
+      );
+    }
+  }
+
+  .divider {
+    width: auto;
+    height: 2px;
+    margin: 33px $summarySpacing 43px;
+    background-color: var(--white);
+
+    @include base.respond(functions.break(tablet), min) {
+      width: 2px;
+      height: auto;
+      margin-top: 0;
+      margin-bottom: 0;
+
+      @include base.fluid-scale(
+        margin-right,
+        54px,
+        $summarySpacing,
+        functions.break(desktop),
+        functions.break(tablet)
+      );
+
+      @include base.fluid-scale(
+        margin-left,
+        115px,
+        $summarySpacing,
+        functions.break(desktop),
+        functions.break(tablet)
+      );
+    }
+  }
+
+  .summary-links-container {
+    @include base.respond(functions.break(tablet), min) {
+      padding-top: 21px;
+    }
+  }
+
+  .summary-links-list-heading {
+    @include typography.subheading-tour-intro;
+    margin-left: $summarySpacing;
+  }
+
+  .summary-links-list {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-top: 30px;
+
+    list-style: none;
+    counter-reset: summary-links;
+
+    .summary-link-item {
+      counter-increment: summary-links;
+
+      + .summary-link-item {
+        margin-top: 30px;
+      }
+    }
+  }
+
+  .summary-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--size-spacing-xs);
+    text-decoration: none;
+
+    &::before {
+      content: counter(summary-links);
+      aspect-ratio: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 1.5em;
+      font-weight: var(--weight-font-bold);
+      line-height: $summaryLinkNumberSize;
+      background-color: var(--turquoise70);
+      border-radius: 50%;
+    }
+
+    &:hover {
+      .summary-link-text {
+        text-decoration: underline;
+      }
+    }
+
+    .summary-link-number {
+    }
+
+    .summary-link-text {
+      @include typography.subheading-tour-intro;
+      width: 100%;
+    }
+  }
+}

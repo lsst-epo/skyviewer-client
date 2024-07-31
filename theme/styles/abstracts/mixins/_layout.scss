@@ -67,7 +67,7 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: stretch;
-  height: var(--window-height, 100vh);
+  height: 100vh;
   padding: 0 24px;
   color: var(--white);
   background-color: var(--black);

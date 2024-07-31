@@ -10,8 +10,7 @@
   display: flex;
   justify-content: center;
   max-height: calc(
-    var(--window-height, 100vh) - var(--ges-header-height, 128px) -
-      var(--ges-nav-height, 95px)
+    100vh - var(--ges-header-height, 128px) - var(--ges-nav-height, 95px)
   );
   padding: 22px 17px 26px;
   overflow-y: auto;

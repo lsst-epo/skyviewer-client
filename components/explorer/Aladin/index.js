@@ -1,15 +1,12 @@
-import { useEffect, useState, useContext, useCallback, useRef } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import PropTypes from "prop-types";
-import { useRouter } from "next/router";
-import debounce from "lodash.debounce";
+import { useRouter } from "next/navigation";
 import useResizeObserver from "use-resize-observer";
-import { createCatalog, aladinizeCats, addCats } from "./utilities";
+import { addCats } from "./utilities";
 import ExplorerContext from "@/contexts/Explorer";
 import AladinGlobalContext from "@/contexts/AladinGlobal";
-import AladinCatalogsContext from "@/contexts/AladinCatalogs";
 import { AladinFocusProvider } from "@/contexts/AladinFocus";
 import FiltersContext from "@/contexts/Filters";
-import SourcesList from "@/components/explorer/Aladin/SourcesList";
 import Controls from "@/components/explorer/Controls";
 import SourceDetails from "@/components/explorer/SourceDetails";
 import defaultFilters from "@/fixtures/defaultExplorerFilters";
@@ -36,15 +33,11 @@ export default function Aladin({
   onMouseMove,
   onFullScreenToggled,
 }) {
-  const router = useRouter();
-  const { pathname, query } = router;
-  const { settings, setSettings } = useContext(ExplorerContext) || {};
+  const { settings } = useContext(ExplorerContext) || {};
   const [hasFocus, setHasFocus] = useState(false);
   const { aladinGlobal, aladin } = useContext(AladinGlobalContext) || {};
   const { filters } = useContext(FiltersContext) || {};
-  const [srcsInRegion, setSrcsInRegion] = useState(null);
   const [sourceData, setSourceData] = useState(null);
-  const astroObjectData = useAstroObjectContent(sourceData?.id);
   const aladinReticleCanvas = useRef(null);
 
   const { ref: aladinContainer } = useResizeObserver({
@@ -77,20 +70,7 @@ export default function Aladin({
     if (catalogs) {
       addCats(aladinGlobal, aladin, catalogs);
     }
-
-    // Update Markers
-    // addMarkers(markerLayers);
-
-    // if (jpgs) addJpgs(jpgs);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [aladinGlobal, aladin, catalogs, jpgs]);
-
-  // useEffect(() => {
-  //   router.replace({
-  //     pathname,
-  //     query: { ...query, objId: sourceData?.id || null },
-  //   });
-  // }, [sourceData]);
 
   useEffect(() => {
     if (!aladin) return;
@@ -172,72 +152,6 @@ export default function Aladin({
     });
   }
 
-  // function posIsInRegion(position, region) {
-  //   // console.log(position, region);
-  //   // dec: up = +; down = -  and  ra: left = +; right = -
-  //   const [
-  //     [topLeftRa, topLeftDec],
-  //     [topRightRa, topRightDec],
-  //     [bottomRightRa, bottomRightDec],
-  //     [bottomLeftRa, bottomLeftDec],
-  //   ] = region;
-  //   const [ra, dec] = position;
-
-  //   if (
-  //     ra > topLeftRa ||
-  //     ra < topRightRa ||
-  //     ra > bottomLeftRa ||
-  //     ra < bottomRightRa
-  //   ) {
-  //     return false;
-  //   }
-
-  //   if (
-  //     dec > topLeftDec ||
-  //     dec > topRightDec ||
-  //     dec < bottomLeftDec ||
-  //     dec < bottomRightDec
-  //   ) {
-  //     return false;
-  //   }
-
-  //   return true;
-  // }
-
-  // function getSrcsInRegion(region) {
-  //   if (!aladin) return;
-  //   const srcsInRegion = [];
-
-  //   aladin.view.catalogs.forEach((catalog) => {
-  //     const { order1Sources, order2Sources, sources: catSources } = catalog;
-  //     const sources = [
-  //       ...new Set([
-  //         ...(order1Sources || []),
-  //         ...(order2Sources || []),
-  //         ...(catSources || []),
-  //       ]),
-  //     ];
-
-  //     sources.forEach((source) => {
-  //       const { ra, dec } = source;
-  //       if (posIsInRegion([ra, dec], region)) {
-  //         filtersChecker(source);
-  //         srcsInRegion.push(source);
-  //       }
-  //     });
-  //   });
-
-  //   return srcsInRegion;
-  // }
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  // const debouncedRegionSrcsSetter = useCallback(
-  //   debounce((event) => {
-  //     // setSrcsInRegion(getSrcsInRegion(aladin.getFovCorners()));
-  //   }, 1000),
-  //   [aladin]
-  // );
-
   const onFocus = () => {
     setHasFocus(true);
   };
@@ -280,21 +194,6 @@ export default function Aladin({
     setSourceData(null);
   };
 
-  // const onPositionChanged = (event) => {
-  //   debouncedRegionSrcsSetter(event);
-  //   event.persist();
-  // };
-
-  const onZoomChanged = (event) => {
-    // if (isNaN(Number(event))) return;
-    // setSettings({
-    //   ...settings,
-    //   zoomLevel: Number(event).toFixed(2),
-    // });
-    // debouncedRegionSrcsSetter(event);
-    // event.persist();
-  };
-
   const addAladinEventHandlers = () => {
     const eventHandlers = {
       click: onClick || null,
@@ -313,30 +212,6 @@ export default function Aladin({
       if (eventHandler) aladin.on(event, eventHandler);
     }
   };
-
-  // const getMarkerSources = (markers) => {
-  //   return markers.map((marker) => {
-  //     const { data, popupTitle, popupDesc } = marker;
-  //     const { ra, dec } = data;
-  //     return aladinGlobal.marker(ra, dec, {
-  //       data,
-  //       popupTitle,
-  //       popupDesc,
-  //     });
-  //   });
-  // };
-
-  // const addMarkers = (markerLayers) => {
-  //   if (!markerLayers) return;
-  //   markerLayers.forEach((markerLayer) => {
-  //     const { markers } = markerLayer;
-  //     const markerLayerCatalog = createCatalog(markerLayer);
-  //     const markerSources = getMarkerSources(markers);
-
-  //     aladin.addCatalog(markerLayerCatalog);
-  //     markerLayerCatalog.addSources(markerSources);
-  //   });
-  // };
 
   const addJpgs = (jpgs) => {
     jpgs.forEach((jpg) => {
@@ -367,7 +242,6 @@ export default function Aladin({
     return true;
   };
 
-  // <SourcesList sources={srcsInRegion} />
   return (
     <AladinFocusProvider value={{ hasFocus, setHasFocus }}>
       <Controls defaultFilters={defaultFilters} />
