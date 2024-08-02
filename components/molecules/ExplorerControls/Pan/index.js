@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import { useAladin } from "@/contexts/Aladin";
-import AladinFocusContext from "@/contexts/AladinFocus";
 import { useKeyDownEvent } from "@/hooks/listeners";
 import { getKeyByValue } from "@/helpers";
 import Button from "@/primitives/Button";
@@ -13,8 +11,7 @@ const KEY_MAP = {
 };
 
 export default function Pan() {
-  const { hasFocus } = useContext(AladinFocusContext) || {};
-  const { aladin } = useAladin();
+  const { aladin, hasFocus } = useAladin();
 
   const goTo = (direction) => {
     const [width, height] = aladin.getSize();

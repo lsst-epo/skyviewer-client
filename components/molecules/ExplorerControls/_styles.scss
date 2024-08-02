@@ -1,7 +1,4 @@
 /* stylelint-disable no-descending-specificity */
-@forward "./Grid/styles";
-@forward "./Landmarks/styles";
-@forward "./Markers/styles";
 @forward "./Orientation/styles";
 @forward "./Pan/styles";
 @forward "./Search/styles";
@@ -36,19 +33,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: $controlDim;
-    height: $controlDim;
-    background-color: var(--neutral90);
+    width: var(--size-spacing-l);
+    height: var(--size-spacing-l);
+    background-color: var(--color-font-primary);
+    color: var(--color-font-invert);
     border-radius: 50%;
-    transition: background-color 0.4s, outline 0.4s;
+    transition: background-color 0.4s color 0.4s;
 
     &:focus {
-      outline: 2px solid var(--blue20);
+      outline: 2px solid var(--color-font-invert);
     }
 
     &.active,
     &:hover {
-      background-color: var(--turquoise55);
+      background-color: var(--color-background-button-primary-hover);
     }
   }
 
@@ -99,7 +97,6 @@
     }
 
     li:first-child {
-      // margin-left: 0;
       margin-left: $controlDim + $controlSpacing;
     }
 

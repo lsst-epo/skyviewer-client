@@ -23,5 +23,5 @@ const ValidAladinEvents: Array<AladinEvent> = [
 export const isAladinEvent = (
   maybeEvent: string
 ): maybeEvent is AladinEvent => {
-  return Object.hasOwn(ValidAladinEvents, maybeEvent);
+  return ValidAladinEvents.includes(maybeEvent as any);
 };

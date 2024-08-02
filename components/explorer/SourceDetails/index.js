@@ -30,9 +30,6 @@ const STEP = 0.1;
 
 export default function SourceDetails({ data, setData, handleClose }) {
   const { aladin } = useAladin();
-  const { settings } = useExplorerSettings();
-  const { zoomLevel, zoomRange } = settings;
-  const [min, max] = zoomRange;
   const [activeAccordion, setActiveAccordion] = useState("overview");
   const modalRef = useRef(null);
   const {
@@ -57,7 +54,7 @@ export default function SourceDetails({ data, setData, handleClose }) {
 
   const handleZoom = () => {
     aladin.animateToRaDec(ra, dec, 0.5, () => {
-      aladin.zoomToFoV(min, 0.5, () => {
+      aladin.zoomToFoV(aladin.view.minFoV, 0.5, () => {
         setData({ ...data, position: getPixelPos([ra, dec]) });
       });
     });

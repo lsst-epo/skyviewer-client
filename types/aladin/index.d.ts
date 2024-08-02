@@ -1,11 +1,11 @@
 // Aladin SkyView Lite is declared as `A` in the global scope
 
-import { Catalog } from "./catalog";
+import { AladinEventMap } from "./events";
 
 type CooFrame = "equatorial" | "ICRS" | "ICRSd" | "j2000" | "gal" | "galactic";
 export type HiPSImageFormat = "jpg" | "png" | "fits" | "webp";
 
-interface ImageHiPSOptions {
+export interface ImageHiPSOptions {
   name?: string;
   successCallback?: () => void;
   errorCallback?: () => void;
@@ -47,27 +47,6 @@ export interface AladinHipsImageFormat {
 
 type AladinProjection = "SIN" | "MOL" | "AIT" | "ZEA" | "MER";
 
-type AladinEvent =
-  | "select"
-  | "objectsSelected"
-  | "objectClicked"
-  | "objectHovered"
-  | "objectHoveredStop"
-  | "footprintClicked"
-  | "footprintHovered"
-  | "positionChanged"
-  | "zoomChanged"
-  | "click"
-  | "rightClickMove"
-  | "mouseMove"
-  | "fullScreenToggled"
-  | "cooFrameChanged"
-  | "resizeChanged"
-  | "projectionChanged"
-  | "layerChanged";
-
-type AladinEventHandler = (...args: any) => void;
-
 interface GridOptions {
   /** Color of the grid. Can be specified as a named color (see named colors), as rgb (ex: "rgb(178, 50, 178)"), or as a hex color (ex: "#86D6AE").
    * @default rgb(178,50,178)
@@ -92,7 +71,7 @@ interface GridOptions {
 }
 
 /** Options for configuring the Aladin Lite instance. */
-interface AladinOptions {
+export interface AladinOptions {
   /** URL or ID of the survey to use
    * @default "CDS/P/DSS2/color"
    */
@@ -235,12 +214,21 @@ interface AladinOptions {
 
 interface AladinSource {}
 
-interface AladinCatalog {
+export interface AladinCatalog {
   readonly addSources: (sources: AladinSource | AladinSource[]) => void;
+  readonly show: () => void;
+  readonly hide: () => void;
   readonly remove: (source: AladinSource) => void;
+
+  name: string;
 }
 
-interface AladinInstance {
+interface AladinView {
+  minFoV: number;
+  maxFoV: number;
+}
+
+export interface AladinInstance {
   readonly getRaDec: () => [number, number];
   readonly getSize: () => [number, number];
   readonly getFov: () => [number, number];
@@ -257,9 +245,12 @@ interface AladinInstance {
   readonly getColorMap: () => AladinColorMaps;
   readonly displayFITS: (fitsUrl: string) => void;
   readonly addCatalog: (catalog: AladinCatalog) => void;
+  /** @deprecated Old method name, use `Aladin.prototype.removeOverlays` instead. */
   readonly removeLayers: () => void;
-  // TODO: check if listener can be "cancelled"
-  readonly on: (type: AladinEvent, handler: AladinEventHandler) => void;
+  readonly on: <T extends keyof AladinEventMap>(
+    type: T,
+    handler: AladinEventMap[T]
+  ) => void;
   /** @deprecated */
   readonly createImageSurvey: (
     id: string,
@@ -268,7 +259,7 @@ interface AladinInstance {
     maxOrder: number,
     options: any
   ) => any;
-  readonly getOverlays: () => Array<Catalog>;
+  readonly getOverlays: () => Array<AladinCatalog>;
   readonly setCooGrid: (options: {
     color?: string;
     opacity?: number;
@@ -276,6 +267,16 @@ interface AladinInstance {
     thickness?: number;
     enabled?: boolean;
   }) => void;
+  /** Transform world coordinates to pixel coordinates in the view. */
+  readonly world2pix: (
+    lon: number,
+    lat: number,
+    frame?: CooFrame
+  ) => Float64Array;
+  readonly increaseZoom: () => void;
+  readonly decreaseZoom: () => void;
+  readonly removeOverlays: () => void;
+  view: AladinView;
 }
 
 type CatalogSourceShape =
@@ -334,3 +335,5 @@ export interface Aladin {
 
   // TODO: Add the final functions
 }
+
+export * from "./events";

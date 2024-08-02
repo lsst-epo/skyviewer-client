@@ -4,7 +4,7 @@ import {
   AladinInstance,
   AladinOptions,
   HiPSImageFormat,
-} from "types/aladin";
+} from "@/types/aladin";
 
 interface UseAladinProps {
   selector: string | HTMLElement | null;

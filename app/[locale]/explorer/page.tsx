@@ -1,16 +1,24 @@
 import { getCatalogsSurveysData } from "@/lib/api/catalogsSurveys";
 import { moveInArray } from "@/helpers";
-import Explorer from "@/components/explorer";
+import AladinTemplate from "@/components/templates/Aladin";
+import Explorer from "@/components/organisms/Explorer";
+import Controls from "@/components/molecules/ExplorerControls";
+import { Catalog } from "@/types/catalog";
 
 const ExplorerPage = async () => {
   const data = await getCatalogsSurveysData();
 
   const { catalogs, surveys } = data;
   const sortedCats = sortCats(catalogs);
-  const { fov, fovMin, fovMax, path, target, imgFormat } = surveys[0];
+  const { fov, fovMin, fovMax, path: survey, target, imgFormat } = surveys[0];
+  const options = {
+    fov: +fov || 60,
+    target: target || "267.0208333333 -24.7800000000",
+    survey,
+  };
 
-  function sortCats(cats) {
-    if (!cats) return null;
+  function sortCats(cats: Array<Catalog>): Array<Catalog> | undefined {
+    if (!cats) return undefined;
 
     const lastCatsIndex = cats.length - 1;
     const goalsCatIndex = cats.findIndex((cat) => {
@@ -33,14 +41,13 @@ const ExplorerPage = async () => {
   }
 
   return (
-    <Explorer
-      catalogs={sortedCats}
-      survey={path}
-      fov={+fov || 60}
+    <AladinTemplate
       fovRange={[fovMin, fovMax] || [2, 90]}
-      target={target || "267.0208333333 -24.7800000000"}
-      imgFormat={imgFormat}
-    />
+      {...{ options, imgFormat, survey }}
+    >
+      <Controls />
+      <Explorer catalogs={sortedCats} />
+    </AladinTemplate>
   );
 };
 
