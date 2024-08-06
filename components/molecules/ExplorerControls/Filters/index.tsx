@@ -1,15 +1,20 @@
-import { useState, useContext } from "react";
-import PropTypes from "prop-types";
-import FiltersContext from "@/contexts/Filters";
+import { FunctionComponent, useState } from "react";
 import Checkbox from "@/primitives/Checkbox";
 import Slider from "@rubin-epo/epo-react-lib/HorizontalSlider";
 import IconComposer from "@/svg/IconComposer";
 import FiltersMenu from "@/global/FiltersMenu";
+import defaultFilters, {
+  CharacteristicParams,
+} from "@/fixtures/defaultExplorerFilters";
+import { useAladin } from "@/contexts/Aladin";
+import { AladinSource } from "@/types/aladin";
 
-export default function Filters({ defaultFilters }) {
+const Filters: FunctionComponent = () => {
   const menuLabelId = "filters-menu-label";
   const menuDescriptionId = "filters-menu-description";
-  const { setFilters, filters } = useContext(FiltersContext) || {};
+  const { aladin } = useAladin();
+  const [commited, setCommitted] = useState(false);
+  const [filters, setFilters] = useState(defaultFilters);
   const [showFiltersReset, setShowFiltersReset] = useState(false);
   const handleTypeFilter = (checked, type) => {
     setFilters({ ...filters, types: { ...filters.types, [type]: checked } });
@@ -19,7 +24,10 @@ export default function Filters({ defaultFilters }) {
     }
   };
 
-  const handleCharacteristicFilter = (value, characteristic) => {
+  const handleCharacteristicFilter = (
+    value: Array<number>,
+    characteristic: string
+  ) => {
     setFilters({
       ...filters,
       characteristics: {
@@ -37,12 +45,39 @@ export default function Filters({ defaultFilters }) {
   };
 
   const resetFilters = () => {
-    setFilters({
-      ...filters,
-      types: { ...defaultFilters.types },
-      characteristics: { ...defaultFilters.characteristics },
-    });
+    setFilters(defaultFilters);
     setShowFiltersReset(false);
+  };
+
+  const filtersChecker = (source: AladinSource) => {
+    const types = filters.types;
+    const {
+      distance: { value: distanceRange },
+      brightness: { value: brightnessRange },
+    } = filters.characteristics;
+    const { type, brightness, distance } = source?.data;
+    const [minDistance, maxDistance] = distanceRange;
+    const [minBrightness, maxBrightness] = brightnessRange;
+
+    if (
+      !types[type] ||
+      distance < minDistance ||
+      distance > maxDistance ||
+      brightness < minBrightness ||
+      brightness > maxBrightness
+    ) {
+      return false;
+    }
+
+    return true;
+  };
+
+  const commitFilters = () => {
+    aladin?.view.catalogs.forEach((catalog) => {
+      catalog.filterFn = filtersChecker;
+      catalog.reportChange();
+    });
+    setCommitted(true);
   };
 
   return (
@@ -50,8 +85,8 @@ export default function Filters({ defaultFilters }) {
       {...{ menuLabelId, menuDescriptionId }}
       heading="Filtering Tool"
       subheading="Customize your view"
-      openButtonClasses="filters-button control-button"
       actionButtonHandler={showFiltersReset ? resetFilters : null}
+      commitHandler={commitFilters}
       openButtonOpts={{
         icon: <IconComposer icon="Filters" />,
         text: "Open Filters Modal Dialog",
@@ -81,20 +116,20 @@ export default function Filters({ defaultFilters }) {
         {filters.characteristics && (
           <div className="sliders">
             {Object.keys(filters.characteristics).map((charKey, i) => {
-              const characteristic = filters.characteristics[charKey];
+              const characteristic: CharacteristicParams =
+                filters.characteristics[charKey];
               const { min, max, step, value } = characteristic;
 
               return (
                 <Slider
                   key={charKey}
-                  label={charKey}
                   minLabel={min.label}
                   maxLabel={max.label}
                   min={min.value}
                   max={max.value}
                   step={step}
                   value={value}
-                  onChangeCallback={(value) =>
+                  onChangeCallback={(value: Array<number>) =>
                     handleCharacteristicFilter(value, charKey)
                   }
                   darkMode
@@ -106,8 +141,6 @@ export default function Filters({ defaultFilters }) {
       </div>
     </FiltersMenu>
   );
-}
-
-Filters.propTypes = {
-  defaultFilters: PropTypes.object,
 };
+
+export default Filters;

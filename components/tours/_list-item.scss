@@ -139,6 +139,7 @@
 
   .complexity {
     @include typography.subheading-tour-list;
+
     display: flex;
     flex-flow: row nowrap;
     align-items: baseline;

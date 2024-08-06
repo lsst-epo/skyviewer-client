@@ -20,6 +20,7 @@
 
   .guided-experience-subheading {
     @include typography.subheading-guided-experiences;
+
     margin: 0 auto;
   }
 
@@ -52,7 +53,6 @@
         functions.break(desktop),
         functions.break(tablet)
       );
-
       @include base.fluid-scale(
         stroke-width,
         3px,

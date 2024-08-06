@@ -5,6 +5,7 @@
 
 .share-button {
   @include appearance.proto-button;
+
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -144,6 +145,7 @@
 
   .share-network {
     @include typography.subheading-menu;
+
     margin-top: 10px;
 
     @include base.respond(functions.break(desktop-height), min, height) {

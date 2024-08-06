@@ -1,4 +1,27 @@
-export default {
+import { FilterableCatalog } from "@/types/catalog";
+
+export interface CharacteristicParams {
+  min: {
+    label: string;
+    value: number;
+  };
+  max: {
+    label: string;
+    value: number;
+  };
+  step: number;
+  value: Array<number>;
+}
+
+interface AppliedFilters {
+  types: Record<FilterableCatalog, boolean>;
+  characteristics: {
+    distance: CharacteristicParams;
+    brightness: CharacteristicParams;
+  };
+}
+
+const defaultFilters: AppliedFilters = {
   types: {
     star: true,
     galaxy: true,
@@ -32,3 +55,5 @@ export default {
     },
   },
 };
+
+export default defaultFilters;

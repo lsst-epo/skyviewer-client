@@ -1,26 +1,27 @@
 import { FunctionComponent, PropsWithChildren } from "react";
-import { AladinOptions, HiPSImageFormat } from "@/types/aladin";
+import { AladinOptions, ImageHiPSOptions } from "@/types/aladin";
 import { AladinProvider } from "@/contexts/Aladin";
 import styles from "./styles.module.css";
 
 interface AladinTemplateProps {
   fovRange?: Array<number>;
-  survey: string;
-  imgFormat: HiPSImageFormat;
   options: AladinOptions;
+  hipsConfig: {
+    id: string;
+    options: ImageHiPSOptions;
+  };
 }
 
 const AladinTemplate: FunctionComponent<
   PropsWithChildren<AladinTemplateProps>
-> = ({ survey, imgFormat, options, fovRange, children }) => {
+> = ({ options, fovRange, hipsConfig, children }) => {
   return (
     <main className={styles.viewerContainer}>
       <AladinProvider
         {...{
-          survey,
-          imgFormat,
           options,
           fovRange,
+          hipsConfig,
         }}
       >
         {children}

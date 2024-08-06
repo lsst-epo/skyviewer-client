@@ -11,7 +11,22 @@ export interface ImageHiPSOptions {
   errorCallback?: () => void;
   imgFormat?: HiPSImageFormat;
   cooFrame?: CooFrame;
-  maxOrder: number;
+  maxOrder?: number;
+  numBitsPerPixel?: number;
+  tileSize?: number;
+  minOrder?: number;
+  longitudeReversed?: boolean;
+  opacity?: number;
+  colormap?: string;
+  stretch?: string;
+  reversed?: boolean;
+  minCut?: number;
+  maxCut?: number;
+  additive?: boolean;
+  gamma?: number;
+  saturation?: number;
+  brightness?: number;
+  contrast?: number;
 }
 
 interface ImageHiPS {
@@ -212,20 +227,27 @@ export interface AladinOptions {
   pixelateCanvas?: boolean;
 }
 
-interface AladinSource {}
+export interface AladinSource {
+  data: any;
+}
 
 export interface AladinCatalog {
   readonly addSources: (sources: AladinSource | AladinSource[]) => void;
   readonly show: () => void;
   readonly hide: () => void;
   readonly remove: (source: AladinSource) => void;
+  readonly reportChange: () => void;
 
   name: string;
+  filter: (source: AladinSource) => boolean;
+  filterFn: (source: AladinSource) => boolean;
 }
 
 interface AladinView {
+  fov: number;
   minFoV: number;
   maxFoV: number;
+  catalogs: Array<AladinCatalog>;
 }
 
 export interface AladinInstance {
@@ -276,10 +298,22 @@ export interface AladinInstance {
   readonly increaseZoom: () => void;
   readonly decreaseZoom: () => void;
   readonly removeOverlays: () => void;
+  readonly zoomToFoV: (
+    fov: number,
+    duration?: number,
+    complete?: () => void
+  ) => void;
+  readonly animateToRaDec: (
+    ra: number,
+    dec: number,
+    duration?: number,
+    complete?: () => void
+  ) => void;
+  readonly getFoVCorners: (nbSteps?: number, frame?: CooFrame) => number[][];
   view: AladinView;
 }
 
-type CatalogSourceShape =
+export type CatalogSourceShape =
   | "circle"
   | "plus"
   | "rhomb"
@@ -297,7 +331,7 @@ interface AladinCatalogOptions {
   labelColumn?: string;
   labelColor?: string;
   labelFont?: string;
-  onClick?: "showTable" | "showPopup";
+  onClick?: "showTable" | "showPopup" | ((...args: any) => void);
   limit?: number;
 }
 

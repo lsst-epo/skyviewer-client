@@ -1,7 +1,7 @@
 import { Aladin, AladinInstance, CatalogSourceShape } from "@/types/aladin";
-import { Catalog } from "@/types/catalog";
+import { Catalog, RubinCatalog } from "@/types/catalog";
 
-const CUSTOM_SHAPES = {
+const CUSTOM_SHAPES: Record<RubinCatalog, string> = {
   star: "/shapes/star-icon.png",
   galaxy: "/shapes/galaxy-icon.png",
   nebula: "/shapes/nebula-icon.png",

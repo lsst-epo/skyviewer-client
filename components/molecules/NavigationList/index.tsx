@@ -1,12 +1,12 @@
 import { FunctionComponent } from "react";
 import classnames from "classnames";
-import Button from "@rubin-epo/epo-react-lib/Button";
-import Link, { LinkProps } from "next/link";
+import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
 import styles from "./styles.module.css";
 
-interface NavListItem extends LinkProps {
+interface NavListItem {
+  url: string;
   text: string;
-  styleAs?: string;
+  styleAs?: any;
 }
 
 interface NavigationListProps {
@@ -25,11 +25,9 @@ const NavigationList: FunctionComponent<NavigationListProps> = ({
       className={classnames(styles.navigationList, className)}
       data-direction={direction}
     >
-      {links.map(({ text, ...link }) => (
-        <li key={text}>
-          <Button as={Link as any} {...(link as any)} isBlock>
-            {text}
-          </Button>
+      {links.map((link, i) => (
+        <li key={i}>
+          <Buttonish {...link} isBlock />
         </li>
       ))}
     </ul>

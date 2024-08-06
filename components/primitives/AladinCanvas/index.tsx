@@ -25,7 +25,7 @@ interface AladinCanvasProps {
 }
 
 const AladinCanvas: FunctionComponent<AladinCanvasProps> = ({ ...events }) => {
-  const { setRef, ref, aladin } = useAladin();
+  const { setRef, aladin } = useAladin();
 
   useEffect(() => {
     if (aladin) {
@@ -41,20 +41,7 @@ const AladinCanvas: FunctionComponent<AladinCanvasProps> = ({ ...events }) => {
   }, [aladin, events]);
 
   return (
-    <div
-      ref={setRef}
-      // onClick={() => {
-      //   ref.current?.focus();
-      // }}
-      // onFocus={() => {
-      //   console.log("focused");
-      // }}
-      // onBlur={() => {
-      //   console.log("unfocused");
-      // }}
-      className={styles["aladin-container"]}
-      tabIndex={-1}
-    />
+    <div ref={setRef} className={styles["aladin-container"]} tabIndex={-1} />
   );
 };
 

@@ -17,12 +17,12 @@
     $max-width + 2 * $wide-padding,
     $max-width + 2 * $narrow-padding
   );
-
   @include base.fluid-scale(
     padding-right padding-left,
     $wide-padding,
     $narrow-padding
   );
+
   margin-right: auto;
   margin-left: auto;
 }
@@ -64,6 +64,7 @@
 
 @mixin container-guided {
   @include container-full-bleed(max);
+
   display: flex;
   flex-flow: column nowrap;
   align-items: stretch;
@@ -94,6 +95,7 @@
   $break: functions.break(tablet)
 ) {
   $supports-query: "(grid-auto-columns: min-content)";
+
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;

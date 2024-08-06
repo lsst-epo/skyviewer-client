@@ -4,19 +4,10 @@
 @forward "./Search/styles";
 @forward "./Share/styles";
 @forward "./Zoom/styles";
-
 @use "abstracts/mixins/typography";
 @use "abstracts/functions";
 
 .controls {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: 20px 15px;
-  border: 0;
-
   $controlDim: 40px;
   $controlSpacing: 12px;
 

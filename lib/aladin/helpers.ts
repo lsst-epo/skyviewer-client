@@ -1,4 +1,4 @@
-import { AladinEvent } from "@/types/aladin";
+import { AladinEvent, AladinInstance } from "@/types/aladin";
 
 const ValidAladinEvents: Array<AladinEvent> = [
   "select",
@@ -25,3 +25,10 @@ export const isAladinEvent = (
 ): maybeEvent is AladinEvent => {
   return ValidAladinEvents.includes(maybeEvent as any);
 };
+
+export function getPixelPosition(
+  aladin: AladinInstance,
+  { ra, dec }: { ra: number; dec: number }
+) {
+  return Array.from(aladin.world2pix(ra, dec)).reverse();
+}

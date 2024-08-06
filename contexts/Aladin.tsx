@@ -15,16 +15,20 @@ import {
   Aladin,
   AladinInstance,
   AladinOptions,
-  HiPSImageFormat,
+  ImageHiPSOptions,
 } from "@/types/aladin";
-import defaultOptions from "@/fixtures/defaultAladinOptions";
+import defaultOptions, {
+  defaultHiPSOptions,
+} from "@/fixtures/defaultAladinOptions";
 import { useOnClickOutside } from "@/hooks/listeners";
 
 interface AladinProps {
   fovRange?: Array<number>;
-  imgFormat: HiPSImageFormat;
-  survey: string;
   options?: AladinOptions;
+  hipsConfig: {
+    id: string;
+    options: ImageHiPSOptions;
+  };
 }
 
 interface AladinContextValue {
@@ -39,7 +43,7 @@ const AladinContext = createContext<AladinContextValue | null>(null);
 
 export const AladinProvider: FunctionComponent<
   PropsWithChildren<AladinProps>
-> = ({ children, imgFormat, survey, fovRange = [2, 90], options = {} }) => {
+> = ({ children, fovRange = [2, 90], hipsConfig, options = {} }) => {
   const [aladin, setAladin] = useState<AladinInstance | null>(null);
   const [A, setGlobalInstance] = useState<Aladin | null>(null);
 
@@ -62,20 +66,28 @@ export const AladinProvider: FunctionComponent<
     let isUnmounted = false;
 
     (async () => {
-      const { default: A } = await import("aladin-lite");
+      const A: Aladin = (await import("aladin-lite")).default;
 
       if (!isUnmounted) {
         A.init.then(() => {
           const aladin: AladinInstance = A.aladin(
-            renderRef?.current,
+            renderRef?.current || "",
             Object.assign(defaultOptions, options)
           );
+          aladin.setImageSurvey(
+            A.imageHiPS(hipsConfig.id, {
+              ...defaultHiPSOptions,
+              ...hipsConfig.options,
+              successCallback: () => {
+                aladin.setFoVRange(fovRange[0], fovRange[1]);
+              },
+            })
+          );
           renderRef?.current?.addEventListener("click", onFocus);
-          aladin.setFoVRange(fovRange[0], fovRange[1]);
 
+          setGlobalInstance(A);
           setAladin(aladin);
         });
-        setGlobalInstance(A);
       }
     })();
 

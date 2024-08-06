@@ -7,16 +7,15 @@ import Pan from "./Pan";
 import Zoom from "./Zoom";
 import IconToggle from "@/components/primitives/IconToggle";
 import { useAladin } from "@/contexts/Aladin";
+import AladinOverlay from "@/components/primitives/AladinOverlay";
 
-export default function Controls({ defaultFilters }) {
+export default function Controls() {
   const { aladin } = useAladin();
   const [gridEnabled, setGridEnabled] = useState<boolean>(
-    defaultAladinOptions?.showFrame
+    !!defaultAladinOptions?.showFrame
   );
   const [markersEnabled, setMarkersEnabled] = useState<boolean>(true);
   const [landmarksEnabled, setLandmarksEnabled] = useState<boolean>(true);
-
-  console.log({ gridEnabled, markersEnabled, landmarksEnabled });
 
   const handleGridToggle = () => {
     if (aladin) {
@@ -53,14 +52,14 @@ export default function Controls({ defaultFilters }) {
   };
 
   return (
-    <div className="controls">
+    <AladinOverlay className="controls">
       <ul
         role="menu"
         aria-label="Search and Filter"
         className="find controls-submenu"
       >
         <li role="menuitem">
-          {/* <Filters defaultFilters={defaultFilters} /> */}
+          <Filters />
         </li>
       </ul>
       <Zoom />
@@ -78,7 +77,7 @@ export default function Controls({ defaultFilters }) {
           />
         </li>
       </ul>
-      {/* <Share /> */}
+      <Share />
       <ul
         role="menu"
         aria-label="Toggle overlays"
@@ -99,6 +98,6 @@ export default function Controls({ defaultFilters }) {
           />
         </li>
       </ul>
-    </div>
+    </AladinOverlay>
   );
 }

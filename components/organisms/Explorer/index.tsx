@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useRef, FunctionComponent } from "react";
+import { useEffect, useState, FunctionComponent } from "react";
 import useResizeObserver from "use-resize-observer";
 import { addCats } from "./utilities";
 import { useAladin } from "@/contexts/Aladin";
@@ -11,6 +11,7 @@ import {
 import { ObjectClickedHandler } from "@/types/aladin";
 import AladinCanvas from "@/components/primitives/AladinCanvas";
 import { Catalog } from "@/types/catalog";
+import { getPixelPosition } from "@/lib/aladin/helpers";
 
 interface AladinProps {
   catalogs?: Array<Catalog>;
@@ -24,24 +25,22 @@ const Explorer: FunctionComponent<AladinProps> = ({
   ...props
 }) => {
   const { A, aladin, ref } = useAladin();
-  // const { filters } = useContext(FiltersContext) || {};
   const [additionalSourceData, setAdditionalSourceData] = useState<
     Record<string, any>
   >({});
-  const [sourceData, setSourceData] = useState(null);
-  const aladinReticleCanvas = useRef(null);
+  const [sourceData, setSourceData] = useState<any>(null);
 
-  console.log({ aladin });
-
-  const { ref: aladinContainer } = useResizeObserver({
+  useResizeObserver({
+    ref,
     onResize: () => {
-      if (!sourceData) return;
+      if (!sourceData || !aladin) return;
 
-      const currentSourceData = { ...sourceData };
-      const { _RA: ra, _DEC: dec } = currentSourceData;
+      const { _RA: ra, _DEC: dec } = sourceData;
 
-      currentSourceData.position = getPixelPos([ra, dec]);
-      setSourceData(currentSourceData);
+      setSourceData({
+        ...sourceData,
+        position: getPixelPosition(aladin, { ra, dec }),
+      });
     },
   });
 
@@ -54,53 +53,12 @@ const Explorer: FunctionComponent<AladinProps> = ({
     }
   }, [A, aladin, catalogs]);
 
-  // useEffect(() => {
-  //   if (!aladin) return;
-
-  //   const { showGoals } = settings;
-
-  //   toggleGoals(showGoals);
-  // }, [settings]);
-
-  // useEffect(() => {
-  //   if (!aladin) return;
-
-  //   aladin.view.catalogs.forEach((cat) => {
-  //     cat.filterFn = filtersChecker;
-  //     cat.reportChange();
-  //   });
-
-  //   // setSrcsInRegion(getSrcsInRegion(aladin.getFovCorners()));
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [filters]);
-
-  // function toggleGoals(show) {
-  //   const cats = aladin.view.catalogs;
-  //   const goalCats = cats.filter((cat) => {
-  //     const { name } = cat;
-
-  //     return name === "goal";
-  //   });
-
-  //   if (goalCats.length < 1) return;
-
-  //   goalCats.forEach((cat) => {
-  //     show ? cat.show() : cat.hide();
-  //     cat.reportChange();
-  //   });
-  // }
-
-  function getPixelPos(worldPos: Array<number>) {
-    const [ra, dec] = worldPos;
-    return Array.from(aladin?.world2pix(ra, dec)).reverse();
-  }
-
   const showSourceDetails: ObjectClickedHandler = async (event) => {
     if (!event) return;
     const { data, ra, dec } = event;
     const { id } = data;
     const additionalData = additionalSourceData[id];
-    const position = getPixelPos([ra, dec]);
+    const position = aladin ? getPixelPosition(aladin, { ra, dec }) : [];
 
     setSourceData({ ...data, ...additionalData, position });
 
@@ -137,29 +95,6 @@ const Explorer: FunctionComponent<AladinProps> = ({
   //   jpgs.forEach((jpg) => {
   //     aladin.displayJPG(jpg);
   //   });
-  // };
-
-  // const filtersChecker = (source) => {
-  //   const types = filters.types;
-  //   const {
-  //     distance: { value: distanceRange },
-  //     brightness: { value: brightnessRange },
-  //   } = filters.characteristics;
-  //   const { type, brightness, distance } = source?.data;
-  //   const [minDistance, maxDistance] = distanceRange;
-  //   const [minBrightness, maxBrightness] = brightnessRange;
-
-  //   if (
-  //     !types[type] ||
-  //     distance < minDistance ||
-  //     distance > maxDistance ||
-  //     brightness < minBrightness ||
-  //     brightness > maxBrightness
-  //   ) {
-  //     return false;
-  //   }
-
-  //   return true;
   // };
 
   return (

@@ -14,7 +14,6 @@ const ExplorerPage = async () => {
   const options = {
     fov: +fov || 60,
     target: target || "267.0208333333 -24.7800000000",
-    survey,
   };
 
   function sortCats(cats: Array<Catalog>): Array<Catalog> | undefined {
@@ -43,7 +42,8 @@ const ExplorerPage = async () => {
   return (
     <AladinTemplate
       fovRange={[fovMin, fovMax] || [2, 90]}
-      {...{ options, imgFormat, survey }}
+      hipsConfig={{ id: survey, options: { imgFormat } }}
+      {...{ options }}
     >
       <Controls />
       <Explorer catalogs={sortedCats} />
