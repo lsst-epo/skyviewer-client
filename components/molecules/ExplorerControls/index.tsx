@@ -77,7 +77,7 @@ export default function Controls() {
           />
         </li>
       </ul>
-      <Share />
+      {/* <Share /> */}
       <ul
         role="menu"
         aria-label="Toggle overlays"

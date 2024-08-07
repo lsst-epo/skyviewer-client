@@ -22,12 +22,19 @@ export async function getMarkerShape(
 }
 
 export async function addCat(A: Aladin, aladin: AladinInstance, cat: Catalog) {
-  const { path, icon, title } = cat;
+  const { path: url, icon, title } = cat;
   const shape: HTMLImageElement | CatalogSourceShape = CUSTOM_SHAPES[title]
     ? await getMarkerShape(CUSTOM_SHAPES[title])
     : "square";
 
-  aladin.addCatalog(A.catalogHiPS(path, { name: title, shape }));
+  const catalog = A.catalogHiPS(url, {
+    url,
+    name: title,
+    shape,
+    onClick: "showPopup",
+  });
+
+  aladin.addCatalog(catalog);
 }
 
 export const addCats = (

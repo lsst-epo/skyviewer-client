@@ -91,12 +91,6 @@ const Explorer: FunctionComponent<AladinProps> = ({
     setSourceData(null);
   };
 
-  // const addJpgs = (jpgs) => {
-  //   jpgs.forEach((jpg) => {
-  //     aladin.displayJPG(jpg);
-  //   });
-  // };
-
   return (
     <>
       <SourceDetails

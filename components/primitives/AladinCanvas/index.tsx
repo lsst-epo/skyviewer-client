@@ -2,8 +2,8 @@ import { FunctionComponent, useEffect } from "react";
 import camelCase from "lodash/camelCase";
 import { useAladin } from "@/contexts/Aladin";
 import { AladinEventMap } from "@/types/aladin";
-import styles from "./styles.module.css";
 import { isAladinEvent } from "@/lib/aladin/helpers";
+import "./styles.css";
 
 interface AladinCanvasProps {
   onObjectsSelected?: AladinEventMap["objectsSelected"];
@@ -22,9 +22,13 @@ interface AladinCanvasProps {
   onResizeChanged?: AladinEventMap["resizeChanged"];
   onProjectionChanged?: AladinEventMap["projectionChanged"];
   onLayerChanged?: AladinEventMap["layerChanged"];
+  className?: string;
 }
 
-const AladinCanvas: FunctionComponent<AladinCanvasProps> = ({ ...events }) => {
+const AladinCanvas: FunctionComponent<AladinCanvasProps> = ({
+  className,
+  ...events
+}) => {
   const { setRef, aladin } = useAladin();
 
   useEffect(() => {
@@ -40,9 +44,7 @@ const AladinCanvas: FunctionComponent<AladinCanvasProps> = ({ ...events }) => {
     }
   }, [aladin, events]);
 
-  return (
-    <div ref={setRef} className={styles["aladin-container"]} tabIndex={-1} />
-  );
+  return <div ref={setRef} className={className} tabIndex={-1} />;
 };
 
 AladinCanvas.displayName = "Atomic.AladinCanvas";

@@ -1,5 +1,6 @@
 // Aladin SkyView Lite is declared as `A` in the global scope
 
+import { string } from "prop-types";
 import { AladinEventMap } from "./events";
 
 type CooFrame = "equatorial" | "ICRS" | "ICRSd" | "j2000" | "gal" | "galactic";
@@ -322,17 +323,23 @@ export type CatalogSourceShape =
   | "square";
 
 interface AladinCatalogOptions {
+  url: string;
   name?: string;
-  shape?: CatalogSourceShape | HTMLCanvasElement | HTMLImageElement; // JPEG/PNG also supported, but how?
   color?: string;
   sourceSize?: number;
+  shape?: CatalogSourceShape | HTMLCanvasElement | HTMLImageElement; // JPEG/PNG also supported, but how?
+  limit?: number;
+  onClick?: "showTable" | "showPopup" | ((...args: any) => void);
+  readOnly?: boolean;
   raField?: string;
   decField?: string;
+  filter?: (source: AladinSource) => boolean;
+  selectionColor?: string;
+  hoverColor?: string;
+  displayLabel?: boolean;
   labelColumn?: string;
   labelColor?: string;
   labelFont?: string;
-  onClick?: "showTable" | "showPopup" | ((...args: any) => void);
-  limit?: number;
 }
 
 type AladinCatalogCallback = (sources: AladinSource[]) => void;
@@ -347,10 +354,10 @@ export interface Aladin {
   readonly catalog: (options?: AladinCatalogOptions) => AladinCatalog;
   readonly source: (ra: number, dec: number, data: any) => AladinSource;
   // TODO: add option info
-  readonly catalogFromUrl: (
+  readonly catalogFromURL: (
     url: string,
     options?: AladinCatalogOptions,
-    successCallback: AladinCatalogCallback,
+    successCallback?: AladinCatalogCallback,
     useProxy?: boolean
   ) => AladinCatalog;
   readonly catalogHiPS: (

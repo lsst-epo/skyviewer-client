@@ -19,7 +19,6 @@ export const defaultAladinOptions: AladinOptions = {
   showStatusBar: false,
   showCooLocation: false,
   showContextMenu: false,
-  pixelateCanvas: false,
 };
 
 export default defaultAladinOptions;
