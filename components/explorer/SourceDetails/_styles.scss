@@ -3,10 +3,7 @@
 
 .source-details-modal-container {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   z-index: -1;
   overflow: hidden;
   background-color: rgba(0 0 0 / 40%);
@@ -67,6 +64,7 @@
 
   .source-characteristics * {
     @include typography.source-detail-label;
+
     max-height: 200px;
     overflow-y: scroll;
   }
@@ -135,6 +133,7 @@
 
   .source-details-section-value {
     @include typography.source-detail-value;
+
     text-transform: capitalize;
 
     &.flex {
@@ -160,6 +159,7 @@
 
   .source-char-bar-labels {
     @include typography.source-detail-label;
+
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -221,6 +221,7 @@
 
     .source-filter-label {
       @include typography.source-detail-label;
+
       margin-right: 4px;
       text-transform: none;
 
@@ -240,6 +241,7 @@
 
   .source-alt-name-label {
     @include typography.source-detail-label;
+
     margin-right: 4px;
   }
 }

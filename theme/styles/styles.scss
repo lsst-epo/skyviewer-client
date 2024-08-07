@@ -13,7 +13,6 @@
 // Self-contained, reuseable blocks of markup.
 // Indicated by the class prefix `.m-`.
 @forward "components/index";
-
 @forward "global/index.css";
 
 // Pages
@@ -32,8 +31,6 @@
 // * `l-` - layout
 // * `is-`/`has-` - state
 @forward "utility/appearance";
-
-@forward "vendor/aladin.css";
 
 // Z-Stack
 // @forward 'z-stack';

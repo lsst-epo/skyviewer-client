@@ -1,6 +1,5 @@
 import { FunctionComponent, PropsWithChildren } from "react";
 import { Metadata } from "next";
-import Script from "next/script";
 import "@/styles/styles.scss";
 import StyledComponentsRegistry from "@/lib/registry";
 import { SourceSansPro } from "@/lib/fonts";
@@ -38,18 +37,6 @@ const RootLayout: FunctionComponent<PropsWithChildren<RootProps>> = ({
   return (
     <html lang={locale}>
       <head>
-        {/* Aladin Lite has a dependency on the jQuery library */}
-        <Script
-          type="text/javascript"
-          src="https://code.jquery.com/jquery-1.12.1.min.js"
-          strategy="beforeInteractive"
-        ></Script>
-        {/* Aladin Lite JS code */}
-        <Script
-          type="text/javascript"
-          src="/aladin-lite/v2/aladin.js"
-          strategy="beforeInteractive"
-        ></Script>
         <link rel="shortcut icon" href="/favicon.ico" />
       </head>
       <body className={SourceSansPro.variable}>

@@ -34,8 +34,7 @@
 
   .filters-menu-content-wrapper {
     flex-grow: 3;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden auto;
   }
 
   .menu-section {

@@ -17,7 +17,6 @@
 @forward "components/global/SecondaryHeader/styles";
 
 // Layouts
-@forward "components/organisms/Aladin/styles";
 @forward "components/organisms/GuidedExperience/styles";
 @forward "components/organisms/GuidedExperiences/styles";
 
@@ -30,9 +29,7 @@
 
 // Tours
 @forward "components/tours/styles";
-@forward "components/Pois/styles";
 
 // Explorer
-@forward "components/explorer/Aladin/styles";
-@forward "components/explorer/Controls/styles";
+@forward "components/molecules/ExplorerControls/styles";
 @forward "components/explorer/SourceDetails/styles";

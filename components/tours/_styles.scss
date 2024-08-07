@@ -1,7 +1,6 @@
 @use "abstracts/mixins/base";
 @use "abstracts/functions";
 @use "abstracts/mixins/typography";
-
 @forward "./list-item";
 @forward "./intro";
 @forward "./fun-fact";
@@ -17,8 +16,7 @@
 
   @include base.respond(functions.break(tablet), min) {
     justify-content: flex-start;
-    overflow-x: auto;
-    overflow-y: auto;
+    overflow: auto auto;
   }
 }
 
@@ -29,7 +27,6 @@
 
   @include base.respond(functions.break(tablet), min) {
     flex-flow: row nowrap;
-
     padding: 0 24px;
   }
 }
@@ -93,6 +90,7 @@
 
   .skip-link {
     @include typography.skip-link;
+
     position: absolute;
     right: 0;
     bottom: 0;

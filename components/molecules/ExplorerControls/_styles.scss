@@ -1,0 +1,99 @@
+/* stylelint-disable no-descending-specificity */
+@forward "./Orientation/styles";
+@forward "./Pan/styles";
+@forward "./Search/styles";
+@forward "./Share/styles";
+@forward "./Zoom/styles";
+@use "abstracts/mixins/typography";
+@use "abstracts/functions";
+
+.controls {
+  $controlDim: 40px;
+  $controlSpacing: 12px;
+
+  .controls-submenu {
+    position: absolute;
+    z-index: functions.z-stack(controls);
+
+    > li {
+      display: block;
+    }
+  }
+
+  .control-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--size-spacing-l);
+    height: var(--size-spacing-l);
+    background-color: var(--color-font-primary);
+    color: var(--color-font-invert);
+    border-radius: 50%;
+    transition: background-color 0.4s color 0.4s;
+
+    &:focus {
+      outline: 2px solid var(--color-font-invert);
+    }
+
+    &.active,
+    &:hover {
+      background-color: var(--color-background-button-primary-hover);
+    }
+  }
+
+  .wayfinding,
+  .find {
+    > li {
+      + li {
+        margin-top: $controlSpacing;
+      }
+    }
+  }
+
+  .zooms {
+    top: calc(50% - 50px);
+    right: 0;
+  }
+
+  .pan {
+    right: 10px;
+    bottom: 0;
+    display: flex;
+
+    > li {
+      + li {
+        margin-left: $controlSpacing;
+      }
+    }
+  }
+
+  .find {
+    position: static;
+  }
+
+  .wayfinding {
+    bottom: calc(50% - #{$controlDim} - (#{$controlSpacing}));
+    left: 0;
+  }
+
+  .overlays {
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: (2 * $controlDim) + $controlSpacing;
+
+    li {
+      margin-left: $controlSpacing;
+    }
+
+    li:first-child {
+      margin-left: $controlDim + $controlSpacing;
+    }
+
+    li:last-child {
+      margin-top: $controlSpacing;
+      margin-left: $controlDim + $controlSpacing;
+    }
+  }
+}
