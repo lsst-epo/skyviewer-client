@@ -36,6 +36,7 @@ interface AladinContextValue {
   A: Aladin | null;
   setRef: RefCallback<HTMLElement>;
   ref: MutableRefObject<HTMLElement | null>;
+  isLoading: boolean;
   hasFocus: boolean;
 }
 
@@ -48,6 +49,7 @@ export const AladinProvider: FunctionComponent<
   const aladin = useRef<AladinInstance | null>(null);
 
   const [hasFocus, setFocus] = useState(false);
+  const [isLoading, setLoading] = useState(true);
 
   const renderRef = useRef<HTMLElement | null>(null);
   const setRef: RefCallback<HTMLElement> = useCallback((node: HTMLElement) => {
@@ -87,6 +89,7 @@ export const AladinProvider: FunctionComponent<
 
           A.current = global;
           aladin.current = newInstance;
+          setLoading(false);
         });
       }
     })();
@@ -109,6 +112,7 @@ export const AladinProvider: FunctionComponent<
         setRef,
         ref: renderRef,
         hasFocus,
+        isLoading,
       }}
     >
       {children}

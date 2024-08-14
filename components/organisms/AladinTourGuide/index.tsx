@@ -42,11 +42,11 @@ const AladinTourGuide: FunctionComponent<AladinTourGuideProps> = ({
   const searchParams = useSearchParams();
   const poiIndex = parseInt(searchParams.get("poi") || "1") - 1;
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
-  const { aladin } = useAladin();
+  const { aladin, isLoading } = useAladin();
   const poi = data.tourPois[currentIndex || 0];
 
   useEffect(() => {
-    if (poiIndex !== currentIndex && aladin) {
+    if (!isLoading) {
       const targetPoi = data.tourPois[poiIndex];
       const { astroObject, fov } = targetPoi;
       if (!aladin || !astroObject || astroObject?.length < 1) return;
@@ -60,7 +60,7 @@ const AladinTourGuide: FunctionComponent<AladinTourGuideProps> = ({
         });
       });
     }
-  }, [aladin, poiIndex]);
+  }, [isLoading, searchParams]);
 
   const getNavLinks = (current: number, data) => {
     const { tourPois, factsContentBlocks, introContentBlocks } = data;
