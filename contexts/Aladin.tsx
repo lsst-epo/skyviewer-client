@@ -44,8 +44,8 @@ const AladinContext = createContext<AladinContextValue | null>(null);
 export const AladinProvider: FunctionComponent<
   PropsWithChildren<AladinProps>
 > = ({ children, fovRange = [2, 90], hipsConfig, options = {} }) => {
-  const [aladin, setAladin] = useState<AladinInstance | null>(null);
-  const [A, setGlobalInstance] = useState<Aladin | null>(null);
+  const A = useRef<Aladin | null>(null);
+  const aladin = useRef<AladinInstance | null>(null);
 
   const [hasFocus, setFocus] = useState(false);
 
@@ -66,27 +66,27 @@ export const AladinProvider: FunctionComponent<
     let isUnmounted = false;
 
     (async () => {
-      const A: Aladin = (await import("aladin-lite")).default;
+      const global: Aladin = (await import("aladin-lite")).default;
 
       if (!isUnmounted) {
-        A.init.then(() => {
-          const aladin: AladinInstance = A.aladin(
+        global.init.then(() => {
+          const newInstance: AladinInstance = global.aladin(
             renderRef?.current || "",
             Object.assign(defaultOptions, options)
           );
-          aladin.setImageSurvey(
-            A.imageHiPS(hipsConfig.id, {
+          newInstance.setImageSurvey(
+            global.imageHiPS(hipsConfig.id, {
               ...defaultHiPSOptions,
               ...hipsConfig.options,
               successCallback: () => {
-                aladin.setFoVRange(fovRange[0], fovRange[1]);
+                newInstance.setFoVRange(fovRange[0], fovRange[1]);
               },
             })
           );
           renderRef?.current?.addEventListener("click", onFocus);
 
-          setGlobalInstance(A);
-          setAladin(aladin);
+          A.current = global;
+          aladin.current = newInstance;
         });
       }
     })();
@@ -94,8 +94,8 @@ export const AladinProvider: FunctionComponent<
     return () => {
       isUnmounted = true;
       renderRef?.current?.removeEventListener("click", onFocus);
-      setAladin(null);
-      setGlobalInstance(null);
+      aladin.current = null;
+      A.current = null;
     };
   }, []);
 
@@ -103,7 +103,13 @@ export const AladinProvider: FunctionComponent<
 
   return (
     <AladinContext.Provider
-      value={{ aladin, A, setRef, ref: renderRef, hasFocus }}
+      value={{
+        aladin: aladin.current,
+        A: A.current,
+        setRef,
+        ref: renderRef,
+        hasFocus,
+      }}
     >
       {children}
     </AladinContext.Provider>
