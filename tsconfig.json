@@ -14,25 +14,13 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/lib/*": ["lib/*"],
-      "@/api/*": ["lib/api/*"],
-      "@/components/*": ["components/*"],
-      "@/primitives/*": ["components/primitives/*"],
-      "@/organisms/*": ["components/organisms/*"],
-      "@/global/*": ["components/global/*"],
-      "@/shapes/*": ["components/shapes/*"],
-      "@/hooks/*": ["hooks/*"],
-      "@/contexts/*": ["contexts/*"],
-      "@/styles/*": ["theme/styles/*"],
-      "@/svg/*": ["components/svg/*"],
-      "@/helpers": ["helpers"],
-      "@/fixtures/*": ["fixtures/*"],
-      "@/types/*": ["types/*"]
+      "@/*": ["./*"]
     },
     "plugins": [
       {
         "name": "next"
-      }
+      },
+      { "name": "typescript-plugin-css-modules" }
     ],
     "strictNullChecks": true
   },

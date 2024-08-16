@@ -4,9 +4,9 @@ import MenuContext from "@/contexts/Menu";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import useResizeObserver from "use-resize-observer";
-import Buttonish from "@/primitives/Buttonish";
-import MainMenu from "@/global/MainMenu";
-import IconComposer from "@/svg/IconComposer";
+import Buttonish from "@/components/primitives/Buttonish";
+import MainMenu from "@/components/global/MainMenu";
+import IconComposer from "@/components/svg/IconComposer";
 
 export default function Header({ closeUrl = "/", backgroundColor, route }) {
   const { ref } = useResizeObserver({

@@ -1,6 +1,6 @@
 import { FunctionComponent, PropsWithChildren } from "react";
 import { MenuProvider } from "@/contexts/Menu";
-import Header from "@/global/PrimaryHeader";
+import Header from "@/components/global/PrimaryHeader";
 
 interface PrimaryLayoutProps {
   closeUrl?: string;

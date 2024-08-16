@@ -1,8 +1,8 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
-import Header from "@/global/GuidedExperienceHeader";
-import SecondaryHeader from "@/global/SecondaryHeader";
+import Header from "@/components/global/GuidedExperienceHeader";
+import SecondaryHeader from "@/components/global/SecondaryHeader";
 import useResizeObserver from "use-resize-observer";
 
 export default function GuidedExperiencesLayout({

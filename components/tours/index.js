@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import LoadingSpinner from "@/primitives/LoadingSpinner";
+import LoadingSpinner from "@/components/primitives/LoadingSpinner";
 import TourListItem from "./ListItem";
 import TourSortFilterContext from "@/contexts/TourSortFilter";
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Button from "@/primitives/Button";
-import IconComposer from "@/svg/IconComposer";
+import Button from "@/components/primitives/Button";
+import IconComposer from "@/components/svg/IconComposer";
 
 export default function Search() {
   const [isOpen, setIsOpen] = useState(false);

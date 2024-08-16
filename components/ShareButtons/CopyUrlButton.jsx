@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import copy from "copy-to-clipboard";
-import IconComposer from "@/svg/IconComposer";
+import IconComposer from "@/components/svg/IconComposer";
 import ShareButton from "@/components/ShareButtons/ShareButton";
 
 export default function CopyUrlButton({ showLabel }) {

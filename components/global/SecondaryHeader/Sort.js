@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
 import PropTypes from "prop-types";
-import Menu from "@/primitives/Menu";
-import Radio from "@/primitives/Radio";
-import IconComposer from "@/svg/IconComposer";
+import Menu from "@/components/primitives/Menu";
+import Radio from "@/components/primitives/Radio";
+import IconComposer from "@/components/svg/IconComposer";
 
 export default function Sort({ context }) {
   const menuLabelId = "filters-menu-label";

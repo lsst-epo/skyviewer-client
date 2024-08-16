@@ -1,8 +1,8 @@
 import { FunctionComponent, useState } from "react";
-import Checkbox from "@/primitives/Checkbox";
+import Checkbox from "@/components/primitives/Checkbox";
 import Slider from "@rubin-epo/epo-react-lib/HorizontalSlider";
-import IconComposer from "@/svg/IconComposer";
-import FiltersMenu from "@/global/FiltersMenu";
+import IconComposer from "@/components/svg/IconComposer";
+import FiltersMenu from "@/components/global/FiltersMenu";
 import defaultFilters, {
   CharacteristicParams,
 } from "@/fixtures/defaultExplorerFilters";
