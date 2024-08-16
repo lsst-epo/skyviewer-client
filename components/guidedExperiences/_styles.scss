@@ -5,6 +5,7 @@
 
 .guided-experiences-heading {
   @include typography.heading-guided-experiences;
+
   padding: 15px 0;
   text-align: center;
 }
@@ -127,10 +128,7 @@
 
   .background-opacitizer {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
     background-color: var(--black);
     opacity: 0.65;
   }
@@ -143,6 +141,7 @@
 
   .guided-experience-landing-heading {
     @include typography.heading-guided-experience-landing;
+
     text-align: center;
   }
 

@@ -1,8 +1,7 @@
-import { useEffect, useState, useRef, useContext } from "react";
+import { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
-import AladinGlobalContext from "@/contexts/AladinGlobal";
-import ExplorerContext from "@/contexts/Explorer";
+import { useAladin } from "@/contexts/Aladin";
 import Accordion from "@/primitives/Accordion";
 import AccordionGroup from "@/primitives/AccordionGroup";
 import Button from "@/primitives/Button";
@@ -16,6 +15,7 @@ import CharBar from "./CharBar";
 import AltNames from "./AltNames";
 import useFocusTrap from "@/hooks/useFocusTrap";
 import { useKeyDownEvent, useOnClickOutside } from "@/hooks/listeners";
+import { getPixelPosition } from "@/lib/aladin/helpers";
 
 const placeholderFilters = [
   { label: "u", value: 17.81 },
@@ -29,10 +29,7 @@ const placeholderFilters = [
 const STEP = 0.1;
 
 export default function SourceDetails({ data, setData, handleClose }) {
-  const { aladin } = useContext(AladinGlobalContext) || {};
-  const { settings } = useContext(ExplorerContext) || {};
-  const { zoomLevel, zoomRange } = settings;
-  const [min, max] = zoomRange;
+  const { aladin } = useAladin();
   const [activeAccordion, setActiveAccordion] = useState("overview");
   const modalRef = useRef(null);
   const {
@@ -49,16 +46,10 @@ export default function SourceDetails({ data, setData, handleClose }) {
   } = data || {};
   const [top, left] = position || ["auto", "auto"];
 
-  function getPixelPos(worldPos) {
-    const [ra, dec] = worldPos;
-    const pixelPos = aladin.world2pix(ra, dec);
-    return [pixelPos[1], pixelPos[0]];
-  }
-
   const handleZoom = () => {
     aladin.animateToRaDec(ra, dec, 0.5, () => {
-      aladin.zoomToFoV(min, 0.5, () => {
-        setData({ ...data, position: getPixelPos([ra, dec]) });
+      aladin.zoomToFoV(aladin.view.minFoV, 0.5, () => {
+        setData({ ...data, position: getPixelPosition(aladin, { ra, dec }) });
       });
     });
   };

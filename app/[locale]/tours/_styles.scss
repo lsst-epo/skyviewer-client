@@ -7,12 +7,14 @@
 
 .tours-container {
   @include layout.container-guided;
+
   padding-top: 0;
 }
 
 .tour-summary-container {
   $summaryLinkNumberSize: 34px;
   $summarySpacing: math.div($summaryLinkNumberSize, 2);
+
   position: relative;
   display: flex;
   flex-flow: column nowrap;
@@ -50,6 +52,7 @@
 
     .summary-heading {
       @include typography.heading-tour-intro;
+
       text-align: center;
 
       @include base.respond(functions.break(tablet), min) {
@@ -59,6 +62,7 @@
 
     p {
       @include typography.subheading-tour-intro;
+
       text-align: center;
     }
   }
@@ -142,7 +146,6 @@
         functions.break(desktop),
         functions.break(tablet)
       );
-
       @include base.fluid-scale(
         margin-left,
         115px,
@@ -161,6 +164,7 @@
 
   .summary-links-list-heading {
     @include typography.subheading-tour-intro;
+
     margin-left: $summarySpacing;
   }
 
@@ -168,7 +172,6 @@
     display: flex;
     flex-flow: column nowrap;
     margin-top: 30px;
-
     list-style: none;
     counter-reset: summary-links;
 
@@ -211,6 +214,7 @@
 
     .summary-link-text {
       @include typography.subheading-tour-intro;
+
       width: 100%;
     }
   }

@@ -61,11 +61,13 @@
 
     .tour-intro-heading {
       @include typography.heading-tour-intro;
+
       margin-top: 26px;
     }
 
     .tour-intro-subheading {
       @include typography.subheading-tour-intro;
+
       margin-top: 5px;
     }
   }

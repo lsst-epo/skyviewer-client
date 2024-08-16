@@ -1,0 +1,5 @@
+.viewerContainer {
+  overflow: hidden;
+  position: relative;
+  height: calc(100vh - var(--main-header-height, 42px));
+}
