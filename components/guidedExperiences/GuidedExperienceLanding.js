@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
-import IconComposer from "@/svg/IconComposer";
+import IconComposer from "@/components/svg/IconComposer";
 import Bubbles from "@/components/Bubbles";
 
 export default function GuidedExperienceLanding({

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import { EmailShareButton } from "react-share";
-import IconComposer from "@/svg/IconComposer";
+import IconComposer from "@/components/svg/IconComposer";
 
 export default function ShareButton({
   subject,

@@ -1,9 +1,9 @@
 import { useState, useContext } from "react";
 import PropTypes from "prop-types";
-import Checkbox from "@/primitives/Checkbox";
+import Checkbox from "@/components/primitives/Checkbox";
 import Slider from "@rubin-epo/epo-react-lib/HorizontalSlider";
-import IconComposer from "@/svg/IconComposer";
-import FiltersMenu from "@/global/FiltersMenu";
+import IconComposer from "@/components/svg/IconComposer";
+import FiltersMenu from "@/components/global/FiltersMenu";
 
 export default function Filters({ context, defaultFilters }) {
   const menuLabelId = "guided-experience-filters-menu-label";

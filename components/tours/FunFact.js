@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
-import IconComposer from "@/svg/IconComposer";
+import IconComposer from "@/components/svg/IconComposer";
 
 export default function FunFact({ skipUrl, id, heading, blocks }) {
   const mobileContent = blocks[id - 1]?.body;

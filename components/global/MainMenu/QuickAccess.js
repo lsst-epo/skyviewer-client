@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import IconComposer from "@/svg/IconComposer";
-import Buttonish from "@/primitives/Buttonish";
+import IconComposer from "@/components/svg/IconComposer";
+import Buttonish from "@/components/primitives/Buttonish";
 
 export default function QuickAccess({ route }) {
   return (

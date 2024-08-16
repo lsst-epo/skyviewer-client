@@ -1,6 +1,6 @@
+import "@/styles/styles.scss";
 import { FunctionComponent, PropsWithChildren } from "react";
 import { Metadata } from "next";
-import "@/styles/styles.scss";
 import StyledComponentsRegistry from "@/lib/registry";
 import { SourceSansPro } from "@/lib/fonts";
 import { fallbackLng, languages } from "@/lib/i18n/settings";

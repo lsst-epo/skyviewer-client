@@ -104,7 +104,8 @@
     "stylelint-config-recess-order": "4",
     "stylelint-config-standard-scss": "^13.1.0",
     "stylelint-scss": "^4.0.1",
-    "typescript": "5.5.4"
+    "typescript": "5.5.4",
+    "typescript-plugin-css-modules": "^5.1.0"
   },
   "resolutions": {
     "**/ansi-regex": "^5.0.1",

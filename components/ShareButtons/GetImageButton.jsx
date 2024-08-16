@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useAladin } from "@/contexts/Aladin";
-import IconComposer from "@/svg/IconComposer";
+import IconComposer from "@/components/svg/IconComposer";
 import ShareButton from "@/components/ShareButtons/ShareButton";
 import { getDownloadLink } from "@/helpers";
 

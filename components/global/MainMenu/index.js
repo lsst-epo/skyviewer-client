@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
 import PropTypes from "prop-types";
-import IconComposer from "@/svg/IconComposer";
+import IconComposer from "@/components/svg/IconComposer";
 import Button from "@rubin-epo/epo-react-lib/Button";
 import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
-import Menu from "@/primitives/Menu";
+import Menu from "@/components/primitives/Menu";
 import AboutMenu from "./AboutMenu.js";
 import LocaleMenu from "./LocaleMenu.js";
 import ShareMenu from "./ShareMenu.js";

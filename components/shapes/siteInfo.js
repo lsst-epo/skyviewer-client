@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import imageShape from "@/shapes/image";
+import imageShape from "@/components/shapes/image";
 
 export const socialInfoInternalShape = {
   facebook: PropTypes.string,

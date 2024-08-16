@@ -1,7 +1,7 @@
 import { useAladin } from "@/contexts/Aladin";
 import { useKeyDownEvent } from "@/hooks/listeners";
-import Button from "@/primitives/Button";
-import IconComposer from "@/svg/IconComposer";
+import Button from "@/components/primitives/Button";
+import IconComposer from "@/components/svg/IconComposer";
 
 export default function Zoom() {
   const { aladin, hasFocus } = useAladin();

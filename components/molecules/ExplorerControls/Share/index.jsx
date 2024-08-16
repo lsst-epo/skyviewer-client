@@ -1,5 +1,5 @@
-import IconComposer from "@/svg/IconComposer";
-import Modal from "@/primitives/Modal";
+import IconComposer from "@/components/svg/IconComposer";
+import Modal from "@/components/primitives/Modal";
 import ShareButtons from "@/components/ShareButtons";
 
 export default function Share() {
