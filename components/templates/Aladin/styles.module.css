@@ -1,5 +1,14 @@
-.viewerContainer {
+.viewLayout {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
-  position: relative;
   height: calc(100vh - var(--main-header-height, 42px));
+}
+
+.aladinViewer {
+  flex-grow: 1;
+  position: relative;
+}
+
+.aladinFooter {
 }

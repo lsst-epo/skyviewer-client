@@ -69,6 +69,7 @@ export type LayerChangedHandler = (
   action: "ADDED" | "REMOVED"
 ) => void;
 export type MouseMoveHandler = (event: MousePositionEvent) => void;
+export type ZoomChangedHandler = (fov: number) => void;
 
 export interface AladinEventMap {
   objectHovered: AladinGenericEventHandler;
@@ -80,7 +81,7 @@ export interface AladinEventMap {
   footprintClicked: AladinGenericEventHandler;
   footprintHovered: AladinGenericEventHandler;
   positionChanged: AladinGenericEventHandler;
-  zoomChanged: AladinGenericEventHandler;
+  zoomChanged: ZoomChangedHandler;
   click: ClickEventHandler;
   rightClickMove: AladinGenericEventHandler;
   mouseMove: MouseMoveHandler;

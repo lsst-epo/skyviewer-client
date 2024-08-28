@@ -36,3 +36,5 @@ yarn-error.log*
 
 # Environment config
 .env
+
+certificates

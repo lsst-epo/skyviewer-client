@@ -1,0 +1,9 @@
+.controlGroup {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: var(--size-spacing-2xs);
+
+  &[data-direction="vertical"] {
+    flex-direction: column;
+  }
+}

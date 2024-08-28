@@ -23,7 +23,8 @@
     "fix": "npm-run-all fix:js fix:scss fix:styled",
     "fix:js": "prettier --write \"**/*.{js,jsx}\" && eslint -c .eslintrc.js \"**/*.{js,jsx,ts,tsx}\" --fix",
     "fix:scss": "stylelint --config .stylelintrc.js \"**/*.scss\" --fix",
-    "release": "commit-and-tag-version"
+    "release": "commit-and-tag-version",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "commit-and-tag-version": {
     "skip": {
@@ -55,14 +56,16 @@
   },
   "dependencies": {
     "@babel/runtime": "7.11.2",
-    "@rubin-epo/epo-react-lib": "^2.1.0-beta.7",
+    "@rubin-epo/epo-react-lib": "^2.1.2",
+    "@urql/next": "^1.1.1",
     "aladin-lite": "^3.4.5",
     "classnames": "^2.5.1",
     "copy-to-clipboard": "^3.3.1",
+    "file-saver": "^2.0.5",
     "focus-trap": "^6.1.2",
     "focus-visible": "^5.1.0",
-    "graphql": "^15.5.0",
-    "graphql-request": "^3.4.0",
+    "graphql": "^16.9.0",
+    "graphql-request": "6",
     "i18next": "23",
     "i18next-browser-languagedetector": "^8.0.0",
     "i18next-resources-to-backend": "^1.2.1",
@@ -78,10 +81,14 @@
     "sass": "^1.77.8",
     "styled-components": "^6.1.11",
     "swr": "^0.5.6",
+    "urql": "^4.1.0",
     "use-resize-observer": "^9.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
+    "@graphql-codegen/cli": "5.0.2",
+    "@graphql-codegen/client-preset": "4.3.3",
+    "@types/file-saver": "^2.0.7",
     "@types/lodash": "^4.17.7",
     "@types/node": "^20.14.12",
     "@types/react": "18.3.3",
@@ -100,11 +107,11 @@
     "husky": "^8.0.3",
     "npm-run-all": "^4.1.5",
     "postcss-preset-env": "^9.6.0",
-    "stylelint": "15",
+    "stylelint": "16",
     "stylelint-config-recess-order": "4",
     "stylelint-config-standard-scss": "^13.1.0",
     "stylelint-scss": "^4.0.1",
-    "typescript": "5.5.4",
+    "typescript": "^5.5.4",
     "typescript-plugin-css-modules": "^5.1.0"
   },
   "resolutions": {

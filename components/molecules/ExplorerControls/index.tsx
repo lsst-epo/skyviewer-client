@@ -4,10 +4,11 @@ import defaultAladinOptions from "@/fixtures/defaultAladinOptions";
 import Filters from "./Filters";
 import Share from "./Share";
 import Pan from "./Pan";
-import Zoom from "./Zoom";
+import Zoom from "../Controls/Zoom";
 import IconToggle from "@/components/primitives/IconToggle";
 import { useAladin } from "@/contexts/Aladin";
 import AladinOverlay from "@/components/primitives/AladinOverlay";
+import styles from "./styles.module.css";
 
 export default function Controls() {
   const { aladin } = useAladin();
@@ -62,7 +63,9 @@ export default function Controls() {
           <Filters />
         </li>
       </ul>
-      <Zoom />
+      <div className={styles.zoomContainer}>
+        <Zoom />
+      </div>
       <Pan />
       <ul
         role="menu"
