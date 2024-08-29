@@ -1,3 +1,4 @@
+"use client";
 import PropTypes from "prop-types";
 import copy from "copy-to-clipboard";
 import IconComposer from "@/components/svg/IconComposer";

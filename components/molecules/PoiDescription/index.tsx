@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 
 interface PoiDescriptionProps {
   isOpen: boolean;
-  tourTitle: string;
+  tourTitle?: string;
   title: string;
   description: string;
 }
@@ -17,7 +17,7 @@ const PoiDescription: FunctionComponent<PoiDescriptionProps> = ({
   return (
     <article data-open={isOpen} className={styles.descriptionContainer}>
       <header>
-        <div>{tourTitle}</div>
+        {tourTitle && <div>{tourTitle}</div>}
         <h2>{title}</h2>
       </header>
       <div dangerouslySetInnerHTML={{ __html: description }} />

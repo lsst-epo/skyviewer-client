@@ -10,6 +10,7 @@
   flex-flow: column nowrap;
   align-items: center;
   width: 52px;
+  pointer-events: initial;
 
   .share-icon {
     color: var(--white);

@@ -2,7 +2,3 @@
   gap: var(--size-spacing-s);
   justify-content: flex-end;
 }
-
-.navigationList {
-  z-index: 1;
-}

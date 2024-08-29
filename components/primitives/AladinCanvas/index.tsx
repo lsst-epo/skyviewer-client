@@ -1,3 +1,4 @@
+"use client";
 import { FunctionComponent, useEffect } from "react";
 import camelCase from "lodash/camelCase";
 import { useAladin } from "@/contexts/Aladin";
@@ -23,10 +24,12 @@ interface AladinCanvasProps {
   onProjectionChanged?: AladinEventMap["projectionChanged"];
   onLayerChanged?: AladinEventMap["layerChanged"];
   className?: string;
+  showLogo?: boolean;
 }
 
 const AladinCanvas: FunctionComponent<AladinCanvasProps> = ({
   className,
+  showLogo = true,
   ...events
 }) => {
   const { setRef, aladin } = useAladin();
@@ -44,7 +47,14 @@ const AladinCanvas: FunctionComponent<AladinCanvasProps> = ({
     }
   }, [aladin, events]);
 
-  return <div ref={setRef} className={className} tabIndex={-1} />;
+  return (
+    <div
+      ref={setRef}
+      data-show-logo={showLogo}
+      className={className}
+      tabIndex={-1}
+    />
+  );
 };
 
 AladinCanvas.displayName = "Atomic.AladinCanvas";

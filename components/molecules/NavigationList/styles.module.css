@@ -13,3 +13,7 @@
     --direction-flex-list: column;
   }
 }
+
+.listItem {
+  pointer-events: initial;
+}

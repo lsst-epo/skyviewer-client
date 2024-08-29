@@ -53,8 +53,8 @@ interface AladinImageLayer {
 
 // TODO: Fix callback function declaration
 interface AladinCallback {
-  success: (raDec: string) => void;
-  error: (err?: any) => void;
+  success?: (raDec: Float64Array) => void;
+  error?: (err?: any) => void;
 }
 
 export interface AladinHipsImageFormat {
@@ -251,6 +251,24 @@ interface AladinView {
   catalogs: Array<AladinCatalog>;
 }
 
+interface GetViewData {
+  (
+    dataType: "url",
+    imgType?: "image/png" | "image/jpeg" | "image/webp",
+    withLogo?: boolean
+  ): Promise<string>;
+  (
+    dataType: "arraybuffer",
+    imgType?: "image/png" | "image/jpeg" | "image/webp",
+    withLogo?: boolean
+  ): Promise<ArrayBuffer>;
+  (
+    dataType: "blob",
+    imgType?: "image/png" | "image/jpeg" | "image/webp",
+    withLogo?: boolean
+  ): Promise<Blob>;
+}
+
 export interface AladinInstance {
   readonly getRaDec: () => [number, number];
   readonly getSize: () => [number, number];
@@ -311,7 +329,15 @@ export interface AladinInstance {
     complete?: () => void
   ) => void;
   readonly getFoVCorners: (nbSteps?: number, frame?: CooFrame) => number[][];
+  readonly getViewDataURL: (options?: {
+    format?: "image/png" | "image/jpeg";
+    width?: number;
+    height?: number;
+    logo?: boolean;
+  }) => Promise<string>;
+  readonly getViewData: GetViewData;
   view: AladinView;
+  options: Required<AladinOptions>;
 }
 
 export type CatalogSourceShape =

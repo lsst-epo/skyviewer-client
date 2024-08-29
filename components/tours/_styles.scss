@@ -16,7 +16,7 @@
 
   @include base.respond(functions.break(tablet), min) {
     justify-content: flex-start;
-    overflow: auto auto;
+    overflow: auto;
   }
 }
 

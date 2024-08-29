@@ -19,11 +19,7 @@ interface AladinProps {
   jpgs?: Array<any>;
 }
 
-const Explorer: FunctionComponent<AladinProps> = ({
-  catalogs,
-  jpgs,
-  ...props
-}) => {
+const Explorer: FunctionComponent<AladinProps> = ({ catalogs, jpgs }) => {
   const { A, aladin, ref } = useAladin();
   const [additionalSourceData, setAdditionalSourceData] = useState<
     Record<string, any>

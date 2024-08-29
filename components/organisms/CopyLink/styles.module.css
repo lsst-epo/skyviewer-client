@@ -1,0 +1,23 @@
+.copyContainer {
+  color: var(--color-font-primary);
+  background-color: var(--color-rubin-gray-100);
+  display: flex;
+  align-items: center;
+  gap: var(--size-spacing-3xs);
+  font-size: 75%;
+  padding: var(--size-spacing-3xs);
+  width: 100%;
+}
+
+.copyBlock {
+  border: 1px solid var(--color-font-primary);
+  border-radius: 3px;
+  flex-grow: 1;
+  overflow: hidden;
+  padding: var(--size-spacing-3xs);
+}
+
+.copyButton {
+  width: var(--size-spacing-m);
+  height: var(--size-spacing-m);
+}

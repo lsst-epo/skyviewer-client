@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, ReactNode } from "react";
 import classnames from "classnames";
 import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
 import styles from "./styles.module.css";
@@ -21,16 +21,24 @@ const NavigationList: FunctionComponent<NavigationListProps> = ({
   className,
 }) => {
   return (
-    <ul
-      className={classnames(styles.navigationList, className)}
-      data-direction={direction}
-    >
-      {links.map((link, i) => (
-        <li key={i}>
-          <Buttonish {...link} isBlock />
-        </li>
-      ))}
-    </ul>
+    <nav>
+      <ul
+        className={classnames(styles.navigationList, className)}
+        role={direction === "horizontal" ? "menubar" : "menu"}
+        data-direction={direction}
+      >
+        {links.map((link, i) => (
+          <li key={i} role="none">
+            <Buttonish
+              {...link}
+              role="menuitem"
+              className={styles.listItem}
+              isBlock
+            />
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 };
 
