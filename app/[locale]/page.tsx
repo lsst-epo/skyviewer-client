@@ -7,3 +7,4 @@ const RootPage: FunctionComponent<RootProps> = ({ params: { locale } }) => {
 };
 
 export default RootPage;
+
