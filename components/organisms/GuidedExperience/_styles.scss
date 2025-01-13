@@ -1,0 +1,54 @@
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
+
+.guided-experience-nav-container {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.guided-experience-nav {
+  display: flex;
+  flex-flow: column-reverse;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  padding: 1em;
+
+  @include base.respond(functions.break(mobile-small), min) {
+    flex-flow: row nowrap;
+  }
+
+  &.mobile-only {
+    display: flex;
+
+    @include base.respond(functions.break(tablet), min) {
+      display: none;
+    }
+  }
+
+  &.desktop-only {
+    display: none;
+
+    @include base.respond(functions.break(tablet), min) {
+      display: flex;
+    }
+  }
+
+  .guided-experience-nav-item {
+    width: 100%;
+    margin-top: 16px;
+
+    @include base.respond(functions.break(mobile-small), min) {
+      width: auto;
+      margin-top: 0;
+    }
+
+    + .guided-experience-nav-item {
+      @include base.respond(functions.break(mobile-small), min) {
+        margin-left: 16px;
+      }
+    }
+  }
+}

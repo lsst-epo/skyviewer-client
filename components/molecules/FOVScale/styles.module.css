@@ -1,0 +1,18 @@
+.fovContainer {
+  overflow: visible;
+  width: 100%;
+}
+
+.scaleBar {
+  stroke: var(--color-font-invert);
+  stroke-width: 2;
+  stroke-linecap: round;
+  fill: none;
+  transition: 0.1s;
+}
+
+.featuredObject {
+  stroke: none;
+  fill: var(--color-font-invert);
+  opacity: 0.5;
+}

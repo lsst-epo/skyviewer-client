@@ -1,0 +1,5 @@
+.iconToggle {
+  &[data-checked="true"] {
+    background-color: var(--color-background-button-primary-hover);
+  }
+}

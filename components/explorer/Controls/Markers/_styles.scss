@@ -1,9 +1,0 @@
-@use 'abstracts/functions';
-
-.markers-button, {
-  svg {
-    width: 26px;
-    height: 26px;
-    fill: functions.palette(white);
-  }
-}

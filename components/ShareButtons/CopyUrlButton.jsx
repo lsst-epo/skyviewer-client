@@ -1,13 +1,14 @@
+"use client";
 import PropTypes from "prop-types";
 import copy from "copy-to-clipboard";
-import IconComposer from "@/svg/IconComposer";
+import IconComposer from "@/components/svg/IconComposer";
 import ShareButton from "@/components/ShareButtons/ShareButton";
 
 export default function CopyUrlButton({ showLabel }) {
   return (
     <ShareButton
       showLabel={showLabel}
-      icon={<IconComposer icon="Chain" />}
+      icon={<IconComposer icon="ShareCopyUrl" />}
       text="Get Url"
       network="url"
       onClick={() => {

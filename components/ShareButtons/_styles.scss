@@ -1,16 +1,19 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/base';
-@use 'abstracts/mixins/typography';
-@use 'abstracts/mixins/appearance';
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
+@use "abstracts/mixins/typography";
+@use "abstracts/mixins/appearance";
 
 .share-button {
   @include appearance.proto-button;
+
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   width: 52px;
+  pointer-events: initial;
 
   .share-icon {
+    color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,62 +30,36 @@
 
     &.facebook {
       background-color: #3d5a99;
-
-      svg {
-        width: 37px;
-        height: 37px;
-        margin-left: 2px;
-        fill: functions.palette(white);
-      }
     }
 
     &.twitter {
       background-color: #38a8e0;
-
-      svg {
-        width: 46px;
-        height: 46px;
-        margin-left: 2px;
-        fill: functions.palette(white);
-      }
     }
 
     &.email {
-      background-color: functions.palette(turquoise85);
-
-      svg {
-        width: 40px;
-        height: 40px;
-        margin-left: 1px;
-      }
+      background-color: var(--turquoise85);
 
       line,
       .envelope-top {
-        stroke: functions.palette(white);
+        stroke: var(--white);
       }
 
       .envelope-outline {
-        fill: functions.palette(white);
+        fill: var(--white);
       }
     }
 
     &.image {
-      background-color: functions.palette(turquoise70);
-
-      svg {
-        width: 23px;
-        height: 23px;
-        stroke: functions.palette(white);
-      }
+      background-color: var(--turquoise70);
+      padding: 10px;
     }
 
     &.url {
-      background-color: functions.palette(turquoise70);
+      background-color: var(--turquoise70);
 
       svg {
         width: 26px;
         height: 26px;
-        fill: functions.palette(white);
       }
     }
   }
@@ -114,7 +91,7 @@
     outline: none;
 
     .share-icon {
-      border-color: functions.palette(blue20);
+      border-color: var(--blue20);
     }
   }
 }
@@ -123,12 +100,7 @@
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-
-  // display: grid;
-  // grid-auto-flow: column;
-  // grid-auto-rows: 1fr;
-  // grid-auto-columns: 52px;
-  // gap: 0.5rem;
+  list-style: none;
 
   .share-button {
     @include base.respond(functions.break(desktop-height), min, height) {
@@ -142,9 +114,9 @@
   .share-network {
     margin-top: 10px;
     font-size: 10px;
-    font-weight: functions.font-weight(light);
+    font-weight: var(--weight-font-normal);
     line-height: 1.6;
-    color: functions.palette(white);
+    color: var(--white);
 
     @include base.respond(functions.break(desktop-height), min, height) {
       margin-top: 0;
@@ -157,6 +129,7 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
+  list-style: none;
 
   li {
     + li {
@@ -173,6 +146,7 @@
 
   .share-network {
     @include typography.subheading-menu;
+
     margin-top: 10px;
 
     @include base.respond(functions.break(desktop-height), min, height) {

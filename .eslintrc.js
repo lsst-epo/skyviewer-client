@@ -1,16 +1,6 @@
 module.exports = {
   root: true,
-  parser: "@babel/eslint-parser",
-  parserOptions: {
-    sourceType: "module",
-    requireConfigFile: false,
-    babelOptions: {
-      plugins: [
-        "@babel/plugin-transform-react-jsx",
-        "@babel/plugin-proposal-class-properties",
-      ],
-    },
-  },
+  parser: "@typescript-eslint/parser",
   env: {
     browser: true,
   },
@@ -79,15 +69,7 @@ module.exports = {
     "generator-star-spacing": 0,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "react/react-in-jsx-scope": 0,
   },
-  extends: [
-    "standard",
-    "plugin:jsx-a11y/recommended",
-    "plugin:react/recommended",
-    "plugin:prettier/recommended",
-    "next",
-    "prettier",
-  ],
+  extends: ["standard", "plugin:prettier/recommended", "next", "prettier"],
   plugins: ["jsx-a11y", "react"],
 };

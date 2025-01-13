@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import Menu from "@/primitives/Menu";
+import Menu from "@/components/primitives/Menu";
 import ShareButtons from "@/components/ShareButtons";
 
 export default function ShareMenu({ toggleMenuCallback, isOpen }) {

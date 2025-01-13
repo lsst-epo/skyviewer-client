@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import { EmailShareButton } from "react-share";
-import IconComposer from "@/svg/IconComposer";
+import IconComposer from "@/components/svg/IconComposer";
 
 export default function ShareButton({
   subject,
@@ -23,7 +23,7 @@ export default function ShareButton({
       className="share-button"
     >
       <div className="share-icon email">
-        <IconComposer icon="Email" />
+        <IconComposer icon="ShareEmail" />
       </div>
       <div
         className={classnames("share-network", {

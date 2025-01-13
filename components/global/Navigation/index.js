@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
-import internalLinkShape from "@/shapes/link";
+import internalLinkShape from "@/components/shapes/link";
 
 export default function Navigation({ items }) {
   return (

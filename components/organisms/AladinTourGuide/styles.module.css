@@ -1,0 +1,4 @@
+.tourOverlay {
+  gap: var(--size-spacing-s);
+  justify-content: flex-end;
+}

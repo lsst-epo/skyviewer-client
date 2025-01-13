@@ -1,0 +1,37 @@
+@use "abstracts/mixins/base";
+@use "abstracts/functions";
+
+.tour-intro-container {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: stretch;
+  justify-content: center;
+  width: 100vw;
+  height: calc(100vh - var(--ge-nav-height, 95px) - 42px);
+  background-color: var(--turquoise90);
+
+  @include base.respond(functions.break(tablet), min) {
+    align-items: flex-start;
+    overflow: auto;
+  }
+
+  + .guided-experience-nav-container {
+    background-color: var(--turquoise90);
+  }
+
+  .content-wrapper {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    height: 100%;
+
+    @include base.respond(functions.break(tablet), min) {
+      padding-top: 42px;
+    }
+  }
+}
+
+.tour-not-found {
+  padding: var(--size-spacing-xl);
+}

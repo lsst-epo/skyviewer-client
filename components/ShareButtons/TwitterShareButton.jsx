@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import { TwitterShareButton } from "react-share";
-import IconComposer from "@/svg/IconComposer";
+import IconComposer from "@/components/svg/IconComposer";
 
 export default function ShareButton({
   title,
@@ -23,7 +23,7 @@ export default function ShareButton({
       className="share-button"
     >
       <div className="share-icon twitter">
-        <IconComposer icon="Twitter" />
+        <IconComposer icon="ShareTwitter" />
       </div>
       <div
         className={classnames("share-network", {

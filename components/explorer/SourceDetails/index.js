@@ -1,13 +1,12 @@
-import { useEffect, useState, useRef, useContext } from "react";
+import { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
-import AladinGlobalContext from "@/contexts/AladinGlobal";
-import ExplorerContext from "@/contexts/Explorer";
-import Accordion from "@/primitives/Accordion";
-import AccordionGroup from "@/primitives/AccordionGroup";
-import Button from "@/primitives/Button";
-import Buttonish from "@/primitives/Buttonish";
-import IconComposer from "@/svg/IconComposer";
+import { useAladin } from "@/contexts/Aladin";
+import Accordion from "@/components/primitives/Accordion";
+import AccordionGroup from "@/components/primitives/AccordionGroup";
+import Button from "@/components/primitives/Button";
+import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
+import IconComposer from "@/components/svg/IconComposer";
 import SourceFilters from "./SourceFilters";
 import DetailsSection from "./DetailsSection";
 import DetailsSectionValue from "./DetailsSectionValue";
@@ -16,6 +15,7 @@ import CharBar from "./CharBar";
 import AltNames from "./AltNames";
 import useFocusTrap from "@/hooks/useFocusTrap";
 import { useKeyDownEvent, useOnClickOutside } from "@/hooks/listeners";
+import { getPixelPosition } from "@/lib/aladin/helpers";
 
 const placeholderFilters = [
   { label: "u", value: 17.81 },
@@ -29,15 +29,12 @@ const placeholderFilters = [
 const STEP = 0.1;
 
 export default function SourceDetails({ data, setData, handleClose }) {
-  const { aladin } = useContext(AladinGlobalContext) || {};
-  const { settings } = useContext(ExplorerContext) || {};
-  const { zoomLevel, zoomRange } = settings;
-  const [min, max] = zoomRange;
+  const { aladin } = useAladin();
   const [activeAccordion, setActiveAccordion] = useState("overview");
   const modalRef = useRef(null);
   const {
     position,
-    astroImage,
+    astroImage = [],
     type,
     objectId,
     brightness,
@@ -49,16 +46,10 @@ export default function SourceDetails({ data, setData, handleClose }) {
   } = data || {};
   const [top, left] = position || ["auto", "auto"];
 
-  function getPixelPos(worldPos) {
-    const [ra, dec] = worldPos;
-    const pixelPos = aladin.world2pix(ra, dec);
-    return [pixelPos[1], pixelPos[0]];
-  }
-
   const handleZoom = () => {
     aladin.animateToRaDec(ra, dec, 0.5, () => {
-      aladin.zoomToFoV(min, 0.5, () => {
-        setData({ ...data, position: getPixelPos([ra, dec]) });
+      aladin.zoomToFoV(aladin.view.minFoV, 0.5, () => {
+        setData({ ...data, position: getPixelPosition(aladin, { ra, dec }) });
       });
     });
   };
@@ -75,6 +66,8 @@ export default function SourceDetails({ data, setData, handleClose }) {
   useEffect(() => {
     setActiveAccordion("overview");
   }, [data]);
+
+  const previewImage = astroImage[0] ? astroImage[0]?.url : undefined;
 
   return (
     <div
@@ -97,18 +90,18 @@ export default function SourceDetails({ data, setData, handleClose }) {
       >
         <div ref={modalRef} className="source-details-modal-inner">
           <Button
-            icon={<IconComposer icon="Close" />}
+            icon={<IconComposer size={10} icon="Close" />}
             text="Close Details Modal Dialog"
             isIcon
             classes="close-button"
             onClick={handleClose}
           />
           <div className="source-details">
-            {astroImage?.length >= 1 && (
+            {previewImage && (
               <div
                 className="source-img"
                 style={{
-                  backgroundImage: `url(${astroImage[0].url})`,
+                  backgroundImage: `url(${previewImage})`,
                 }}
               />
             )}
@@ -175,7 +168,7 @@ export default function SourceDetails({ data, setData, handleClose }) {
                   <Buttonish
                     text="Explore Similar Objects"
                     url="/explorer"
-                    classes="source-details-similar-button primary --block"
+                    className="source-details-similar-button primary --block"
                   />
                 </Accordion>
               )}

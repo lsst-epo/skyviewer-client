@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import { FacebookShareButton } from "react-share";
-import IconComposer from "@/svg/IconComposer";
+import IconComposer from "@/components/svg/IconComposer";
 
 export default function ShareButton({ quote, hashtag, showLabel }) {
   return (
@@ -17,7 +17,7 @@ export default function ShareButton({ quote, hashtag, showLabel }) {
       className="share-button"
     >
       <div className="share-icon facebook">
-        <IconComposer icon="Facebook" />
+        <IconComposer icon="ShareFacebook" />
       </div>
       <div
         className={classnames("share-network", {
