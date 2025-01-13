@@ -54,15 +54,6 @@ export default function Controls() {
 
   return (
     <AladinOverlay className="controls">
-      <ul
-        role="menu"
-        aria-label="Search and Filter"
-        className="find controls-submenu"
-      >
-        <li role="menuitem">
-          <Filters />
-        </li>
-      </ul>
       <div className={styles.zoomContainer}>
         <Zoom />
       </div>
@@ -99,6 +90,15 @@ export default function Controls() {
             isChecked={gridEnabled}
             onToggleCallback={handleGridToggle}
           />
+        </li>
+      </ul>
+      <ul
+        role="menu"
+        aria-label="Search and Filter"
+        className="find controls-submenu"
+      >
+        <li role="menuitem">
+          <Filters />
         </li>
       </ul>
     </AladinOverlay>
