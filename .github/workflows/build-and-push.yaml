@@ -91,7 +91,7 @@ jobs:
           credentials_json: ${{ steps.deploy-info.outputs.credentials_json }}
       - 
         name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v2.12'
+        uses: 'google-github-actions/setup-gcloud@v2.1.2'
       - 
         run: gcloud --quiet auth configure-docker
       -
