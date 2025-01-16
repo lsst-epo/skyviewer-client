@@ -2,13 +2,13 @@
 import PropTypes from "prop-types";
 import copy from "copy-to-clipboard";
 import IconComposer from "@/components/svg/IconComposer";
-import ShareButton from "@/components/ShareButtons/ShareButton";
+import ShareButton from "./ShareButton";
 
 export default function CopyUrlButton({ showLabel }) {
   return (
     <ShareButton
       showLabel={showLabel}
-      icon={<IconComposer icon="ShareCopyUrl" />}
+      icon={<IconComposer size="52" icon="ShareCopyUrl" />}
       text="Get Url"
       network="url"
       onClick={() => {

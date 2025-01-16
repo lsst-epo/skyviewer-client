@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import Link from "next/link";
-import ShareButtons from "@/components/ShareButtons";
+import ShareButtons from "@/components/organisms/ShareButtons";
 import { getTourPoisData } from "@/lib/api/tour";
 import { TourProps } from "../layout";
 
@@ -18,11 +18,7 @@ const SummaryPage: FunctionComponent<TourProps> = async ({
             You have completed the {title} tour! You can share it with your
             friends
           </p>
-          <ShareButtons
-            classes="share-buttons-horizontal"
-            image={false}
-            showLabels={false}
-          />
+          <ShareButtons download={false} showLabels={false} />
         </div>
         <div className="divider"></div>
         <div className="summary-links-container">

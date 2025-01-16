@@ -28,4 +28,3 @@ export const MenuProvider: FunctionComponent<PropsWithChildren> = ({
 };
 
 export default MenuContext;
-

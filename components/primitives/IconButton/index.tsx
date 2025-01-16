@@ -8,7 +8,7 @@ interface IconButtonProps
     HTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  disabled: boolean;
+  disabled?: boolean;
   text: string;
   icon: string;
   size?: string | number;
