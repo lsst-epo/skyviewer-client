@@ -20,15 +20,6 @@ export const getKeyByValue = (object, value) => {
   return Object.keys(object).find((key) => object[key] === value);
 };
 
-export const getDownloadLink = (uri, name = "download") => {
-  const link = document.createElement("a");
-  link.download = name;
-  link.href = uri;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
-
 export const moveInArray = (arr, from, to) => {
   // Make sure a valid array is provided
   if (Object.prototype.toString.call(arr) !== "[object Array]") {

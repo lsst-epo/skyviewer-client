@@ -1,16 +1,11 @@
-import { useEffect, useState } from "react";
+"use client";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import { TwitterShareButton } from "react-share";
 import IconComposer from "@/components/svg/IconComposer";
+import styles from "./styles.module.scss";
 
-export default function ShareButton({
-  title,
-  via,
-  hashtags,
-  related,
-  showLabel,
-}) {
+export default function ShareButton({ title, hashtags, showLabel }) {
   return (
     <TwitterShareButton
       url={
@@ -19,14 +14,15 @@ export default function ShareButton({
           : "https://www.rubinobservatory.com"
       }
       title={title}
+      data-network="twitter"
       hashtags={hashtags}
-      className="share-button"
+      className={styles.shareButton}
     >
-      <div className="share-icon twitter">
+      <div className={styles.shareIcon}>
         <IconComposer icon="ShareTwitter" />
       </div>
       <div
-        className={classnames("share-network", {
+        className={classnames(styles.shareNetwork, {
           "screen-reader-only": !showLabel,
         })}
       >

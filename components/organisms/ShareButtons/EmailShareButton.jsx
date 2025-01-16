@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+"use client";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import { EmailShareButton } from "react-share";
 import IconComposer from "@/components/svg/IconComposer";
+import styles from "./styles.module.scss";
 
 export default function ShareButton({
   subject,
@@ -19,14 +20,15 @@ export default function ShareButton({
       }
       subject={subject}
       body={body}
+      data-network="email"
       separator={separator}
-      className="share-button"
+      className={styles.shareButton}
     >
-      <div className="share-icon email">
+      <div className={styles.shareIcon}>
         <IconComposer icon="ShareEmail" />
       </div>
       <div
-        className={classnames("share-network", {
+        className={classnames(styles.shareNetwork, {
           "screen-reader-only": !showLabel,
         })}
       >

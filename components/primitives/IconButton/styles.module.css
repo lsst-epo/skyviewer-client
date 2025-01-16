@@ -17,11 +17,15 @@
   }
 
   &:not(:disabled):hover,
-  &:not(:disabled)[data-checked="true"] {
+  &:not(:disabled)[data-checked="true"],
+  &:not(:disabled)[data-active],
+  &:not(:disabled)[data-hover] {
     background-color: var(--color-background-button-primary-hover);
   }
 
-  &:focus-within {
+  &:not(:disabled):focus-within,
+  &:not(:disabled)[data-open] {
     outline: 2px solid var(--color-font-invert);
+    cursor: pointer;
   }
 }

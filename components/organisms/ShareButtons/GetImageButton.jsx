@@ -1,21 +1,29 @@
+"use client";
 import PropTypes from "prop-types";
+import { saveAs } from "file-saver";
 import { useAladin } from "@/contexts/Aladin";
 import IconComposer from "@/components/svg/IconComposer";
-import ShareButton from "@/components/ShareButtons/ShareButton";
-import { getDownloadLink } from "@/helpers";
+import ShareButton from "./ShareButton";
 
 export default function GetImageButton({ showLabel }) {
-  const { aladin } = useAladin();
+  const { aladin, isLoading } = useAladin();
 
+  const handleClick = async () => {
+    if (!isLoading) {
+      const dataUrl = await aladin?.getViewData("blob", "image/png", false);
+
+      if (dataUrl) {
+        saveAs(dataUrl);
+      }
+    }
+  };
   return (
     <ShareButton
       showLabel={showLabel}
       icon={<IconComposer icon="ArrowUpFromBracket" />}
       text="Get Image"
       network="image"
-      onClick={() => {
-        getDownloadLink(aladin.getViewDataURL(), "sky image");
-      }}
+      onClick={handleClick}
     />
   );
 }
