@@ -108,6 +108,7 @@ jobs:
             type=gha
           build-args: |
             BASE_TAG=k8s
+            RUN_BUILD=false
       -
         uses: imjasonh/setup-crane@v0.4
         if: ${{ github.event_name == 'pull_request' }}
