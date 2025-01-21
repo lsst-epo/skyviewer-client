@@ -83,7 +83,8 @@
     "styled-components": "^6.1.11",
     "swr": "^0.5.6",
     "urql": "^4.1.0",
-    "use-resize-observer": "^9.1.0"
+    "use-resize-observer": "^9.1.0",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import { notFound } from "next/navigation";
 import { graphql } from "@/gql";
 import { RootParams } from "../../layout";
 import AladinTemplate from "@/components/templates/Aladin";
@@ -6,9 +7,7 @@ import EmbeddedExplorer from "@/components/organisms/Embedded";
 import getSurveyImage from "@/lib/api/survey";
 import { queryAPI } from "@/lib/api/urql";
 import { siteFromLocale } from "@/lib/i18n/site";
-import { notFound } from "next/navigation";
-import CopyText from "@/components/organisms/CopyLink";
-import { headers } from "next/headers";
+import { initialPosition } from "@/lib/helpers";
 
 type EmbedParams = {
   slug: string;
@@ -59,20 +58,13 @@ const EmbeddedPage: FunctionComponent<
 
   const { imgFormat, path, fovRange } = survey;
 
-  const target = Array.isArray(searchParams.target)
-    ? view.target
-    : searchParams.target;
-
-  const fov =
-    !searchParams.fov || Array.isArray(searchParams.fov)
-      ? survey.fov
-      : parseFloat(searchParams.fov);
+  const options = { ...initialPosition(searchParams, survey) };
 
   return (
     <AladinTemplate
       fovRange={fovRange}
       hipsConfig={{ id: path, options: { imgFormat } }}
-      options={{ fov, target: target || undefined }}
+      options={options}
       embedded
     >
       <EmbeddedExplorer data={view} />
