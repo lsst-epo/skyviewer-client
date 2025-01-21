@@ -14,7 +14,7 @@ ARG NEXT_PUBLIC_BASE_URL
 ARG NEXT_PUBLIC_ASTRO_API_URL
 ARG CRAFT_SECRET_TOKEN
 
-RUN npx browserslist@latest --update-db && yarn static:build
+RUN npx update-browserslist-db@latest && yarn static:build
 
 # Production image, copy all the files and run next
 FROM node:20-alpine AS runner
