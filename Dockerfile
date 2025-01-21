@@ -13,8 +13,11 @@ ARG NEXT_PUBLIC_ASSETS_BASE_URL
 ARG NEXT_PUBLIC_BASE_URL
 ARG NEXT_PUBLIC_ASTRO_API_URL
 ARG CRAFT_SECRET_TOKEN
+ARG RUN_BUILD="true"
 
-RUN npx update-browserslist-db@latest && yarn static:build
+ENV RUN_BUILD=${RUN_BUILD}
+
+RUN if $RUN_BUILD;then npx update-browserslist-db@latest && yarn static:build;fi
 
 # Production image, copy all the files and run next
 FROM node:20-alpine AS runner
