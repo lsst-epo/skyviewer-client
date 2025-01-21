@@ -69,6 +69,7 @@ module.exports = {
     "generator-star-spacing": 0,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
+    "no-undef": "off",
   },
   extends: ["standard", "plugin:prettier/recommended", "next", "prettier"],
   plugins: ["jsx-a11y", "react"],

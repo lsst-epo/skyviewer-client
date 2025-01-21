@@ -16,7 +16,6 @@ type EmbedParams = {
 
 export interface EmbeddedProps {
   params: RootParams & EmbedParams;
-  searchParams?: Record<string, string | Array<string> | undefined>;
 }
 
 const Query = graphql(`
@@ -34,9 +33,9 @@ const Query = graphql(`
   }
 `);
 
-const EmbeddedPage: FunctionComponent<EmbeddedProps> = async ({
-  params: { locale, slug },
-}) => {
+const EmbeddedPage: FunctionComponent<
+  WithSearchParams<EmbeddedProps>
+> = async ({ params: { locale, slug }, searchParams = {} }) => {
   const site = siteFromLocale(locale);
   const survey = await getSurveyImage();
   const { data } = await queryAPI({
@@ -58,12 +57,16 @@ const EmbeddedPage: FunctionComponent<EmbeddedProps> = async ({
     notFound();
   }
 
-  const { target, title } = view;
+  const { imgFormat, path, fovRange } = survey;
 
-  const { imgFormat, path, fov, fovRange } = survey;
+  const target = Array.isArray(searchParams.target)
+    ? view.target
+    : searchParams.target;
 
-  const link = `${headers().get("host")}/${locale}/embed/${slug}`;
-  const textToCopy = `<iframe src="${link}" title=${title}></iframe>`;
+  const fov =
+    !searchParams.fov || Array.isArray(searchParams.fov)
+      ? survey.fov
+      : parseFloat(searchParams.fov);
 
   return (
     <AladinTemplate
@@ -71,7 +74,6 @@ const EmbeddedPage: FunctionComponent<EmbeddedProps> = async ({
       hipsConfig={{ id: path, options: { imgFormat } }}
       options={{ fov, target: target || undefined }}
       embedded
-      // footer={<CopyText {...{ textToCopy }} />}
     >
       <EmbeddedExplorer data={view} />
     </AladinTemplate>

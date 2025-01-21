@@ -1,10 +1,14 @@
 "use client";
-import PropTypes from "prop-types";
+import { FC } from "react";
 import copy from "copy-to-clipboard";
 import IconComposer from "@/components/svg/IconComposer";
-import ShareButton from "./ShareButton";
+import ShareButton from "..";
 
-export default function CopyUrlButton({ showLabel }) {
+interface CopyUrlButtonProps {
+  showLabel?: boolean;
+}
+
+const CopyUrlButton: FC<CopyUrlButtonProps> = ({ showLabel }) => {
   return (
     <ShareButton
       showLabel={showLabel}
@@ -16,8 +20,8 @@ export default function CopyUrlButton({ showLabel }) {
       }}
     />
   );
-}
-
-CopyUrlButton.propTypes = {
-  showLabel: PropTypes.bool,
 };
+
+CopyUrlButton.displayName = "Molecule.ShareButton.CopyUrl";
+
+export default CopyUrlButton;
