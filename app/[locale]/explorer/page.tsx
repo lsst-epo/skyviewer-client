@@ -7,6 +7,7 @@ import Controls from "@/components/molecules/ExplorerControls";
 import { Catalog } from "@/types/catalog";
 import getSurveyImage from "@/lib/api/survey";
 import { notFound } from "next/navigation";
+import { initialPosition } from "@/lib/helpers";
 
 const ExplorerPage: FC<WithSearchParams> = async ({ searchParams = {} }) => {
   const data = await getCatalogsSurveysData();
@@ -20,18 +21,9 @@ const ExplorerPage: FC<WithSearchParams> = async ({ searchParams = {} }) => {
   const sortedCats = sortCats(catalogs);
   const { fovRange, path, imgFormat } = survey;
 
-  const target = Array.isArray(searchParams.target)
-    ? survey.target
-    : searchParams.target;
-
-  const fov =
-    !searchParams.fov || Array.isArray(searchParams.fov)
-      ? survey.fov
-      : parseFloat(searchParams.fov);
-
   const options = {
-    target,
-    fov,
+    ...initialPosition(searchParams, survey),
+    backgroundColor: "rgb(0,0,0)",
   };
 
   function sortCats(cats: Array<Catalog>): Array<Catalog> | undefined {

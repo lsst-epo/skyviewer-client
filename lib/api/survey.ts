@@ -20,7 +20,7 @@ const Query = graphql(`
   }
 `);
 
-interface SurveyImage {
+export interface SurveyImage {
   title?: string;
   path: string;
   target: string;

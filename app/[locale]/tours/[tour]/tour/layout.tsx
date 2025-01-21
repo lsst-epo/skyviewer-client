@@ -67,7 +67,7 @@ const TourLayout: FunctionComponent<PropsWithChildren<TourProps>> = async ({
     <AladinTemplate
       fovRange={fovRange}
       hipsConfig={{ id: path, options: { imgFormat } }}
-      options={{ fov, target: `${ra} ${dec}` }}
+      options={{ fov, target: `${ra} ${dec}`, backgroundColor: "rgb(0,0,0)" }}
     >
       {children}
     </AladinTemplate>

@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import Image from "next/image";
 import { useTranslation } from "@/lib/i18n";
 import Cover from "@/components/molecules/Cover";
-import logo from "./rubin-nsf-logo.png";
+import logo from "./rubin-triad.png";
 import styles from "./styles.module.css";
 
 const LogoCover: FunctionComponent<{ locale: string }> = async ({ locale }) => {
