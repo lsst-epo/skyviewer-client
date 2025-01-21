@@ -7,7 +7,6 @@ import AladinTourGuide from "@/components/organisms/AladinTourGuide";
 import { TourProps } from "./layout";
 import NavigationList from "@/components/molecules/NavigationList";
 import { useTranslation } from "@/lib/i18n";
-import { PropsWithSearchParams } from "@/types/next";
 
 const Query = graphql(`
   query EmbeddedTourQuery($site: [String], $id: [QueryArgument]) {
@@ -39,9 +38,10 @@ const Query = graphql(`
   }
 `);
 
-const EmbeddedTour: FunctionComponent<
-  PropsWithSearchParams<TourProps>
-> = async ({ params: { locale, id }, searchParams = {} }) => {
+const EmbeddedTour: FunctionComponent<WithSearchParams<TourProps>> = async ({
+  params: { locale, id },
+  searchParams = {},
+}) => {
   const { t } = await useTranslation(locale, "translation");
   const { poi = "1", returnTo } = searchParams;
   const poiIndex = parseInt(Array.isArray(poi) ? poi[0] : poi) - 1;

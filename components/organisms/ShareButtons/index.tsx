@@ -1,10 +1,10 @@
 import { FC } from "react";
 import classnames from "classnames";
-import CopyUrlButton from "@/components/organisms/ShareButtons/CopyUrlButton";
-import GetImageButton from "@/components/organisms/ShareButtons/GetImageButton";
-import FacebookShareButton from "@/components/organisms/ShareButtons/FacebookShareButton";
-import TwitterShareButton from "@/components/organisms/ShareButtons/TwitterShareButton";
-import EmailShareButton from "@/components/organisms/ShareButtons/EmailShareButton";
+import CopyUrlButton from "@/components/molecules/ShareButton/patterns/CopyUrl";
+import GetImageButton from "@/components/molecules/ShareButton/patterns/DownloadImage";
+import FacebookShareButton from "@/components/molecules/ShareButton/patterns/Facebook";
+import TwitterShareButton from "@/components/molecules/ShareButton/patterns/Twitter";
+import EmailShareButton from "@/components/molecules/ShareButton/patterns/Email";
 import styles from "./styles.module.scss";
 
 interface ShareButtonProps {

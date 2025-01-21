@@ -1,16 +1,10 @@
 import { Fragment } from "react";
-import {
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-  Transition,
-} from "@headlessui/react";
-import CopyUrlButton from "@/components/organisms/ShareButtons/CopyUrlButton";
-import GetImageButton from "@/components/organisms/ShareButtons/GetImageButton";
-import FacebookShareButton from "@/components/organisms/ShareButtons/FacebookShareButton";
-import TwitterShareButton from "@/components/organisms/ShareButtons/TwitterShareButton";
-import EmailShareButton from "@/components/organisms/ShareButtons/EmailShareButton";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import LinkToView from "@/components/molecules/ShareButton/patterns/LinkToView";
+import GetImageButton from "@/components/molecules/ShareButton/patterns/DownloadImage";
+import FacebookShareButton from "@/components/molecules/ShareButton/patterns/Facebook";
+import TwitterShareButton from "@/components/molecules/ShareButton/patterns/Twitter";
+import EmailShareButton from "@/components/molecules/ShareButton/patterns/Email";
 import IconButton from "@/components/primitives/IconButton";
 import styles from "./styles.module.scss";
 
@@ -29,7 +23,8 @@ export default function Share() {
         </MenuButton>
         <MenuItems static className={styles.shareMenuItems}>
           <MenuItem>
-            <CopyUrlButton showLabel />
+            {/* <CopyUrlButton showLabel /> */}
+            <LinkToView />
           </MenuItem>
           <MenuItem>
             <GetImageButton showLabel />

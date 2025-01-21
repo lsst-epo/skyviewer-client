@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { saveAs } from "file-saver";
 import { useAladin } from "@/contexts/Aladin";
 import IconComposer from "@/components/svg/IconComposer";
-import ShareButton from "./ShareButton";
+import ShareButton from "..";
 
 export default function GetImageButton({ showLabel }) {
   const { aladin, isLoading } = useAladin();

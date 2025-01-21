@@ -10,10 +10,11 @@ export default function ShareButton({
   message,
   description,
   showLabel,
+  disabled,
 }) {
   return (
     <button
-      onClick={onClick}
+      {...{ onClick, disabled }}
       className={classnames(styles.shareButton, "st-custom-button")}
       data-network={network}
       data-message={message}
@@ -39,4 +40,5 @@ ShareButton.propTypes = {
   description: PropTypes.string,
   onClick: PropTypes.func,
   showLabel: PropTypes.bool,
+  disabled: PropTypes.bool,
 };

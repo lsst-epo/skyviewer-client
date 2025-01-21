@@ -1,46 +1,39 @@
 "use client";
 import PropTypes from "prop-types";
 import classnames from "classnames";
-import { EmailShareButton } from "react-share";
+import { FacebookShareButton } from "react-share";
 import IconComposer from "@/components/svg/IconComposer";
-import styles from "./styles.module.scss";
+import styles from "../styles.module.scss";
 
-export default function ShareButton({
-  subject,
-  body,
-  separator = " ",
-  showLabel,
-}) {
+export default function ShareButton({ quote, hashtag, showLabel }) {
   return (
-    <EmailShareButton
+    <FacebookShareButton
+      className={styles.shareButton}
       url={
         typeof window !== "undefined"
           ? window.location.href
           : "https://www.rubinobservatory.com"
       }
-      subject={subject}
-      body={body}
-      data-network="email"
-      separator={separator}
-      className={styles.shareButton}
+      data-network="facebook"
+      quote={quote}
+      hashtag={hashtag}
     >
       <div className={styles.shareIcon}>
-        <IconComposer icon="ShareEmail" />
+        <IconComposer icon="ShareFacebook" />
       </div>
       <div
         className={classnames(styles.shareNetwork, {
           "screen-reader-only": !showLabel,
         })}
       >
-        Email
+        Facebook
       </div>
-    </EmailShareButton>
+    </FacebookShareButton>
   );
 }
 
 ShareButton.propTypes = {
-  subject: PropTypes.string,
-  body: PropTypes.string,
-  separator: PropTypes.string,
+  quote: PropTypes.string,
+  hashtag: PropTypes.string,
   showLabel: PropTypes.bool,
 };

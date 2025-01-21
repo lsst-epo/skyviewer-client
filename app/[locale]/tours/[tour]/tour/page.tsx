@@ -1,11 +1,10 @@
 import { FunctionComponent } from "react";
-import { PropsWithSearchParams } from "@/types/next";
 import { getTourPoisData } from "@/lib/api/tour";
 import { TourProps } from "../layout";
 import AladinTourGuide from "@/components/organisms/AladinTourGuide";
 import NavigationList from "@/components/molecules/NavigationList";
 
-const TourPage: FunctionComponent<PropsWithSearchParams<TourProps>> = async ({
+const TourPage: FunctionComponent<WithSearchParams<TourProps>> = async ({
   params: { tour },
   searchParams = {},
 }) => {
