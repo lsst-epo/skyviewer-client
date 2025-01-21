@@ -58,19 +58,20 @@ const EmbeddedPage: FunctionComponent<EmbeddedProps> = async ({
     notFound();
   }
 
-  const { fov, fovMin, fovMax, target, title } = view;
-  const { imgFormat, path } = survey;
+  const { target, title } = view;
+
+  const { imgFormat, path, fov, fovRange } = survey;
 
   const link = `${headers().get("host")}/${locale}/embed/${slug}`;
   const textToCopy = `<iframe src="${link}" title=${title}></iframe>`;
 
   return (
     <AladinTemplate
-      fovRange={[fovMin, fovMax]}
+      fovRange={fovRange}
       hipsConfig={{ id: path, options: { imgFormat } }}
       options={{ fov, target: target || undefined }}
       embedded
-      footer={<CopyText {...{ textToCopy }} />}
+      // footer={<CopyText {...{ textToCopy }} />}
     >
       <EmbeddedExplorer data={view} />
     </AladinTemplate>

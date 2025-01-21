@@ -42,7 +42,7 @@ const getSurveyImage = async (): Promise<SurveyImage | undefined> => {
   if (!surveysEntries || !surveysEntries[0]) return undefined;
 
   const { title, path, target, fovMin, fovMax, fov, imgFormat } =
-    mergeWithDefaults(defaultSurveyView, surveysEntries[0]);
+    mergeWithDefaults(surveysEntries[0], defaultSurveyView);
 
   if (!path) {
     throw new Error("HiPS catalog URL is undefined");

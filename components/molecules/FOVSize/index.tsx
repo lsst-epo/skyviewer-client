@@ -34,8 +34,8 @@ const FOVSize: FunctionComponent<{ fov?: number; className?: string }> = ({
 
   return (
     <div className={classNames(className, styles.fovLayout)}>
-      <span>View size: {fov.toFixed(1)}°</span>
-      <svg
+      <span>View size: {fov.toFixed(2)}°</span>
+      {/* <svg
         width={frameSize}
         height={frameSize}
         viewBox={`0 0 ${frameSize} ${frameSize}`}
@@ -80,7 +80,7 @@ const FOVSize: FunctionComponent<{ fov?: number; className?: string }> = ({
             </tspan>
           </text>
         </g>
-      </svg>
+      </svg> */}
     </div>
   );
 };
