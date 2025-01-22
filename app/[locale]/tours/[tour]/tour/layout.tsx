@@ -6,7 +6,6 @@ import { siteFromLocale } from "@/lib/i18n/site";
 import { queryAPI } from "@/lib/api/urql";
 import getSurveyImage from "@/lib/api/survey";
 import AladinTemplate from "@/components/templates/Aladin";
-import { TourProps } from "../layout";
 
 const Query = graphql(`
   query TourLayout($site: [String], $slug: [String]) {

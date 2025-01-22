@@ -2,7 +2,6 @@ import { FunctionComponent } from "react";
 import GuidedExperienceLayout from "@/components/organisms/GuidedExperience";
 import Intro from "@/components/tours/Intro";
 import FunFact from "@/components/tours/FunFact";
-import { TourProps } from "../layout";
 import { getTourData } from "@/lib/api/tour";
 import { useTranslation } from "@/lib/i18n";
 

@@ -2,7 +2,6 @@ import { FunctionComponent } from "react";
 import Link from "next/link";
 import ShareButtons from "@/components/organisms/ShareButtons";
 import { getTourPoisData } from "@/lib/api/tour";
-import { TourProps } from "../layout";
 
 const SummaryPage: FunctionComponent<TourProps> = async ({
   params: { tour },

@@ -6,14 +6,6 @@ import { SourceSansPro } from "@/lib/fonts";
 import { fallbackLng, languages } from "@/lib/i18n/settings";
 import { serverTranslation } from "@/lib/i18n";
 
-export type RootParams = {
-  locale: string;
-};
-
-export interface RootProps {
-  params: RootParams;
-}
-
 export const generateStaticParams = () => {
   return languages.map((locale) => {
     return { locale };

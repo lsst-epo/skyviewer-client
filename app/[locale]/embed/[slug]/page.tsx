@@ -1,21 +1,12 @@
 import { FunctionComponent } from "react";
 import { notFound } from "next/navigation";
 import { graphql } from "@/gql";
-import { RootParams } from "../../layout";
 import AladinTemplate from "@/components/templates/Aladin";
 import EmbeddedExplorer from "@/components/organisms/Embedded";
 import getSurveyImage from "@/lib/api/survey";
 import { queryAPI } from "@/lib/api/urql";
 import { siteFromLocale } from "@/lib/i18n/site";
 import { initialPosition } from "@/lib/helpers";
-
-type EmbedParams = {
-  slug: string;
-};
-
-export interface EmbeddedProps {
-  params: RootParams & EmbedParams;
-}
 
 const Query = graphql(`
   query EmbeddedPageQuery($site: [String], $slug: [String]) {
