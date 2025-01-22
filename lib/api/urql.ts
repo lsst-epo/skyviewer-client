@@ -1,3 +1,4 @@
+import merge from "lodash/merge";
 import { cacheExchange, createClient, fetchExchange } from "@urql/core";
 import type { AnyVariables, DocumentInput, OperationResult } from "@urql/core";
 import { registerUrql } from "@urql/next/rsc";
@@ -8,6 +9,7 @@ interface QueryProps<T, P> {
   query: DocumentInput<T, P>;
   variables: P;
   previewToken?: string;
+  fetchOptions?: RequestInit;
 }
 
 type APIClient = <Query, Variables extends AnyVariables = AnyVariables>(
@@ -17,9 +19,23 @@ type APIClient = <Query, Variables extends AnyVariables = AnyVariables>(
 export const queryAPI: APIClient = async ({
   query,
   variables,
+  fetchOptions: inputFetchOptions,
   previewToken,
 }) => {
   const url = previewToken ? `${API_URL}?token=${previewToken}` : API_URL;
+
+  const defaultFetchOptions: RequestInit = {
+    cache: "force-cache",
+    next: {
+      revalidate: previewToken ? 0 : undefined,
+    },
+  };
+  const fetchOptions = merge({}, defaultFetchOptions, inputFetchOptions);
+
+  if (inputFetchOptions?.next?.revalidate) {
+    delete fetchOptions.cache;
+  }
+
   const makeClient = () => {
     return createClient({
       url,

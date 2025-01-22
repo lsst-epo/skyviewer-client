@@ -1,7 +1,7 @@
 import { createInstance } from "i18next";
 import resourcesToBackend from "i18next-resources-to-backend";
 import { initReactI18next } from "react-i18next/initReactI18next";
-import { getOptions } from "./settings";
+import { fallbackLng, getOptions } from "./settings";
 
 export const loadResources = resourcesToBackend(
   (language: string, namespace: string, callback) => {
@@ -56,5 +56,41 @@ async function useTranslation(
     i18n: i18nextInstance,
   };
 }
+
+export const isDefaultLocale = (locale: string) => locale === fallbackLng;
+
+const shiftToSegments = (segments: Array<string>) => {
+  if (segments[0] === "") {
+    segments.shift();
+    shiftToSegments(segments);
+  }
+};
+
+export const addLocaleUriSegment = (
+  locale: string,
+  uri: string,
+  options: {
+    includeLeadingSlash?: boolean;
+  } = { includeLeadingSlash: true }
+) => {
+  const segments = uri.split("/");
+
+  shiftToSegments(segments);
+
+  if (segments[0] === locale) {
+    return segments.join("/");
+  } else {
+    if (!isDefaultLocale(locale)) {
+      segments.unshift(locale);
+    }
+
+    const { includeLeadingSlash = true } = options;
+    if (includeLeadingSlash) {
+      segments.unshift("");
+    }
+
+    return segments.join("/");
+  }
+};
 
 export { useTranslation, useTranslation as serverTranslation };
