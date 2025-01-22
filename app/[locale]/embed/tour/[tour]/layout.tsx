@@ -5,16 +5,7 @@ import { AstroObjectsSectionEntryUnion } from "@/gql/graphql";
 import { siteFromLocale } from "@/lib/i18n/site";
 import { queryAPI } from "@/lib/api/urql";
 import getSurveyImage from "@/lib/api/survey";
-import { RootParams } from "@/app/[locale]/layout";
 import AladinTemplate from "@/components/templates/Aladin";
-
-type TourParams = {
-  id: string;
-};
-
-export interface TourProps {
-  params: TourParams & RootParams;
-}
 
 const Query = graphql(`
   query EmbeddedTourLayout($site: [String], $id: [QueryArgument]) {
@@ -38,14 +29,14 @@ const Query = graphql(`
 
 const EmbeddedTourLayout: FunctionComponent<
   PropsWithChildren<TourProps>
-> = async ({ params: { locale, id }, children }) => {
+> = async ({ params: { locale, tour }, children }) => {
   const site = siteFromLocale(locale);
   const survey = await getSurveyImage();
   const { data } = await queryAPI({
     query: Query,
     variables: {
       site: [site],
-      id: [id],
+      id: [tour],
     },
   });
 
@@ -54,14 +45,14 @@ const EmbeddedTourLayout: FunctionComponent<
   }
 
   const { toursEntries } = data;
-  const tour = toursEntries[0];
+  const tourEntry = toursEntries[0];
 
-  if (!survey || !tour) {
+  if (!survey || !tourEntry) {
     notFound();
   }
 
   const { path, imgFormat, fovRange } = survey;
-  const { tourPois } = tour;
+  const { tourPois } = tourEntry;
 
   if (!tourPois || !tourPois[0]) {
     notFound();

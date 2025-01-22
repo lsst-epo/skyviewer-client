@@ -1,14 +1,6 @@
 import { FunctionComponent, PropsWithChildren } from "react";
 import { getToursPaths } from "@/lib/api/tours";
-import { RootParams } from "app/[locale]/layout";
 import PrimaryLayout from "@/components/organisms/Primary";
-
-export type TourParams = {
-  tour: string;
-};
-export interface TourProps {
-  params: TourParams & RootParams;
-}
 
 const TourLayout: FunctionComponent<PropsWithChildren> = ({ children }) => {
   return (

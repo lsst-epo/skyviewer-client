@@ -1,6 +1,5 @@
 import { FunctionComponent } from "react";
 import { getTourPoisData } from "@/lib/api/tour";
-import { TourProps } from "../layout";
 import AladinTourGuide from "@/components/organisms/AladinTourGuide";
 import NavigationList from "@/components/molecules/NavigationList";
 

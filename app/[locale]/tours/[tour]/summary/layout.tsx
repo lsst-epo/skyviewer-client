@@ -1,6 +1,5 @@
 import { FunctionComponent, PropsWithChildren } from "react";
 import GuidedExperienceLayout from "@/components/organisms/GuidedExperience";
-import { TourProps } from "../layout";
 import { getTourPoisData } from "@/lib/api/tour";
 import { useTranslation } from "@/lib/i18n";
 

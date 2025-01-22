@@ -4,7 +4,6 @@ import { graphql } from "@/gql";
 import { siteFromLocale } from "@/lib/i18n/site";
 import { queryAPI } from "@/lib/api/urql";
 import AladinTourGuide from "@/components/organisms/AladinTourGuide";
-import { TourProps } from "./layout";
 import NavigationList from "@/components/molecules/NavigationList";
 import { useTranslation } from "@/lib/i18n";
 
@@ -39,7 +38,7 @@ const Query = graphql(`
 `);
 
 const EmbeddedTour: FunctionComponent<WithSearchParams<TourProps>> = async ({
-  params: { locale, id },
+  params: { locale, tour },
   searchParams = {},
 }) => {
   const { t } = await useTranslation(locale, "translation");
@@ -54,7 +53,7 @@ const EmbeddedTour: FunctionComponent<WithSearchParams<TourProps>> = async ({
     query: Query,
     variables: {
       site: [site],
-      id: [id],
+      id: [tour],
     },
   });
 
@@ -70,13 +69,13 @@ const EmbeddedTour: FunctionComponent<WithSearchParams<TourProps>> = async ({
   const backLink = isFirst
     ? { url: returnUrl, text: t("navigation.cta.exit") }
     : {
-        url: `/embed/tour/${id}?poi=${poiIndex}&returnTo=${returnUrl}`,
+        url: `/embed/tour/${tour}?poi=${poiIndex}&returnTo=${returnUrl}`,
         text: t("navigation.cta.back"),
       };
   const nextLink = isLast
     ? { url: returnUrl, text: t("navigation.cta.exit") }
     : {
-        url: `/embed/tour/${id}?poi=${poiIndex + 2}&returnTo=${returnUrl}`,
+        url: `/embed/tour/${tour}?poi=${poiIndex + 2}&returnTo=${returnUrl}`,
         text: t("navigation.cta.next"),
       };
 

@@ -3,7 +3,6 @@ import GuidedExperienceLanding from "@/components/guidedExperiences/GuidedExperi
 import { getTourData } from "@/lib/api/tour";
 import { useTranslation } from "@/lib/i18n";
 import { FunctionComponent } from "react";
-import { TourProps } from "./layout";
 import { notFound } from "next/navigation";
 
 const TourPage: FunctionComponent<TourProps> = async ({

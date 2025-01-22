@@ -9,3 +9,26 @@ type WithSearchParams<T = unknown> = T & {
    */
   searchParams?: SearchParams;
 };
+
+type RootParams = {
+  locale: string;
+};
+
+interface RootProps {
+  params: RootParams;
+}
+
+type TourParams = {
+  tour: string;
+};
+interface TourProps {
+  params: TourParams & RootParams;
+}
+
+type EmbedParams = {
+  slug: string;
+};
+
+interface EmbeddedProps {
+  params: RootParams & EmbedParams;
+}
