@@ -8,7 +8,7 @@ on:
       - 'reopened'
       - 'closed'
     branches:
-      - 'master'
+      - 'main'
 
 jobs:
   build-push-deploy:
