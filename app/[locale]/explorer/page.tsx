@@ -5,13 +5,16 @@ import AladinTemplate from "@/components/templates/Aladin";
 import Explorer from "@/components/organisms/Explorer";
 import Controls from "@/components/molecules/ExplorerControls";
 import { Catalog } from "@/types/catalog";
-import getSurveyImage from "@/lib/api/survey";
 import { notFound } from "next/navigation";
 import { initialPosition } from "@/lib/helpers";
+import { getExplorerPage } from "@/lib/api/explorer";
 
-const ExplorerPage: FC<WithSearchParams> = async ({ searchParams = {} }) => {
+const ExplorerPage: FC<WithSearchParams<RootProps>> = async ({
+  params: { locale },
+  searchParams = {},
+}) => {
   const data = await getCatalogsSurveysData();
-  const survey = await getSurveyImage();
+  const survey = await getExplorerPage(locale);
 
   if (!survey) {
     notFound();
