@@ -24,11 +24,3 @@ type TourParams = {
 interface TourProps {
   params: TourParams & RootParams;
 }
-
-type EmbedParams = {
-  slug: string;
-};
-
-interface EmbeddedProps {
-  params: RootParams & EmbedParams;
-}

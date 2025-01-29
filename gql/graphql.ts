@@ -1205,11 +1205,11 @@ export type EntryCriteriaInput = {
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Determines which structure data should be joined into the query. */
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   /** Narrows the query results based on the elements’ titles. */
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   /** Narrows the query results based on the entries’ entry type handles. */
@@ -1405,10 +1405,10 @@ export type EntryInterfaceAncestorsArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1484,10 +1484,10 @@ export type EntryInterfaceChildrenArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1563,10 +1563,10 @@ export type EntryInterfaceDescendantsArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1642,10 +1642,10 @@ export type EntryInterfaceLocalizedArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1721,10 +1721,10 @@ export type EntryInterfaceNextArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1800,10 +1800,10 @@ export type EntryInterfaceParentArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1879,10 +1879,10 @@ export type EntryInterfacePrevArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2018,14 +2018,16 @@ export type Query = {
   category: Maybe<CategoryInterface>;
   /** This query is used to return the number of categories. */
   categoryCount: Scalars['Int']['output'];
-  /** Entries within the embeddedViews section. */
-  embeddedViewsEntries: Maybe<Array<Maybe<EmbeddedViewsSectionEntryUnion>>>;
+  /** Entries within the embed section. */
+  embedEntries: Maybe<Array<Maybe<EmbedSectionEntryUnion>>>;
   /** This query is used to query for entries. */
   entries: Maybe<Array<Maybe<EntryInterface>>>;
   /** This query is used to query for a single entry. */
   entry: Maybe<EntryInterface>;
   /** This query is used to return the number of entries. */
   entryCount: Scalars['Int']['output'];
+  /** Entries within the explorer section. */
+  explorerEntries: Maybe<Array<Maybe<ExplorerSectionEntryUnion>>>;
   /** This query is used to query for a single global set. */
   globalSet: Maybe<GlobalSetInterface>;
   /** This query is used to query for global sets. */
@@ -2234,10 +2236,10 @@ export type QueryAstroObjectsEntriesArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2310,10 +2312,10 @@ export type QueryCatalogsEntriesArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2472,7 +2474,7 @@ export type QueryCategoryCountArgs = {
 };
 
 
-export type QueryEmbeddedViewsEntriesArgs = {
+export type QueryEmbedEntriesArgs = {
   after: InputMaybe<Scalars['String']['input']>;
   ancestorDist: InputMaybe<Scalars['Int']['input']>;
   ancestorOf: InputMaybe<Scalars['Int']['input']>;
@@ -2533,10 +2535,10 @@ export type QueryEmbeddedViewsEntriesArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2611,10 +2613,10 @@ export type QueryEntriesArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2689,10 +2691,10 @@ export type QueryEntryArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2767,10 +2769,86 @@ export type QueryEntryCountArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QueryExplorerEntriesArgs = {
+  after: InputMaybe<Scalars['String']['input']>;
+  ancestorDist: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf: InputMaybe<Scalars['Int']['input']>;
+  astroImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  astroObjectId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorGroup: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  backgroundImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before: InputMaybe<Scalars['String']['input']>;
+  characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  descendantDist: InputMaybe<Scalars['Int']['input']>;
+  descendantOf: InputMaybe<Scalars['Int']['input']>;
+  duration: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  factsHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  fov: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMax: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMin: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants: InputMaybe<Scalars['Boolean']['input']>;
+  icon: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves: InputMaybe<Scalars['Boolean']['input']>;
+  level: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  path: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore: InputMaybe<Scalars['Int']['input']>;
+  postDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  ra: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2911,10 +2989,10 @@ export type QuerySurveysEntriesArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2987,10 +3065,10 @@ export type QueryToursEntriesArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3758,10 +3836,10 @@ export type AstroObjects_AstroObject_EntryAncestorsArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3881,10 +3959,10 @@ export type AstroObjects_AstroObject_EntryChildrenArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3959,10 +4037,10 @@ export type AstroObjects_AstroObject_EntryDescendantsArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4037,10 +4115,10 @@ export type AstroObjects_AstroObject_EntryLocalizedArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4115,10 +4193,10 @@ export type AstroObjects_AstroObject_EntryNextArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4193,10 +4271,10 @@ export type AstroObjects_AstroObject_EntryParentArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4271,10 +4349,10 @@ export type AstroObjects_AstroObject_EntryPrevArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4466,10 +4544,10 @@ export type Catalogs_Catalog_EntryAncestorsArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4544,10 +4622,10 @@ export type Catalogs_Catalog_EntryChildrenArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4622,10 +4700,10 @@ export type Catalogs_Catalog_EntryDescendantsArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4745,10 +4823,10 @@ export type Catalogs_Catalog_EntryLocalizedArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4823,10 +4901,10 @@ export type Catalogs_Catalog_EntryNextArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4901,10 +4979,10 @@ export type Catalogs_Catalog_EntryParentArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4979,10 +5057,10 @@ export type Catalogs_Catalog_EntryPrevArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4993,10 +5071,10 @@ export type Catalogs_Catalog_EntryPrevArgs = {
   withStructure: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-export type EmbeddedViewsSectionEntryUnion = EmbeddedViews_Default_Entry;
+export type EmbedSectionEntryUnion = Embed_Embed_Entry;
 
-export type EmbeddedViews_Default_Entry = ElementInterface & EntryInterface & {
-  __typename?: 'embeddedViews_default_Entry';
+export type Embed_Embed_Entry = ElementInterface & EntryInterface & {
+  __typename?: 'embed_embed_Entry';
   /** Return a number of related elements for a field. */
   _count: Maybe<Scalars['Int']['output']>;
   /** The entry’s ancestors, if the section is a structure. Accepts the same arguments as the `entries` query. */
@@ -5027,9 +5105,6 @@ export type EmbeddedViews_Default_Entry = ElementInterface & EntryInterface & {
   enabledForSite: Maybe<Scalars['Boolean']['output']>;
   /** The expiry date of the entry. */
   expiryDate: Maybe<Scalars['DateTime']['output']>;
-  fov: Maybe<Scalars['Number']['output']>;
-  fovMax: Maybe<Scalars['Number']['output']>;
-  fovMin: Maybe<Scalars['Number']['output']>;
   /** The ID of the entity */
   id: Maybe<Scalars['ID']['output']>;
   /** Returns whether this is a draft. */
@@ -5090,10 +5165,9 @@ export type EmbeddedViews_Default_Entry = ElementInterface & EntryInterface & {
   status: Maybe<Scalars['String']['output']>;
   /** The element’s structure ID. */
   structureId: Maybe<Scalars['Int']['output']>;
-  target: Maybe<Scalars['String']['output']>;
+  survey: Array<Maybe<EntryInterface>>;
   /** The element’s title. */
   title: Maybe<Scalars['String']['output']>;
-  tour: Array<Maybe<EntryInterface>>;
   /** Whether the element has been soft-deleted. */
   trashed: Maybe<Scalars['Boolean']['output']>;
   /** The handle of the entry type that contains the entry. */
@@ -5109,12 +5183,12 @@ export type EmbeddedViews_Default_Entry = ElementInterface & EntryInterface & {
 };
 
 
-export type EmbeddedViews_Default_Entry_CountArgs = {
+export type Embed_Embed_Entry_CountArgs = {
   field: Scalars['String']['input'];
 };
 
 
-export type EmbeddedViews_Default_EntryAncestorsArgs = {
+export type Embed_Embed_EntryAncestorsArgs = {
   after: InputMaybe<Scalars['String']['input']>;
   ancestorDist: InputMaybe<Scalars['Int']['input']>;
   ancestorOf: InputMaybe<Scalars['Int']['input']>;
@@ -5177,10 +5251,10 @@ export type EmbeddedViews_Default_EntryAncestorsArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5192,7 +5266,7 @@ export type EmbeddedViews_Default_EntryAncestorsArgs = {
 };
 
 
-export type EmbeddedViews_Default_EntryChildrenArgs = {
+export type Embed_Embed_EntryChildrenArgs = {
   after: InputMaybe<Scalars['String']['input']>;
   ancestorDist: InputMaybe<Scalars['Int']['input']>;
   ancestorOf: InputMaybe<Scalars['Int']['input']>;
@@ -5255,10 +5329,10 @@ export type EmbeddedViews_Default_EntryChildrenArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5270,7 +5344,7 @@ export type EmbeddedViews_Default_EntryChildrenArgs = {
 };
 
 
-export type EmbeddedViews_Default_EntryDescendantsArgs = {
+export type Embed_Embed_EntryDescendantsArgs = {
   after: InputMaybe<Scalars['String']['input']>;
   ancestorDist: InputMaybe<Scalars['Int']['input']>;
   ancestorOf: InputMaybe<Scalars['Int']['input']>;
@@ -5333,10 +5407,10 @@ export type EmbeddedViews_Default_EntryDescendantsArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5348,7 +5422,7 @@ export type EmbeddedViews_Default_EntryDescendantsArgs = {
 };
 
 
-export type EmbeddedViews_Default_EntryLocalizedArgs = {
+export type Embed_Embed_EntryLocalizedArgs = {
   after: InputMaybe<Scalars['String']['input']>;
   ancestorDist: InputMaybe<Scalars['Int']['input']>;
   ancestorOf: InputMaybe<Scalars['Int']['input']>;
@@ -5411,10 +5485,10 @@ export type EmbeddedViews_Default_EntryLocalizedArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5426,7 +5500,7 @@ export type EmbeddedViews_Default_EntryLocalizedArgs = {
 };
 
 
-export type EmbeddedViews_Default_EntryNextArgs = {
+export type Embed_Embed_EntryNextArgs = {
   after: InputMaybe<Scalars['String']['input']>;
   ancestorDist: InputMaybe<Scalars['Int']['input']>;
   ancestorOf: InputMaybe<Scalars['Int']['input']>;
@@ -5489,10 +5563,10 @@ export type EmbeddedViews_Default_EntryNextArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5504,7 +5578,7 @@ export type EmbeddedViews_Default_EntryNextArgs = {
 };
 
 
-export type EmbeddedViews_Default_EntryParentArgs = {
+export type Embed_Embed_EntryParentArgs = {
   after: InputMaybe<Scalars['String']['input']>;
   ancestorDist: InputMaybe<Scalars['Int']['input']>;
   ancestorOf: InputMaybe<Scalars['Int']['input']>;
@@ -5567,10 +5641,10 @@ export type EmbeddedViews_Default_EntryParentArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5582,7 +5656,7 @@ export type EmbeddedViews_Default_EntryParentArgs = {
 };
 
 
-export type EmbeddedViews_Default_EntryPrevArgs = {
+export type Embed_Embed_EntryPrevArgs = {
   after: InputMaybe<Scalars['String']['input']>;
   ancestorDist: InputMaybe<Scalars['Int']['input']>;
   ancestorOf: InputMaybe<Scalars['Int']['input']>;
@@ -5645,10 +5719,10 @@ export type EmbeddedViews_Default_EntryPrevArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5660,7 +5734,7 @@ export type EmbeddedViews_Default_EntryPrevArgs = {
 };
 
 
-export type EmbeddedViews_Default_EntryTourArgs = {
+export type Embed_Embed_EntrySurveyArgs = {
   after: InputMaybe<Scalars['String']['input']>;
   ancestorDist: InputMaybe<Scalars['Int']['input']>;
   ancestorOf: InputMaybe<Scalars['Int']['input']>;
@@ -5723,10 +5797,750 @@ export type EmbeddedViews_Default_EntryTourArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type ExplorerSectionEntryUnion = Explorer_Explorer_Entry;
+
+export type Explorer_Explorer_Entry = ElementInterface & EntryInterface & {
+  __typename?: 'explorer_explorer_Entry';
+  /** Return a number of related elements for a field. */
+  _count: Maybe<Scalars['Int']['output']>;
+  /** The entry’s ancestors, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  ancestors: Array<EntryInterface>;
+  /** Whether the element is archived. */
+  archived: Maybe<Scalars['Boolean']['output']>;
+  /** Returns the entry’s canonical ID. */
+  canonicalId: Maybe<Scalars['Int']['output']>;
+  /** Returns the entry’s canonical UUID. */
+  canonicalUid: Maybe<Scalars['String']['output']>;
+  /** The entry’s children, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  children: Array<EntryInterface>;
+  /** The date the element was created. */
+  dateCreated: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated: Maybe<Scalars['DateTime']['output']>;
+  /** The entry’s descendants, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  descendants: Array<EntryInterface>;
+  /** The draft ID (from the `drafts` table). */
+  draftId: Maybe<Scalars['Int']['output']>;
+  /** The name of the draft. */
+  draftName: Maybe<Scalars['String']['output']>;
+  /** The notes for the draft. */
+  draftNotes: Maybe<Scalars['String']['output']>;
+  /** Whether the element is enabled. */
+  enabled: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the element is enabled for the site. */
+  enabledForSite: Maybe<Scalars['Boolean']['output']>;
+  /** The expiry date of the entry. */
+  expiryDate: Maybe<Scalars['DateTime']['output']>;
+  /** The ID of the entity */
+  id: Maybe<Scalars['ID']['output']>;
+  /** Returns whether this is a draft. */
+  isDraft: Maybe<Scalars['Boolean']['output']>;
+  /** Returns whether this is a revision. */
+  isRevision: Maybe<Scalars['Boolean']['output']>;
+  /** Returns whether this is an unpublished draft. */
+  isUnpublishedDraft: Maybe<Scalars['Boolean']['output']>;
+  /** The language of the site element is associated with. */
+  language: Maybe<Scalars['String']['output']>;
+  /** The element’s level within its structure */
+  level: Maybe<Scalars['Int']['output']>;
+  /** The element’s left position within its structure. */
+  lft: Maybe<Scalars['Int']['output']>;
+  /** The same element in other locales. */
+  localized: Array<EntryInterface>;
+  /** Returns the next element relative to this one, from a given set of criteria. */
+  next: Maybe<EntryInterface>;
+  /** The entry’s parent, if the section is a structure. */
+  parent: Maybe<EntryInterface>;
+  /** The entry’s post date. */
+  postDate: Maybe<Scalars['DateTime']['output']>;
+  /** Returns the previous element relative to this one, from a given set of criteria. */
+  prev: Maybe<EntryInterface>;
+  /** The revision ID (from the `revisions` table). */
+  revisionId: Maybe<Scalars['Int']['output']>;
+  /** The revision notes (from the `revisions` table). */
+  revisionNotes: Maybe<Scalars['String']['output']>;
+  /** The element’s right position within its structure. */
+  rgt: Maybe<Scalars['Int']['output']>;
+  /** The element’s structure’s root ID */
+  root: Maybe<Scalars['Int']['output']>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore: Maybe<Scalars['Int']['output']>;
+  /** The handle of the section that contains the entry. */
+  sectionHandle: Scalars['String']['output'];
+  /** The ID of the section that contains the entry. */
+  sectionId: Scalars['Int']['output'];
+  /** The handle of the site the element is associated with. */
+  siteHandle: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug: Maybe<Scalars['String']['output']>;
+  /**
+   * Returns the entry’s canonical ID.
+   * @deprecated this field has been deprecated since Craft 3.7.7. Use `canonicalId` instead.
+   */
+  sourceId: Maybe<Scalars['Int']['output']>;
+  /**
+   * Returns the entry’s canonical UUID.
+   * @deprecated this field has been deprecated since Craft 3.7.7. Use `canonicalUid` instead.
+   */
+  sourceUid: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status: Maybe<Scalars['String']['output']>;
+  /** The element’s structure ID. */
+  structureId: Maybe<Scalars['Int']['output']>;
+  survey: Array<Maybe<EntryInterface>>;
+  /** The element’s title. */
+  title: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed: Maybe<Scalars['Boolean']['output']>;
+  /** The handle of the entry type that contains the entry. */
+  typeHandle: Scalars['String']['output'];
+  /** The ID of the entry type that contains the entry. */
+  typeId: Scalars['Int']['output'];
+  /** The UID of the entity */
+  uid: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri: Maybe<Scalars['String']['output']>;
+  /** The element’s full URL */
+  url: Maybe<Scalars['String']['output']>;
+};
+
+
+export type Explorer_Explorer_Entry_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+export type Explorer_Explorer_EntryAncestorsArgs = {
+  after: InputMaybe<Scalars['String']['input']>;
+  ancestorDist: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf: InputMaybe<Scalars['Int']['input']>;
+  astroImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  astroObjectId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorGroup: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  backgroundImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before: InputMaybe<Scalars['String']['input']>;
+  characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  descendantDist: InputMaybe<Scalars['Int']['input']>;
+  descendantOf: InputMaybe<Scalars['Int']['input']>;
+  duration: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  factsHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  fov: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMax: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMin: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants: InputMaybe<Scalars['Boolean']['input']>;
+  icon: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves: InputMaybe<Scalars['Boolean']['input']>;
+  level: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  path: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore: InputMaybe<Scalars['Int']['input']>;
+  postDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  ra: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Explorer_Explorer_EntryChildrenArgs = {
+  after: InputMaybe<Scalars['String']['input']>;
+  ancestorDist: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf: InputMaybe<Scalars['Int']['input']>;
+  astroImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  astroObjectId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorGroup: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  backgroundImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before: InputMaybe<Scalars['String']['input']>;
+  characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  descendantDist: InputMaybe<Scalars['Int']['input']>;
+  descendantOf: InputMaybe<Scalars['Int']['input']>;
+  duration: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  factsHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  fov: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMax: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMin: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants: InputMaybe<Scalars['Boolean']['input']>;
+  icon: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves: InputMaybe<Scalars['Boolean']['input']>;
+  level: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  path: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore: InputMaybe<Scalars['Int']['input']>;
+  postDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  ra: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Explorer_Explorer_EntryDescendantsArgs = {
+  after: InputMaybe<Scalars['String']['input']>;
+  ancestorDist: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf: InputMaybe<Scalars['Int']['input']>;
+  astroImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  astroObjectId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorGroup: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  backgroundImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before: InputMaybe<Scalars['String']['input']>;
+  characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  descendantDist: InputMaybe<Scalars['Int']['input']>;
+  descendantOf: InputMaybe<Scalars['Int']['input']>;
+  duration: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  factsHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  fov: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMax: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMin: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants: InputMaybe<Scalars['Boolean']['input']>;
+  icon: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves: InputMaybe<Scalars['Boolean']['input']>;
+  level: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  path: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore: InputMaybe<Scalars['Int']['input']>;
+  postDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  ra: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Explorer_Explorer_EntryLocalizedArgs = {
+  after: InputMaybe<Scalars['String']['input']>;
+  ancestorDist: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf: InputMaybe<Scalars['Int']['input']>;
+  astroImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  astroObjectId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorGroup: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  backgroundImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before: InputMaybe<Scalars['String']['input']>;
+  characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  descendantDist: InputMaybe<Scalars['Int']['input']>;
+  descendantOf: InputMaybe<Scalars['Int']['input']>;
+  duration: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  factsHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  fov: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMax: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMin: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants: InputMaybe<Scalars['Boolean']['input']>;
+  icon: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves: InputMaybe<Scalars['Boolean']['input']>;
+  level: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  path: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore: InputMaybe<Scalars['Int']['input']>;
+  postDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  ra: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Explorer_Explorer_EntryNextArgs = {
+  after: InputMaybe<Scalars['String']['input']>;
+  ancestorDist: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf: InputMaybe<Scalars['Int']['input']>;
+  astroImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  astroObjectId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorGroup: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  backgroundImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before: InputMaybe<Scalars['String']['input']>;
+  characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  descendantDist: InputMaybe<Scalars['Int']['input']>;
+  descendantOf: InputMaybe<Scalars['Int']['input']>;
+  duration: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  factsHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  fov: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMax: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMin: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants: InputMaybe<Scalars['Boolean']['input']>;
+  icon: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves: InputMaybe<Scalars['Boolean']['input']>;
+  level: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  path: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore: InputMaybe<Scalars['Int']['input']>;
+  postDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  ra: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Explorer_Explorer_EntryParentArgs = {
+  after: InputMaybe<Scalars['String']['input']>;
+  ancestorDist: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf: InputMaybe<Scalars['Int']['input']>;
+  astroImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  astroObjectId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorGroup: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  backgroundImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before: InputMaybe<Scalars['String']['input']>;
+  characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  descendantDist: InputMaybe<Scalars['Int']['input']>;
+  descendantOf: InputMaybe<Scalars['Int']['input']>;
+  duration: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  factsHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  fov: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMax: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMin: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants: InputMaybe<Scalars['Boolean']['input']>;
+  icon: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves: InputMaybe<Scalars['Boolean']['input']>;
+  level: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  path: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore: InputMaybe<Scalars['Int']['input']>;
+  postDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  ra: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Explorer_Explorer_EntryPrevArgs = {
+  after: InputMaybe<Scalars['String']['input']>;
+  ancestorDist: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf: InputMaybe<Scalars['Int']['input']>;
+  astroImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  astroObjectId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorGroup: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  backgroundImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before: InputMaybe<Scalars['String']['input']>;
+  characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  descendantDist: InputMaybe<Scalars['Int']['input']>;
+  descendantOf: InputMaybe<Scalars['Int']['input']>;
+  duration: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  factsHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  fov: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMax: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMin: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants: InputMaybe<Scalars['Boolean']['input']>;
+  icon: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves: InputMaybe<Scalars['Boolean']['input']>;
+  level: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  path: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore: InputMaybe<Scalars['Int']['input']>;
+  postDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  ra: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Explorer_Explorer_EntrySurveyArgs = {
+  after: InputMaybe<Scalars['String']['input']>;
+  ancestorDist: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf: InputMaybe<Scalars['Int']['input']>;
+  astroImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  astroObjectId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorGroup: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  backgroundImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before: InputMaybe<Scalars['String']['input']>;
+  characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  descendantDist: InputMaybe<Scalars['Int']['input']>;
+  descendantOf: InputMaybe<Scalars['Int']['input']>;
+  duration: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  factsHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  fov: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMax: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMin: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants: InputMaybe<Scalars['Boolean']['input']>;
+  icon: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves: InputMaybe<Scalars['Boolean']['input']>;
+  level: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  path: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore: InputMaybe<Scalars['Int']['input']>;
+  postDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  ra: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6202,10 +7016,10 @@ export type PoiAstroObject_PoiAstroObject_BlockTypeAstroObjectArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6450,10 +7264,10 @@ export type Surveys_Surveys_EntryAncestorsArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6528,10 +7342,10 @@ export type Surveys_Surveys_EntryChildrenArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6606,10 +7420,10 @@ export type Surveys_Surveys_EntryDescendantsArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6684,10 +7498,10 @@ export type Surveys_Surveys_EntryLocalizedArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6762,10 +7576,10 @@ export type Surveys_Surveys_EntryNextArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6840,10 +7654,10 @@ export type Surveys_Surveys_EntryParentArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6918,10 +7732,10 @@ export type Surveys_Surveys_EntryPrevArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7289,10 +8103,10 @@ export type TourPois_TourPoi_BlockTypeAstroObjectArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8373,10 +9187,10 @@ export type Tours_Tour_EntryAncestorsArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8496,10 +9310,10 @@ export type Tours_Tour_EntryChildrenArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8574,10 +9388,10 @@ export type Tours_Tour_EntryDescendantsArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8722,10 +9536,10 @@ export type Tours_Tour_EntryLocalizedArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8800,10 +9614,10 @@ export type Tours_Tour_EntryNextArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8878,10 +9692,10 @@ export type Tours_Tour_EntryParentArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8956,10 +9770,10 @@ export type Tours_Tour_EntryPrevArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId: InputMaybe<Scalars['Int']['input']>;
+  survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tour: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourTheme: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tourVariety: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9148,24 +9962,13 @@ export type Tours_Tour_EntryTourVarietyArgs = {
   withStructure: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-export type EmbeddedPageQueryQueryVariables = Exact<{
-  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
-  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
-}>;
-
-
-export type EmbeddedPageQueryQuery = { __typename?: 'Query', embeddedViewsEntries: Array<(
-    { __typename?: 'embeddedViews_default_Entry', title: string | null, fov: any | null, fovMax: any | null, fovMin: any | null, target: string | null }
-    & { ' $fragmentRefs'?: { 'EmbeddedExplorerFragment': EmbeddedExplorerFragment } }
-  ) | null> | null };
-
 export type EmbeddedTourLayoutQueryVariables = Exact<{
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>> | InputMaybe<Scalars['QueryArgument']['input']>>;
 }>;
 
 
-export type EmbeddedTourLayoutQuery = { __typename?: 'Query', toursEntries: Array<{ __typename?: 'tours_tour_Entry', tourPois: Array<{ __typename?: 'tourPois_tourPoi_BlockType', fov: any | null, astroObject: Array<{ __typename?: 'astroObjects_astroObject_Entry', ra: any | null, dec: any | null } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embeddedViews_default_Entry' } | { __typename?: 'surveys_surveys_Entry' } | { __typename?: 'tours_tour_Entry' } | null> } | null> } | null> | null };
+export type EmbeddedTourLayoutQuery = { __typename?: 'Query', toursEntries: Array<{ __typename?: 'tours_tour_Entry', tourPois: Array<{ __typename?: 'tourPois_tourPoi_BlockType', fov: any | null, astroObject: Array<{ __typename?: 'astroObjects_astroObject_Entry', ra: any | null, dec: any | null } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embed_embed_Entry' } | { __typename?: 'explorer_explorer_Entry' } | { __typename?: 'surveys_surveys_Entry' } | { __typename?: 'tours_tour_Entry' } | null> } | null> } | null> | null };
 
 export type EmbeddedTourQueryQueryVariables = Exact<{
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
@@ -9173,7 +9976,7 @@ export type EmbeddedTourQueryQueryVariables = Exact<{
 }>;
 
 
-export type EmbeddedTourQueryQuery = { __typename?: 'Query', toursEntries: Array<{ __typename?: 'tours_tour_Entry', id: string | null, slug: string | null, title: string | null, tourPois: Array<{ __typename?: 'tourPois_tourPoi_BlockType', id: string | null, description: string | null, fov: any | null, astroObject: Array<{ __typename?: 'astroObjects_astroObject_Entry', title: string | null, astroObjectId: string | null, ra: any | null, dec: any | null, characteristics: string | null } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embeddedViews_default_Entry' } | { __typename?: 'surveys_surveys_Entry' } | { __typename?: 'tours_tour_Entry' } | null> } | null> } | null> | null };
+export type EmbeddedTourQueryQuery = { __typename?: 'Query', toursEntries: Array<{ __typename?: 'tours_tour_Entry', id: string | null, slug: string | null, title: string | null, tourPois: Array<{ __typename?: 'tourPois_tourPoi_BlockType', id: string | null, description: string | null, fov: any | null, astroObject: Array<{ __typename?: 'astroObjects_astroObject_Entry', title: string | null, astroObjectId: string | null, ra: any | null, dec: any | null, characteristics: string | null } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embed_embed_Entry' } | { __typename?: 'explorer_explorer_Entry' } | { __typename?: 'surveys_surveys_Entry' } | { __typename?: 'tours_tour_Entry' } | null> } | null> } | null> | null };
 
 export type TourLayoutQueryVariables = Exact<{
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
@@ -9181,18 +9984,31 @@ export type TourLayoutQueryVariables = Exact<{
 }>;
 
 
-export type TourLayoutQuery = { __typename?: 'Query', toursEntries: Array<{ __typename?: 'tours_tour_Entry', tourPois: Array<{ __typename?: 'tourPois_tourPoi_BlockType', fov: any | null, astroObject: Array<{ __typename?: 'astroObjects_astroObject_Entry', ra: any | null, dec: any | null } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embeddedViews_default_Entry' } | { __typename?: 'surveys_surveys_Entry' } | { __typename?: 'tours_tour_Entry' } | null> } | null> } | null> | null };
+export type TourLayoutQuery = { __typename?: 'Query', toursEntries: Array<{ __typename?: 'tours_tour_Entry', tourPois: Array<{ __typename?: 'tourPois_tourPoi_BlockType', fov: any | null, astroObject: Array<{ __typename?: 'astroObjects_astroObject_Entry', ra: any | null, dec: any | null } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embed_embed_Entry' } | { __typename?: 'explorer_explorer_Entry' } | { __typename?: 'surveys_surveys_Entry' } | { __typename?: 'tours_tour_Entry' } | null> } | null> } | null> | null };
 
-export type EmbeddedExplorerFragment = { __typename?: 'embeddedViews_default_Entry', tour: Array<{ __typename?: 'astroObjects_astroObject_Entry' } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embeddedViews_default_Entry' } | { __typename?: 'surveys_surveys_Entry' } | { __typename?: 'tours_tour_Entry', id: string | null } | null> } & { ' $fragmentName'?: 'EmbeddedExplorerFragment' };
+export type EmbeddedPageQueryVariables = Exact<{
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+}>;
+
+
+export type EmbeddedPageQuery = { __typename?: 'Query', embedEntries: Array<{ __typename?: 'embed_embed_Entry', survey: Array<{ __typename?: 'astroObjects_astroObject_Entry' } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embed_embed_Entry' } | { __typename?: 'explorer_explorer_Entry' } | { __typename?: 'surveys_surveys_Entry', title: string | null, fov: any | null, fovMax: any | null, fovMin: any | null, path: string | null, imgFormat: string | null } | { __typename?: 'tours_tour_Entry' } | null> } | null> | null };
+
+export type ExplorerPageQueryVariables = Exact<{
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+}>;
+
+
+export type ExplorerPageQuery = { __typename?: 'Query', explorerEntries: Array<{ __typename?: 'explorer_explorer_Entry', survey: Array<{ __typename?: 'astroObjects_astroObject_Entry' } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embed_embed_Entry' } | { __typename?: 'explorer_explorer_Entry' } | { __typename?: 'surveys_surveys_Entry', title: string | null, fov: any | null, fovMax: any | null, fovMin: any | null, path: string | null, imgFormat: string | null } | { __typename?: 'tours_tour_Entry' } | null> } | null> | null };
 
 export type SurveyImageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type SurveyImageQuery = { __typename?: 'Query', surveysEntries: Array<{ __typename?: 'surveys_surveys_Entry', title: string | null, path: string | null, target: string | null, fovMin: any | null, fovMax: any | null, fov: any | null, imgFormat: string | null } | null> | null };
 
-export const EmbeddedExplorerFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"EmbeddedExplorer"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"embeddedViews_default_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tour"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<EmbeddedExplorerFragment, unknown>;
-export const EmbeddedPageQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"EmbeddedPageQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"embeddedViewsEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}},{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"embeddedViews_default_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"EmbeddedExplorer"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"EmbeddedExplorer"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"embeddedViews_default_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tour"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<EmbeddedPageQueryQuery, EmbeddedPageQueryQueryVariables>;
+
 export const EmbeddedTourLayoutDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"EmbeddedTourLayout"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"QueryArgument"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tourPois"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tourPois_tourPoi_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"astroObject"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"astroObjects_astroObject_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<EmbeddedTourLayoutQuery, EmbeddedTourLayoutQueryVariables>;
 export const EmbeddedTourQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"EmbeddedTourQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"QueryArgument"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"tourPois"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tourPois_tourPoi_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"astroObject"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"astroObjects_astroObject_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"astroObjectId"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"characteristics"}}]}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<EmbeddedTourQueryQuery, EmbeddedTourQueryQueryVariables>;
 export const TourLayoutDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TourLayout"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}},{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tourPois"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tourPois_tourPoi_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"astroObject"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"astroObjects_astroObject_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<TourLayoutQuery, TourLayoutQueryVariables>;
+export const EmbeddedPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"EmbeddedPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"embedEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"embed_embed_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<EmbeddedPageQuery, EmbeddedPageQueryVariables>;
+export const ExplorerPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ExplorerPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"explorerEntries"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"explorer_explorer_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<ExplorerPageQuery, ExplorerPageQueryVariables>;
 export const SurveyImageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"SurveyImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"surveysEntries"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}}]}}]}}]}}]} as unknown as DocumentNode<SurveyImageQuery, SurveyImageQueryVariables>;

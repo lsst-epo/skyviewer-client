@@ -1,19 +1,4 @@
-import isNil from "lodash/isNil";
-import mergeWith from "lodash/mergeWith";
 import { ShareData } from "@/types/share";
-
-export const defaultsMerger = (objValue: any, srcValue: any) => {
-  if (isNil(srcValue) && objValue) {
-    return isNil(objValue) ? srcValue : objValue;
-  }
-
-  return srcValue;
-};
-
-export const mergeWithDefaults = <T = any, P = any>(
-  value: T,
-  defaultValues: P
-) => mergeWith({}, defaultValues, value, defaultsMerger);
 
 /**
  * maps an input domain to a final range

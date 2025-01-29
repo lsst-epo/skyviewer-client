@@ -1,8 +1,6 @@
 import { graphql } from "@/gql";
 import { queryAPI } from "@/lib/api/urql";
-import { mergeWithDefaults } from "../utilities";
-import defaultSurveyView from "@/fixtures/defaultSurveyView";
-import { HiPSImageFormat } from "@/types/aladin";
+import { buildSurveyImage, SurveyImage } from "../helpers";
 
 const Query = graphql(`
   query SurveyImage {
@@ -20,15 +18,6 @@ const Query = graphql(`
   }
 `);
 
-export interface SurveyImage {
-  title?: string;
-  path: string;
-  target: string;
-  fovRange: Array<number>;
-  fov: number;
-  imgFormat: HiPSImageFormat;
-}
-
 const getSurveyImage = async (): Promise<SurveyImage | undefined> => {
   const { data } = await queryAPI({
     query: Query,
@@ -41,21 +30,7 @@ const getSurveyImage = async (): Promise<SurveyImage | undefined> => {
 
   if (!surveysEntries || !surveysEntries[0]) return undefined;
 
-  const { title, path, target, fovMin, fovMax, fov, imgFormat } =
-    mergeWithDefaults(surveysEntries[0], defaultSurveyView);
-
-  if (!path) {
-    throw new Error("HiPS catalog URL is undefined");
-  }
-
-  return {
-    title: title || undefined,
-    path,
-    target,
-    fovRange: [fovMin, fovMax],
-    fov,
-    imgFormat,
-  };
+  return buildSurveyImage(surveysEntries[0]);
 };
 
 export default getSurveyImage;

@@ -1,6 +1,17 @@
 import z from "zod";
 import clamp from "lodash/clamp";
-import { SurveyImage } from "./api/survey";
+import defaultSurveyView from "@/fixtures/defaultSurveyView";
+
+export const buildSurveyImage = (survey: unknown) => {
+  const { fovMin, fovMax, ...rest } = surveyImageSchema.parse(survey);
+
+  return {
+    fovRange: [fovMin, fovMax],
+    ...rest,
+  };
+};
+
+export type SurveyImage = ReturnType<typeof buildSurveyImage>;
 
 const ra = z.number().min(0).max(360);
 const dec = z.number().min(-90).max(90);
@@ -31,3 +42,28 @@ export const initialPosition = (
 
   return positionSchema.parse(searchParams);
 };
+
+const surveyImageSchema = z.object({
+  fovMin: z.coerce
+    .number()
+    .catch(defaultSurveyView.fovMin)
+    .default(defaultSurveyView.fovMin),
+  fovMax: z.coerce
+    .number()
+    .catch(defaultSurveyView.fovMax)
+    .default(defaultSurveyView.fovMax),
+  fov: z.coerce
+    .number()
+    .catch(defaultSurveyView.fov)
+    .default(defaultSurveyView.fov),
+  target: z
+    .string()
+    .catch(defaultSurveyView.target)
+    .default(defaultSurveyView.target),
+  imgFormat: z
+    .enum(["jpg", "png", "fits", "webp"])
+    .catch(defaultSurveyView.imgFormat)
+    .default(defaultSurveyView.imgFormat),
+  title: z.string().nullable(),
+  path: z.string(),
+});
