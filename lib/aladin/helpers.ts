@@ -1,6 +1,6 @@
-import { AladinEvent, AladinInstance } from "@/types/aladin";
+import camelCase from "lodash/camelCase";
 
-const ValidAladinEvents: Array<AladinEvent> = [
+const ValidAladinCallbacks: Array<ListenerCallback> = [
   "select",
   "objectsSelected",
   "objectClicked",
@@ -20,10 +20,24 @@ const ValidAladinEvents: Array<AladinEvent> = [
   "layerChanged",
 ];
 
-export const isAladinEvent = (
+const isAladinCallback = (
   maybeEvent: string
-): maybeEvent is AladinEvent => {
-  return ValidAladinEvents.includes(maybeEvent as any);
+): maybeEvent is ListenerCallback => {
+  return ValidAladinCallbacks.includes(maybeEvent as any);
+};
+
+export const bindAladinEvents = (
+  aladin: AladinInstance,
+  events: ReactAladinCallbacks & AdditionalAladinCallbacks
+) => {
+  Object.keys(events).forEach((eventKey) => {
+    const callback = events[eventKey];
+    const listenerCallback = camelCase(eventKey.slice(2));
+
+    if (isAladinCallback(listenerCallback)) {
+      aladin.on(listenerCallback, callback);
+    }
+  });
 };
 
 export function getPixelPosition(

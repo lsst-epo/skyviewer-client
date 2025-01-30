@@ -25,10 +25,10 @@ const FOVScale: FunctionComponent<{
   fov?: number;
   className?: string;
 }> = ({ fov, className }) => {
-  const { ref } = useAladin();
-  const svgRef = useRef(null);
-  const windowWidth = ref.current?.clientWidth;
-  const legendWidth = ref.current?.clientWidth;
+  const { aladin } = useAladin();
+  const svgRef = useRef<SVGSVGElement>(null);
+  const [windowWidth] = aladin?.getSize() || [];
+  const legendWidth = svgRef.current?.clientWidth;
   const legendViewBoxWidth = 1000;
   const tickHeight = 10;
 

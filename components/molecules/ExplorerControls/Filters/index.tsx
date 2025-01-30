@@ -7,7 +7,6 @@ import defaultFilters, {
   CharacteristicParams,
 } from "@/fixtures/defaultExplorerFilters";
 import { useAladin } from "@/contexts/Aladin";
-import { AladinSource } from "@/types/aladin";
 
 const Filters: FunctionComponent = () => {
   const menuLabelId = "filters-menu-label";

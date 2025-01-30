@@ -23,11 +23,7 @@ const IconToggle: FunctionComponent<IconToggleProps> = ({
 }) => {
   return (
     <label
-      className={classNames(
-        styles.iconToggle,
-        buttonStyles.iconButton,
-        className
-      )}
+      className={classNames(styles.iconToggle, className)}
       data-checked={isChecked}
     >
       <span className="visually-hidden">{label}</span>
