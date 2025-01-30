@@ -9,9 +9,9 @@ const FOVSize: FunctionComponent<{ fov?: number; className?: string }> = ({
   fov,
   className,
 }) => {
-  const { ref } = useAladin();
+  const { aladin } = useAladin();
   const frameSize = 200;
-  const windowSize = ref.current?.clientWidth;
+  const [windowSize] = aladin?.getSize() || [];
   const focalPlaneWidth = 200;
   const focalPlaneFov = 3.5;
   const moonFov = 0.5;

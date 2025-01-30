@@ -11,7 +11,7 @@ const LogoCover: FunctionComponent<{ locale: string }> = async ({ locale }) => {
   return (
     <Cover>
       <div className={styles.headerLogoContainer}>
-        <Image src={logo} alt="" />
+        <Image className={styles.logoImage} src={logo} alt="" />
         <h1 className={styles.headerLogoCover}>{t("title")}</h1>
       </div>
     </Cover>

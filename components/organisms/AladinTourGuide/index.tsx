@@ -7,11 +7,10 @@ import {
   useState,
 } from "react";
 import { useAladin } from "@/contexts/Aladin";
-import { useSearchParams } from "next/navigation";
-import AladinCanvas from "@/components/primitives/AladinCanvas";
 import AladinOverlay from "@/components/primitives/AladinOverlay";
 import PoiDescription from "@/components/molecules/PoiDescription";
 import styles from "./styles.module.css";
+import Orientation from "@/components/molecules/ExplorerControls/Orientation";
 
 interface AstroObject {
   astroObjectId: string;
@@ -82,18 +81,18 @@ const AladinTourGuide: FunctionComponent<AladinTourGuideProps> = ({
   }, [isLoading, poiIndex]);
 
   return (
-    <>
-      <AladinCanvas showLogo={false} />
-      <AladinOverlay className={styles.tourOverlay}>
-        <PoiDescription
-          isOpen={currentIndex === poiIndex}
-          tourTitle={title}
-          title={poi?.astroObject[0]?.title}
-          description={poi?.description}
-        />
-        {controls}
-      </AladinOverlay>
-    </>
+    <AladinOverlay className={styles.tourOverlay}>
+      <PoiDescription
+        isOpen={currentIndex === poiIndex}
+        tourTitle={title}
+        title={poi?.astroObject[0]?.title}
+        description={poi?.description}
+      />
+      <div className={styles.orientation}>
+        <Orientation />
+      </div>
+      {controls}
+    </AladinOverlay>
   );
 };
 

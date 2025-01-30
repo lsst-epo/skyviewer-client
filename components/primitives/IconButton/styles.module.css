@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: var(--color-font-primary);
+  background-color: #313333;
   color: var(--color-font-invert);
   cursor: pointer;
   width: var(--size-spacing-l);
@@ -16,16 +16,11 @@
     cursor: not-allowed;
   }
 
-  &:not(:disabled):hover,
-  &:not(:disabled)[data-checked="true"],
-  &:not(:disabled)[data-active],
-  &:not(:disabled)[data-hover] {
-    background-color: var(--color-background-button-primary-hover);
+  &:not(:disabled):hover {
+    background-color: var(--color-rubin-teal-300);
   }
 
-  &:not(:disabled):focus-within,
-  &:not(:disabled)[data-open] {
+  &:not(:disabled):focus-visible {
     outline: 2px solid var(--color-font-invert);
-    cursor: pointer;
   }
 }

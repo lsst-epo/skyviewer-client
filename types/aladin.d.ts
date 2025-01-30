@@ -1,12 +1,9 @@
 // Aladin SkyView Lite is declared as `A` in the global scope
 
-import { string } from "prop-types";
-import { AladinEventMap } from "./events";
-
 type CooFrame = "equatorial" | "ICRS" | "ICRSd" | "j2000" | "gal" | "galactic";
-export type HiPSImageFormat = "jpg" | "png" | "fits" | "webp";
+type HiPSImageFormat = "jpg" | "png" | "fits" | "webp";
 
-export interface ImageHiPSOptions {
+interface ImageHiPSOptions {
   name?: string;
   successCallback?: () => void;
   errorCallback?: () => void;
@@ -57,7 +54,7 @@ interface AladinCallback {
   error?: (err?: any) => void;
 }
 
-export interface AladinHipsImageFormat {
+interface AladinHipsImageFormat {
   imgFormat: HiPSImageFormat;
 }
 
@@ -87,7 +84,7 @@ interface GridOptions {
 }
 
 /** Options for configuring the Aladin Lite instance. */
-export interface AladinOptions {
+interface AladinOptions {
   /** URL or ID of the survey to use
    * @default "CDS/P/DSS2/color"
    */
@@ -228,11 +225,11 @@ export interface AladinOptions {
   pixelateCanvas?: boolean;
 }
 
-export interface AladinSource {
+interface AladinSource {
   data: any;
 }
 
-export interface AladinCatalog {
+interface AladinCatalog {
   readonly addSources: (sources: AladinSource | AladinSource[]) => void;
   readonly show: () => void;
   readonly hide: () => void;
@@ -269,7 +266,7 @@ interface GetViewData {
   ): Promise<Blob>;
 }
 
-export interface AladinInstance {
+interface AladinInstance {
   readonly getRaDec: () => [number, number];
   readonly getSize: () => [number, number];
   readonly getFov: () => [number, number];
@@ -288,9 +285,9 @@ export interface AladinInstance {
   readonly addCatalog: (catalog: AladinCatalog) => void;
   /** @deprecated Old method name, use `Aladin.prototype.removeOverlays` instead. */
   readonly removeLayers: () => void;
-  readonly on: <T extends keyof AladinEventMap>(
+  readonly on: <T extends keyof AladinCallbackMap>(
     type: T,
-    handler: AladinEventMap[T]
+    handler: AladinCallbackMap[T]
   ) => void;
   /** @deprecated */
   readonly createImageSurvey: (
@@ -340,7 +337,7 @@ export interface AladinInstance {
   options: Required<AladinOptions>;
 }
 
-export type CatalogSourceShape =
+type CatalogSourceShape =
   | "circle"
   | "plus"
   | "rhomb"
@@ -370,7 +367,7 @@ interface AladinCatalogOptions {
 
 type AladinCatalogCallback = (sources: AladinSource[]) => void;
 
-export interface Aladin {
+interface Aladin {
   /** Initializes the Aladin Lite library, checking for WebGL2 support. This method must be called before instancing an Aladin Lite object. */
   readonly init: Promise<void>;
   readonly aladin: (
@@ -402,5 +399,3 @@ export interface Aladin {
 
   // TODO: Add the final functions
 }
-
-export * from "./events";

@@ -1,5 +1,3 @@
-import { HiPSImageFormat } from "@/types/aladin";
-
 const imgFormat: HiPSImageFormat = "png";
 
 const defaultSurveyView = {

@@ -2,3 +2,9 @@
   gap: var(--size-spacing-s);
   justify-content: flex-end;
 }
+
+.orientation {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

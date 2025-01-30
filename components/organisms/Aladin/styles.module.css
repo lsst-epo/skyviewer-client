@@ -1,18 +1,23 @@
-.aladin-container {
+.aladinContainer {
+  transition: opacity 0.2s;
+  transition-delay: 0.2s;
   position: absolute !important; /* stylelint-disable-line declaration-no-important */
   inset: 0;
   background-color: var(--black);
   border: 0 !important; /* stylelint-disable-line declaration-no-important */
+  opacity: 0;
   width: 100%;
   height: 100%;
 
-  &[data-show-logo="false"] {
-    .aladin-logo-container {
-      display: none;
-    }
+  :global(.aladin-logo-container) {
+    display: none;
   }
-}
 
-.aladin-table {
-  display: none;
+  :global(.aladin-table) {
+    display: none;
+  }
+
+  &[data-loaded="true"] {
+    opacity: 1;
+  }
 }

@@ -1,6 +1,5 @@
 import { FunctionComponent, PropsWithChildren, ReactNode } from "react";
-import { AladinOptions, ImageHiPSOptions } from "@/types/aladin";
-import { AladinProvider } from "@/contexts/Aladin";
+import Aladin from "@/components/organisms/Aladin";
 import styles from "./styles.module.css";
 
 interface AladinTemplateProps {
@@ -23,7 +22,7 @@ const AladinTemplate: FunctionComponent<
       style={{ ...(embedded && { "--main-header-height": "0px" }) }}
     >
       <div className={styles.aladinViewer}>
-        <AladinProvider
+        <Aladin
           {...{
             options,
             fovRange,
@@ -31,7 +30,7 @@ const AladinTemplate: FunctionComponent<
           }}
         >
           {children}
-        </AladinProvider>
+        </Aladin>
       </div>
 
       {footer && <footer className={styles.aladinFooter}>{footer}</footer>}

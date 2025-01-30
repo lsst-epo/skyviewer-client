@@ -1,4 +1,3 @@
-import { Aladin, AladinInstance, CatalogSourceShape } from "@/types/aladin";
 import { Catalog, RubinCatalog } from "@/types/catalog";
 
 const CUSTOM_SHAPES: Record<RubinCatalog, string> = {

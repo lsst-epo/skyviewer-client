@@ -1,5 +1,4 @@
 /* stylelint-disable no-descending-specificity */
-@forward "./Orientation/styles";
 @forward "./Pan/styles";
 @forward "./Search/styles";
 @use "abstracts/mixins/typography";
@@ -68,26 +67,5 @@
   .wayfinding {
     bottom: calc(50% - #{$controlDim} - (#{$controlSpacing}));
     left: 0;
-  }
-
-  .overlays {
-    top: 0;
-    right: 0;
-    display: flex;
-    flex-wrap: wrap;
-    width: (2 * $controlDim) + $controlSpacing;
-
-    li {
-      margin-left: $controlSpacing;
-    }
-
-    li:first-child {
-      margin-left: $controlDim + $controlSpacing;
-    }
-
-    li:last-child {
-      margin-top: $controlSpacing;
-      margin-left: $controlDim + $controlSpacing;
-    }
   }
 }

@@ -1,5 +1,3 @@
-import { AladinOptions, ImageHiPSOptions } from "@/types/aladin";
-
 export const defaultHiPSOptions: ImageHiPSOptions = {
   cooFrame: "ICRS",
   maxOrder: 11,

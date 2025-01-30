@@ -8,8 +8,6 @@ import {
   getAstroObjectContent,
   getAstroObjectData,
 } from "@/lib/api/astroObject";
-import { ObjectClickedHandler } from "@/types/aladin";
-import AladinCanvas from "@/components/primitives/AladinCanvas";
 import { Catalog } from "@/types/catalog";
 import { getPixelPosition } from "@/lib/aladin/helpers";
 
@@ -20,36 +18,7 @@ interface AladinProps {
 }
 
 const Explorer: FunctionComponent<AladinProps> = ({ catalogs, jpgs }) => {
-  const { A, aladin, ref } = useAladin();
-  const [additionalSourceData, setAdditionalSourceData] = useState<
-    Record<string, any>
-  >({});
-  const [sourceData, setSourceData] = useState<any>(null);
-
-  useResizeObserver({
-    ref,
-    onResize: () => {
-      if (!sourceData || !aladin) return;
-
-      const { _RA: ra, _DEC: dec } = sourceData;
-
-      setSourceData({
-        ...sourceData,
-        position: getPixelPosition(aladin, { ra, dec }),
-      });
-    },
-  });
-
-  useEffect(() => {
-    if (!aladin || !A) return;
-
-    // Update Catalogs
-    if (catalogs) {
-      addCats(A, aladin, catalogs);
-    }
-  }, [A, aladin, catalogs]);
-
-  const showSourceDetails: ObjectClickedHandler = async (event) => {
+  const showSourceDetails: ObjectClickedCallback = async (event) => {
     if (!event) return;
     const { data, ra, dec } = event;
     const { id } = data;
@@ -83,6 +52,37 @@ const Explorer: FunctionComponent<AladinProps> = ({ catalogs, jpgs }) => {
     }
   };
 
+  const { A, aladin, ref } = useAladin({
+    callbacks: { onObjectClicked: showSourceDetails },
+  });
+  const [additionalSourceData, setAdditionalSourceData] = useState<
+    Record<string, any>
+  >({});
+  const [sourceData, setSourceData] = useState<any>(null);
+
+  useResizeObserver({
+    ref,
+    onResize: () => {
+      if (!sourceData || !aladin) return;
+
+      const { _RA: ra, _DEC: dec } = sourceData;
+
+      setSourceData({
+        ...sourceData,
+        position: getPixelPosition(aladin, { ra, dec }),
+      });
+    },
+  });
+
+  useEffect(() => {
+    if (!aladin || !A) return;
+
+    // Update Catalogs
+    if (catalogs) {
+      addCats(A, aladin, catalogs);
+    }
+  }, [A, aladin, catalogs]);
+
   const hideSourceDetails = () => {
     setSourceData(null);
   };
@@ -94,7 +94,6 @@ const Explorer: FunctionComponent<AladinProps> = ({ catalogs, jpgs }) => {
         setData={setSourceData}
         handleClose={hideSourceDetails}
       />
-      <AladinCanvas onObjectClicked={showSourceDetails} />
     </>
   );
 };
