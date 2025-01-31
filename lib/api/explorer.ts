@@ -10,7 +10,7 @@ export const getExplorerPage = async (
 
   const Query = graphql(`
     query ExplorerPage($site: [String]) {
-      explorerEntries {
+      explorerEntries(site: $site) {
         ... on explorer_explorer_Entry {
           survey {
             ... on surveys_surveys_Entry {
