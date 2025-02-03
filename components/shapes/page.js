@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import { localizedShape } from "@/shapes/locale";
-import imageShape from "@/shapes/image";
+import { localizedShape } from "@/components/shapes/locale";
+import imageShape from "@/components/shapes/image";
 
 const pageShape = PropTypes.shape({
   id: PropTypes.string,

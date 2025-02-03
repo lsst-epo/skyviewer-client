@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import debounce from "lodash.debounce";
+import debounce from "lodash/debounce";
 
 const defaultOptions = {
   leading: false,

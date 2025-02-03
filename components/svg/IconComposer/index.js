@@ -1,44 +1,8 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import Icons from "../icons";
-import { capitalize } from "@/helpers";
-import { svgInternalShape } from "@/shapes/svg";
+import BaseIconComposer from "@rubin-epo/epo-react-lib/IconComposer";
+import customIcons from "@/components/svg/icons";
 
-export default class IconComposer extends PureComponent {
-  static propTypes = {
-    ...svgInternalShape,
-  };
+const IconComposer = (props) => {
+  return <BaseIconComposer {...{ ...props, customIcons }} />;
+};
 
-  get iconComponent() {
-    const key = capitalize(this.props.icon);
-    const component = Icons[key];
-
-    return component;
-  }
-
-  render() {
-    const {
-      className: inheritedClassName,
-      size,
-      fill,
-      stroke,
-      icon,
-    } = this.props;
-    const className = classNames({
-      "a-svg": true,
-      [`${inheritedClassName}`]: !!inheritedClassName,
-    });
-    const IconComponent = this.iconComponent;
-
-    if (!IconComponent) return false;
-
-    return React.createElement(IconComponent, {
-      svgProps: this.props.svgProps,
-      className,
-      icon,
-      size,
-      fill,
-    });
-  }
-}
+export default IconComposer;

@@ -1,11 +1,10 @@
+"use client";
 import { useState } from "react";
 import PropTypes from "prop-types";
-import IconComposer from "@/svg/IconComposer";
-import Button from "@/primitives/Button";
-import Buttonish from "@/primitives/Buttonish";
-import ShareButtons from "@/components/ShareButtons";
-import Radio from "@/primitives/Radio";
-import Menu from "@/primitives/Menu";
+import IconComposer from "@/components/svg/IconComposer";
+import Button from "@rubin-epo/epo-react-lib/Button";
+import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
+import Menu from "@/components/primitives/Menu";
 import AboutMenu from "./AboutMenu.js";
 import LocaleMenu from "./LocaleMenu.js";
 import ShareMenu from "./ShareMenu.js";
@@ -33,28 +32,6 @@ export default function MainMenu({ route }) {
     setAboutOpenOverride(isOpen);
   };
 
-  function getQuickAccess() {
-    return (
-      <ul className="list-unstyled quick-access-nav-items">
-        <li className="quick-access-nav-item">
-          {route === "/explorer" ? (
-            <Buttonish
-              url="/tours"
-              icon={<IconComposer icon="Suitcase" />}
-              text="Astronomical Tours"
-            />
-          ) : (
-            <Buttonish
-              url="/explorer"
-              icon={<IconComposer icon="Sparkle" />}
-              text="Skyviewer Explorer"
-            />
-          )}
-        </li>
-      </ul>
-    );
-  }
-
   return (
     <Menu
       classes="main-menu"
@@ -66,7 +43,7 @@ export default function MainMenu({ route }) {
       closeCallback={toggleMainMenuCallback}
       openOverride={openOverride}
       openButtonOpts={{
-        icon: <IconComposer icon="Hamburger" />,
+        icon: <IconComposer size={22} icon="Hamburger" />,
         text: "Open Main Menu Modal Dialog",
         isIcon: true,
         classes: "main-menu-button",
@@ -78,15 +55,15 @@ export default function MainMenu({ route }) {
             <h3 id="settings-label" className="menu-section-heading">
               Settings
             </h3>
-            <ul className="list-unstyled main-menu-nav-items">
+            <ul className="main-menu-nav-items">
               <li className="main-menu-nav-item">
                 <Button
-                  isIcon={false}
-                  icon={<IconComposer icon="World" />}
-                  text="Language"
-                  classes="language-item"
+                  icon="Globe"
+                  className="language-item"
                   onClick={() => setLocaleOpenOverride(true)}
-                />
+                >
+                  Language
+                </Button>
                 <LocaleMenu
                   isOpen={localeOpenOverride}
                   toggleMenuCallback={toggleLocaleModalCallback}
@@ -94,12 +71,12 @@ export default function MainMenu({ route }) {
               </li>
               <li className="main-menu-nav-item">
                 <Button
-                  isIcon={false}
-                  icon={<IconComposer icon="ShareSimple" />}
-                  text="Share Skyviewer"
-                  classes="share-item"
+                  icon="ArrowUpFromBracket"
+                  className="share-item"
                   onClick={() => setShareOpenOverride(true)}
-                />
+                >
+                  Share Skyviewer
+                </Button>
                 <ShareMenu
                   isOpen={shareOpenOverride}
                   toggleMenuCallback={toggleShareModalCallback}
@@ -108,19 +85,19 @@ export default function MainMenu({ route }) {
               <li className="main-menu-nav-item">
                 <Buttonish
                   url="#"
-                  icon={<IconComposer icon="Help" />}
+                  icon="QuestionCircle"
                   text="Help"
-                  classes="help-item"
+                  className="help-item"
                 />
               </li>
               <li className="main-menu-nav-item">
                 <Button
-                  isIcon={false}
-                  icon={<IconComposer icon="InfoSmall" />}
-                  text="About"
-                  classes="about-item"
+                  icon="InfoCircle"
+                  className="about-item"
                   onClick={() => setAboutOpenOverride(true)}
-                />
+                >
+                  About
+                </Button>
                 <AboutMenu
                   isOpen={aboutOpenOverride}
                   toggleMenuCallback={toggleAboutModalCallback}

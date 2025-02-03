@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import classnames from "classnames";
-import IconComposer from "@/svg/IconComposer";
+import IconComposer from "@/components/svg/IconComposer";
 
 export default function Accordion({
   id,

@@ -1,9 +1,9 @@
 import { createContext } from "react";
 import PropTypes from "prop-types";
-import { internalLinkWithChildrenShape } from "@/shapes/link";
-import siteInfoShape from "@/shapes/siteInfo";
-import footerContentShape from "@/shapes/footerContent";
-import rootPagesShape from "@/shapes/rootPages";
+import { internalLinkWithChildrenShape } from "@/components/shapes/link";
+import siteInfoShape from "@/components/shapes/siteInfo";
+import footerContentShape from "@/components/shapes/footerContent";
+import rootPagesShape from "@/components/shapes/rootPages";
 
 const GlobalDataContext = createContext(null);
 

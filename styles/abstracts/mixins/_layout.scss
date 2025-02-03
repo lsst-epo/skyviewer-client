@@ -1,0 +1,146 @@
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
+@use "abstracts/variables";
+
+// Layout mixins
+// -------------------
+
+// Containers
+// --------------------------------------------------------
+@mixin proto-container(
+  $max-width: functions.container-width(wide),
+  $wide-padding: functions.padding(large),
+  $narrow-padding: functions.padding(small)
+) {
+  @include base.fluid-scale(
+    max-width,
+    $max-width + 2 * $wide-padding,
+    $max-width + 2 * $narrow-padding
+  );
+  @include base.fluid-scale(
+    padding-right padding-left,
+    $wide-padding,
+    $narrow-padding
+  );
+
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@mixin container-max {
+  @include proto-container(functions.container-width(max));
+}
+
+@mixin container-full {
+  @include proto-container(functions.container-width(full));
+}
+
+@mixin container-wide {
+  @include proto-container(functions.container-width(wide));
+}
+
+@mixin container-regular {
+  @include proto-container(functions.container-width(regular));
+}
+
+@mixin container-narrow {
+  @include proto-container(functions.container-width(narrow));
+}
+
+@mixin container-full-bleed($width: "max") {
+  width: 100%;
+  max-width: functions.container-width($width);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@mixin container-inner {
+  @include base.fluid-scale(
+    padding-right padding-left,
+    functions.padding(large),
+    functions.padding(small)
+  );
+}
+
+@mixin container-guided {
+  @include container-full-bleed(max);
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  height: 100vh;
+  padding: 0 24px;
+  color: var(--white);
+  background-color: var(--black);
+
+  @include base.respond(functions.break(tablet), min) {
+    justify-content: space-between;
+  }
+}
+
+// Grids
+// --------------------------------------------------------
+@mixin gap($property: "gap", $gap-desktop, $gap-mobile) {
+  @if $gap-desktop == $gap-mobile {
+    #{$property}: $gap-desktop;
+  } @else {
+    @include base.fluid-scale($property, $gap-desktop, $gap-mobile);
+  }
+}
+
+@mixin grid(
+  $columns: 2,
+  $gap-desktop: functions.padding(large),
+  $gap-mobile: functions.padding(small),
+  $break: functions.break(tablet)
+) {
+  $supports-query: "(grid-auto-columns: min-content)";
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  // Use CSS Grid if supported
+  // Autoprefixer does not support autoplacement (mostly)
+  // so test for a newer grid spec property to limit implementation,
+  // with Flexbox as fallback
+  // see https://github.com/postcss/autoprefixer#does-autoprefixer-polyfill-grid-layout-for-ie
+  @supports (#{$supports-query}) {
+    /* autoprefixer: off */
+    display: grid;
+    grid-template-columns: repeat($columns, 1fr);
+
+    @include gap(gap, $gap-desktop, $gap-mobile);
+  }
+
+  > * {
+    flex: 0 1 calc(#{100% / $columns} - #{$gap-mobile});
+
+    &:nth-child(n + #{$columns + 1}) {
+      @include gap(margin-top, $gap-desktop, $gap-mobile);
+    }
+
+    @supports (#{$supports-query}) {
+      &:nth-child(n + #{$columns}) {
+        margin-top: 0;
+      }
+    }
+
+    @include base.respond($break) {
+      flex-basis: 100%;
+
+      &:not(first-child) {
+        margin-top: $gap-mobile;
+      }
+
+      @supports (#{$supports-query}) {
+        grid-column: span $columns;
+
+        /* stylelint-disable-next-line max-nesting-depth */
+        &:not(first-child) {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}

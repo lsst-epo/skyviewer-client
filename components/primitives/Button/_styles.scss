@@ -1,4 +1,4 @@
-@use 'abstracts/mixins/appearance';
+@use "abstracts/mixins/appearance";
 
 .button {
   @include appearance.button-primary;

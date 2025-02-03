@@ -1,7 +1,5 @@
-import { useState, useContext } from "react";
 import PropTypes from "prop-types";
-import Menu from "@/primitives/Menu";
-import IconComposer from "@/svg/IconComposer";
+import Menu from "@/components/primitives/Menu";
 
 export default function Filters({
   menuLabelId,
@@ -10,6 +8,7 @@ export default function Filters({
   subheading,
   actionButtonHandler,
   openButtonOpts,
+  commitHandler,
   children,
 }) {
   return (
@@ -32,6 +31,7 @@ export default function Filters({
         text: "Reset Filters",
         classes: "filters-menu-reset-button",
       }}
+      closeCallback={commitHandler}
     >
       <div className="filters-menu-content-wrapper">{children}</div>
     </Menu>
@@ -45,5 +45,6 @@ Filters.propTypes = {
   heading: PropTypes.string,
   subheading: PropTypes.string,
   actionButtonHandler: PropTypes.func,
+  commitHandler: PropTypes.func,
   openButtonOpts: PropTypes.object,
 };

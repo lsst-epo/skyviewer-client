@@ -1,0 +1,22 @@
+.aladinOverlay {
+  --size-padding-overlay: var(--size-spacing-xs);
+
+  padding: var(--size-padding-overlay);
+  position: absolute;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.aladinOverlayInner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  & > * {
+    pointer-events: all;
+  }
+}

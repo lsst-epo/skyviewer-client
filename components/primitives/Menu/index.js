@@ -2,9 +2,9 @@ import { useEffect, useContext, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import MenuContext from "@/contexts/Menu";
-import Button from "@/primitives/Button";
-import ConditionalWrapper from "@/primitives/ConditionalWrapper";
-import IconComposer from "@/svg/IconComposer";
+import Button from "@/components/primitives/Button";
+import ConditionalWrapper from "@/components/primitives/ConditionalWrapper";
+import IconComposer from "@/components/svg/IconComposer";
 import useFocusTrap from "@/hooks/useFocusTrap";
 import { useKeyDownEvent, useOnClickOutside } from "@/hooks/listeners";
 

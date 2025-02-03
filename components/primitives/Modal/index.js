@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
-import Button from "@/primitives/Button";
-import IconComposer from "@/svg/IconComposer";
+import Button from "@/components/primitives/Button";
+import IconComposer from "@/components/svg/IconComposer";
 import useFocusTrap from "@/hooks/useFocusTrap";
 import { useKeyDownEvent, useOnClickOutside } from "@/hooks/listeners";
 

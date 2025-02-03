@@ -1,6 +1,6 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/appearance';
-@use 'abstracts/mixins/base';
+@use "abstracts/functions";
+@use "abstracts/mixins/appearance";
+@use "abstracts/mixins/base";
 
 .filters-button {
   position: absolute;
@@ -11,14 +11,14 @@
   svg {
     width: 22px;
     height: 22px;
-    fill: functions.palette(white);
+    fill: var(--white);
   }
 }
 
 .guided-experience-filters-button {
   display: flex;
 
-  .a-svg {
+  svg {
     width: 18px;
 
     + .icon-text {
@@ -34,7 +34,7 @@
 
   .filters-menu-content-wrapper {
     flex-grow: 3;
-    overflow-y: scroll;
+    overflow: hidden auto;
   }
 
   .menu-section {
@@ -55,10 +55,10 @@
     padding: 16px;
     margin: 30px auto 0;
     font-size: 16px;
-    font-weight: functions.font-weight(bold);
+    font-weight: var(--weight-font-bold);
     line-height: 1.6;
-    color: functions.palette(white);
-    background-color: functions.palette(turquoise85);
+    color: var(--white);
+    background-color: var(--turquoise85);
     border-radius: 5px;
   }
 

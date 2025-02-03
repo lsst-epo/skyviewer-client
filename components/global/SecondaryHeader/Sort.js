@@ -1,16 +1,14 @@
 import { useState, useContext } from "react";
 import PropTypes from "prop-types";
-import Menu from "@/primitives/Menu";
-import Radio from "@/primitives/Radio";
-import Slider from "@/primitives/Slider";
-import IconComposer from "@/svg/IconComposer";
+import Menu from "@/components/primitives/Menu";
+import Radio from "@/components/primitives/Radio";
+import IconComposer from "@/components/svg/IconComposer";
 
 export default function Sort({ context }) {
   const menuLabelId = "filters-menu-label";
   const menuDescriptionId = "filters-menu-description";
   const { setFilters, filters } = useContext(context) || {};
   const { possibleSorts, sortBy } = filters;
-  const [isOpen, setIsOpen] = useState(false);
   const [showSortReset, setShowSortReset] = useState(false);
   const handleSort = (checked, sort, id) => {
     setFilters({ ...filters, sortBy: id });

@@ -1,0 +1,6 @@
+.controlsContainer {
+  > button,
+  > a {
+    pointer-events: initial;
+  }
+}

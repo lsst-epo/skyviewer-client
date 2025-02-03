@@ -1,18 +1,18 @@
-@use 'abstracts/functions';
+@use "abstracts/functions";
 
 .main-header {
   z-index: functions.z-stack(header);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: functions.palette(black);
+  background-color: var(--black);
 
   &.primary {
-    background-color: functions.palette(black);
+    background-color: var(--black);
   }
 
   &.secondary {
-    background-color: functions.palette(turquoise95);
+    background-color: var(--color-rubin-teal-600);
   }
 
   .close-button,
@@ -22,17 +22,25 @@
     margin: 10px 15px;
 
     svg {
-      fill: functions.palette(white);
+      color: var(--white);
     }
   }
 
   .close-button {
+    --button-border-color: transparent;
+    --button-background-color: transparent;
+
+    padding: 0;
     opacity: 1;
     transition: opacity 0.2s ease-out;
+
+    &:hover,
+    &:focus {
+      outline: none;
+    }
 
     &.menus-open {
       opacity: 0;
     }
   }
 }
-

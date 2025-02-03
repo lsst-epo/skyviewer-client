@@ -1,5 +1,5 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/appearance';
+@use "abstracts/functions";
+@use "abstracts/mixins/appearance";
 
 .c-buttonish {
   @include appearance.proto-button;
@@ -10,6 +10,6 @@
   }
 
   &.primary {
-    background-color: functions.palette(turquoise85);
+    background-color: var(--turquoise85);
   }
 }

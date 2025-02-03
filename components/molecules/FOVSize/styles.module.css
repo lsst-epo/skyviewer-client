@@ -1,0 +1,21 @@
+.fovLayout {
+  display: flex;
+  flex-direction: column;
+}
+
+.fovContainer {
+  border: 2px solid var(--white);
+  border-radius: 3px;
+}
+
+.resizingObject {
+  transition: transform linear 0.1s, opacity linear 0.1s;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.centeredText {
+  text-anchor: middle;
+  transition: opacity linear 0.1s;
+  will-change: opacity;
+}

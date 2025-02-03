@@ -1,9 +1,9 @@
-@use 'abstracts/mixins/appearance';
-@use 'abstracts/functions';
-@use 'abstracts/mixins/base';
+@use "abstracts/mixins/appearance";
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
 
 .guided-experience-sort-button {
-  .a-svg + .icon-text {
+  svg + .icon-text {
     margin-left: 5px;
   }
 }
@@ -15,7 +15,7 @@
 
   .sort-menu-content-wrapper {
     flex-grow: 3;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   .sort-menu-close-button,

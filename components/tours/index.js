@@ -1,16 +1,12 @@
 import { useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import Link from "next/link";
-import LoadingSpinner from "@/primitives/LoadingSpinner";
+import LoadingSpinner from "@/components/primitives/LoadingSpinner";
 import TourListItem from "./ListItem";
 import TourSortFilterContext from "@/contexts/TourSortFilter";
-import TourSearchContext from "@/contexts/TourSearch";
-import { useToursBySearch } from "@/lib/api/tours";
 
 export default function Tours({ tours, isToursLoading }) {
   const { filters } = useContext(TourSortFilterContext) || {};
   const [sortedFilteredTours, setSortedFilteredTours] = useState(tours);
-  const [loading, setLoading] = useState(tours);
 
   useEffect(() => {
     const newlySortedFilteredTours = getSortedTours(

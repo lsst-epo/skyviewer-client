@@ -10,9 +10,10 @@ export default function Intro({
   blocks,
   thumbnail,
 }) {
+  const mobileContent = blocks[id - 1]?.body;
   return (
     <>
-      {id && (
+      {mobileContent && (
         <div className="tour-intro mobile-only">
           <div className="top">
             <div
@@ -29,7 +30,7 @@ export default function Intro({
           <div className="main">
             <div
               className="tour-intro-body"
-              dangerouslySetInnerHTML={{ __html: blocks[+id - 1]?.body }}
+              dangerouslySetInnerHTML={{ __html: mobileContent }}
             />
           </div>
           <div className="bottom">
@@ -76,7 +77,7 @@ export default function Intro({
 }
 
 Intro.propTypes = {
-  id: PropTypes.any,
+  id: PropTypes.number,
   heading: PropTypes.string,
   subheading: PropTypes.string,
   blocks: PropTypes.array,

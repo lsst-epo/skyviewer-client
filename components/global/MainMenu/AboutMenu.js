@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import Menu from "@/primitives/Menu";
+import Menu from "@/components/primitives/Menu";
 
 export default function AboutMenu({ toggleMenuCallback, isOpen }) {
   return (
