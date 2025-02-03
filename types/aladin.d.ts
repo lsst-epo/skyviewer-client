@@ -335,6 +335,8 @@ interface AladinInstance {
   readonly getViewData: GetViewData;
   view: AladinView;
   options: Required<AladinOptions>;
+  callbacksByEventName: Partial<AladinCallbackMap>;
+  aladinDiv: HTMLDivElement;
 }
 
 type CatalogSourceShape =

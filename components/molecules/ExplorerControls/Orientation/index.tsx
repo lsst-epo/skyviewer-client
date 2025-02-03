@@ -25,7 +25,7 @@ const Orientation: FC<{ className?: string }> = ({ className }) => {
     callbacks: {
       onPositionChanged,
       onZoomChanged,
-      onLoaded: (aladin) => {
+      onLoaded: ({ aladin }) => {
         const position = aladin.getRaDec();
         const fov = aladin.getFov();
 

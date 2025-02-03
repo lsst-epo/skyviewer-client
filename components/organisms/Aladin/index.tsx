@@ -3,6 +3,7 @@ import {
   FunctionComponent,
   PropsWithChildren,
   useLayoutEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
@@ -86,16 +87,16 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
 
   useOnClickOutside(ref, onBlur);
 
-  const value =
-    isLoading || !aladin.current || !A.current || !ref.current
+  const value = useMemo(() => {
+    return isLoading || !aladin.current || !A.current
       ? defaultValue
       : {
           aladin: aladin.current,
           A: A.current,
           hasFocus,
           isLoading: isLoading as false,
-          ref,
         };
+  }, [isLoading, hasFocus, aladin.current, A.current]);
 
   return (
     <AladinContext.Provider value={value}>

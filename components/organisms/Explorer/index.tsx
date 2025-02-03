@@ -1,6 +1,5 @@
 "use client";
-import { useEffect, useState, FunctionComponent } from "react";
-import useResizeObserver from "use-resize-observer";
+import { useState, FunctionComponent, useCallback } from "react";
 import { addCats } from "./utilities";
 import { useAladin } from "@/contexts/Aladin";
 import SourceDetails from "@/components/explorer/SourceDetails";
@@ -18,12 +17,17 @@ interface AladinProps {
 }
 
 const Explorer: FunctionComponent<AladinProps> = ({ catalogs, jpgs }) => {
+  const [sourceData, setSourceData] = useState<any>(null);
+  const [additionalSourceData, setAdditionalSourceData] = useState<
+    Record<string, any>
+  >({});
+
   const showSourceDetails: ObjectClickedCallback = async (event) => {
     if (!event) return;
     const { data, ra, dec } = event;
     const { id } = data;
     const additionalData = additionalSourceData[id];
-    const position = aladin ? getPixelPosition(aladin, { ra, dec }) : [];
+    const position = pixelPosition({ ra, dec });
 
     setSourceData({ ...data, ...additionalData, position });
 
@@ -52,49 +56,48 @@ const Explorer: FunctionComponent<AladinProps> = ({ catalogs, jpgs }) => {
     }
   };
 
-  const { A, aladin, ref } = useAladin({
-    callbacks: { onObjectClicked: showSourceDetails },
-  });
-  const [additionalSourceData, setAdditionalSourceData] = useState<
-    Record<string, any>
-  >({});
-  const [sourceData, setSourceData] = useState<any>(null);
+  const repositionPopup = useCallback(() => {
+    if (!sourceData || !aladin) return;
 
-  useResizeObserver({
-    ref,
-    onResize: () => {
-      if (!sourceData || !aladin) return;
+    const { _RA: ra, _DEC: dec } = sourceData;
 
-      const { _RA: ra, _DEC: dec } = sourceData;
+    setSourceData({
+      ...sourceData,
+      position: pixelPosition({ ra, dec }),
+    });
+  }, [sourceData]);
 
-      setSourceData({
-        ...sourceData,
-        position: getPixelPosition(aladin, { ra, dec }),
-      });
+  const onLoaded = useCallback(
+    ({ aladin, A }) => {
+      if (catalogs) {
+        addCats(A, aladin, catalogs);
+      }
+    },
+    [catalogs]
+  );
+
+  const { aladin } = useAladin({
+    callbacks: {
+      onObjectClicked: showSourceDetails,
+      onResizeChanged: repositionPopup,
+      onLoaded,
     },
   });
 
-  useEffect(() => {
-    if (!aladin || !A) return;
-
-    // Update Catalogs
-    if (catalogs) {
-      addCats(A, aladin, catalogs);
-    }
-  }, [A, aladin, catalogs]);
+  const pixelPosition = ({ ra, dec }: { ra: number; dec: number }) => {
+    return aladin ? getPixelPosition(aladin, { ra, dec }) : [];
+  };
 
   const hideSourceDetails = () => {
     setSourceData(null);
   };
 
   return (
-    <>
-      <SourceDetails
-        data={sourceData}
-        setData={setSourceData}
-        handleClose={hideSourceDetails}
-      />
-    </>
+    <SourceDetails
+      data={sourceData}
+      setData={setSourceData}
+      handleClose={hideSourceDetails}
+    />
   );
 };
 
