@@ -31,6 +31,7 @@ jobs:
         --build-arg NEXT_PUBLIC_BASE_URL=https://skyviewer-client-dot-skyviewer.uw.r.appspot.com \
         --build-arg NEXT_PUBLIC_ASSETS_BASE_URL=https://skyviewer-api-dot-skyviewer.uw.r.appspot.com/assets \
         --build-arg NEXT_PUBLIC_ASTRO_API_URL=https://us-central1-skyviewer.cloudfunctions.net/astro-objects-api \
+        --build-arg  RUN_BUILD=true \
         .
     - name: Configure Docker Auth
       run: gcloud --quiet auth configure-docker
