@@ -32,6 +32,7 @@ jobs:
         --build-arg CRAFT_SECRET_TOKEN=abcdef0123456789 \
         --build-arg NEXT_PUBLIC_ASSETS_BASE_URL=https://skyviewer-api-dot-edc-int-6c5e.uc.r.appspot.com/assets  \
         --build-arg NEXT_PUBLIC_ASTRO_API_URL=https://us-central1-skyviewer.cloudfunctions.net/astro-objects-api \
+        --build-arg  RUN_BUILD=false \
         .
     - name: Configure Docker Auth
       run: gcloud --quiet auth configure-docker
