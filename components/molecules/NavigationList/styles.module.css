@@ -1,0 +1,19 @@
+.navigationList {
+  display: flex;
+  justify-content: center;
+  flex-direction: var(--direction-flex-list, row);
+  gap: var(--size-spacing-s);
+  list-style: none;
+
+  &[data-direction="vertical"] {
+    --direction-flex-list: column;
+  }
+
+  @media screen and (orientation: portrait) {
+    --direction-flex-list: column;
+  }
+}
+
+.listItem {
+  pointer-events: initial;
+}

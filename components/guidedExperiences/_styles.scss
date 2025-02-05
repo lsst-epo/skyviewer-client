@@ -1,19 +1,19 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/typography';
-@use 'abstracts/mixins/base';
-@use 'abstracts/mixins/appearance';
+@use "abstracts/functions";
+@use "abstracts/mixins/typography";
+@use "abstracts/mixins/base";
+@use "abstracts/mixins/appearance";
 
 .guided-experiences-heading {
   @include typography.heading-guided-experiences;
+
   padding: 15px 0;
   text-align: center;
 }
 
 .guided-experiences-list-container {
-  height:
-    calc(
-      var(--window-height, 100vh) - var(--ge-nav-link-height, 95px) - var(--ge-heading-height, 56px)
-    );
+  height: calc(
+    100vh - var(--ge-nav-link-height, 95px) - var(--ge-heading-height, 56px)
+  );
   overflow-y: scroll;
 }
 
@@ -22,6 +22,7 @@
   flex-flow: row wrap;
   justify-content: center;
   padding: 0 0 30px;
+  list-style: none;
 
   .guided-experience {
     width: 100%;
@@ -35,14 +36,13 @@
   }
 }
 
-
 .guided-experience-heading {
   margin: 0 10px 10px;
 
   @include typography.heading-guided-experience;
 
   @include base.respond(functions.break(tablet), min) {
-    font-weight: functions.font-weight(regular);
+    font-weight: var(--weight-font-normal);
   }
 }
 
@@ -53,7 +53,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  border: functions.palette(turquoise55) solid 1px;
+  border: var(--turquoise55) solid 1px;
   border-radius: 4%;
   transition: box-shadow 0.2s;
 }
@@ -67,7 +67,7 @@
     outline: 0;
 
     .guided-experience-thumbnail {
-      box-shadow: 0 0 0 3px functions.palette(blue20);
+      box-shadow: 0 0 0 3px var(--blue20);
     }
   }
 }
@@ -83,13 +83,13 @@
   min-width: 48px;
   padding: 12px;
   text-align: center;
-  background-color: functions.palette(red10);
+  background-color: var(--color-rubin-red-200);
 
   .count-label {
     font-size: 10px;
-    font-weight: functions.font-weight(regular);
+    font-weight: var(--weight-font-normal);
     line-height: 1.6;
-    color: functions.palette(white);
+    color: var(--white);
   }
 
   .angle-right,
@@ -98,7 +98,7 @@
     top: calc(100% - 1px);
     width: 0;
     height: 0; // no height, no content, just border
-    border-top: 15px solid functions.palette(red10); // angle degree, reduce to reduce degree of angles
+    border-top: 15px solid var(--color-rubin-red-200); // angle degree, reduce to reduce degree of angles
   }
 
   .angle-right {
@@ -128,11 +128,8 @@
 
   .background-opacitizer {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: functions.palette(black);
+    inset: 0;
+    background-color: var(--black);
     opacity: 0.65;
   }
 }
@@ -140,10 +137,11 @@
 .guided-experience-landing {
   position: relative;
   margin-top: -42px;
-  color: functions.palette(white);
+  color: var(--white);
 
   .guided-experience-landing-heading {
     @include typography.heading-guided-experience-landing;
+
     text-align: center;
   }
 
@@ -165,12 +163,12 @@
       padding: 15px;
 
       + .detail {
-        border-left: 2px solid functions.palette(white);
+        border-left: 2px solid var(--white);
       }
     }
 
     .duration-details {
-      .a-svg {
+      svg {
         width: 23px;
         margin-top: 4px;
       }
@@ -186,9 +184,9 @@
     .duration,
     .complexity {
       margin-top: 4px;
-      font-weight: functions.font-weight(bold);
+      font-weight: var(--weight-font-bold);
       line-height: 1.6;
-      color: functions.palette(white);
+      color: var(--white);
 
       @include base.fluid-scale(
         font-size,

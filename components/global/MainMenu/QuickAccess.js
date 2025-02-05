@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import IconComposer from "@/svg/IconComposer";
-import Buttonish from "@/primitives/Buttonish";
+import IconComposer from "@/components/svg/IconComposer";
+import Buttonish from "@/components/primitives/Buttonish";
 
 export default function QuickAccess({ route }) {
   return (
@@ -8,7 +8,7 @@ export default function QuickAccess({ route }) {
       <h3 id="settings-label" className="menu-section-heading">
         Quick Access
       </h3>
-      <ul className="list-unstyled quick-access-nav-items">
+      <ul className="quick-access-nav-items">
         <li className="quick-access-nav-item">
           {route === "/explorer" ? (
             <Buttonish

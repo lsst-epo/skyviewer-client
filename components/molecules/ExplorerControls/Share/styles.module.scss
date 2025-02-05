@@ -1,0 +1,62 @@
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
+@use "abstracts/mixins/appearance";
+@use "abstracts/mixins/typography";
+
+.shareMenu {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  z-index: functions.z-stack(controls);
+}
+
+.shareMenuButton {
+  &:focus-within {
+    outline: none;
+  }
+}
+
+.shareMenuItems {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  gap: var(--size-spacing-xs);
+  list-style: none;
+  position: absolute;
+  bottom: calc(var(--size-spacing-l) + var(--size-spacing-xs));
+  font-size: 0.75rem;
+  opacity: 0;
+  transition: 0.3s transform, 0.3s opacity;
+  transform: translateX(calc(-100% - var(--size-padding-overlay)));
+  z-index: -1;
+
+  &[data-open] {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  & button {
+    display: flex;
+    flex-flow: row nowrap;
+    white-space: nowrap;
+    gap: var(--size-spacing-xs);
+  }
+
+  @include base.respond(functions.break(tablet), min, width) {
+    flex-flow: row nowrap;
+    left: calc(var(--size-spacing-l) + var(--size-spacing-xs));
+    bottom: 0;
+    transform: translateX(
+      calc(
+        -100% - var(--size-spacing-l) - var(--size-spacing-xs) - var(--size-padding-overlay)
+      )
+    );
+    transition: 0.3s transform, 0.2s 0.1s opacity;
+
+    & button {
+      flex-flow: row-reverse nowrap;
+    }
+  }
+}

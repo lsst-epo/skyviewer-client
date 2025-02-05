@@ -1,6 +1,6 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/base';
-@use 'abstracts/mixins/appearance';
+@use "abstracts/functions";
+@use "abstracts/mixins/base";
+@use "abstracts/mixins/appearance";
 
 .guided-experience-search-button,
 .search-menu-close-button {
@@ -8,13 +8,13 @@
   flex-flow: row nowrap;
   align-items: center;
 
-  .a-svg {
+  svg {
     width: 16px;
 
     + .icon-text {
       margin-left: 10px;
       font-size: 14px;
-      font-weight: functions.font-weight(light);
+      font-weight: var(--weight-font-normal);
       line-height: 1.5;
     }
   }
@@ -34,10 +34,7 @@
 
   .modal-inner {
     position: absolute;
-    top: 89px;
-    right: 0;
-    bottom: auto;
-    left: 0;
+    inset: 89px 0 auto;
     display: flex;
     flex-flow: column nowrap;
     align-items: flex-end;
@@ -46,7 +43,9 @@
 
     @include base.respond(functions.break(tablet), min) {
       position: static;
-      margin-top: calc(50vh - 42px) !important; /* stylelint-disable-line declaration-no-important */
+      margin-top: calc(
+        50vh - 42px
+      ) !important; /* stylelint-disable-line declaration-no-important */
     }
   }
 
@@ -74,9 +73,9 @@
       right: 28px;
       width: 0;
       height: 0;
-      content: '';
+      content: "";
       border-right: 8px solid transparent;
-      border-bottom: 8px solid functions.palette(white);
+      border-bottom: 8px solid var(--white);
       border-left: 8px solid transparent;
 
       @include base.respond(functions.break(tablet), min) {
@@ -86,8 +85,9 @@
 
     .text-input-label {
       @include appearance.hidden;
+
       font-size: 18px;
-      font-weight: functions.font-weight(light);
+      font-weight: var(--weight-font-normal);
       line-height: 1.5;
 
       @include base.respond(functions.break(tablet), min) {

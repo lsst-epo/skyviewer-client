@@ -1,0 +1,40 @@
+/*!
+
+	Styles for Next Test
+	By Cast Iron Coding (office@castironcoding.com)
+
+*/
+
+// Base styles
+@forward "@rubin-epo/epo-react-lib/dist/style.css";
+
+// Modules
+// --------------------
+// Self-contained, reuseable blocks of markup.
+// Indicated by the class prefix `.m-`.
+@forward "components/index";
+@forward "global/index.css";
+
+// Pages
+// --------------------
+@forward "pages/index";
+
+// Utility
+// --------------------
+// Utility classes for common typography, appearance, layout, and state styles.
+// These are designed to be scoped to distinct concerns in styling,
+// such as the `font-size` and `font-family` of a common heading presentation,
+// or the `width` and `margin` of a recurring container style.
+// Utility classes are indicated by a prefix:
+// * `t-` - typography
+// * `a-` - appearance
+// * `l-` - layout
+// * `is-`/`has-` - state
+@forward "utility/appearance";
+
+// Z-Stack
+// @forward 'z-stack';
+#__next-prerender-indicator {
+  /* stylelint-disable-line selector-max-id, selector-id-pattern */
+  display: none;
+}

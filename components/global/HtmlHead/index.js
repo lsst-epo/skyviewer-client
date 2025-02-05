@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Head from "next/head";
-import siteInfoShape from "@/shapes/siteInfo";
-import imageShape from "@/shapes/image";
+import siteInfoShape from "@/components/shapes/siteInfo";
+import imageShape from "@/components/shapes/image";
 
 export default function HtmlHead({
   title,

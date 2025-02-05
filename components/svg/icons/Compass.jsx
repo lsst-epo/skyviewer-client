@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { svgInternalShape } from "@/shapes/svg";
+import { svgInternalShape } from "@/components/shapes/svg";
 import defaultProps from "./defaultProps";
 
 export default function Compass({

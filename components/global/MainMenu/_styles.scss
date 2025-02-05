@@ -10,49 +10,42 @@
 
   .main-menu-content-wrapper {
     flex-grow: 1;
-    overflow-y: scroll;
-  }
-
-  .main-menu-nav,
-  .quick-access-nav {
-    @include typography.list-unstyled;
+    overflow-y: auto;
   }
 
   .main-menu-nav-items,
   .quick-access-nav-items {
+    list-style: none;
     padding: 12px 0 0 25px;
   }
 
   .main-menu-nav-item,
   .quick-access-nav-item {
     > a,
-    > .button {
+    > button {
+      --button-text-align: left;
+      --button-background-color: transparent;
+      --button-border-color: transparent;
+
       display: flex;
       align-items: center;
-      width: 100%;
+      color: var(--white);
       padding: 4px 0;
       font-size: 16px;
-      font-weight: functions.font-weight(bold);
+      font-weight: var(--weight-font-bold);
       line-height: 1;
-      color: functions.palette(white);
-      background-color: transparent;
       border: 0;
-      border-radius: unset;
     }
 
-    .a-svg {
+    svg {
       width: 20px;
       height: 20px;
-
-      + span {
-        padding-left: 15px;
-      }
     }
 
     .notifications-item,
     .language-item {
-      .a-svg {
-        fill: functions.palette(turquoise50);
+      svg {
+        color: var(--turquoise50);
       }
     }
 
@@ -60,8 +53,8 @@
     .adjustments-item,
     .help-item,
     .about-item {
-      .a-svg path {
-        stroke: functions.palette(turquoise50);
+      svg path {
+        stroke: var(--turquoise50);
       }
     }
 
@@ -71,7 +64,7 @@
   }
 
   .quick-access-nav-item {
-    .a-svg {
+    svg {
       width: 23px;
       height: 23px;
 
@@ -86,28 +79,21 @@
   position: relative;
 
   .buttons-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--PADDING_SMALL);
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
     padding: 30px 34px;
-
-    .apply-locale-button,
-    .reset-locale-button {
-      width: 100%;
-    }
-
-    .reset-locale-button {
-      @include appearance.button-secondary;
-      margin-top: 15px;
-    }
   }
 }
 
 .about-menu {
   .menu-section {
     p {
-      color: functions.palette(white);
+      color: var(--white);
 
       + p {
         margin-top: 14px;

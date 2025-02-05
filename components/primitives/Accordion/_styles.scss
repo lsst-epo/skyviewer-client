@@ -1,15 +1,24 @@
-@use 'abstracts/functions';
-@use 'abstracts/mixins/typography';
+@use "abstracts/functions";
+@use "abstracts/mixins/typography";
 
 .accordion {
-  background-color: functions.palette(neutral10);
+  background-color: var(--neutral10);
 
   + .accordion {
-    border-top: 1px solid functions.palette(neutral30);
+    border-top: 1px solid var(--neutral30);
   }
 
   &.is-expanded + .accordion {
     border-top: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
   }
 }
 
@@ -19,18 +28,18 @@
   justify-content: space-between;
   width: 100%;
   padding: 7px 12px;
-  background-color: functions.palette(neutral20);
+  background-color: var(--neutral20);
 
   .accordion-title {
     font-size: 12px;
-    font-weight: functions.font-weight(bold);
-    color: functions.palette(black);
+    font-weight: var(--weight-font-bold);
+    color: var(--black);
   }
 
   .accordion-icon {
     width: 10px;
     height: 10px;
-    fill: functions.palette(black);
+    fill: var(--black);
   }
 }
 

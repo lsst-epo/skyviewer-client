@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import Menu from "@/primitives/Menu";
-import ShareButtons from "@/components/ShareButtons";
+import Menu from "@/components/primitives/Menu";
+import ShareButtons from "@/components/organisms/ShareButtons";
 
 export default function ShareMenu({ toggleMenuCallback, isOpen }) {
   return (
@@ -16,7 +16,7 @@ export default function ShareMenu({ toggleMenuCallback, isOpen }) {
     >
       <div className="main-menu-content-wrapper">
         <div className="menu-section">
-          <ShareButtons classes="share-buttons-vertical" image={false} />
+          <ShareButtons direction="vertical" download={false} />
         </div>
       </div>
     </Menu>

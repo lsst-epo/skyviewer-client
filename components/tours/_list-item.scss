@@ -1,8 +1,8 @@
 /* stylelint-disable no-descending-specificity */
-@use 'abstracts/mixins/base';
-@use 'abstracts/mixins/typography';
-@use 'abstracts/mixins/appearance';
-@use 'abstracts/functions';
+@use "abstracts/mixins/base";
+@use "abstracts/mixins/typography";
+@use "abstracts/mixins/appearance";
+@use "abstracts/functions";
 
 .tour-list-item {
   display: flex;
@@ -41,7 +41,14 @@
     background-size: cover;
     border-radius: 50%;
 
-    @include base.fluid-scale([width, height], 143px, 47px, functions.break(tablet), functions.break(mobile));
+    @include base.fluid-scale(
+      [width,
+      height],
+      143px,
+      47px,
+      functions.break(tablet),
+      functions.break(mobile)
+    );
 
     @include base.respond(functions.break(tablet), min) {
       margin-right: 0;
@@ -80,6 +87,7 @@
   }
 
   .duration {
+    color: var(--white);
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -97,10 +105,9 @@
       @include typography.subheading-tour-list;
     }
 
-    .a-svg {
+    svg {
       width: 12px;
       margin-right: 11px;
-      fill: functions.palette(white);
 
       @include base.respond(functions.break(tablet), min) {
         width: 23px;
@@ -123,15 +130,16 @@
     height: 100%;
     min-height: 17px;
     margin: 0 15px;
-    background-color: functions.palette(turquoise55);
+    background-color: var(--turquoise55);
 
     @include base.respond(functions.break(tablet), min) {
-      background-color: functions.palette(white);
+      background-color: var(--white);
     }
   }
 
   .complexity {
     @include typography.subheading-tour-list;
+
     display: flex;
     flex-flow: row nowrap;
     align-items: baseline;

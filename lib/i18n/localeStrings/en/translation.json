@@ -1,0 +1,20 @@
+{
+  "title": "Skyviewer",
+  "navigation": {
+    "cta": {
+      "exit": "Exit",
+      "back": "Back",
+      "next": "Next",
+      "explore": "I want to explore",
+      "tours": "Please guide me",
+      "go_to_tours": "Go to tours",
+      "start_tour": "Start the tour",
+      "lets_start": "Let's Start"
+    }
+  },
+  "controls": {
+    "save_image": "Save this image",
+    "zoom_in": "Zoom in",
+    "zoom_out": "Zoom out"
+  }
+}

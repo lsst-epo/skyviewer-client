@@ -18,6 +18,7 @@
 # misc
 .DS_Store
 *.pem
+*.code-workspace
 
 # debug
 npm-debug.log*
@@ -33,8 +34,7 @@ yarn-error.log*
 # vercel
 .vercel
 
-# Ignore generated token scss file
-_tokens.scss
-
 # Environment config
 .env
+
+certificates

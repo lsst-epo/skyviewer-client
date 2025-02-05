@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
 import PropTypes from "prop-types";
-import Modal from "@/primitives/Modal";
-import TextInput from "@/primitives/TextInput";
-import IconComposer from "@/svg/IconComposer";
+import Modal from "@/components/primitives/Modal";
+import TextInput from "@/components/primitives/TextInput";
+import IconComposer from "@/components/svg/IconComposer";
 import useDebounce from "@/hooks/useDebounce";
 
 export default function Search({ context }) {

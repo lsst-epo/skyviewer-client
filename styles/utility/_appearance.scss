@@ -1,0 +1,17 @@
+@use "abstracts/functions";
+@use "abstracts/mixins/appearance";
+@use "sass:color";
+
+// Appearance
+// --------------------
+
+// Appearance mixins contain primarily texture parameters: background-color, transparency, borders, etc.
+
+// These should be limited to appearance-related properties only.
+
+// Visibility
+// --------------------------------------------------------
+.a-hidden,
+.screen-reader-only {
+  @include appearance.hidden;
+}
