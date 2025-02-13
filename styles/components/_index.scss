@@ -2,7 +2,6 @@
 
 // Primitives
 @forward "components/primitives/Accordion/styles";
-@forward "components/primitives/Buttonish/styles";
 @forward "components/primitives/Button/styles";
 @forward "components/primitives/Checkbox/styles";
 @forward "components/primitives/Menu/styles";
@@ -11,21 +10,12 @@
 
 // Globals
 @forward "components/global/FiltersMenu/styles";
-@forward "components/global/GuidedExperienceHeader/styles";
 @forward "components/global/MainMenu/styles";
 @forward "components/global/PrimaryHeader/styles";
 @forward "components/global/SecondaryHeader/styles";
 
-// Layouts
-@forward "components/organisms/GuidedExperience/styles";
-@forward "components/organisms/GuidedExperiences/styles";
-
 // Guided Experiences
 @forward "components/Bubbles/styles";
-@forward "components/guidedExperiences/styles";
-
-// Tours
-@forward "components/tours/styles";
 
 // Explorer
 @forward "components/molecules/ExplorerControls/styles";

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import classNames from "classnames";
+import classNames from "clsx";
 
 export default function Logo({ className }) {
   return (

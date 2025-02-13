@@ -1,0 +1,5 @@
+.transition {
+  @media (prefers-reduced-motion: no-preference) {
+    view-transition-name: var(--view-transition-name, none);
+  }
+}

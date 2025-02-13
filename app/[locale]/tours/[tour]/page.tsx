@@ -1,40 +1,18 @@
-import GuidedExperienceLayout from "@/components/organisms/GuidedExperience";
-import GuidedExperienceLanding from "@/components/guidedExperiences/GuidedExperienceLanding";
-import { getTourData } from "@/lib/api/tour";
-import { useTranslation } from "@/lib/i18n";
 import { FunctionComponent } from "react";
 import { notFound } from "next/navigation";
+import { getTourMetadata } from "@/lib/api/tours";
+import TourLanding from "@/components/pages/TourLanding";
 
-const TourPage: FunctionComponent<TourProps> = async ({
-  params: { tour, locale },
+const TourLandingPage: FunctionComponent<TourProps> = async ({
+  params: { tour },
 }) => {
-  const { tour: data } = await getTourData(tour);
-  const { t } = await useTranslation(locale, "translation");
+  const data = await getTourMetadata({ slug: tour });
 
   if (!data) {
-    return notFound();
+    notFound();
   }
 
-  const { title, complexity, duration, thumbnail, backgroundImage } = data;
-
-  const backLink = { url: `/tours`, text: t("navigation.cta.back") };
-  const nextLink = {
-    url: { pathname: `/tours/${tour}/intro`, query: { step: 1 } },
-    text: t("navigation.cta.lets_start"),
-  };
-
-  return (
-    <GuidedExperienceLayout
-      desktopBackLink={backLink}
-      desktopNextLink={nextLink}
-      mobileBackLink={backLink}
-      mobileNextLink={nextLink}
-    >
-      <GuidedExperienceLanding
-        {...{ title, thumbnail, backgroundImage, duration, complexity }}
-      />
-    </GuidedExperienceLayout>
-  );
+  return <TourLanding {...data} />;
 };
 
-export default TourPage;
+export default TourLandingPage;

@@ -1,0 +1,19 @@
+.meter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--size-spacing-3xs);
+  flex-wrap: nowrap;
+}
+
+.value {
+  aspect-ratio: 1;
+  background-color: currentColor;
+  border-radius: 50%;
+  opacity: 0.3;
+  width: var(--size-spacing-2xs);
+
+  &[data-filled="true"] {
+    opacity: 1;
+  }
+}

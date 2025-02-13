@@ -1,0 +1,28 @@
+.richTextContent {
+  & > * + * {
+    margin-block-start: var(--size-spacing-stack, 1em);
+  }
+
+  & > *:first-of-type {
+    margin-block-start: 0;
+  }
+
+  a:not([class^="c-"]) {
+    color: var(--turquoise50);
+    text-decoration: none;
+  }
+
+  ul {
+    padding-left: 1em;
+    list-style-type: disc;
+  }
+
+  ol {
+    padding-left: 1em;
+    list-style-type: decimal;
+  }
+
+  li {
+    padding-left: 0.5em;
+  }
+}

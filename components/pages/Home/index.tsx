@@ -1,8 +1,11 @@
 import { FunctionComponent } from "react";
-import FullwidthWithNav from "@/components/templates/FullwidthWithNav";
-import NavigationList from "@/components/molecules/NavigationList";
-import { useTranslation } from "@/lib/i18n";
+import { IoArrowBackSharp, IoArrowForwardSharp } from "react-icons/io5";
+import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
+import { useTranslation } from "@/lib/i18n/server";
+import TransitionButtonish from "@/components/molecules/TransitionButtonish";
 import LogoCover from "@/components/organisms/LogoCover";
+import FullwidthWithNav from "@/components/templates/FullwidthWithNav";
+import styles from "./styles.module.css";
 
 interface HomeProps {
   locale: string;
@@ -11,13 +14,25 @@ interface HomeProps {
 const Home: FunctionComponent<HomeProps> = async ({ locale }) => {
   const { t } = await useTranslation(locale, "translation");
 
-  const links = [
-    { url: "/explorer", prefetch: true, text: t("navigation.cta.explore") },
-    { url: "/tours", prefetch: true, text: t("navigation.cta.tours") },
-  ];
-
   return (
-    <FullwidthWithNav navigation={<NavigationList {...{ links }} />}>
+    <FullwidthWithNav
+      className={styles.main}
+      navigation={
+        <>
+          <Buttonish icon={<IoArrowBackSharp />} href="/explorer" prefetch>
+            {t("navigation.cta.explore")}
+          </Buttonish>
+          <TransitionButtonish
+            icon={<IoArrowForwardSharp />}
+            iconAlignment="right"
+            href="/guided-experiences"
+            prefetch
+          >
+            {t("navigation.cta.tours")}
+          </TransitionButtonish>
+        </>
+      }
+    >
       <LogoCover {...{ locale }} />
     </FullwidthWithNav>
   );

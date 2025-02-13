@@ -1,0 +1,7 @@
+.ribbon {
+  fill: var(--color-rubin-red-200);
+
+  & text {
+    fill: var(--color-font-invert);
+  }
+}
