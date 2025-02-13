@@ -9,9 +9,37 @@
       "tours": "Please guide me",
       "go_to_tours": "Go to tours",
       "start_tour": "Start the tour",
-      "lets_start": "Let's Start"
+      "lets_start": "Let's start",
+      "skip_intro": "Skip intro"
     }
   },
+  "guided-experiences": {
+    "title": "Guided Experiences",
+    "tour_one": "Tour",
+    "tour_other": "Tours",
+    "back": "Back to main screen"
+  },
+  "experiences": {
+    "back": "Back to guided experiences",
+    "details": {
+      "duration": {
+        "title": "Duration",
+        "attribute_other": "{{count}} mins",
+        "attribute_one": "{{count}} min"
+      },
+      "complexity": {
+        "title": "Complexity",
+        "attribute": {
+          "1": "Easy",
+          "2": "Easy",
+          "3": "Medium",
+          "4": "Medium",
+          "5": "Hard"
+        }
+      }
+    }
+  },
+  "tours": { "title": "Astronomical Tours" },
   "controls": {
     "save_image": "Save this image",
     "zoom_in": "Zoom in",

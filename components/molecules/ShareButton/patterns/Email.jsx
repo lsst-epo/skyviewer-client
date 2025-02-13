@@ -1,6 +1,6 @@
 "use client";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classnames from "clsx";
 import { EmailShareButton } from "react-share";
 import IconComposer from "@/components/svg/IconComposer";
 import styles from "../styles.module.scss";

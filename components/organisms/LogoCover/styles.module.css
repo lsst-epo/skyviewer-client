@@ -6,13 +6,6 @@
   gap: var(--size-spacing-s);
 }
 
-.headerLogoCover {
-  font-weight: var(--weight-font-normal);
-  letter-spacing: 1ch;
-  margin: 0;
-  text-transform: uppercase;
-}
-
 .logoImage {
   width: auto;
 }

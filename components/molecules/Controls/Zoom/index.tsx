@@ -1,6 +1,6 @@
 "use client";
 import { FunctionComponent } from "react";
-import classNames from "classnames";
+import classNames from "clsx";
 import { useAladin } from "@/contexts/Aladin";
 import { useKeyDownEvent } from "@/hooks/listeners";
 import IconButton from "@/components/primitives/IconButton";

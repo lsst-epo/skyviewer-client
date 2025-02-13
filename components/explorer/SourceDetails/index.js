@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classnames from "clsx";
 import { useAladin } from "@/contexts/Aladin";
 import Accordion from "@/components/primitives/Accordion";
 import AccordionGroup from "@/components/primitives/AccordionGroup";

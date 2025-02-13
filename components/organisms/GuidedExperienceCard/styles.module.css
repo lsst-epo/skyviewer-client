@@ -1,0 +1,39 @@
+.card {
+  position: relative;
+
+  &:has(a:hover) {
+    --color-border-image: #ffffff;
+    --outline-image: 2px solid var(--color-rubin-teal-300);
+  }
+}
+
+.image {
+  border: 1px solid var(--color-border-image, var(--color-rubin-teal-300));
+  border-radius: var(--size-spacing-xs);
+  outline: var(--outline-image);
+  position: relative;
+  z-index: -1;
+}
+
+.title {
+  text-align: center;
+  font-size: var(--size-font-20-30);
+}
+
+.link {
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+}
+
+.ribbon {
+  position: absolute;
+  top: 0;
+  right: var(--size-spacing-s);
+  width: var(--size-spacing-l);
+  height: auto;
+}

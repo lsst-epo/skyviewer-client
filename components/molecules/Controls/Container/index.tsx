@@ -1,5 +1,5 @@
 import { FunctionComponent, PropsWithChildren } from "react";
-import Stack, { StackProps } from "@/components/primitives/Stack";
+import Stack, { StackProps } from "@rubin-epo/epo-react-lib/Stack";
 import style from "./styles.module.css";
 
 const ControlsContainer: FunctionComponent<PropsWithChildren<StackProps>> = ({
