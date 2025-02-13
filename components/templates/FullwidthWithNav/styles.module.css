@@ -1,7 +1,28 @@
 .fullWidthPage {
-  display: grid;
-  grid-template-rows: 1fr min-content;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: var(--size-spacing-s);
+  padding: var(--size-space-container, var(--size-spacing-s-m));
+  gap: var(--size-spacing-s);
+  flex-grow: 1;
+}
+
+.footerNavigation {
+  display: grid;
+  gap: var(--size-spacing-2xs);
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  margin-block-start: auto;
+  margin-inline: auto;
+  width: 100%;
+
+  & > a,
+  & > button {
+    justify-content: center;
+  }
+
+  @media (--tablet) {
+    width: auto;
+  }
 }

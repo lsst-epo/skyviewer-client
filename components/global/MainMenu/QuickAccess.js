@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import IconComposer from "@/components/svg/IconComposer";
-import Buttonish from "@/components/primitives/Buttonish";
+import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
 
 export default function QuickAccess({ route }) {
   return (

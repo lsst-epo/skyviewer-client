@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classnames from "clsx";
 import DetailsSectionValue from "./DetailsSectionValue";
 
 export default function DetailsSection({

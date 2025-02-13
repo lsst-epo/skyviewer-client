@@ -2,7 +2,7 @@ import { FunctionComponent, ChangeEventHandler } from "react";
 import IconComposer from "@/components/svg/IconComposer";
 import buttonStyles from "../IconButton/styles.module.css";
 import styles from "./styles.module.css";
-import classNames from "classnames";
+import classNames from "clsx";
 
 interface IconToggleProps {
   isChecked: boolean;

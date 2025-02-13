@@ -1,0 +1,15 @@
+.content {
+  flex-grow: 1;
+}
+
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.cardGrid {
+  flex-grow: 1;
+  max-width: 100%;
+}

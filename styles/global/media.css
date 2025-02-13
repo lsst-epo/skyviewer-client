@@ -1,0 +1,14 @@
+@custom-media --desktop (width > 1280px);
+@custom-media --desktop-small (width > 1130px);
+@custom-media --tablet-large (width > 850px);
+@custom-media --tablet (width > 768px);
+@custom-media --phablet (width > 600px);
+@custom-media --mobile (width > 446px);
+@custom-media --mobile-small (width > 280px);
+@custom-media --desktop-max (width < 1280px);
+@custom-media --desktop-small-max (width < 1130px);
+@custom-media --tablet-large-max (width < 850px);
+@custom-media --tablet-max (width < 768px);
+@custom-media --phablet-max (width < 600px);
+@custom-media --mobile-max (width < 446px);
+@custom-media --mobile-small-max (width < 280px);

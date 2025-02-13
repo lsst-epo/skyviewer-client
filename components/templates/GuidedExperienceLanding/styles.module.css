@@ -1,0 +1,15 @@
+.guidedExperienceLanding {
+  max-height: 100dvh;
+
+  @media screen (--tablet) {
+    max-height: unset;
+  }
+}
+
+.title {
+  font-size: var(--size-font-18-24);
+}
+
+.subtitle {
+  font-size: var(--size-font-16-20);
+}

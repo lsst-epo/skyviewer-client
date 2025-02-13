@@ -1,6 +1,6 @@
 import { useEffect, useContext, useState, useRef } from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classnames from "clsx";
 import MenuContext from "@/contexts/Menu";
 import Button from "@/components/primitives/Button";
 import ConditionalWrapper from "@/components/primitives/ConditionalWrapper";
