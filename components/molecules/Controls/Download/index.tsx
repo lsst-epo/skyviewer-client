@@ -1,5 +1,5 @@
 "use client";
-import classNames from "classnames";
+import classNames from "clsx";
 import { FunctionComponent } from "react";
 import { saveAs } from "file-saver";
 import IconButton from "@/components/primitives/IconButton";

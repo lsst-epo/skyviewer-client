@@ -1,5 +1,5 @@
 import { DetailedHTMLProps, FunctionComponent, HTMLAttributes } from "react";
-import classNames from "classnames";
+import classNames from "clsx";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 import styles from "./styles.module.css";
 

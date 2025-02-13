@@ -1,0 +1,12 @@
+.frame {
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  &:not(:has(img)) {
+    background-color: var(--color-background-tile-light);
+  }
+}
+
+.image {
+  background-color: var(--color-background-tile-light);
+}

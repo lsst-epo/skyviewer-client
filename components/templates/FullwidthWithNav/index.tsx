@@ -1,17 +1,23 @@
 import { FunctionComponent, PropsWithChildren, ReactNode } from "react";
+import clsx from "clsx";
 import styles from "./styles.module.css";
 
 interface FullwidthWithNavProps {
   navigation: ReactNode;
+  space?: string;
+  className?: string;
 }
 
 const FullwidthWithNav: FunctionComponent<
   PropsWithChildren<FullwidthWithNavProps>
-> = ({ navigation, children }) => {
+> = ({ navigation, className, space, children }) => {
   return (
-    <main className={styles.fullWidthPage}>
+    <main
+      style={{ "--size-space-container": space }}
+      className={clsx(styles.fullWidthPage, className)}
+    >
       {children}
-      <nav>{navigation}</nav>
+      <nav className={styles.footerNavigation}>{navigation}</nav>
     </main>
   );
 };

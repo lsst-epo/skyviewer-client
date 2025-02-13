@@ -32,7 +32,7 @@ export const queryAPI: APIClient = async ({
   };
   const fetchOptions = merge({}, defaultFetchOptions, inputFetchOptions);
 
-  if (inputFetchOptions?.next?.revalidate) {
+  if (typeof fetchOptions.next?.revalidate === "undefined") {
     delete fetchOptions.cache;
   }
 
@@ -40,16 +40,7 @@ export const queryAPI: APIClient = async ({
     return createClient({
       url,
       exchanges: [cacheExchange, fetchExchange],
-      fetchOptions: () => {
-        const opts = {
-          next: {
-            revalidate: previewToken ? 0 : 60,
-          },
-        };
-        return {
-          ...opts,
-        };
-      },
+      fetchOptions,
     });
   };
 

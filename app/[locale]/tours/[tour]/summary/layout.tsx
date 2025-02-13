@@ -1,7 +1,6 @@
 import { FunctionComponent, PropsWithChildren } from "react";
-import GuidedExperienceLayout from "@/components/organisms/GuidedExperience";
 import { getTourPoisData } from "@/lib/api/tour";
-import { useTranslation } from "@/lib/i18n";
+import { useTranslation } from "@/lib/i18n/server";
 
 const SummaryLayout: FunctionComponent<PropsWithChildren<TourProps>> = async ({
   children,
@@ -21,16 +20,7 @@ const SummaryLayout: FunctionComponent<PropsWithChildren<TourProps>> = async ({
     text: t("navigation.cta.go_to_tours"),
   };
 
-  return (
-    <GuidedExperienceLayout
-      mobileBackLink={back}
-      mobileNextLink={next}
-      desktopBackLink={back}
-      desktopNextLink={next}
-    >
-      {children}
-    </GuidedExperienceLayout>
-  );
+  return <>{children}</>;
 };
 
 export default SummaryLayout;

@@ -22,12 +22,12 @@ $sass-palette: (
 // --------------------------------------------------------
 $breakpoints: (
   desktop: 1280px,
-  desktop-height: 1080px,
-  tablet: 720px,
-  // tablet: 850px,
-  tablet-height: 1280px,
-  mobile: 400px,
-  mobile-small: 370px,
+  desktop-small: 1130px,
+  tablet-large: 850px,
+  tablet: 768px,
+  phablet: 600px,
+  mobile: 446px,
+  mobile-small: 280px,
 );
 
 // Measurements
@@ -71,7 +71,7 @@ $header: (
   // nav-link-padding-lateral: 1.364em,
   // nav-width: 300px,
   // button-width-tablet: 114px,
-  // button-width-mobile: 60px,,,,,
+  // button-width-mobile: 60px,,,,,,,
 );
 $cta: (
   breakpoint: 600px,

@@ -1,5 +1,6 @@
-import { FunctionComponent, ReactNode } from "react";
-import classnames from "classnames";
+import { FunctionComponent } from "react";
+import { Link } from "next-view-transitions";
+import classnames from "clsx";
 import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
 import styles from "./styles.module.css";
 
@@ -29,12 +30,13 @@ const NavigationList: FunctionComponent<NavigationListProps> = ({
       >
         {links.map((link, i) => (
           <li key={i} role="none">
-            <Buttonish
+            <Link href={link.url}>{link.text}</Link>
+            {/* <Buttonish
               {...link}
               role="menuitem"
               className={styles.listItem}
               isBlock
-            />
+            /> */}
           </li>
         ))}
       </ul>

@@ -1,0 +1,21 @@
+.backdropImage {
+  background: no-repeat center center fixed;
+  background-size: cover;
+  background-image: var(--image-backdrop-tour);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+  opacity: 0.37;
+  filter: blur(3px);
+}
+
+.tourContainer {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.tourInfo {
+  align-items: center;
+}
