@@ -1,5 +1,5 @@
 import { FC } from "react";
-import classnames from "classnames";
+import classnames from "clsx";
 import CopyUrlButton from "@/components/molecules/ShareButton/patterns/CopyUrl";
 import GetImageButton from "@/components/molecules/ShareButton/patterns/DownloadImage";
 import FacebookShareButton from "@/components/molecules/ShareButton/patterns/Facebook";

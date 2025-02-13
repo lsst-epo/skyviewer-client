@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import classNames from "clsx";
 import { FunctionComponent, useRef } from "react";
 import styles from "./styles.module.css";
 import { useAladin } from "@/contexts/Aladin";

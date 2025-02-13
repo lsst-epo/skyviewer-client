@@ -1,0 +1,5 @@
+.verticalDivider {
+  background-color: currentColor;
+  width: 2px;
+  align-self: stretch;
+}

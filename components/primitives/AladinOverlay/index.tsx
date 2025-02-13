@@ -1,5 +1,5 @@
 import { FunctionComponent, PropsWithChildren } from "react";
-import classNames from "classnames";
+import classNames from "clsx";
 import styles from "./styles.module.css";
 
 const AladinOverlay: FunctionComponent<

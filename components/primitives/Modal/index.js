@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classnames from "clsx";
 import Button from "@/components/primitives/Button";
 import IconComposer from "@/components/svg/IconComposer";
 import useFocusTrap from "@/hooks/useFocusTrap";

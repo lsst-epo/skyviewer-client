@@ -1,0 +1,5 @@
+.attributes {
+  display: flex;
+  align-items: stretch;
+  gap: var(--size-spacing-xs);
+}

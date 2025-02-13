@@ -2,9 +2,9 @@
 import { useContext } from "react";
 import MenuContext from "@/contexts/Menu";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classnames from "clsx";
 import useResizeObserver from "use-resize-observer";
-import Buttonish from "@/components/primitives/Buttonish";
+import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
 import MainMenu from "@/components/global/MainMenu";
 import IconComposer from "@/components/svg/IconComposer";
 

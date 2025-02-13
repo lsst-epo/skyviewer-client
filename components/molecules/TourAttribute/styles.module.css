@@ -1,0 +1,27 @@
+.tourAttribute {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--size-spacing-2xs);
+
+  &[data-responsive="true"] {
+    flex-direction: row;
+
+    @media (--tablet) {
+      flex-direction: column;
+      gap: var(--size-spacing-3xs);
+    }
+  }
+}
+
+.title {
+  font-size: 0.875em;
+  font-weight: 200;
+}
+
+.attribute {
+  font-size: 0.75em;
+  font-weight: 700;
+  white-space: nowrap;
+}

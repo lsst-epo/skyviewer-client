@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import { useAladin } from "@/contexts/Aladin";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 import { getLinearScale } from "@/lib/utilities";
-import classNames from "classnames";
+import classNames from "clsx";
 
 const FOVSize: FunctionComponent<{ fov?: number; className?: string }> = ({
   fov,

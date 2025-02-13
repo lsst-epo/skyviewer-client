@@ -1,0 +1,73 @@
+.card {
+  --size-outline: 2px;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--size-spacing-2xs-xs);
+  color: var(--color-font-invert);
+  border-radius: var(--size-spacing-2xs);
+  padding: calc(var(--size-outline) + var(--size-spacing-2xs));
+
+  @media (--tablet) {
+    flex-direction: column;
+    padding: var(--size-spacing-xs);
+  }
+
+  &:has(a:focus-visible) {
+    outline: var(--size-outline) solid currentColor;
+    outline-offset: calc(var(--size-outline) * -1);
+  }
+}
+
+.image {
+  width: var(--size-spacing-2xl-3xl);
+}
+
+.title {
+  margin: 0;
+  text-align: center;
+  width: 16ch;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-spacing-2xs);
+
+  @media (--tablet) {
+    align-items: center;
+  }
+}
+
+.link {
+  text-decoration: none;
+
+  &:not(:disabled):focus,
+  &:not(:disabled):focus-visible {
+    outline: none;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+}
+
+.durationTitle {
+  display: none;
+
+  @media (--tablet) {
+    display: inline;
+  }
+}
+
+.complexityAttribute {
+  display: none;
+
+  @media (--tablet) {
+    display: inline;
+  }
+}
