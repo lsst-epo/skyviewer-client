@@ -1,7 +1,7 @@
 @use "abstracts/functions";
 
 .main-header {
-  z-index: functions.z-stack(header);
+  z-index: var(--elevation-element-header);
   display: flex;
   align-items: center;
   justify-content: space-between;

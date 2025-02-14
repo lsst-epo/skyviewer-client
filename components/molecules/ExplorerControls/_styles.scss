@@ -10,7 +10,7 @@
 
   .controls-submenu {
     position: absolute;
-    z-index: functions.z-stack(controls);
+    z-index: var(--elevation-element-controls);
 
     > li {
       display: block;

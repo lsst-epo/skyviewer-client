@@ -10,13 +10,11 @@ import {
 import { Catalog } from "@/types/catalog";
 import { getPixelPosition } from "@/lib/aladin/helpers";
 
-interface AladinProps {
+interface CatalogProps {
   catalogs?: Array<Catalog>;
-  markerLayers?: Array<any>;
-  jpgs?: Array<any>;
 }
 
-const Explorer: FunctionComponent<AladinProps> = ({ catalogs, jpgs }) => {
+const Catalogs: FunctionComponent<CatalogProps> = ({ catalogs }) => {
   const [sourceData, setSourceData] = useState<any>(null);
   const [additionalSourceData, setAdditionalSourceData] = useState<
     Record<string, any>
@@ -101,6 +99,6 @@ const Explorer: FunctionComponent<AladinProps> = ({ catalogs, jpgs }) => {
   );
 };
 
-Explorer.displayName = "Organisms.Explorer";
+Catalogs.displayName = "Organisms.Catalogs";
 
-export default Explorer;
+export default Catalogs;

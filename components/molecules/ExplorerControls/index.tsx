@@ -8,7 +8,7 @@ import Zoom from "../Controls/Zoom";
 import IconToggle from "@/components/primitives/IconToggle";
 import { useAladin } from "@/contexts/Aladin";
 import AladinOverlay from "@/components/primitives/AladinOverlay";
-import styles from "./styles.module.scss";
+import styles from "./styles.module.css";
 import Orientation from "./Orientation";
 
 export default function Controls() {
@@ -78,17 +78,17 @@ export default function Controls() {
         aria-label="Toggle overlays"
         className={styles.viewControls}
       >
-        <li role="menuitem" className={styles.marker}>
+        <li role="menuitem">
+          <Orientation />
+        </li>
+        <li role="menuitem">
           <IconToggle
             icon="Globe"
             isChecked={markersEnabled}
             onToggleCallback={handleMarkerToggle}
           />
         </li>
-        <li role="menuitem" className={styles.orientation}>
-          <Orientation />
-        </li>
-        <li role="menuitem" className={styles.grid}>
+        <li role="menuitem">
           <IconToggle
             icon="Grid"
             isChecked={gridEnabled}
