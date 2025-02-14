@@ -1,20 +1,15 @@
-@use "abstracts/_functions";
-
 .controlsSubmenu {
   position: absolute;
-  z-index: functions.z-stack(controls);
+  z-index: var(--elevation-element-controls);
 }
 
 .viewControls {
   composes: controlsSubmenu;
   top: 0;
   right: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas:
-    "markers orientation"
-    ". grid";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: var(--size-spacing-2xs);
   list-style: none;
 }
@@ -22,9 +17,11 @@
 .markers {
   grid-area: markers;
 }
+
 .orientation {
   grid-area: orientation;
 }
+
 .grid {
   grid-area: grid;
 }

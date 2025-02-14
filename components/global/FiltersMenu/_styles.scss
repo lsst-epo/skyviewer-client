@@ -6,7 +6,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: functions.z-stack(controls);
+  z-index: var(--elevation-element-controls);
 
   svg {
     width: 22px;
