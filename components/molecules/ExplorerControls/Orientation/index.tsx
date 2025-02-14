@@ -41,7 +41,7 @@ const Orientation: FC<{ className?: string }> = ({ className }) => {
       ra={position ? position[0] : undefined}
       dec={position ? position[1] : undefined}
       fov={fov}
-      size="var(--size-spacing-l)"
+      size="var(--size-spacing-xl)"
     />
   );
 };

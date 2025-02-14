@@ -68,11 +68,6 @@
   @return map.get(variables.$padding-sizes, $size);
 }
 
-// get z-stack value
-@function z-stack($name) {
-  @return map.get(variables.$z-stack, $name);
-}
-
 // get a header value
 @function header($name) {
   @return map.get(variables.$header, $name);

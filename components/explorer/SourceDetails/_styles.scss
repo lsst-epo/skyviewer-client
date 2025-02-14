@@ -9,13 +9,13 @@
   background-color: rgba(0 0 0 / 40%);
 
   &.is-open {
-    z-index: functions.z-stack(modal);
+    z-index: var(--elevation-element-dialog);
   }
 }
 
 .source-details-modal {
   position: absolute;
-  z-index: functions.z-stack(modal);
+  z-index: var(--elevation-element-dialog);
   margin-top: -115px;
   margin-left: 27px;
   visibility: hidden;
