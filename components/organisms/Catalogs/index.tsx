@@ -30,27 +30,29 @@ const Catalogs: FunctionComponent<CatalogProps> = ({ catalogs }) => {
     setSourceData({ ...data, ...additionalData, position });
 
     if (!additionalData) {
-      const dataArray = await Promise.all([
-        getAstroObjectContent(id),
-        getAstroObjectData(id),
-      ]);
+      Promise.all([getAstroObjectContent(id), getAstroObjectData(id)]).then(
+        (dataArray) => {
+          const remoteAdditionalData = dataArray.reduce((prev, curr) => {
+            return {
+              ...prev,
+              ...curr.astroObject,
+            };
+          }, {});
 
-      const remoteAdditionalData = dataArray.reduce((prev, curr) => {
-        return {
-          ...prev,
-          ...curr.astroObject,
-        };
-      }, {});
+          setAdditionalSourceData({
+            ...additionalSourceData,
+            [id]: remoteAdditionalData,
+          });
 
-      setAdditionalSourceData({
-        ...additionalSourceData,
-        [id]: remoteAdditionalData,
-      });
-      setSourceData({
-        ...data,
-        ...remoteAdditionalData,
-        position,
-      });
+          if (sourceData?.id === id) {
+            setSourceData({
+              ...data,
+              ...remoteAdditionalData,
+              position,
+            });
+          }
+        }
+      );
     }
   };
 
