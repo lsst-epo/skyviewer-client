@@ -1,5 +1,6 @@
 import {
   DetailedHTMLProps,
+  forwardRef,
   FunctionComponent,
   HTMLAttributes,
   ReactNode,
@@ -18,21 +19,20 @@ interface IconButtonProps
   size?: string | number;
 }
 
-const IconButton: FunctionComponent<IconButtonProps> = ({
-  className,
-  children,
-  icon,
-  size,
-  text,
-  ...props
-}) => {
-  return (
-    <button className={classNames(styles.iconButton, className)} {...props}>
-      <span className="visually-hidden">{text}</span>
-      {icon}
-    </button>
-  );
-};
+const IconButton: FunctionComponent<IconButtonProps> = forwardRef(
+  ({ className, children, icon, size, text, ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        className={classNames(styles.iconButton, className)}
+        {...props}
+      >
+        <span className="visually-hidden">{text}</span>
+        {icon}
+      </button>
+    );
+  }
+);
 
 IconButton.displayName = "Atom.IconButton";
 
