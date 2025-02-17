@@ -2,7 +2,8 @@
 import {
   FunctionComponent,
   PropsWithChildren,
-  useLayoutEffect,
+  RefCallback,
+  useCallback,
   useMemo,
   useRef,
   useState,
@@ -34,8 +35,7 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
 
   const [hasFocus, setFocus] = useState(false);
   const [isLoading, setLoading] = useState(true);
-
-  const ref = useRef<HTMLDivElement>(null);
+  const [node, setNode] = useState<HTMLDivElement | null>(null);
 
   const onFocus = () => {
     if (!hasFocus) {
@@ -49,18 +49,19 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
     }
   };
 
-  useLayoutEffect(() => {
-    let isUnmounted = false;
+  useOnClickOutside(node, onBlur);
 
-    (async () => {
-      const global: Aladin = (await import("aladin-lite")).default;
+  const onMounted = useCallback<RefCallback<HTMLDivElement>>((node) => {
+    if (node) {
+      import("aladin-lite").then((module) => {
+        const global: Aladin = module.default;
 
-      if (!isUnmounted) {
         global.init.then(() => {
-          const newInstance: AladinInstance = global.aladin(
-            ref?.current || "",
-            Object.assign(defaultOptions, options)
-          );
+          const newInstance: AladinInstance = global.aladin(node, {
+            ...defaultOptions,
+            ...options,
+          });
+
           newInstance.setImageSurvey(
             global.imageHiPS(hipsConfig.id, {
               ...defaultHiPSOptions,
@@ -74,18 +75,17 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
           A.current = global;
           aladin.current = newInstance;
           setLoading(false);
+          setNode(node);
         });
-      }
-    })();
+      });
+    }
 
     return () => {
-      isUnmounted = true;
-      aladin.current = null;
       A.current = null;
+      aladin.current = null;
+      setNode(null);
     };
   }, []);
-
-  useOnClickOutside(ref, onBlur);
 
   const value = useMemo(() => {
     return isLoading || !aladin.current || !A.current
@@ -103,7 +103,7 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
       <div
         className={styles.aladinContainer}
         data-loaded={!isLoading}
-        ref={ref}
+        ref={onMounted}
         onFocus={onFocus}
         onClick={onFocus}
         onBlur={onBlur}

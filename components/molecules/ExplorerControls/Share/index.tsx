@@ -8,7 +8,7 @@ import FacebookShareButton from "@/components/molecules/ShareButton/patterns/Fac
 import TwitterShareButton from "@/components/molecules/ShareButton/patterns/Twitter";
 import EmailShareButton from "@/components/molecules/ShareButton/patterns/Email";
 import IconButton from "@/components/primitives/IconButton";
-import styles from "./styles.module.scss";
+import styles from "./styles.module.css";
 
 export default function Share() {
   return (
