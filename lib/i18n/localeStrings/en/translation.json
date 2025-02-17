@@ -41,6 +41,7 @@
   },
   "tours": { "title": "Astronomical Tours" },
   "controls": {
+    "close_explorer": "Close the explorer",
     "save_image": "Save this image",
     "zoom_in": "Zoom in",
     "zoom_out": "Zoom out"

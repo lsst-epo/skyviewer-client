@@ -6,4 +6,7 @@
 
 .icon-button {
   @include appearance.proto-button;
+
+  display: flex;
+  align-items: center;
 }

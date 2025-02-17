@@ -1,6 +1,10 @@
-import { DetailedHTMLProps, FunctionComponent, HTMLAttributes } from "react";
+import {
+  DetailedHTMLProps,
+  FunctionComponent,
+  HTMLAttributes,
+  ReactNode,
+} from "react";
 import classNames from "clsx";
-import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 import styles from "./styles.module.css";
 
 interface IconButtonProps
@@ -10,7 +14,7 @@ interface IconButtonProps
   > {
   disabled?: boolean;
   text: string;
-  icon: string;
+  icon: ReactNode;
   size?: string | number;
 }
 
@@ -23,9 +27,9 @@ const IconButton: FunctionComponent<IconButtonProps> = ({
   ...props
 }) => {
   return (
-    <button className={classNames(className, styles.iconButton)} {...props}>
+    <button className={classNames(styles.iconButton, className)} {...props}>
       <span className="visually-hidden">{text}</span>
-      <IconComposer {...{ icon, size }} />
+      {icon}
     </button>
   );
 };

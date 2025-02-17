@@ -1,21 +1,20 @@
-@use "abstracts/functions";
-
-.main-header {
+.mainHeader {
   z-index: var(--elevation-element-header);
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: var(--black);
+  height: var(--size-height-menu, var(--size-spacing-l));
+  padding-inline: var(--size-spacing-2xs);
 
-  &.primary {
+  &[data-theme="primary"] {
     background-color: var(--black);
   }
 
-  &.secondary {
+  &[data-theme="secondary"] {
     background-color: var(--color-rubin-teal-600);
   }
 
-  .close-button,
   .main-menu-button {
     display: flex;
     flex-direction: column;
@@ -25,22 +24,8 @@
       color: var(--white);
     }
   }
+}
 
-  .close-button {
-    --button-border-color: transparent;
-    --button-background-color: transparent;
-
-    padding: 0;
-    opacity: 1;
-    transition: opacity 0.2s ease-out;
-
-    &:hover,
-    &:focus {
-      outline: none;
-    }
-
-    &.menus-open {
-      opacity: 0;
-    }
-  }
+.closeButton {
+  display: inline-flex;
 }

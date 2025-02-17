@@ -1,21 +1,17 @@
-import { FunctionComponent, ChangeEventHandler } from "react";
-import IconComposer from "@/components/svg/IconComposer";
-import buttonStyles from "../IconButton/styles.module.css";
-import styles from "./styles.module.css";
+import { FunctionComponent, ChangeEventHandler, ReactNode } from "react";
 import classNames from "clsx";
+import styles from "./styles.module.css";
 
 interface IconToggleProps {
   isChecked: boolean;
-  icon: string;
+  icon: ReactNode;
   label?: string;
-  iconSize?: string | number;
   className?: string;
   onToggleCallback: ChangeEventHandler<HTMLInputElement>;
 }
 
 const IconToggle: FunctionComponent<IconToggleProps> = ({
   icon,
-  iconSize,
   isChecked,
   label,
   onToggleCallback,
@@ -27,7 +23,7 @@ const IconToggle: FunctionComponent<IconToggleProps> = ({
       data-checked={isChecked}
     >
       <span className="visually-hidden">{label}</span>
-      <IconComposer icon={icon} size={iconSize} />
+      {icon}
       <input
         className="visually-hidden"
         type="checkbox"

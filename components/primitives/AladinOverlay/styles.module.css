@@ -1,7 +1,5 @@
 .aladinOverlay {
-  --size-padding-overlay: var(--size-spacing-xs);
-
-  padding: var(--size-padding-overlay);
+  padding: var(--size-padding-overlay, var(--size-spacing-xs));
   position: absolute;
   pointer-events: none;
   width: 100%;
