@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { IoIosGlobe } from "react-icons/io";
 import defaultAladinOptions from "@/fixtures/defaultAladinOptions";
 import Filters from "./Filters";
 import Share from "./Share";
@@ -10,6 +11,7 @@ import { useAladin } from "@/contexts/Aladin";
 import AladinOverlay from "@/components/primitives/AladinOverlay";
 import styles from "./styles.module.css";
 import Orientation from "./Orientation";
+import IconComposer from "@/components/svg/IconComposer";
 
 export default function Controls() {
   const { aladin } = useAladin();
@@ -54,7 +56,10 @@ export default function Controls() {
   };
 
   return (
-    <AladinOverlay className="controls">
+    <AladinOverlay
+      className="controls"
+      space="var(--size-spacing-xs) var(--size-spacing-s) var(--size-spacing-xs) var(--size-spacing-xs)"
+    >
       <div className={styles.zoomContainer}>
         <Zoom />
       </div>
@@ -66,7 +71,7 @@ export default function Controls() {
       >
         <li role="menuitem">
           <IconToggle
-            icon="Pin"
+            icon={<IconComposer icon="Pin" />}
             isChecked={landmarksEnabled}
             onToggleCallback={handleLandmarksToggle}
           />
@@ -83,14 +88,14 @@ export default function Controls() {
         </li>
         <li role="menuitem">
           <IconToggle
-            icon="Globe"
+            icon={<IoIosGlobe />}
             isChecked={markersEnabled}
             onToggleCallback={handleMarkerToggle}
           />
         </li>
         <li role="menuitem">
           <IconToggle
-            icon="Grid"
+            icon={<IconComposer icon="Grid" />}
             isChecked={gridEnabled}
             onToggleCallback={handleGridToggle}
           />
