@@ -19,6 +19,7 @@ export const getExplorerPage = async (
               fovMax
               fovMin
               path
+              target
               imgFormat
             }
           }

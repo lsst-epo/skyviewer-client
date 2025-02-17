@@ -23,7 +23,7 @@ export default function Controls() {
 
   const handleGridToggle = () => {
     if (aladin) {
-      aladin?.setCooGrid({ enabled: !gridEnabled });
+      aladin.setCooGrid({ enabled: !gridEnabled });
       setGridEnabled((gridEnabled) => !gridEnabled);
     }
   };
