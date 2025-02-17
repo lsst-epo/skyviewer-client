@@ -1,5 +1,7 @@
 import { Fragment } from "react";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { IoIosClose, IoMdShare } from "react-icons/io";
+
 import LinkToView from "@/components/molecules/ShareButton/patterns/LinkToView";
 import GetImageButton from "@/components/molecules/ShareButton/patterns/DownloadImage";
 import FacebookShareButton from "@/components/molecules/ShareButton/patterns/Facebook";
@@ -15,7 +17,7 @@ export default function Share() {
         <MenuButton as={Fragment}>
           {({ open }) => (
             <IconButton
-              icon={open ? "Close" : "ShareToggle"}
+              icon={open ? <IoIosClose /> : <IoMdShare />}
               className={styles.shareMenuButton}
               text={open ? "Close Share Menu" : "Open Share Menu"}
             />

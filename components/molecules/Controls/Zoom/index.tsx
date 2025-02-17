@@ -1,10 +1,10 @@
 "use client";
 import { FunctionComponent } from "react";
-import classNames from "clsx";
+import { IoIosAdd, IoIosRemove } from "react-icons/io";
+
 import { useAladin } from "@/contexts/Aladin";
 import { useKeyDownEvent } from "@/hooks/listeners";
 import IconButton from "@/components/primitives/IconButton";
-import styles from "./styles.module.css";
 import { useTranslation } from "react-i18next";
 import ControlsContainer from "../Container";
 
@@ -42,13 +42,13 @@ const Zoom: FunctionComponent<ZoomProps> = ({ className }) => {
     <ControlsContainer {...{ className }}>
       <IconButton
         text={t("controls.zoom_in")}
-        icon="Plus"
+        icon={<IoIosAdd />}
         onClick={handleZoomIn}
         disabled={isLoading}
       />
       <IconButton
         text={t("controls.zoom_out")}
-        icon="Minus"
+        icon={<IoIosRemove />}
         onClick={handleZoomOut}
         disabled={isLoading}
       />

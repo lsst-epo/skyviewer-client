@@ -5,6 +5,7 @@ import { saveAs } from "file-saver";
 import IconButton from "@/components/primitives/IconButton";
 import { useAladin } from "@/contexts/Aladin";
 import { useTranslation } from "react-i18next";
+import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 
 interface DownloadProps {
   className?: string;
@@ -28,7 +29,7 @@ const Download: FunctionComponent<DownloadProps> = ({ className }) => {
     <IconButton
       text={t("controls.save_image")}
       className={classNames(className)}
-      icon="FloppyDisk"
+      icon={<IconComposer icon="FloppyDisk" />}
       onClick={handleClick}
       disabled={isLoading}
     />

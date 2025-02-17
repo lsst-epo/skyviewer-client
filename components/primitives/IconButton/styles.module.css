@@ -12,6 +12,11 @@
   transition: background-color 0.4s;
   pointer-events: initial;
 
+  > svg {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
   &:disabled {
     cursor: not-allowed;
   }
