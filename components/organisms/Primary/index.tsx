@@ -1,6 +1,6 @@
 import { FunctionComponent, PropsWithChildren } from "react";
 import { MenuProvider } from "@/contexts/Menu";
-import Header from "@/components/global/PrimaryHeader";
+import AladinMenu from "@/components/organisms/AladinMenu";
 
 interface PrimaryLayoutProps {
   closeUrl?: string;
@@ -13,7 +13,7 @@ const PrimaryLayout: FunctionComponent<
 > = ({ closeUrl, route, backgroundColor = "primary", children }) => {
   return (
     <MenuProvider>
-      <Header
+      <AladinMenu
         backgroundColor={backgroundColor}
         closeUrl={closeUrl}
         route={route}

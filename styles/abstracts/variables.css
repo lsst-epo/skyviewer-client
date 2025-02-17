@@ -1,3 +1,4 @@
 :root {
   --elevation-element-controls: 5;
+  --size-height-menu: var(--size-spacing-l);
 }

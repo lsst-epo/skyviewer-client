@@ -12,18 +12,13 @@
   align-items: center;
   gap: var(--size-spacing-2xs);
   list-style: none;
-}
 
-.markers {
-  grid-area: markers;
-}
-
-.orientation {
-  grid-area: orientation;
-}
-
-.grid {
-  grid-area: grid;
+  > li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--size-spacing-l);
+  }
 }
 
 .zoomContainer {
