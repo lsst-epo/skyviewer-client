@@ -3,7 +3,10 @@ import { FC, useCallback, useState } from "react";
 import ViewIndicator from "@rubin-epo/epo-widget-lib/ViewIndicator";
 import { useAladin } from "@/contexts/Aladin";
 
-const Orientation: FC<{ className?: string }> = ({ className }) => {
+const Orientation: FC<{ className?: string; size?: string }> = ({
+  className,
+  size = "var(--size-spacing-xl)",
+}) => {
   const [fov, setFov] = useState<[number, number] | undefined>();
   const [position, setPosition] = useState<[number, number] | undefined>();
 
@@ -37,11 +40,9 @@ const Orientation: FC<{ className?: string }> = ({ className }) => {
 
   return (
     <ViewIndicator
-      className={className}
       ra={position ? position[0] : undefined}
       dec={position ? position[1] : undefined}
-      fov={fov}
-      size="var(--size-spacing-xl)"
+      {...{ fov, size, className }}
     />
   );
 };

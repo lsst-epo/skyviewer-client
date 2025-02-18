@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { notFound } from "next/navigation";
-import { getTourMetadata } from "@/lib/api/tours";
+import { getTourMetadata } from "@/services/api/tours";
 import TourLanding from "@/components/pages/TourLanding";
 
 const TourLandingPage: FunctionComponent<TourProps> = async ({

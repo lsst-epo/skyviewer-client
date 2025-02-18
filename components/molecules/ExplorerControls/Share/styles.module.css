@@ -1,8 +1,3 @@
-@use "abstracts/functions";
-@use "abstracts/mixins/base";
-@use "abstracts/mixins/appearance";
-@use "abstracts/mixins/typography";
-
 .shareMenu {
   position: absolute;
   left: 0;
@@ -44,7 +39,7 @@
     gap: var(--size-spacing-xs);
   }
 
-  @include base.respond(functions.break(tablet), min, width) {
+  @media (--tablet) {
     flex-flow: row nowrap;
     left: calc(var(--size-spacing-l) + var(--size-spacing-xs));
     bottom: 0;

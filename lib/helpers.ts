@@ -1,6 +1,7 @@
 import z from "zod";
 import clamp from "lodash/clamp";
 import defaultSurveyView from "@/fixtures/defaultSurveyView";
+import { position } from "./schema/astro";
 
 export const buildSurveyImage = (survey: unknown) => {
   const { fovMin, fovMax, ...rest } = surveyImageSchema.parse(survey);
@@ -12,9 +13,6 @@ export const buildSurveyImage = (survey: unknown) => {
 };
 
 export type SurveyImage = ReturnType<typeof buildSurveyImage>;
-
-const ra = z.number().min(0).max(360);
-const dec = z.number().min(-90).max(90);
 
 export const initialPosition = (
   searchParams: SearchParams,
@@ -33,7 +31,7 @@ export const initialPosition = (
       target: z
         .string()
         .transform((val) => val.split(" ").map(parseFloat))
-        .pipe(z.tuple([ra, dec]))
+        .pipe(position)
         .transform((val) => val.join(" "))
         .catch(target)
         .default(target),
