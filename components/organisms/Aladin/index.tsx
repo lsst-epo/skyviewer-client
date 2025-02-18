@@ -15,9 +15,10 @@ import { useOnClickOutside } from "@/hooks/listeners";
 import AladinContext, { defaultValue } from "@/contexts/Aladin";
 import styles from "./styles.module.css";
 
-interface AladinProps {
+export interface AladinProps {
   fovRange?: Array<number>;
   options?: AladinOptions;
+  disableInteraction?: boolean;
   hipsConfig: {
     id: string;
     options: ImageHiPSOptions;
@@ -28,6 +29,7 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
   children,
   fovRange = [2, 90],
   hipsConfig,
+  disableInteraction = false,
   options = {},
 }) => {
   const A = useRef<Aladin | null>(null);
@@ -103,6 +105,7 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
       <div
         className={styles.aladinContainer}
         data-loaded={!isLoading}
+        data-allow-interaction={!disableInteraction}
         ref={onMounted}
         onFocus={onFocus}
         onClick={onFocus}

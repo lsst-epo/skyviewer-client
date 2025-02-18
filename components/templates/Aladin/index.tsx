@@ -1,36 +1,22 @@
 import { FunctionComponent, PropsWithChildren, ReactNode } from "react";
-import Aladin from "@/components/organisms/Aladin";
+import Aladin, { AladinProps } from "@/components/organisms/Aladin";
 import styles from "./styles.module.css";
 
-interface AladinTemplateProps {
-  fovRange?: Array<number>;
-  options: AladinOptions;
-  hipsConfig: {
-    id: string;
-    options: ImageHiPSOptions;
-  };
+interface AladinTemplateProps extends AladinProps {
   embedded?: boolean;
   footer?: ReactNode;
 }
 
 const AladinTemplate: FunctionComponent<
   PropsWithChildren<AladinTemplateProps>
-> = ({ options, fovRange, hipsConfig, embedded = false, footer, children }) => {
+> = ({ embedded = false, footer, children, ...props }) => {
   return (
     <main
       className={styles.viewLayout}
-      style={{ ...(embedded && { "--size-height-menu": "0px" }) }}
+      style={{ ...(embedded && { "--main-header-height": "0px" }) }}
     >
       <div className={styles.aladinViewer}>
-        <Aladin
-          {...{
-            options,
-            fovRange,
-            hipsConfig,
-          }}
-        >
-          {children}
-        </Aladin>
+        <Aladin {...props}>{children}</Aladin>
       </div>
 
       {footer && <footer className={styles.aladinFooter}>{footer}</footer>}

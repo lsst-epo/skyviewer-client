@@ -1,0 +1,64 @@
+.cardOuter {
+  color: var(--color-background-tile-light);
+}
+
+.tutorialCard {
+  background-color: var(--color-background-tile-light);
+  border-radius: var(--size-spacing-s);
+  color: #313333;
+  font-size: 0.75rem;
+  align-items: center;
+  padding: var(--size-spacing-xs);
+}
+
+.controls {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 1ch;
+  justify-items: center;
+  font-size: 0.625rem;
+  white-space: nowrap;
+  width: 100%;
+
+  & > *:first-child {
+    justify-self: start;
+  }
+
+  & > *:last-child {
+    justify-self: end;
+    text-align: right;
+  }
+}
+
+.control {
+  font-size: 0.625rem;
+
+  &:disabled {
+    color: var(--color-font-muted);
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):hover,
+  &:not(:disabled):focus-visible {
+    text-decoration: underline;
+    outline: none;
+  }
+}
+
+.icon {
+  color: var(--turquoise50);
+}
+
+.content {
+  min-width: 25ch;
+  text-wrap-style: pretty;
+}
+
+.skipButton {
+  display: flex;
+  align-items: center;
+  gap: 1ex;
+  color: var(--color-font-accent);
+  text-decoration: underline;
+}

@@ -1,5 +1,5 @@
 import { FunctionComponent, PropsWithChildren } from "react";
-import { getTourPoisData } from "@/lib/api/tour";
+import { getTourPoisData } from "@/services/api/tour";
 import { useTranslation } from "@/lib/i18n/server";
 
 const SummaryLayout: FunctionComponent<PropsWithChildren<TourProps>> = async ({

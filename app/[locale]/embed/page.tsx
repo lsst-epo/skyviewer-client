@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import AladinTemplate from "@/components/templates/Aladin";
 import EmbeddedExplorer from "@/components/organisms/Embedded";
 import { initialPosition } from "@/lib/helpers";
-import { getEmbedPage } from "@/lib/api/embed";
+import { getEmbedPage } from "@/services/api/embed";
 
 const EmbeddedPage: FunctionComponent<WithSearchParams<RootProps>> = async ({
   params: { locale },
