@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import Button from "@rubin-epo/epo-react-lib/Button";
 import Center from "@rubin-epo/epo-react-lib/Center";
-import { getTour } from "@/lib/api/tours";
+import { getTour } from "@/services/api/tours";
 import { assetAlt } from "@/lib/canto/metadata";
 import VerticalDivider from "@/components/primitives/VerticalDivider";
 import FullwidthWithNav from "@/components/templates/FullwidthWithNav";
@@ -15,6 +15,7 @@ import IntroContent from "@/components/molecules/IntroContent";
 import FactContent from "@/components/molecules/FactContent";
 import TransitionButtonish from "@/components/molecules/TransitionButtonish";
 import styles from "./styles.module.css";
+import { hasCompletedTutorial } from "@/lib/tutorial";
 
 type TourIntroProps = NonNullable<Awaited<ReturnType<typeof getTour>>>;
 
@@ -57,11 +58,22 @@ const TourIntro: FC<TourIntroProps> = ({
       push("./");
     }
   };
+
+  const startTour = () => {
+    const startTourParams = new URLSearchParams();
+
+    if (hasCompletedTutorial()) {
+      startTourParams.set("poi", "1");
+    }
+
+    push(`tour?${startTourParams.toString()}`);
+  };
+
   const handleForwardClick = () => {
     if (section !== "fact") {
       gotoFact();
     } else {
-      push("tour");
+      startTour();
     }
   };
 
@@ -85,9 +97,9 @@ const TourIntro: FC<TourIntroProps> = ({
                   onClick={gotoFact}
                 ></button>
               </div>
-              <Link className={styles.skipLink} href="tour" prefetch>
+              <button className={styles.skipIntro} onClick={startTour}>
                 {t("navigation.cta.skip_intro")}
-              </Link>
+              </button>
             </div>
             <Button icon={<IoArrowBackSharp />} onClick={handleBackClick}>
               {t("navigation.cta.back")}
@@ -107,15 +119,13 @@ const TourIntro: FC<TourIntroProps> = ({
             <TransitionButtonish icon={<IoArrowBackSharp />} href="./">
               {t("navigation.cta.back")}
             </TransitionButtonish>
-            <TransitionButtonish
+            <Button
               icon={<IoArrowForwardSharp />}
               iconAlignment="right"
-              onClick={handleForwardClick}
-              href="tour"
-              prefetch
+              onClick={startTour}
             >
               {t("navigation.cta.lets_start")}
-            </TransitionButtonish>
+            </Button>
           </div>
         </>
       }

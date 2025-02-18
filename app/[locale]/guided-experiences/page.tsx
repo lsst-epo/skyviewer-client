@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { notFound } from "next/navigation";
-import { getGuidedExperiences } from "@/lib/api/guidedExperiences";
+import { getGuidedExperiences } from "@/services/api/guidedExperiences";
 import GuidedExperiencesPage from "@/components/pages/GuidedExperiences";
 
 const GuidedExperiences: FC<RootProps> = async () => {

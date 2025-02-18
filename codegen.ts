@@ -9,7 +9,7 @@ const config: CodegenConfig = {
       documents: [
         "app/[locale]/tours/[tour]/tour/**/*.{ts,tsx}",
         "app/[locale]/embed/**/*.{ts,tsx}",
-        "lib/api/**/*.{ts,tsx}",
+        "services/api/**/*.{ts,tsx}",
         "components/organisms/**/*.{ts,tsx}",
       ],
       preset: "client",

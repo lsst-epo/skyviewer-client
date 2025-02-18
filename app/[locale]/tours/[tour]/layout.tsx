@@ -1,5 +1,5 @@
-import { getTourMetadata } from "@/lib/api/tours";
-import { getToursPaths } from "@/lib/api/tours/paths";
+import { getTourMetadata } from "@/services/api/tours";
+import { getToursPaths } from "@/services/api/tours/paths";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { FC, PropsWithChildren } from "react";

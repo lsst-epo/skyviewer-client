@@ -1,4 +1,4 @@
-import { getGuidedExperiences } from "@/lib/api/guidedExperiences";
+import { getGuidedExperiences } from "@/services/api/guidedExperiences";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { FC, PropsWithChildren } from "react";

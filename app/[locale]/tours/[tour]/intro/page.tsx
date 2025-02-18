@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 
-import { getTour } from "@/lib/api/tours";
+import { getTour } from "@/services/api/tours";
 import { notFound } from "next/navigation";
 import TourIntro from "@/components/pages/TourIntro";
 

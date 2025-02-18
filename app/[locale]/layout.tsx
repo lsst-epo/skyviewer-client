@@ -7,6 +7,7 @@ import { SourceSansPro } from "@/lib/fonts";
 import { fallbackLng, languages } from "@/lib/i18n/settings";
 import { serverTranslation } from "@/lib/i18n/server";
 import I18NextClientProvider from "@/contexts/i18next";
+import TourTutorial from "@/components/organisms/TourTutorial";
 
 export const generateStaticParams = () => {
   return languages.map((locale) => {

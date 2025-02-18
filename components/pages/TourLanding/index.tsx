@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { getImageProps } from "next/image";
 import { IoArrowBackSharp, IoArrowForwardSharp } from "react-icons/io5";
-import { getTourMetadata } from "@/lib/api/tours";
+import { getTourMetadata } from "@/services/api/tours";
 import { assetAlt } from "@/lib/canto/metadata";
 import { useTranslation } from "@/lib/i18n/server";
 import Center from "@rubin-epo/epo-react-lib/Center";

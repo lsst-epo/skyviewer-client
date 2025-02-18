@@ -4,7 +4,7 @@ import Center from "@rubin-epo/epo-react-lib/Center";
 import Stack from "@rubin-epo/epo-react-lib/Stack";
 import { useTranslation } from "@/lib/i18n/server";
 import { assetAlt } from "@/lib/canto/metadata";
-import { getGuidedExperiences } from "@/lib/api/guidedExperiences";
+import { getGuidedExperiences } from "@/services/api/guidedExperiences";
 import Grid from "@/components/primitives/Grid";
 import PageTitle from "@/components/primitives/BlockTitle";
 import ViewTransition from "@/components/primitives/ViewTransition";
