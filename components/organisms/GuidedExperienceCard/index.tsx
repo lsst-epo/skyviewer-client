@@ -7,7 +7,7 @@ import { Link } from "next-view-transitions";
 import { addLocaleUriSegment } from "@/lib/i18n";
 import { useTranslation } from "@/lib/i18n/server";
 import { getLocale } from "@/lib/i18n/server";
-import { getTourCount } from "@/lib/api/guidedExperiences";
+import { getTourCount } from "@/services/api/guidedExperiences";
 import Ribbon from "@/components/primitives/Ribbon";
 import styles from "./styles.module.css";
 import ViewTransition from "@/components/primitives/ViewTransition";

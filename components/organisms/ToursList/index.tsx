@@ -1,5 +1,5 @@
 import { FC, Suspense } from "react";
-import { getAllTours } from "@/lib/api/tours";
+import { getAllTours } from "@/services/api/tours";
 import ScrollingList from "@/components/molecules/ScrollingList";
 import TourCard from "../TourCard";
 import styles from "./styles.module.css";

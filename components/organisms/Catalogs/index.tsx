@@ -6,7 +6,7 @@ import SourceDetails from "@/components/explorer/SourceDetails";
 import {
   getAstroObjectContent,
   getAstroObjectData,
-} from "@/lib/api/astroObject";
+} from "@/services/api/astroObject";
 import { Catalog } from "@/types/catalog";
 import { getPixelPosition } from "@/lib/aladin/helpers";
 

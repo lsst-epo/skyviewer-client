@@ -37,6 +37,7 @@ interface AladinTourGuideProps {
     transitionTimeZoom?: number;
     transitionTimeMove?: number;
   };
+  tourDescriptionVisible?: boolean;
 }
 
 const AladinTourGuide: FunctionComponent<AladinTourGuideProps> = ({
@@ -44,6 +45,7 @@ const AladinTourGuide: FunctionComponent<AladinTourGuideProps> = ({
   tourPois,
   poiIndex,
   controls,
+  tourDescriptionVisible,
   config = {},
 }) => {
   const {
@@ -83,7 +85,7 @@ const AladinTourGuide: FunctionComponent<AladinTourGuideProps> = ({
   return (
     <AladinOverlay className={styles.tourOverlay}>
       <PoiDescription
-        isOpen={currentIndex === poiIndex}
+        isOpen={!!tourDescriptionVisible && currentIndex === poiIndex}
         tourTitle={title}
         title={poi?.astroObject[0]?.title}
         description={poi?.description}

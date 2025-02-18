@@ -2,7 +2,7 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 import { languages } from "@/lib/i18n/settings";
 import { addLocaleUriSegment } from "@/lib/i18n";
-import tagStore from "@/lib/api/tags";
+import tagStore from "@/services/api/tags";
 
 const REVALIDATE_SECRET_TOKEN = process.env.CRAFT_REVALIDATE_SECRET_TOKEN;
 const CRAFT_HOMEPAGE_URI = "__home__";

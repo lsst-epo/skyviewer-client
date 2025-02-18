@@ -3,8 +3,11 @@
   "navigation": {
     "cta": {
       "exit": "Exit",
+      "previous": "Previous",
       "back": "Back",
       "next": "Next",
+      "pause": "Pause",
+      "share": "Share",
       "explore": "I want to explore",
       "tours": "Please guide me",
       "go_to_tours": "Go to tours",
@@ -39,7 +42,18 @@
       }
     }
   },
-  "tours": { "title": "Astronomical Tours" },
+  "tours": {
+    "title": "Astronomical Tours",
+    "tutorial": {
+      "step_0": "This is the southern sky above the telescope, which is located in Chile.",
+      "step_1": "Move between the objects with the “next” and “back” buttons. You can also pause and resume the tours.",
+      "step_2": "Share your favorite objects with the world using the “Share” button",
+      "step_3": "Let’s start the tour by hitting the button “Next”",
+      "skip": "Skip tutorial",
+      "complete": "Got it!",
+      "current_step": "{{step}} of {{total}}"
+    }
+  },
   "controls": {
     "close_explorer": "Close the explorer",
     "save_image": "Save this image",

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { getCatalogsSurveysData } from "@/lib/api/catalogsSurveys";
+import { getCatalogsSurveysData } from "@/services/api/catalogsSurveys";
 import { moveInArray } from "@/helpers";
 import AladinTemplate from "@/components/templates/Aladin";
 import Catalogs from "@/components/organisms/Catalogs";
@@ -7,7 +7,7 @@ import Controls from "@/components/molecules/ExplorerControls";
 import { Catalog } from "@/types/catalog";
 import { notFound } from "next/navigation";
 import { initialPosition } from "@/lib/helpers";
-import { getExplorerPage } from "@/lib/api/explorer";
+import { getExplorerPage } from "@/services/api/explorer";
 
 const ExplorerPage: FC<WithSearchParams<RootProps>> = async ({
   params: { locale },
