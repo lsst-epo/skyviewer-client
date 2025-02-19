@@ -5,7 +5,6 @@ import Stack from "@rubin-epo/epo-react-lib/Stack";
 import { useTranslation } from "@/lib/i18n/server";
 import { assetAlt } from "@/lib/canto/metadata";
 import { getGuidedExperiences } from "@/services/api/guidedExperiences";
-import Grid from "@/components/primitives/Grid";
 import PageTitle from "@/components/primitives/BlockTitle";
 import ViewTransition from "@/components/primitives/ViewTransition";
 import TransitionButtonish from "@/components/molecules/TransitionButtonish";
@@ -37,26 +36,24 @@ const GuidedExperiences: FC<GuidedExperiencesProps> = async ({
             <ViewTransition name="title">{title}</ViewTransition>
           </PageTitle>
         </Center>
-        <section className={styles.cardContainer}>
-          <Grid className={styles.cardGrid} minimum="400px">
-            {experiences.map(({ id, slug, title, previewImage }) => {
-              const { width, height } = previewImage;
+        <div className={styles.cardGrid}>
+          {experiences.map(({ id, slug, title, previewImage }) => {
+            const { width, height } = previewImage;
 
-              return (
-                <GuidedExperienceCard
-                  key={id}
-                  {...{ id, slug, title }}
-                  image={{
-                    width,
-                    height,
-                    alt: assetAlt(previewImage.additional),
-                    src: previewImage.url.directUrlOriginal,
-                  }}
-                />
-              );
-            })}
-          </Grid>
-        </section>
+            return (
+              <GuidedExperienceCard
+                key={id}
+                {...{ id, slug, title }}
+                image={{
+                  width,
+                  height,
+                  alt: assetAlt(previewImage.additional),
+                  src: previewImage.url.directUrlOriginal,
+                }}
+              />
+            );
+          })}
+        </div>
       </Stack>
     </FullwidthWithNav>
   );
