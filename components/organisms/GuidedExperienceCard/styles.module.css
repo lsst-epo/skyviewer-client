@@ -18,6 +18,7 @@
 .title {
   text-align: center;
   font-size: var(--size-font-20-30);
+  white-space: nowrap;
 }
 
 .link {
