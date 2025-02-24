@@ -240,6 +240,10 @@ export const getTourPois = async (tour: string) => {
                   characteristics
                 }
               }
+              zoomOutTime
+              zoomOutFov
+              panTime
+              zoomInTime
             }
           }
         }
