@@ -54,6 +54,11 @@
       "current_step": "{{step}} of {{total}}"
     }
   },
+  "tour": {
+    "description": {
+      "location": "($t(tours.tutorial.current_step, {\"step\": {{step}}, \"total\": {{total}} }))"
+    }
+  },
   "controls": {
     "close_explorer": "Close the explorer",
     "save_image": "Save this image",

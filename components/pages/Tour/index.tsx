@@ -1,23 +1,17 @@
 "use client";
 import { FC, useEffect } from "react";
-import { getTourPois } from "@/services/api/tours";
-import { NextStep, useNextStep } from "nextstepjs";
-import {
-  hasCompletedTutorial,
-  tourTutorialTitle,
-  useStep,
-} from "@/lib/tutorial";
+import { useNextStep } from "nextstepjs";
+import { hasCompletedTutorial, tourTutorialTitle } from "@/lib/tutorial";
 import AladinOverlay from "@/components/primitives/AladinOverlay";
 import Orientation from "@/components/molecules/ExplorerControls/Orientation";
 import TourControls from "@/components/organisms/TourControls";
 import styles from "./styles.module.css";
 import { useSearchParams } from "next/navigation";
+import { useTour } from "@/contexts/Tour";
+import PoiDescription from "@/components/molecules/PoiDescription";
 
-interface TourPageProps {
-  pois: NonNullable<Awaited<ReturnType<typeof getTourPois>>>;
-}
-
-const TourPage: FC<TourPageProps> = ({ pois }) => {
+const TourPage: FC<{ title: string | null }> = ({ title }) => {
+  const { isPending, currentPoi, position } = useTour();
   const { startNextStep } = useNextStep();
   const searchParams = useSearchParams();
   const poi = searchParams.get("poi");
@@ -29,14 +23,21 @@ const TourPage: FC<TourPageProps> = ({ pois }) => {
   }, []);
 
   return (
-    <AladinOverlay
-      space="var(--size-spacing-s) var(--size-spacing-s) var(--size-spacing-xl)"
-      className={styles.tourOverlay}
-    >
-      <div className={styles.orientation}>
-        <Orientation size="var(--size-spacing-l)" />
-      </div>
-      <TourControls poiLimit={pois.length} />
+    <AladinOverlay space="0" className={styles.tourOverlay}>
+      <Orientation
+        className={styles.orientation}
+        size="var(--size-spacing-l)"
+      />
+      <PoiDescription
+        className={styles.description}
+        isOpen={!isPending && !!currentPoi}
+        tourTitle={title}
+        title={currentPoi?.object.title}
+        description={currentPoi?.description}
+        currentStep={position.current}
+        totalSteps={position.total}
+      />
+      <TourControls className={styles.controls} />
     </AladinOverlay>
   );
 };

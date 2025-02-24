@@ -46,3 +46,16 @@ export function getPixelPosition(
 ) {
   return Array.from(aladin.world2pix(ra, dec)).reverse();
 }
+
+export const isAtLocation = (
+  firstLocation: Array<number>,
+  secondLocation: Array<number>,
+  precision = 5
+) => {
+  return (
+    firstLocation[0].toPrecision(precision) ===
+      secondLocation[0].toPrecision(precision) &&
+    firstLocation[1].toPrecision(precision) ===
+      secondLocation[1].toPrecision(precision)
+  );
+};
