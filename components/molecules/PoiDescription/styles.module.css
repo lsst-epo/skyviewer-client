@@ -1,33 +1,79 @@
-.descriptionContainer {
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+
+  @media (--desktop-small) {
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+    width: calc(100% + var(--size-spacing-s));
+  }
+}
+
+.description {
+  --offset-top-container: calc(
+    var(--size-height-menu) + var(--size-spacing-2xl)
+  );
+
   background-color: rgba(0 0 0 / 70%);
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px) brightness(0.67);
   color: var(--color-font-invert);
-  width: 45ch;
-  padding: var(--size-spacing-l);
-  right: 0;
-  top: 50%;
+  width: 100%;
   opacity: 0;
+  padding: var(--size-spacing-s);
+  transform: translateY(100%);
   transition: var(--time-transition-slow) transform,
     var(--time-transition-slow) opacity;
-  transform: translate(calc(100% + var(--size-spacing-xs)), -50%);
-  position: absolute;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  & > * + * {
+    margin-block-start: var(--size-spacing-xs);
+  }
 
   &[data-open="true"] {
     opacity: 1;
-    transform: translate(0%, -50%);
+    transform: translateX(0%);
   }
 
-  @media screen and (orientation: portrait) {
-    aspect-ratio: auto;
-    left: 0;
-    bottom: 0;
-    top: unset;
-    position: relative;
-    width: 100%;
-    transform: translate(0, 200%);
+  @media (--desktop-small) {
+    padding: var(--size-spacing-m) 0 var(--size-spacing-s) var(--size-spacing-m);
+    transform: translateX(100%);
+    width: min(calc(40ch + var(--size-spacing-m)), 100%);
 
     &[data-open="true"] {
-      transform: translate(0, 0);
+      transform: translateY(0%);
     }
+  }
+}
+
+.tourTitle {
+  font-weight: bold;
+  font-size: calc(var(--size-font-16-20) * 0.875);
+}
+
+.objectTitle {
+  font-size: calc(var(--size-font-16-20) * 2);
+  margin-block-end: 0;
+}
+
+.header {
+  & > * + * {
+    margin-block-start: var(--size-spacing-xs);
+  }
+}
+
+.text {
+  overflow-y: auto;
+  scrollbar-color: currentColor transparent;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+  padding-inline-end: var(--size-spacing-2xs);
+
+  & > *:first-child {
+    margin-block-start: 0;
   }
 }
