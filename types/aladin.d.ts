@@ -311,6 +311,12 @@ interface AladinInstance {
     lat: number,
     frame?: CooFrame
   ) => Float64Array;
+  /** Transform pixel coordinates to world coordinates. The origin (0,0) of pixel coordinates is at the top-left corner of the Aladin Lite view. */
+  readonly pix2world: (
+    x: number,
+    y: number,
+    frame?: CooFrame
+  ) => [number, number];
   readonly increaseZoom: () => void;
   readonly decreaseZoom: () => void;
   readonly removeOverlays: () => void;

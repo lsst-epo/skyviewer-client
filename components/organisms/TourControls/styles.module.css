@@ -2,9 +2,6 @@
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 1fr;
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
 
   *[data-active-tutorial-step="true"] {
@@ -13,7 +10,7 @@
     pointer-events: none;
   }
 
-  @media (--tablet-max) {
+  @media (--desktop-small-max) {
     & button {
       border-radius: 0;
 
@@ -25,9 +22,8 @@
     }
   }
 
-  @media (--tablet) {
+  @media (--desktop-small) {
     gap: var(--size-spacing-2xs);
-    position: static;
     width: auto;
     margin: 0 auto;
   }

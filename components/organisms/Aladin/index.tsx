@@ -96,7 +96,7 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
           aladin: aladin.current,
           A: A.current,
           hasFocus,
-          isLoading: isLoading as false,
+          isLoading,
         };
   }, [isLoading, hasFocus, aladin.current, A.current]);
 
