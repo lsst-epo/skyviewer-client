@@ -158,14 +158,21 @@ export const getTour = async ({ slug }: { slug: string }) => {
   return tour;
 };
 
-export const getTourInitial = async (tour: string) => {
+export const getTourInitial = async ({
+  tour,
+  offset,
+}: {
+  tour: string;
+  offset: number;
+}) => {
   const site = siteFromLocale(getLocale());
 
   const Query = graphql(`
-    query TourInitial($site: [String], $slug: [String]) {
+    query TourInitial($site: [String], $slug: [String], $offset: Int) {
       toursEntries(slug: $slug, site: $site) {
         ... on tours_tour_Entry {
-          tourPois(limit: 1) {
+          title
+          tourPois(limit: 1, offset: $offset) {
             ... on tourPois_tourPoi_BlockType {
               fov
               astroObject {
@@ -187,6 +194,7 @@ export const getTourInitial = async (tour: string) => {
     variables: {
       site: [site],
       slug: [tour],
+      offset,
     },
   });
 
@@ -196,7 +204,7 @@ export const getTourInitial = async (tour: string) => {
 
   if (!entry) return;
 
-  const { tourPois } = entry;
+  const { tourPois, title } = entry;
 
   const { data: initial } = TourInitial.safeParse(tourPois[0]);
 
@@ -205,6 +213,7 @@ export const getTourInitial = async (tour: string) => {
   const { path, imgFormat, fovRange } = survey;
 
   return {
+    title,
     initial,
     survey: { fovRange, hipsConfig: { id: path, options: { imgFormat } } },
   };
@@ -246,17 +255,17 @@ export const getTourPois = async (tour: string) => {
     },
   });
 
-  if (!data || !data.toursEntries) return;
+  if (!data || !data.toursEntries) return [];
 
   const [entry] = data.toursEntries;
 
-  if (!entry) return;
+  if (!entry) return [];
 
   const { tourPois } = entry;
 
-  if (!tourPois) return;
+  if (!tourPois) return [];
 
-  const { data: pois, error } = z.array(Poi).safeParse(tourPois);
+  const { data: pois = [] } = z.array(Poi).safeParse(tourPois);
 
   return pois;
 };

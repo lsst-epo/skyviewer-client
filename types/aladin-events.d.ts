@@ -67,6 +67,7 @@ type LayerChangedCallback = (
 ) => void;
 type MouseMoveCallback = (event: MousePositionEvent) => void;
 type ZoomChangedCallback = (fov: number) => void;
+type SizeChangedCallback = (width: number, height: number) => void;
 
 interface AladinCallbackMap {
   objectHovered: AladinGenericCallback;
@@ -84,7 +85,7 @@ interface AladinCallbackMap {
   mouseMove: MouseMoveCallback;
   fullScreenToggled: FullScreenToggledCallback;
   cooFrameChanged: CooFrameChangedCallback;
-  resizeChanged: AladinGenericCallback;
+  resizeChanged: SizeChangedCallback;
   projectionChanged: AladinGenericCallback;
   layerChanged: LayerChangedCallback;
 }

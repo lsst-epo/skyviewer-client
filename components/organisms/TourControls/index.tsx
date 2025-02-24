@@ -7,30 +7,25 @@ import TourBack from "./Back";
 import PauseTour from "./Pause";
 import TourNext from "./Next";
 import styles from "./styles.module.css";
+import clsx from "clsx";
 
-interface TourControlsProps {
-  poiLimit: number;
-}
-
-const TourControls: FC<TourControlsProps> = ({ poiLimit }) => {
+const TourControls: FC<{ className?: string }> = ({ className }) => {
   const { currentStep, currentTour } = useNextStep();
   const { id, active } = useStep(1);
 
   return (
-    <>
-      <nav className={styles.navigation}>
-        <ShareTour />
-        <div
-          data-active-tutorial-step={active}
-          className={styles.navigationButtons}
-          id={id}
-        >
-          <TourBack />
-          <PauseTour />
-          <TourNext {...{ poiLimit }} />
-        </div>
-      </nav>
-    </>
+    <nav className={clsx(styles.navigation, className)}>
+      <ShareTour />
+      <div
+        data-active-tutorial-step={active}
+        className={styles.navigationButtons}
+        id={id}
+      >
+        <TourBack />
+        <PauseTour />
+        <TourNext />
+      </div>
+    </nav>
   );
 };
 
