@@ -33,20 +33,7 @@ interface TourProviderProps {
   pois: PoiSteps;
 }
 
-const transitionTime = 2;
-const zoomTime = transitionTime / 2;
-
 const isNarrowScreen = () => window.matchMedia("(width < 1130px)").matches;
-
-const screenAdjustedPosition = ({
-  aladin,
-  position,
-}: {
-  aladin: AladinInstance;
-  position: [number, number];
-}) => {
-  const [width, height] = position;
-};
 
 const adjustPositionForScreen = ({ aladin }: { aladin: AladinInstance }) => {
   if (isNarrowScreen()) {
@@ -85,7 +72,6 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
   const onLoaded = useCallback<
     NonNullable<AdditionalAladinCallbacks["onLoaded"]>
   >(({ aladin }) => {
-    console.log({ poi });
     if (poi) {
       endTransition({ poi, aladin });
     }
@@ -112,15 +98,20 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
     fov,
     position,
     poi,
+    animation,
   }: {
     aladin: AladinInstance;
     fov: number;
     position: [number, number];
     poi: number;
+    animation: Pick<
+      PoiStep,
+      "panTime" | "zoomInTime" | "zoomOutTime" | "zoomOutFov"
+    >;
   }) => {
-    aladin.zoomToFoV(10, zoomTime, () =>
-      aladin.animateToRaDec(...position, transitionTime, () =>
-        aladin.zoomToFoV(fov, zoomTime, () => {
+    aladin.zoomToFoV(animation.zoomOutFov, animation.zoomOutTime, () =>
+      aladin.animateToRaDec(...position, animation.panTime, () =>
+        aladin.zoomToFoV(fov, animation.zoomInTime, () => {
           endTransition({ poi, aladin });
         })
       )
@@ -129,16 +120,34 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
 
   useEffect(() => {
     if (!isLoading && typeof poi !== "undefined") {
+      const targetPoi = pois[poi - 1];
+
       const {
         fov,
         object: { ra, dec },
-      } = pois[poi - 1];
+      } = targetPoi;
 
       const currentPosition = aladin.getRaDec();
-      const newPosition: [number, number] = [ra, dec];
+      const position: [number, number] = [ra, dec];
 
-      if (!isAtLocation(currentPosition, newPosition)) {
-        moveToPosition({ aladin, fov, position: newPosition, poi });
+      if (!isAtLocation(currentPosition, position)) {
+        const direction =
+          currentPoi && poi < currentPoi ? "backward" : "forward";
+        const { zoomOutTime, zoomInTime, panTime, zoomOutFov } =
+          direction === "forward" ? pois[poi - 2] : targetPoi;
+
+        moveToPosition({
+          aladin,
+          fov,
+          position,
+          poi,
+          animation: {
+            zoomInTime: direction === "backward" ? zoomOutTime : zoomInTime,
+            zoomOutFov,
+            zoomOutTime: direction === "backward" ? zoomInTime : zoomOutTime,
+            panTime,
+          },
+        });
       } else {
         endTransition({ poi, aladin });
       }

@@ -1,6 +1,5 @@
 "use client";
 import { FC } from "react";
-import { useNextStep } from "nextstepjs";
 import { useStep } from "@/lib/tutorial";
 import ShareTour from "./Share";
 import TourBack from "./Back";
@@ -10,7 +9,6 @@ import styles from "./styles.module.css";
 import clsx from "clsx";
 
 const TourControls: FC<{ className?: string }> = ({ className }) => {
-  const { currentStep, currentTour } = useNextStep();
   const { id, active } = useStep(1);
 
   return (

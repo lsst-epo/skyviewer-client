@@ -61,4 +61,24 @@ export const Poi = z.object({
   description: z.string(),
   fov: z.coerce.number(),
   object: z.array(AstroObject).transform((arg) => arg[0]),
+  zoomOutTime: z.coerce
+    .number()
+    .nullable()
+    .default(1)
+    .transform((arg) => arg ?? 1),
+  zoomInTime: z.coerce
+    .number()
+    .nullable()
+    .default(1)
+    .transform((arg) => arg ?? 1),
+  zoomOutFov: z.coerce
+    .number()
+    .nullable()
+    .default(10)
+    .transform((arg) => arg ?? 10),
+  panTime: z.coerce
+    .number()
+    .nullable()
+    .default(2)
+    .transform((arg) => arg ?? 2),
 });
