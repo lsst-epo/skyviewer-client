@@ -28,10 +28,12 @@ const Tour: FunctionComponent<WithSearchParams<TourProps>> = async ({
   }
 
   const { survey, initial, title } = data;
+  const { fovRange, path, imgFormat } = survey;
 
   return (
     <AladinTemplate
-      {...survey}
+      fovRange={fovRange}
+      hipsConfig={{ id: path, options: { imgFormat } }}
       disableInteraction={true}
       options={{ ...initial, backgroundColor: "rgb(0,0,0)" }}
     >
