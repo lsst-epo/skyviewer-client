@@ -3,7 +3,7 @@
   background-size: cover;
   background-image: var(--image-backdrop-tour);
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   position: fixed;
   z-index: -1;
   opacity: 0.37;

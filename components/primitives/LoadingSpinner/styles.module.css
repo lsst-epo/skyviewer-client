@@ -6,6 +6,6 @@
   align-items: center;
 
   &[data-fill-window="true"] {
-    height: 100vh;
+    height: 100dvh;
   }
 }
