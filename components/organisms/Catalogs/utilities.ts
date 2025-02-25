@@ -31,7 +31,7 @@ export async function addCat(A: Aladin, aladin: AladinInstance, cat: Catalog) {
     name: title,
     shape,
     sourceSize: 30,
-    onClick: "showPopup",
+    onClick: undefined,
   });
 
   aladin.addCatalog(catalog);
