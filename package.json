@@ -57,8 +57,8 @@
   "dependencies": {
     "@babel/runtime": "7.11.2",
     "@headlessui/react": "2.0.4",
-    "@rubin-epo/epo-react-lib": "^2.6.8",
-    "@rubin-epo/epo-widget-lib": "^1.1.0",
+    "@rubin-epo/epo-react-lib": "^2.6.9",
+    "@rubin-epo/epo-widget-lib": "^1.1.1",
     "@urql/next": "^1.1.1",
     "aladin-lite": "^3.6.1-beta",
     "clsx": "^2.1.1",

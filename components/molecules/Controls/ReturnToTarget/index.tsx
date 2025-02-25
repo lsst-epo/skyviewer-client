@@ -1,5 +1,5 @@
 "use client";
-import classNames from "clsx";
+import classNames from "clsx/lite";
 import { FunctionComponent } from "react";
 import IconButton from "@/components/primitives/IconButton";
 import { useAladin } from "@/contexts/Aladin";

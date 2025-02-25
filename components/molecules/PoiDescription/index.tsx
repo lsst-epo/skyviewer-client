@@ -2,7 +2,7 @@
 import { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
 import styles from "./styles.module.css";
-import clsx from "clsx";
+import clsx from "clsx/lite";
 
 interface PoiDescriptionProps {
   isOpen: boolean;

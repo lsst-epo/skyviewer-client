@@ -1,5 +1,5 @@
 import { FunctionComponent, PropsWithChildren, ReactNode } from "react";
-import clsx from "clsx";
+import clsx from "clsx/lite";
 import styles from "./styles.module.css";
 
 interface FullwidthWithNavProps {
