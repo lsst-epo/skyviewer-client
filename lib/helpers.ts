@@ -62,6 +62,6 @@ const surveyImageSchema = z.object({
     .enum(["jpg", "png", "fits", "webp"])
     .catch(defaultSurveyView.imgFormat)
     .default(defaultSurveyView.imgFormat),
-  title: z.string().nullable(),
+  title: z.string().nullable().optional(),
   path: z.string(),
 });
