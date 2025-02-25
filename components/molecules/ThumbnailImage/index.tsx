@@ -12,7 +12,7 @@ interface ThumbnailImageProps {
 const ThumbnailImage: FC<ThumbnailImageProps> = ({ image, className }) => {
   return (
     <Frame className={clsx(styles.frame, className)} aspectRatio="1:1">
-      {image && <Image {...image} className={styles.image} />}
+      {image && <Image {...image} sizes="150px" className={styles.image} />}
     </Frame>
   );
 };

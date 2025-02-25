@@ -62,9 +62,10 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
           const newInstance: AladinInstance = global.aladin(node, {
             ...defaultOptions,
             ...options,
+            survey: hipsConfig.id,
           });
 
-          newInstance.setImageSurvey(
+          newInstance.setBaseImageLayer(
             global.imageHiPS(hipsConfig.id, {
               ...defaultHiPSOptions,
               ...hipsConfig.options,
