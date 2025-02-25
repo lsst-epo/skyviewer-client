@@ -1,5 +1,4 @@
 "use client";
-import classNames from "clsx";
 import { FunctionComponent } from "react";
 import { saveAs } from "file-saver";
 import IconButton from "@/components/primitives/IconButton";
@@ -28,7 +27,7 @@ const Download: FunctionComponent<DownloadProps> = ({ className }) => {
   return (
     <IconButton
       text={t("controls.save_image")}
-      className={classNames(className)}
+      className={className}
       icon={<IconComposer icon="FloppyDisk" />}
       onClick={handleClick}
       disabled={isLoading}

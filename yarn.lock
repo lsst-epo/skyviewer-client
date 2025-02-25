@@ -1994,10 +1994,10 @@
     react-slider "^2.0.6"
     styled-components "^6.1.1"
 
-"@rubin-epo/epo-react-lib@^2.6.8":
-  version "2.6.8"
-  resolved "https://registry.yarnpkg.com/@rubin-epo/epo-react-lib/-/epo-react-lib-2.6.8.tgz#05310ae335e3aa9214ec4c4b1c824ebb53ad2f8c"
-  integrity sha512-b/skOeLF27WjuIgnYVVEanSMgUVGbCnB9hfpq4rmJn4Zq50kD+nJn5tj2YD5IlCwUGXqhlrWPEnq0j0EF/ad4w==
+"@rubin-epo/epo-react-lib@^2.6.9":
+  version "2.6.9"
+  resolved "https://registry.yarnpkg.com/@rubin-epo/epo-react-lib/-/epo-react-lib-2.6.9.tgz#45296fdf300ee5652df2907ee586a9a64b05b563"
+  integrity sha512-/1/bqXUiAbZqZPppDvHwT/oS8ghwna5JBNo5Fe9BqyxWXYYTeu0ycoWgI6/sFFyhPWutsT3dNoheak83tsm7yA==
   dependencies:
     "@castiron/style-mixins" "^1.0.6"
     "@headlessui/react" "2.0.4"
@@ -2010,10 +2010,10 @@
     styled-components "^6.1.1"
     utopia-core "^1.6.0"
 
-"@rubin-epo/epo-widget-lib@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@rubin-epo/epo-widget-lib/-/epo-widget-lib-1.1.0.tgz#eb041aa11b746b7604093a2e2b049d62b458fd57"
-  integrity sha512-de3yLhyhESIkJ3WsjNNwTeQH/w+EBb1MbEFjX6oP29ihkWrZ6Q9tjQeCQtFj2Uhtf788jbX4OvjE6OvAXj2LhQ==
+"@rubin-epo/epo-widget-lib@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@rubin-epo/epo-widget-lib/-/epo-widget-lib-1.1.1.tgz#d5b5e55094ec5cf865ad725470482efbb8676590"
+  integrity sha512-CVkFh2THw7M/o3fJEiFjksN5qqmf0MXMh80tYpEc6bluX0YMimHlKbgl8t8VDq1rKPkv5sBMksB4sHHeuXUdSg==
   dependencies:
     "@rubin-epo/epo-react-lib" "2.1.0"
     context-filter-polyfill "^0.3.6"

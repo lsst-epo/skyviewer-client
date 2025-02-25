@@ -1,7 +1,6 @@
 import { FunctionComponent } from "react";
 import { Link } from "next-view-transitions";
-import classnames from "clsx";
-import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
+import classnames from "clsx/lite";
 import styles from "./styles.module.css";
 
 interface NavListItem {

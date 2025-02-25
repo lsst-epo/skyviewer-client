@@ -6,7 +6,7 @@ import { CardComponentProps } from "nextstepjs";
 import Stack from "@rubin-epo/epo-react-lib/Stack";
 import styles from "./styles.module.css";
 import { useTranslation } from "react-i18next";
-import clsx from "clsx";
+import clsx from "clsx/lite";
 
 const TutorialCard: FC<CardComponentProps> = ({
   step,

@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import clsx from "clsx/lite";
 import { FC, PropsWithChildren } from "react";
 import styles from "./styles.module.css";
 

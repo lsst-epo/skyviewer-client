@@ -1,5 +1,4 @@
 "use client";
-import classNames from "clsx";
 import { FunctionComponent } from "react";
 import IconButton from "@/components/primitives/IconButton";
 import { useAladin } from "@/contexts/Aladin";
@@ -39,7 +38,7 @@ const ShareImage: FunctionComponent<ShareImageProps> = ({ className }) => {
   return (
     <IconButton
       text={t("controls.save_image")}
-      className={classNames(className)}
+      className={className}
       icon={<IconComposer icon="ShareToggle" />}
       onClick={handleClick}
       disabled={isLoading}

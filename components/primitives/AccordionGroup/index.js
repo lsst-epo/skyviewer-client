@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import classnames from "clsx";
+import classnames from "clsx/lite";
 
 export default function AccordionGroup({ className, children }) {
   return (

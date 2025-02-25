@@ -1,5 +1,5 @@
 import { type ButtonStyleAs } from "@rubin-epo/epo-react-lib/Button";
-import clsx from "clsx";
+import clsx from "clsx/lite";
 import { Link } from "next-view-transitions";
 import { LinkProps } from "next/link";
 import { FC, PropsWithChildren, ReactNode } from "react";
