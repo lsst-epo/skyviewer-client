@@ -54,7 +54,7 @@ const TourCard: FC<TourCardProps> = async ({
             ? {
                 width: thumbnail.width,
                 height: thumbnail.height,
-                src: thumbnail.url.directUrlOriginal,
+                src: thumbnail.url.directUrlPreview,
                 alt: assetAlt(thumbnail.additional, locale),
               }
             : undefined

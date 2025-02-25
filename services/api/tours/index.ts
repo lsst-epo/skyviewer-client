@@ -29,6 +29,7 @@ export const getAllTours = async () => {
             }
             url {
               directUrlOriginal
+              directUrlPreview
             }
           }
         }
@@ -73,6 +74,7 @@ export const getTourMetadata = async ({ slug }: { slug: string }) => {
             }
             url {
               directUrlOriginal
+              directUrlPreview
             }
           }
         }
@@ -117,6 +119,7 @@ export const getTour = async ({ slug }: { slug: string }) => {
             }
             url {
               directUrlOriginal
+              directUrlPreview
             }
           }
           introHeading
