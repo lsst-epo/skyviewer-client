@@ -279,6 +279,9 @@ interface AladinInstance {
   readonly setImageSurvey: (
     urlOrHiPSOrFITS: string | ImageHiPS | AladinImage
   ) => void;
+  readonly setBaseImageLayer: (
+    urlOrHiPSOrFITS: string | ImageHiPS | AladinImage
+  ) => void;
   readonly getBaseImageLayer: () => AladinImageLayer;
   readonly getColorMap: () => AladinColorMaps;
   readonly displayFITS: (fitsUrl: string) => void;
