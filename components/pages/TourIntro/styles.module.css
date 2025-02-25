@@ -2,7 +2,7 @@
   background-color: var(--color-rubin-teal-600);
 
   @media (--desktop-max) {
-    max-height: 100vh;
+    max-height: 100dvh;
   }
 }
 
