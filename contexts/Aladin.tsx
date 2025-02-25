@@ -26,18 +26,21 @@ export const AladinContext = createContext<
 
 export const useAladin: (
   props?: UseAladinProps
-) => AladinContext | AladinContextDefault = (props = {}) => {
-  const { callbacks } = props;
+) => AladinContext | AladinContextDefault = (props) => {
   const context = useContext(AladinContext);
 
-  if (callbacks && Object.keys(callbacks).length > 0 && context?.aladin) {
-    bindAladinEvents(context.aladin, callbacks);
+  if (
+    props?.callbacks &&
+    Object.keys(props.callbacks).length > 0 &&
+    context?.aladin
+  ) {
+    bindAladinEvents(context.aladin, props.callbacks);
   }
 
   useEffect(() => {
     if (context.isLoading === false) {
-      callbacks?.onLoaded &&
-        callbacks.onLoaded({ aladin: context.aladin, A: context.A });
+      props?.callbacks?.onLoaded &&
+        props?.callbacks.onLoaded({ aladin: context.aladin, A: context.A });
     }
   }, [context.isLoading, context.hasFocus]);
 
