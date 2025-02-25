@@ -60,7 +60,7 @@
     "@rubin-epo/epo-react-lib": "^2.6.8",
     "@rubin-epo/epo-widget-lib": "^1.1.0",
     "@urql/next": "^1.1.1",
-    "aladin-lite": "^3.4.5",
+    "aladin-lite": "^3.6.1-beta",
     "clsx": "^2.1.1",
     "copy-to-clipboard": "^3.3.1",
     "file-saver": "^2.0.5",
