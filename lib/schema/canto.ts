@@ -36,7 +36,7 @@ export const MinimalAssetSchema = z.object({
   additional: AdditionalSchema.pick({ AltTextEN: true, AltTextES: true }),
   width: z.coerce.number(),
   height: z.coerce.number(),
-  url: AssetUrlSchema.pick({ directUrlOriginal: true }),
+  url: AssetUrlSchema.pick({ directUrlOriginal: true, directUrlPreview: true }),
 });
 
 export type MinimalAsset = z.infer<typeof MinimalAssetSchema>;
