@@ -6,7 +6,7 @@ import { siteFromLocale } from "@/lib/i18n/site";
 import queryAPI from "@/services/api/client";
 import { Poi, Tour, TourCard, TourInitial, TourMetadata } from "./schema";
 import tagStore from "../tags";
-import getSurveyImage from "../survey";
+import { buildSurveyImage } from "@/lib/helpers";
 
 export const getAllTours = async () => {
   const site = siteFromLocale(getLocale());
@@ -175,6 +175,14 @@ export const getTourInitial = async ({
       toursEntries(slug: $slug, site: $site) {
         ... on tours_tour_Entry {
           title
+          survey {
+            ... on surveys_surveys_Entry {
+              path
+              fovMax
+              fovMin
+              imgFormat
+            }
+          }
           tourPois(limit: 1, offset: $offset) {
             ... on tourPois_tourPoi_BlockType {
               fov
@@ -191,7 +199,6 @@ export const getTourInitial = async ({
     }
   `);
 
-  const survey = await getSurveyImage();
   const { data } = await queryAPI({
     query: Query,
     variables: {
@@ -201,24 +208,22 @@ export const getTourInitial = async ({
     },
   });
 
-  if (!data || !data.toursEntries || !survey) return;
+  if (!data || !data.toursEntries) return;
 
   const [entry] = data.toursEntries;
 
   if (!entry) return;
 
-  const { tourPois, title } = entry;
+  const { tourPois, title, survey } = entry;
 
   const { data: initial } = TourInitial.safeParse(tourPois[0]);
 
   if (!initial) return;
 
-  const { path, imgFormat, fovRange } = survey;
-
   return {
     title,
     initial,
-    survey: { fovRange, hipsConfig: { id: path, options: { imgFormat } } },
+    survey: buildSurveyImage(survey[0]),
   };
 };
 
