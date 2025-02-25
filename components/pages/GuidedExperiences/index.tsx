@@ -49,6 +49,7 @@ const GuidedExperiences: FC<GuidedExperiencesProps> = async ({
                   height,
                   alt: assetAlt(previewImage.additional),
                   src: previewImage.url.directUrlOriginal,
+                  priority: true,
                 }}
               />
             );
