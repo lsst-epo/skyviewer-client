@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  height: calc(100vh - var(--size-height-menu, var(--size-spacing-l)));
+  height: calc(100dvh - var(--size-height-menu, var(--size-spacing-l)));
 }
 
 .aladinViewer {
