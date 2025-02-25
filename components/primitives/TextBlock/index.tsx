@@ -1,5 +1,5 @@
 import { FC } from "react";
-import clsx from "clsx";
+import clsx from "clsx/lite";
 import styles from "./styles.module.css";
 
 const TextBlock: FC<{ text: string; className?: string }> = ({

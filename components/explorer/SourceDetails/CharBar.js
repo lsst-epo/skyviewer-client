@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import classnames from "clsx";
 
 export default function CharBar({ range, value, labels }) {
   function getCharacteristicPos(val, range) {

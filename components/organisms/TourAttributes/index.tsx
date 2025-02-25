@@ -1,5 +1,5 @@
 import { FC, Fragment } from "react";
-import clsx from "clsx";
+import clsx from "clsx/lite";
 import VerticalDivider from "@/components/primitives/VerticalDivider";
 import TourAttribute, {
   TourAttributeProps,

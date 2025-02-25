@@ -1,6 +1,6 @@
 import { FC, Suspense } from "react";
 import Image, { ImageProps } from "next/image";
-import clsx from "clsx";
+import clsx from "clsx/lite";
 import Frame from "@rubin-epo/epo-react-lib/Frame";
 import Stack from "@rubin-epo/epo-react-lib/Stack";
 import { Link } from "next-view-transitions";

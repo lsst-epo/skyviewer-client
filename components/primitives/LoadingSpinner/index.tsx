@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import Image from "next/image";
-import classNames from "clsx";
+import classNames from "clsx/lite";
 import LoadingSpinnerGif from "./loading-spinner.gif";
 import styles from "./styles.module.css";
 

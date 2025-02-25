@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import clsx from "clsx";
+import clsx from "clsx/lite";
 import { Link } from "next-view-transitions";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 import { MinimalAsset } from "@/lib/schema/canto";
