@@ -37,7 +37,7 @@ const TourLanding: FC<TourLandingProps> = async ({
   backgroundImage: {
     width,
     height,
-    url: { directUrlOriginal: src },
+    url: { directUrlPreview: src },
     additional,
   },
 }) => {
@@ -49,6 +49,7 @@ const TourLanding: FC<TourLandingProps> = async ({
     width,
     height,
     src,
+    quality: 90,
   });
   const backgroundImage = getBackgroundImage(srcSet);
 

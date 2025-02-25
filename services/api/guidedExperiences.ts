@@ -46,6 +46,7 @@ export const getGuidedExperiences = async () => {
                 }
                 url {
                   directUrlOriginal
+                  directUrlPreview
                 }
               }
             }

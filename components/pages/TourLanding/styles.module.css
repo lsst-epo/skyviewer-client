@@ -7,7 +7,7 @@
   position: fixed;
   z-index: -1;
   opacity: 0.37;
-  filter: blur(3px);
+  filter: blur(2px);
 }
 
 .tourContainer {
