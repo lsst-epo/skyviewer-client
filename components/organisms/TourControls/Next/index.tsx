@@ -9,14 +9,18 @@ import styles from "./styles.module.css";
 const TourNext: FC = () => {
   const { id, active } = useStep(3);
   const { t } = useTranslation();
-  const { nextPoi } = useTour();
+  const { nextPoi, isPending } = useTour();
 
   const handleNext = () => {
     nextPoi();
   };
 
   return (
-    <TourControl isActiveTutorialStep={active} onClick={() => handleNext()}>
+    <TourControl
+      isActiveTutorialStep={active}
+      onClick={() => handleNext()}
+      disabled={isPending}
+    >
       {t("navigation.cta.next")}
       <div className={styles.pseudo} id={id} />
     </TourControl>
