@@ -136,7 +136,7 @@ const TourIntro: FC<TourIntroProps> = ({
           image={{
             width,
             height,
-            src: url.directUrlOriginal,
+            src: url.directUrlPreview,
             alt: assetAlt(additional, locale),
           }}
         />
