@@ -5,13 +5,14 @@ import {
   PropsWithChildren,
   useCallback,
   useContext,
+  useEffect,
   useState,
 } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getTourPois } from "@/services/api/tours";
 import { useAladin } from "./Aladin";
 import { isAtLocation } from "@/lib/aladin/helpers";
-import { panAndZoom } from "@/lib/aladin/animation";
+import { pan, panAndZoom } from "@/lib/aladin/animation";
 
 type PoiSteps = NonNullable<Awaited<ReturnType<typeof getTourPois>>>;
 type PoiStep = PoiSteps[number];
@@ -37,20 +38,26 @@ const isNarrowScreen = () => window.matchMedia("(width < 1130px)").matches;
 
 const adjustPositionForScreen = ({ aladin }: { aladin: AladinInstance }) => {
   if (isNarrowScreen()) {
-    const descriptionTransitionTime =
+    const duration =
       parseFloat(
         window
           .getComputedStyle(document.body)
           .getPropertyValue("--time-transition-slow")
       ) || 0.4;
 
+    const start = aladin.getRaDec();
     const [width, height] = aladin.getSize();
     const centerX = width / 2;
     const centerY = height * 0.75;
 
-    const newPosition = aladin.pix2world(centerX, centerY);
+    const end = aladin.pix2world(centerX, centerY);
 
-    aladin.animateToRaDec(...newPosition, descriptionTransitionTime);
+    pan({
+      start: { ra: start[0], dec: start[1] },
+      end: { ra: end[0], dec: end[1] },
+      duration,
+      aladin,
+    });
   }
 };
 
@@ -88,6 +95,14 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
 
   const [currentPoi, setCurrentPoi] = useState<number | null>(null);
   const [isPending, setPending] = useState(false);
+
+  useEffect(() => {
+    if (typeof poi !== "undefined" && currentPoi === null && !isLoading) {
+      setCurrentPoi(poi);
+      setPending(false);
+      adjustPositionForScreen({ aladin });
+    }
+  }, [poi]);
 
   const onLoaded = useCallback<
     NonNullable<AdditionalAladinCallbacks["onLoaded"]>
@@ -161,9 +176,10 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
   };
 
   const nextPoi = () => {
-    if (poi) {
-      if (poi < limit) {
-        startTransition({ poi: poi + 1 });
+    console.log({ currentPoi });
+    if (currentPoi) {
+      if (currentPoi < limit) {
+        startTransition({ poi: currentPoi + 1 });
       } else {
         push("/");
       }
@@ -173,8 +189,8 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
   };
 
   const previousPoi = () => {
-    if (poi && poi > 1) {
-      startTransition({ poi: poi - 1 });
+    if (currentPoi && currentPoi > 1) {
+      startTransition({ poi: currentPoi - 1 });
     } else {
       push("intro");
     }
