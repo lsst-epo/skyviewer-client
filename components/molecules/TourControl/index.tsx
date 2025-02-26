@@ -6,6 +6,7 @@ export interface TourControlProps {
   id?: string;
   isActiveTutorialStep?: boolean;
   className?: string;
+  disabled?: boolean;
 }
 
 const TourControl: FC<PropsWithChildren<TourControlProps>> = ({
