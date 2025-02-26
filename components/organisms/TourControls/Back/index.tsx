@@ -6,14 +6,14 @@ import { useTour } from "@/contexts/Tour";
 
 const TourBack: FC = () => {
   const { t } = useTranslation();
-  const { previousPoi } = useTour();
+  const { previousPoi, isPending } = useTour();
 
   const handleBack = () => {
     previousPoi();
   };
 
   return (
-    <TourControl onClick={() => handleBack()}>
+    <TourControl onClick={() => handleBack()} disabled={isPending}>
       {t("navigation.cta.back")}
     </TourControl>
   );

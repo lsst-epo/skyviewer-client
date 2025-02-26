@@ -5,7 +5,6 @@ import {
   PropsWithChildren,
   useCallback,
   useContext,
-  useEffect,
   useState,
 } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -51,8 +50,28 @@ const adjustPositionForScreen = ({ aladin }: { aladin: AladinInstance }) => {
     const newPosition = aladin.pix2world(centerX, centerY);
 
     aladin.animateToRaDec(...newPosition, descriptionTransitionTime);
-  } else {
   }
+};
+
+const nextAnimation = ({
+  currentPoi,
+  nextPoi,
+  pois,
+}: {
+  currentPoi: number;
+  nextPoi: number;
+  pois: PoiSteps;
+}) => {
+  const direction = nextPoi < currentPoi ? "backward" : "forward";
+  const animationIndex = direction === "forward" ? nextPoi - 2 : nextPoi - 1;
+  const { zoomOutTime, zoomInTime, panTime, zoomOutFov } = pois[animationIndex];
+
+  return {
+    zoomInTime: direction === "backward" ? zoomOutTime : zoomInTime,
+    zoomOutFov,
+    zoomOutTime: direction === "backward" ? zoomInTime : zoomOutTime,
+    panTime,
+  };
 };
 
 export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
@@ -82,15 +101,53 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
   });
 
   const endTransition = ({
-    poi,
+    poi: nextPoi,
     aladin,
   }: {
     poi: number;
     aladin: AladinInstance;
   }) => {
-    setCurrentPoi(poi);
+    if (searchParams.get("poi") !== nextPoi.toString()) {
+      const params = new URLSearchParams(searchParams);
+      params.set("poi", nextPoi.toString());
+      push(`?${params.toString()}`);
+    }
+
+    setCurrentPoi(nextPoi);
     setPending(false);
     adjustPositionForScreen({ aladin });
+  };
+
+  const startTransition = ({ poi }: { poi: number }) => {
+    if (!isLoading) {
+      setPending(true);
+
+      if (currentPoi) {
+        const targetPoi = pois[poi - 1];
+
+        const {
+          fov,
+          object: { ra, dec },
+        } = targetPoi;
+
+        const currentPosition = aladin.getRaDec();
+        const position: [number, number] = [ra, dec];
+
+        if (currentPoi && !isAtLocation(currentPosition, position)) {
+          moveToPosition({
+            aladin,
+            fov,
+            position,
+            poi,
+            animation: nextAnimation({ currentPoi, nextPoi: poi, pois }),
+          });
+        } else {
+          endTransition({ poi, aladin });
+        }
+      } else {
+        endTransition({ poi, aladin });
+      }
+    }
   };
 
   const moveToPosition = ({
@@ -118,68 +175,21 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
     );
   };
 
-  useEffect(() => {
-    if (!isLoading && typeof poi !== "undefined") {
-      const targetPoi = pois[poi - 1];
-
-      const {
-        fov,
-        object: { ra, dec },
-      } = targetPoi;
-
-      const currentPosition = aladin.getRaDec();
-      const position: [number, number] = [ra, dec];
-
-      if (!isAtLocation(currentPosition, position)) {
-        const direction =
-          currentPoi && poi < currentPoi ? "backward" : "forward";
-        const { zoomOutTime, zoomInTime, panTime, zoomOutFov } =
-          direction === "forward" ? pois[poi - 2] : targetPoi;
-
-        moveToPosition({
-          aladin,
-          fov,
-          position,
-          poi,
-          animation: {
-            zoomInTime: direction === "backward" ? zoomOutTime : zoomInTime,
-            zoomOutFov,
-            zoomOutTime: direction === "backward" ? zoomInTime : zoomOutTime,
-            panTime,
-          },
-        });
-      } else {
-        endTransition({ poi, aladin });
-      }
-    }
-  }, [poi]);
-
   const nextPoi = () => {
-    setPending(true);
-    const params = new URLSearchParams(searchParams);
-
-    if (!poi) {
-      params.set("poi", "1");
-      push(`?${params.toString()}`);
-    } else {
+    if (poi) {
       if (poi < limit) {
-        const position = poi + 1;
-        params.set("poi", position.toString());
-        push(`?${params.toString()}`);
+        startTransition({ poi: poi + 1 });
       } else {
         push("/");
       }
+    } else {
+      startTransition({ poi: 1 });
     }
   };
 
   const previousPoi = () => {
-    setPending(true);
-    const params = new URLSearchParams(searchParams);
-
     if (poi && poi > 1) {
-      const position = poi - 1;
-      params.set("poi", position.toString());
-      push(`?${params.toString()}`);
+      startTransition({ poi: poi - 1 });
     } else {
       push("intro");
     }
