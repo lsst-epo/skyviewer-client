@@ -11,6 +11,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { getTourPois } from "@/services/api/tours";
 import { useAladin } from "./Aladin";
 import { isAtLocation } from "@/lib/aladin/helpers";
+import { panAndZoom } from "@/lib/aladin/animation";
 
 type PoiSteps = NonNullable<Awaited<ReturnType<typeof getTourPois>>>;
 type PoiStep = PoiSteps[number];
@@ -131,15 +132,24 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
         } = targetPoi;
 
         const currentPosition = aladin.getRaDec();
-        const position: [number, number] = [ra, dec];
 
-        if (currentPoi && !isAtLocation(currentPosition, position)) {
-          moveToPosition({
+        if (currentPoi && !isAtLocation(currentPosition, [ra, dec])) {
+          const { zoomOutTime, zoomOutFov, zoomInTime, panTime } =
+            nextAnimation({
+              currentPoi,
+              nextPoi: poi,
+              pois,
+            });
+
+          panAndZoom({
+            fov: { start: aladin.getFov()[0], middle: zoomOutFov, end: fov },
+            position: {
+              start: { ra: currentPosition[0], dec: currentPosition[1] },
+              end: { ra, dec },
+            },
+            duration: [zoomOutTime, panTime, zoomInTime],
             aladin,
-            fov,
-            position,
-            poi,
-            animation: nextAnimation({ currentPoi, nextPoi: poi, pois }),
+            onComplete: () => endTransition({ poi, aladin }),
           });
         } else {
           endTransition({ poi, aladin });
@@ -148,31 +158,6 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
         endTransition({ poi, aladin });
       }
     }
-  };
-
-  const moveToPosition = ({
-    aladin,
-    fov,
-    position,
-    poi,
-    animation,
-  }: {
-    aladin: AladinInstance;
-    fov: number;
-    position: [number, number];
-    poi: number;
-    animation: Pick<
-      PoiStep,
-      "panTime" | "zoomInTime" | "zoomOutTime" | "zoomOutFov"
-    >;
-  }) => {
-    aladin.zoomToFoV(animation.zoomOutFov, animation.zoomOutTime, () =>
-      aladin.animateToRaDec(...position, animation.panTime, () =>
-        aladin.zoomToFoV(fov, animation.zoomInTime, () => {
-          endTransition({ poi, aladin });
-        })
-      )
-    );
   };
 
   const nextPoi = () => {
