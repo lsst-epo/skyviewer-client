@@ -37,7 +37,11 @@ const TourCard: FC<TourCardProps> = async ({
   const slug = hasLink ? uri.split("/").pop() : undefined;
 
   const titleWithLink = uri ? (
-    <Link className={styles.link} href={addLocaleUriSegment(locale, uri)}>
+    <Link
+      className={styles.link}
+      href={addLocaleUriSegment(locale, uri)}
+      prefetch
+    >
       {title}
     </Link>
   ) : (

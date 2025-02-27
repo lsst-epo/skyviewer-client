@@ -1,3 +1,4 @@
+import { assetAlt } from "@/lib/canto/metadata";
 import { getTourMetadata } from "@/services/api/tours";
 import { getToursPaths } from "@/services/api/tours/paths";
 import { Metadata } from "next";
@@ -23,8 +24,18 @@ export async function generateMetadata({
     notFound();
   }
 
+  const { title, thumbnail } = data;
+
   return {
-    title: data.title,
+    title,
+    openGraph: {
+      images: {
+        url: thumbnail.url.directUrlPreview,
+        width: thumbnail.width,
+        height: thumbnail.height,
+        alt: assetAlt(thumbnail.additional),
+      },
+    },
   };
 }
 

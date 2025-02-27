@@ -27,7 +27,7 @@ const TourIntro: FC<TourIntroProps> = ({
   factsContentBlocks,
   thumbnail: { width, height, url, additional },
 }) => {
-  const { push } = useTransitionRouter();
+  const { push, prefetch } = useTransitionRouter();
   const searchParams = useSearchParams();
   const section = searchParams.get("section") || "intro";
   const {
@@ -59,19 +59,25 @@ const TourIntro: FC<TourIntroProps> = ({
     }
   };
 
-  const startTour = () => {
+  const getStartTourParams = () => {
     const startTourParams = new URLSearchParams();
 
     if (hasCompletedTutorial()) {
       startTourParams.set("poi", "1");
     }
 
-    push(`tour?${startTourParams.toString()}`);
+    return startTourParams;
+  };
+
+  const startTour = () => {
+    push(`tour?${getStartTourParams().toString()}`);
   };
 
   const handleForwardClick = () => {
     if (section !== "fact") {
       gotoFact();
+
+      prefetch(`tour?${getStartTourParams().toString()}`);
     } else {
       startTour();
     }

@@ -65,6 +65,18 @@ export const getTourMetadata = async ({ slug }: { slug: string }) => {
           complexity
           duration
           slug
+          thumbnail {
+            width
+            height
+            additional {
+              AltTextEN
+              AltTextES
+            }
+            url {
+              directUrlOriginal
+              directUrlPreview
+            }
+          }
           backgroundImage {
             width
             height

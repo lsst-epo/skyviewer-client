@@ -21,6 +21,7 @@ export const TourMetadata = z.object({
   slug: z.string(),
   title: z.string(),
   backgroundImage: thumbnail,
+  thumbnail,
   complexity,
   duration,
 });
