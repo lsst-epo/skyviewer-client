@@ -13,7 +13,7 @@ const LogoCover: FunctionComponent<{ locale: string }> = async ({ locale }) => {
   return (
     <Cover>
       <div className={styles.headerLogoContainer}>
-        <Image className={styles.logoImage} src={logo} alt="" />
+        <Image className={styles.logoImage} src={logo} alt="" priority />
         <PageTitle>
           <ViewTransition name="title">{t("title")}</ViewTransition>
         </PageTitle>
