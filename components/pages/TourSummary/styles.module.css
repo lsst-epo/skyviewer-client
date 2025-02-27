@@ -1,0 +1,13 @@
+.container {
+  background-color: var(--color-rubin-teal-600);
+}
+
+.share {
+  --share-size: var(--size-spacing-l-xl);
+
+  display: flex;
+  gap: var(--size-spacing-l);
+  justify-content: flex-start;
+  align-items: flex-start;
+  list-style: none;
+}

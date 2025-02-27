@@ -86,7 +86,7 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
   pois,
   children,
 }) => {
-  const { push } = useRouter();
+  const { push, prefetch } = useRouter();
   const searchParams = useSearchParams();
 
   const poiParam = searchParams.get("poi");
@@ -176,12 +176,15 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
   };
 
   const nextPoi = () => {
-    console.log({ currentPoi });
     if (currentPoi) {
       if (currentPoi < limit) {
         startTransition({ poi: currentPoi + 1 });
+
+        if (currentPoi + 1 === limit) {
+          prefetch("summary");
+        }
       } else {
-        push("/");
+        push("summary");
       }
     } else {
       startTransition({ poi: 1 });
