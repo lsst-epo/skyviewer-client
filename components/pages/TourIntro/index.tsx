@@ -59,25 +59,25 @@ const TourIntro: FC<TourIntroProps> = ({
     }
   };
 
-  const getStartTourParams = () => {
+  const getTourLink = () => {
     const startTourParams = new URLSearchParams();
 
     if (hasCompletedTutorial()) {
       startTourParams.set("poi", "1");
     }
 
-    return startTourParams;
+    return `tour?${startTourParams.toString()}`;
   };
 
   const startTour = () => {
-    push(`tour?${getStartTourParams().toString()}`);
+    push(getTourLink());
   };
 
   const handleForwardClick = () => {
     if (section !== "fact") {
       gotoFact();
 
-      prefetch(`tour?${getStartTourParams().toString()}`);
+      prefetch(getTourLink());
     } else {
       startTour();
     }
@@ -129,6 +129,9 @@ const TourIntro: FC<TourIntroProps> = ({
               icon={<IoArrowForwardSharp />}
               iconAlignment="right"
               onClick={startTour}
+              onMouseOver={() => {
+                prefetch(getTourLink());
+              }}
             >
               {t("navigation.cta.lets_start")}
             </Button>
