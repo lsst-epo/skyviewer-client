@@ -52,6 +52,7 @@ const GuidedExperienceCard: FC<GuidedExperienceCardProps> = ({
         <Link
           className={styles.link}
           href={addLocaleUriSegment(getLocale(), slug)}
+          prefetch
         >
           <ViewTransition name={`${slug}-title`}>{title}</ViewTransition>
         </Link>

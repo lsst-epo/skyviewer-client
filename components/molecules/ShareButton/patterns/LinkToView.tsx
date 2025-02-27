@@ -1,6 +1,5 @@
 "use client";
-import { FC, forwardRef } from "react";
-import copy from "copy-to-clipboard";
+import { forwardRef } from "react";
 import { useAladin } from "@/contexts/Aladin";
 import IconComposer from "@/components/svg/IconComposer";
 import ShareButton from "..";
@@ -13,17 +12,22 @@ const LinkToView = forwardRef<HTMLButtonElement, LinkToViewProps>(
   ({ showLabel }, ref) => {
     const { aladin, isLoading } = useAladin();
 
-    const handleClick = () => {
+    const handleClick = async () => {
       const { origin, pathname } = window.location;
+      let path = `${origin}${pathname}`;
       if (aladin) {
         const fov = aladin.getFov()[0].toFixed(2);
         const target = aladin.getRaDec().join(" ");
 
         const params = new URLSearchParams({ fov, target });
 
-        copy(`${origin}${pathname}?${params.toString()}`);
-      } else {
-        copy(`${origin}${pathname}`);
+        path += `?${params.toString()}`;
+      }
+
+      try {
+        await navigator.clipboard.writeText(path);
+      } catch (error) {
+        console.error(error.message);
       }
     };
 
