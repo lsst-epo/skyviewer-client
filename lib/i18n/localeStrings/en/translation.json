@@ -57,6 +57,11 @@
   "tour": {
     "description": {
       "location": "($t(tours.tutorial.current_step, {\"step\": {{step}}, \"total\": {{total}} }))"
+    },
+    "summary": {
+      "title": "Congratulations",
+      "cta": "You have completed the tour! You can share it with your friends",
+      "back": "Back to astronomical tours"
     }
   },
   "controls": {
