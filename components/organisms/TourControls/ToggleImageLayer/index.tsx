@@ -16,7 +16,7 @@ const ToggleImageLayer: FC = () => {
     callbacks: {
       onLoaded: ({ A, aladin }) => {
         if (isDemo) {
-          hips.current = A.imageHiPS("P/DSS2/color", { opacity: 1 });
+          hips.current = A.imageHiPS("P/DECaPS/DR2/color", { opacity: 1 });
           aladin.setOverlayImageLayer(hips.current);
         }
       },
