@@ -94,3 +94,23 @@ export const panAndZoom = ({
       delay: duration[2] * -0.5,
     });
 };
+
+export const fadeLayer = ({
+  hips,
+  from,
+  to,
+}: {
+  hips: ImageHiPS;
+  from: number;
+  to: number;
+}) => {
+  let obj = { opacity: from };
+
+  gsap.to(obj, {
+    opacity: to,
+    duration: 0.75,
+    onUpdate: () => {
+      hips.setOpacity(obj.opacity);
+    },
+  });
+};

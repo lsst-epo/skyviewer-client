@@ -60,7 +60,7 @@ const TourIntro: FC<TourIntroProps> = ({
   };
 
   const getTourLink = () => {
-    const startTourParams = new URLSearchParams();
+    const startTourParams = new URLSearchParams(searchParams);
 
     if (hasCompletedTutorial()) {
       startTourParams.set("poi", "1");
