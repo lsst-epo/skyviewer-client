@@ -1,0 +1,27 @@
+.toggle {
+  position: absolute;
+  color: var(--color-font-accent);
+  bottom: var(--size-spacing-s);
+  left: var(--size-spacing-s);
+  opacity: 1;
+  transition: opacity 0.5s linear;
+
+  &:hover {
+    svg {
+      animation: rotate 0.75s linear 3;
+    }
+  }
+
+  &[data-hide="true"] {
+    opacity: 0;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
