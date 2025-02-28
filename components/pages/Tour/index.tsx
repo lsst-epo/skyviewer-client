@@ -9,6 +9,7 @@ import styles from "./styles.module.css";
 import { useSearchParams } from "next/navigation";
 import { useTour } from "@/contexts/Tour";
 import PoiDescription from "@/components/molecules/PoiDescription";
+import ToggleImageLayer from "@/components/organisms/TourControls/ToggleImageLayer";
 
 const TourPage: FC<{ title: string | null }> = ({ title }) => {
   const { isPending, currentPoi, position } = useTour();
@@ -24,6 +25,7 @@ const TourPage: FC<{ title: string | null }> = ({ title }) => {
 
   return (
     <AladinOverlay space="0" className={styles.tourOverlay}>
+      <ToggleImageLayer />
       <Orientation
         className={styles.orientation}
         size="var(--size-spacing-l)"

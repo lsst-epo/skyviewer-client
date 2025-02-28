@@ -32,6 +32,8 @@ interface ImageHiPS {
   isPlanetaryBody: () => boolean;
   setBlendingConfig: (additive?: boolean) => void;
   setBrightness: (brightness?: number) => void;
+  readonly setOpacity: (opacity: number) => void;
+  readonly getOpacity: () => number;
   // TODO remaining methods
 }
 
@@ -282,6 +284,11 @@ interface AladinInstance {
   readonly setBaseImageLayer: (
     urlOrHiPSOrFITS: string | ImageHiPS | AladinImage
   ) => void;
+  readonly setOverlayImageLayer: (
+    urlOrHiPSOrFITS: string | ImageHiPS | AladinImage,
+    layer?: string
+  ) => void;
+  readonly removeImageLayer: (layer?: string) => void;
   readonly getBaseImageLayer: () => AladinImageLayer;
   readonly getColorMap: () => AladinColorMaps;
   readonly displayFITS: (fitsUrl: string) => void;
@@ -398,7 +405,8 @@ interface Aladin {
     url: string,
     options: AladinCatalogOptions
   ) => AladinCatalog;
-  readonly imageHiPS: (id: string, options: ImageHiPSOptions) => ImageHiPS;
+  readonly imageHiPS: (id: string, options?: ImageHiPSOptions) => ImageHiPS;
+  readonly HiPS: (id: string, options?: ImageHiPSOptions) => ImageHiPS;
   // TODO Add other catalog methods
   // catalogFromSimbad(<target>, <radius-in-degrees>, <catalog-options>?, <successCallback>?)
   // A.catalogFromVizieR(<vizier-cat-id>, <target>, <radius-in-deg>, <cat-options>?, <successCallback>?)
