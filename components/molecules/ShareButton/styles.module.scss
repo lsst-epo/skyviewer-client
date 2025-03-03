@@ -36,6 +36,7 @@
   &:not(:disabled):focus,
   &:not(:disabled)[data-active] {
     --color-background-share-icon: #7ac1c2;
+    text-decoration: underline;
 
     &[data-network="facebook"] {
       --color-background-share-icon: #98a5cb;

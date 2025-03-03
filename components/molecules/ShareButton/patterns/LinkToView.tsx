@@ -37,7 +37,7 @@ const LinkToView = forwardRef<HTMLButtonElement, LinkToViewProps>(
         disabled={isLoading}
         showLabel={showLabel}
         icon={<IconComposer size="52" icon="ShareCopyUrl" />}
-        text="Get Url"
+        text="Get a link"
         network="url"
         onClick={handleClick}
       />

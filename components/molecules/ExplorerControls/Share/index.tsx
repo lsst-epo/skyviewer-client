@@ -25,8 +25,7 @@ export default function Share() {
         </MenuButton>
         <MenuItems static className={styles.shareMenuItems}>
           <MenuItem>
-            {/* <CopyUrlButton showLabel /> */}
-            <LinkToView />
+            <LinkToView showLabel />
           </MenuItem>
           <MenuItem>
             <GetImageButton showLabel />
