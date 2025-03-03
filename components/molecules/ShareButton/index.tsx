@@ -37,7 +37,7 @@ const ShareButton = forwardRef<HTMLButtonElement, ShareButtonProps>(
       >
         <div className={classnames(styles.shareIcon, network)}>{icon}</div>
         <div
-          className={classnames(styles.shareNetwork, {
+          className={classnames({
             "screen-reader-only": !showLabel,
           })}
         >

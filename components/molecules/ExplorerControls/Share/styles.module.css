@@ -49,9 +49,5 @@
       )
     );
     transition: 0.3s transform, 0.2s 0.1s opacity;
-
-    & button {
-      flex-flow: row-reverse nowrap;
-    }
   }
 }
