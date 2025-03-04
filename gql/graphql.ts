@@ -1285,6 +1285,7 @@ export type EntryCriteriaInput = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   /** Narrows the query results based on the elements’ creation dates. */
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Narrows the query results based on the elements’ last-updated dates. */
@@ -1323,6 +1324,7 @@ export type EntryCriteriaInput = {
   level: InputMaybe<Scalars['Int']['input']>;
   /** Sets the limit for paginated results. */
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   /** Narrows the query results to only the entry that comes immediately after another element in its structure, provided by its ID. */
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   /** Sets the offset for paginated results. */
@@ -1376,6 +1378,7 @@ export type EntryCriteriaInput = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   /** Narrows the query results based on the elements’ titles. */
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Narrows the query results based on the entries’ entry type handles. */
@@ -1521,6 +1524,7 @@ export type EntryInterfaceAncestorsArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1545,6 +1549,7 @@ export type EntryInterfaceAncestorsArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -1574,6 +1579,7 @@ export type EntryInterfaceAncestorsArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1598,6 +1604,7 @@ export type EntryInterfaceChildrenArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1622,6 +1629,7 @@ export type EntryInterfaceChildrenArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -1651,6 +1659,7 @@ export type EntryInterfaceChildrenArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1675,6 +1684,7 @@ export type EntryInterfaceDescendantsArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1699,6 +1709,7 @@ export type EntryInterfaceDescendantsArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -1728,6 +1739,7 @@ export type EntryInterfaceDescendantsArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1752,6 +1764,7 @@ export type EntryInterfaceLocalizedArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1776,6 +1789,7 @@ export type EntryInterfaceLocalizedArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -1805,6 +1819,7 @@ export type EntryInterfaceLocalizedArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1829,6 +1844,7 @@ export type EntryInterfaceNextArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1853,6 +1869,7 @@ export type EntryInterfaceNextArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -1882,6 +1899,7 @@ export type EntryInterfaceNextArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1906,6 +1924,7 @@ export type EntryInterfaceParentArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1930,6 +1949,7 @@ export type EntryInterfaceParentArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -1959,6 +1979,7 @@ export type EntryInterfaceParentArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1983,6 +2004,7 @@ export type EntryInterfacePrevArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2007,6 +2029,7 @@ export type EntryInterfacePrevArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -2036,6 +2059,7 @@ export type EntryInterfacePrevArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2349,6 +2373,7 @@ export type QueryAstroObjectsEntriesArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2373,6 +2398,7 @@ export type QueryAstroObjectsEntriesArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -2400,6 +2426,7 @@ export type QueryAstroObjectsEntriesArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2423,6 +2450,7 @@ export type QueryCatalogsEntriesArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2447,6 +2475,7 @@ export type QueryCatalogsEntriesArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -2474,6 +2503,7 @@ export type QueryCatalogsEntriesArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2644,6 +2674,7 @@ export type QueryEmbedEntriesArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2668,6 +2699,7 @@ export type QueryEmbedEntriesArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -2695,6 +2727,7 @@ export type QueryEmbedEntriesArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2718,6 +2751,7 @@ export type QueryEntriesArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2742,6 +2776,7 @@ export type QueryEntriesArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -2771,6 +2806,7 @@ export type QueryEntriesArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2794,6 +2830,7 @@ export type QueryEntryArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2818,6 +2855,7 @@ export type QueryEntryArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -2847,6 +2885,7 @@ export type QueryEntryArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2870,6 +2909,7 @@ export type QueryEntryCountArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2894,6 +2934,7 @@ export type QueryEntryCountArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -2923,6 +2964,7 @@ export type QueryEntryCountArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2946,6 +2988,7 @@ export type QueryExplorerEntriesArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2970,6 +3013,7 @@ export type QueryExplorerEntriesArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -2997,6 +3041,7 @@ export type QueryExplorerEntriesArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -3088,6 +3133,7 @@ export type QueryGuidedExperiencesEntriesArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -3112,6 +3158,7 @@ export type QueryGuidedExperiencesEntriesArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -3139,6 +3186,7 @@ export type QueryGuidedExperiencesEntriesArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -3162,6 +3210,7 @@ export type QuerySurveysEntriesArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -3186,6 +3235,7 @@ export type QuerySurveysEntriesArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -3213,6 +3263,7 @@ export type QuerySurveysEntriesArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -3236,6 +3287,7 @@ export type QueryToursEntriesArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -3260,6 +3312,7 @@ export type QueryToursEntriesArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -3287,6 +3340,7 @@ export type QueryToursEntriesArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4047,6 +4101,7 @@ export type AstroObjects_AstroObject_EntryAncestorsArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4071,6 +4126,7 @@ export type AstroObjects_AstroObject_EntryAncestorsArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -4100,6 +4156,7 @@ export type AstroObjects_AstroObject_EntryAncestorsArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4168,6 +4225,7 @@ export type AstroObjects_AstroObject_EntryChildrenArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4192,6 +4250,7 @@ export type AstroObjects_AstroObject_EntryChildrenArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -4221,6 +4280,7 @@ export type AstroObjects_AstroObject_EntryChildrenArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4244,6 +4304,7 @@ export type AstroObjects_AstroObject_EntryDescendantsArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4268,6 +4329,7 @@ export type AstroObjects_AstroObject_EntryDescendantsArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -4297,6 +4359,7 @@ export type AstroObjects_AstroObject_EntryDescendantsArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4320,6 +4383,7 @@ export type AstroObjects_AstroObject_EntryLocalizedArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4344,6 +4408,7 @@ export type AstroObjects_AstroObject_EntryLocalizedArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -4373,6 +4438,7 @@ export type AstroObjects_AstroObject_EntryLocalizedArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4396,6 +4462,7 @@ export type AstroObjects_AstroObject_EntryNextArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4420,6 +4487,7 @@ export type AstroObjects_AstroObject_EntryNextArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -4449,6 +4517,7 @@ export type AstroObjects_AstroObject_EntryNextArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4472,6 +4541,7 @@ export type AstroObjects_AstroObject_EntryParentArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4496,6 +4566,7 @@ export type AstroObjects_AstroObject_EntryParentArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -4525,6 +4596,7 @@ export type AstroObjects_AstroObject_EntryParentArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4548,6 +4620,7 @@ export type AstroObjects_AstroObject_EntryPrevArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4572,6 +4645,7 @@ export type AstroObjects_AstroObject_EntryPrevArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -4601,6 +4675,7 @@ export type AstroObjects_AstroObject_EntryPrevArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4741,6 +4816,7 @@ export type Catalogs_Catalog_EntryAncestorsArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4765,6 +4841,7 @@ export type Catalogs_Catalog_EntryAncestorsArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -4794,6 +4871,7 @@ export type Catalogs_Catalog_EntryAncestorsArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4817,6 +4895,7 @@ export type Catalogs_Catalog_EntryChildrenArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4841,6 +4920,7 @@ export type Catalogs_Catalog_EntryChildrenArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -4870,6 +4950,7 @@ export type Catalogs_Catalog_EntryChildrenArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4893,6 +4974,7 @@ export type Catalogs_Catalog_EntryDescendantsArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4917,6 +4999,7 @@ export type Catalogs_Catalog_EntryDescendantsArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -4946,6 +5029,7 @@ export type Catalogs_Catalog_EntryDescendantsArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5014,6 +5098,7 @@ export type Catalogs_Catalog_EntryLocalizedArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5038,6 +5123,7 @@ export type Catalogs_Catalog_EntryLocalizedArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -5067,6 +5153,7 @@ export type Catalogs_Catalog_EntryLocalizedArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5090,6 +5177,7 @@ export type Catalogs_Catalog_EntryNextArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5114,6 +5202,7 @@ export type Catalogs_Catalog_EntryNextArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -5143,6 +5232,7 @@ export type Catalogs_Catalog_EntryNextArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5166,6 +5256,7 @@ export type Catalogs_Catalog_EntryParentArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5190,6 +5281,7 @@ export type Catalogs_Catalog_EntryParentArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -5219,6 +5311,7 @@ export type Catalogs_Catalog_EntryParentArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5242,6 +5335,7 @@ export type Catalogs_Catalog_EntryPrevArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5266,6 +5360,7 @@ export type Catalogs_Catalog_EntryPrevArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -5295,6 +5390,7 @@ export type Catalogs_Catalog_EntryPrevArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5434,6 +5530,7 @@ export type Embed_Embed_EntryAncestorsArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5458,6 +5555,7 @@ export type Embed_Embed_EntryAncestorsArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -5487,6 +5585,7 @@ export type Embed_Embed_EntryAncestorsArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5510,6 +5609,7 @@ export type Embed_Embed_EntryChildrenArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5534,6 +5634,7 @@ export type Embed_Embed_EntryChildrenArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -5563,6 +5664,7 @@ export type Embed_Embed_EntryChildrenArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5586,6 +5688,7 @@ export type Embed_Embed_EntryDescendantsArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5610,6 +5713,7 @@ export type Embed_Embed_EntryDescendantsArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -5639,6 +5743,7 @@ export type Embed_Embed_EntryDescendantsArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5662,6 +5767,7 @@ export type Embed_Embed_EntryLocalizedArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5686,6 +5792,7 @@ export type Embed_Embed_EntryLocalizedArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -5715,6 +5822,7 @@ export type Embed_Embed_EntryLocalizedArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5738,6 +5846,7 @@ export type Embed_Embed_EntryNextArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5762,6 +5871,7 @@ export type Embed_Embed_EntryNextArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -5791,6 +5901,7 @@ export type Embed_Embed_EntryNextArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5814,6 +5925,7 @@ export type Embed_Embed_EntryParentArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5838,6 +5950,7 @@ export type Embed_Embed_EntryParentArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -5867,6 +5980,7 @@ export type Embed_Embed_EntryParentArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5890,6 +6004,7 @@ export type Embed_Embed_EntryPrevArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5914,6 +6029,7 @@ export type Embed_Embed_EntryPrevArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -5943,6 +6059,7 @@ export type Embed_Embed_EntryPrevArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5966,6 +6083,7 @@ export type Embed_Embed_EntrySurveyArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5990,6 +6108,7 @@ export type Embed_Embed_EntrySurveyArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -6019,6 +6138,7 @@ export type Embed_Embed_EntrySurveyArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6158,6 +6278,7 @@ export type Explorer_Explorer_EntryAncestorsArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6182,6 +6303,7 @@ export type Explorer_Explorer_EntryAncestorsArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -6211,6 +6333,7 @@ export type Explorer_Explorer_EntryAncestorsArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6234,6 +6357,7 @@ export type Explorer_Explorer_EntryChildrenArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6258,6 +6382,7 @@ export type Explorer_Explorer_EntryChildrenArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -6287,6 +6412,7 @@ export type Explorer_Explorer_EntryChildrenArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6310,6 +6436,7 @@ export type Explorer_Explorer_EntryDescendantsArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6334,6 +6461,7 @@ export type Explorer_Explorer_EntryDescendantsArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -6363,6 +6491,7 @@ export type Explorer_Explorer_EntryDescendantsArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6386,6 +6515,7 @@ export type Explorer_Explorer_EntryLocalizedArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6410,6 +6540,7 @@ export type Explorer_Explorer_EntryLocalizedArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -6439,6 +6570,7 @@ export type Explorer_Explorer_EntryLocalizedArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6462,6 +6594,7 @@ export type Explorer_Explorer_EntryNextArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6486,6 +6619,7 @@ export type Explorer_Explorer_EntryNextArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -6515,6 +6649,7 @@ export type Explorer_Explorer_EntryNextArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6538,6 +6673,7 @@ export type Explorer_Explorer_EntryParentArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6562,6 +6698,7 @@ export type Explorer_Explorer_EntryParentArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -6591,6 +6728,7 @@ export type Explorer_Explorer_EntryParentArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6614,6 +6752,7 @@ export type Explorer_Explorer_EntryPrevArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6638,6 +6777,7 @@ export type Explorer_Explorer_EntryPrevArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -6667,6 +6807,7 @@ export type Explorer_Explorer_EntryPrevArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6690,6 +6831,7 @@ export type Explorer_Explorer_EntrySurveyArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6714,6 +6856,7 @@ export type Explorer_Explorer_EntrySurveyArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -6743,6 +6886,7 @@ export type Explorer_Explorer_EntrySurveyArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7484,6 +7628,7 @@ export type GuidedExperiences_GuidedExperiences_EntryAncestorsArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7508,6 +7653,7 @@ export type GuidedExperiences_GuidedExperiences_EntryAncestorsArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -7537,6 +7683,7 @@ export type GuidedExperiences_GuidedExperiences_EntryAncestorsArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7560,6 +7707,7 @@ export type GuidedExperiences_GuidedExperiences_EntryChildrenArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7584,6 +7732,7 @@ export type GuidedExperiences_GuidedExperiences_EntryChildrenArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -7613,6 +7762,7 @@ export type GuidedExperiences_GuidedExperiences_EntryChildrenArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7636,6 +7786,7 @@ export type GuidedExperiences_GuidedExperiences_EntryDescendantsArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7660,6 +7811,7 @@ export type GuidedExperiences_GuidedExperiences_EntryDescendantsArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -7689,6 +7841,7 @@ export type GuidedExperiences_GuidedExperiences_EntryDescendantsArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7747,6 +7900,7 @@ export type GuidedExperiences_GuidedExperiences_EntryLocalizedArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7771,6 +7925,7 @@ export type GuidedExperiences_GuidedExperiences_EntryLocalizedArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -7800,6 +7955,7 @@ export type GuidedExperiences_GuidedExperiences_EntryLocalizedArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7823,6 +7979,7 @@ export type GuidedExperiences_GuidedExperiences_EntryNextArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7847,6 +8004,7 @@ export type GuidedExperiences_GuidedExperiences_EntryNextArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -7876,6 +8034,7 @@ export type GuidedExperiences_GuidedExperiences_EntryNextArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7899,6 +8058,7 @@ export type GuidedExperiences_GuidedExperiences_EntryParentArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7923,6 +8083,7 @@ export type GuidedExperiences_GuidedExperiences_EntryParentArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -7952,6 +8113,7 @@ export type GuidedExperiences_GuidedExperiences_EntryParentArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7975,6 +8137,7 @@ export type GuidedExperiences_GuidedExperiences_EntryPrevArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7999,6 +8162,7 @@ export type GuidedExperiences_GuidedExperiences_EntryPrevArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -8028,6 +8192,7 @@ export type GuidedExperiences_GuidedExperiences_EntryPrevArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -8396,6 +8561,7 @@ export type PoiAstroObject_PoiAstroObject_BlockTypeAstroObjectArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -8420,6 +8586,7 @@ export type PoiAstroObject_PoiAstroObject_BlockTypeAstroObjectArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -8449,6 +8616,7 @@ export type PoiAstroObject_PoiAstroObject_BlockTypeAstroObjectArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -8523,6 +8691,7 @@ export type Surveys_Surveys_Entry = ElementInterface & EntryInterface & {
   canonicalUid: Maybe<Scalars['String']['output']>;
   /** The entry’s children, if the section is a structure. Accepts the same arguments as the `entries` query. */
   children: Array<EntryInterface>;
+  cooFrame: Maybe<Scalars['String']['output']>;
   /** The date the element was created. */
   dateCreated: Maybe<Scalars['DateTime']['output']>;
   /** The date the element was last updated. */
@@ -8561,6 +8730,7 @@ export type Surveys_Surveys_Entry = ElementInterface & EntryInterface & {
   lft: Maybe<Scalars['Int']['output']>;
   /** The same element in other locales. */
   localized: Array<EntryInterface>;
+  maxOrder: Maybe<Scalars['Number']['output']>;
   /** Returns the next element relative to this one, from a given set of criteria. */
   next: Maybe<EntryInterface>;
   /** The entry’s parent, if the section is a structure. */
@@ -8607,6 +8777,7 @@ export type Surveys_Surveys_Entry = ElementInterface & EntryInterface & {
   /** The element’s structure ID. */
   structureId: Maybe<Scalars['Int']['output']>;
   target: Maybe<Scalars['String']['output']>;
+  tileSize: Maybe<Scalars['String']['output']>;
   /** The element’s title. */
   title: Maybe<Scalars['String']['output']>;
   /** Whether the element has been soft-deleted. */
@@ -8642,6 +8813,7 @@ export type Surveys_Surveys_EntryAncestorsArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -8666,6 +8838,7 @@ export type Surveys_Surveys_EntryAncestorsArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -8695,6 +8868,7 @@ export type Surveys_Surveys_EntryAncestorsArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -8718,6 +8892,7 @@ export type Surveys_Surveys_EntryChildrenArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -8742,6 +8917,7 @@ export type Surveys_Surveys_EntryChildrenArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -8771,6 +8947,7 @@ export type Surveys_Surveys_EntryChildrenArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -8778,6 +8955,11 @@ export type Surveys_Surveys_EntryChildrenArgs = {
   unique: InputMaybe<Scalars['Boolean']['input']>;
   uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Surveys_Surveys_EntryCooFrameArgs = {
+  label: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -8794,6 +8976,7 @@ export type Surveys_Surveys_EntryDescendantsArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -8818,6 +9001,7 @@ export type Surveys_Surveys_EntryDescendantsArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -8847,6 +9031,7 @@ export type Surveys_Surveys_EntryDescendantsArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -8854,6 +9039,11 @@ export type Surveys_Surveys_EntryDescendantsArgs = {
   unique: InputMaybe<Scalars['Boolean']['input']>;
   uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Surveys_Surveys_EntryImgFormatArgs = {
+  label: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -8870,6 +9060,7 @@ export type Surveys_Surveys_EntryLocalizedArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -8894,6 +9085,7 @@ export type Surveys_Surveys_EntryLocalizedArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -8923,6 +9115,7 @@ export type Surveys_Surveys_EntryLocalizedArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -8946,6 +9139,7 @@ export type Surveys_Surveys_EntryNextArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -8970,6 +9164,7 @@ export type Surveys_Surveys_EntryNextArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -8999,6 +9194,7 @@ export type Surveys_Surveys_EntryNextArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -9022,6 +9218,7 @@ export type Surveys_Surveys_EntryParentArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -9046,6 +9243,7 @@ export type Surveys_Surveys_EntryParentArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -9075,6 +9273,7 @@ export type Surveys_Surveys_EntryParentArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -9098,6 +9297,7 @@ export type Surveys_Surveys_EntryPrevArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -9122,6 +9322,7 @@ export type Surveys_Surveys_EntryPrevArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -9151,6 +9352,7 @@ export type Surveys_Surveys_EntryPrevArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -9158,6 +9360,11 @@ export type Surveys_Surveys_EntryPrevArgs = {
   unique: InputMaybe<Scalars['Boolean']['input']>;
   uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Surveys_Surveys_EntryTileSizeArgs = {
+  label: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type TourImages_Asset = AssetInterface & ElementInterface & {
@@ -9471,6 +9678,7 @@ export type TourPois_TourPoi_BlockTypeAstroObjectArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -9495,6 +9703,7 @@ export type TourPois_TourPoi_BlockTypeAstroObjectArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -9524,6 +9733,7 @@ export type TourPois_TourPoi_BlockTypeAstroObjectArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10533,6 +10743,7 @@ export type Tours_Tour_EntryAncestorsArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10557,6 +10768,7 @@ export type Tours_Tour_EntryAncestorsArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -10586,6 +10798,7 @@ export type Tours_Tour_EntryAncestorsArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10632,6 +10845,7 @@ export type Tours_Tour_EntryChildrenArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10656,6 +10870,7 @@ export type Tours_Tour_EntryChildrenArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -10685,6 +10900,7 @@ export type Tours_Tour_EntryChildrenArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10708,6 +10924,7 @@ export type Tours_Tour_EntryDescendantsArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10732,6 +10949,7 @@ export type Tours_Tour_EntryDescendantsArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -10761,6 +10979,7 @@ export type Tours_Tour_EntryDescendantsArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10854,6 +11073,7 @@ export type Tours_Tour_EntryLocalizedArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10878,6 +11098,7 @@ export type Tours_Tour_EntryLocalizedArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -10907,6 +11128,7 @@ export type Tours_Tour_EntryLocalizedArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10930,6 +11152,7 @@ export type Tours_Tour_EntryNextArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10954,6 +11177,7 @@ export type Tours_Tour_EntryNextArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -10983,6 +11207,7 @@ export type Tours_Tour_EntryNextArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -11006,6 +11231,7 @@ export type Tours_Tour_EntryParentArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -11030,6 +11256,7 @@ export type Tours_Tour_EntryParentArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -11059,6 +11286,7 @@ export type Tours_Tour_EntryParentArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -11082,6 +11310,7 @@ export type Tours_Tour_EntryPrevArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -11106,6 +11335,7 @@ export type Tours_Tour_EntryPrevArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -11135,6 +11365,7 @@ export type Tours_Tour_EntryPrevArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -11158,6 +11389,7 @@ export type Tours_Tour_EntrySurveyArgs = {
   before: InputMaybe<Scalars['String']['input']>;
   characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -11182,6 +11414,7 @@ export type Tours_Tour_EntrySurveyArgs = {
   leaves: InputMaybe<Scalars['Boolean']['input']>;
   level: InputMaybe<Scalars['Int']['input']>;
   limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
   offset: InputMaybe<Scalars['Int']['input']>;
   orderBy: InputMaybe<Scalars['String']['input']>;
@@ -11211,6 +11444,7 @@ export type Tours_Tour_EntrySurveyArgs = {
   survey: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -11278,6 +11512,17 @@ export type Tours_Tour_EntryTourPoisArgs = {
   uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
+export type CatalogSurveyDataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CatalogSurveyDataQuery = { __typename?: 'Query', catalogs: Array<(
+    { __typename?: 'catalogs_catalog_Entry' }
+    & { ' $fragmentRefs'?: { 'CatalogFragment': CatalogFragment } }
+  ) | null> | null, surveys: Array<(
+    { __typename?: 'surveys_surveys_Entry' }
+    & { ' $fragmentRefs'?: { 'SurveyFragment': SurveyFragment } }
+  ) | null> | null };
+
 export type EmbeddedPageQueryVariables = Exact<{
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
 }>;
@@ -11290,7 +11535,17 @@ export type ExplorerPageQueryVariables = Exact<{
 }>;
 
 
-export type ExplorerPageQuery = { __typename?: 'Query', explorerEntries: Array<{ __typename?: 'explorer_explorer_Entry', survey: Array<{ __typename?: 'astroObjects_astroObject_Entry' } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embed_embed_Entry' } | { __typename?: 'explorer_explorer_Entry' } | { __typename?: 'guidedExperiences_guidedExperiences_Entry' } | { __typename?: 'surveys_surveys_Entry', title: string | null, fov: any | null, fovMax: any | null, fovMin: any | null, path: string | null, target: string | null, imgFormat: string | null } | { __typename?: 'tours_tour_Entry' } | null> } | null> | null };
+export type ExplorerPageQuery = { __typename?: 'Query', catalogs: Array<(
+    { __typename?: 'catalogs_catalog_Entry' }
+    & { ' $fragmentRefs'?: { 'CatalogFragment': CatalogFragment } }
+  ) | null> | null, explorerEntries: Array<{ __typename?: 'explorer_explorer_Entry', survey: Array<{ __typename?: 'astroObjects_astroObject_Entry' } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embed_embed_Entry' } | { __typename?: 'explorer_explorer_Entry' } | { __typename?: 'guidedExperiences_guidedExperiences_Entry' } | (
+      { __typename?: 'surveys_surveys_Entry' }
+      & { ' $fragmentRefs'?: { 'SurveyFragment': SurveyFragment } }
+    ) | { __typename?: 'tours_tour_Entry' } | null> } | null> | null };
+
+export type CatalogFragment = { __typename?: 'catalogs_catalog_Entry', id: string | null, title: string | null, path: string | null, icon: Array<{ __typename?: 'astroImages_Asset' } | { __typename?: 'icons_Asset', url: string | null } | { __typename?: 'tourImages_Asset' } | null> } & { ' $fragmentName'?: 'CatalogFragment' };
+
+export type SurveyFragment = { __typename?: 'surveys_surveys_Entry', title: string | null, path: string | null, target: string | null, fovMin: any | null, fovMax: any | null, fov: any | null, imgFormat: string | null, cooFrame: string | null, maxOrder: any | null, tileSize: string | null } & { ' $fragmentName'?: 'SurveyFragment' };
 
 export type GuidedExperiencesPageQueryVariables = Exact<{
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
@@ -11359,9 +11614,11 @@ export type ToursPathsQueryVariables = Exact<{
 
 export type ToursPathsQuery = { __typename?: 'Query', toursEntries: Array<{ __typename?: 'tours_tour_Entry', slug: string | null } | null> | null };
 
-
+export const CatalogFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Catalog"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"catalogs_catalog_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"icons_Asset"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]} as unknown as DocumentNode<CatalogFragment, unknown>;
+export const SurveyFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}}]} as unknown as DocumentNode<SurveyFragment, unknown>;
+export const CatalogSurveyDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"CatalogSurveyData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"catalogs"},"name":{"kind":"Name","value":"catalogsEntries"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Catalog"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"surveys"},"name":{"kind":"Name","value":"surveysEntries"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Catalog"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"catalogs_catalog_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"icons_Asset"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}}]} as unknown as DocumentNode<CatalogSurveyDataQuery, CatalogSurveyDataQueryVariables>;
 export const EmbeddedPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"EmbeddedPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"embedEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"embed_embed_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<EmbeddedPageQuery, EmbeddedPageQueryVariables>;
-export const ExplorerPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ExplorerPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"explorerEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"explorer_explorer_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<ExplorerPageQuery, ExplorerPageQueryVariables>;
+export const ExplorerPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ExplorerPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"catalogs"},"name":{"kind":"Name","value":"catalogsEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Catalog"}}]}},{"kind":"Field","name":{"kind":"Name","value":"explorerEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"explorer_explorer_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Catalog"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"catalogs_catalog_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"icons_Asset"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}}]} as unknown as DocumentNode<ExplorerPageQuery, ExplorerPageQueryVariables>;
 export const GuidedExperiencesPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GuidedExperiencesPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"guidedExperiencesEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"guidedExperiences_guidedExperiences_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"guidedExperiences"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"guidedExperiences_experience_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"experienceCategory"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"Field","name":{"kind":"Name","value":"previewImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GuidedExperiencesPageQuery, GuidedExperiencesPageQueryVariables>;
 export const TourCountDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TourCount"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"section"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}},{"kind":"Argument","name":{"kind":"Name","value":"section"},"value":{"kind":"Variable","name":{"kind":"Name","value":"section"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<TourCountQuery, TourCountQueryVariables>;
 export const SurveyImageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"SurveyImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"surveysEntries"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}}]}}]}}]}}]} as unknown as DocumentNode<SurveyImageQuery, SurveyImageQueryVariables>;

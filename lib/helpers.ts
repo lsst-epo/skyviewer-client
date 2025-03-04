@@ -59,9 +59,29 @@ const surveyImageSchema = z.object({
     .catch(defaultSurveyView.target)
     .default(defaultSurveyView.target),
   imgFormat: z
-    .enum(["jpg", "png", "fits", "webp"])
+    .enum(["jpeg", "png", "fits", "webp"])
     .catch(defaultSurveyView.imgFormat)
     .default(defaultSurveyView.imgFormat),
+  cooFrame: z
+    .enum(["j2000", "equatorial", "ICRS", "ICRSd", "gal", "galactic"])
+    .catch(defaultSurveyView.cooFrame)
+    .default(defaultSurveyView.cooFrame),
+  maxOrder: z
+    .number()
+    .min(0)
+    .max(12)
+    .catch(defaultSurveyView.maxOrder)
+    .default(defaultSurveyView.maxOrder),
+  tileSize: z
+    .union([
+      z.literal(32),
+      z.literal(64),
+      z.literal(128),
+      z.literal(256),
+      z.literal(512),
+    ])
+    .catch(defaultSurveyView.tileSize)
+    .default(defaultSurveyView.tileSize),
   title: z.string().nullable().optional(),
   path: z.string(),
 });
