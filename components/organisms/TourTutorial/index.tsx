@@ -47,6 +47,7 @@ const TourTutorial: FC<PropsWithChildren> = ({ children }) => {
           cardTransition={{ type: "spring", bounce: 0 }}
           clickThroughOverlay={false}
           cardComponent={TutorialCard}
+          disableConsoleLogs={true}
           {...{ onComplete, onSkip }}
         >
           {children}
