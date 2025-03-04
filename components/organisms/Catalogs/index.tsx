@@ -7,8 +7,8 @@ import {
   getAstroObjectContent,
   getAstroObjectData,
 } from "@/services/api/astroObject";
-import { Catalog } from "@/types/catalog";
 import { getPixelPosition } from "@/lib/aladin/helpers";
+import { Catalog } from "@/services/api/catalogs/schema";
 
 interface CatalogProps {
   catalogs?: Array<Catalog>;
