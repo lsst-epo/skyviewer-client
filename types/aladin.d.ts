@@ -1,7 +1,8 @@
 // Aladin SkyView Lite is declared as `A` in the global scope
 
 type CooFrame = "equatorial" | "ICRS" | "ICRSd" | "j2000" | "gal" | "galactic";
-type HiPSImageFormat = "jpg" | "png" | "fits" | "webp";
+type HiPSImageFormat = "jpeg" | "png" | "fits" | "webp";
+type TileSize = 32 | 64 | 128 | 256 | 512;
 
 interface ImageHiPSOptions {
   name?: string;
@@ -11,7 +12,7 @@ interface ImageHiPSOptions {
   cooFrame?: CooFrame;
   maxOrder?: number;
   numBitsPerPixel?: number;
-  tileSize?: number;
+  tileSize?: TileSize;
   minOrder?: number;
   longitudeReversed?: boolean;
   opacity?: number;

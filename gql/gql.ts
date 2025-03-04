@@ -13,8 +13,11 @@ import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
+    "\n    query CatalogSurveyData {\n      catalogs: catalogsEntries {\n        ...Catalog\n      }\n      surveys: surveysEntries {\n        ...Survey\n      }\n    }\n  ": types.CatalogSurveyDataDocument,
     "\n    query EmbeddedPage($site: [String]) {\n      embedEntries(site: $site) {\n        ... on embed_embed_Entry {\n          survey {\n            ... on surveys_surveys_Entry {\n              title\n              fov\n              fovMax\n              fovMin\n              path\n              imgFormat\n            }\n          }\n        }\n      }\n    }\n  ": types.EmbeddedPageDocument,
-    "\n    query ExplorerPage($site: [String]) {\n      explorerEntries(site: $site) {\n        ... on explorer_explorer_Entry {\n          survey {\n            ... on surveys_surveys_Entry {\n              title\n              fov\n              fovMax\n              fovMin\n              path\n              target\n              imgFormat\n            }\n          }\n        }\n      }\n    }\n  ": types.ExplorerPageDocument,
+    "\n    query ExplorerPage($site: [String]) {\n      catalogs: catalogsEntries(site: $site) {\n        ...Catalog\n      }\n      explorerEntries(site: $site) {\n        ... on explorer_explorer_Entry {\n          survey {\n            ...Survey\n          }\n        }\n      }\n    }\n  ": types.ExplorerPageDocument,
+    "\n  fragment Catalog on catalogs_catalog_Entry {\n    id\n    title\n    path\n    icon {\n      ... on icons_Asset {\n        url\n      }\n    }\n  }\n": types.CatalogFragmentDoc,
+    "\n  fragment Survey on surveys_surveys_Entry {\n    title\n    path\n    target\n    fovMin\n    fovMax\n    fov\n    imgFormat\n    cooFrame\n    maxOrder\n    tileSize\n  }\n": types.SurveyFragmentDoc,
     "\n    query GuidedExperiencesPage($site: [String]) {\n      guidedExperiencesEntries(site: $site) {\n        ... on guidedExperiences_guidedExperiences_Entry {\n          title\n          guidedExperiences {\n            ... on guidedExperiences_experience_BlockType {\n              experienceCategory {\n                id\n                slug\n                title\n              }\n              previewImage {\n                width\n                height\n                additional {\n                  AltTextEN\n                  AltTextES\n                }\n                url {\n                  directUrlOriginal\n                  directUrlPreview\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  ": types.GuidedExperiencesPageDocument,
     "\n    query TourCount($site: [String], $section: [String]) {\n      entries(site: $site, section: $section) {\n        id\n      }\n    }\n  ": types.TourCountDocument,
     "\n  query SurveyImage {\n    surveysEntries {\n      ... on surveys_surveys_Entry {\n        title\n        path\n        target\n        fovMin\n        fovMax\n        fov\n        imgFormat\n      }\n    }\n  }\n": types.SurveyImageDocument,
@@ -43,11 +46,23 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function graphql(source: "\n    query CatalogSurveyData {\n      catalogs: catalogsEntries {\n        ...Catalog\n      }\n      surveys: surveysEntries {\n        ...Survey\n      }\n    }\n  "): (typeof documents)["\n    query CatalogSurveyData {\n      catalogs: catalogsEntries {\n        ...Catalog\n      }\n      surveys: surveysEntries {\n        ...Survey\n      }\n    }\n  "];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function graphql(source: "\n    query EmbeddedPage($site: [String]) {\n      embedEntries(site: $site) {\n        ... on embed_embed_Entry {\n          survey {\n            ... on surveys_surveys_Entry {\n              title\n              fov\n              fovMax\n              fovMin\n              path\n              imgFormat\n            }\n          }\n        }\n      }\n    }\n  "): (typeof documents)["\n    query EmbeddedPage($site: [String]) {\n      embedEntries(site: $site) {\n        ... on embed_embed_Entry {\n          survey {\n            ... on surveys_surveys_Entry {\n              title\n              fov\n              fovMax\n              fovMin\n              path\n              imgFormat\n            }\n          }\n        }\n      }\n    }\n  "];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n    query ExplorerPage($site: [String]) {\n      explorerEntries(site: $site) {\n        ... on explorer_explorer_Entry {\n          survey {\n            ... on surveys_surveys_Entry {\n              title\n              fov\n              fovMax\n              fovMin\n              path\n              target\n              imgFormat\n            }\n          }\n        }\n      }\n    }\n  "): (typeof documents)["\n    query ExplorerPage($site: [String]) {\n      explorerEntries(site: $site) {\n        ... on explorer_explorer_Entry {\n          survey {\n            ... on surveys_surveys_Entry {\n              title\n              fov\n              fovMax\n              fovMin\n              path\n              target\n              imgFormat\n            }\n          }\n        }\n      }\n    }\n  "];
+export function graphql(source: "\n    query ExplorerPage($site: [String]) {\n      catalogs: catalogsEntries(site: $site) {\n        ...Catalog\n      }\n      explorerEntries(site: $site) {\n        ... on explorer_explorer_Entry {\n          survey {\n            ...Survey\n          }\n        }\n      }\n    }\n  "): (typeof documents)["\n    query ExplorerPage($site: [String]) {\n      catalogs: catalogsEntries(site: $site) {\n        ...Catalog\n      }\n      explorerEntries(site: $site) {\n        ... on explorer_explorer_Entry {\n          survey {\n            ...Survey\n          }\n        }\n      }\n    }\n  "];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  fragment Catalog on catalogs_catalog_Entry {\n    id\n    title\n    path\n    icon {\n      ... on icons_Asset {\n        url\n      }\n    }\n  }\n"): (typeof documents)["\n  fragment Catalog on catalogs_catalog_Entry {\n    id\n    title\n    path\n    icon {\n      ... on icons_Asset {\n        url\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  fragment Survey on surveys_surveys_Entry {\n    title\n    path\n    target\n    fovMin\n    fovMax\n    fov\n    imgFormat\n    cooFrame\n    maxOrder\n    tileSize\n  }\n"): (typeof documents)["\n  fragment Survey on surveys_surveys_Entry {\n    title\n    path\n    target\n    fovMin\n    fovMax\n    fov\n    imgFormat\n    cooFrame\n    maxOrder\n    tileSize\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

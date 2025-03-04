@@ -1,10 +1,9 @@
 import { FC } from "react";
-import { getCatalogsSurveysData } from "@/services/api/catalogsSurveys";
 import { moveInArray } from "@/helpers";
 import AladinTemplate from "@/components/templates/Aladin";
 import Catalogs from "@/components/organisms/Catalogs";
 import Controls from "@/components/molecules/ExplorerControls";
-import { Catalog } from "@/types/catalog";
+import { Catalog } from "@/services/api/catalogs/schema";
 import { notFound } from "next/navigation";
 import { initialPosition } from "@/lib/helpers";
 import { getExplorerPage } from "@/services/api/explorer";
@@ -13,23 +12,22 @@ const ExplorerPage: FC<WithSearchParams<RootProps>> = async ({
   params: { locale },
   searchParams = {},
 }) => {
-  const data = await getCatalogsSurveysData();
-  const survey = await getExplorerPage(locale);
+  const data = await getExplorerPage(locale);
 
-  if (!survey) {
+  if (!data) {
     notFound();
   }
 
-  const { catalogs } = data;
+  const { catalogs, survey } = data;
   const sortedCats = sortCats(catalogs);
-  const { fovRange, path, imgFormat } = survey;
+  const { fovRange, path, imgFormat, cooFrame, maxOrder, tileSize } = survey;
 
   const options = {
     ...initialPosition(searchParams, survey),
     backgroundColor: "rgb(0,0,0)",
   };
 
-  function sortCats(cats: Array<Catalog>): Array<Catalog> | undefined {
+  function sortCats(cats?: Array<Catalog>): Array<Catalog> | undefined {
     if (!cats) return undefined;
 
     const lastCatsIndex = cats.length - 1;
@@ -55,7 +53,10 @@ const ExplorerPage: FC<WithSearchParams<RootProps>> = async ({
   return (
     <AladinTemplate
       fovRange={fovRange}
-      hipsConfig={{ id: path, options: { imgFormat } }}
+      hipsConfig={{
+        id: path,
+        options: { imgFormat, cooFrame, tileSize, maxOrder },
+      }}
       {...{ options }}
     >
       <Controls />

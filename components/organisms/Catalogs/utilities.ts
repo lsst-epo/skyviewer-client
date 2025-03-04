@@ -1,4 +1,4 @@
-import { Catalog, RubinCatalog } from "@/types/catalog";
+import { Catalog, RubinCatalog } from "@/services/api/catalogs/schema";
 
 const CUSTOM_SHAPES: Record<RubinCatalog, string> = {
   star: "/shapes/star-icon.png",

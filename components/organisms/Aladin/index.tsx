@@ -99,7 +99,7 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
           hasFocus,
           isLoading,
         };
-  }, [isLoading, hasFocus, aladin.current, A.current]);
+  }, [isLoading, hasFocus]);
 
   return (
     <AladinContext.Provider value={value}>
