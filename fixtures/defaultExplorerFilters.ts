@@ -1,4 +1,4 @@
-import { FilterableCatalog } from "@/types/catalog";
+import { FilterableCatalog } from "@/services/api/catalogs/schema";
 
 export interface CharacteristicParams {
   min: {
