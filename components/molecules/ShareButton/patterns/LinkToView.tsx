@@ -3,6 +3,7 @@ import { forwardRef } from "react";
 import { useAladin } from "@/contexts/Aladin";
 import IconComposer from "@/components/svg/IconComposer";
 import ShareButton from "..";
+import { currentViewAsParams } from "@/lib/aladin/helpers";
 
 interface LinkToViewProps {
   showLabel?: boolean;
@@ -16,12 +17,7 @@ const LinkToView = forwardRef<HTMLButtonElement, LinkToViewProps>(
       const { origin, pathname } = window.location;
       let path = `${origin}${pathname}`;
       if (aladin) {
-        const fov = aladin.getFov()[0].toFixed(2);
-        const target = aladin.getRaDec().join(" ");
-
-        const params = new URLSearchParams({ fov, target });
-
-        path += `?${params.toString()}`;
+        path += `?${currentViewAsParams(aladin).toString()}`;
       }
 
       try {

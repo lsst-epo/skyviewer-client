@@ -13,7 +13,7 @@ import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\n    query EmbeddedPage($site: [String]) {\n      embedEntries(site: $site) {\n        ... on embed_embed_Entry {\n          survey {\n            ... on surveys_surveys_Entry {\n              title\n              fov\n              fovMax\n              fovMin\n              path\n              imgFormat\n            }\n          }\n        }\n      }\n    }\n  ": types.EmbeddedPageDocument,
+    "\n    query EmbeddedPage($site: [String]) {\n      embedEntries(site: $site) {\n        ... on embed_embed_Entry {\n          survey {\n            ...Survey\n          }\n        }\n      }\n    }\n  ": types.EmbeddedPageDocument,
     "\n    query ExplorerPage($site: [String]) {\n      catalogs: catalogsEntries(site: $site) {\n        ...Catalog\n      }\n      explorerEntries(site: $site) {\n        ... on explorer_explorer_Entry {\n          survey {\n            ...Survey\n          }\n        }\n      }\n    }\n  ": types.ExplorerPageDocument,
     "\n  fragment Catalog on catalogs_catalog_Entry {\n    id\n    title\n    path\n    icon {\n      ... on icons_Asset {\n        url\n      }\n    }\n  }\n": types.CatalogFragmentDoc,
     "\n  fragment Survey on surveys_surveys_Entry {\n    title\n    path\n    target\n    fovMin\n    fovMax\n    fov\n    imgFormat\n    cooFrame\n    maxOrder\n    tileSize\n  }\n": types.SurveyFragmentDoc,
@@ -45,7 +45,7 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n    query EmbeddedPage($site: [String]) {\n      embedEntries(site: $site) {\n        ... on embed_embed_Entry {\n          survey {\n            ... on surveys_surveys_Entry {\n              title\n              fov\n              fovMax\n              fovMin\n              path\n              imgFormat\n            }\n          }\n        }\n      }\n    }\n  "): (typeof documents)["\n    query EmbeddedPage($site: [String]) {\n      embedEntries(site: $site) {\n        ... on embed_embed_Entry {\n          survey {\n            ... on surveys_surveys_Entry {\n              title\n              fov\n              fovMax\n              fovMin\n              path\n              imgFormat\n            }\n          }\n        }\n      }\n    }\n  "];
+export function graphql(source: "\n    query EmbeddedPage($site: [String]) {\n      embedEntries(site: $site) {\n        ... on embed_embed_Entry {\n          survey {\n            ...Survey\n          }\n        }\n      }\n    }\n  "): (typeof documents)["\n    query EmbeddedPage($site: [String]) {\n      embedEntries(site: $site) {\n        ... on embed_embed_Entry {\n          survey {\n            ...Survey\n          }\n        }\n      }\n    }\n  "];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

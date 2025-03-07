@@ -1,31 +1,32 @@
 "use client";
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent } from "react";
 import AladinOverlay from "@/components/primitives/AladinOverlay";
-import FOVSize from "@/components/molecules/FOVSize";
 import styles from "./styles.module.css";
-import ControlsContainer from "@/components/molecules/Controls/Container";
-import ReturnToTarget from "@/components/molecules/Controls/ReturnToTarget";
-import ShareImage from "@/components/molecules/Controls/ShareImage";
-import Download from "@/components/molecules/Controls/Download";
 import Zoom from "@/components/molecules/Controls/Zoom";
 import Orientation from "@/components/molecules/ExplorerControls/Orientation";
+import Share from "@/components/molecules/ExplorerControls/Share";
+import ToggleGrid from "@/components/molecules/ExplorerControls/ToggleGrid";
+import OpenCurrentView from "@/components/molecules/ExplorerControls/OpenCurrentView";
+import ControlStack from "@/components/molecules/Controls/Stack";
 
 const EmbeddedExplorer: FunctionComponent = () => {
-  const [fov, setFov] = useState<number>();
-
   return (
-    <AladinOverlay>
-      <ControlsContainer>
-        <ReturnToTarget />
-        <ShareImage />
-        <Download />
+    <AladinOverlay space="var(--size-spacing-xs) var(--size-spacing-s) var(--size-spacing-xs) var(--size-spacing-xs)">
+      <ControlStack position="bottom left">
+        <OpenCurrentView />
+        <Share />
+      </ControlStack>
+      <ControlStack position="middle right">
         <Zoom />
-      </ControlsContainer>
-      <div className={styles.orientation}>
+      </ControlStack>
+      <ControlStack
+        position="top right"
+        centered
+        className={styles.viewControls}
+      >
         <Orientation />
-      </div>
-      <FOVSize className={styles.fovSize} {...{ fov }} />
-      {/* <FOVScale className={styles.fovSize} {...{ fov }} /> */}
+        <ToggleGrid />
+      </ControlStack>
     </AladinOverlay>
   );
 };

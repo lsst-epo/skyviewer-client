@@ -1,28 +1,3 @@
-.controlsSubmenu {
-  position: absolute;
-  z-index: var(--elevation-element-controls);
-}
-
 .viewControls {
-  composes: controlsSubmenu;
-  top: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--size-spacing-2xs);
-  list-style: none;
-
-  > li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: var(--size-spacing-l);
-  }
-}
-
-.zoomContainer {
-  composes: controlsSubmenu;
-  top: calc(50% - 50px);
-  right: 0;
+  width: var(--size-spacing-l);
 }

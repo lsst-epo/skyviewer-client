@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { IoIosGlobe } from "react-icons/io";
-import defaultAladinOptions from "@/fixtures/defaultAladinOptions";
 import Filters from "./Filters";
 import Share from "./Share";
 import Pan from "./Pan";
@@ -12,21 +11,14 @@ import AladinOverlay from "@/components/primitives/AladinOverlay";
 import styles from "./styles.module.css";
 import Orientation from "./Orientation";
 import IconComposer from "@/components/svg/IconComposer";
+import ToggleGrid from "./ToggleGrid";
+import ControlStack from "../Controls/Stack";
 
 export default function Controls() {
   const { aladin } = useAladin();
-  const [gridEnabled, setGridEnabled] = useState<boolean>(
-    !!defaultAladinOptions?.showFrame
-  );
+
   const [markersEnabled, setMarkersEnabled] = useState<boolean>(true);
   const [landmarksEnabled, setLandmarksEnabled] = useState<boolean>(true);
-
-  const handleGridToggle = () => {
-    if (aladin) {
-      aladin.setCooGrid({ enabled: !gridEnabled });
-      setGridEnabled((gridEnabled) => !gridEnabled);
-    }
-  };
 
   const handleMarkerToggle = () => {
     if (aladin) {
@@ -60,56 +52,33 @@ export default function Controls() {
       className="controls"
       space="var(--size-spacing-xs) var(--size-spacing-s) var(--size-spacing-xs) var(--size-spacing-xs)"
     >
-      <div className={styles.zoomContainer}>
+      <ControlStack position="middle right">
         <Zoom />
-      </div>
+      </ControlStack>
       <Pan />
-      <ul
-        role="menu"
-        aria-label="Wayfinding"
-        className="wayfinding controls-submenu"
-      >
-        <li role="menuitem">
-          <IconToggle
-            icon={<IconComposer icon="Pin" />}
-            isChecked={landmarksEnabled}
-            onToggleCallback={handleLandmarksToggle}
-          />
-        </li>
-      </ul>
-      <Share />
-      <ul
-        role="menu"
-        aria-label="Toggle overlays"
-        className={styles.viewControls}
-      >
-        <li role="menuitem">
-          <Orientation />
-        </li>
-        <li role="menuitem">
-          <IconToggle
-            icon={<IoIosGlobe />}
-            isChecked={markersEnabled}
-            onToggleCallback={handleMarkerToggle}
-          />
-        </li>
-        <li role="menuitem">
-          <IconToggle
-            icon={<IconComposer icon="Grid" />}
-            isChecked={gridEnabled}
-            onToggleCallback={handleGridToggle}
-          />
-        </li>
-      </ul>
-      <ul
-        role="menu"
-        aria-label="Search and Filter"
-        className="find controls-submenu"
-      >
-        <li role="menuitem">
-          <Filters />
-        </li>
-      </ul>
+
+      <ControlStack position="middle left">
+        <IconToggle
+          icon={<IconComposer icon="Pin" />}
+          isChecked={landmarksEnabled}
+          onToggleCallback={handleLandmarksToggle}
+        />
+      </ControlStack>
+      <ControlStack position="bottom left">
+        <Share />
+      </ControlStack>
+      <ControlStack className={styles.viewControls} position="top right">
+        <Orientation />
+        <IconToggle
+          icon={<IoIosGlobe />}
+          isChecked={markersEnabled}
+          onToggleCallback={handleMarkerToggle}
+        />
+        <ToggleGrid />
+      </ControlStack>
+      <ControlStack position="top left">
+        <Filters />
+      </ControlStack>
     </AladinOverlay>
   );
 }
