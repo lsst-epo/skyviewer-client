@@ -1,29 +1,8 @@
-::view-transition-old(var(--view-transition-name)) {
-  animation: slide-out 0.5s cubic-bezier(0.86, 0, 0.07, 1) forwards;
-}
-
-::view-transition-new(var(--view-transition-name)) {
-  animation: slide-in 0.5s cubic-bezier(0.86, 0, 0.07, 1) forwards;
-}
-
-@keyframes slide-out {
-  0% {
-    transform: translateX(0%);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateX(calc(50% * var(--direction, -1)));
-  }
-}
-
-@keyframes slide-in {
-  0% {
-    opacity: 0;
-    transform: translateX(calc(-50% * var(--direction, -1)));
-  }
-
-  100% {
-    transform: translateX(0%);
+/*
+Blur animation for view transitions with tracked elements. Fast-moving solid elements can be visually jarring as the eye tries to track them. This creates a poor man's motion blur we can use to make these transitions smoother.
+*/
+@keyframes via-blur {
+  30% {
+    filter: blur(2px);
   }
 }
