@@ -25,6 +25,7 @@ const IconButton: FunctionComponent<IconButtonProps> = forwardRef(
       <button
         ref={ref}
         className={classNames(styles.iconButton, className)}
+        title={text}
         {...props}
       >
         <span className="visually-hidden">{text}</span>

@@ -249,6 +249,15 @@ interface AladinView {
   minFoV: number;
   maxFoV: number;
   catalogs: Array<AladinCatalog>;
+  gridCfg: {
+    color: Record<"r" | "g" | "b", number>;
+    enabled: boolean;
+    fmt: string;
+    labelSize: number;
+    opacity: number;
+    showLabels: boolean;
+    thickness: number;
+  };
 }
 
 interface GetViewData {
