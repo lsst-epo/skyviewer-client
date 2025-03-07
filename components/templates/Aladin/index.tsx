@@ -13,7 +13,7 @@ const AladinTemplate: FunctionComponent<
   return (
     <main
       className={styles.viewLayout}
-      style={{ ...(embedded && { "--main-header-height": "0px" }) }}
+      style={{ ...(embedded && { "--size-height-menu": "0px" }) }}
     >
       <div className={styles.aladinViewer}>
         <Aladin {...props}>{children}</Aladin>

@@ -8,6 +8,7 @@ interface IconToggleProps {
   label?: string;
   className?: string;
   onToggleCallback: ChangeEventHandler<HTMLInputElement>;
+  disabled?: boolean;
 }
 
 const IconToggle: FunctionComponent<IconToggleProps> = ({
@@ -16,6 +17,7 @@ const IconToggle: FunctionComponent<IconToggleProps> = ({
   label,
   onToggleCallback,
   className,
+  disabled,
 }) => {
   return (
     <label
@@ -29,6 +31,7 @@ const IconToggle: FunctionComponent<IconToggleProps> = ({
         type="checkbox"
         checked={isChecked}
         onChange={onToggleCallback}
+        disabled={disabled}
       />
     </label>
   );

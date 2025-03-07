@@ -6,13 +6,8 @@ import { useAladin } from "@/contexts/Aladin";
 import { useKeyDownEvent } from "@/hooks/listeners";
 import IconButton from "@/components/primitives/IconButton";
 import { useTranslation } from "react-i18next";
-import ControlsContainer from "../Container";
 
-interface ZoomProps {
-  className?: string;
-}
-
-const Zoom: FunctionComponent<ZoomProps> = ({ className }) => {
+const Zoom: FunctionComponent = () => {
   const { t } = useTranslation();
   const { aladin, hasFocus, isLoading } = useAladin();
 
@@ -41,7 +36,7 @@ const Zoom: FunctionComponent<ZoomProps> = ({ className }) => {
   useKeyDownEvent(handleKeyDown);
 
   return (
-    <ControlsContainer {...{ className }}>
+    <>
       <IconButton
         text={t("controls.zoom_in")}
         icon={<IoIosAdd />}
@@ -54,7 +49,7 @@ const Zoom: FunctionComponent<ZoomProps> = ({ className }) => {
         onClick={handleZoomOut}
         disabled={isLoading}
       />
-    </ControlsContainer>
+    </>
   );
 };
 
