@@ -7,6 +7,30 @@ const complexity = z.coerce.number();
 const duration = z.coerce.number();
 const thumbnail = z.array(MinimalAssetSchema).transform((output) => output[0]);
 const textBlock = z.object({ id: z.string(), text: z.string() });
+const audio = z
+  .object({
+    metadata: z.object({
+      DurationTime: z.coerce.number(),
+      FileTypeExtension: z.string(),
+    }),
+    additional: z.object({
+      TitleEN: z.string().nullable(),
+      TitleES: z.string().nullable(),
+    }),
+    url: z.object({
+      directUrlOriginal: z.string().url(),
+    }),
+  })
+  .transform(({ metadata, url, additional }) => {
+    return {
+      additional,
+      duration: metadata.DurationTime,
+      format: metadata.FileTypeExtension,
+      src: url.directUrlOriginal,
+    };
+  });
+
+export type TourAudio = z.infer<typeof audio>;
 
 export const TourCard = z.object({
   id: z.string(),
@@ -82,4 +106,8 @@ export const Poi = z.object({
     .nullable()
     .default(2)
     .transform((arg) => arg ?? 2),
+  audio: z
+    .array(audio)
+    .transform((output) => output[0])
+    .optional(),
 });
