@@ -9,13 +9,19 @@ import {
   useState,
 } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useAudioPlayerContext } from "react-use-audio-player";
 import { getTourPois } from "@/services/api/tours";
 import { useAladin } from "./Aladin";
 import { isAtLocation } from "@/lib/aladin/helpers";
-import { pan, panAndZoom } from "@/lib/aladin/animation";
+import { adjustPositionForScreen, panAndZoom } from "@/lib/aladin/animation";
 
 type PoiSteps = NonNullable<Awaited<ReturnType<typeof getTourPois>>>;
 type PoiStep = PoiSteps[number];
+
+interface Transition {
+  between: [number | null, number];
+  aladin: AladinInstance;
+}
 
 interface TourContextValue {
   isPending: boolean;
@@ -34,53 +40,7 @@ interface TourProviderProps {
   pois: PoiSteps;
 }
 
-const isNarrowScreen = () => window.matchMedia("(width < 1130px)").matches;
-
-const adjustPositionForScreen = ({ aladin }: { aladin: AladinInstance }) => {
-  if (isNarrowScreen()) {
-    const duration =
-      parseFloat(
-        window
-          .getComputedStyle(document.body)
-          .getPropertyValue("--time-transition-slow")
-      ) || 0.4;
-
-    const start = aladin.getRaDec();
-    const [width, height] = aladin.getSize();
-    const centerX = width / 2;
-    const centerY = height * 0.75;
-
-    const end = aladin.pix2world(centerX, centerY);
-
-    pan({
-      start: { ra: start[0], dec: start[1] },
-      end: { ra: end[0], dec: end[1] },
-      duration,
-      aladin,
-    });
-  }
-};
-
-const nextAnimation = ({
-  currentPoi,
-  nextPoi,
-  pois,
-}: {
-  currentPoi: number;
-  nextPoi: number;
-  pois: PoiSteps;
-}) => {
-  const direction = nextPoi < currentPoi ? "backward" : "forward";
-  const animationIndex = direction === "forward" ? nextPoi - 2 : nextPoi - 1;
-  const { zoomOutTime, zoomInTime, panTime, zoomOutFov } = pois[animationIndex];
-
-  return {
-    zoomInTime: direction === "backward" ? zoomOutTime : zoomInTime,
-    zoomOutFov,
-    zoomOutTime: direction === "backward" ? zoomInTime : zoomOutTime,
-    panTime,
-  };
-};
+interface UseTourProps {}
 
 export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
   pois,
@@ -93,107 +53,143 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
   const poi = poiParam ? parseInt(poiParam) : undefined;
   const limit = pois.length;
 
-  const [currentPoi, setCurrentPoi] = useState<number | null>(null);
+  const [currentPoi, setCurrentPoi] = useState<number | null>(poi || null);
   const [isPending, setPending] = useState(false);
-
-  useEffect(() => {
-    if (typeof poi !== "undefined" && currentPoi === null && !isLoading) {
-      setCurrentPoi(poi);
-      setPending(false);
-      adjustPositionForScreen({ aladin });
-    }
-  }, [poi]);
+  const { load, stop } = useAudioPlayerContext();
 
   const onLoaded = useCallback<
     NonNullable<AdditionalAladinCallbacks["onLoaded"]>
   >(({ aladin }) => {
     if (poi) {
-      endTransition({ poi, aladin });
+      startTransition({ between: [null, poi], aladin });
     }
   }, []);
 
-  const { isLoading, aladin } = useAladin({
-    callbacks: { onLoaded },
-  });
+  const { isLoading, aladin } = useAladin({ callbacks: { onLoaded } });
 
-  const endTransition = ({
-    poi: nextPoi,
-    aladin,
+  // update state when search param changes
+  useEffect(() => {
+    if (typeof poi !== "undefined" && !isLoading && poi !== currentPoi) {
+      startTransition({ between: [currentPoi, poi], aladin });
+    }
+  }, [poi, isLoading]);
+
+  const queueAudio = ({
+    audio,
   }: {
-    poi: number;
-    aladin: AladinInstance;
+    audio?: { src: string; format: string };
   }) => {
-    if (searchParams.get("poi") !== nextPoi.toString()) {
+    if (audio) {
+      stop();
+
+      const { src, format } = audio;
+      load(src, {
+        loop: false,
+        format,
+      });
+    }
+  };
+
+  const doAnimatedTransition = ({
+    between: [from, to],
+    aladin,
+    onComplete,
+  }: {
+    between: [number, number];
+    aladin: AladinInstance;
+    onComplete?: VoidFunction;
+  }) => {
+    const toIndex = to - 1;
+    const {
+      fov,
+      object: { ra, dec },
+    } = pois[toIndex];
+
+    const current = aladin.getRaDec();
+
+    if (!isAtLocation(current, [ra, dec])) {
+      const direction = to < from ? "backward" : "forward";
+      const animationIndex = direction === "forward" ? toIndex - 1 : toIndex;
+      const { zoomOutTime, zoomInTime, panTime, zoomOutFov } =
+        pois[animationIndex];
+
+      panAndZoom({
+        fov: { start: aladin.getFov()[0], middle: zoomOutFov, end: fov },
+        position: {
+          start: { ra: current[0], dec: current[1] },
+          end: { ra, dec },
+        },
+        duration: [zoomOutTime, panTime, zoomInTime],
+        aladin,
+        onComplete,
+      });
+    } else {
+      onComplete && onComplete();
+    }
+  };
+
+  const endTransition = ({ between: [, to], aladin }: Transition) => {
+    if (searchParams.get("poi") !== to.toString()) {
       const params = new URLSearchParams(searchParams);
-      params.set("poi", nextPoi.toString());
+      params.set("poi", to.toString());
       push(`?${params.toString()}`);
     }
 
-    setCurrentPoi(nextPoi);
-    setPending(false);
+    setCurrentPoi(to);
     adjustPositionForScreen({ aladin });
+
+    setPending(false);
   };
 
-  const startTransition = ({ poi }: { poi: number }) => {
-    if (!isLoading) {
+  const startTransition = ({ between: [from, to], aladin }: Transition) => {
+    if (!isPending) {
       setPending(true);
 
-      if (currentPoi) {
-        const targetPoi = pois[poi - 1];
+      if (to > limit) {
+        push("summary");
+        return;
+      }
 
-        const {
-          fov,
-          object: { ra, dec },
-        } = targetPoi;
+      if (to < 1) {
+        push("intro");
+        return;
+      }
 
-        const currentPosition = aladin.getRaDec();
+      if (to === limit) {
+        prefetch("summary");
+      }
 
-        if (currentPoi && !isAtLocation(currentPosition, [ra, dec])) {
-          const { zoomOutTime, zoomOutFov, zoomInTime, panTime } =
-            nextAnimation({
-              currentPoi,
-              nextPoi: poi,
-              pois,
-            });
+      queueAudio({
+        audio: pois[to - 1].audio,
+      });
 
-          panAndZoom({
-            fov: { start: aladin.getFov()[0], middle: zoomOutFov, end: fov },
-            position: {
-              start: { ra: currentPosition[0], dec: currentPosition[1] },
-              end: { ra, dec },
-            },
-            duration: [zoomOutTime, panTime, zoomInTime],
-            aladin,
-            onComplete: () => endTransition({ poi, aladin }),
-          });
-        } else {
-          endTransition({ poi, aladin });
-        }
+      if (from !== null) {
+        doAnimatedTransition({
+          between: [from, to],
+          aladin,
+          onComplete: () => endTransition({ between: [from, to], aladin }),
+        });
       } else {
-        endTransition({ poi, aladin });
+        endTransition({ between: [from, to], aladin });
       }
     }
   };
 
   const nextPoi = () => {
-    if (currentPoi) {
-      if (currentPoi < limit) {
-        startTransition({ poi: currentPoi + 1 });
-
-        if (currentPoi + 1 === limit) {
-          prefetch("summary");
-        }
+    if (!isLoading) {
+      if (currentPoi) {
+        startTransition({ between: [currentPoi, currentPoi + 1], aladin });
       } else {
-        push("summary");
+        startTransition({ between: [null, 1], aladin });
       }
-    } else {
-      startTransition({ poi: 1 });
     }
   };
 
   const previousPoi = () => {
     if (currentPoi && currentPoi > 1) {
-      startTransition({ poi: currentPoi - 1 });
+      if (!isLoading) {
+        startTransition({ between: [currentPoi, currentPoi - 1], aladin });
+      }
     } else {
       push("intro");
     }
@@ -214,7 +210,7 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
   );
 };
 
-export const useTour: (props?: UseAladinProps) => TourContextValue = () => {
+export const useTour: (props?: UseTourProps) => TourContextValue = () => {
   const context = useContext(TourContext);
 
   if (context) {

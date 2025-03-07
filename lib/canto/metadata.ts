@@ -13,3 +13,19 @@ export const assetAlt = (
     ""
   );
 };
+export const assetTitle = (
+  additional: {
+    TitleEN: string | null;
+    TitleES: string | null;
+  },
+  locale = fallbackLng
+): string => {
+  const localeKey = locale.toUpperCase();
+  const defaultLocaleKey = fallbackLng.toUpperCase();
+
+  return (
+    additional[`Title${localeKey}`] ||
+    additional[`Title${defaultLocaleKey}`] ||
+    ""
+  );
+};

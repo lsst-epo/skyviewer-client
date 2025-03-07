@@ -93,7 +93,7 @@ export default function Filters({ context, defaultFilters }) {
                   max={max.value}
                   step={step}
                   value={value}
-                  darkMode
+                  styleAs="dark"
                   onChangeCallback={(value) =>
                     handleCharacteristicFilter(value, charKey)
                   }

@@ -2114,10 +2114,10 @@
     react-slider "^2.0.6"
     styled-components "^6.1.1"
 
-"@rubin-epo/epo-react-lib@^2.6.9":
-  version "2.6.9"
-  resolved "https://registry.yarnpkg.com/@rubin-epo/epo-react-lib/-/epo-react-lib-2.6.9.tgz#45296fdf300ee5652df2907ee586a9a64b05b563"
-  integrity sha512-/1/bqXUiAbZqZPppDvHwT/oS8ghwna5JBNo5Fe9BqyxWXYYTeu0ycoWgI6/sFFyhPWutsT3dNoheak83tsm7yA==
+"@rubin-epo/epo-react-lib@^2.6.10":
+  version "2.6.10"
+  resolved "https://registry.yarnpkg.com/@rubin-epo/epo-react-lib/-/epo-react-lib-2.6.10.tgz#79e566a758a8137e55845927cb01b37943943301"
+  integrity sha512-b+C6ETrGDhSzWbr27okALZ2ZawFiFkTB+5V6humMQ84zqGksyTYQUz0VlyP06vRiIxeinB5ZV2Ly+0FbndRNew==
   dependencies:
     "@castiron/style-mixins" "^1.0.6"
     "@headlessui/react" "2.0.4"
@@ -5213,6 +5213,11 @@ hosted-git-info@^4.0.1:
   dependencies:
     lru-cache "^6.0.0"
 
+howler@^2.2.3:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/howler/-/howler-2.2.4.tgz#bd3df4a4f68a0118a51e4bd84a2bfc2e93e6e5a1"
+  integrity sha512-iARIBPgcQrwtEr+tALF+rapJ8qSc+Set2GJQl7xT1MQzWaVkFebdJhR3alVlSiUf5U7nAANKuj3aWpwerocD5w==
+
 html-encoding-sniffer@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/html-encoding-sniffer/-/html-encoding-sniffer-4.0.0.tgz#696df529a7cfd82446369dc5193e590a3735b448"
@@ -6058,6 +6063,11 @@ lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
   integrity sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==
+
+lodash.debounce@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+  integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
 
 lodash.ismatch@^4.4.0:
   version "4.4.0"
@@ -7546,6 +7556,13 @@ react-slider@^2.0.6:
   dependencies:
     prop-types "^15.8.1"
 
+react-use-audio-player@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/react-use-audio-player/-/react-use-audio-player-4.0.1.tgz#8aa681eda2efa09fd5fb19f18749f550d4827e90"
+  integrity sha512-rLeXZ+BygCqNaX+9A0pxC06Q0g/VT/lKkjuBOduedtujnjQg0Mvc0iYCrBsoQFNMnq1pkGMhEKB+JgWXz8jZIQ==
+  dependencies:
+    howler "^2.2.3"
+
 react@^18.3.1:
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react/-/react-18.3.1.tgz#49ab892009c53933625bd16b2533fc754cab2891"
@@ -8999,6 +9016,13 @@ use-resize-observer@^9.1.0:
   integrity sha512-R25VqO9Wb3asSD4eqtcxk8sJalvIOYBqS8MNZlpDSQ4l4xMQxC/J7Id9HoTqPq8FwULIn0PVW+OAqF2dyYbjow==
   dependencies:
     "@juggle/resize-observer" "^3.3.1"
+
+usehooks-ts@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/usehooks-ts/-/usehooks-ts-3.1.1.tgz#0bb7f38f36f8219ee4509cc5e944ae610fb97656"
+  integrity sha512-I4diPp9Cq6ieSUH2wu+fDAVQO43xwtulo+fKEidHUwZPnYImbtkTjzIJYcDcJqxgmX31GVqNFURodvcgHcW0pA==
+  dependencies:
+    lodash.debounce "^4.0.8"
 
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"

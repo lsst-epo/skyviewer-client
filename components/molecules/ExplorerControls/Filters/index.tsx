@@ -131,7 +131,7 @@ const Filters: FunctionComponent = () => {
                   onChangeCallback={(value: Array<number>) =>
                     handleCharacteristicFilter(value, charKey)
                   }
-                  darkMode
+                  styleAs="dark"
                 />
               );
             })}

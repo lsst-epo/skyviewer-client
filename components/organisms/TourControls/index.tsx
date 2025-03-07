@@ -3,7 +3,6 @@ import { FC } from "react";
 import { useStep } from "@/lib/tutorial";
 import ShareTour from "./Share";
 import TourBack from "./Back";
-import PauseTour from "./Pause";
 import TourNext from "./Next";
 import styles from "./styles.module.css";
 import clsx from "clsx/lite";
@@ -20,7 +19,6 @@ const TourControls: FC<{ className?: string }> = ({ className }) => {
         id={id}
       >
         <TourBack />
-        <PauseTour />
         <TourNext />
       </div>
     </nav>
