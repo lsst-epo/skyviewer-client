@@ -3,6 +3,37 @@ import gsap from "gsap";
 
 type Position = { ra: number; dec: number };
 
+const isNarrowScreen = () => window.matchMedia("(width < 1130px)").matches;
+
+export const adjustPositionForScreen = ({
+  aladin,
+}: {
+  aladin: AladinInstance;
+}) => {
+  if (isNarrowScreen()) {
+    const duration =
+      parseFloat(
+        window
+          .getComputedStyle(document.body)
+          .getPropertyValue("--time-transition-slow")
+      ) || 0.4;
+
+    const start = aladin.getRaDec();
+    const [width, height] = aladin.getSize();
+    const centerX = width / 2;
+    const centerY = height * 0.75;
+
+    const end = aladin.pix2world(centerX, centerY);
+
+    pan({
+      start: { ra: start[0], dec: start[1] },
+      end: { ra: end[0], dec: end[1] },
+      duration,
+      aladin,
+    });
+  }
+};
+
 export const zoom = ({
   start,
   end,

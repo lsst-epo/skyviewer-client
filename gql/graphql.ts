@@ -4685,6 +4685,240 @@ export type AstroObjects_AstroObject_EntryPrevArgs = {
   withStructure: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+export type CantoDam_Asset = AssetInterface & ElementInterface & {
+  __typename?: 'cantoDam_Asset';
+  /** Return a number of related elements for a field. */
+  _count: Maybe<Scalars['Int']['output']>;
+  /** Alternative text for the asset. */
+  alt: Maybe<Scalars['String']['output']>;
+  /** Whether the element is archived. */
+  archived: Maybe<Scalars['Boolean']['output']>;
+  /** The date the element was created. */
+  dateCreated: Maybe<Scalars['DateTime']['output']>;
+  /** The date the asset file was last modified. */
+  dateModified: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated: Maybe<Scalars['DateTime']['output']>;
+  /** Whether the element is enabled. */
+  enabled: Maybe<Scalars['Boolean']['output']>;
+  /** The file extension for the asset file. */
+  extension: Scalars['String']['output'];
+  /** The filename of the asset file. */
+  filename: Scalars['String']['output'];
+  /** The focal point represented as an array with `x` and `y` keys, or null if it’s not an image. */
+  focalPoint: Maybe<Array<Maybe<Scalars['Float']['output']>>>;
+  /** The ID of the folder that the asset belongs to. */
+  folderId: Scalars['Int']['output'];
+  /** Returns the file’s format. */
+  format: Maybe<Scalars['String']['output']>;
+  /** Whether a user-defined focal point is set on the asset. */
+  hasFocalPoint: Scalars['Boolean']['output'];
+  /** The height in pixels or null if it’s not an image. */
+  height: Maybe<Scalars['Int']['output']>;
+  /** The ID of the entity */
+  id: Maybe<Scalars['ID']['output']>;
+  /** An `<img>` tag based on this asset. */
+  img: Maybe<Scalars['String']['output']>;
+  /** The file kind. */
+  kind: Scalars['String']['output'];
+  /** The language of the site element is associated with. */
+  language: Maybe<Scalars['String']['output']>;
+  /** The file’s MIME type, if it can be determined. */
+  mimeType: Maybe<Scalars['String']['output']>;
+  /** Returns the next element relative to this one, from a given set of criteria. */
+  next: Maybe<AssetInterface>;
+  /** The asset’s path in the volume. */
+  path: Scalars['String']['output'];
+  /** Returns the previous element relative to this one, from a given set of criteria. */
+  prev: Maybe<AssetInterface>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore: Maybe<Scalars['Int']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId: Maybe<Scalars['ID']['output']>;
+  /** The file size in bytes. */
+  size: Maybe<Scalars['String']['output']>;
+  /** The element’s slug. */
+  slug: Maybe<Scalars['String']['output']>;
+  /** Returns a `srcset` attribute value based on the given widths or x-descriptors. */
+  srcset: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status: Maybe<Scalars['String']['output']>;
+  /** The element’s title. */
+  title: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed: Maybe<Scalars['Boolean']['output']>;
+  /** The UID of the entity */
+  uid: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri: Maybe<Scalars['String']['output']>;
+  /** The full URL of the asset. This field accepts the same fields as the `transform` directive. */
+  url: Maybe<Scalars['String']['output']>;
+  /** The ID of the volume that the asset belongs to. */
+  volumeId: Maybe<Scalars['Int']['output']>;
+  /** The width in pixels or null if it’s not an image. */
+  width: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type CantoDam_Asset_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+export type CantoDam_AssetFormatArgs = {
+  format: InputMaybe<Scalars['String']['input']>;
+  handle: InputMaybe<Scalars['String']['input']>;
+  height: InputMaybe<Scalars['Int']['input']>;
+  immediately: InputMaybe<Scalars['Boolean']['input']>;
+  interlace: InputMaybe<Scalars['String']['input']>;
+  mode: InputMaybe<Scalars['String']['input']>;
+  position: InputMaybe<Scalars['String']['input']>;
+  quality: InputMaybe<Scalars['Int']['input']>;
+  transform: InputMaybe<Scalars['String']['input']>;
+  width: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type CantoDam_AssetHeightArgs = {
+  format: InputMaybe<Scalars['String']['input']>;
+  handle: InputMaybe<Scalars['String']['input']>;
+  height: InputMaybe<Scalars['Int']['input']>;
+  immediately: InputMaybe<Scalars['Boolean']['input']>;
+  interlace: InputMaybe<Scalars['String']['input']>;
+  mode: InputMaybe<Scalars['String']['input']>;
+  position: InputMaybe<Scalars['String']['input']>;
+  quality: InputMaybe<Scalars['Int']['input']>;
+  transform: InputMaybe<Scalars['String']['input']>;
+  width: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type CantoDam_AssetNextArgs = {
+  altText: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateModified: InputMaybe<Scalars['String']['input']>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filename: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  folderId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasAlt: InputMaybe<Scalars['Boolean']['input']>;
+  height: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeSubfolders: InputMaybe<Scalars['Boolean']['input']>;
+  kind: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  size: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uploader: InputMaybe<Scalars['QueryArgument']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  volume: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  volumeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  width: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withTransforms: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type CantoDam_AssetPrevArgs = {
+  altText: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateModified: InputMaybe<Scalars['String']['input']>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filename: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  folderId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasAlt: InputMaybe<Scalars['Boolean']['input']>;
+  height: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeSubfolders: InputMaybe<Scalars['Boolean']['input']>;
+  kind: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  size: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uploader: InputMaybe<Scalars['QueryArgument']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  volume: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  volumeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  width: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withTransforms: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type CantoDam_AssetSrcsetArgs = {
+  sizes: Array<Scalars['String']['input']>;
+};
+
+
+export type CantoDam_AssetUrlArgs = {
+  format: InputMaybe<Scalars['String']['input']>;
+  handle: InputMaybe<Scalars['String']['input']>;
+  height: InputMaybe<Scalars['Int']['input']>;
+  immediately: InputMaybe<Scalars['Boolean']['input']>;
+  interlace: InputMaybe<Scalars['String']['input']>;
+  mode: InputMaybe<Scalars['String']['input']>;
+  position: InputMaybe<Scalars['String']['input']>;
+  quality: InputMaybe<Scalars['Int']['input']>;
+  transform: InputMaybe<Scalars['String']['input']>;
+  width: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type CantoDam_AssetWidthArgs = {
+  format: InputMaybe<Scalars['String']['input']>;
+  handle: InputMaybe<Scalars['String']['input']>;
+  height: InputMaybe<Scalars['Int']['input']>;
+  immediately: InputMaybe<Scalars['Boolean']['input']>;
+  interlace: InputMaybe<Scalars['String']['input']>;
+  mode: InputMaybe<Scalars['String']['input']>;
+  position: InputMaybe<Scalars['String']['input']>;
+  quality: InputMaybe<Scalars['Int']['input']>;
+  transform: InputMaybe<Scalars['String']['input']>;
+  width: InputMaybe<Scalars['Int']['input']>;
+};
+
 export type CatalogsSectionEntryUnion = Catalogs_Catalog_Entry;
 
 export type Catalogs_Catalog_Entry = ElementInterface & EntryInterface & {
@@ -9611,6 +9845,8 @@ export type TourPois_TourPoi_BlockType = ElementInterface & MatrixBlockInterface
   /** Whether the element is archived. */
   archived: Maybe<Scalars['Boolean']['output']>;
   astroObject: Array<Maybe<EntryInterface>>;
+  /** Canto Dam Asset field */
+  audio: Maybe<Array<Maybe<CantoDamAssetInterface>>>;
   /** The date the element was created. */
   dateCreated: Maybe<Scalars['DateTime']['output']>;
   /** The date the element was last updated. */
@@ -9741,6 +9977,29 @@ export type TourPois_TourPoi_BlockTypeAstroObjectArgs = {
   unique: InputMaybe<Scalars['Boolean']['input']>;
   uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type TourPois_TourPoi_BlockTypeAudioArgs = {
+  except: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  first: InputMaybe<Scalars['Boolean']['input']>;
+  forPage: InputMaybe<ForPageInput>;
+  last: InputMaybe<Scalars['Boolean']['input']>;
+  nth: InputMaybe<Scalars['Int']['input']>;
+  random: InputMaybe<Scalars['Int']['input']>;
+  reverse: InputMaybe<Scalars['Boolean']['input']>;
+  shuffle: InputMaybe<Scalars['Int']['input']>;
+  skip: InputMaybe<Scalars['Int']['input']>;
+  sortBy: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sortByDesc: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  where: InputMaybe<WhereFiltersInput>;
+  whereBetween: InputMaybe<WhereBetweenFiltersInput>;
+  whereContainsIn: InputMaybe<WhereContainsInFilterInput>;
+  whereIn: InputMaybe<WhereInFiltersInput>;
+  whereNotBetween: InputMaybe<WhereNotBetweenFiltersInput>;
+  whereNotIn: InputMaybe<WhereNotInFiltersInput>;
+  whereNotNull: InputMaybe<Scalars['String']['input']>;
+  whereNull: InputMaybe<Scalars['String']['input']>;
 };
 
 export type TourTheme_Category = CategoryInterface & ElementInterface & {
@@ -11512,17 +11771,6 @@ export type Tours_Tour_EntryTourPoisArgs = {
   uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type CatalogSurveyDataQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type CatalogSurveyDataQuery = { __typename?: 'Query', catalogs: Array<(
-    { __typename?: 'catalogs_catalog_Entry' }
-    & { ' $fragmentRefs'?: { 'CatalogFragment': CatalogFragment } }
-  ) | null> | null, surveys: Array<(
-    { __typename?: 'surveys_surveys_Entry' }
-    & { ' $fragmentRefs'?: { 'SurveyFragment': SurveyFragment } }
-  ) | null> | null };
-
 export type EmbeddedPageQueryVariables = Exact<{
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
 }>;
@@ -11543,7 +11791,7 @@ export type ExplorerPageQuery = { __typename?: 'Query', catalogs: Array<(
       & { ' $fragmentRefs'?: { 'SurveyFragment': SurveyFragment } }
     ) | { __typename?: 'tours_tour_Entry' } | null> } | null> | null };
 
-export type CatalogFragment = { __typename?: 'catalogs_catalog_Entry', id: string | null, title: string | null, path: string | null, icon: Array<{ __typename?: 'astroImages_Asset' } | { __typename?: 'icons_Asset', url: string | null } | { __typename?: 'tourImages_Asset' } | null> } & { ' $fragmentName'?: 'CatalogFragment' };
+export type CatalogFragment = { __typename?: 'catalogs_catalog_Entry', id: string | null, title: string | null, path: string | null, icon: Array<{ __typename?: 'astroImages_Asset' } | { __typename?: 'cantoDam_Asset' } | { __typename?: 'icons_Asset', url: string | null } | { __typename?: 'tourImages_Asset' } | null> } & { ' $fragmentName'?: 'CatalogFragment' };
 
 export type SurveyFragment = { __typename?: 'surveys_surveys_Entry', title: string | null, path: string | null, target: string | null, fovMin: any | null, fovMax: any | null, fov: any | null, imgFormat: string | null, cooFrame: string | null, maxOrder: any | null, tileSize: string | null } & { ' $fragmentName'?: 'SurveyFragment' };
 
@@ -11605,7 +11853,7 @@ export type TourPoiQueryVariables = Exact<{
 }>;
 
 
-export type TourPoiQuery = { __typename?: 'Query', toursEntries: Array<{ __typename?: 'tours_tour_Entry', tourPois: Array<{ __typename?: 'tourPois_tourPoi_BlockType', id: string | null, description: string | null, fov: any | null, zoomOutTime: any | null, zoomOutFov: any | null, panTime: any | null, zoomInTime: any | null, object: Array<{ __typename?: 'astroObjects_astroObject_Entry', title: string | null, ra: any | null, dec: any | null, characteristics: string | null, id: string | null } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embed_embed_Entry' } | { __typename?: 'explorer_explorer_Entry' } | { __typename?: 'guidedExperiences_guidedExperiences_Entry' } | { __typename?: 'surveys_surveys_Entry' } | { __typename?: 'tours_tour_Entry' } | null> } | null> } | null> | null };
+export type TourPoiQuery = { __typename?: 'Query', toursEntries: Array<{ __typename?: 'tours_tour_Entry', tourPois: Array<{ __typename?: 'tourPois_tourPoi_BlockType', id: string | null, description: string | null, fov: any | null, zoomOutTime: any | null, zoomOutFov: any | null, panTime: any | null, zoomInTime: any | null, object: Array<{ __typename?: 'astroObjects_astroObject_Entry', title: string | null, ra: any | null, dec: any | null, characteristics: string | null, id: string | null } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embed_embed_Entry' } | { __typename?: 'explorer_explorer_Entry' } | { __typename?: 'guidedExperiences_guidedExperiences_Entry' } | { __typename?: 'surveys_surveys_Entry' } | { __typename?: 'tours_tour_Entry' } | null>, audio: Array<never | null> | null } | null> } | null> | null };
 
 export type ToursPathsQueryVariables = Exact<{
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
@@ -11616,7 +11864,6 @@ export type ToursPathsQuery = { __typename?: 'Query', toursEntries: Array<{ __ty
 
 export const CatalogFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Catalog"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"catalogs_catalog_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"icons_Asset"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]} as unknown as DocumentNode<CatalogFragment, unknown>;
 export const SurveyFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}}]} as unknown as DocumentNode<SurveyFragment, unknown>;
-export const CatalogSurveyDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"CatalogSurveyData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"catalogs"},"name":{"kind":"Name","value":"catalogsEntries"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Catalog"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"surveys"},"name":{"kind":"Name","value":"surveysEntries"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Catalog"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"catalogs_catalog_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"icons_Asset"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}}]} as unknown as DocumentNode<CatalogSurveyDataQuery, CatalogSurveyDataQueryVariables>;
 export const EmbeddedPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"EmbeddedPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"embedEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"embed_embed_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<EmbeddedPageQuery, EmbeddedPageQueryVariables>;
 export const ExplorerPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ExplorerPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"catalogs"},"name":{"kind":"Name","value":"catalogsEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Catalog"}}]}},{"kind":"Field","name":{"kind":"Name","value":"explorerEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"explorer_explorer_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Catalog"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"catalogs_catalog_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"icons_Asset"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}}]} as unknown as DocumentNode<ExplorerPageQuery, ExplorerPageQueryVariables>;
 export const GuidedExperiencesPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GuidedExperiencesPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"guidedExperiencesEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"guidedExperiences_guidedExperiences_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"guidedExperiences"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"guidedExperiences_experience_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"experienceCategory"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"Field","name":{"kind":"Name","value":"previewImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GuidedExperiencesPageQuery, GuidedExperiencesPageQueryVariables>;
@@ -11626,5 +11873,5 @@ export const AllToursDocument = {"kind":"Document","definitions":[{"kind":"Opera
 export const TourMetadataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TourMetadata"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}},{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"complexity"}},{"kind":"Field","name":{"kind":"Name","value":"duration"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"backgroundImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<TourMetadataQuery, TourMetadataQueryVariables>;
 export const TourDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Tour"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}},{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"introHeading"}},{"kind":"Field","name":{"kind":"Name","value":"introSubheading"}},{"kind":"Field","name":{"kind":"Name","value":"introContentBlocks"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"introContentBlocks_introBlock_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","alias":{"kind":"Name","value":"text"},"name":{"kind":"Name","value":"body"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"factsHeading"}},{"kind":"Field","name":{"kind":"Name","value":"factsContentBlocks"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"factsContentBlocks_factsContentBlock_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","alias":{"kind":"Name","value":"text"},"name":{"kind":"Name","value":"body"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<TourQuery, TourQueryVariables>;
 export const TourInitialDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TourInitial"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"offset"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}},{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"tourPois"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"1"}},{"kind":"Argument","name":{"kind":"Name","value":"offset"},"value":{"kind":"Variable","name":{"kind":"Name","value":"offset"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tourPois_tourPoi_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"astroObject"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"astroObjects_astroObject_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<TourInitialQuery, TourInitialQueryVariables>;
-export const TourPoiDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TourPoi"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}},{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tourPois"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tourPois_tourPoi_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","alias":{"kind":"Name","value":"object"},"name":{"kind":"Name","value":"astroObject"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"astroObjects_astroObject_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","alias":{"kind":"Name","value":"id"},"name":{"kind":"Name","value":"astroObjectId"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"characteristics"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"zoomOutTime"}},{"kind":"Field","name":{"kind":"Name","value":"zoomOutFov"}},{"kind":"Field","name":{"kind":"Name","value":"panTime"}},{"kind":"Field","name":{"kind":"Name","value":"zoomInTime"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<TourPoiQuery, TourPoiQueryVariables>;
+export const TourPoiDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TourPoi"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}},{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tourPois"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tourPois_tourPoi_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","alias":{"kind":"Name","value":"object"},"name":{"kind":"Name","value":"astroObject"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"astroObjects_astroObject_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","alias":{"kind":"Name","value":"id"},"name":{"kind":"Name","value":"astroObjectId"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"characteristics"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"audio"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"key"},"value":{"kind":"StringValue","value":"scheme","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"value"},"value":{"kind":"StringValue","value":"audio","block":false}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"DurationTime"}},{"kind":"Field","name":{"kind":"Name","value":"FileTypeExtension"}}]}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"TitleEN"}},{"kind":"Field","name":{"kind":"Name","value":"TitleES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"zoomOutTime"}},{"kind":"Field","name":{"kind":"Name","value":"zoomOutFov"}},{"kind":"Field","name":{"kind":"Name","value":"panTime"}},{"kind":"Field","name":{"kind":"Name","value":"zoomInTime"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<TourPoiQuery, TourPoiQueryVariables>;
 export const ToursPathsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ToursPaths"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]}}]} as unknown as DocumentNode<ToursPathsQuery, ToursPathsQueryVariables>;

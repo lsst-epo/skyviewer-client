@@ -1,5 +1,6 @@
 .card {
   position: relative;
+  justify-content: center;
 
   &:has(a:hover) {
     --color-border-image: #ffffff;

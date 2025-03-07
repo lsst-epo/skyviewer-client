@@ -1,11 +1,16 @@
 .iconButton {
+  --color-background-button: #313333;
+  --color-background-button-hover: var(--color-rubin-teal-300);
+  --color-text-button: var(--color-font-invert);
+  --color-outline-button: currentColor;
+
   aspect-ratio: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: #313333;
-  color: var(--color-font-invert);
+  background-color: var(--color-background-button);
+  color: var(--color-text-button);
   cursor: pointer;
   width: var(--size-spacing-l);
   height: var(--size-spacing-l);
@@ -21,11 +26,11 @@
     cursor: not-allowed;
   }
 
-  &:not(:disabled):hover {
-    background-color: var(--color-rubin-teal-300);
-  }
-
+  &:not(:disabled):hover,
   &:not(:disabled):focus-visible {
-    outline: 2px solid var(--color-font-invert);
+    outline: 2px;
+    outline-color: var(--color-outline-button);
+    outline-style: solid;
+    background-color: var(--color-background-button-hover);
   }
 }

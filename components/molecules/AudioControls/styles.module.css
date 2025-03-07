@@ -1,0 +1,52 @@
+.player {
+  border: 1px solid var(--color-rubin-gray-100);
+  border-radius: var(--size-spacing-xs);
+  padding: var(--size-spacing-xs) var(--size-spacing-2xs);
+  font-size: var(--size-font-14-14);
+}
+
+.footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.controls {
+  display: flex;
+  gap: var(--size-spacing-2xs);
+}
+
+.audioControl {
+  --color-background-button: #e6e6e6;
+  --color-text-button: var(--color-font-primary);
+  --color-background-button-hover: var(--color-background-button);
+  --color-outline-button: var(--color-font-invert);
+
+  aspect-ratio: 1;
+  outline-offset: 1px;
+
+  &:not(:disabled):hover,
+  &:not(:disabled):focus-visible {
+    outline-style: solid;
+  }
+}
+
+.play {
+  position: relative;
+  left: 1px;
+}
+
+.reset {
+  position: relative;
+  bottom: 2px;
+}
+
+.duration {
+  font-variant-numeric: tabular-nums;
+  font-weight: 300;
+  font-size: 0.85em;
+}
+
+.seek {
+  margin-block-start: var(--size-spacing-s);
+}
