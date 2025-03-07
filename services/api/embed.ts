@@ -13,14 +13,7 @@ export const getEmbedPage = async (
       embedEntries(site: $site) {
         ... on embed_embed_Entry {
           survey {
-            ... on surveys_surveys_Entry {
-              title
-              fov
-              fovMax
-              fovMin
-              path
-              imgFormat
-            }
+            ...Survey
           }
         }
       }

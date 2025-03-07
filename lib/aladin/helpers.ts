@@ -63,3 +63,12 @@ export const isAtLocation = (
       secondLocation[1].toPrecision(precision)
   );
 };
+
+export const currentViewAsParams = (aladin: AladinInstance) => {
+  const fov = aladin.getFov()[0].toFixed(2);
+  const target = aladin.getRaDec().join(" ");
+
+  const params = new URLSearchParams({ fov, target });
+
+  return params;
+};
