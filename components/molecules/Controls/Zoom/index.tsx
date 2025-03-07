@@ -25,18 +25,20 @@ const Zoom: FunctionComponent<ZoomProps> = ({ className }) => {
   };
 
   function handleKeyDown(event) {
-    const { key } = event;
+    if (hasFocus) {
+      const { key } = event;
 
-    if (key !== "+" && key !== "=" && key !== "-" && key !== "_") return;
+      if (key !== "+" && key !== "=" && key !== "-" && key !== "_") return;
 
-    if (key === "+" || key === "=") {
-      handleZoomIn();
-    } else if (key === "-" || key === "_") {
-      handleZoomOut();
+      if (key === "+" || key === "=") {
+        handleZoomIn();
+      } else if (key === "-" || key === "_") {
+        handleZoomOut();
+      }
     }
   }
 
-  useKeyDownEvent(hasFocus ? handleKeyDown : null);
+  useKeyDownEvent(handleKeyDown);
 
   return (
     <ControlsContainer {...{ className }}>

@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { FunctionComponent } from "react";
 import { notFound } from "next/navigation";
+import { AudioPlayerProvider } from "@/contexts/AudioPlayer";
 import TourPage from "@/components/pages/Tour";
 import { getTourInitial, getTourPois } from "@/services/api/tours";
 import { TourProvider } from "@/contexts/Tour";
@@ -38,9 +39,11 @@ const Tour: FunctionComponent<WithSearchParams<TourProps>> = async ({
       options={{ ...initial, backgroundColor: "rgb(0,0,0)" }}
     >
       <TourTutorial>
-        <TourProvider {...{ pois }}>
-          <TourPage title={title} />
-        </TourProvider>
+        <AudioPlayerProvider>
+          <TourProvider {...{ pois }}>
+            <TourPage title={title} />
+          </TourProvider>
+        </AudioPlayerProvider>
       </TourTutorial>
     </AladinTemplate>
   );

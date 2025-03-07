@@ -260,6 +260,19 @@ export const getTourPois = async (tour: string) => {
                   characteristics
                 }
               }
+              audio(where: { key: "scheme", value: "audio" }) {
+                metadata {
+                  DurationTime
+                  FileTypeExtension
+                }
+                additional {
+                  TitleEN
+                  TitleES
+                }
+                url {
+                  directUrlOriginal
+                }
+              }
               zoomOutTime
               zoomOutFov
               panTime

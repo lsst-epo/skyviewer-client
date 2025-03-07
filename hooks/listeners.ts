@@ -1,17 +1,11 @@
 import { useEffect } from "react";
+import { useEventListener } from "usehooks-ts";
 
-const useEventListener = (event, callback) => {
-  useEffect(() => {
-    window.addEventListener(event, callback);
-    return () => window.removeEventListener(event, callback);
-  }, [event, callback]);
-};
-
-export const useKeyDownEvent = (callback) => {
+export const useKeyDownEvent = (callback: (event: KeyboardEvent) => void) => {
   useEventListener("keydown", callback);
 };
 
-export const useClickEvent = (callback) => {
+export const useClickEvent = (callback: (event: MouseEvent) => void) => {
   useEventListener("click", callback);
 };
 
