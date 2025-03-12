@@ -131,7 +131,7 @@ export const fadeLayer = ({
   from,
   to,
 }: {
-  hips: ImageHiPS;
+  hips: HiPS;
   from: number;
   to: number;
 }) => {

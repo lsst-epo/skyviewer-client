@@ -11,7 +11,7 @@ const ToggleImageLayer: FC = () => {
   const [hide, setHide] = useState(false);
   const searchParams = useSearchParams();
   const isDemo = searchParams.get("demo") === "1";
-  const hips = useRef<ImageHiPS>();
+  const hips = useRef<HiPS>();
   useAladin({
     callbacks: {
       onLoaded: ({ A, aladin }) => {

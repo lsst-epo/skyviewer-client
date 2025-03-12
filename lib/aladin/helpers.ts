@@ -34,10 +34,6 @@ export const bindAladinEvents = (
     const callback = events[eventKey];
     const listenerCallback = camelCase(eventKey.slice(2));
 
-    if (Object.hasOwn(aladin.callbacksByEventName, listenerCallback)) {
-      return;
-    }
-
     if (isAladinCallback(listenerCallback)) {
       aladin.on(listenerCallback, callback);
     }
