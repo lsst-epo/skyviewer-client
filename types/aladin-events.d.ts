@@ -83,7 +83,7 @@ interface AladinCallbackMap {
   objectHoveredStop: AladinGenericCallback;
   footprintClicked: AladinGenericCallback;
   footprintHovered: AladinGenericCallback;
-  positionChanged: AladinGenericCallback;
+  positionChanged: PositionChangedCallback;
   zoomChanged: ZoomChangedCallback;
   click: ClickCallback;
   rightClickMove: AladinGenericCallback;
@@ -91,6 +91,6 @@ interface AladinCallbackMap {
   fullScreenToggled: FullScreenToggledCallback;
   cooFrameChanged: CooFrameChangedCallback;
   resizeChanged: SizeChangedCallback;
-  projectionChanged: PositionChangedCallback;
+  projectionChanged: AladinGenericCallback;
   layerChanged: LayerChangedCallback;
 }

@@ -1,0 +1,30 @@
+.stack {
+  --align-stack: flex-end;
+}
+
+.pixelColor {
+  aspect-ratio: 1;
+  border: 1px solid var(--white);
+  width: var(--size-spacing-2xl);
+  transition: linear 50ms background-color;
+  will-change: background-color;
+}
+
+.radioGroup {
+  display: flex;
+}
+
+.radio {
+  aspect-ratio: 1;
+  width: var(--size-spacing-s);
+  border-radius: 50%;
+}
+
+.reticle {
+  aspect-ratio: 1;
+  border: 1px solid var(--white);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
