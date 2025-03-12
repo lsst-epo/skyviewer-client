@@ -4,7 +4,7 @@ type CooFrame = "equatorial" | "ICRS" | "ICRSd" | "j2000" | "gal" | "galactic";
 type HiPSImageFormat = "jpeg" | "png" | "fits" | "webp";
 type TileSize = 32 | 64 | 128 | 256 | 512;
 
-interface ImageHiPSOptions {
+interface HiPSOptions {
   name?: string;
   successCallback?: () => void;
   errorCallback?: () => void;
@@ -28,17 +28,20 @@ interface ImageHiPSOptions {
   contrast?: number;
 }
 
-interface ImageHiPS {
-  getAvailableFormats: () => Array<string>;
-  isPlanetaryBody: () => boolean;
-  setBlendingConfig: (additive?: boolean) => void;
-  setBrightness: (brightness?: number) => void;
+interface AladinImage {
+  readonly readPixel: (
+    x: number,
+    y: number
+  ) => [number, number, number, number];
+  readonly setBlendingConfig: (additive?: boolean) => void;
+  readonly setBrightness: (brightness?: number) => void;
   readonly setOpacity: (opacity: number) => void;
   readonly getOpacity: () => number;
-  // TODO remaining methods
 }
-
-interface AladinImage {}
+interface HiPS extends AladinImage {
+  getAvailableFormats: () => Array<string>;
+  isPlanetaryBody: () => boolean;
+}
 
 type AladinColorMaps =
   | "cubehelix"
@@ -47,9 +50,7 @@ type AladinColorMaps =
   | "grayscale"
   | "native";
 
-interface AladinImageLayer {
-  // TODO: What are it's properties?
-}
+type AladinImageLayer = HiPS | AladinImage;
 
 // TODO: Fix callback function declaration
 interface AladinCallback {
@@ -245,6 +246,7 @@ interface AladinCatalog {
 }
 
 interface AladinView {
+  imageCanvas: HTMLCanvasElement;
   fov: number;
   minFoV: number;
   maxFoV: number;
@@ -288,14 +290,12 @@ interface AladinInstance {
   readonly setFoVRange: (minFov: number, maxFov: number) => void;
   readonly gotoRaDec: (ra: number, dec: number) => void;
   readonly gotoObject: (target: string, callback?: AladinCallback) => void;
-  readonly setImageSurvey: (
-    urlOrHiPSOrFITS: string | ImageHiPS | AladinImage
-  ) => void;
+  readonly setImageSurvey: (urlOrHiPSOrFITS: string | AladinImageLayer) => void;
   readonly setBaseImageLayer: (
-    urlOrHiPSOrFITS: string | ImageHiPS | AladinImage
+    urlOrHiPSOrFITS: string | AladinImageLayer
   ) => void;
   readonly setOverlayImageLayer: (
-    urlOrHiPSOrFITS: string | ImageHiPS | AladinImage,
+    urlOrHiPSOrFITS: string | AladinImageLayer,
     layer?: string
   ) => void;
   readonly removeImageLayer: (layer?: string) => void;
@@ -359,6 +359,7 @@ interface AladinInstance {
     logo?: boolean;
   }) => Promise<string>;
   readonly getViewData: GetViewData;
+  readonly getViewArrayBuffer: (withLogo?: boolean) => Promise<ArrayBuffer>;
   view: AladinView;
   options: Required<AladinOptions>;
   callbacksByEventName: Partial<AladinCallbackMap>;
@@ -415,8 +416,8 @@ interface Aladin {
     url: string,
     options: AladinCatalogOptions
   ) => AladinCatalog;
-  readonly imageHiPS: (id: string, options?: ImageHiPSOptions) => ImageHiPS;
-  readonly HiPS: (id: string, options?: ImageHiPSOptions) => ImageHiPS;
+  readonly imageHiPS: (id: string, options?: HiPSOptions) => HiPS;
+  readonly HiPS: (id: string, options?: HiPSOptions) => HiPS;
   // TODO Add other catalog methods
   // catalogFromSimbad(<target>, <radius-in-degrees>, <catalog-options>?, <successCallback>?)
   // A.catalogFromVizieR(<vizier-cat-id>, <target>, <radius-in-deg>, <cat-options>?, <successCallback>?)

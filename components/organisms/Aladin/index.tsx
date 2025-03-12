@@ -21,7 +21,7 @@ export interface AladinProps {
   disableInteraction?: boolean;
   hipsConfig: {
     id: string;
-    options: ImageHiPSOptions;
+    options: HiPSOptions;
   };
 }
 

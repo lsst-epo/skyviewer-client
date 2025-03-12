@@ -1,4 +1,4 @@
-export const defaultHiPSOptions: ImageHiPSOptions = {
+export const defaultHiPSOptions: HiPSOptions = {
   cooFrame: "ICRS",
   maxOrder: 11,
 };
