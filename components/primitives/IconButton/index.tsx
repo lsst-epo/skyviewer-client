@@ -20,7 +20,10 @@ interface IconButtonProps
 }
 
 const IconButton: FunctionComponent<IconButtonProps> = forwardRef(
-  ({ className, children, icon, size, text, ...props }, ref) => {
+  (
+    { className, children, icon, size, text, ...props }: IconButtonProps,
+    ref
+  ) => {
     return (
       <button
         ref={ref}
