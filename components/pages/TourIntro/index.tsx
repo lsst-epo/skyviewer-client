@@ -1,7 +1,7 @@
 "use client";
 import { FC } from "react";
 import { IoArrowBackSharp, IoArrowForwardSharp } from "react-icons/io5";
-import { Link, useTransitionRouter } from "next-view-transitions";
+import { useTransitionRouter } from "next-view-transitions";
 import { useSearchParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import Button from "@rubin-epo/epo-react-lib/Button";

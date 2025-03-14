@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import classnames from "clsx";
 import Button from "@/components/primitives/Button";

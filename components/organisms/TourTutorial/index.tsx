@@ -1,7 +1,7 @@
 "use client";
 import { FC, PropsWithChildren } from "react";
 import { useTranslation } from "react-i18next";
-import { NextStep, NextStepProvider, Tour } from "nextstepjs";
+import { NextStep, NextStepProvider, type Tour } from "nextstepjs";
 import { completeTutorial, steps, tourTutorialTitle } from "@/lib/tutorial";
 import TutorialCard from "../TutorialCard";
 import styles from "./styles.module.css";
