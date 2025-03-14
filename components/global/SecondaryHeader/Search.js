@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import PropTypes from "prop-types";
 import Modal from "@/components/primitives/Modal";
 import TextInput from "@/components/primitives/TextInput";

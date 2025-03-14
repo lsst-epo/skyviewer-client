@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { svgInternalShape } from "@/components/shapes/svg";
 import defaultProps from "./defaultProps";
 

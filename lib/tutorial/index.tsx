@@ -1,5 +1,5 @@
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
-import { Step, useNextStep } from "nextstepjs";
+import { type Step, useNextStep } from "nextstepjs";
 
 export const tourTutorialTitle = "tourTutorial";
 
