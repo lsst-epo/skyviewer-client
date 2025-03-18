@@ -60,11 +60,21 @@ export const isAtLocation = (
   );
 };
 
-export const currentViewAsParams = (aladin: AladinInstance) => {
-  const fov = aladin.getFov()[0].toFixed(2);
-  const target = aladin.getRaDec().join(" ");
-
-  const params = new URLSearchParams({ fov, target });
+export const viewAsParams = ({
+  fov,
+  target,
+}: {
+  fov: number;
+  target: [number, number];
+}) => {
+  const params = new URLSearchParams({
+    fov: fov.toFixed(2),
+    target: target.map((p) => p.toFixed(5)).join(" "),
+  });
 
   return params;
+};
+
+export const currentViewAsParams = (aladin: AladinInstance) => {
+  return viewAsParams({ fov: aladin.getFov()[0], target: aladin.getRaDec() });
 };

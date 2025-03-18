@@ -1,0 +1,57 @@
+.dialog {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.anchor {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  position: absolute;
+  width: var(--size-spacing-xs);
+  transform: translate(-50%, -50%);
+}
+
+.panel {
+  background-color: var(--color-background-tile-light);
+  border-radius: var(--size-spacing-3xs);
+  color: var(--color-font-primary);
+  display: flex;
+  align-items: stretch;
+  position: absolute;
+  overflow: hidden;
+}
+
+.copy {
+  --color-background-button: transparent;
+  --color-background-button-hover: var(--color-rubin-gray-100);
+  --color-outline-button: transparent;
+
+  color: var(--color-font-primary);
+  aspect-ratio: unset;
+  border-radius: 0;
+  height: auto;
+
+  & > svg {
+    width: 1em;
+    height: 1em;
+  }
+}
+
+.line {
+  position: absolute;
+}
+
+.text {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.75em;
+  padding: var(--size-spacing-3xs) var(--size-spacing-3xs)
+    var(--size-spacing-3xs) var(--size-spacing-2xs);
+  white-space: nowrap;
+  text-align: right;
+}
