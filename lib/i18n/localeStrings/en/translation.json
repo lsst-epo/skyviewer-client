@@ -67,6 +67,7 @@
   "controls": {
     "close_explorer": "Close the explorer",
     "save_image": "Save this image",
+    "get_a_link": "Get a link",
     "zoom_in": "Zoom in",
     "zoom_out": "Zoom out",
     "open_in_new_tab": "Open in the Skyviewer",
