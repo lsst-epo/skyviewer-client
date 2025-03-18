@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "@babel/runtime": "7.11.2",
+    "@floating-ui/react-dom": "^2.1.2",
     "@headlessui/react": "2.0.4",
     "@rubin-epo/epo-react-lib": "^2.7.0",
     "@rubin-epo/epo-widget-lib": "^1.1.1",

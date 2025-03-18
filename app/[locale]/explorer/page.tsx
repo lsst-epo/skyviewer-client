@@ -7,6 +7,7 @@ import { Catalog } from "@/services/api/catalogs/schema";
 import { notFound } from "next/navigation";
 import { initialPosition } from "@/lib/helpers";
 import { getExplorerPage } from "@/services/api/explorer";
+import CurrentPositionPopover from "@/components/organisms/CurrentPositionPopover";
 
 const ExplorerPage: FC<WithSearchParams<RootProps>> = async ({
   params: { locale },
@@ -61,6 +62,7 @@ const ExplorerPage: FC<WithSearchParams<RootProps>> = async ({
     >
       <Controls />
       <Catalogs catalogs={sortedCats} />
+      <CurrentPositionPopover />
     </AladinTemplate>
   );
 };
