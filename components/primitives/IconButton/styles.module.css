@@ -1,9 +1,4 @@
 .iconButton {
-  --color-background-button: #313333;
-  --color-background-button-hover: var(--color-rubin-teal-300);
-  --color-text-button: var(--color-font-invert);
-  --color-outline-button: currentColor;
-
   aspect-ratio: 1;
   display: flex;
   align-items: center;
@@ -13,9 +8,23 @@
   color: var(--color-text-button);
   cursor: pointer;
   width: var(--size-spacing-l);
-  height: var(--size-spacing-l);
   transition: background-color 0.4s;
+  outline-offset: 1px;
   pointer-events: initial;
+
+  &[data-style-as="primary"] {
+    --color-background-button: #313333;
+    --color-background-button-hover: var(--color-rubin-teal-300);
+    --color-text-button: var(--color-font-invert);
+    --color-outline-button: currentColor;
+  }
+
+  &[data-style-as="secondary"] {
+    --color-background-button: #e6e6e6;
+    --color-text-button: var(--color-font-primary);
+    --color-background-button-hover: var(--color-background-button);
+    --color-outline-button: var(--color-font-invert);
+  }
 
   > svg {
     width: 1.5em;
