@@ -4,6 +4,7 @@ import { useAudioPlayerContext } from "react-use-audio-player";
 import HorizontalSlider from "@rubin-epo/epo-react-lib/HorizontalSlider";
 import formatDuration from "@/lib/duration";
 import { useKeyDownEvent } from "@/hooks/listeners";
+import { roundToStep } from "@/lib/utilities";
 
 interface SeekBarProps {
   className?: string;
@@ -26,6 +27,7 @@ const SeekBar: FC<SeekBarProps> = ({ className, defaultDuration = 0 }) => {
   const frameRef = useRef<number>();
 
   const durationToUse = duration > 0 ? duration : defaultDuration;
+  const step = 0.25;
 
   const togglePlay = useCallback(
     (event: KeyboardEvent) => {
@@ -41,7 +43,7 @@ const SeekBar: FC<SeekBarProps> = ({ className, defaultDuration = 0 }) => {
 
   useEffect(() => {
     const animate = () => {
-      const value = Math.round((getPosition() / durationToUse) * 100);
+      const value = roundToStep((getPosition() / durationToUse) * 100, step);
       setPos(Math.min(100, value));
       frameRef.current = requestAnimationFrame(animate);
     };
@@ -85,6 +87,7 @@ const SeekBar: FC<SeekBarProps> = ({ className, defaultDuration = 0 }) => {
       styleAs="dark"
       min={0}
       max={100}
+      step={step}
       value={pos}
       renderLabel={({ valueNow }) =>
         formatDuration((valueNow / 100) * durationToUse)

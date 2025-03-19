@@ -5,10 +5,6 @@ export const useKeyDownEvent = (callback: (event: KeyboardEvent) => void) => {
   useEventListener("keydown", callback);
 };
 
-export const useClickEvent = (callback: (event: MouseEvent) => void) => {
-  useEventListener("click", callback);
-};
-
 // Hook
 export const useOnClickOutside = (ref, handler) => {
   useEffect(
