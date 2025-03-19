@@ -69,6 +69,8 @@
     "save_image": "Save this image",
     "zoom_in": "Zoom in",
     "zoom_out": "Zoom out",
-    "open_in_new_tab": "Open in the Skyviewer"
+    "open_in_new_tab": "Open in the Skyviewer",
+    "volume_mute": "Mute audio (m)",
+    "volume_unmute": "Unmute audio (m)"
   }
 }

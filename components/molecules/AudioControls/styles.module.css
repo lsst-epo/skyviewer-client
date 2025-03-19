@@ -5,30 +5,29 @@
   font-size: var(--size-font-14-14);
 }
 
-.footer {
+.durations {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
 }
 
 .controls {
-  display: flex;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--size-spacing-2xs);
 }
 
-.audioControl {
-  --color-background-button: #e6e6e6;
-  --color-text-button: var(--color-font-primary);
-  --color-background-button-hover: var(--color-background-button);
-  --color-outline-button: var(--color-font-invert);
+.playing {
+  display: flex;
+  gap: var(--size-spacing-2xs);
+  grid-column: 2;
+}
 
-  aspect-ratio: 1;
-  outline-offset: 1px;
-
-  &:not(:disabled):hover,
-  &:not(:disabled):focus-visible {
-    outline-style: solid;
-  }
+.volume {
+  width: 100%;
+  grid-column: 3;
 }
 
 .play {
@@ -48,5 +47,7 @@
 }
 
 .seek {
+  --size-padding-slide-block-end: var(--size-spacing-2xs);
+
   margin-block-start: var(--size-spacing-s);
 }
