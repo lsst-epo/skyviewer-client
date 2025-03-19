@@ -1,12 +1,13 @@
 "use client";
 import { FC } from "react";
 import clsx from "clsx";
-import formatDuration from "@/lib/duration";
-import { IoMdPlay, IoMdPause } from "react-icons/io";
-import { useAudioPlayerContext } from "react-use-audio-player";
+import { IoMdPause, IoMdPlay } from "react-icons/io";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
+import formatDuration from "@/lib/duration";
+import { useAudioPlayerContext } from "react-use-audio-player";
 import IconButton from "@/components/primitives/IconButton";
 import SeekBar from "./SeekBar";
+import Volume from "./Volume";
 import styles from "./styles.module.css";
 
 interface AudioControls {
@@ -28,18 +29,21 @@ const AudioPlayer: FC<AudioControls> = ({
     <div className={clsx(styles.player, className)}>
       <div>{title}</div>
       <SeekBar className={styles.seek} {...{ defaultDuration }} />
-      <div className={styles.footer}>
+      <div className={styles.durations}>
         <span className={styles.duration}>{formatDuration(0)}</span>
-        <div className={styles.controls}>
+        <span className={styles.duration}>{formatDuration(durationToUse)}</span>
+      </div>
+      <div className={styles.controls}>
+        <div className={styles.playing}>
           <IconButton
-            className={styles.audioControl}
+            styleAs="secondary"
             text={"Reset"}
             icon={<IconComposer className={styles.reset} icon="RotateLeft" />}
             onClick={stop}
             disabled={!isReady}
           />
           <IconButton
-            className={styles.audioControl}
+            styleAs="secondary"
             text={isPlaying ? "Pause" : "Play"}
             icon={
               isPlaying ? <IoMdPause /> : <IoMdPlay className={styles.play} />
@@ -48,7 +52,7 @@ const AudioPlayer: FC<AudioControls> = ({
             disabled={!isReady}
           />
         </div>
-        <span className={styles.duration}>{formatDuration(durationToUse)}</span>
+        <Volume className={styles.volume} />
       </div>
     </div>
   );

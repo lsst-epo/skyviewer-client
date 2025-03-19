@@ -1,0 +1,26 @@
+.volume {
+  display: flex;
+  align-items: center;
+  gap: var(--size-spacing-2xs);
+}
+
+.slider {
+  --size-padding-slide-block-end: 0;
+
+  flex-grow: 1;
+
+  & [role="slider"] {
+    &:not(:disabled):not([aria-disabled="true"]) {
+      cursor: pointer;
+    }
+
+    & > * {
+      visibility: hidden;
+    }
+  }
+}
+
+.mute {
+  flex-shrink: 0;
+  width: var(--size-spacing-m);
+}

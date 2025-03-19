@@ -57,3 +57,8 @@ export const webShare = async (data: ShareData) => {
     console.warn("Web Share API is not available in this browser.");
   }
 };
+
+export function roundToStep(value: number, step = 1.0) {
+  const inv = 1.0 / step;
+  return Math.round(value * inv) / inv;
+}

@@ -14,19 +14,27 @@ interface IconButtonProps
     HTMLButtonElement
   > {
   disabled?: boolean;
+  styleAs?: "primary" | "secondary";
   text: string;
   icon: ReactNode;
-  size?: string | number;
 }
 
 const IconButton: FunctionComponent<IconButtonProps> = forwardRef(
   (
-    { className, children, icon, size, text, ...props }: IconButtonProps,
+    {
+      className,
+      children,
+      icon,
+      text,
+      styleAs = "primary",
+      ...props
+    }: IconButtonProps,
     ref
   ) => {
     return (
       <button
         ref={ref}
+        data-style-as={styleAs}
         className={classNames(styles.iconButton, className)}
         title={text}
         {...props}
