@@ -1,6 +1,6 @@
 "use client";
 import { FunctionComponent } from "react";
-import IconButton from "@/components/primitives/IconButton";
+import IconButton from "@/components/atomic/IconButton";
 import { useAladin } from "@/contexts/Aladin";
 import { useTranslation } from "react-i18next";
 import { hasWebShare, webShare } from "@/lib/utilities";

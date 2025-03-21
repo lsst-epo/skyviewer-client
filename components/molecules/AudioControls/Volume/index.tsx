@@ -10,7 +10,7 @@ import {
 } from "react-icons/io";
 import HorizontalSlider from "@rubin-epo/epo-react-lib/HorizontalSlider";
 import styles from "./styles.module.css";
-import IconButton from "@/components/primitives/IconButton";
+import IconButton from "@/components/atomic/IconButton";
 import { useTranslation } from "react-i18next";
 import { useEventListener, useSessionStorage } from "usehooks-ts";
 import { roundToStep } from "@/lib/utilities";

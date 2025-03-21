@@ -1,12 +1,12 @@
 @forward "content-rte";
 
 // Primitives
-@forward "components/primitives/Accordion/styles";
-@forward "components/primitives/Button/styles";
-@forward "components/primitives/Checkbox/styles";
-@forward "components/primitives/Menu/styles";
-@forward "components/primitives/Modal/styles";
-@forward "components/primitives/Radio/styles";
+@forward "components/atomic/Accordion/styles";
+@forward "components/atomic/Button/styles";
+@forward "components/atomic/Checkbox/styles";
+@forward "components/atomic/Menu/styles";
+@forward "components/atomic/Modal/styles";
+@forward "components/atomic/Radio/styles";
 
 // Globals
 @forward "components/global/FiltersMenu/styles";

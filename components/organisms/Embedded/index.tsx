@@ -1,6 +1,6 @@
 "use client";
 import { FunctionComponent } from "react";
-import AladinOverlay from "@/components/primitives/AladinOverlay";
+import AladinOverlay from "@/components/atomic/AladinOverlay";
 import styles from "./styles.module.css";
 import Zoom from "@/components/molecules/Controls/Zoom";
 import Orientation from "@/components/molecules/ExplorerControls/Orientation";

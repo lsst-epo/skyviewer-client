@@ -8,7 +8,7 @@ import Button from "@rubin-epo/epo-react-lib/Button";
 import Center from "@rubin-epo/epo-react-lib/Center";
 import { getTour } from "@/services/api/tours";
 import { assetAlt } from "@/lib/canto/metadata";
-import VerticalDivider from "@/components/primitives/VerticalDivider";
+import VerticalDivider from "@/components/atomic/VerticalDivider";
 import FullwidthWithNav from "@/components/templates/FullwidthWithNav";
 import ThumbnailImage from "@/components/molecules/ThumbnailImage";
 import IntroContent from "@/components/molecules/IntroContent";

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import Menu from "@/components/primitives/Menu";
+import Menu from "@/components/atomic/Menu";
 import ShareButtons from "@/components/organisms/ShareButtons";
 
 export default function ShareMenu({ toggleMenuCallback, isOpen }) {

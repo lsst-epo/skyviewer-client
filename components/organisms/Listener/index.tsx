@@ -1,7 +1,7 @@
 "use client";
 import { ChangeEventHandler, FC, useCallback, useState } from "react";
 import ControlStack from "@/components/molecules/Controls/Stack";
-import AladinOverlay from "@/components/primitives/AladinOverlay";
+import AladinOverlay from "@/components/atomic/AladinOverlay";
 import { useAladin } from "@/contexts/Aladin";
 import styles from "./styles.module.css";
 

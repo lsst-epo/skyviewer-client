@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import IconComposer from "@/components/svg/IconComposer";
 import Button from "@rubin-epo/epo-react-lib/Button";
 import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
-import Menu from "@/components/primitives/Menu";
+import Menu from "@/components/atomic/Menu";
 import AboutMenu from "./AboutMenu.js";
 import LocaleMenu from "./LocaleMenu.js";
 import ShareMenu from "./ShareMenu.js";

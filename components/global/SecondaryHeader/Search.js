@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import PropTypes from "prop-types";
-import Modal from "@/components/primitives/Modal";
-import TextInput from "@/components/primitives/TextInput";
+import Modal from "@/components/atomic/Modal";
+import TextInput from "@/components/atomic/TextInput";
 import IconComposer from "@/components/svg/IconComposer";
 import useDebounce from "@/hooks/useDebounce";
 

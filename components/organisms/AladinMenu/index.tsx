@@ -1,7 +1,7 @@
 import { FC } from "react";
 import classnames from "clsx";
 import { Link } from "next-view-transitions";
-import VisuallyHidden from "@/components/primitives/VisuallyHidden";
+import VisuallyHidden from "@/components/atomic/VisuallyHidden";
 import MainMenu from "@/components/global/MainMenu";
 import IconComposer from "@/components/svg/IconComposer";
 import styles from "./styles.module.css";

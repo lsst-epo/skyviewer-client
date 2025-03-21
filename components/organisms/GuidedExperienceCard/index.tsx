@@ -7,9 +7,9 @@ import { Link } from "next-view-transitions";
 import { addLocaleUriSegment } from "@/lib/i18n";
 import { useTranslation, getLocale } from "@/lib/i18n/server";
 import { getTourCount } from "@/services/api/guidedExperiences";
-import Ribbon from "@/components/primitives/Ribbon";
+import Ribbon from "@/components/atomic/Ribbon";
 import styles from "./styles.module.css";
-import ViewTransition from "@/components/primitives/ViewTransition";
+import ViewTransition from "@/components/atomic/ViewTransition";
 
 interface GuidedExperienceCardProps {
   title: string;

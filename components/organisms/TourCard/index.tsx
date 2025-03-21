@@ -7,7 +7,7 @@ import { assetAlt } from "@/lib/canto/metadata";
 import { addLocaleUriSegment } from "@/lib/i18n";
 import { useTranslation } from "@/lib/i18n/server";
 import DotMeter from "@/components/molecules/DotMeter";
-import ViewTransition from "@/components/primitives/ViewTransition";
+import ViewTransition from "@/components/atomic/ViewTransition";
 import TourAttributes from "../TourAttributes";
 import styles from "./styles.module.css";
 import ThumbnailImage from "@/components/molecules/ThumbnailImage";
