@@ -1,7 +1,7 @@
 "use client";
 import { FC } from "react";
 import { MdOpenInNew } from "react-icons/md";
-import IconButton from "@/components/primitives/IconButton";
+import IconButton from "@/components/atomic/IconButton";
 import { useAladin } from "@/contexts/Aladin";
 import { currentViewAsParams } from "@/lib/aladin/helpers";
 import { useTranslation } from "react-i18next";

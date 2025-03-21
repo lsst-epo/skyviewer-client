@@ -1,8 +1,8 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import Button from "@rubin-epo/epo-react-lib/Button";
-import Menu from "@/components/primitives/Menu";
-import Radio from "@/components/primitives/Radio";
+import Menu from "@/components/atomic/Menu";
+import Radio from "@/components/atomic/Radio";
 
 const DEFAULT = "en";
 

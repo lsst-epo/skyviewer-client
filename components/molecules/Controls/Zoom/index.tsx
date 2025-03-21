@@ -4,7 +4,7 @@ import { IoIosAdd, IoIosRemove } from "react-icons/io";
 
 import { useAladin } from "@/contexts/Aladin";
 import { useKeyDownEvent } from "@/hooks/listeners";
-import IconButton from "@/components/primitives/IconButton";
+import IconButton from "@/components/atomic/IconButton";
 import { useTranslation } from "react-i18next";
 
 const Zoom: FunctionComponent = () => {

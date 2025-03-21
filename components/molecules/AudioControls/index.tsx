@@ -5,7 +5,7 @@ import { IoMdPause, IoMdPlay } from "react-icons/io";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 import formatDuration from "@/lib/duration";
 import { useAudioPlayerContext } from "react-use-audio-player";
-import IconButton from "@/components/primitives/IconButton";
+import IconButton from "@/components/atomic/IconButton";
 import SeekBar from "./SeekBar";
 import Volume from "./Volume";
 import styles from "./styles.module.css";

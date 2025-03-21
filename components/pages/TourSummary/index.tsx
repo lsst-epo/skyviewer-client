@@ -10,8 +10,8 @@ import {
 } from "@rubin-epo/epo-react-lib/Share";
 import { getLocale, useTranslation } from "@/lib/i18n/server";
 import { addLocaleUriSegment } from "@/lib/i18n";
-import ViewTransition from "@/components/primitives/ViewTransition";
-import BlockTitle from "@/components/primitives/BlockTitle";
+import ViewTransition from "@/components/atomic/ViewTransition";
+import BlockTitle from "@/components/atomic/BlockTitle";
 import TransitionButtonish from "@/components/molecules/TransitionButtonish";
 import Cover from "@/components/molecules/Cover";
 import FullwidthWithNav from "@/components/templates/FullwidthWithNav";

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import Menu from "@/components/primitives/Menu";
+import Menu from "@/components/atomic/Menu";
 
 export default function Filters({
   menuLabelId,

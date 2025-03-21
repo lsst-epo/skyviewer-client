@@ -1,7 +1,7 @@
 import { useAladin } from "@/contexts/Aladin";
 import { useKeyDownEvent } from "@/hooks/listeners";
 import { getKeyByValue } from "@/helpers";
-import Button from "@/components/primitives/Button";
+import Button from "@/components/atomic/Button";
 
 const KEY_MAP = {
   left: "ArrowLeft",
