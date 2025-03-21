@@ -1,16 +1,17 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d785c7d4-8460-4831-884c-1828337d74f8/deploy-status)](https://app.netlify.com/sites/skyviewer/deploys)
-
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
 First, get the node stuff you need:
+
 ```bash
 yarn
 ```
+
 Create `.env.local` file in the project root, copy the contents of `.example.env` and uncomment the API URLs to use a local [skyviewer-api](https://github.com/lsst-epo/skyviewer-api) instance
 
 Then run the development server:
+
 ```bash
 yarn dev
 ```
@@ -20,11 +21,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Development
 
 Lint your code:
+
 ```bash
 yarn lint
 ```
 
 Fix your code styles:
+
 ```bash
 yarn fix
 ```
@@ -32,7 +35,7 @@ yarn fix
 ## Build
 
 ```bash
-yarn static
+yarn bs
 ```
 
 ## Learn More
@@ -43,4 +46,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-

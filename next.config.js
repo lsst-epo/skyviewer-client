@@ -1,6 +1,11 @@
-const path = require("path");
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
 
-module.exports = {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+/** @type {import('next').NextConfig} */
+export default {
   images: {
     remotePatterns: [
       {
@@ -17,9 +22,9 @@ module.exports = {
   },
   sassOptions: {
     includePaths: [
-      path.join(__dirname, "node_modules"),
-      path.join(__dirname, "styles"),
-      path.join(__dirname, "components"),
+      join(__dirname, "node_modules"),
+      join(__dirname, "styles"),
+      join(__dirname, "components"),
     ],
   },
 };

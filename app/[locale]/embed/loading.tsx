@@ -1,4 +1,4 @@
-import LoadingSpinner from "@/components/primitives/LoadingSpinner";
+import LoadingSpinner from "@/components/atomic/LoadingSpinner";
 import { FunctionComponent } from "react";
 
 const EmbedLoading: FunctionComponent = () => {

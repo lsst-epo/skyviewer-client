@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { assetTitle } from "@/lib/canto/metadata";
 import { hasCompletedTutorial, tourTutorialTitle } from "@/lib/tutorial";
-import AladinOverlay from "@/components/primitives/AladinOverlay";
+import AladinOverlay from "@/components/atomic/AladinOverlay";
 import Orientation from "@/components/molecules/ExplorerControls/Orientation";
 import TourControls from "@/components/organisms/TourControls";
 import { useTour } from "@/contexts/Tour";

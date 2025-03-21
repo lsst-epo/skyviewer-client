@@ -1,10 +1,10 @@
 import { FunctionComponent } from "react";
 import Image from "next/image";
 import { useTranslation } from "@/lib/i18n/server";
-import PageTitle from "@/components/primitives/BlockTitle";
+import PageTitle from "@/components/atomic/BlockTitle";
 import Cover from "@/components/molecules/Cover";
 import logo from "./rubin-triad.png";
-import ViewTransition from "@/components/primitives/ViewTransition";
+import ViewTransition from "@/components/atomic/ViewTransition";
 import styles from "./styles.module.css";
 
 const LogoCover: FunctionComponent<{ locale: string }> = async ({ locale }) => {

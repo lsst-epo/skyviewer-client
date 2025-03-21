@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Stack from "@rubin-epo/epo-react-lib/Stack";
-import BlockTitle from "@/components/primitives/BlockTitle";
-import TextBlock from "@/components/primitives/TextBlock";
+import BlockTitle from "@/components/atomic/BlockTitle";
+import TextBlock from "@/components/atomic/TextBlock";
 import styles from "./styles.module.css";
 
 interface IntroContentProps {

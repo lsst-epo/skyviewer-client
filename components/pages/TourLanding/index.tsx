@@ -7,7 +7,7 @@ import { useTranslation } from "@/lib/i18n/server";
 import Center from "@rubin-epo/epo-react-lib/Center";
 import Stack from "@rubin-epo/epo-react-lib/Stack";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
-import ViewTransition from "@/components/primitives/ViewTransition";
+import ViewTransition from "@/components/atomic/ViewTransition";
 import TransitionButtonish from "@/components/molecules/TransitionButtonish";
 import DotMeter from "@/components/molecules/DotMeter";
 import TourAttributes from "@/components/organisms/TourAttributes";

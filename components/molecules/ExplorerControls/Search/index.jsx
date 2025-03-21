@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "@/components/primitives/Button";
+import Button from "@/components/atomic/Button";
 import IconComposer from "@/components/svg/IconComposer";
 
 export default function Search() {

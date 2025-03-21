@@ -1,6 +1,6 @@
 "use client";
 import { FC, useState } from "react";
-import IconToggle from "@/components/primitives/IconToggle";
+import IconToggle from "@/components/atomic/IconToggle";
 import IconComposer from "@/components/svg/IconComposer";
 import { useAladin } from "@/contexts/Aladin";
 
