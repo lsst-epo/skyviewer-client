@@ -2,12 +2,31 @@
   display: flex;
   align-items: center;
   z-index: var(--elevation-element-controls);
+  transition: 0.3s opacity;
+
+  &[data-loading="true"] {
+    opacity: 0;
+  }
 }
 
-.shareMenuButton {
-  &:focus-within {
-    outline: none;
-  }
+.shareButton {
+  composes: shareButton from "../../ShareButton/styles.module.css";
+}
+
+.twitter {
+  --color-background-button: #f5f5f5;
+  --color-background-button-hover: #f5f5f5;
+  --color-text-button: var(--color-font-primary);
+}
+
+.facebook {
+  --color-background-button: #3d5a99;
+  --color-background-button-hover: #3d5a99;
+}
+
+.linkedin {
+  --color-background-button: #007bb5;
+  --color-background-button-hover: #007bb5;
 }
 
 .shareMenuItems {
@@ -20,12 +39,11 @@
   bottom: calc(var(--size-spacing-l) + var(--size-spacing-xs));
   font-size: 0.75rem;
   opacity: 0;
-  transition: 0.3s transform, 0.3s opacity;
-  transform: translateX(calc(-100% - var(--size-padding-overlay)));
   z-index: -1;
 
-  &[data-open] {
-    opacity: 1;
-    transform: translateX(0);
+  @media (--tablet) {
+    flex-flow: row-reverse nowrap;
+    left: calc(var(--size-spacing-l) + var(--size-spacing-xs));
+    bottom: 0;
   }
 }

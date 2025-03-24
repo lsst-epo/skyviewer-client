@@ -35,7 +35,7 @@ export const getLinearScale = (
   };
 };
 
-export const hasWebShare = () => {
+export const hasWebShare = (data?: ShareData): boolean => {
   if (typeof window === "undefined") return false;
   if (
     typeof navigator.share === "undefined" ||
@@ -43,18 +43,24 @@ export const hasWebShare = () => {
   )
     return false;
 
-  return navigator.canShare();
+  return navigator.canShare(data);
 };
 
-export const webShare = async (data: ShareData) => {
-  if (navigator.share && navigator.canShare()) {
+export const webShare = async ({
+  data,
+  nonNativeShare,
+}: {
+  data: ShareData;
+  nonNativeShare?: () => void;
+}) => {
+  if (hasWebShare(data)) {
     try {
       await navigator.share(data);
     } catch (e) {
       console.warn(e);
     }
   } else {
-    console.warn("Web Share API is not available in this browser.");
+    nonNativeShare && nonNativeShare();
   }
 };
 
