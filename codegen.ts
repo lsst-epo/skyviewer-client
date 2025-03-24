@@ -1,7 +1,6 @@
-import { loadEnvConfig } from "@next/env";
+import "./env.config.js";
 import type { CodegenConfig } from "@graphql-codegen/cli";
-
-loadEnvConfig(process.cwd());
+import { env } from "./env";
 
 const config: CodegenConfig = {
   generates: {
@@ -19,7 +18,7 @@ const config: CodegenConfig = {
     useTypeImports: true,
     avoidOptionals: true,
   },
-  schema: process.env.NEXT_PUBLIC_API_URL,
+  schema: env.NEXT_PUBLIC_API_URL,
 
   ignoreNoDocuments: true, // for better experience with the watcher
 };
