@@ -16,6 +16,7 @@ import TransitionButtonish from "@/components/molecules/TransitionButtonish";
 import Cover from "@/components/molecules/Cover";
 import FullwidthWithNav from "@/components/templates/FullwidthWithNav";
 import styles from "./styles.module.css";
+import { env } from "@/env";
 
 interface TourSummaryProps {
   tour: string;
@@ -23,7 +24,7 @@ interface TourSummaryProps {
 
 const TourSummary: FC<TourSummaryProps> = async ({ tour }) => {
   const { t } = await useTranslation();
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}${addLocaleUriSegment(
+  const url = `${env.NEXT_PUBLIC_BASE_URL}${addLocaleUriSegment(
     getLocale(),
     `/tours/${tour}`
   )}`;
