@@ -1,7 +1,11 @@
 "use client";
 import { FC } from "react";
-import IconComposer from "@/components/svg/IconComposer";
+import { IoIosLink } from "react-icons/io";
+
+import { useCopyToClipboard } from "usehooks-ts";
+import { useTranslation } from "react-i18next";
 import ShareButton from "..";
+import WithButtonLabel from "@/components/atomic/WithButtonLabel";
 
 interface CopyUrlButtonProps {
   showLabel?: boolean;
@@ -9,22 +13,19 @@ interface CopyUrlButtonProps {
 }
 
 const CopyUrlButton: FC<CopyUrlButtonProps> = ({ showLabel, urlToCopy }) => {
+  const [, copy] = useCopyToClipboard();
+  const { t } = useTranslation();
+  const label = t("share.menu.options.copy");
+
   return (
-    <ShareButton
-      showLabel={showLabel}
-      icon={<IconComposer size="52" icon="ShareCopyUrl" />}
-      text="Get Url"
-      network="url"
-      onClick={async () => {
-        try {
-          await navigator.clipboard.writeText(
-            urlToCopy || window.location.href
-          );
-        } catch (error) {
-          console.error(error.message);
-        }
-      }}
-    />
+    <WithButtonLabel label={label} showLabel={showLabel}>
+      <ShareButton
+        icon={<IoIosLink />}
+        text={label}
+        network="url"
+        onClick={() => copy(urlToCopy || window.location.href)}
+      ></ShareButton>
+    </WithButtonLabel>
   );
 };
 

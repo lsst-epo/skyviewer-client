@@ -9,15 +9,12 @@
   cursor: pointer;
   width: var(--size-spacing-l);
   transition: background-color 0.4s;
-  outline-offset: 1px;
   pointer-events: initial;
 
-  &[data-style-as="primary"] {
-    --color-background-button: #313333;
-    --color-background-button-hover: var(--color-rubin-teal-300);
-    --color-text-button: var(--color-font-invert);
-    --color-outline-button: currentColor;
-  }
+  --color-background-button: #313333;
+  --color-background-button-hover: #313333;
+  --color-text-button: var(--color-font-invert);
+  --color-outline-button: #0f8fff;
 
   &[data-style-as="secondary"] {
     --color-background-button: #e6e6e6;
@@ -37,7 +34,7 @@
 
   &:not(:disabled):hover,
   &:not(:disabled):focus-visible {
-    outline: 2px;
+    outline: 1px;
     outline-color: var(--color-outline-button);
     outline-style: solid;
     background-color: var(--color-background-button-hover);

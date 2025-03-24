@@ -1,9 +1,11 @@
 "use client";
-import classnames from "clsx";
+import clsx from "clsx/lite";
 import { FacebookShareButton } from "react-share";
-import IconComposer from "@/components/svg/IconComposer";
-import styles from "../styles.module.scss";
+import { FaFacebookF } from "react-icons/fa";
+import styles from "../styles.module.css";
 import { forwardRef } from "react";
+import WithButtonLabel from "@/components/atomic/WithButtonLabel";
+import { useTranslation } from "react-i18next";
 
 interface FacebookShareProps {
   quote?: string;
@@ -13,30 +15,25 @@ interface FacebookShareProps {
 
 const FacebookShare = forwardRef<HTMLButtonElement, FacebookShareProps>(
   ({ quote, hashtag, showLabel }, ref) => {
+    const { t } = useTranslation();
+    const label = t("menu.share.options.facebook");
     return (
-      <FacebookShareButton
-        className={styles.shareButton}
-        url={
-          typeof window !== "undefined"
-            ? window.location.href
-            : "https://www.rubinobservatory.com"
-        }
-        data-network="facebook"
-        quote={quote}
-        hashtag={hashtag}
-        ref={ref}
-      >
-        <div className={styles.shareIcon}>
-          <IconComposer icon="ShareFacebook" />
-        </div>
-        <div
-          className={classnames(styles.shareNetwork, {
-            "screen-reader-only": !showLabel,
-          })}
+      <WithButtonLabel label={label} showLabel={showLabel}>
+        <FacebookShareButton
+          className={clsx(styles.shareButton, styles.facebook)}
+          url={
+            typeof window !== "undefined"
+              ? window.location.href
+              : "https://www.rubinobservatory.com"
+          }
+          data-network="facebook"
+          hashtag={hashtag}
+          ref={ref}
+          resetButtonStyle={false}
         >
-          Facebook
-        </div>
-      </FacebookShareButton>
+          <FaFacebookF />
+        </FacebookShareButton>
+      </WithButtonLabel>
     );
   }
 );

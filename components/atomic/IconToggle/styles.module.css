@@ -1,11 +1,12 @@
 .iconToggle {
   composes: iconButton from "../IconButton/styles.module.css";
 
-  &:has(input:checked) {
-    background-color: var(--color-rubin-teal-300);
-  }
+  --color-background-button: #313333;
+  --color-background-button-hover: #313333;
+  --color-text-button: var(--color-font-invert);
+  --color-outline-button: #0f8fff;
 
-  &:has(input:focus-visible) {
-    outline: 2px solid var(--color-font-invert);
+  &[data-checked] {
+    background-color: var(--color-rubin-teal-300);
   }
 }

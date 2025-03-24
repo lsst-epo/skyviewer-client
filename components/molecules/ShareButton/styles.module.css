@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: var(--size-spacing-2xs);
+}
+
+.label {
+  font-weight: bold;
+}
+
+.shareButton {
+  composes: iconButton from "../../atomic/IconButton/styles.module.css";
+
+  flex-shrink: 0;
+
+  --color-background-button: var(--color-rubin-teal-300);
+  --color-background-button-hover: var(--color-rubin-teal-600);
+}
+
+.twitter {
+  --color-background-button: #f5f5f5;
+  --color-background-button-hover: #f5f5f5;
+  --color-text-button: var(--color-font-primary);
+}
+
+.facebook {
+  --color-background-button: #3d5a99;
+  --color-background-button-hover: #3d5a99;
+}

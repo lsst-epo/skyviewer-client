@@ -28,23 +28,4 @@
     opacity: 1;
     transform: translateX(0);
   }
-
-  & button {
-    display: flex;
-    flex-flow: row nowrap;
-    white-space: nowrap;
-    gap: var(--size-spacing-xs);
-  }
-
-  @media (--tablet) {
-    flex-flow: row nowrap;
-    left: calc(var(--size-spacing-l) + var(--size-spacing-xs));
-    bottom: 0;
-    transform: translateX(
-      calc(
-        -100% - var(--size-spacing-l) - var(--size-spacing-xs) - var(--size-padding-overlay)
-      )
-    );
-    transition: 0.3s transform, 0.2s 0.1s opacity;
-  }
 }

@@ -1,4 +1,5 @@
 import { FunctionComponent, ChangeEventHandler, ReactNode } from "react";
+import { Checkbox } from "@headlessui/react";
 import classNames from "clsx/lite";
 import styles from "./styles.module.css";
 
@@ -7,7 +8,7 @@ interface IconToggleProps {
   icon: ReactNode;
   label?: string;
   className?: string;
-  onToggleCallback: ChangeEventHandler<HTMLInputElement>;
+  onToggleCallback: (checked: boolean) => void;
   disabled?: boolean;
 }
 
@@ -20,20 +21,16 @@ const IconToggle: FunctionComponent<IconToggleProps> = ({
   disabled,
 }) => {
   return (
-    <label
+    <Checkbox
+      checked={isChecked}
+      disabled={disabled}
+      onChange={onToggleCallback}
+      title={label}
       className={classNames(styles.iconToggle, className)}
-      data-checked={isChecked}
     >
       <span className="visually-hidden">{label}</span>
       {icon}
-      <input
-        className="visually-hidden"
-        type="checkbox"
-        checked={isChecked}
-        onChange={onToggleCallback}
-        disabled={disabled}
-      />
-    </label>
+    </Checkbox>
   );
 };
 

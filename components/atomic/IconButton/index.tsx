@@ -1,19 +1,13 @@
 import {
-  DetailedHTMLProps,
+  ComponentProps,
   forwardRef,
   FunctionComponent,
-  HTMLAttributes,
   ReactNode,
 } from "react";
 import classNames from "clsx/lite";
 import styles from "./styles.module.css";
 
-interface IconButtonProps
-  extends DetailedHTMLProps<
-    HTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > {
-  disabled?: boolean;
+export interface IconButtonProps extends ComponentProps<"button"> {
   styleAs?: "primary" | "secondary";
   text: string;
   icon: ReactNode;
