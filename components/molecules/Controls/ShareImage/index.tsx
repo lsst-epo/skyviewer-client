@@ -28,7 +28,7 @@ const ShareImage: FunctionComponent<ShareImageProps> = ({ className }) => {
           title: "Rubin Observatory",
           text: "Check this image out!!!!!!",
         };
-        await webShare(data);
+        await webShare({ data });
       }
     }
   };

@@ -7,13 +7,11 @@ import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
 import Menu from "@/components/atomic/Menu";
 import AboutMenu from "./AboutMenu.js";
 import LocaleMenu from "./LocaleMenu.js";
-import ShareMenu from "./ShareMenu.js";
 import QuickAccess from "./QuickAccess.js";
 
 export default function MainMenu({ route }) {
   const [openOverride, setOpenOverride] = useState(false);
   const [localeOpenOverride, setLocaleOpenOverride] = useState(false);
-  const [shareOpenOverride, setShareOpenOverride] = useState(false);
   const [aboutOpenOverride, setAboutOpenOverride] = useState(false);
 
   const toggleMainMenuCallback = (isOpen) => {
@@ -22,10 +20,6 @@ export default function MainMenu({ route }) {
 
   const toggleLocaleModalCallback = (isOpen) => {
     setLocaleOpenOverride(isOpen);
-  };
-
-  const toggleShareModalCallback = (isOpen) => {
-    setShareOpenOverride(isOpen);
   };
 
   const toggleAboutModalCallback = (isOpen) => {
@@ -67,19 +61,6 @@ export default function MainMenu({ route }) {
                 <LocaleMenu
                   isOpen={localeOpenOverride}
                   toggleMenuCallback={toggleLocaleModalCallback}
-                />
-              </li>
-              <li className="main-menu-nav-item">
-                <Button
-                  icon="ArrowUpFromBracket"
-                  className="share-item"
-                  onClick={() => setShareOpenOverride(true)}
-                >
-                  Share Skyviewer
-                </Button>
-                <ShareMenu
-                  isOpen={shareOpenOverride}
-                  toggleMenuCallback={toggleShareModalCallback}
                 />
               </li>
               <li className="main-menu-nav-item">

@@ -5,7 +5,6 @@ import { IoIosLink } from "react-icons/io";
 import { useCopyToClipboard } from "usehooks-ts";
 import { useTranslation } from "react-i18next";
 import ShareButton from "..";
-import WithButtonLabel from "@/components/atomic/WithButtonLabel";
 
 interface CopyUrlButtonProps {
   showLabel?: boolean;
@@ -18,14 +17,11 @@ const CopyUrlButton: FC<CopyUrlButtonProps> = ({ showLabel, urlToCopy }) => {
   const label = t("share.menu.options.copy");
 
   return (
-    <WithButtonLabel label={label} showLabel={showLabel}>
-      <ShareButton
-        icon={<IoIosLink />}
-        text={label}
-        network="url"
-        onClick={() => copy(urlToCopy || window.location.href)}
-      ></ShareButton>
-    </WithButtonLabel>
+    <ShareButton
+      icon={<IoIosLink />}
+      text={label}
+      onClick={() => copy(urlToCopy || window.location.href)}
+    ></ShareButton>
   );
 };
 

@@ -35,15 +35,18 @@ export default function Pan() {
   };
 
   function handleKeyDown(event) {
-    const { key } = event;
-    const direction = getKeyByValue(KEY_MAP, key);
+    if (hasFocus) {
+      event.preventDefault();
+      const { key } = event;
+      const direction = getKeyByValue(KEY_MAP, key);
 
-    if (!direction) return;
+      if (!direction) return;
 
-    goTo(direction);
+      goTo(direction);
+    }
   }
 
-  useKeyDownEvent(hasFocus ? handleKeyDown : null);
+  useKeyDownEvent(handleKeyDown);
 
   return (
     <ul
