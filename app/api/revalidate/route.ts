@@ -3,8 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { languages } from "@/lib/i18n/settings";
 import { addLocaleUriSegment } from "@/lib/i18n";
 import tagStore from "@/services/api/tags";
+import { env } from "@/env";
 
-const REVALIDATE_SECRET_TOKEN = process.env.CRAFT_REVALIDATE_SECRET_TOKEN;
+const REVALIDATE_SECRET_TOKEN = env.CRAFT_REVALIDATE_SECRET_TOKEN;
 const CRAFT_HOMEPAGE_URI = "__home__";
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
