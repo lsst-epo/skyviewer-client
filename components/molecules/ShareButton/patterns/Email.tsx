@@ -3,7 +3,10 @@ import { forwardRef } from "react";
 import classnames from "clsx";
 import { EmailShareButton } from "react-share";
 import IconComposer from "@/components/svg/IconComposer";
-import styles from "../styles.module.scss";
+import ShareButton from "..";
+import { useTranslation } from "react-i18next";
+import WithButtonLabel from "@/components/atomic/WithButtonLabel";
+import styles from "../styles.module.css";
 
 interface EmailShareProps {
   showLabel?: boolean;
@@ -14,31 +17,29 @@ interface EmailShareProps {
 
 const EmailShare = forwardRef<HTMLButtonElement, EmailShareProps>(
   ({ subject, body, separator = " ", showLabel }, ref) => {
+    const { t } = useTranslation();
+    const label = t("menu.share.options.email");
+
     return (
-      <EmailShareButton
-        url={
-          typeof window !== "undefined"
-            ? window.location.href
-            : "https://www.rubinobservatory.com"
-        }
-        subject={subject}
-        body={body}
-        data-network="email"
-        separator={separator}
-        className={styles.shareButton}
-        ref={ref}
-      >
-        <div className={styles.shareIcon}>
-          <IconComposer icon="ShareEmail" />
-        </div>
-        <div
-          className={classnames(styles.shareNetwork, {
-            "screen-reader-only": !showLabel,
-          })}
+      <WithButtonLabel label={label} showLabel={showLabel}>
+        <EmailShareButton
+          url={
+            typeof window !== "undefined"
+              ? window.location.href
+              : "https://www.rubinobservatory.com"
+          }
+          subject={subject}
+          body={body}
+          data-network="email"
+          separator={separator}
+          className={styles.shareButton}
+          title={label}
+          ref={ref}
+          resetButtonStyle={false}
         >
-          Email
-        </div>
-      </EmailShareButton>
+          <IconComposer icon="ShareEmail" />
+        </EmailShareButton>
+      </WithButtonLabel>
     );
   }
 );

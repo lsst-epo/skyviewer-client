@@ -2,7 +2,7 @@ import "@/styles/styles.scss";
 import { FunctionComponent, PropsWithChildren } from "react";
 import { Metadata } from "next";
 import { ViewTransitions } from "next-view-transitions";
-import StyledComponentsRegistry from "@/lib/registry";
+import StyledComponentsRegistry from "@rubin-epo/epo-react-lib/StyledComponentsRegistry";
 import { SourceSansPro } from "@/lib/fonts";
 import { fallbackLng, languages } from "@/lib/i18n/settings";
 import { serverTranslation } from "@/lib/i18n/server";

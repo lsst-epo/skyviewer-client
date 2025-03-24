@@ -1,49 +1,30 @@
-import { forwardRef, MouseEventHandler, ReactNode } from "react";
-import classnames from "clsx";
-import styles from "./styles.module.scss";
+import { forwardRef, PropsWithChildren, useId } from "react";
+import { clsx } from "clsx/lite";
+import styles from "./styles.module.css";
+import IconButton, { IconButtonProps } from "@/components/atomic/IconButton";
 
-interface ShareButtonProps {
-  icon?: ReactNode;
-  text: string;
+interface ShareButtonProps extends IconButtonProps {
   network: string;
   message?: string;
   description?: string;
-  onClick: MouseEventHandler<HTMLButtonElement>;
-  showLabel?: boolean;
-  disabled?: boolean;
 }
 
-const ShareButton = forwardRef<HTMLButtonElement, ShareButtonProps>(
+const ShareButton = forwardRef<
+  HTMLButtonElement,
+  PropsWithChildren<ShareButtonProps>
+>(
   (
-    {
-      icon,
-      text,
-      network,
-      onClick,
-      message,
-      description,
-      showLabel = false,
-      disabled,
-    },
+    { network, message, description, className, text, children, ...props },
     ref
   ) => {
     return (
-      <button
-        {...{ onClick, disabled, ref }}
-        className={classnames(styles.shareButton, "st-custom-button")}
+      <IconButton
         data-network={network}
         data-message={message}
         data-description={description}
-      >
-        <div className={classnames(styles.shareIcon, network)}>{icon}</div>
-        <div
-          className={classnames({
-            "screen-reader-only": !showLabel,
-          })}
-        >
-          {text}
-        </div>
-      </button>
+        className={clsx(styles.shareButton, className)}
+        {...{ text, ref, ...props }}
+      />
     );
   }
 );

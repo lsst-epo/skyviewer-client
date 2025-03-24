@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: var(--size-spacing-2xs);
+}
+
+.label {
+  font-weight: bold;
+  white-space: nowrap;
+}

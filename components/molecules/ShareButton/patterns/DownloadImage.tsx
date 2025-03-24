@@ -1,10 +1,13 @@
 "use client";
 import PropTypes from "prop-types";
 import { saveAs } from "file-saver";
+import { TfiDownload } from "react-icons/tfi";
+
 import { useAladin } from "@/contexts/Aladin";
-import IconComposer from "@/components/svg/IconComposer";
 import ShareButton from "..";
 import { forwardRef } from "react";
+import { useTranslation } from "react-i18next";
+import WithButtonLabel from "@/components/atomic/WithButtonLabel";
 
 interface GetImageProps {
   showLabel?: boolean;
@@ -13,6 +16,8 @@ interface GetImageProps {
 const GetImageButton = forwardRef<HTMLButtonElement, GetImageProps>(
   ({ showLabel }, ref) => {
     const { aladin, isLoading } = useAladin();
+    const { t } = useTranslation();
+    const label = t("menu.share.options.image");
 
     const handleClick = async () => {
       if (!isLoading) {
@@ -24,14 +29,14 @@ const GetImageButton = forwardRef<HTMLButtonElement, GetImageProps>(
       }
     };
     return (
-      <ShareButton
-        ref={ref}
-        showLabel={showLabel}
-        icon={<IconComposer icon="ArrowUpFromBracket" />}
-        text="Get Image"
-        network="image"
-        onClick={handleClick}
-      />
+      <WithButtonLabel label={label} showLabel={showLabel}>
+        <ShareButton
+          icon={<TfiDownload />}
+          text={t("menu.share.options.image")}
+          network="image"
+          onClick={handleClick}
+        />
+      </WithButtonLabel>
     );
   }
 );

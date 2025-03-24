@@ -1,9 +1,12 @@
 "use client";
-import classnames from "clsx";
+import clsx from "clsx/lite";
 import { TwitterShareButton } from "react-share";
-import IconComposer from "@/components/svg/IconComposer";
-import styles from "../styles.module.scss";
+import { FaXTwitter } from "react-icons/fa6";
+
+import styles from "../styles.module.css";
 import { forwardRef } from "react";
+import WithButtonLabel from "@/components/atomic/WithButtonLabel";
+import { useTranslation } from "react-i18next";
 
 interface TwitterShareProps {
   title?: string;
@@ -13,30 +16,27 @@ interface TwitterShareProps {
 
 const TwitterShare = forwardRef<HTMLButtonElement, TwitterShareProps>(
   ({ title, hashtags, showLabel }, ref) => {
+    const { t } = useTranslation();
+    const label = t("menu.share.options.twitterX");
+
     return (
-      <TwitterShareButton
-        url={
-          typeof window !== "undefined"
-            ? window.location.href
-            : "https://www.rubinobservatory.com"
-        }
-        title={title}
-        data-network="twitter"
-        hashtags={hashtags}
-        className={styles.shareButton}
-        ref={ref}
-      >
-        <div className={styles.shareIcon}>
-          <IconComposer icon="ShareTwitter" />
-        </div>
-        <div
-          className={classnames(styles.shareNetwork, {
-            "screen-reader-only": !showLabel,
-          })}
+      <WithButtonLabel label={label} showLabel={showLabel}>
+        <TwitterShareButton
+          url={
+            typeof window !== "undefined"
+              ? window.location.href
+              : "https://www.rubinobservatory.com"
+          }
+          title={title}
+          data-network="twitter"
+          hashtags={hashtags}
+          className={clsx(styles.shareButton, styles.twitter)}
+          ref={ref}
+          resetButtonStyle={false}
         >
-          Twitter
-        </div>
-      </TwitterShareButton>
+          <FaXTwitter />
+        </TwitterShareButton>
+      </WithButtonLabel>
     );
   }
 );
