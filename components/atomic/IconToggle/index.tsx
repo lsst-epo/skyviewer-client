@@ -1,4 +1,4 @@
-import { FunctionComponent, ChangeEventHandler, ReactNode } from "react";
+import { FunctionComponent, ReactNode } from "react";
 import { Checkbox } from "@headlessui/react";
 import classNames from "clsx/lite";
 import styles from "./styles.module.css";

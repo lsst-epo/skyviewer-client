@@ -78,11 +78,15 @@
       "open": "Open share menu",
       "close": "Close share menu",
       "options": {
-        "image": "Get image",
+        "image": {
+          "cta": "Get image",
+          "filename": "rubin_skyviewer_{{ra}}_{{dec}}_{{fov}}.{{extension}}"
+        },
         "email": "Email",
         "url": "Get URL",
         "facebook": "Facebook",
-        "twitterX": "X"
+        "twitterX": "X",
+        "linkedin": "LinkedIn"
       }
     }
   }

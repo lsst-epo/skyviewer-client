@@ -11,24 +11,20 @@ import { useTranslation } from "react-i18next";
 interface TwitterShareProps {
   title?: string;
   hashtags?: Array<string>;
+  url: string;
   showLabel?: boolean;
 }
 
 const TwitterShare = forwardRef<HTMLButtonElement, TwitterShareProps>(
-  ({ title, hashtags, showLabel }, ref) => {
+  ({ title, hashtags, url, showLabel }, ref) => {
     const { t } = useTranslation();
     const label = t("menu.share.options.twitterX");
 
     return (
       <WithButtonLabel label={label} showLabel={showLabel}>
         <TwitterShareButton
-          url={
-            typeof window !== "undefined"
-              ? window.location.href
-              : "https://www.rubinobservatory.com"
-          }
+          url={url}
           title={title}
-          data-network="twitter"
           hashtags={hashtags}
           className={clsx(styles.shareButton, styles.twitter)}
           ref={ref}

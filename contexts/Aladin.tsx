@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { bindAladinEvents } from "@/lib/aladin/helpers";
 
 export interface AladinContext {
@@ -29,13 +29,11 @@ export const useAladin: (
 ) => AladinContext | AladinContextDefault = (props) => {
   const context = useContext(AladinContext);
 
-  if (
-    props?.callbacks &&
-    Object.keys(props.callbacks).length > 0 &&
-    context?.aladin
-  ) {
-    bindAladinEvents(context.aladin, props.callbacks);
-  }
+  useEffect(() => {
+    if (!context.isLoading && props?.callbacks) {
+      bindAladinEvents(context.aladin, props.callbacks);
+    }
+  }, [props?.callbacks]);
 
   useEffect(() => {
     if (context.isLoading === false) {
