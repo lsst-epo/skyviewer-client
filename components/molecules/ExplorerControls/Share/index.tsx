@@ -21,12 +21,13 @@ import IconButton from "@/components/atomic/IconButton";
 import LinkToView from "@/components/molecules/ShareButton/patterns/LinkToView";
 import GetImageButton from "@/components/molecules/ShareButton/patterns/DownloadImage";
 import styles from "./styles.module.css";
+import { env } from "@/env";
 
 const Share: FC = () => {
   const { t } = useTranslation();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const baseUrl = `${process.env.NEXT_PUBLIC_BASE_URL}${pathname}`;
+  const baseUrl = `${env.NEXT_PUBLIC_BASE_URL}${pathname}`;
   const [viewUrl, setViewUrl] = useState(
     `${baseUrl}?${new URLSearchParams(searchParams).toString}`
   );

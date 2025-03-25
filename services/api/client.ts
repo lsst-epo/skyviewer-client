@@ -2,8 +2,9 @@ import merge from "lodash/merge";
 import { cacheExchange, createClient, fetchExchange } from "@urql/core";
 import type { AnyVariables, DocumentInput, OperationResult } from "@urql/core";
 import { registerUrql } from "@urql/next/rsc";
+import { env } from "@/env";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL as string;
+const API_URL = env.NEXT_PUBLIC_API_URL;
 
 interface QueryProps<T, P> {
   query: DocumentInput<T, P>;

@@ -1,8 +1,13 @@
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import { createJiti } from "jiti";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+const jiti = createJiti(__filename);
+
+await jiti.import("./env");
 
 /** @type {import('next').NextConfig} */
 export default {
