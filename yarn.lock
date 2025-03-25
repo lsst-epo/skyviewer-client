@@ -3247,10 +3247,10 @@ ajv@^8.11.0:
     json-schema-traverse "^1.0.0"
     require-from-string "^2.0.2"
 
-aladin-lite@^3.6.1-beta:
-  version "3.6.1-beta"
-  resolved "https://registry.yarnpkg.com/aladin-lite/-/aladin-lite-3.6.1-beta.tgz#16ef3f5adc44715ff6ea2823e61f7b349d0f5258"
-  integrity sha512-f4OaUETL7K8bUytWyj5wp5NSeIaOj2Iz13I/LrGcrgtPXG/wjTA9o1Pd8zBScHvx+e6pG+Womtpg+qKuKUIQOw==
+aladin-lite@^3.6.1:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/aladin-lite/-/aladin-lite-3.6.1.tgz#3ba6fc3cd13067ec718c7166d2cfec2a43e51ebe"
+  integrity sha512-HtLYJR9K6ek5I9CD7BJ8Z4qCGuBlw8WAX0k1DnNxpRADrwaEAsKsJpTubNASQLF936LCfFeJD5nH323CFLubzg==
 
 ansi-colors@^4.1.1:
   version "4.1.1"
