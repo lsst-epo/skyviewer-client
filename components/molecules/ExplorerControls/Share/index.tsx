@@ -26,7 +26,7 @@ const Share: FC = () => {
   const { t } = useTranslation();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const baseUrl = `${process.env.NEXT_PUBLIC_BASE_URL}${pathname}`;
+  const baseUrl = new URL(pathname, process.env.NEXT_PUBLIC_BASE_URL);
   const [viewUrl, setViewUrl] = useState(
     `${baseUrl}?${new URLSearchParams(searchParams).toString}`
   );
@@ -38,12 +38,12 @@ const Share: FC = () => {
 
   const urlToShare = () => {
     if (!isLoading) {
-      const url = `${baseUrl}?${currentViewAsParams(aladin).toString()}`;
+      const url = `${baseUrl.href}?${currentViewAsParams(aladin).toString()}`;
 
       return url;
     }
 
-    return baseUrl;
+    return baseUrl.href;
   };
 
   const onImageShare = async () => {
