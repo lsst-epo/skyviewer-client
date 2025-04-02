@@ -1314,6 +1314,7 @@ export type EntryCriteriaInput = {
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   /** Causes the query results to be returned in reverse order. */
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   /** Determines which site(s) the elements should be queried in, based on their language. */
@@ -1543,6 +1544,7 @@ export type EntryInterfaceAncestorsArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1623,6 +1625,7 @@ export type EntryInterfaceChildrenArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1703,6 +1706,7 @@ export type EntryInterfaceDescendantsArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1783,6 +1787,7 @@ export type EntryInterfaceLocalizedArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1863,6 +1868,7 @@ export type EntryInterfaceNextArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1943,6 +1949,7 @@ export type EntryInterfaceParentArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2023,6 +2030,7 @@ export type EntryInterfacePrevArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2392,6 +2400,7 @@ export type QueryAstroObjectsEntriesArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2469,6 +2478,7 @@ export type QueryCatalogsEntriesArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2693,6 +2703,7 @@ export type QueryEmbedEntriesArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2770,6 +2781,7 @@ export type QueryEntriesArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2849,6 +2861,7 @@ export type QueryEntryArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2928,6 +2941,7 @@ export type QueryEntryCountArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3007,6 +3021,7 @@ export type QueryExplorerEntriesArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3152,6 +3167,7 @@ export type QueryGuidedExperiencesEntriesArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3229,6 +3245,7 @@ export type QuerySurveysEntriesArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3306,6 +3323,7 @@ export type QueryToursEntriesArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4120,6 +4138,7 @@ export type AstroObjects_AstroObject_EntryAncestorsArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4244,6 +4263,7 @@ export type AstroObjects_AstroObject_EntryChildrenArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4323,6 +4343,7 @@ export type AstroObjects_AstroObject_EntryDescendantsArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4402,6 +4423,7 @@ export type AstroObjects_AstroObject_EntryLocalizedArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4481,6 +4503,7 @@ export type AstroObjects_AstroObject_EntryNextArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4560,6 +4583,7 @@ export type AstroObjects_AstroObject_EntryParentArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4639,6 +4663,7 @@ export type AstroObjects_AstroObject_EntryPrevArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5069,6 +5094,7 @@ export type Catalogs_Catalog_EntryAncestorsArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5148,6 +5174,7 @@ export type Catalogs_Catalog_EntryChildrenArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5227,6 +5254,7 @@ export type Catalogs_Catalog_EntryDescendantsArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5351,6 +5379,7 @@ export type Catalogs_Catalog_EntryLocalizedArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5430,6 +5459,7 @@ export type Catalogs_Catalog_EntryNextArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5509,6 +5539,7 @@ export type Catalogs_Catalog_EntryParentArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5588,6 +5619,7 @@ export type Catalogs_Catalog_EntryPrevArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5783,6 +5815,7 @@ export type Embed_Embed_EntryAncestorsArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5862,6 +5895,7 @@ export type Embed_Embed_EntryChildrenArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5941,6 +5975,7 @@ export type Embed_Embed_EntryDescendantsArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6020,6 +6055,7 @@ export type Embed_Embed_EntryLocalizedArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6099,6 +6135,7 @@ export type Embed_Embed_EntryNextArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6178,6 +6215,7 @@ export type Embed_Embed_EntryParentArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6257,6 +6295,7 @@ export type Embed_Embed_EntryPrevArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6336,6 +6375,7 @@ export type Embed_Embed_EntrySurveyArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6531,6 +6571,7 @@ export type Explorer_Explorer_EntryAncestorsArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6610,6 +6651,7 @@ export type Explorer_Explorer_EntryChildrenArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6689,6 +6731,7 @@ export type Explorer_Explorer_EntryDescendantsArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6768,6 +6811,7 @@ export type Explorer_Explorer_EntryLocalizedArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6847,6 +6891,7 @@ export type Explorer_Explorer_EntryNextArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6926,6 +6971,7 @@ export type Explorer_Explorer_EntryParentArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7005,6 +7051,7 @@ export type Explorer_Explorer_EntryPrevArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7084,6 +7131,7 @@ export type Explorer_Explorer_EntrySurveyArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7881,6 +7929,7 @@ export type GuidedExperiences_GuidedExperiences_EntryAncestorsArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7960,6 +8009,7 @@ export type GuidedExperiences_GuidedExperiences_EntryChildrenArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8039,6 +8089,7 @@ export type GuidedExperiences_GuidedExperiences_EntryDescendantsArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8153,6 +8204,7 @@ export type GuidedExperiences_GuidedExperiences_EntryLocalizedArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8232,6 +8284,7 @@ export type GuidedExperiences_GuidedExperiences_EntryNextArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8311,6 +8364,7 @@ export type GuidedExperiences_GuidedExperiences_EntryParentArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8390,6 +8444,7 @@ export type GuidedExperiences_GuidedExperiences_EntryPrevArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8814,6 +8869,7 @@ export type PoiAstroObject_PoiAstroObject_BlockTypeAstroObjectArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9066,6 +9122,7 @@ export type Surveys_Surveys_EntryAncestorsArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9145,6 +9202,7 @@ export type Surveys_Surveys_EntryChildrenArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9229,6 +9287,7 @@ export type Surveys_Surveys_EntryDescendantsArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9313,6 +9372,7 @@ export type Surveys_Surveys_EntryLocalizedArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9392,6 +9452,7 @@ export type Surveys_Surveys_EntryNextArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9471,6 +9532,7 @@ export type Surveys_Surveys_EntryParentArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9550,6 +9612,7 @@ export type Surveys_Surveys_EntryPrevArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9933,6 +9996,7 @@ export type TourPois_TourPoi_BlockTypeAstroObjectArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -10902,6 +10966,7 @@ export type Tours_Tour_Entry = ElementInterface & EntryInterface & {
   factsHeading: Maybe<Scalars['String']['output']>;
   /** The ID of the entity */
   id: Maybe<Scalars['ID']['output']>;
+  includeInFeed: Maybe<Scalars['Boolean']['output']>;
   introContentBlocks: Array<Maybe<IntroContentBlocks_MatrixField>>;
   introHeading: Maybe<Scalars['String']['output']>;
   introSubheading: Maybe<Scalars['String']['output']>;
@@ -11021,6 +11086,7 @@ export type Tours_Tour_EntryAncestorsArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -11123,6 +11189,7 @@ export type Tours_Tour_EntryChildrenArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -11202,6 +11269,7 @@ export type Tours_Tour_EntryDescendantsArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -11351,6 +11419,7 @@ export type Tours_Tour_EntryLocalizedArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -11430,6 +11499,7 @@ export type Tours_Tour_EntryNextArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -11509,6 +11579,7 @@ export type Tours_Tour_EntryParentArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -11588,6 +11659,7 @@ export type Tours_Tour_EntryPrevArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -11667,6 +11739,7 @@ export type Tours_Tour_EntrySurveyArgs = {
   id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
   introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -11786,10 +11859,7 @@ export type ExplorerPageQueryVariables = Exact<{
 }>;
 
 
-export type ExplorerPageQuery = { __typename?: 'Query', catalogs: Array<(
-    { __typename?: 'catalogs_catalog_Entry' }
-    & { ' $fragmentRefs'?: { 'CatalogFragment': CatalogFragment } }
-  ) | null> | null, explorerEntries: Array<{ __typename?: 'explorer_explorer_Entry', survey: Array<{ __typename?: 'astroObjects_astroObject_Entry' } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embed_embed_Entry' } | { __typename?: 'explorer_explorer_Entry' } | { __typename?: 'guidedExperiences_guidedExperiences_Entry' } | (
+export type ExplorerPageQuery = { __typename?: 'Query', explorerEntries: Array<{ __typename?: 'explorer_explorer_Entry', survey: Array<{ __typename?: 'astroObjects_astroObject_Entry' } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embed_embed_Entry' } | { __typename?: 'explorer_explorer_Entry' } | { __typename?: 'guidedExperiences_guidedExperiences_Entry' } | (
       { __typename?: 'surveys_surveys_Entry' }
       & { ' $fragmentRefs'?: { 'SurveyFragment': SurveyFragment } }
     ) | { __typename?: 'tours_tour_Entry' } | null> } | null> | null };
@@ -11868,7 +11938,7 @@ export type ToursPathsQuery = { __typename?: 'Query', toursEntries: Array<{ __ty
 export const CatalogFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Catalog"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"catalogs_catalog_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"icons_Asset"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]} as unknown as DocumentNode<CatalogFragment, unknown>;
 export const SurveyFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}}]} as unknown as DocumentNode<SurveyFragment, unknown>;
 export const EmbeddedPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"EmbeddedPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"embedEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"embed_embed_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}}]} as unknown as DocumentNode<EmbeddedPageQuery, EmbeddedPageQueryVariables>;
-export const ExplorerPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ExplorerPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"catalogs"},"name":{"kind":"Name","value":"catalogsEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Catalog"}}]}},{"kind":"Field","name":{"kind":"Name","value":"explorerEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"explorer_explorer_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Catalog"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"catalogs_catalog_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"icons_Asset"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}}]} as unknown as DocumentNode<ExplorerPageQuery, ExplorerPageQueryVariables>;
+export const ExplorerPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ExplorerPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"explorerEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"explorer_explorer_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}}]} as unknown as DocumentNode<ExplorerPageQuery, ExplorerPageQueryVariables>;
 export const GuidedExperiencesPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GuidedExperiencesPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"guidedExperiencesEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"guidedExperiences_guidedExperiences_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"guidedExperiences"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"guidedExperiences_experience_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"experienceCategory"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"Field","name":{"kind":"Name","value":"previewImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GuidedExperiencesPageQuery, GuidedExperiencesPageQueryVariables>;
 export const TourCountDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TourCount"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"section"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}},{"kind":"Argument","name":{"kind":"Name","value":"section"},"value":{"kind":"Variable","name":{"kind":"Name","value":"section"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<TourCountQuery, TourCountQueryVariables>;
 export const SurveyImageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"SurveyImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"surveysEntries"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}}]}}]}}]}}]} as unknown as DocumentNode<SurveyImageQuery, SurveyImageQueryVariables>;
