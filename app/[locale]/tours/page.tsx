@@ -12,7 +12,7 @@ const ToursPage: FC<RootProps> = async ({ params: { locale } }) => {
         <ViewTransition name="tours-title">{t("tours.title")}</ViewTransition>
       }
     >
-      <ToursList />
+      <ToursList {...{ locale }} />
     </GuidedExperienceLanding>
   );
 };

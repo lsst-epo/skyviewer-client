@@ -4,8 +4,8 @@ import ScrollingList from "@/components/molecules/ScrollingList";
 import TourCard from "../TourCard";
 import styles from "./styles.module.css";
 
-const ToursListContent: FC = async () => {
-  const tours = await getAllTours();
+const ToursListContent: FC<{ locale: string }> = async (props) => {
+  const tours = await getAllTours(props);
 
   return (
     <>
@@ -20,7 +20,7 @@ const ToursListContent: FC = async () => {
   );
 };
 
-const ToursList: FC = () => {
+const ToursList: FC<{ locale: string }> = (props) => {
   const SkeletonCards = new Array(4).fill(undefined);
 
   return (
@@ -31,14 +31,17 @@ const ToursList: FC = () => {
             {SkeletonCards.map((card, i) => {
               return (
                 <li key={i}>
-                  <TourCard title={<div className={styles.skelly} />} />
+                  <TourCard
+                    {...props}
+                    title={<div className={styles.skelly} />}
+                  />
                 </li>
               );
             })}
           </>
         }
       >
-        <ToursListContent />
+        <ToursListContent {...props} />
       </Suspense>
     </ScrollingList>
   );
