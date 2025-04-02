@@ -8,12 +8,12 @@ import { Poi, Tour, TourCard, TourInitial, TourMetadata } from "./schema";
 import tagStore from "../tags";
 import { buildSurveyImage } from "@/lib/helpers";
 
-export const getAllTours = async () => {
-  const site = siteFromLocale(getLocale());
+export const getAllTours = async ({ locale }: { locale: string }) => {
+  const site = siteFromLocale(locale);
 
   const query = graphql(`
-    query AllTours($site: [String]) {
-      toursEntries(site: $site) {
+    query AllTours($site: [String], $includeInFeed: Boolean) {
+      toursEntries(site: $site, includeInFeed: $includeInFeed) {
         ... on tours_tour_Entry {
           id
           complexity
@@ -41,6 +41,7 @@ export const getAllTours = async () => {
     query,
     variables: {
       site: [site],
+      includeInFeed: true,
     },
     fetchOptions: {
       next: { tags: [tagStore.tours] },
