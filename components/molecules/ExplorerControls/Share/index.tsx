@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, MouseEvent } from "react";
 import clsx from "clsx/lite";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
@@ -17,6 +17,7 @@ import saveAs from "file-saver";
 import { useAladin } from "@/contexts/Aladin";
 import { env } from "@/env";
 import { currentViewAsParams } from "@/lib/aladin/helpers";
+import { shouldShare } from "@/lib/utilities";
 import WithButtonLabel from "@/components/atomic/WithButtonLabel";
 import IconButton from "@/components/atomic/IconButton";
 import LinkToView from "@/components/molecules/ShareButton/patterns/LinkToView";
@@ -47,9 +48,9 @@ const Share: FC = () => {
     return baseUrl.href;
   };
 
-  const onImageShare = async () => {
+  const imageBlob = async () => {
     if (!isLoading) {
-      const dataUrl = await aladin.getViewData("blob", mime, false);
+      const data = await aladin.getViewData("blob", mime, false);
       const [ra, dec] = aladin.getRaDec();
       const [fov] = aladin.getFov();
       const filename = t("menu.share.options.image.filename", {
@@ -59,7 +60,14 @@ const Share: FC = () => {
         extension: imageType,
       });
 
-      saveAs(dataUrl, filename);
+      return { data, filename };
+    }
+  };
+
+  const onImageShare = async () => {
+    const image = await imageBlob();
+    if (image) {
+      saveAs(image.data, image.filename);
     }
   };
 
@@ -71,8 +79,38 @@ const Share: FC = () => {
     }
   };
 
-  const handleMenuChange = (open: boolean) => {
+  const nativeShare = async () => {
+    const image = await imageBlob();
+    const files: Array<File> = [];
+
+    if (image) {
+      files.push(
+        new File([image.data], image.filename, { type: image.data.type })
+      );
+    }
+
+    const data: ShareData = { url: urlToShare(), files };
+
+    try {
+      navigator.share(data);
+    } catch (error) {
+      console.warn(error);
+    }
+  };
+
+  const handleMenuChange = async ({
+    event,
+    open,
+  }: {
+    event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>;
+    open: boolean;
+  }) => {
     if (!open) {
+      if (shouldShare()) {
+        event.preventDefault();
+        nativeShare();
+      }
+
       setViewUrl(urlToShare());
     }
   };
@@ -160,7 +198,7 @@ const Share: FC = () => {
               as={IconButton}
               icon={open ? <IoIosClose /> : <IoMdShare />}
               text={open ? t("menu.share.close") : t("menu.share.open")}
-              onClick={() => handleMenuChange(open)}
+              onClick={(event) => handleMenuChange({ event, open })}
               disabled={isLoading}
             />
             <AnimatePresence>
