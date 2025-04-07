@@ -3,8 +3,7 @@ import { cacheExchange, createClient, fetchExchange } from "@urql/core";
 import type { AnyVariables, DocumentInput, OperationResult } from "@urql/core";
 import { registerUrql } from "@urql/next/rsc";
 import { env } from "@/env";
-
-const API_URL = env.NEXT_PUBLIC_API_URL;
+import previewSession from "@/services/sessions/preview";
 
 interface QueryProps<T, P> {
   query: DocumentInput<T, P>;
@@ -23,12 +22,22 @@ const queryAPI: APIClient = async ({
   fetchOptions: inputFetchOptions,
   previewToken,
 }) => {
-  const url = previewToken ? `${API_URL}?token=${previewToken}` : API_URL;
+  const token = previewToken || previewSession().token();
+  const params = new URLSearchParams({});
+
+  if (token) {
+    params.set("token", token);
+  }
+
+  const { href: url } = new URL(
+    `?${params.toString()}`,
+    env.NEXT_PUBLIC_API_URL
+  );
 
   const defaultFetchOptions: RequestInit = {
     cache: "force-cache",
     next: {
-      revalidate: previewToken ? 0 : undefined,
+      revalidate: token ? 0 : undefined,
     },
   };
   const fetchOptions = merge({}, defaultFetchOptions, inputFetchOptions);
