@@ -6,10 +6,9 @@ const config: CodegenConfig = {
   generates: {
     "./gql/": {
       documents: [
-        "app/[locale]/tours/[tour]/tour/**/*.{ts,tsx}",
-        "app/[locale]/embed/**/*.{ts,tsx}",
+        "app/**/*.{ts,tsx}",
         "services/api/**/*.{ts,tsx,graphql}",
-        "components/organisms/**/*.{ts,tsx}",
+        "components/**/*.{ts,tsx}",
       ],
       preset: "client",
     },

@@ -8,6 +8,7 @@ export const env = createEnv({
   },
   server: {
     CRAFT_REVALIDATE_SECRET_TOKEN: z.string().min(1),
+    CRAFT_SECRET_TOKEN: z.string().min(1),
   },
   client: {
     NEXT_PUBLIC_BASE_URL: z.string().url(),
