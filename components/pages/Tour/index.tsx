@@ -38,7 +38,7 @@ const TourPage: FC<{ title: string | null }> = ({ title }) => {
       <PoiSlideout open={!isPending && !!currentPoi}>
         <PoiHeader
           tour={title || undefined}
-          title={currentPoi?.object.title}
+          title={currentPoi?.title}
           currentStep={position.current}
           totalSteps={position.total}
         />

@@ -100,10 +100,7 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
     onComplete?: VoidFunction;
   }) => {
     const toIndex = to - 1;
-    const {
-      fov,
-      object: { ra, dec },
-    } = pois[toIndex];
+    const { fov, ra, dec } = pois[toIndex];
 
     const current = aladin.getRaDec();
 
