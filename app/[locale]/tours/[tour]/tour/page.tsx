@@ -13,6 +13,7 @@ const Tour: FunctionComponent<WithSearchParams<TourProps>> = async ({
   searchParams = {},
 }) => {
   const pois = await getTourPois(tour);
+
   const { poi = "1" } = searchParams;
   const { data: offset = 0 } = z.coerce
     .number()

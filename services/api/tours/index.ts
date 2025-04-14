@@ -199,12 +199,8 @@ export const getTourInitial = async ({
           tourPois(limit: 1, offset: $offset) {
             ... on tourPois_tourPoi_BlockType {
               fov
-              astroObject {
-                ... on astroObjects_astroObject_Entry {
-                  ra
-                  dec
-                }
-              }
+              ra
+              dec
             }
           }
         }
@@ -250,17 +246,11 @@ export const getTourPois = async (tour: string) => {
           tourPois {
             ... on tourPois_tourPoi_BlockType {
               id
+              title: poiTitle
               description
               fov
-              object: astroObject {
-                ... on astroObjects_astroObject_Entry {
-                  title
-                  id: astroObjectId
-                  ra
-                  dec
-                  characteristics
-                }
-              }
+              ra
+              dec
               audio(where: { key: "scheme", value: "audio" }) {
                 metadata {
                   DurationTime
@@ -303,7 +293,7 @@ export const getTourPois = async (tour: string) => {
 
   if (!tourPois) return [];
 
-  const { data: pois = [] } = z.array(Poi).safeParse(tourPois);
+  const { data: pois = [], error } = z.array(Poi).safeParse(tourPois);
 
   return pois;
 };
