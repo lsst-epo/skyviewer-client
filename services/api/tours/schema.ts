@@ -64,13 +64,11 @@ export const Tour = z.object({
 export const TourInitial = z
   .object({
     fov: z.coerce.number(),
-    astroObject: z
-      .array(z.object({ ra, dec }))
-      .min(1)
-      .transform((objects) => objects[0]),
+    ra,
+    dec,
   })
-  .transform(({ fov, astroObject }) => {
-    return { fov, target: `${astroObject.ra} ${astroObject.dec}` };
+  .transform(({ fov, ra, dec }) => {
+    return { fov, target: [ra, dec].join(" ") };
   });
 
 export const AstroObject = z.object({
@@ -83,9 +81,11 @@ export const AstroObject = z.object({
 
 export const Poi = z.object({
   id: z.string(),
+  title: z.string(),
   description: z.string(),
   fov: z.coerce.number(),
-  object: z.array(AstroObject).transform((arg) => arg[0]),
+  ra,
+  dec,
   zoomOutTime: z.coerce
     .number()
     .nullable()
