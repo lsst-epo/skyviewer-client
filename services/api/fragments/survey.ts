@@ -14,3 +14,13 @@ export const SurveyFragment = graphql(`
     tileSize
   }
 `);
+
+export const SurveyLayer = graphql(`
+  fragment SurveyLayer on surveys_layer_BlockType {
+    id
+    opacity
+    survey {
+      ...Survey
+    }
+  }
+`);

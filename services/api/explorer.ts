@@ -1,8 +1,27 @@
 "server-only";
+import { z } from "zod";
 import { graphql } from "@/gql";
 import queryAPI from "@/services/api/client";
 import { siteFromLocale } from "@/lib/i18n/site";
-import { buildSurveyImage } from "@/lib/helpers";
+import { surveyLayerSchema } from "@/lib/schema/survey";
+import { ra, dec, fov } from "@/lib/schema/astro";
+
+const explorerSchema = z
+  .object({
+    ra,
+    dec,
+    fov,
+    fovMin: fov,
+    fovMax: fov,
+    surveys: z.array(surveyLayerSchema),
+  })
+  .transform(({ fovMin, fovMax, ra, dec, ...output }) => {
+    return {
+      fovRange: [fovMin, fovMax],
+      target: [ra, dec].join(" "),
+      ...output,
+    };
+  });
 
 export const getExplorerPage = async (locale: string) => {
   const site = siteFromLocale(locale);
@@ -11,8 +30,13 @@ export const getExplorerPage = async (locale: string) => {
     query ExplorerPage($site: [String]) {
       explorerEntries(site: $site) {
         ... on explorer_explorer_Entry {
-          survey {
-            ...Survey
+          ra
+          dec
+          fov
+          fovMin
+          fovMax
+          surveys {
+            ...SurveyLayer
           }
         }
       }
@@ -28,11 +52,5 @@ export const getExplorerPage = async (locale: string) => {
 
   if (!data || !data.explorerEntries) return;
 
-  const [explorer] = data.explorerEntries;
-
-  if (!explorer) return;
-
-  const [survey] = explorer.survey;
-
-  return { survey: buildSurveyImage(survey) };
+  return explorerSchema.safeParse(data.explorerEntries[0])?.data;
 };

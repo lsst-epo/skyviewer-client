@@ -10,19 +10,24 @@ const EmbeddedPage: FunctionComponent<WithSearchParams<RootProps>> = async ({
   params: { locale },
   searchParams = {},
 }) => {
-  const survey = await getEmbedPage(locale);
+  const data = await getEmbedPage(locale);
 
-  if (!survey) {
+  if (!data) {
     notFound();
   }
 
-  const { imgFormat, path, fovRange } = survey;
+  const { surveys, fovRange, ...configuredOptions } = data;
+
+  const options = {
+    ...initialPosition(searchParams, { fovRange, ...configuredOptions }),
+    backgroundColor: "rgb(0,0,0)",
+  };
 
   return (
     <AladinTemplate
       fovRange={fovRange}
-      hipsConfig={{ id: path, options: { imgFormat } }}
-      options={initialPosition(searchParams, survey)}
+      layers={surveys}
+      {...{ options }}
       embedded
     >
       <EmbeddedExplorer />
