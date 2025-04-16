@@ -6,7 +6,7 @@ import { siteFromLocale } from "@/lib/i18n/site";
 import queryAPI from "@/services/api/client";
 import { Poi, Tour, TourCard, TourInitial, TourMetadata } from "./schema";
 import tagStore from "../tags";
-import { buildSurveyImage } from "@/lib/helpers";
+import { surveyLayerSchema } from "@/lib/schema/survey";
 
 export const getAllTours = async ({ locale }: { locale: string }) => {
   const site = siteFromLocale(locale);
@@ -188,13 +188,8 @@ export const getTourInitial = async ({
       toursEntries(slug: $slug, site: $site) {
         ... on tours_tour_Entry {
           title
-          survey {
-            ... on surveys_surveys_Entry {
-              path
-              fovMax
-              fovMin
-              imgFormat
-            }
+          surveys {
+            ...SurveyLayer
           }
           tourPois(limit: 1, offset: $offset) {
             ... on tourPois_tourPoi_BlockType {
@@ -223,16 +218,17 @@ export const getTourInitial = async ({
 
   if (!entry) return;
 
-  const { tourPois, title, survey } = entry;
+  const { tourPois, title } = entry;
 
   const { data: initial } = TourInitial.safeParse(tourPois[0]);
+  const { data: surveys } = z.array(surveyLayerSchema).safeParse(entry.surveys);
 
-  if (!initial) return;
+  if (!initial || !surveys) return;
 
   return {
     title,
     initial,
-    survey: buildSurveyImage(survey[0]),
+    surveys,
   };
 };
 
