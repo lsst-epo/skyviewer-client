@@ -12,6 +12,7 @@ import {
 import defaultOptions, {
   defaultHiPSOptions,
 } from "@/fixtures/defaultAladinOptions";
+import { SurveyLayer } from "@/lib/schema/survey";
 import { useOnClickOutside } from "@/hooks/listeners";
 import AladinContext, { defaultValue } from "@/contexts/Aladin";
 import styles from "./styles.module.css";
@@ -20,18 +21,15 @@ export interface AladinProps {
   fovRange?: Array<number>;
   options?: AladinOptions;
   disableInteraction?: boolean;
-  hipsConfig: {
-    id: string;
-    options: HiPSOptions;
-  };
+  layers: Array<SurveyLayer>;
 }
 
 export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
   children,
-  fovRange = [2, 90],
-  hipsConfig,
+  fovRange,
   disableInteraction = false,
   options = {},
+  layers,
 }) => {
   const A = useRef<Aladin | null>(null);
   const aladin = useRef<AladinInstance | null>(null);
@@ -60,24 +58,34 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
         const global: Aladin = module.default;
 
         global.init.then(() => {
-          const newInstance: AladinInstance = global.aladin(node, {
+          const instance: AladinInstance = global.aladin(node, {
             ...defaultOptions,
             ...options,
-            survey: hipsConfig.id,
           });
 
-          newInstance.setBaseImageLayer(
-            global.imageHiPS(hipsConfig.id, {
+          if (fovRange) {
+            instance.setFoVRange(fovRange[0], fovRange[1]);
+          }
+
+          layers.reverse().forEach(({ id, survey: { path, ...survey } }, i) => {
+            const hips = global.HiPS(path, {
               ...defaultHiPSOptions,
-              ...hipsConfig.options,
-              successCallback: () => {
-                newInstance.setFoVRange(fovRange[0], fovRange[1]);
-              },
-            })
-          );
+              ...survey,
+            });
+
+            if (i === 0) {
+              if (!fovRange) {
+                instance.setFoVRange(survey.fovRange[0], survey.fovRange[1]);
+              }
+
+              instance.setBaseImageLayer(hips);
+            } else {
+              instance.setOverlayImageLayer(hips, id);
+            }
+          });
 
           A.current = global;
-          aladin.current = newInstance;
+          aladin.current = instance;
           setLoading(false);
           setNode(node);
         });
