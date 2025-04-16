@@ -15,23 +15,15 @@ const ListenerPage: FC<WithSearchParams<RootProps>> = async ({
     notFound();
   }
 
-  const { survey } = data;
-  const { fovRange, path, imgFormat, cooFrame, maxOrder, tileSize } = survey;
+  const { surveys, fovRange, ...configuredOptions } = data;
 
-  const options: AladinOptions = {
-    ...initialPosition(searchParams, survey),
+  const options = {
+    ...initialPosition(searchParams, { fovRange, ...configuredOptions }),
     backgroundColor: "rgb(0,0,0)",
   };
 
   return (
-    <AladinTemplate
-      fovRange={fovRange}
-      hipsConfig={{
-        id: path,
-        options: { imgFormat, cooFrame, tileSize, maxOrder },
-      }}
-      {...{ options }}
-    >
+    <AladinTemplate fovRange={fovRange} layers={surveys} {...{ options }}>
       <Listener />
     </AladinTemplate>
   );
