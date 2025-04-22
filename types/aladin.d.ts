@@ -246,6 +246,7 @@ interface AladinCatalog {
 }
 
 interface AladinView {
+  aladinDiv: HTMLDivElement;
   imageCanvas: HTMLCanvasElement;
   fov: number;
   minFoV: number;
@@ -360,6 +361,7 @@ interface AladinInstance {
   }) => Promise<string>;
   readonly getViewData: GetViewData;
   readonly getViewArrayBuffer: (withLogo?: boolean) => Promise<ArrayBuffer>;
+  readonly toggleFullscreen: (realFullscreen?: boolean) => void;
   view: AladinView;
   options: Required<AladinOptions>;
   callbacksByEventName: Partial<AladinCallbackMap>;
