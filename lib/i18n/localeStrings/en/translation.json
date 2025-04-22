@@ -72,7 +72,9 @@
     "zoom_out": "Zoom out",
     "open_in_new_tab": "Open in the Skyviewer",
     "volume_mute": "Mute audio (m)",
-    "volume_unmute": "Unmute audio (m)"
+    "volume_unmute": "Unmute audio (m)",
+    "fullscreen_open": "Open in fullscreen",
+    "fullscreen_close": "Exit fullscreen"
   },
   "menu": {
     "share": {
