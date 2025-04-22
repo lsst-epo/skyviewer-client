@@ -8,6 +8,7 @@ import Orientation from "./Orientation";
 import ToggleGrid from "./ToggleGrid";
 import ControlStack from "../Controls/Stack";
 import styles from "./styles.module.css";
+import FullscreenToggle from "./FullscreenToggle";
 
 const ExplorerControls: FC = () => {
   return (
@@ -20,6 +21,7 @@ const ExplorerControls: FC = () => {
       </ControlStack>
       <Pan />
       <ControlStack position="bottom left">
+        <FullscreenToggle />
         <Share />
       </ControlStack>
       <ControlStack className={styles.viewControls} position="top right">

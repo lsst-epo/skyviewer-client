@@ -3259,10 +3259,10 @@ ajv@^8.11.0:
     json-schema-traverse "^1.0.0"
     require-from-string "^2.0.2"
 
-aladin-lite@^3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/aladin-lite/-/aladin-lite-3.6.1.tgz#3ba6fc3cd13067ec718c7166d2cfec2a43e51ebe"
-  integrity sha512-HtLYJR9K6ek5I9CD7BJ8Z4qCGuBlw8WAX0k1DnNxpRADrwaEAsKsJpTubNASQLF936LCfFeJD5nH323CFLubzg==
+aladin-lite@^3.6.5:
+  version "3.6.5"
+  resolved "https://registry.yarnpkg.com/aladin-lite/-/aladin-lite-3.6.5.tgz#70a27c704b9480755d073cab2e75b8108a9bc77c"
+  integrity sha512-6AShIjryK0jKJXPSSL1c4ULPmuXeU2dgnGITayZJZ9GmydJQiqQUy5AbwZ+aPFV5B+uYi+JeAopCHUAnB/1MaA==
 
 ansi-colors@^4.1.1:
   version "4.1.1"
@@ -9180,6 +9180,11 @@ scheduler@^0.23.2:
   integrity sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==
   dependencies:
     loose-envify "^1.1.0"
+
+screenfull@^6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/screenfull/-/screenfull-6.0.2.tgz#3dbe4b8c4f8f49fb8e33caa8f69d0bca730ab238"
+  integrity sha512-AQdy8s4WhNvUZ6P8F6PB21tSPIYKniic+Ogx0AacBMjKP1GUHN2E9URxQHtCusiwxudnCKkdy4GrHXPPJSkCCw==
 
 scuid@^1.1.0:
   version "1.1.0"
