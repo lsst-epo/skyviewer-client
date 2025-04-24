@@ -31,8 +31,8 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
   options = {},
   layers,
 }) => {
-  const A = useRef<Aladin | null>(null);
-  const aladin = useRef<AladinInstance | null>(null);
+  const A = useRef<A | null>(null);
+  const aladin = useRef<Aladin | null>(null);
 
   const [hasFocus, setFocus] = useState(false);
   const [isLoading, setLoading] = useState(true);
@@ -55,10 +55,10 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
   const onMounted = useCallback<RefCallback<HTMLDivElement>>((node) => {
     if (node) {
       import("aladin-lite").then((module) => {
-        const global: Aladin = module.default;
+        const global: A = module.default;
 
         global.init.then(() => {
-          const instance: AladinInstance = global.aladin(node, {
+          const instance = global.aladin(node, {
             ...defaultOptions,
             ...options,
           });
