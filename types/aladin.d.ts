@@ -281,7 +281,7 @@ interface GetViewData {
   ): Promise<Blob>;
 }
 
-interface AladinInstance {
+interface Aladin {
   readonly getRaDec: () => [number, number];
   readonly getSize: () => [number, number];
   readonly getFov: () => [number, number];
@@ -398,13 +398,22 @@ interface AladinCatalogOptions {
 
 type AladinCatalogCallback = (sources: AladinSource[]) => void;
 
-interface Aladin {
+interface Coo {
+  setFrame: (frame: CooFrame) => void;
+  distance: (position: Coo) => number;
+  dist2: (position: Coo) => number;
+  equals: (position: Coo) => boolean;
+  format(options: "d" | "s" | "/"): string;
+  format(options: "2"): Array<string>;
+}
+
+interface A {
   /** Initializes the Aladin Lite library, checking for WebGL2 support. This method must be called before instancing an Aladin Lite object. */
   readonly init: Promise<void>;
   readonly aladin: (
     id: string | HTMLElement,
     options?: AladinOptions
-  ) => AladinInstance;
+  ) => Aladin;
   readonly catalog: (options?: AladinCatalogOptions) => AladinCatalog;
   readonly source: (ra: number, dec: number, data: any) => AladinSource;
   // TODO: add option info
@@ -420,6 +429,7 @@ interface Aladin {
   ) => AladinCatalog;
   readonly imageHiPS: (id: string, options?: HiPSOptions) => HiPS;
   readonly HiPS: (id: string, options?: HiPSOptions) => HiPS;
+  readonly coo: (longitude: number, latitude: number, prec: number) => Coo;
   // TODO Add other catalog methods
   // catalogFromSimbad(<target>, <radius-in-degrees>, <catalog-options>?, <successCallback>?)
   // A.catalogFromVizieR(<vizier-cat-id>, <target>, <radius-in-deg>, <cat-options>?, <successCallback>?)
@@ -430,4 +440,10 @@ interface Aladin {
   // A.marker(ra, dec, {popupTitle: <title of the popup>, popupDesc: <text (possibly HTML) for the popup>})
 
   // TODO: Add the final functions
+}
+
+declare module "aladin-lite" {
+  const A: A;
+
+  export default A;
 }

@@ -18,7 +18,7 @@ interface ReactAladinCallbacks {
 }
 
 interface AdditionalAladinCallbacks {
-  onLoaded?: (args: { aladin: AladinInstance; A: Aladin }) => void;
+  onLoaded?: (args: { aladin: Aladin; A: A }) => void;
   onFocused?: () => void;
   onBlur?: () => void;
 }
