@@ -20,7 +20,7 @@ export async function getMarkerShape(
   });
 }
 
-export async function addCat(A: Aladin, aladin: AladinInstance, cat: Catalog) {
+export async function addCat(A: A, aladin: Aladin, cat: Catalog) {
   const { path: url, icon, title } = cat;
   const shape: HTMLImageElement | CatalogSourceShape = CUSTOM_SHAPES[title]
     ? await getMarkerShape(CUSTOM_SHAPES[title])
@@ -37,11 +37,7 @@ export async function addCat(A: Aladin, aladin: AladinInstance, cat: Catalog) {
   aladin.addCatalog(catalog);
 }
 
-export const addCats = (
-  A: Aladin,
-  aladin: AladinInstance,
-  catalogs: Array<Catalog>
-) => {
+export const addCats = (A: A, aladin: Aladin, catalogs: Array<Catalog>) => {
   catalogs.forEach((cat) => {
     addCat(A, aladin, cat);
   });

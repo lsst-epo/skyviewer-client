@@ -6,10 +6,14 @@ import Share from "@/components/molecules/ExplorerControls/Share";
 import OpenCurrentView from "@/components/molecules/ExplorerControls/OpenCurrentView";
 import ControlStack from "@/components/molecules/Controls/Stack";
 import FullscreenToggle from "@/components/molecules/ExplorerControls/FullscreenToggle";
+import ReturnToInital from "@/components/molecules/ExplorerControls/ReturnToInitial";
 
 const EmbeddedExplorer: FunctionComponent = () => {
   return (
     <AladinOverlay space="var(--size-spacing-xs) var(--size-spacing-s) var(--size-spacing-xs) var(--size-spacing-xs)">
+      <ControlStack position="top right">
+        <ReturnToInital />
+      </ControlStack>
       <ControlStack position="bottom left">
         <OpenCurrentView />
         <FullscreenToggle />

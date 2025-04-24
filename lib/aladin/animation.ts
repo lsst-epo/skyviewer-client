@@ -5,11 +5,7 @@ type Position = { ra: number; dec: number };
 
 const isNarrowScreen = () => window.matchMedia("(width < 1130px)").matches;
 
-export const adjustPositionForScreen = ({
-  aladin,
-}: {
-  aladin: AladinInstance;
-}) => {
+export const adjustPositionForScreen = ({ aladin }: { aladin: Aladin }) => {
   if (isNarrowScreen()) {
     const duration =
       parseFloat(
@@ -44,7 +40,7 @@ export const zoom = ({
   start: number;
   end: number;
   duration: number;
-  aladin: AladinInstance;
+  aladin: Aladin;
   onComplete?: () => void;
 }) => {
   let obj = { fov: start };
@@ -70,7 +66,7 @@ export const pan = ({
   start: Position;
   end: Position;
   duration: number;
-  aladin: AladinInstance;
+  aladin: Aladin;
   onComplete?: () => void;
 }) => {
   let obj = start;
@@ -95,7 +91,7 @@ export const panAndZoom = ({
 }: {
   fov: { start: number; end: number; middle: number };
   position: { start: Position; end: Position };
-  aladin: AladinInstance;
+  aladin: Aladin;
   duration: number[];
   onComplete?: () => void;
 }) => {

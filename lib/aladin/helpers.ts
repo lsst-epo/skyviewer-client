@@ -27,7 +27,7 @@ const isAladinCallback = (
 };
 
 export const bindAladinEvents = (
-  aladin: AladinInstance,
+  aladin: Aladin,
   events: ReactAladinCallbacks & AdditionalAladinCallbacks
 ) => {
   Object.keys(events).forEach((eventKey) => {
@@ -41,7 +41,7 @@ export const bindAladinEvents = (
 };
 
 export function getPixelPosition(
-  aladin: AladinInstance,
+  aladin: Aladin,
   { ra, dec }: { ra: number; dec: number }
 ) {
   return Array.from(aladin.world2pix(ra, dec)).reverse();
@@ -75,6 +75,6 @@ export const viewAsParams = ({
   return params;
 };
 
-export const currentViewAsParams = (aladin: AladinInstance) => {
+export const currentViewAsParams = (aladin: Aladin) => {
   return viewAsParams({ fov: aladin.getFov()[0], target: aladin.getRaDec() });
 };

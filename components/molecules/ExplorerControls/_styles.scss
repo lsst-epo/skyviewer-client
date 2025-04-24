@@ -5,7 +5,6 @@
 @use "abstracts/functions";
 
 .controls {
-  $controlDim: 40px;
   $controlSpacing: 12px;
 
   .controls-submenu {
@@ -39,15 +38,6 @@
     }
   }
 
-  .wayfinding,
-  .find {
-    > li {
-      + li {
-        margin-top: $controlSpacing;
-      }
-    }
-  }
-
   .pan {
     right: 10px;
     bottom: 0;
@@ -58,14 +48,5 @@
         margin-left: $controlSpacing;
       }
     }
-  }
-
-  .find {
-    position: static;
-  }
-
-  .wayfinding {
-    bottom: calc(50% - #{$controlDim} - (#{$controlSpacing}));
-    left: 0;
   }
 }
