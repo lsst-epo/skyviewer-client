@@ -20,7 +20,7 @@ type PoiStep = PoiSteps[number];
 
 interface Transition {
   between: [number | null, number];
-  aladin: AladinInstance;
+  aladin: Aladin;
 }
 
 interface TourContextValue {
@@ -96,7 +96,7 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
     onComplete,
   }: {
     between: [number, number];
-    aladin: AladinInstance;
+    aladin: Aladin;
     onComplete?: VoidFunction;
   }) => {
     const toIndex = to - 1;

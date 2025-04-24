@@ -74,7 +74,8 @@
     "volume_mute": "Mute audio (m)",
     "volume_unmute": "Unmute audio (m)",
     "fullscreen_open": "Open in fullscreen",
-    "fullscreen_close": "Exit fullscreen"
+    "fullscreen_close": "Exit fullscreen",
+    "return_to_initial": "Return to initial view"
   },
   "menu": {
     "share": {

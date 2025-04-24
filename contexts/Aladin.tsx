@@ -1,12 +1,12 @@
 "use client";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect } from "react";
 import { bindAladinEvents } from "@/lib/aladin/helpers";
 
 export interface AladinContext {
   isLoading: false;
   hasFocus: boolean;
-  aladin: AladinInstance;
-  A: Aladin;
+  aladin: Aladin;
+  A: A;
 }
 export interface AladinContextDefault {
   isLoading: true;

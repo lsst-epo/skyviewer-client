@@ -9,6 +9,7 @@ import ToggleGrid from "./ToggleGrid";
 import ControlStack from "../Controls/Stack";
 import styles from "./styles.module.css";
 import FullscreenToggle from "./FullscreenToggle";
+import ReturnToInital from "./ReturnToInitial";
 
 const ExplorerControls: FC = () => {
   return (
@@ -26,6 +27,7 @@ const ExplorerControls: FC = () => {
       </ControlStack>
       <ControlStack className={styles.viewControls} position="top right">
         <Orientation />
+        <ReturnToInital />
         <ToggleGrid />
       </ControlStack>
     </AladinOverlay>
