@@ -3,9 +3,13 @@ import { FC } from "react";
 import { useReducedMotion } from "motion/react";
 import IconButton from "@/components/atomic/IconButton";
 import { useAladin } from "@/contexts/Aladin";
-import { panAndZoom } from "@/lib/aladin/animation";
+import { pan, panAndZoom, zoom } from "@/lib/aladin/animation";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 import { useTranslation } from "react-i18next";
+
+const zoomTime = (start: number, end: number) => {
+  return Math.min(Math.max(Math.abs(end - start), 0), 1);
+};
 
 const ReturnToInital: FC = () => {
   const { t } = useTranslation();
@@ -27,24 +31,33 @@ const ReturnToInital: FC = () => {
       current.setFrame(options.cooFrame);
       initial.setFrame(options.cooFrame);
 
-      if (current.format("d") !== initial.format("d")) {
-        if (reduceMotion) {
-          aladin.setFov(initialFov);
+      const hasMoved = current.format("d") !== initial.format("d");
+      const hasZoomed = initialFov !== currentFov;
+
+      if (reduceMotion) {
+        if (hasMoved) {
           aladin.gotoRaDec(initialPosition[0], initialPosition[1]);
-        } else {
+        }
+        if (hasZoomed) {
+          aladin.setFov(initialFov);
+        }
+
+        return;
+      }
+
+      const startPosition = { ra: currentPosition[0], dec: currentPosition[1] };
+      const endPosition = { ra: initialPosition[0], dec: initialPosition[1] };
+
+      if (hasMoved) {
+        const panTime = Math.min(current.distance(initial), 1);
+
+        if (hasZoomed) {
           const middleFov =
             Math.max(initialFov, currentFov) +
             Math.abs(initialFov - currentFov) * 0.1;
 
-          const zoomOutTime = Math.min(
-            Math.max(Math.abs(middleFov - currentFov), 0),
-            1
-          );
-          const panTime = Math.min(current.distance(initial), 1.5);
-          const zoomInTime = Math.min(
-            Math.max(Math.abs(middleFov - initialFov), 0),
-            1
-          );
+          const zoomOutTime = zoomTime(middleFov, currentFov);
+          const zoomInTime = zoomTime(initialFov, middleFov);
 
           panAndZoom({
             fov: {
@@ -53,13 +66,33 @@ const ReturnToInital: FC = () => {
               end: initialFov,
             },
             position: {
-              start: { ra: currentPosition[0], dec: currentPosition[1] },
-              end: { ra: initialPosition[0], dec: initialPosition[1] },
+              start: startPosition,
+              end: endPosition,
             },
             duration: [zoomOutTime, panTime, zoomInTime],
             aladin,
           });
+        } else {
+          pan({
+            duration: panTime,
+            start: startPosition,
+            end: endPosition,
+            aladin,
+          });
         }
+
+        return;
+      }
+
+      if (hasZoomed) {
+        const zoomOutTime = zoomTime(currentFov, initialFov);
+
+        zoom({
+          start: currentFov,
+          end: initialFov,
+          duration: zoomOutTime,
+          aladin,
+        });
       }
     }
   };
