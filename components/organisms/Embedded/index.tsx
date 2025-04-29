@@ -7,20 +7,30 @@ import OpenCurrentView from "@/components/molecules/ExplorerControls/OpenCurrent
 import ControlStack from "@/components/molecules/Controls/Stack";
 import FullscreenToggle from "@/components/molecules/ExplorerControls/FullscreenToggle";
 import ReturnToInital from "@/components/molecules/ExplorerControls/ReturnToInitial";
+import ViewScale from "@/components/molecules/ExplorerControls/ViewScale";
+import styles from "./styles.module.css";
 
 const EmbeddedExplorer: FunctionComponent = () => {
   return (
     <AladinOverlay space="var(--size-spacing-xs) var(--size-spacing-s) var(--size-spacing-xs) var(--size-spacing-xs)">
-      <ControlStack position="top right">
-        <ReturnToInital />
-      </ControlStack>
-      <ControlStack position="bottom left">
-        <OpenCurrentView />
-        <FullscreenToggle />
-        <Share />
-      </ControlStack>
-      <ControlStack position="middle right">
-        <Zoom />
+      <div className={styles.nonViewScale}>
+        <ControlStack position="top right">
+          <ReturnToInital />
+        </ControlStack>
+        <ControlStack position="bottom left">
+          <OpenCurrentView />
+          <FullscreenToggle />
+          <Share />
+        </ControlStack>
+        <ControlStack position="middle right">
+          <Zoom />
+        </ControlStack>
+      </div>
+      <ControlStack
+        className={styles.viewScaleContainer}
+        position="bottom center"
+      >
+        <ViewScale className={styles.viewScale} />
       </ControlStack>
     </AladinOverlay>
   );

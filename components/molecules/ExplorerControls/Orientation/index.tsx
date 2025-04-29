@@ -2,7 +2,7 @@
 import { FC, useCallback, useState } from "react";
 import ViewIndicator from "@rubin-epo/epo-widget-lib/ViewIndicator";
 import { useAladin } from "@/contexts/Aladin";
-import { isAtLocation } from "@/lib/aladin/helpers";
+import useAladinEvent from "@/hooks/useAladinEvent";
 
 const roundPosition = (position: [number, number]): [number, number] => {
   return [
@@ -25,22 +25,19 @@ const Orientation: FC<{ className?: string; size?: string }> = ({
   const [fov, setFov] = useState<[number, number] | undefined>();
   const [position, setPosition] = useState<[number, number] | undefined>();
 
-  const onPositionChanged: PositionChangedCallback = useCallback(
-    ({ ra, dec }) => {
-      const newPosition: [number, number] = roundPosition([ra, dec]);
+  const onPositionChanged = useCallback((event: AladinPositionChangedEvent) => {
+    const {
+      detail: { lat, lon },
+    } = event;
+    const newPosition: [number, number] = roundPosition([lon, lat]);
 
-      if (!position || !isAtLocation(position, newPosition, 3)) {
-        setPosition(newPosition);
-      }
-    },
-    [position]
-  );
+    setPosition(newPosition);
+  }, []);
 
-  const onZoomChanged: AladinGenericCallback = useCallback(
-    (newFov: number) => {
-      const newFovTwoDirections = roundFov(
-        aladin?.getFov() || [newFov, newFov]
-      );
+  const onZoomChanged = useCallback(
+    ({ detail }: AladinZoomChangedEvent) => {
+      const { fovX, fovY } = detail;
+      const newFovTwoDirections = roundFov([fovX, fovY]);
 
       if (
         !fov ||
@@ -52,10 +49,11 @@ const Orientation: FC<{ className?: string; size?: string }> = ({
     [fov]
   );
 
-  const { aladin } = useAladin({
+  useAladinEvent("zoom.changed", onZoomChanged);
+  useAladinEvent("position.changed", onPositionChanged);
+
+  useAladin({
     callbacks: {
-      onPositionChanged,
-      onZoomChanged,
       onLoaded: ({ aladin }) => {
         setPosition(roundPosition(aladin.getRaDec()));
         setFov(roundFov(aladin.getFov()));

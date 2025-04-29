@@ -1,4 +1,4 @@
-import { roundToStep } from "@/lib/utilities";
+import { roundToStep, simplifiedFraction } from "@/lib/utilities";
 import { describe, expect, it } from "vitest";
 
 describe(roundToStep, () => {
@@ -14,5 +14,37 @@ describe(roundToStep, () => {
     const result = roundToStep(input);
 
     expect(result).toBe(102);
+  });
+});
+describe(simplifiedFraction, () => {
+  const numerator = 1;
+  const denominator = 2;
+
+  const result = simplifiedFraction({ numerator, denominator });
+
+  it("gives a decimal for amounts greater equal 1", () => {
+    const numerator = 1;
+    const result = simplifiedFraction({ numerator, denominator: 1 });
+
+    const [whole, decimal] = result.split(".");
+    expect(parseInt(whole)).toBe(numerator);
+    expect(decimal.length).toBe(1);
+  });
+  it("gives an integer for amounts greater equal 10", () => {
+    const numerator = 10;
+    const result = simplifiedFraction({ numerator, denominator: 1 });
+
+    const [whole, decimal] = result.split(".");
+    expect(parseInt(whole)).toBe(numerator);
+    expect(decimal).toBe(undefined);
+  });
+  it("gives a simplified fraction for amounts less than 1", () => {
+    const numerator = 5;
+    const denominator = 1000;
+    const result = simplifiedFraction({ numerator, denominator });
+
+    const [num, denom] = result.split("/");
+    expect(parseInt(num)).toBe(1);
+    expect(parseInt(denom)).toBe(denominator / numerator);
   });
 });
