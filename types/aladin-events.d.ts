@@ -1,3 +1,43 @@
+type AladinPositionChangedEvent = CustomEvent<{ lon: number; lat: number }>;
+type AladinZoomChangedEvent = CustomEvent<{ fovX: number; fovY: number }>;
+
+interface AladinEventMap {
+  Wasm: CustomEvent;
+  "cooGrid.enabled": CustomEvent;
+  "cooGrid.disabled": CustomEvent;
+  "cooGrid.updated": CustomEvent;
+  "loading.started": CustomEvent;
+  "loading.stopped": CustomEvent;
+  "BackgroundColor.changed": CustomEvent;
+  "cooGrid.enabled": CustomEvent;
+  "cooGrid.disabled": CustomEvent;
+  "cooGrid.updated": CustomEvent;
+  "projection.changed": CustomEvent;
+  "frame.changed": CustomEvent;
+  "cmap.updated": CustomEvent;
+  "position.changed": AladinPositionChangedEvent;
+  "zoom.changed": AladinZoomChangedEvent;
+  "HiPSLayer.added": CustomEvent;
+  "HiPSLayer.removed": CustomEvent;
+  "HiPSLayer.renamed": CustomEvent;
+  "HiPSLayer.swap": CustomEvent;
+  "HiPSCache.updated": CustomEvent;
+  "HiPSFavorites.updated": CustomEvent;
+  "HiPSLayer.changed": CustomEvent;
+  "GraphicOverlayLayer.added": CustomEvent;
+  "GraphicOverlayLayer.removed": CustomEvent;
+  "GraphicOverlayLayer.changed": CustomEvent;
+  "samp.hub": CustomEvent;
+  "samp.connected": CustomEvent;
+  "samp.disconnected": CustomEvent;
+  Event: CustomEvent;
+  "Reticle.changed": CustomEvent;
+  "Resource.fetched": CustomEvent;
+  fetch: CustomEvent;
+  mode: CustomEvent;
+  "fullscreen.toggled": CustomEvent;
+}
+
 type ListenerCallback =
   | "select"
   | "objectsSelected"
