@@ -75,7 +75,9 @@
     "volume_unmute": "Unmute audio (m)",
     "fullscreen_open": "Open in fullscreen",
     "fullscreen_close": "Exit fullscreen",
-    "return_to_initial": "Return to initial view"
+    "return_to_initial": "Return to initial view",
+    "view_scale": "You are looking at <1>{{fraction}}</1> of Rubin's footprint",
+    "view_scale_announce": "You are looking at {{fraction}} of Rubin's footprint"
   },
   "menu": {
     "share": {
