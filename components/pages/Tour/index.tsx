@@ -13,6 +13,7 @@ import PoiSlideout from "@/components/molecules/PoiSlideout";
 import PoiHeader from "@/components/molecules/PoiHeader";
 import AudioControls from "@/components/molecules/AudioControls";
 import styles from "./styles.module.css";
+import ViewScale from "@/components/molecules/ExplorerControls/ViewScale";
 
 const TourPage: FC<{ title: string | null }> = ({ title }) => {
   const {
@@ -35,7 +36,10 @@ const TourPage: FC<{ title: string | null }> = ({ title }) => {
         className={styles.orientation}
         size="var(--size-spacing-l)"
       />
-      <PoiSlideout open={!isPending && !!currentPoi}>
+      <PoiSlideout
+        className={styles.description}
+        open={!isPending && !!currentPoi}
+      >
         <PoiHeader
           tour={title || undefined}
           title={currentPoi?.title}
@@ -60,6 +64,9 @@ const TourPage: FC<{ title: string | null }> = ({ title }) => {
         </div>
       </PoiSlideout>
       <TourControls className={styles.controls} />
+      <div className={styles.viewScaleContainer}>
+        <ViewScale className={styles.viewScale} />
+      </div>
     </AladinOverlay>
   );
 };

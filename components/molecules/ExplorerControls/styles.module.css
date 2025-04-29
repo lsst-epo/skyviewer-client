@@ -1,3 +1,78 @@
 .viewControls {
   width: var(--size-spacing-l);
 }
+
+.viewScaleContainer {
+  @media (--tablet-max) {
+    position: static;
+    justify-self: stretch;
+
+    &[data-horizontal] {
+      transform: none;
+    }
+  }
+}
+
+.viewScale {
+  @media (--tablet-max) {
+    width: 100%;
+  }
+}
+
+.nonViewScale {
+  @media (--tablet-max) {
+    position: relative;
+  }
+}
+
+.controls {
+  @media (--tablet-max) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr min-content;
+    gap: var(--size-spacing-2xs);
+  }
+
+  :global(.controls-submenu) {
+    position: absolute;
+    z-index: var(--elevation-element-controls);
+
+    > li {
+      display: block;
+    }
+  }
+
+  :global(.control-button) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--size-spacing-l);
+    height: var(--size-spacing-l);
+    background-color: var(--color-font-primary);
+    color: var(--color-font-invert);
+    border-radius: 50%;
+    transition: background-color 0.4s color 0.4s;
+    pointer-events: initial;
+
+    &:focus {
+      outline: 2px solid var(--color-font-invert);
+    }
+
+    &.active,
+    &:hover {
+      background-color: var(--color-background-button-primary-hover);
+    }
+  }
+
+  :global(.pan) {
+    right: 10px;
+    bottom: 0;
+    display: flex;
+
+    > li {
+      + li {
+        margin-left: var(--size-spacing-xs);
+      }
+    }
+  }
+}

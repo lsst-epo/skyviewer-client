@@ -1,0 +1,13 @@
+.viewScale {
+  background-color: #30e0e3;
+  border-radius: 5px;
+  color: var(--color-font-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--size-font-14-14);
+  font-variant-numeric: tabular-nums;
+  gap: 1ex;
+  padding-inline: var(--size-spacing-m);
+  white-space: nowrap;
+}

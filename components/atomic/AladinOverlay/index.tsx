@@ -1,19 +1,20 @@
 import { FunctionComponent, PropsWithChildren } from "react";
-import classNames from "clsx/lite";
+import classNames, { clsx } from "clsx/lite";
 import styles from "./styles.module.css";
 
 interface AladinOverlayProps {
   space?: string;
   className?: string;
+  wrapperClassName?: string;
 }
 
 const AladinOverlay: FunctionComponent<
   PropsWithChildren<AladinOverlayProps>
-> = ({ children, space, className }) => {
+> = ({ children, space, className, wrapperClassName }) => {
   return (
     <div
       style={{ "--size-padding-overlay": space }}
-      className={styles.aladinOverlay}
+      className={clsx(styles.aladinOverlay, wrapperClassName)}
     >
       <div className={classNames(className, styles.aladinOverlayInner)}>
         {children}

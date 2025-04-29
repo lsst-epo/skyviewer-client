@@ -1,0 +1,22 @@
+.viewScale {
+  @media (--tablet-max) {
+    width: 100%;
+  }
+}
+
+.nonViewScale {
+  @media (--tablet-max) {
+    position: relative;
+  }
+}
+
+.viewScaleContainer {
+  @media (--tablet-max) {
+    position: static;
+    justify-self: stretch;
+
+    &[data-horizontal] {
+      transform: none;
+    }
+  }
+}
