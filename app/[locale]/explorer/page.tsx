@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { initialPosition } from "@/lib/helpers";
 import { getExplorerPage } from "@/services/api/explorer";
 import CurrentPositionPopover from "@/components/organisms/CurrentPositionPopover";
+import AladinMenu from "@/components/organisms/AladinMenu";
 
 const ExplorerPage: FC<WithSearchParams<RootProps>> = async ({
   params: { locale },
@@ -23,11 +24,20 @@ const ExplorerPage: FC<WithSearchParams<RootProps>> = async ({
     backgroundColor: "rgb(0,0,0)",
   };
 
+  const properties = surveys.map(({ survey }) => {
+    const { pathname, origin } = new URL(survey.path);
+
+    return new URL(`${pathname}/properties`, origin).toString();
+  });
+
   return (
-    <AladinTemplate fovRange={fovRange} layers={surveys} {...{ options }}>
-      <Controls />
-      <CurrentPositionPopover />
-    </AladinTemplate>
+    <>
+      <AladinMenu backgroundColor="primary" {...{ properties, locale }} />
+      <AladinTemplate fovRange={fovRange} layers={surveys} {...{ options }}>
+        <Controls />
+        <CurrentPositionPopover />
+      </AladinTemplate>
+    </>
   );
 };
 
