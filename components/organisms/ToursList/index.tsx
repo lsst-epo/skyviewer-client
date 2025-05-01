@@ -2,7 +2,7 @@ import { FC, Suspense } from "react";
 import { getAllTours } from "@/services/api/tours";
 import ScrollingList from "@/components/molecules/ScrollingList";
 import TourCard from "../TourCard";
-import styles from "./styles.module.css";
+import Skeleton from "react-loading-skeleton";
 
 const ToursListContent: FC<{ locale: string }> = async (props) => {
   const tours = await getAllTours(props);
@@ -33,7 +33,7 @@ const ToursList: FC<{ locale: string }> = (props) => {
                 <li key={i}>
                   <TourCard
                     {...props}
-                    title={<div className={styles.skelly} />}
+                    title={<Skeleton width="12ch" height="1lh" />}
                   />
                 </li>
               );

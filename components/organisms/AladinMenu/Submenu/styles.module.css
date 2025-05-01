@@ -1,0 +1,17 @@
+.menu {
+  & > div {
+    width: 100%;
+  }
+
+  @media (--mobile) {
+    & > div {
+      width: min(45ch, 100%);
+    }
+  }
+}
+
+.menuItem {
+  & svg {
+    color: var(--turquoise50);
+  }
+}

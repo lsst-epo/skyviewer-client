@@ -6,7 +6,7 @@ import {
   CopyUrlButton,
   EmailButton,
   FacebookButton,
-  TwitterButton,
+  TwitterXButton,
 } from "@rubin-epo/epo-react-lib/Share";
 import { getLocale, useTranslation } from "@/lib/i18n/server";
 import { addLocaleUriSegment } from "@/lib/i18n";
@@ -50,7 +50,7 @@ const TourSummary: FC<TourSummaryProps> = async ({ tour }) => {
                 <FacebookButton {...{ url }} />
               </li>
               <li>
-                <TwitterButton {...{ url }} />
+                <TwitterXButton {...{ url }} />
               </li>
               <li>
                 <CopyUrlButton {...{ url }} />

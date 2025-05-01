@@ -1,0 +1,12 @@
+.metadataList {
+  list-style: none;
+  margin-block-start: var(--size-spacing-2xs);
+
+  & > * + * {
+    margin-block-start: var(--size-spacing-2xs);
+  }
+}
+
+.metadata {
+  max-width: 45ch;
+}
