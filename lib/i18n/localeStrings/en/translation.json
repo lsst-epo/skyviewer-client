@@ -80,6 +80,33 @@
     "view_scale_announce": "You are looking at {{fraction}} of Rubin's footprint"
   },
   "menu": {
+    "main": {
+      "open": "Open main menu",
+      "title": "Main menu",
+      "cta": "Settings and more"
+    },
+    "settings": {
+      "title": "Settings"
+    },
+    "about": {
+      "title": "About Skyviewer",
+      "cta": "Metadata and more",
+      "sections": {
+        "metadata": {
+          "title": "Survey data",
+          "created_by": "Created by {{creator}}"
+        }
+      }
+    },
+    "locales": {
+      "title": "Language selection",
+      "cta": "Choose your language",
+      "options": {
+        "en": "English",
+        "es": "Español",
+        "fr": "Français"
+      }
+    },
     "share": {
       "open": "Open share menu",
       "close": "Close share menu",
@@ -93,6 +120,13 @@
         "facebook": "Facebook",
         "twitterX": "X",
         "linkedin": "LinkedIn"
+      }
+    },
+    "quick-access": {
+      "title": "Quick Access",
+      "links": {
+        "explorer": "Skyviewer Explorer",
+        "guided-experiences": "$t(guided-experiences.title)"
       }
     }
   }
