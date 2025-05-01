@@ -1,0 +1,19 @@
+.button {
+  --color-background-button: transparent;
+  --color-background-button-hover: transparent;
+  --color-outline-button: transparent;
+
+  border-radius: 0;
+}
+
+.menu {
+  & > div {
+    width: 100%;
+  }
+
+  @media (--mobile) {
+    & > div {
+      width: min(45ch, 100%);
+    }
+  }
+}

@@ -1,10 +1,16 @@
 import { FunctionComponent, PropsWithChildren } from "react";
-import PrimaryLayout from "@/components/organisms/Primary";
+import AladinMenu from "@/components/organisms/AladinMenu";
 
 const TourLayout: FunctionComponent<PropsWithChildren<TourProps>> = async ({
+  params: { locale },
   children,
 }) => {
-  return <PrimaryLayout>{children}</PrimaryLayout>;
+  return (
+    <>
+      <AladinMenu locale={locale} />
+      {children};
+    </>
+  );
 };
 
 export default TourLayout;

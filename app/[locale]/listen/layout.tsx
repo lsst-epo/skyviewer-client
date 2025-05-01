@@ -1,7 +1,7 @@
 import { FunctionComponent, PropsWithChildren } from "react";
 import { Metadata } from "next";
 import { fallbackLng } from "@/lib/i18n/settings";
-import PrimaryLayout from "@/components/organisms/Primary";
+import AladinMenu from "@/components/organisms/AladinMenu";
 
 export function generateMetadata({
   params: { locale = fallbackLng },
@@ -11,8 +11,16 @@ export function generateMetadata({
   };
 }
 
-const ListenerLayout: FunctionComponent<PropsWithChildren> = ({ children }) => {
-  return <PrimaryLayout route="/listen">{children}</PrimaryLayout>;
+const ListenerLayout: FunctionComponent<PropsWithChildren<RootProps>> = ({
+  params: { locale },
+  children,
+}) => {
+  return (
+    <>
+      <AladinMenu locale={locale} />
+      {children}
+    </>
+  );
 };
 
 export default ListenerLayout;

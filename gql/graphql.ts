@@ -223,6 +223,8 @@ export type AssetCriteriaInput = {
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   /** Narrows the query results to only elements that match a search query. */
   search: InputMaybe<Scalars['String']['input']>;
+  /** Defines the default options that should be applied terms within the `search` argument. */
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   /** Determines which site(s) the elements should be queried in. Defaults to the current (requested) site. */
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Determines which site(s) the elements should be queried in. Defaults to the current (requested) site. */
@@ -397,6 +399,7 @@ export type AssetInterfaceNextArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -443,6 +446,7 @@ export type AssetInterfacePrevArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -730,6 +734,8 @@ export type CategoryCriteriaInput = {
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   /** Narrows the query results to only elements that match a search query. */
   search: InputMaybe<Scalars['String']['input']>;
+  /** Defines the default options that should be applied terms within the `search` argument. */
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   /** Determines which site(s) the elements should be queried in. Defaults to the current (requested) site. */
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Determines which site(s) the elements should be queried in. Defaults to the current (requested) site. */
@@ -864,6 +870,7 @@ export type CategoryInterfaceAncestorsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -914,6 +921,7 @@ export type CategoryInterfaceChildrenArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -964,6 +972,7 @@ export type CategoryInterfaceDescendantsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1014,6 +1023,7 @@ export type CategoryInterfaceLocalizedArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1064,6 +1074,7 @@ export type CategoryInterfaceNextArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1114,6 +1125,7 @@ export type CategoryInterfaceParentArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1164,6 +1176,7 @@ export type CategoryInterfacePrevArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1362,6 +1375,8 @@ export type EntryCriteriaInput = {
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   /** Narrows the query results to only elements that match a search query. */
   search: InputMaybe<Scalars['String']['input']>;
+  /** Defines the default options that should be applied terms within the `search` argument. */
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   /** Narrows the query results based on the section handles the entries belong to. */
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Narrows the query results based on the sections the entries belong to, per the sections’ IDs. */
@@ -1570,6 +1585,7 @@ export type EntryInterfaceAncestorsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1650,6 +1666,7 @@ export type EntryInterfaceChildrenArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1730,6 +1747,7 @@ export type EntryInterfaceDescendantsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1810,6 +1828,7 @@ export type EntryInterfaceLocalizedArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1890,6 +1909,7 @@ export type EntryInterfaceNextArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1970,6 +1990,7 @@ export type EntryInterfaceParentArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2050,6 +2071,7 @@ export type EntryInterfacePrevArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2183,6 +2205,24 @@ export type Mutation = {
   ping: Maybe<Scalars['String']['output']>;
 };
 
+/** PHP sort flags that determine how items are compared. Defaults to SORT_NATURAL_CASE - https://www.php.net/manual/en/function.sort.php */
+export enum PhpSortFlags {
+  /** compare items as strings, based on the current locale. It uses the locale, which can be changed using setlocale() */
+  SortLocaleString = 'SORT_LOCALE_STRING',
+  /** compare items as strings using "natural ordering" like natsort() */
+  SortNatural = 'SORT_NATURAL',
+  /** compare items as case insensitive strings using "natural ordering" like natsort() */
+  SortNaturalCase = 'SORT_NATURAL_CASE',
+  /** compare items numerically. */
+  SortNumeric = 'SORT_NUMERIC',
+  /** compare items normally; the details are described in the comparison operators section */
+  SortRegular = 'SORT_REGULAR',
+  /** compare items as strings */
+  SortString = 'SORT_STRING',
+  /** compare items as case insensitive strings */
+  SortStringCase = 'SORT_STRING_CASE'
+}
+
 export type Query = {
   __typename?: 'Query';
   /** This query is used to query for a single asset. */
@@ -2253,6 +2293,7 @@ export type QueryAssetArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2298,6 +2339,7 @@ export type QueryAssetCountArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2343,6 +2385,7 @@ export type QueryAssetsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2419,6 +2462,7 @@ export type QueryAstroObjectsEntriesArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2496,6 +2540,7 @@ export type QueryCatalogsEntriesArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2548,6 +2593,7 @@ export type QueryCategoriesArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2597,6 +2643,7 @@ export type QueryCategoryArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2646,6 +2693,7 @@ export type QueryCategoryCountArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2720,6 +2768,7 @@ export type QueryEmbedEntriesArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2797,6 +2846,7 @@ export type QueryEntriesArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2876,6 +2926,7 @@ export type QueryEntryArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2955,6 +3006,7 @@ export type QueryEntryCountArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3034,6 +3086,7 @@ export type QueryExplorerEntriesArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -3053,6 +3106,7 @@ export type QueryExplorerEntriesArgs = {
 
 
 export type QueryGlobalSetArgs = {
+  aboutMenuContent: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
@@ -3073,6 +3127,7 @@ export type QueryGlobalSetArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteDescription: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -3087,6 +3142,7 @@ export type QueryGlobalSetArgs = {
 
 
 export type QueryGlobalSetsArgs = {
+  aboutMenuContent: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
@@ -3107,6 +3163,7 @@ export type QueryGlobalSetsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteDescription: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -3179,6 +3236,7 @@ export type QueryGuidedExperiencesEntriesArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -3256,6 +3314,7 @@ export type QuerySurveysEntriesArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -3333,6 +3392,7 @@ export type QueryToursEntriesArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -3348,6 +3408,27 @@ export type QueryToursEntriesArgs = {
   unique: InputMaybe<Scalars['Boolean']['input']>;
   uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type SearchTermOptions = {
+  exact: InputMaybe<Scalars['Boolean']['input']>;
+  exclude: InputMaybe<Scalars['Boolean']['input']>;
+  subLeft: InputMaybe<Scalars['Boolean']['input']>;
+  subRight: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type SortByDescInput = {
+  /** The field to sort by. You can use the `field.subField` syntax for nested fields and provide multiple sort commands as a list of strings. */
+  field: InputMaybe<Scalars['String']['input']>;
+  /** PHP sort flags that determine how items are compared. Defaults to SORT_NATURAL - https://www.php.net/manual/en/function.sort.php */
+  flags: InputMaybe<PhpSortFlags>;
+};
+
+export type SortByInput = {
+  /** The field to sort by. You can use the `field.subField` syntax for nested fields and provide multiple sort commands as a list of strings. */
+  field: InputMaybe<Scalars['String']['input']>;
+  /** PHP sort flags that determine how items are compared. Defaults to SORT_NATURAL - https://www.php.net/manual/en/function.sort.php */
+  flags: InputMaybe<PhpSortFlags>;
 };
 
 export type TagCriteriaInput = {
@@ -3393,6 +3474,8 @@ export type TagCriteriaInput = {
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   /** Narrows the query results to only elements that match a search query. */
   search: InputMaybe<Scalars['String']['input']>;
+  /** Defines the default options that should be applied terms within the `search` argument. */
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   /** Determines which site(s) the elements should be queried in. Defaults to the current (requested) site. */
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Determines which site(s) the elements should be queried in. Defaults to the current (requested) site. */
@@ -3500,6 +3583,7 @@ export type UserAddressesArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -3567,6 +3651,8 @@ export type UserCriteriaInput = {
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   /** Narrows the query results to only elements that match a search query. */
   search: InputMaybe<Scalars['String']['input']>;
+  /** Defines the default options that should be applied terms within the `search` argument. */
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   /** Determines which site(s) the elements should be queried in. Defaults to the current (requested) site. */
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Determines which site(s) the elements should be queried in. Defaults to the current (requested) site. */
@@ -3678,6 +3764,7 @@ export type UserInterfaceAddressesArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -3873,6 +3960,7 @@ export type AstroImages_AssetNextArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -3918,6 +4006,7 @@ export type AstroImages_AssetPrevArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4147,6 +4236,7 @@ export type AstroObjects_AstroObject_EntryAncestorsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4195,6 +4285,7 @@ export type AstroObjects_AstroObject_EntryAstroImageArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4271,6 +4362,7 @@ export type AstroObjects_AstroObject_EntryChildrenArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4350,6 +4442,7 @@ export type AstroObjects_AstroObject_EntryDescendantsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4429,6 +4522,7 @@ export type AstroObjects_AstroObject_EntryLocalizedArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4508,6 +4602,7 @@ export type AstroObjects_AstroObject_EntryNextArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4587,6 +4682,7 @@ export type AstroObjects_AstroObject_EntryParentArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4666,6 +4762,7 @@ export type AstroObjects_AstroObject_EntryPrevArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4825,6 +4922,7 @@ export type CantoDam_AssetNextArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4870,6 +4968,7 @@ export type CantoDam_AssetPrevArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5096,6 +5195,7 @@ export type Catalogs_Catalog_EntryAncestorsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5175,6 +5275,7 @@ export type Catalogs_Catalog_EntryChildrenArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5254,6 +5355,7 @@ export type Catalogs_Catalog_EntryDescendantsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5302,6 +5404,7 @@ export type Catalogs_Catalog_EntryIconArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5378,6 +5481,7 @@ export type Catalogs_Catalog_EntryLocalizedArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5457,6 +5561,7 @@ export type Catalogs_Catalog_EntryNextArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5536,6 +5641,7 @@ export type Catalogs_Catalog_EntryParentArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5615,6 +5721,7 @@ export type Catalogs_Catalog_EntryPrevArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5815,6 +5922,7 @@ export type Embed_Embed_EntryAncestorsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5894,6 +6002,7 @@ export type Embed_Embed_EntryChildrenArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5973,6 +6082,7 @@ export type Embed_Embed_EntryDescendantsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6052,6 +6162,7 @@ export type Embed_Embed_EntryLocalizedArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6131,6 +6242,7 @@ export type Embed_Embed_EntryNextArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6210,6 +6322,7 @@ export type Embed_Embed_EntryParentArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6289,6 +6402,7 @@ export type Embed_Embed_EntryPrevArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6331,6 +6445,7 @@ export type Embed_Embed_EntrySurveysArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6524,6 +6639,7 @@ export type Explorer_Explorer_EntryAncestorsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6603,6 +6719,7 @@ export type Explorer_Explorer_EntryChildrenArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6682,6 +6799,7 @@ export type Explorer_Explorer_EntryDescendantsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6761,6 +6879,7 @@ export type Explorer_Explorer_EntryLocalizedArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6840,6 +6959,7 @@ export type Explorer_Explorer_EntryNextArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6919,6 +7039,7 @@ export type Explorer_Explorer_EntryParentArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6998,6 +7119,7 @@ export type Explorer_Explorer_EntryPrevArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7040,6 +7162,7 @@ export type Explorer_Explorer_EntrySurveysArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7216,6 +7339,7 @@ export type GuidedExperienceType_CategoryAncestorsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7265,6 +7389,7 @@ export type GuidedExperienceType_CategoryChildrenArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7314,6 +7439,7 @@ export type GuidedExperienceType_CategoryDescendantsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7363,6 +7489,7 @@ export type GuidedExperienceType_CategoryLocalizedArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7412,6 +7539,7 @@ export type GuidedExperienceType_CategoryNextArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7461,6 +7589,7 @@ export type GuidedExperienceType_CategoryParentArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7510,6 +7639,7 @@ export type GuidedExperienceType_CategoryPrevArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7619,6 +7749,7 @@ export type GuidedExperiences_Experience_BlockTypeExperienceCategoryArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7644,14 +7775,14 @@ export type GuidedExperiences_Experience_BlockTypePreviewImageArgs = {
   reverse: InputMaybe<Scalars['Boolean']['input']>;
   shuffle: InputMaybe<Scalars['Int']['input']>;
   skip: InputMaybe<Scalars['Int']['input']>;
-  sortBy: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  sortByDesc: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  where: InputMaybe<WhereFiltersInput>;
-  whereBetween: InputMaybe<WhereBetweenFiltersInput>;
-  whereContainsIn: InputMaybe<WhereContainsInFilterInput>;
-  whereIn: InputMaybe<WhereInFiltersInput>;
-  whereNotBetween: InputMaybe<WhereNotBetweenFiltersInput>;
-  whereNotIn: InputMaybe<WhereNotInFiltersInput>;
+  sortBy: InputMaybe<SortByInput>;
+  sortByDesc: InputMaybe<SortByDescInput>;
+  where: InputMaybe<Array<InputMaybe<WhereFiltersInput>>>;
+  whereBetween: InputMaybe<Array<InputMaybe<WhereBetweenFiltersInput>>>;
+  whereContainsIn: InputMaybe<Array<InputMaybe<WhereContainsInFilterInput>>>;
+  whereIn: InputMaybe<Array<InputMaybe<WhereInFiltersInput>>>;
+  whereNotBetween: InputMaybe<Array<InputMaybe<WhereNotBetweenFiltersInput>>>;
+  whereNotIn: InputMaybe<Array<InputMaybe<WhereNotInFiltersInput>>>;
   whereNotNull: InputMaybe<Scalars['String']['input']>;
   whereNull: InputMaybe<Scalars['String']['input']>;
 };
@@ -7830,6 +7961,7 @@ export type GuidedExperiences_GuidedExperiences_EntryAncestorsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7909,6 +8041,7 @@ export type GuidedExperiences_GuidedExperiences_EntryChildrenArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7988,6 +8121,7 @@ export type GuidedExperiences_GuidedExperiences_EntryDescendantsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8030,6 +8164,7 @@ export type GuidedExperiences_GuidedExperiences_EntryGuidedExperiencesArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -8102,6 +8237,7 @@ export type GuidedExperiences_GuidedExperiences_EntryLocalizedArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8181,6 +8317,7 @@ export type GuidedExperiences_GuidedExperiences_EntryNextArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8260,6 +8397,7 @@ export type GuidedExperiences_GuidedExperiences_EntryParentArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8339,6 +8477,7 @@ export type GuidedExperiences_GuidedExperiences_EntryPrevArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8499,6 +8638,7 @@ export type Icons_AssetNextArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -8544,6 +8684,7 @@ export type Icons_AssetPrevArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -8763,6 +8904,7 @@ export type PoiAstroObject_PoiAstroObject_BlockTypeAstroObjectArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8786,6 +8928,7 @@ export type SiteInfo_GlobalSet = ElementInterface & GlobalSetInterface & {
   __typename?: 'siteInfo_GlobalSet';
   /** Return a number of related elements for a field. */
   _count: Maybe<Scalars['Int']['output']>;
+  aboutMenuContent: Maybe<Scalars['String']['output']>;
   /** Whether the element is archived. */
   archived: Maybe<Scalars['Boolean']['output']>;
   /** The date the element was created. */
@@ -8950,6 +9093,7 @@ export type Surveys_Layer_BlockTypeSurveyArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9151,6 +9295,7 @@ export type Surveys_Surveys_EntryAncestorsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9230,6 +9375,7 @@ export type Surveys_Surveys_EntryChildrenArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9314,6 +9460,7 @@ export type Surveys_Surveys_EntryDescendantsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9398,6 +9545,7 @@ export type Surveys_Surveys_EntryLocalizedArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9477,6 +9625,7 @@ export type Surveys_Surveys_EntryNextArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9556,6 +9705,7 @@ export type Surveys_Surveys_EntryParentArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9635,6 +9785,7 @@ export type Surveys_Surveys_EntryPrevArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9800,6 +9951,7 @@ export type TourImages_AssetNextArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -9845,6 +9997,7 @@ export type TourImages_AssetPrevArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -9971,14 +10124,14 @@ export type TourPois_TourPoi_BlockTypeAudioArgs = {
   reverse: InputMaybe<Scalars['Boolean']['input']>;
   shuffle: InputMaybe<Scalars['Int']['input']>;
   skip: InputMaybe<Scalars['Int']['input']>;
-  sortBy: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  sortByDesc: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  where: InputMaybe<WhereFiltersInput>;
-  whereBetween: InputMaybe<WhereBetweenFiltersInput>;
-  whereContainsIn: InputMaybe<WhereContainsInFilterInput>;
-  whereIn: InputMaybe<WhereInFiltersInput>;
-  whereNotBetween: InputMaybe<WhereNotBetweenFiltersInput>;
-  whereNotIn: InputMaybe<WhereNotInFiltersInput>;
+  sortBy: InputMaybe<SortByInput>;
+  sortByDesc: InputMaybe<SortByDescInput>;
+  where: InputMaybe<Array<InputMaybe<WhereFiltersInput>>>;
+  whereBetween: InputMaybe<Array<InputMaybe<WhereBetweenFiltersInput>>>;
+  whereContainsIn: InputMaybe<Array<InputMaybe<WhereContainsInFilterInput>>>;
+  whereIn: InputMaybe<Array<InputMaybe<WhereInFiltersInput>>>;
+  whereNotBetween: InputMaybe<Array<InputMaybe<WhereNotBetweenFiltersInput>>>;
+  whereNotIn: InputMaybe<Array<InputMaybe<WhereNotInFiltersInput>>>;
   whereNotNull: InputMaybe<Scalars['String']['input']>;
   whereNull: InputMaybe<Scalars['String']['input']>;
 };
@@ -10091,6 +10244,7 @@ export type TourTheme_CategoryAncestorsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10140,6 +10294,7 @@ export type TourTheme_CategoryChildrenArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10189,6 +10344,7 @@ export type TourTheme_CategoryDescendantsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10238,6 +10394,7 @@ export type TourTheme_CategoryLocalizedArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10287,6 +10444,7 @@ export type TourTheme_CategoryNextArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10336,6 +10494,7 @@ export type TourTheme_CategoryParentArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10385,6 +10544,7 @@ export type TourTheme_CategoryPrevArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10510,6 +10670,7 @@ export type TourVariety_CategoryAncestorsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10559,6 +10720,7 @@ export type TourVariety_CategoryChildrenArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10608,6 +10770,7 @@ export type TourVariety_CategoryDescendantsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10657,6 +10820,7 @@ export type TourVariety_CategoryLocalizedArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10706,6 +10870,7 @@ export type TourVariety_CategoryNextArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10755,6 +10920,7 @@ export type TourVariety_CategoryParentArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10804,6 +10970,7 @@ export type TourVariety_CategoryPrevArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10829,14 +10996,14 @@ export type TourVariety_CategoryThumbnailArgs = {
   reverse: InputMaybe<Scalars['Boolean']['input']>;
   shuffle: InputMaybe<Scalars['Int']['input']>;
   skip: InputMaybe<Scalars['Int']['input']>;
-  sortBy: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  sortByDesc: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  where: InputMaybe<WhereFiltersInput>;
-  whereBetween: InputMaybe<WhereBetweenFiltersInput>;
-  whereContainsIn: InputMaybe<WhereContainsInFilterInput>;
-  whereIn: InputMaybe<WhereInFiltersInput>;
-  whereNotBetween: InputMaybe<WhereNotBetweenFiltersInput>;
-  whereNotIn: InputMaybe<WhereNotInFiltersInput>;
+  sortBy: InputMaybe<SortByInput>;
+  sortByDesc: InputMaybe<SortByDescInput>;
+  where: InputMaybe<Array<InputMaybe<WhereFiltersInput>>>;
+  whereBetween: InputMaybe<Array<InputMaybe<WhereBetweenFiltersInput>>>;
+  whereContainsIn: InputMaybe<Array<InputMaybe<WhereContainsInFilterInput>>>;
+  whereIn: InputMaybe<Array<InputMaybe<WhereInFiltersInput>>>;
+  whereNotBetween: InputMaybe<Array<InputMaybe<WhereNotBetweenFiltersInput>>>;
+  whereNotIn: InputMaybe<Array<InputMaybe<WhereNotInFiltersInput>>>;
   whereNotNull: InputMaybe<Scalars['String']['input']>;
   whereNull: InputMaybe<Scalars['String']['input']>;
 };
@@ -11030,6 +11197,7 @@ export type Tours_Tour_EntryAncestorsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -11060,14 +11228,14 @@ export type Tours_Tour_EntryBackgroundImageArgs = {
   reverse: InputMaybe<Scalars['Boolean']['input']>;
   shuffle: InputMaybe<Scalars['Int']['input']>;
   skip: InputMaybe<Scalars['Int']['input']>;
-  sortBy: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  sortByDesc: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  where: InputMaybe<WhereFiltersInput>;
-  whereBetween: InputMaybe<WhereBetweenFiltersInput>;
-  whereContainsIn: InputMaybe<WhereContainsInFilterInput>;
-  whereIn: InputMaybe<WhereInFiltersInput>;
-  whereNotBetween: InputMaybe<WhereNotBetweenFiltersInput>;
-  whereNotIn: InputMaybe<WhereNotInFiltersInput>;
+  sortBy: InputMaybe<SortByInput>;
+  sortByDesc: InputMaybe<SortByDescInput>;
+  where: InputMaybe<Array<InputMaybe<WhereFiltersInput>>>;
+  whereBetween: InputMaybe<Array<InputMaybe<WhereBetweenFiltersInput>>>;
+  whereContainsIn: InputMaybe<Array<InputMaybe<WhereContainsInFilterInput>>>;
+  whereIn: InputMaybe<Array<InputMaybe<WhereInFiltersInput>>>;
+  whereNotBetween: InputMaybe<Array<InputMaybe<WhereNotBetweenFiltersInput>>>;
+  whereNotIn: InputMaybe<Array<InputMaybe<WhereNotInFiltersInput>>>;
   whereNotNull: InputMaybe<Scalars['String']['input']>;
   whereNull: InputMaybe<Scalars['String']['input']>;
 };
@@ -11132,6 +11300,7 @@ export type Tours_Tour_EntryChildrenArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -11211,6 +11380,7 @@ export type Tours_Tour_EntryDescendantsArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -11253,6 +11423,7 @@ export type Tours_Tour_EntryFactsContentBlocksArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -11288,6 +11459,7 @@ export type Tours_Tour_EntryIntroContentBlocksArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -11360,6 +11532,7 @@ export type Tours_Tour_EntryLocalizedArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -11439,6 +11612,7 @@ export type Tours_Tour_EntryNextArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -11518,6 +11692,7 @@ export type Tours_Tour_EntryParentArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -11597,6 +11772,7 @@ export type Tours_Tour_EntryPrevArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -11639,6 +11815,7 @@ export type Tours_Tour_EntrySurveysArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -11662,14 +11839,14 @@ export type Tours_Tour_EntryThumbnailArgs = {
   reverse: InputMaybe<Scalars['Boolean']['input']>;
   shuffle: InputMaybe<Scalars['Int']['input']>;
   skip: InputMaybe<Scalars['Int']['input']>;
-  sortBy: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  sortByDesc: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  where: InputMaybe<WhereFiltersInput>;
-  whereBetween: InputMaybe<WhereBetweenFiltersInput>;
-  whereContainsIn: InputMaybe<WhereContainsInFilterInput>;
-  whereIn: InputMaybe<WhereInFiltersInput>;
-  whereNotBetween: InputMaybe<WhereNotBetweenFiltersInput>;
-  whereNotIn: InputMaybe<WhereNotInFiltersInput>;
+  sortBy: InputMaybe<SortByInput>;
+  sortByDesc: InputMaybe<SortByDescInput>;
+  where: InputMaybe<Array<InputMaybe<WhereFiltersInput>>>;
+  whereBetween: InputMaybe<Array<InputMaybe<WhereBetweenFiltersInput>>>;
+  whereContainsIn: InputMaybe<Array<InputMaybe<WhereContainsInFilterInput>>>;
+  whereIn: InputMaybe<Array<InputMaybe<WhereInFiltersInput>>>;
+  whereNotBetween: InputMaybe<Array<InputMaybe<WhereNotBetweenFiltersInput>>>;
+  whereNotIn: InputMaybe<Array<InputMaybe<WhereNotInFiltersInput>>>;
   whereNotNull: InputMaybe<Scalars['String']['input']>;
   whereNull: InputMaybe<Scalars['String']['input']>;
 };
@@ -11697,6 +11874,7 @@ export type Tours_Tour_EntryTourPoisArgs = {
   relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
   relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
   search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -11745,6 +11923,13 @@ export type SurveyLayerFragment = { __typename?: 'surveys_layer_BlockType', id: 
     { __typename?: 'surveys_surveys_Entry' }
     & { ' $fragmentRefs'?: { 'SurveyFragment': SurveyFragment } }
   ) | { __typename?: 'tours_tour_Entry' } | null> } & { ' $fragmentName'?: 'SurveyLayerFragment' };
+
+export type SiteGlobalsQueryVariables = Exact<{
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+}>;
+
+
+export type SiteGlobalsQuery = { __typename?: 'Query', globalSets: Array<{ __typename?: 'siteInfo_GlobalSet', name: string, aboutMenuContent: string | null, siteDescription: string | null, siteTitle: string | null } | null> | null };
 
 export type GuidedExperiencesPageQueryVariables = Exact<{
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
@@ -11818,6 +12003,7 @@ export const SurveyLayerFragmentDoc = {"kind":"Document","definitions":[{"kind":
 export const PagePreviewQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"PagePreviewQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"uri"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entry"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}},{"kind":"Argument","name":{"kind":"Name","value":"uri"},"value":{"kind":"Variable","name":{"kind":"Name","value":"uri"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]}}]} as unknown as DocumentNode<PagePreviewQueryQuery, PagePreviewQueryQueryVariables>;
 export const EmbeddedPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"EmbeddedPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"embedEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"embed_embed_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"surveys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SurveyLayer"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SurveyLayer"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_layer_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"opacity"}},{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}}]} as unknown as DocumentNode<EmbeddedPageQuery, EmbeddedPageQueryVariables>;
 export const ExplorerPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ExplorerPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"explorerEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"explorer_explorer_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"surveys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SurveyLayer"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SurveyLayer"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_layer_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"opacity"}},{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}}]} as unknown as DocumentNode<ExplorerPageQuery, ExplorerPageQueryVariables>;
+export const SiteGlobalsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"SiteGlobals"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"globalSets"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"siteInfo_GlobalSet"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"aboutMenuContent"}},{"kind":"Field","name":{"kind":"Name","value":"siteDescription"}},{"kind":"Field","name":{"kind":"Name","value":"siteTitle"}}]}}]}}]}}]} as unknown as DocumentNode<SiteGlobalsQuery, SiteGlobalsQueryVariables>;
 export const GuidedExperiencesPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GuidedExperiencesPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"guidedExperiencesEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"guidedExperiences_guidedExperiences_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"guidedExperiences"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"guidedExperiences_experience_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"experienceCategory"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"Field","name":{"kind":"Name","value":"previewImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GuidedExperiencesPageQuery, GuidedExperiencesPageQueryVariables>;
 export const TourCountDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TourCount"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"section"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}},{"kind":"Argument","name":{"kind":"Name","value":"section"},"value":{"kind":"Variable","name":{"kind":"Name","value":"section"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<TourCountQuery, TourCountQueryVariables>;
 export const AllToursDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AllTours"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"includeInFeed"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}},{"kind":"Argument","name":{"kind":"Name","value":"includeInFeed"},"value":{"kind":"Variable","name":{"kind":"Name","value":"includeInFeed"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"complexity"}},{"kind":"Field","name":{"kind":"Name","value":"duration"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<AllToursQuery, AllToursQueryVariables>;

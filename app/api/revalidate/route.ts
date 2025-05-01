@@ -40,6 +40,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
         revalidateTag(dataTag);
       }
 
+      revalidateTag(tagStore.globals);
       revalidatePath(path, "layout");
     });
 
