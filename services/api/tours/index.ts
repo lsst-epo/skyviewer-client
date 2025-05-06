@@ -260,6 +260,9 @@ export const getTourPois = async (tour: string) => {
                   directUrlOriginal
                 }
               }
+              survey {
+                ...Survey
+              }
               zoomOutTime
               zoomOutFov
               panTime
