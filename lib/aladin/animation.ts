@@ -84,15 +84,62 @@ export const pan = ({
   });
 };
 
+const labels = {
+  startZoomOut: "startZoomOut",
+  startPan: "startPan",
+  startZoomIn: "startZoomIn",
+};
+
+const addLayerChange = ({
+  timeline,
+  layers: [outLayer, inLayer],
+  duration,
+}: {
+  timeline: GSAPTimeline;
+  layers: Array<AladinImageLayer | undefined>;
+  duration: number;
+}) => {
+  let outOpacity = { opacity: 1 };
+  let inOpacity = { opacity: 0 };
+
+  if (outLayer) {
+    timeline.to(
+      outOpacity,
+      {
+        opacity: 0,
+        onUpdate: () => outLayer.setOpacity(outOpacity.opacity),
+        duration,
+        ease: "power1.inOut",
+      },
+      labels.startZoomOut
+    );
+  }
+
+  if (inLayer) {
+    timeline.to(
+      inOpacity,
+      {
+        opacity: 1,
+        onUpdate: () => inLayer.setOpacity(inOpacity.opacity),
+        duration,
+        ease: "power1.inOut",
+      },
+      labels.startZoomOut
+    );
+  }
+};
+
 export const panAndZoom = ({
   fov,
   position,
-  duration,
+  duration: [zoomOutTime, panTime, zoomInTime],
+  layers,
   aladin,
   onComplete,
 }: {
   fov: { start: number; end: number; middle: number };
   position: { start: Position; end: Position };
+  layers?: Array<AladinImageLayer | undefined>;
   aladin: Aladin;
   duration: number[];
   onComplete?: () => void;
@@ -101,45 +148,48 @@ export const panAndZoom = ({
   let zoom = { fov: fov.start };
   let target = position.start;
 
-  timeline
-    .to(zoom, {
+  timeline.addLabel(labels.startZoomOut, 0);
+  timeline.addLabel(labels.startPan, zoomOutTime * 0.5);
+  timeline.addLabel(labels.startZoomIn, zoomOutTime * 0.5 + panTime);
+
+  const total = zoomOutTime * 0.5 + panTime + zoomInTime * 0.5;
+
+  if (layers) {
+    addLayerChange({
+      timeline,
+      layers,
+      duration: total,
+    });
+  }
+
+  timeline.to(
+    zoom,
+    {
       fov: fov.middle,
-      duration: duration[0],
+      duration: zoomOutTime,
       onUpdate: () => aladin.setFov(zoom.fov),
       ease: "power1.inOut",
-    })
-    .to(target, {
+    },
+    labels.startZoomOut
+  );
+  timeline.to(
+    target,
+    {
       ...position.end,
       onUpdate: () => aladin.gotoRaDec(target.ra, target.dec),
-      duration: duration[1],
+      duration: panTime,
       ease: "power1.inOut",
-      delay: duration[0] * -0.5,
-    })
-    .to(zoom, {
+    },
+    labels.startPan
+  );
+  timeline.to(
+    zoom,
+    {
       fov: fov.end,
       onUpdate: () => aladin.setFov(zoom.fov),
-      duration: duration[2],
+      duration: zoomInTime,
       ease: "power1.inOut",
-      delay: duration[2] * -0.5,
-    });
-};
-
-export const fadeLayer = ({
-  hips,
-  from,
-  to,
-}: {
-  hips: HiPS;
-  from: number;
-  to: number;
-}) => {
-  let obj = { opacity: from };
-
-  gsap.to(obj, {
-    opacity: to,
-    duration: 0.75,
-    onUpdate: () => {
-      hips.setOpacity(obj.opacity);
     },
-  });
+    labels.startZoomIn
+  );
 };
