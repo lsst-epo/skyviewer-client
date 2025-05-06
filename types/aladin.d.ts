@@ -366,6 +366,9 @@ interface Aladin {
   options: Required<AladinOptions>;
   callbacksByEventName: Partial<AladinCallbackMap>;
   aladinDiv: HTMLDivElement;
+  readonly getOverlayImageLayer: (
+    layer: string
+  ) => AladinImageLayer | undefined;
 }
 
 type CatalogSourceShape =

@@ -2,6 +2,7 @@ import { graphql } from "@/gql";
 
 export const SurveyFragment = graphql(`
   fragment Survey on surveys_surveys_Entry {
+    id
     title
     path
     target
