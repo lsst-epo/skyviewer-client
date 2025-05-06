@@ -59,11 +59,34 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
 
   const onLoaded = useCallback<
     NonNullable<AdditionalAladinCallbacks["onLoaded"]>
-  >(({ aladin }) => {
-    if (poi) {
-      startTransition({ between: [null, poi], aladin });
-    }
-  }, []);
+  >(
+    ({ aladin, A }) => {
+      pois.forEach(({ survey }, i) => {
+        if (survey) {
+          const active = poi || 1;
+          const opacity = i + 1 === active ? 1 : 0;
+          const { path, id } = survey;
+          const existing = aladin.getOverlayImageLayer(id);
+
+          if (!existing) {
+            const hips = A.HiPS(path, { ...survey, opacity });
+
+            // it seems the opacity option during creation does not work
+            hips.setOpacity(opacity);
+
+            aladin.setOverlayImageLayer(hips, id);
+          } else {
+            existing.setOpacity(opacity);
+          }
+        }
+      });
+
+      if (poi) {
+        startTransition({ between: [null, poi], aladin });
+      }
+    },
+    [poi]
+  );
 
   const { isLoading, aladin } = useAladin({ callbacks: { onLoaded } });
 
@@ -100,7 +123,9 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
     onComplete?: VoidFunction;
   }) => {
     const toIndex = to - 1;
-    const { fov, ra, dec } = pois[toIndex];
+    const fromIndex = from - 1;
+    const { survey: fromSurvey } = pois[fromIndex];
+    const { fov, ra, dec, survey: toSurvey } = pois[toIndex];
 
     const current = aladin.getRaDec();
 
@@ -110,12 +135,22 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
       const { zoomOutTime, zoomInTime, panTime, zoomOutFov } =
         pois[animationIndex];
 
+      let layers: Array<AladinImageLayer | undefined> = [];
+
+      if (fromSurvey?.id !== toSurvey?.id) {
+        layers = [
+          aladin.getOverlayImageLayer(fromSurvey?.id),
+          aladin.getOverlayImageLayer(toSurvey?.id),
+        ];
+      }
+
       panAndZoom({
         fov: { start: aladin.getFov()[0], middle: zoomOutFov, end: fov },
         position: {
           start: { ra: current[0], dec: current[1] },
           end: { ra, dec },
         },
+        layers,
         duration: [zoomOutTime, panTime, zoomInTime],
         aladin,
         onComplete,
