@@ -2,7 +2,6 @@
 import { FC } from "react";
 import AladinOverlay from "@/components/atomic/AladinOverlay";
 import Share from "./Share";
-import Pan from "./Pan";
 import Zoom from "../Controls/Zoom";
 import Orientation from "./Orientation";
 import ToggleGrid from "./ToggleGrid";
@@ -11,8 +10,11 @@ import FullscreenToggle from "./FullscreenToggle";
 import ReturnToInital from "./ReturnToInitial";
 import ViewScale from "./ViewScale";
 import styles from "./styles.module.css";
+import useAladinKeyboardControls from "@/hooks/useAladinKeyboardControls";
 
 const ExplorerControls: FC = () => {
+  useAladinKeyboardControls();
+
   return (
     <AladinOverlay
       className={styles.controls}
@@ -22,7 +24,6 @@ const ExplorerControls: FC = () => {
         <ControlStack position="middle right">
           <Zoom />
         </ControlStack>
-        <Pan />
         <ControlStack position="bottom left">
           <FullscreenToggle />
           <Share />
@@ -37,7 +38,7 @@ const ExplorerControls: FC = () => {
         className={styles.viewScaleContainer}
         position="bottom center"
       >
-        <ViewScale className={styles.viewScale} />
+        <ViewScale />
       </ControlStack>
     </AladinOverlay>
   );

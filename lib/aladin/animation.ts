@@ -61,12 +61,14 @@ export const pan = ({
   end,
   duration,
   aladin,
+  ease = "power1.inOut",
   onComplete,
 }: {
   start: Position;
   end: Position;
   duration: number;
   aladin: Aladin;
+  ease?: GSAPTweenVars["ease"];
   onComplete?: () => void;
 }) => {
   let obj = start;
@@ -74,7 +76,7 @@ export const pan = ({
   gsap.to(obj, {
     ...end,
     duration,
-    ease: "power1.inOut",
+    ease,
     onUpdate: () => {
       aladin.gotoRaDec(obj.ra, obj.dec);
     },

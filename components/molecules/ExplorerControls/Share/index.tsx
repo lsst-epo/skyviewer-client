@@ -24,7 +24,11 @@ import LinkToView from "@/components/molecules/ShareButton/patterns/LinkToView";
 import GetImageButton from "@/components/molecules/ShareButton/patterns/DownloadImage";
 import styles from "./styles.module.css";
 
-const Share: FC = () => {
+interface ShareProps {
+  className?: string;
+}
+
+const Share: FC<ShareProps> = ({ className }) => {
   const { t } = useTranslation();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -190,12 +194,13 @@ const Share: FC = () => {
   ];
 
   return (
-    <Menu as="div" className={styles.shareMenu} data-loading={isLoading}>
+    <Menu as="div" className={styles.shareMenu}>
       {({ open, close }) => {
         return (
           <>
             <MenuButton
               as={IconButton}
+              className={className}
               icon={open ? <IoIosClose /> : <IoMdShare />}
               text={open ? t("menu.share.close") : t("menu.share.open")}
               onClick={(event) => handleMenuChange({ event, open })}
