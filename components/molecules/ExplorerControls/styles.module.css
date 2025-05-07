@@ -20,6 +20,7 @@
 }
 
 .nonViewScale {
+  pointer-events: none;
   @media (--tablet-max) {
     position: relative;
   }
