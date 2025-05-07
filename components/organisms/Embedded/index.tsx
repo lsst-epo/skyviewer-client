@@ -8,9 +8,12 @@ import ControlStack from "@/components/molecules/Controls/Stack";
 import FullscreenToggle from "@/components/molecules/ExplorerControls/FullscreenToggle";
 import ReturnToInital from "@/components/molecules/ExplorerControls/ReturnToInitial";
 import ViewScale from "@/components/molecules/ExplorerControls/ViewScale";
+import OpenTours from "@/components/molecules/ExplorerControls/OpenTours";
 import styles from "./styles.module.css";
+import useAladinKeyboardControls from "@/hooks/useAladinKeyboardControls";
 
 const EmbeddedExplorer: FunctionComponent = () => {
+  useAladinKeyboardControls();
   return (
     <AladinOverlay space="var(--size-spacing-xs) var(--size-spacing-s) var(--size-spacing-xs) var(--size-spacing-xs)">
       <div className={styles.nonViewScale}>
@@ -18,6 +21,7 @@ const EmbeddedExplorer: FunctionComponent = () => {
           <ReturnToInital />
         </ControlStack>
         <ControlStack position="bottom left">
+          <OpenTours />
           <OpenCurrentView />
           <FullscreenToggle />
           <Share />

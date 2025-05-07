@@ -3,13 +3,12 @@ import { FunctionComponent } from "react";
 import { IoIosAdd, IoIosRemove } from "react-icons/io";
 
 import { useAladin } from "@/contexts/Aladin";
-import { useKeyDownEvent } from "@/hooks/listeners";
 import IconButton from "@/components/atomic/IconButton";
 import { useTranslation } from "react-i18next";
 
 const Zoom: FunctionComponent = () => {
   const { t } = useTranslation();
-  const { aladin, hasFocus, isLoading } = useAladin();
+  const { aladin, isLoading } = useAladin();
 
   const handleZoomIn = () => {
     aladin?.increaseZoom();
@@ -18,22 +17,6 @@ const Zoom: FunctionComponent = () => {
   const handleZoomOut = () => {
     aladin?.decreaseZoom();
   };
-
-  function handleKeyDown(event) {
-    if (hasFocus) {
-      const { key } = event;
-
-      if (key !== "+" && key !== "=" && key !== "-" && key !== "_") return;
-
-      if (key === "+" || key === "=") {
-        handleZoomIn();
-      } else if (key === "-" || key === "_") {
-        handleZoomOut();
-      }
-    }
-  }
-
-  useKeyDownEvent(handleKeyDown);
 
   return (
     <>
