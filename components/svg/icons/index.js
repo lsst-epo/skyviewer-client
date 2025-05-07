@@ -10,6 +10,7 @@ import Sparkle from "./Sparkle";
 import Star from "./Star";
 import Suitcase from "./Suitcase";
 import Target from "./Target";
+import MapSearch from "./MapSearch";
 
 export default {
   Compass,
@@ -24,4 +25,5 @@ export default {
   Star,
   Suitcase,
   Target,
+  MapSearch,
 };

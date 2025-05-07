@@ -2,11 +2,7 @@
   display: flex;
   align-items: center;
   z-index: var(--elevation-element-controls);
-  transition: 0.3s opacity;
-
-  &[data-loading="true"] {
-    opacity: 0;
-  }
+  position: relative;
 }
 
 .shareButton {
@@ -33,17 +29,11 @@
   display: flex;
   justify-content: center;
   flex-flow: column;
-  gap: var(--size-spacing-xs);
+  gap: var(--size-spacing-2xs);
   list-style: none;
   position: absolute;
-  bottom: calc(var(--size-spacing-l) + var(--size-spacing-xs));
+  bottom: calc(var(--size-spacing-l) + var(--size-spacing-2xs));
   font-size: 0.75rem;
   opacity: 0;
   z-index: -1;
-
-  @media (--tablet) {
-    flex-flow: row-reverse nowrap;
-    left: calc(var(--size-spacing-l) + var(--size-spacing-xs));
-    bottom: 0;
-  }
 }
