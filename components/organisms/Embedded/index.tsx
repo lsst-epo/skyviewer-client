@@ -1,5 +1,5 @@
 "use client";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import AladinOverlay from "@/components/atomic/AladinOverlay";
 import Zoom from "@/components/molecules/Controls/Zoom";
 import Share from "@/components/molecules/ExplorerControls/Share";
@@ -14,6 +14,16 @@ import useAladinKeyboardControls from "@/hooks/useAladinKeyboardControls";
 
 const EmbeddedExplorer: FunctionComponent = () => {
   useAladinKeyboardControls();
+
+  useEffect(() => {
+    const hasIframe = window.location !== window.parent.location;
+    if (window.plausible && hasIframe) {
+      window.plausible("Embedded", {
+        props: { source: window.parent.location },
+      });
+    }
+  }, []);
+
   return (
     <AladinOverlay space="var(--size-spacing-xs) var(--size-spacing-s) var(--size-spacing-xs) var(--size-spacing-xs)">
       <div className={styles.nonViewScale}>

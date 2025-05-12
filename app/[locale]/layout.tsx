@@ -8,6 +8,8 @@ import { fallbackLng, languages } from "@/lib/i18n/settings";
 import { serverTranslation } from "@/lib/i18n/server";
 import I18NextClientProvider from "@/contexts/i18next";
 import SkeletonGlobal from "@/components/organisms/SkeletonGlobal";
+import Script from "next/script";
+import { env } from "@/env";
 
 export const generateStaticParams = () => {
   return languages.map((locale) => {
@@ -58,6 +60,13 @@ const RootLayout: FunctionComponent<PropsWithChildren<RootProps>> = ({
               <SkeletonGlobal>{children}</SkeletonGlobal>
             </StyledComponentsRegistry>
           </I18NextClientProvider>
+          {env.PLAUSIBLE_DOMAIN && (
+            <Script
+              defer
+              data-domain={env.PLAUSIBLE_DOMAIN}
+              src="https://plausible.io/js/script.pageview-props.tagged-events.js"
+            />
+          )}
         </body>
       </html>
     </ViewTransitions>
