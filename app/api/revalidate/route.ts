@@ -41,7 +41,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       }
 
       revalidateTag(tagStore.globals);
-      revalidatePath(path, "layout");
+      revalidatePath(path);
     });
 
     return NextResponse.json({ revalidated: true, now: Date.now() });

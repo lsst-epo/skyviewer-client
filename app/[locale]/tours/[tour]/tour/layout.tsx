@@ -8,7 +8,7 @@ const TourLayout: FunctionComponent<PropsWithChildren<TourProps>> = async ({
   return (
     <>
       <AladinMenu locale={locale} />
-      {children};
+      {children}
     </>
   );
 };
