@@ -64,13 +64,16 @@ export const viewAsParams = ({
   fov,
   target,
 }: {
-  fov: number;
+  fov?: number;
   target: [number, number];
 }) => {
   const params = new URLSearchParams({
-    fov: fov.toFixed(2),
     target: target.map((p) => p.toFixed(5)).join(" "),
   });
+
+  if (fov) {
+    params.set("fov", fov.toFixed(2));
+  }
 
   return params;
 };
