@@ -1,0 +1,144 @@
+.dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+}
+
+.panel {
+  --color-background-button: #e6e6e6;
+  --color-text-button: var(--color-font-primary);
+  --color-background-button-hover: var(--color-background-button);
+  --color-outline-button: var(--color-font-invert);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-spacing-xs);
+
+  position: fixed;
+  top: var(--size-height-menu, var(--size-spacing-l));
+  left: 0;
+  height: calc(100dvh - var(--size-height-menu, var(--size-spacing-l)));
+  padding: var(--size-spacing-xs);
+  width: min(30ch, 75dvw);
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  background-color: rgba(0 0 0 / 70%);
+  backdrop-filter: blur(2px) brightness(0.67);
+  z-index: -1;
+}
+
+.toggleButton {
+  --color-background-button: #e6e6e6;
+  --color-text-button: var(--color-font-primary);
+  --color-background-button-hover: var(--color-background-button);
+  --color-outline-button: var(--color-font-invert);
+
+  &[data-open="true"] {
+    --color-outline-button: transparent;
+    --color-background-button-hover: #e6e6e6;
+  }
+}
+
+.formWrapper {
+  display: flex;
+  gap: var(--size-spacing-3xs);
+  align-items: center;
+  width: 100%;
+}
+
+.form {
+  --size-height-search: var(--size-spacing-l);
+
+  background-color: var(--color-background-button);
+  border-radius: calc(var(--size-height-search) / 2);
+  margin: 0;
+  transition: 0.4s width ease-in-out;
+
+  display: flex;
+  align-items: center;
+  height: var(--size-height-search);
+  padding-inline-end: var(--size-spacing-2xs);
+  position: relative;
+}
+
+.searchInput {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  flex-grow: 1;
+  width: 0;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-decoration {
+    appearance: none;
+  }
+}
+
+.searchIcon {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--color-background-button);
+  color: var(--color-text-button);
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: var(--size-height-search);
+
+  & > svg {
+    width: 1.5em;
+    height: 1.5em;
+  }
+}
+
+.hr {
+  border: 1px solid #707070;
+  width: 100%;
+}
+
+.helpText {
+  font-size: 80%;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: var(--size-spacing-xs);
+}
+
+.closeButton {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-rubin-red-200);
+  transition: opacity 0.2s ease-in-out, background-color 0.3s ease-out;
+  margin-inline-start: auto;
+
+  &:hover,
+  &:focus-visible {
+    outline: none;
+    background-color: #0c4a47;
+  }
+}
+
+.cancelButton {
+  font-weight: lighter;
+  font-size: 80%;
+  margin-inline-start: auto;
+}
+
+.outputPosition {
+  white-space: nowrap;
+}

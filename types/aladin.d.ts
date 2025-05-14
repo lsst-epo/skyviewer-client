@@ -411,6 +411,24 @@ interface Coo {
   format(options: "2"): Array<string>;
 }
 
+interface Sesame {
+  resolveAstronomicalName: (
+    target: string,
+    callback?: (args: { ra: number; dec: number }) => void,
+    errorCallback?: (error: string) => void
+  ) => void;
+}
+
+interface AladinUtils {
+  readonly degreesToString: (degrees: number) => string;
+  readonly radecToViewXy: (
+    ra: number,
+    dec: number,
+    aladin: Aladin
+  ) => Array<number>;
+  Sesame: Sesame;
+}
+
 interface A {
   /** Initializes the Aladin Lite library, checking for WebGL2 support. This method must be called before instancing an Aladin Lite object. */
   readonly init: Promise<void>;
@@ -434,6 +452,7 @@ interface A {
   readonly imageHiPS: (id: string, options?: HiPSOptions) => HiPS;
   readonly HiPS: (id: string, options?: HiPSOptions) => HiPS;
   readonly coo: (longitude: number, latitude: number, prec: number) => Coo;
+  Utils: AladinUtils;
   // TODO Add other catalog methods
   // catalogFromSimbad(<target>, <radius-in-degrees>, <catalog-options>?, <successCallback>?)
   // A.catalogFromVizieR(<vizier-cat-id>, <target>, <radius-in-deg>, <cat-options>?, <successCallback>?)
