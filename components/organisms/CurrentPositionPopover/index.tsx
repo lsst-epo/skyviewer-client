@@ -13,19 +13,30 @@ import Stack from "@rubin-epo/epo-react-lib/Stack";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 import { useAladin } from "@/contexts/Aladin";
 import { viewAsParams } from "@/lib/aladin/helpers";
-import { deg2hms } from "@/lib/aladin/astro";
 import IconButton from "@/components/atomic/IconButton";
 import styles from "./styles.module.css";
 
 interface AladinScreenPosition {
   screen: [number, number];
-  aladin?: [number, number];
+  formatted: [string, string];
+  aladin: [number, number];
 }
+
+const formatCoordinate = (coo: string): [string, string] => {
+  const splitter = coo.includes("+") ? "+" : "-";
+
+  const [ra, dec] = coo.split(splitter);
+
+  return [
+    ra.padEnd(11, "0"),
+    `${splitter === "-" ? "-" : ""}${dec.padEnd(11, "0")}`,
+  ];
+};
 
 const CurrentPositionPopover: FC = () => {
   const { t } = useTranslation();
   const [position, setPosition] = useState<AladinScreenPosition>();
-  const { aladin } = useAladin({
+  const { aladin, A, isLoading } = useAladin({
     callbacks: {
       onRightClickMove: () => undefined,
     },
@@ -52,15 +63,23 @@ const CurrentPositionPopover: FC = () => {
   });
 
   const handleRightClick = (event: MouseEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
+    if (!isLoading) {
+      event.preventDefault();
+      event.stopPropagation();
 
-    const { clientX, clientY, offsetX, offsetY } = event;
+      const { clientX, clientY, offsetX, offsetY } = event;
 
-    setPosition({
-      screen: [clientX, clientY],
-      aladin: aladin?.pix2world(offsetX, offsetY),
-    });
+      const frame = aladin.getFrame();
+      const position = aladin?.pix2world(offsetX, offsetY, frame);
+      const coo = A.coo(...position, 6);
+      coo.setFrame(frame);
+
+      setPosition({
+        screen: [clientX, clientY],
+        aladin: position,
+        formatted: formatCoordinate(coo.format("s")),
+      });
+    }
   };
 
   useEventListener("contextmenu", handleRightClick);
@@ -110,12 +129,8 @@ const CurrentPositionPopover: FC = () => {
           style={floatingStyles}
         >
           <Stack className={styles.text} space="0">
-            <pre>
-              ra: {deg2hms({ angle: position.aladin[0], sign: true }).string}
-            </pre>
-            <pre>
-              dec: {deg2hms({ angle: position.aladin[1], sign: true }).string}
-            </pre>
+            <pre>ra: {position.formatted[0]}</pre>
+            <pre>dec: {position.formatted[1]}</pre>
           </Stack>
           <IconButton
             className={styles.copy}

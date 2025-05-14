@@ -286,6 +286,7 @@ interface Aladin {
   readonly getSize: () => [number, number];
   readonly getFov: () => [number, number];
   readonly getFovCorners: (nbSteps?: number) => [number, number][];
+  readonly getFrame: () => CooFrame;
   readonly setFov: (degrees: number) => void;
   readonly adjustFovForObject: (target: string) => void;
   readonly setFoVRange: (minFov: number, maxFov: number) => void;
