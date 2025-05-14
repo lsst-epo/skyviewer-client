@@ -193,3 +193,23 @@ export const panAndZoom = ({
     labels.startZoomIn
   );
 };
+
+export const fadeLayer = ({
+  hips,
+  from,
+  to,
+}: {
+  hips: HiPS;
+  from: number;
+  to: number;
+}) => {
+  let obj = { opacity: from };
+
+  gsap.to(obj, {
+    opacity: to,
+    duration: 0.75,
+    onUpdate: () => {
+      hips.setOpacity(obj.opacity);
+    },
+  });
+};
