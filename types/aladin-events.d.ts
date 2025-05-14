@@ -1,5 +1,10 @@
 type AladinPositionChangedEvent = CustomEvent<{ lon: number; lat: number }>;
 type AladinZoomChangedEvent = CustomEvent<{ fovX: number; fovY: number }>;
+type AladinCanvasEvent = CustomEvent<{
+  state: { mode: number; dragging: boolean; rightClickPressed?: boolean };
+  type?: "mousemove" | "mouseout" | "mousedown" | "click" | "wheel";
+  xy?: { x: number; y: number };
+}>;
 
 interface AladinEventMap {
   Wasm: CustomEvent;
@@ -30,7 +35,7 @@ interface AladinEventMap {
   "samp.hub": CustomEvent;
   "samp.connected": CustomEvent;
   "samp.disconnected": CustomEvent;
-  Event: CustomEvent;
+  Event: AladinCanvasEvent;
   "Reticle.changed": CustomEvent;
   "Resource.fetched": CustomEvent;
   fetch: CustomEvent;

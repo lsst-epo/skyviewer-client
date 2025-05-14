@@ -13,7 +13,8 @@
       "go_to_tours": "Go to tours",
       "start_tour": "Start the tour",
       "lets_start": "Let's start",
-      "skip_intro": "Skip intro"
+      "skip_intro": "Skip intro",
+      "cancel": "Cancel"
     }
   },
   "guided-experiences": {
@@ -81,6 +82,16 @@
     "view_scale_announce": "You are looking at {{fraction}} of Rubin's footprint"
   },
   "menu": {
+    "search": {
+      "open": "Open search",
+      "placeholder": "Enter your search...",
+      "take_a_tour": "Don't know what to look for? <1>Take a tour</1>",
+      "instructions": "Skyviewer searches common names using the <0>SIMBAD</0> and <1>NED</1> astronomical databases and RA/DEC coordinates in decimal format, ex. 186.2 7.0",
+      "error_object": "Skyviewer couldn't find “{{search}}”",
+      "error_coordinate": "Try a valid ra/dec decimal coordinate, ex. 186.2 7.0",
+      "found_object": "Skyviewer found object “{{name}}” at <0>{{position}}</0>",
+      "found_position": "Skyviewer found location <0>{{position}}</0>"
+    },
     "main": {
       "open": "Open main menu",
       "title": "Main menu",
