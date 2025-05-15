@@ -4,7 +4,6 @@ import AladinOverlay from "@/components/atomic/AladinOverlay";
 import Zoom from "../Controls/Zoom";
 import ControlStack from "../Controls/Stack";
 import PlayPauseButton from "./PlayPauseButton/index";
-import styles from "./styles.module.css";
 
 const SonificationControls: FC = () => {
   return (
