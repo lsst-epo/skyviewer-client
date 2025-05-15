@@ -1,5 +1,6 @@
 import { FC } from "react";
 import AladinTemplate from "@/components/templates/Aladin";
+import SonificationControls from "@/components/molecules/SonificationControls";
 import Listener from "@/components/organisms/Listener";
 import { notFound } from "next/navigation";
 import { initialPosition } from "@/lib/helpers";
@@ -24,6 +25,7 @@ const ListenerPage: FC<WithSearchParams<RootProps>> = async ({
 
   return (
     <AladinTemplate fovRange={fovRange} layers={surveys} {...{ options }}>
+      <SonificationControls />
       <Listener />
     </AladinTemplate>
   );

@@ -1,0 +1,71 @@
+/* stylelint-disable no-descending-specificity */
+@forward "./Pan/styles";
+@forward "./Search/styles";
+@use "abstracts/mixins/typography";
+@use "abstracts/functions";
+
+.controls {
+  $controlDim: 40px;
+  $controlSpacing: 12px;
+
+  .controls-submenu {
+    position: absolute;
+    z-index: var(--elevation-element-controls);
+
+    > li {
+      display: block;
+    }
+  }
+
+  .control-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--size-spacing-l);
+    height: var(--size-spacing-l);
+    background-color: var(--color-font-primary);
+    color: var(--color-font-invert);
+    border-radius: 50%;
+    transition: background-color 0.4s color 0.4s;
+    pointer-events: initial;
+
+    &:focus {
+      outline: 2px solid var(--color-font-invert);
+    }
+
+    &.active,
+    &:hover {
+      background-color: var(--color-background-button-primary-hover);
+    }
+  }
+
+  .wayfinding,
+  .find {
+    > li {
+      + li {
+        margin-top: $controlSpacing;
+      }
+    }
+  }
+
+  .pan {
+    right: 10px;
+    bottom: 0;
+    display: flex;
+
+    > li {
+      + li {
+        margin-left: $controlSpacing;
+      }
+    }
+  }
+
+  .find {
+    position: static;
+  }
+
+  .wayfinding {
+    bottom: calc(50% - #{$controlDim} - (#{$controlSpacing}));
+    left: 0;
+  }
+}
