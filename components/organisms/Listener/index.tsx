@@ -1,9 +1,8 @@
 "use client";
 import { ChangeEventHandler, FC, useCallback, useState } from "react";
-import ControlStack from "@/components/molecules/Controls/Stack";
 import AladinOverlay from "@/components/atomic/AladinOverlay";
 import { useAladin } from "@/contexts/Aladin";
-import styles from "./styles.module.css";
+import Sketch from "./sketch";
 
 const buildSample = ({
   start,
@@ -44,20 +43,25 @@ const samplePixels = ({
     const pixelValues = cells.map((cell) => {
       return layer.readPixel(cell[0], cell[1]);
     });
-
+    // Calculate total weight from sum of all pixel brightnesses
+    let totalWeight = pixelValues.reduce((sum, pixel) => {
+      return sum + pixel[0] + pixel[1] + pixel[2];
+    }, 0);
+    // Ensure total weight is at least 1 to avoid division by zero
+    totalWeight = Math.max(totalWeight, 1);
     const summed = pixelValues.reduce(
       (totals, current) => {
-        totals[0] += current[0];
-        totals[1] += current[1];
-        totals[2] += current[2];
+        const currentBrightness = current[0] + current[1] + current[2];
+        totals[0] += current[0] * currentBrightness;
+        totals[1] += current[1] * currentBrightness;
+        totals[2] += current[2] * currentBrightness;
         return totals;
       },
       [0, 0, 0]
     );
-    const total = pixelValues.length;
-
+    // Return the weighted average of the pixel values
     return summed.map((value) => {
-      return Math.floor(value / total);
+      return Math.floor(value / totalWeight);
     });
   } catch {
     return undefined;
@@ -65,8 +69,8 @@ const samplePixels = ({
 };
 
 const Listener: FC = () => {
-  const [sampleSize, setSampleSize] = useState(1);
-  const [pixel, setPixel] = useState<string>("rgb(0,0,0)");
+  const [sampleSize, setSampleSize] = useState(2); // Set the sample grid size
+  const [pixel, setPixel] = useState<[number, number, number]>([0, 0, 0]);
 
   const { isLoading } = useAladin();
 
@@ -82,7 +86,7 @@ const Listener: FC = () => {
       });
 
       if (average) {
-        setPixel(`rgb(${average.join(",")})`);
+        setPixel(average as [number, number, number]);
       }
     }
   }, [sampleSize, isLoading]);
@@ -111,27 +115,7 @@ const Listener: FC = () => {
 
   return (
     <AladinOverlay>
-      <div className={styles.reticle} style={{ width: sampleSize }} />
-      <ControlStack
-        centered={false}
-        className={styles.stack}
-        position="bottom right"
-      >
-        <div style={{ backgroundColor: pixel }} className={styles.pixelColor} />
-        <pre>{pixel}</pre>
-        <label>
-          Sample size
-          <input
-            placeholder="Sample size"
-            defaultValue={sampleSize}
-            onChange={handleSampleChange}
-            type="number"
-            min={1}
-            max={13}
-            step={2}
-          />
-        </label>
-      </ControlStack>
+      <Sketch pixelColor={pixel} />
     </AladinOverlay>
   );
 };
