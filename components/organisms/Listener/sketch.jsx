@@ -1,0 +1,131 @@
+"use client";
+import { useEffect, useRef } from "react";
+import P5 from "p5";
+import PropTypes from "prop-types";
+import { useAladin } from "@/contexts/Aladin";
+import { automaticWalk, shiftStarTint } from "./utilities";
+import parameters from "./parameters";
+import PixelSynth from "./PixelSynth";
+
+const Sketch = ({ pixelColor }) => {
+  const sketchRef = useRef(null);
+  const p5Instance = useRef(null);
+  const currentColor = useRef(pixelColor);
+  const { aladin } = useAladin();
+  const emptyCircleRef = useRef(null);
+  const starRef = useRef(null);
+  const synthRef = useRef(null);
+
+  // Initialize synth
+  useEffect(() => {
+    synthRef.current = new PixelSynth();
+  }, []);
+
+  // Update the current color when pixelColor changes
+  useEffect(() => {
+    currentColor.current = pixelColor;
+    // Update synth frequency when color changes and mouse is pressed
+    if (synthRef.current && parameters.mouseIsPressed) {
+      synthRef.current.playNote(pixelColor);
+    }
+  }, [pixelColor]);
+
+  // Create the sketch only once
+  useEffect(() => {
+    if (!aladin) return;
+
+    const size = aladin.getSize();
+    p5Instance.current = new P5((p) => {
+      p.setup = () => {
+        // Create the canvas with the same size as the aladin image
+        p.createCanvas(size[0], size[1]);
+        // Make the canvas non-interactive
+        p.canvas.style.pointerEvents = "none";
+        // Load the rubin empty circle and star images
+        p.loadImage("/sonification/rubin-circle-empty.png", (img) => {
+          emptyCircleRef.current = img;
+        });
+        p.loadImage("/sonification/rubin-star.png", (img) => {
+          starRef.current = img;
+        });
+      };
+
+      p.draw = () => {
+        p.clear(); // Clear the canvas before drawing the empty circle and star to avoid ghosting
+        // Draw the empty circle without tint
+        if (emptyCircleRef.current) {
+          p.noTint();
+          p.imageMode(p.CENTER);
+          p.image(emptyCircleRef.current, p.width / 2, p.height / 2, 100, 100);
+        }
+        // Draw the star with the current color tint
+        if (starRef.current) {
+          p.tint(shiftStarTint(currentColor.current));
+          p.imageMode(p.CENTER);
+          p.image(starRef.current, p.width / 2, p.height / 2, 60, 60);
+        }
+        // If sonification is playing and mouse is not pressed, walk the star automatically
+        if (parameters.isSonificationPlaying && !parameters.mouseIsPressed) {
+          automaticWalk(p, aladin);
+          if (synthRef.current) {
+            synthRef.current.playNote(currentColor.current);
+          }
+        }
+      };
+
+      p.mousePressed = (event) => {
+        // Check if the click originated from a UI control
+        const isUIControl = event.target.closest(".controls") !== null;
+        if (!isUIControl) {
+          parameters.mouseIsPressed = true;
+          synthRef.current.playNote(currentColor.current);
+        }
+      };
+
+      p.mouseReleased = () => {
+        parameters.mouseIsPressed = false;
+        if (synthRef.current) {
+          synthRef.current.setAmplitude(0); // Stop the sound
+        }
+      };
+    }, sketchRef.current);
+
+    return () => {
+      p5Instance.current.remove();
+    };
+  }, [aladin]); // Add aladin as dependency
+
+  return (
+    <div
+      style={{
+        pointerEvents: "none",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div
+        ref={sketchRef}
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          pointerEvents: "none",
+        }}
+      />
+    </div>
+  );
+};
+
+Sketch.propTypes = {
+  pixelColor: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
+
+export default Sketch;
