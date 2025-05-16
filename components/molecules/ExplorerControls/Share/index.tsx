@@ -1,4 +1,4 @@
-import { FC, useState, MouseEvent } from "react";
+import { FC, useState, MouseEvent, Fragment } from "react";
 import clsx from "clsx/lite";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
@@ -208,28 +208,28 @@ const Share: FC<ShareProps> = ({ className }) => {
             />
             <AnimatePresence>
               {open && (
-                <MenuItems
-                  static
-                  as={motion.div}
-                  initial={{ opacity: 0, translateX: -100 }}
-                  animate={{ opacity: 1, translateX: 0 }}
-                  exit={{ opacity: 0, translateX: -100 }}
-                  transition={{ duration: 0.2 }}
-                  className={styles.shareMenuItems}
-                  onClick={close}
-                >
-                  {generateShareButtons(close).map(({ label, item }) => {
-                    return (
-                      <MenuItem
-                        key={label}
-                        as={WithButtonLabel}
-                        showLabel
-                        label={label}
-                      >
-                        {item}
-                      </MenuItem>
-                    );
-                  })}
+                <MenuItems static as={Fragment}>
+                  <motion.div
+                    onClick={close}
+                    className={styles.shareMenuItems}
+                    initial={{ opacity: 0, translateX: -100 }}
+                    animate={{ opacity: 1, translateX: 0 }}
+                    exit={{ opacity: 0, translateX: -100 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {generateShareButtons(close).map(({ label, item }) => {
+                      return (
+                        <MenuItem
+                          key={label}
+                          as={WithButtonLabel}
+                          showLabel
+                          label={label}
+                        >
+                          {item}
+                        </MenuItem>
+                      );
+                    })}
+                  </motion.div>
                 </MenuItems>
               )}
             </AnimatePresence>

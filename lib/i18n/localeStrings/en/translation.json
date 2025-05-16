@@ -83,8 +83,10 @@
   },
   "menu": {
     "search": {
+      "submit": "Search",
       "open": "Open search",
       "placeholder": "Enter your search...",
+      "clear": "Clear search input",
       "take_a_tour": "Don't know what to look for? <1>Take a tour</1>",
       "instructions": "Skyviewer searches common names using the <0>SIMBAD</0> and <1>NED</1> astronomical databases and RA/DEC coordinates in decimal format, ex. 186.2 7.0",
       "error_object": "Skyviewer couldn't find “{{search}}”",
