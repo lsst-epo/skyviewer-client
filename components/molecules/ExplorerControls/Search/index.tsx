@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key, jsx-a11y/anchor-has-content */
-import { FC, FormEventHandler, useId, useState } from "react";
+import { FC, FormEventHandler, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { Trans, useTranslation } from "react-i18next";
 import { z } from "zod";
@@ -46,6 +46,8 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
     i18n: { language },
   } = useTranslation();
   const id = useId();
+
+  const inputRef = useRef<HTMLInputElement>(null);
   const [pending, setPending] = useState(false);
   const [isOpen, setOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -58,15 +60,19 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
   });
   const panAndGo = useAladinMove();
 
-  const closeSearchBar = (value = false) => {
-    if (error) {
-      setInput("");
-      setError(null);
-      setFound(null);
+  const clearSearch = () => {
+    setInput("");
+    setError(null);
+    setFound(null);
+  };
+
+  const closeSearchBar = () => {
+    if (error || !found) {
+      clearSearch();
     }
 
-    setPending(value);
-    setOpen(value);
+    setPending(false);
+    setOpen(false);
   };
 
   const openSearchBar = () => {
@@ -78,6 +84,15 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
       closeSearchBar();
     } else {
       openSearchBar();
+
+      setTimeout(() => {
+        if (inputRef.current) {
+          inputRef.current.focus();
+          // this is necessary for a headlessui bug that does not remove the portal
+          // if no input has been put into the search area
+          setInput("\u200b");
+        }
+      });
     }
   };
 
@@ -90,7 +105,7 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
   const goToPosition = ({ name, ...position }: FoundTarget) => {
     setFound({ ...position, name });
     setPending(false);
-    panAndGo(position);
+    panAndGo({ ...position, fov: 0.6 });
   };
 
   const resolveSearch = (search: string) => {
@@ -154,7 +169,7 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
     },
   };
 
-  const hasCancel = input.length > 0;
+  const isEditing = input?.length > 0;
 
   return (
     <>
@@ -162,7 +177,6 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
         text={t("menu.search.open")}
         onClick={toggleSearchBar}
         icon={<IoSearchOutline />}
-        data-open={isOpen}
         className={clsx(styles.toggleButton, buttonClassName)}
       />
       <AnimatePresence>
@@ -171,7 +185,7 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
             static
             open={isOpen}
             className={clsx(styles.dialog, className)}
-            onClose={closeSearchBar}
+            onClose={() => closeSearchBar()}
           >
             <DialogPanel className={styles.panel}>
               <motion.div className={styles.backdrop} {...animations.dialog} />
@@ -184,7 +198,11 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
                   transition={animations.dialog.transition}
                   onSubmit={handleSubmit}
                 >
-                  <button type="submit" className={styles.searchIcon}>
+                  <button
+                    type="submit"
+                    title={t("menu.search.submit")}
+                    className={styles.searchIcon}
+                  >
                     <IoSearchOutline />
                   </button>
                   <input
@@ -198,33 +216,33 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
                     placeholder={t("menu.search.placeholder")}
                     autoComplete="off"
                     aria-describedby={id}
+                    ref={inputRef}
                   />
                   <AnimatePresence propagate>
-                    {hasCancel && (
-                      <CloseButton
-                        as={motion.button}
+                    {isEditing && (
+                      <motion.button
+                        type="button"
+                        title={t("menu.search.clear")}
                         className={styles.closeButton}
+                        onClick={clearSearch}
                         {...animations.controls}
                       >
                         <IoClose />
-                      </CloseButton>
+                      </motion.button>
                     )}
                   </AnimatePresence>
                 </motion.form>
-                {hasCancel && (
-                  <AnimatePresence propagate>
-                    <CloseButton
-                      as={motion.button}
-                      className={styles.cancelButton}
-                      initial={{ x: 15, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      exit={{ x: 15, opacity: 0 }}
-                      transition={animations.controls.transition}
-                    >
-                      {t("navigation.cta.cancel")}
-                    </CloseButton>
-                  </AnimatePresence>
-                )}
+                <CloseButton
+                  as={motion.button}
+                  className={styles.cancelButton}
+                  initial={{ x: 15, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: 15, opacity: 0 }}
+                  transition={animations.dialog.transition}
+                  key={t("navigation.cta.cancel")}
+                >
+                  {t("navigation.cta.cancel")}
+                </CloseButton>
               </div>
 
               <motion.div className={styles.info} {...animations.dialog}>
@@ -251,7 +269,7 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
                             <Link
                               className={styles.outputPosition}
                               onClick={() => {
-                                panAndGo(found);
+                                panAndGo({ ...found, fov: 0.6 });
                               }}
                               href={{
                                 query: viewAsParams({
