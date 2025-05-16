@@ -1,5 +1,5 @@
 "use client";
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent } from "react";
 import AladinOverlay from "@/components/atomic/AladinOverlay";
 import Zoom from "@/components/molecules/Controls/Zoom";
 import Share from "@/components/molecules/ExplorerControls/Share";
