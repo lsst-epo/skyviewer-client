@@ -14,12 +14,14 @@ const useAladinMove = () => {
   const { isLoading, aladin, A } = useAladin();
 
   const goToPosition = useCallback(
-    ({ ra, dec }: { ra: number; dec: number }) => {
+    ({ ra, dec, fov }: { ra: number; dec: number; fov?: number }) => {
       if (!isLoading) {
         if (Number.isNaN(ra) || Number.isNaN(dec)) return;
 
         const { options } = aladin;
         const { fov: initialFov } = aladin.options;
+
+        const targetFov = fov || initialFov;
 
         const [currentFov] = aladin.getFov();
         const currentPosition = aladin.getRaDec();
@@ -31,14 +33,14 @@ const useAladinMove = () => {
         destination.setFrame(options.cooFrame);
 
         const shouldMove = current.format("d") !== destination.format("d");
-        const shouldZoom = initialFov !== currentFov;
+        const shouldZoom = targetFov !== currentFov;
 
         if (reduceMotion) {
           if (shouldMove) {
             aladin.gotoRaDec(ra, dec);
           }
           if (shouldZoom) {
-            aladin.setFov(initialFov);
+            aladin.setFov(targetFov);
           }
         } else {
           const startPosition = {
@@ -55,17 +57,17 @@ const useAladinMove = () => {
 
             if (shouldZoom) {
               const middleFov =
-                Math.max(initialFov, currentFov) +
-                Math.abs(initialFov - currentFov) * 0.1;
+                Math.max(targetFov, currentFov) +
+                Math.abs(targetFov - currentFov) * 0.1;
 
               const zoomOutTime = zoomTime(middleFov, currentFov);
-              const zoomInTime = zoomTime(initialFov, middleFov);
+              const zoomInTime = zoomTime(targetFov, middleFov);
 
               panAndZoom({
                 fov: {
                   start: currentFov,
                   middle: middleFov,
-                  end: initialFov,
+                  end: targetFov,
                 },
                 position: {
                   start: startPosition,
@@ -87,11 +89,11 @@ const useAladinMove = () => {
           }
 
           if (shouldZoom) {
-            const zoomOutTime = zoomTime(currentFov, initialFov);
+            const zoomOutTime = zoomTime(currentFov, targetFov);
 
             zoom({
               start: currentFov,
-              end: initialFov,
+              end: targetFov,
               duration: zoomOutTime,
               aladin,
             });
