@@ -4,7 +4,7 @@ const parameters = {
   brightness_boost: 1.2, // Brightness boost factor
   brightness_scaleFactor: 1, // Default scale factor (1 = no scaling)
   isSonificationPlaying: false, // Will be toggled by the SonificationControls/PlayPauseButton
-  speed: 0.00002, // Constant speed for play mode
+  speed: 0.5, // Constant speed for play mode
   noiseOffset: Math.random() * 1000, // Random offset for noise
   noiseScale: 0.001, // Scale for noise
   mouseIsPressed: false, // Tracks whether the mouse is currently pressed

@@ -33,13 +33,14 @@ export function shiftStarTint(rgbValues) {
 }
 
 export function automaticWalk(p, aladin) {
-  // TODO: Try converting to pixel coordinates then back to ra/dec. Avoids needing to know the zoom level.
   const [ra, dec] = aladin.getRaDec();
+  const [pixelX, pixelY] = aladin.world2pix(ra, dec);
   const angle = p.map(p.noise(parameters.noiseOffset), 0, 1, -p.PI, p.PI);
   const dx = parameters.speed * p.cos(angle);
   const dy = parameters.speed * p.sin(angle);
-  const newRa = ra + dx;
-  const newDec = dec + dy;
+  const newworldX = pixelX + dx;
+  const newworldY = pixelY + dy;
+  const [newRa, newDec] = aladin.pix2world(newworldX, newworldY);
   aladin.gotoRaDec(newRa, newDec);
   // aladin.animateToRaDec(newRa, newDec, 0.1);
   parameters.noiseOffset += parameters.noiseScale;
