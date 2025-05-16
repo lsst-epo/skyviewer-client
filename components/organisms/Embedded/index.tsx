@@ -15,15 +15,6 @@ import useAladinKeyboardControls from "@/hooks/useAladinKeyboardControls";
 const EmbeddedExplorer: FunctionComponent = () => {
   useAladinKeyboardControls();
 
-  useEffect(() => {
-    const hasIframe = window.location !== window.parent.location;
-    if (window.plausible && hasIframe) {
-      window.plausible("Embedded", {
-        props: { source: window.parent.location },
-      });
-    }
-  }, []);
-
   return (
     <AladinOverlay space="var(--size-spacing-xs) var(--size-spacing-s) var(--size-spacing-xs) var(--size-spacing-xs)">
       <div className={styles.nonViewScale}>
