@@ -34,7 +34,7 @@ const Share: FC<ShareProps> = ({ className }) => {
   const searchParams = useSearchParams();
   const baseUrl = new URL(pathname, env.NEXT_PUBLIC_BASE_URL);
   const [viewUrl, setViewUrl] = useState(
-    `${baseUrl}?${new URLSearchParams(searchParams).toString}`
+    `${baseUrl}?${new URLSearchParams(searchParams).toString()}`
   );
 
   const imageType = "png";
