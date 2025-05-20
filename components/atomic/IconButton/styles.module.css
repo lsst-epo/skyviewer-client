@@ -10,6 +10,7 @@
   width: var(--size-spacing-l);
   transition: background-color 0.4s;
   pointer-events: initial;
+  touch-action: manipulation;
 
   --color-background-button: #313333;
   --color-background-button-hover: #313333;

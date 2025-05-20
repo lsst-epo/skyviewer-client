@@ -20,7 +20,11 @@
   display: flex;
   flex-direction: column;
 
-  & * {
+  & button,
+  & a,
+  & input,
+  & select,
+  & form {
     pointer-events: all;
   }
 }
