@@ -33,17 +33,48 @@ export function shiftStarTint(rgbValues) {
 }
 
 export function automaticWalk(p, aladin) {
+  // TODO: Can we use the image width and height instead of these two methods?
   const [ra, dec] = aladin.getRaDec();
   const [pixelX, pixelY] = aladin.world2pix(ra, dec);
   const angle = p.map(p.noise(parameters.noiseOffset), 0, 1, -p.PI, p.PI);
-  const dx = parameters.speed * p.cos(angle);
-  const dy = parameters.speed * p.sin(angle);
+  const dx = parameters.walkSpeed * p.cos(angle);
+  const dy = parameters.walkSpeed * p.sin(angle);
   const newworldX = pixelX + dx;
   const newworldY = pixelY + dy;
   const [newRa, newDec] = aladin.pix2world(newworldX, newworldY);
   aladin.gotoRaDec(newRa, newDec);
   // aladin.animateToRaDec(newRa, newDec, 0.1);
   parameters.noiseOffset += parameters.noiseScale;
+}
+
+export function controlledWalk(p, aladin) {
+  // TODO: Can we use the image width and height instead of these two methods?
+  const [ra, dec] = aladin.getRaDec();
+  const [pixelX, pixelY] = aladin.world2pix(ra, dec);
+  const targetPoint = [0, 0];
+  let dx = 0;
+  let dy = 0;
+
+  if (p.keyIsDown(p.LEFT_ARROW)) dx -= 1;
+  if (p.keyIsDown(p.RIGHT_ARROW)) dx += 1;
+  if (p.keyIsDown(p.UP_ARROW)) dy -= 1;
+  if (p.keyIsDown(p.DOWN_ARROW)) dy += 1;
+
+  // Normalize diagonal movement
+  if (dx !== 0 && dy !== 0) {
+    dx /= Math.SQRT2;
+    dy /= Math.SQRT2;
+  }
+  // Update the target point
+  targetPoint[0] +=
+    dx * parameters.directionX * parameters.keyboardSpeed + pixelX;
+  targetPoint[1] +=
+    dy * parameters.directionY * parameters.keyboardSpeed + pixelY;
+
+  // Convert the target point to RA and Dec
+  const [newRa, newDec] = aladin.pix2world(targetPoint[0], targetPoint[1]);
+  // Move to the new RA and Dec
+  aladin.gotoRaDec(newRa, newDec);
 }
 
 export function rgbToHue(r, g, b) {
@@ -88,4 +119,13 @@ export function mapHueToRange(hue, offset) {
 
 export function linearMap(value, inMin, inMax, outMin, outMax) {
   return ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+}
+
+export function areArrowsPressed(p) {
+  return (
+    p.keyIsDown(p.LEFT_ARROW) ||
+    p.keyIsDown(p.RIGHT_ARROW) ||
+    p.keyIsDown(p.UP_ARROW) ||
+    p.keyIsDown(p.DOWN_ARROW)
+  );
 }
