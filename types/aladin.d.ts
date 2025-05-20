@@ -248,6 +248,7 @@ interface AladinCatalog {
 interface AladinView {
   aladinDiv: HTMLDivElement;
   imageCanvas: HTMLCanvasElement;
+  imageLayers: Map<string, AladinImageLayer>;
   fov: number;
   minFoV: number;
   maxFoV: number;
@@ -370,6 +371,7 @@ interface Aladin {
   readonly getOverlayImageLayer: (
     layer: string
   ) => AladinImageLayer | undefined;
+  readonly getStackLayers: () => Array<string>;
 }
 
 type CatalogSourceShape =
