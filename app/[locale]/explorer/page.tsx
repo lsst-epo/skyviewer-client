@@ -6,6 +6,7 @@ import { initialPosition } from "@/lib/helpers";
 import { getExplorerPage } from "@/services/api/explorer";
 import CurrentPositionPopover from "@/components/organisms/CurrentPositionPopover";
 import AladinMenu from "@/components/organisms/AladinMenu";
+import ToggleLayersMenu from "@/components/organisms/AladinMenu/ToggleLayers";
 
 const ExplorerPage: FC<WithSearchParams<RootProps>> = async ({
   params: { locale },
@@ -31,13 +32,19 @@ const ExplorerPage: FC<WithSearchParams<RootProps>> = async ({
   });
 
   return (
-    <>
-      <AladinMenu backgroundColor="primary" {...{ properties, locale }} />
-      <AladinTemplate fovRange={fovRange} layers={surveys} {...{ options }}>
-        <Controls />
-        <CurrentPositionPopover />
-      </AladinTemplate>
-    </>
+    <AladinTemplate
+      menu={
+        <AladinMenu backgroundColor="primary" {...{ properties, locale }}>
+          <ToggleLayersMenu layers={surveys} />
+        </AladinMenu>
+      }
+      fovRange={fovRange}
+      layers={surveys}
+      {...{ options }}
+    >
+      <Controls />
+      <CurrentPositionPopover />
+    </AladinTemplate>
   );
 };
 

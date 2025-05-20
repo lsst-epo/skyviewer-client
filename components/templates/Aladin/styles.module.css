@@ -2,16 +2,13 @@
   --size-height-aladin: calc(
     100dvh - var(--size-height-menu, var(--size-spacing-l))
   );
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
   overflow: hidden;
-  height: var(--size-height-aladin);
-}
+  height: 100dvh;
 
-.aladinViewer {
-  flex-grow: 1;
-  position: relative;
-}
-
-.aladinFooter {
+  &[data-has-menu="true"] {
+    grid-template-rows: var(--size-height-menu, var(--size-spacing-l)) 1fr;
+  }
 }

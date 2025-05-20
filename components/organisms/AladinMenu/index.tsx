@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, PropsWithChildren } from "react";
 import classnames from "clsx";
 import { Link } from "next-view-transitions";
 import VisuallyHidden from "@/components/atomic/VisuallyHidden";
@@ -18,11 +18,12 @@ interface AladinMenuProps {
   locale: string;
 }
 
-const AladinMenu: FC<AladinMenuProps> = async ({
+const AladinMenu: FC<PropsWithChildren<AladinMenuProps>> = async ({
   closeUrl = "/",
   backgroundColor,
   properties,
   locale,
+  children,
 }) => {
   const { t } = await useTranslation(locale);
 
@@ -35,6 +36,7 @@ const AladinMenu: FC<AladinMenuProps> = async ({
         <MenuGroup title={t("menu.settings.title")}>
           <LocalesMenu />
           <AboutMenu {...{ properties, locale }} />
+          {children}
         </MenuGroup>
         <QuickAccess />
       </SlideoutWrapper>

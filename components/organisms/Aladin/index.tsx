@@ -3,6 +3,7 @@
 import {
   FunctionComponent,
   PropsWithChildren,
+  ReactNode,
   RefCallback,
   useCallback,
   useMemo,
@@ -18,6 +19,7 @@ import AladinContext, { defaultValue } from "@/contexts/Aladin";
 import styles from "./styles.module.css";
 
 export interface AladinProps {
+  menu?: ReactNode;
   fovRange?: Array<number>;
   options?: AladinOptions;
   disableInteraction?: boolean;
@@ -30,6 +32,7 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
   disableInteraction = false,
   options = {},
   layers,
+  menu,
 }) => {
   const A = useRef<A | null>(null);
   const aladin = useRef<Aladin | null>(null);
@@ -108,18 +111,20 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
 
   return (
     <AladinContext.Provider value={value}>
-      <div
-        className={styles.aladinContainer}
-        data-loaded={!isLoading}
-        data-allow-interaction={!disableInteraction}
-        ref={onMounted}
-        onFocus={onFocus}
-        onClick={onFocus}
-        onBlur={onBlur}
-        // tabIndex={-1}
-        role="presentation"
-      />
-      {children}
+      {menu}
+      <div className={styles.aladinWrapper}>
+        <div
+          className={styles.aladin}
+          data-loaded={!isLoading}
+          data-allow-interaction={!disableInteraction}
+          ref={onMounted}
+          onFocus={onFocus}
+          onClick={onFocus}
+          onBlur={onBlur}
+          role="presentation"
+        />
+        {children}
+      </div>
     </AladinContext.Provider>
   );
 };
