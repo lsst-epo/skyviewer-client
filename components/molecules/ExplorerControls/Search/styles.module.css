@@ -133,6 +133,6 @@
   margin-inline-start: auto;
 }
 
-.outputPosition {
+.noWrap {
   white-space: nowrap;
 }

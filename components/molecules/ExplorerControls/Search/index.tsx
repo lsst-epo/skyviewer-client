@@ -19,6 +19,7 @@ import { useAladin } from "@/contexts/Aladin";
 import IconButton from "@/components/atomic/IconButton";
 import styles from "./styles.module.css";
 import clsx from "clsx";
+import { useRouter } from "next/navigation";
 
 const TargetSchema = z
   .string()
@@ -46,7 +47,7 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
     i18n: { language },
   } = useTranslation();
   const id = useId();
-
+  const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const [pending, setPending] = useState(false);
   const [isOpen, setOpen] = useState(false);
@@ -59,17 +60,16 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
     unit: "degree",
   });
   const panAndGo = useAladinMove();
+  const targetFov = 0.6;
 
   const clearSearch = () => {
-    setInput("");
+    setInput("\u200b");
     setError(null);
     setFound(null);
   };
 
   const closeSearchBar = () => {
-    if (error || !found) {
-      clearSearch();
-    }
+    clearSearch();
 
     setPending(false);
     setOpen(false);
@@ -105,7 +105,18 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
   const goToPosition = ({ name, ...position }: FoundTarget) => {
     setFound({ ...position, name });
     setPending(false);
-    panAndGo({ ...position, fov: 0.6 });
+    panAndGo({
+      ...position,
+      fov: targetFov,
+      onComplete: () => {
+        router.push(
+          `?${viewAsParams({
+            target: [position.ra, position.dec],
+            fov: targetFov,
+          }).toString()}`
+        );
+      },
+    });
   };
 
   const resolveSearch = (search: string) => {
@@ -159,7 +170,7 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
       initial: { opacity: 0 },
       animate: { opacity: 1 },
       exit: { opacity: 0 },
-      transition: { duration: 0.4, ease: "easeInOut" },
+      transition: { duration: 0.4, ease: "easeInOut", type: "tween" },
     },
     controls: {
       initial: { opacity: 0 },
@@ -266,14 +277,13 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
                             )}°`,
                           }}
                           components={[
+                            <span className={styles.noWrap} />,
                             <Link
-                              className={styles.outputPosition}
-                              onClick={() => {
-                                panAndGo({ ...found, fov: 0.6 });
-                              }}
+                              className={styles.noWrap}
                               href={{
                                 query: viewAsParams({
                                   target: [found.ra, found.dec],
+                                  fov: targetFov,
                                 }).toString(),
                               }}
                             />,
@@ -308,7 +318,8 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
                       />,
                     ]}
                   >
-                    Skyviewer searches common names using the
+                    Skyviewer searches common names of astronomical objects,
+                    e.g. “M49” or “Messier 49,” using the
                     <a
                       href="https://simbad.cds.unistra.fr/simbad/"
                       target="_blank"
@@ -324,8 +335,9 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
                     >
                       NED
                     </a>
-                    astronomical databases and RA/DEC coordinates in decimal
-                    format, ex. 186.2 7.0
+                    astronomical databases. Skyviewer can also search on
+                    coordinate locations of objects using right ascension (RA)
+                    and declination (DEC) in decimal format, e.g. “186.2 7.0.”
                   </Trans>
                 </div>
               </motion.div>

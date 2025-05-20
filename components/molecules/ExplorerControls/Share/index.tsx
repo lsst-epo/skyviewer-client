@@ -1,15 +1,7 @@
 import { FC, useState, MouseEvent, Fragment } from "react";
 import clsx from "clsx/lite";
 import { usePathname, useSearchParams } from "next/navigation";
-import {
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-  Popover,
-  PopoverButton,
-  PopoverPanel,
-} from "@headlessui/react";
+import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { IoIosClose, IoMdShare } from "react-icons/io";

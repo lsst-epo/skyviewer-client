@@ -28,6 +28,7 @@ export async function generateMetadata({
       template: `%s | ${t("title")}`,
     },
     manifest: "/site.webmanifest",
+    metadataBase: new URL(env.NEXT_PUBLIC_BASE_URL),
     alternates: { canonical: "./" },
     openGraph: {
       locale,

@@ -8,6 +8,7 @@ import { z } from "zod";
 
 const embedSchema = z
   .object({
+    title: z.string().nullable(),
     ra,
     dec,
     fov,
@@ -30,6 +31,7 @@ export const getEmbedPage = async (locale: string) => {
     query EmbeddedPage($site: [String]) {
       embedEntries(site: $site) {
         ... on embed_embed_Entry {
+          title
           ra
           dec
           fov
