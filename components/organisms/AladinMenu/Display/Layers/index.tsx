@@ -7,29 +7,37 @@ import { SurveyLayer } from "@/lib/schema/survey";
 import { fadeLayer } from "@/lib/aladin/animation";
 import styles from "./styles.module.css";
 
+type ToggleState = Record<string, boolean>;
 interface LayersProps {
   layers: Array<SurveyLayer>;
 }
 
 const Layers: FC<LayersProps> = ({ layers }) => {
-  const [toggles, setToggles] = useState<Record<string, boolean>>({});
+  const [toggles, setToggles] = useState<ToggleState>({});
   const { t } = useTranslation();
+
+  const setToggleState = ({ aladin }: { aladin: Aladin }) => {
+    const config: ToggleState = {};
+    aladin.getStackLayers().forEach((name) => {
+      const layer =
+        name === "base"
+          ? aladin.getBaseImageLayer()
+          : aladin.getOverlayImageLayer(name);
+
+      if (layer) {
+        config[name] = layer.getOpacity() > 0;
+      }
+    });
+
+    setToggles({ ...toggles, ...config });
+  };
+
   const { aladin, isLoading } = useAladin({
     callbacks: {
-      onLoaded: ({ aladin }) => {
-        aladin.getStackLayers().forEach((name) => {
-          const layer =
-            name === "base"
-              ? aladin.getBaseImageLayer()
-              : aladin.getOverlayImageLayer(name);
-
-          if (layer) {
-            setToggles({ ...toggles, [name]: layer?.getOpacity() > 0 });
-          }
-        });
-      },
+      onLoaded: setToggleState,
     },
   });
+
   const duration = 0.3;
 
   const handleToggle = (checked: boolean, layer: SurveyLayer) => {

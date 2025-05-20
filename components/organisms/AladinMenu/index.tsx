@@ -20,7 +20,7 @@ interface AladinMenuProps {
 
 const AladinMenu: FC<PropsWithChildren<AladinMenuProps>> = async ({
   closeUrl = "/",
-  backgroundColor,
+  backgroundColor = "primary",
   properties,
   locale,
   children,

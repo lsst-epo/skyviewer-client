@@ -1,3 +1,7 @@
+.overlay {
+  gap: var(--size-spacing-2xs);
+}
+
 .viewScale {
   @media (--tablet-max) {
     width: 100%;
@@ -7,6 +11,8 @@
 .nonViewScale {
   @media (--tablet-max) {
     position: relative;
+    height: 100%;
+    pointer-events: none;
   }
 }
 
