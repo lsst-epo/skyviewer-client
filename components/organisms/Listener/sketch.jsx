@@ -3,7 +3,12 @@ import { useEffect, useRef } from "react";
 import P5 from "p5";
 import PropTypes from "prop-types";
 import { useAladin } from "@/contexts/Aladin";
-import { automaticWalk, shiftStarTint } from "./utilities";
+import {
+  automaticWalk,
+  controlledWalk,
+  shiftStarTint,
+  areArrowsPressed,
+} from "./utilities";
 import parameters from "./parameters";
 import PixelSynth from "./PixelSynth";
 
@@ -65,10 +70,15 @@ const Sketch = ({ pixelColor }) => {
           p.image(starRef.current, p.width / 2, p.height / 2, 60, 60);
         }
         // If sonification is playing and mouse is not pressed, walk the star automatically
-        if (parameters.isSonificationPlaying && !parameters.mouseIsPressed) {
-          automaticWalk(p, aladin);
-          if (synthRef.current) {
+        if (!parameters.mouseIsPressed) {
+          if (areArrowsPressed(p)) {
+            controlledWalk(p, aladin);
             synthRef.current.playNote(currentColor.current);
+          } else if (parameters.isSonificationPlaying) {
+            automaticWalk(p, aladin);
+            synthRef.current.playNote(currentColor.current);
+          } else {
+            synthRef.current.setAmplitude(0); // Stop the sound
           }
         }
       };
