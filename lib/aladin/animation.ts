@@ -199,7 +199,7 @@ export const fadeLayer = ({
   from,
   to,
 }: {
-  hips: HiPS;
+  hips: AladinImageLayer;
   from: number;
   to: number;
 }) => {

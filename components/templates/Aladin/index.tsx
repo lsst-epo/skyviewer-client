@@ -4,22 +4,18 @@ import styles from "./styles.module.css";
 
 interface AladinTemplateProps extends AladinProps {
   embedded?: boolean;
-  footer?: ReactNode;
+  menu?: ReactNode;
 }
 
 const AladinTemplate: FunctionComponent<
   PropsWithChildren<AladinTemplateProps>
-> = ({ embedded = false, footer, children, ...props }) => {
+> = ({ embedded = false, children, ...props }) => {
   return (
     <main
       className={styles.viewLayout}
-      style={{ ...(embedded && { "--size-height-menu": "0px" }) }}
+      data-has-menu={!!props.menu && !embedded}
     >
-      <div className={styles.aladinViewer}>
-        <Aladin {...props}>{children}</Aladin>
-      </div>
-
-      {footer && <footer className={styles.aladinFooter}>{footer}</footer>}
+      <Aladin {...props}>{children}</Aladin>
     </main>
   );
 };
