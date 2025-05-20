@@ -8,6 +8,7 @@ import { ra, dec, fov } from "@/lib/schema/astro";
 
 const explorerSchema = z
   .object({
+    title: z.string().nullable(),
     ra,
     dec,
     fov,
@@ -30,6 +31,7 @@ export const getExplorerPage = async (locale: string) => {
     query ExplorerPage($site: [String]) {
       explorerEntries(site: $site) {
         ... on explorer_explorer_Entry {
+          title
           ra
           dec
           fov

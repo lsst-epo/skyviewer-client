@@ -16,6 +16,7 @@ import { useAladin } from "@/contexts/Aladin";
 import { viewAsParams } from "@/lib/aladin/helpers";
 import IconButton from "@/components/atomic/IconButton";
 import styles from "./styles.module.css";
+import { useAladinDisplay } from "@/contexts/AladinDisplay";
 
 interface AladinScreenPosition {
   screen: [number, number];
@@ -23,20 +24,25 @@ interface AladinScreenPosition {
   aladin: [number, number];
 }
 
-const formatCoordinate = (coo: string): [string, string] => {
+const formatCoordinate = (
+  coo: string,
+  display: "d" | "s"
+): [string, string] => {
   const splitter = coo.includes("+") ? "+" : "-";
-
+  const sign = splitter === "-" ? "-" : "";
   const [ra, dec] = coo.split(splitter);
 
-  return [
-    ra.padEnd(11, "0"),
-    `${splitter === "-" ? "-" : ""}${dec.padEnd(11, "0")}`,
-  ];
+  if (display === "d") {
+    return [ra, `${sign}${dec}`];
+  } else {
+    return [ra.padEnd(11, "0"), `${sign}${dec.padEnd(11, "0")}`];
+  }
 };
 
 const CurrentPositionPopover: FC = () => {
   const { t } = useTranslation();
   const [position, setPosition] = useState<AladinScreenPosition>();
+  const { display } = useAladinDisplay();
   const { aladin, A, isLoading } = useAladin({
     callbacks: {
       onRightClickMove: () => undefined,
@@ -82,16 +88,26 @@ const CurrentPositionPopover: FC = () => {
       }
 
       if (!isLoading && xy) {
+        const { coordinateFormat } = display;
+        let precision = 5;
+
+        if (coordinateFormat === "s") {
+          precision++;
+        }
+
         const { x, y } = xy;
         const frame = aladin?.getFrame();
         const position = aladin?.pix2world(x, y, frame);
-        const coo = A?.coo(...position, 6);
+        const coo = A?.coo(...position, precision);
         coo.setFrame(frame);
 
         setPosition({
           screen: [x, y],
           aladin: position,
-          formatted: formatCoordinate(coo.format("s")),
+          formatted: formatCoordinate(
+            coo.format(coordinateFormat),
+            coordinateFormat
+          ),
         });
       }
     }

@@ -5,6 +5,13 @@ import { pan, panAndZoom, zoom } from "@/lib/aladin/animation";
 import { useReducedMotion } from "motion/react";
 import { useCallback } from "react";
 
+interface MovementProps {
+  ra: number;
+  dec: number;
+  fov?: number;
+  onComplete?: () => void;
+}
+
 const zoomTime = (start: number, end: number) => {
   return Math.min(Math.max(Math.abs(end - start), 0), 1);
 };
@@ -14,7 +21,7 @@ const useAladinMove = () => {
   const { isLoading, aladin, A } = useAladin();
 
   const goToPosition = useCallback(
-    ({ ra, dec, fov }: { ra: number; dec: number; fov?: number }) => {
+    ({ ra, dec, fov, onComplete }: MovementProps) => {
       if (!isLoading) {
         if (Number.isNaN(ra) || Number.isNaN(dec)) return;
 
@@ -42,6 +49,7 @@ const useAladinMove = () => {
           if (shouldZoom) {
             aladin.setFov(targetFov);
           }
+          onComplete && onComplete();
         } else {
           const startPosition = {
             ra: currentPosition[0],
@@ -75,6 +83,7 @@ const useAladinMove = () => {
                 },
                 duration: [zoomOutTime, panTime, zoomInTime],
                 aladin,
+                onComplete,
               });
             } else {
               pan({
@@ -82,6 +91,7 @@ const useAladinMove = () => {
                 start: startPosition,
                 end: endPosition,
                 aladin,
+                onComplete,
               });
             }
 
@@ -96,6 +106,7 @@ const useAladinMove = () => {
               end: targetFov,
               duration: zoomOutTime,
               aladin,
+              onComplete,
             });
           }
         }

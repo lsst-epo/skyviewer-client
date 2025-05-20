@@ -1,0 +1,9 @@
+.caption {
+  font-size: 80%;
+}
+
+.example {
+  composes: caption;
+  font-weight: normal;
+  text-decoration: none;
+}
