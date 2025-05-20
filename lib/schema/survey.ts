@@ -20,6 +20,7 @@ const defaults = {
 export const surveyImageSchema = z
   .object({
     id: z.string(),
+    description: z.string().nullable().optional(),
     fovMin: z.coerce.number().catch(defaults.fovMin).default(defaults.fovMin),
     fovMax: z.coerce.number().catch(defaults.fovMax).default(defaults.fovMax),
     fov: z.coerce.number().catch(defaults.fov).default(defaults.fov),

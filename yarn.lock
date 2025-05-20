@@ -2706,10 +2706,10 @@
     react-slider "^2.0.6"
     styled-components "^6.1.1"
 
-"@rubin-epo/epo-react-lib@^2.9.1":
-  version "2.9.1"
-  resolved "https://registry.yarnpkg.com/@rubin-epo/epo-react-lib/-/epo-react-lib-2.9.1.tgz#e059c91f9cee79f1607d2e19cd6dd0e173c0ee7e"
-  integrity sha512-kxhJy8bWu/XdzNGW+9Ea/Q3Dr2t10loX8tANvEviaMEnkhMnrVF4yDAYS8SOXUCs+Sk6KZyFmftBexnFP5t2Vg==
+"@rubin-epo/epo-react-lib@^2.9.2":
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/@rubin-epo/epo-react-lib/-/epo-react-lib-2.9.2.tgz#306511ecb3d1ecbe0f25d8b93ac06ae5056052cc"
+  integrity sha512-tqxgiCwjvmASDGVRn7N3HoBPMs6uDSQJ5K9KpIgQJCraytsYwQ1cf2nUvJ87PX65RkZwXUtIfPCyGEYbuRSsUQ==
   dependencies:
     "@castiron/style-mixins" "^1.0.6"
     "@headlessui/react" "^2.2.0"

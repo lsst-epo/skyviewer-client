@@ -1,5 +1,6 @@
 /* eslint-disable prefer-const */
 import gsap from "gsap";
+import { animate } from "motion/react";
 
 type Position = { ra: number; dec: number };
 
@@ -43,14 +44,11 @@ export const zoom = ({
   aladin: Aladin;
   onComplete?: () => void;
 }) => {
-  let obj = { fov: start };
-
-  gsap.to(obj, {
-    fov: end,
+  animate(start, end, {
     duration,
-    ease: "power1.inOut",
-    onUpdate: () => {
-      aladin.setFov(obj.fov);
+    ease: "easeInOut",
+    onUpdate: (value) => {
+      aladin.setFov(value);
     },
     onComplete,
   });
@@ -82,6 +80,15 @@ export const pan = ({
     },
     onComplete,
   });
+  // console.log({ start, end });
+  // animate(start, end, {
+  //   duration,
+  //   onUpdate: (...args) => {
+  //     console.log(args);
+  //     // aladin.gotoRaDec(value.ra, value.dec);
+  //   },
+  //   onComplete,
+  // });
 };
 
 const labels = {
@@ -198,18 +205,17 @@ export const fadeLayer = ({
   hips,
   from,
   to,
+  duration = 0.75,
 }: {
   hips: AladinImageLayer;
   from: number;
   to: number;
+  duration?: number;
 }) => {
-  let obj = { opacity: from };
-
-  gsap.to(obj, {
-    opacity: to,
-    duration: 0.75,
-    onUpdate: () => {
-      hips.setOpacity(obj.opacity);
+  animate(from, to, {
+    duration,
+    onUpdate: (value) => {
+      hips.setOpacity(value);
     },
   });
 };
