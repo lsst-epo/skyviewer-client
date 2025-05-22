@@ -25,17 +25,20 @@ const Orientation: FC<{ className?: string; size?: string }> = ({
   const [fov, setFov] = useState<[number, number] | undefined>();
   const [position, setPosition] = useState<[number, number] | undefined>();
 
-  const onPositionChanged = useCallback((event: AladinPositionChangedEvent) => {
-    const {
-      detail: { lat, lon },
-    } = event;
-    const newPosition: [number, number] = roundPosition([lon, lat]);
+  const onPositionChanged = useCallback(
+    (event: AladinEventMap["position.changed"]) => {
+      const {
+        detail: { lat, lon },
+      } = event;
+      const newPosition: [number, number] = roundPosition([lon, lat]);
 
-    setPosition(newPosition);
-  }, []);
+      setPosition(newPosition);
+    },
+    []
+  );
 
   const onZoomChanged = useCallback(
-    ({ detail }: AladinZoomChangedEvent) => {
+    ({ detail }: AladinEventMap["zoom.changed"]) => {
       const { fovX, fovY } = detail;
       const newFovTwoDirections = roundFov([fovX, fovY]);
 

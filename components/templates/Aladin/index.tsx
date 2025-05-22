@@ -1,7 +1,6 @@
 import { FunctionComponent, PropsWithChildren, ReactNode } from "react";
 import Aladin, { AladinProps } from "@/components/organisms/Aladin";
 import styles from "./styles.module.css";
-import { AladinDisplayProvider } from "@/contexts/AladinDisplay";
 
 interface AladinTemplateProps extends AladinProps {
   embedded?: boolean;
@@ -16,9 +15,7 @@ const AladinTemplate: FunctionComponent<
       className={styles.viewLayout}
       data-has-menu={!!props.menu && !embedded}
     >
-      <AladinDisplayProvider>
-        <Aladin {...props}>{children}</Aladin>
-      </AladinDisplayProvider>
+      <Aladin {...props}>{children}</Aladin>
     </main>
   );
 };

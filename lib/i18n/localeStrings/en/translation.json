@@ -144,6 +144,7 @@
       },
       "coordinates": {
         "title": "Coordinate format",
+        "caption": "Change the format of RA/DEC coordinates",
         "options": {
           "d": "Decimal",
           "s": "Sexagesimal"

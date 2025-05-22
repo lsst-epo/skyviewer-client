@@ -1,10 +1,10 @@
 export const defaultHiPSOptions: HiPSOptions = {
-  cooFrame: "ICRS",
+  cooFrame: "ICRSd",
   maxOrder: 11,
 };
 
 export const defaultAladinOptions: AladinOptions = {
-  cooFrame: "ICRS",
+  cooFrame: "ICRSd",
   showReticle: false,
   showZoomControl: false,
   showFullscreenControl: false,
