@@ -81,3 +81,12 @@ export const viewAsParams = ({
 export const currentViewAsParams = (aladin: Aladin) => {
   return viewAsParams({ fov: aladin.getFov()[0], target: aladin.getRaDec() });
 };
+
+export const frameMap: Record<CooFrame, "d" | "s"> = {
+  ICRS: "s",
+  ICRSd: "d",
+  gal: "d",
+  galactic: "d",
+  j2000: "s",
+  equatorial: "s",
+};

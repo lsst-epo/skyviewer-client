@@ -54,7 +54,7 @@ const ViewScale: FC<ViewScaleProps> = ({ className }) => {
 
   const onZoomChanged = ({
     detail: { fovX, fovY },
-  }: AladinZoomChangedEvent) => {
+  }: AladinEventMap["zoom.changed"]) => {
     updateFraction(fovX, fovY);
   };
 
