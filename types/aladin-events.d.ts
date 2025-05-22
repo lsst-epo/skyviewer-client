@@ -1,10 +1,23 @@
-type AladinPositionChangedEvent = CustomEvent<{ lon: number; lat: number }>;
-type AladinZoomChangedEvent = CustomEvent<{ fovX: number; fovY: number }>;
-type AladinCanvasEvent = CustomEvent<{
+interface PositionChangedDetail {
+  lon: number;
+  lat: number;
+}
+interface ZoomChangedDetail {
+  fovX: number;
+  fovY: number;
+}
+interface CanvasEventDetail {
   state: { mode: number; dragging: boolean; rightClickPressed?: boolean };
   type?: "mousemove" | "mouseout" | "mousedown" | "click" | "wheel";
   xy?: { x: number; y: number };
-}>;
+}
+interface FrameChangedDetail {
+  cooFrame: {
+    explain: string;
+    label: CooFrame;
+    system: string;
+  };
+}
 
 interface AladinEventMap {
   Wasm: CustomEvent;
@@ -18,10 +31,10 @@ interface AladinEventMap {
   "cooGrid.disabled": CustomEvent;
   "cooGrid.updated": CustomEvent;
   "projection.changed": CustomEvent;
-  "frame.changed": CustomEvent;
+  "frame.changed": CustomEvent<FrameChangedDetail>;
   "cmap.updated": CustomEvent;
-  "position.changed": AladinPositionChangedEvent;
-  "zoom.changed": AladinZoomChangedEvent;
+  "position.changed": CustomEvent<PositionChangedDetail>;
+  "zoom.changed": CustomEvent<ZoomChangedDetail>;
   "HiPSLayer.added": CustomEvent;
   "HiPSLayer.removed": CustomEvent;
   "HiPSLayer.renamed": CustomEvent;
@@ -35,7 +48,7 @@ interface AladinEventMap {
   "samp.hub": CustomEvent;
   "samp.connected": CustomEvent;
   "samp.disconnected": CustomEvent;
-  Event: AladinCanvasEvent;
+  Event: CustomEvent<CanvasEventDetail>;
   "Reticle.changed": CustomEvent;
   "Resource.fetched": CustomEvent;
   fetch: CustomEvent;

@@ -13,10 +13,9 @@ import { useTranslation } from "react-i18next";
 import Stack from "@rubin-epo/epo-react-lib/Stack";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 import { useAladin } from "@/contexts/Aladin";
-import { viewAsParams } from "@/lib/aladin/helpers";
+import { frameMap, viewAsParams } from "@/lib/aladin/helpers";
 import IconButton from "@/components/atomic/IconButton";
 import styles from "./styles.module.css";
-import { useAladinDisplay } from "@/contexts/AladinDisplay";
 
 interface AladinScreenPosition {
   screen: [number, number];
@@ -42,7 +41,6 @@ const formatCoordinate = (
 const CurrentPositionPopover: FC = () => {
   const { t } = useTranslation();
   const [position, setPosition] = useState<AladinScreenPosition>();
-  const { display } = useAladinDisplay();
   const { aladin, A, isLoading } = useAladin({
     callbacks: {
       onRightClickMove: () => undefined,
@@ -73,7 +71,9 @@ const CurrentPositionPopover: FC = () => {
     setPosition(undefined);
   };
 
-  const handleClick = ({ detail: { state, type, xy } }: AladinCanvasEvent) => {
+  const handleClick = ({
+    detail: { state, type, xy },
+  }: AladinEventMap["Event"]) => {
     const closeActions = ["click", "mousedown", "wheel"];
 
     if (type && closeActions.includes(type) && !!position) {
@@ -88,26 +88,24 @@ const CurrentPositionPopover: FC = () => {
       }
 
       if (!isLoading && xy) {
-        const { coordinateFormat } = display;
+        const frame = aladin.getFrame();
+        const format = frameMap[frame];
+
         let precision = 5;
 
-        if (coordinateFormat === "s") {
+        if (format === "s") {
           precision++;
         }
 
         const { x, y } = xy;
-        const frame = aladin?.getFrame();
-        const position = aladin?.pix2world(x, y, frame);
-        const coo = A?.coo(...position, precision);
+        const position = aladin.pix2world(x, y, frame);
+        const coo = A.coo(...position, precision);
         coo.setFrame(frame);
 
         setPosition({
           screen: [x, y],
           aladin: position,
-          formatted: formatCoordinate(
-            coo.format(coordinateFormat),
-            coordinateFormat
-          ),
+          formatted: formatCoordinate(coo.format(format), format),
         });
       }
     }
