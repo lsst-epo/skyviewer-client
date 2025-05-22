@@ -2,6 +2,13 @@ import { graphql } from "@/gql";
 import { siteFromLocale } from "@/lib/i18n/site";
 import queryAPI from "@/services/api/client";
 import tagStore from "../tags";
+import { z } from "zod";
+import { MinimalAssetSchema } from "@/lib/schema/canto";
+
+const logoSchema = z
+  .array(MinimalAssetSchema)
+  .min(1)
+  .transform((output) => output[0]);
 
 export const getGlobalData = async ({ locale }: { locale: string }) => {
   const site = siteFromLocale(locale);
@@ -14,6 +21,9 @@ export const getGlobalData = async ({ locale }: { locale: string }) => {
           aboutMenuContent
           siteDescription
           siteTitle
+          logo(where: { key: "scheme", value: "image" }) {
+            ...CantoAssetMinimal
+          }
         }
       }
     }
@@ -31,7 +41,11 @@ export const getGlobalData = async ({ locale }: { locale: string }) => {
     },
   });
 
-  return data?.globalSets?.find(
+  const set = data?.globalSets?.find(
     (set) => set && set.name.toLowerCase() === "site info"
   );
+
+  if (!set) return;
+
+  return { ...set, logo: logoSchema.safeParse(set.logo).data };
 };
