@@ -10,6 +10,7 @@ import I18NextClientProvider from "@/contexts/i18next";
 import SkeletonGlobal from "@/components/organisms/SkeletonGlobal";
 import Script from "next/script";
 import { env } from "@/env";
+import { getGlobalData } from "@/services/api/global";
 
 export const generateStaticParams = () => {
   return languages.map((locale) => {
@@ -20,17 +21,20 @@ export const generateStaticParams = () => {
 export async function generateMetadata({
   params: { locale = fallbackLng },
 }: RootProps): Promise<Metadata> {
+  const globals = await getGlobalData({ locale });
   const { t } = await serverTranslation(locale, "translation");
+  const title = globals?.siteTitle || t("title");
 
   return {
     title: {
-      default: t("title"),
-      template: `%s | ${t("title")}`,
+      default: title,
+      template: `%s | ${title}`,
     },
     manifest: "/site.webmanifest",
     metadataBase: new URL(env.NEXT_PUBLIC_BASE_URL),
     alternates: { canonical: "./" },
     openGraph: {
+      description: globals?.siteDescription ?? undefined,
       locale,
     },
     icons: {
