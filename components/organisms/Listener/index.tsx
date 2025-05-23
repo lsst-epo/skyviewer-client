@@ -68,9 +68,47 @@ const samplePixels = ({
   }
 };
 
+const getCardinalPixels = ({
+  center,
+  distance,
+  layer,
+  sampleSize,
+}: {
+  center: [number, number];
+  distance: number;
+  layer: AladinImageLayer;
+  sampleSize: number;
+}) => {
+  const directions = [
+    [0, -distance], // North
+    [distance, 0], // East
+    [0, distance], // South
+    [-distance, 0], // West
+  ];
+
+  return directions.map(([dx, dy]) => {
+    const gridCenter: [number, number] = [center[0] + dx, center[1] + dy];
+    const cells = buildSample({ start: gridCenter, size: sampleSize });
+
+    try {
+      const pixelValues = cells.map((cell) =>
+        layer.readPixel(cell[0], cell[1])
+      );
+      // Simply sum up all RGB values from all pixels in the grid
+      return pixelValues.reduce((total, pixel) => {
+        return total + pixel[0] + pixel[1] + pixel[2];
+      }, 0);
+    } catch {
+      return 0;
+    }
+  });
+};
+
 const Listener: FC = () => {
-  const [sampleSize, setSampleSize] = useState(2); // Set the sample grid size
+  const [sampleSize, setSampleSize] = useState(2);
+  const [cardinalSampleSize, setCardinalSampleSize] = useState(2);
   const [pixel, setPixel] = useState<[number, number, number]>([0, 0, 0]);
+  const [cardinalSums, setCardinalSums] = useState<number[]>([0, 0, 0, 0]);
 
   const { isLoading } = useAladin();
 
@@ -88,8 +126,17 @@ const Listener: FC = () => {
       if (average) {
         setPixel(average as [number, number, number]);
       }
+
+      // Get cardinal direction pixel sums
+      const sums = getCardinalPixels({
+        center: [x, y],
+        distance: 50,
+        layer: aladin.getBaseImageLayer(),
+        sampleSize: cardinalSampleSize,
+      });
+      setCardinalSums(sums);
     }
-  }, [sampleSize, isLoading]);
+  }, [sampleSize, cardinalSampleSize, isLoading]);
 
   const { aladin } = useAladin({
     callbacks: {
@@ -113,9 +160,26 @@ const Listener: FC = () => {
     }
   };
 
+  const handleCardinalSampleChange: ChangeEventHandler<HTMLInputElement> = (
+    event
+  ) => {
+    let newValue = event.target.valueAsNumber;
+
+    if (Number.isNaN(newValue)) {
+      newValue = 1;
+    } else if (newValue % 2 === 0) {
+      newValue = newValue + 1;
+    }
+
+    if (newValue !== cardinalSampleSize) {
+      setCardinalSampleSize(newValue);
+      updateHex();
+    }
+  };
+
   return (
     <AladinOverlay>
-      <Sketch pixelColor={pixel} />
+      <Sketch pixelColor={pixel} cardinalSums={cardinalSums} />
     </AladinOverlay>
   );
 };

@@ -3,37 +3,44 @@ import { useEffect, useRef } from "react";
 import P5 from "p5";
 import PropTypes from "prop-types";
 import { useAladin } from "@/contexts/Aladin";
-import {
-  automaticWalk,
-  controlledWalk,
-  shiftStarTint,
-  areArrowsPressed,
-} from "./utilities";
+import { controlledWalk, shiftStarTint, areArrowsPressed } from "./utilities";
 import parameters from "./parameters";
 import PixelSynth from "./PixelSynth";
+import Walker from "./Walker";
 
-const Sketch = ({ pixelColor }) => {
+const Sketch = ({ pixelColor, cardinalSums }) => {
   const sketchRef = useRef(null);
   const p5Instance = useRef(null);
   const currentColor = useRef(pixelColor);
+  const currentCardinalSums = useRef(cardinalSums);
   const { aladin } = useAladin();
   const emptyCircleRef = useRef(null);
   const starRef = useRef(null);
   const synthRef = useRef(null);
-
+  const walkerRef = useRef(null);
   // Initialize synth
   useEffect(() => {
+    // Create reference to the synth class
     synthRef.current = new PixelSynth();
   }, []);
 
   // Update the current color when pixelColor changes
   useEffect(() => {
     currentColor.current = pixelColor;
+    currentCardinalSums.current = cardinalSums;
     // Update synth frequency when color changes and mouse is pressed
     if (synthRef.current && parameters.mouseIsPressed) {
       synthRef.current.playNote(pixelColor);
     }
-  }, [pixelColor]);
+  }, [pixelColor, cardinalSums]);
+
+  useEffect(() => {
+    if (walkerRef.current && parameters.isSonificationPlaying) {
+      walkerRef.current.cardinalSums = currentCardinalSums.current;
+      walkerRef.current.cardinalSumCounter();
+      walkerRef.current.boundaryCheck();
+    }
+  }, [cardinalSums]);
 
   // Create the sketch only once
   useEffect(() => {
@@ -53,6 +60,8 @@ const Sketch = ({ pixelColor }) => {
         p.loadImage("/sonification/rubin-star.png", (img) => {
           starRef.current = img;
         });
+        // Initialize the walker with p and aladin
+        walkerRef.current = new Walker(p, aladin);
       };
 
       p.draw = () => {
@@ -75,7 +84,7 @@ const Sketch = ({ pixelColor }) => {
             controlledWalk(p, aladin);
             synthRef.current.playNote(currentColor.current);
           } else if (parameters.isSonificationPlaying) {
-            automaticWalk(p, aladin);
+            walkerRef.current.walk();
             synthRef.current.playNote(currentColor.current);
           } else {
             synthRef.current.setAmplitude(0); // Stop the sound
@@ -136,6 +145,7 @@ const Sketch = ({ pixelColor }) => {
 
 Sketch.propTypes = {
   pixelColor: PropTypes.arrayOf(PropTypes.number).isRequired,
+  cardinalSums: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 export default Sketch;
