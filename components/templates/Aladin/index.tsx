@@ -1,25 +1,24 @@
 import { FunctionComponent, PropsWithChildren, ReactNode } from "react";
 import Aladin, { AladinProps } from "@/components/organisms/Aladin";
 import styles from "./styles.module.css";
+import { AladinDisplayProvider } from "@/contexts/AladinDisplay";
 
 interface AladinTemplateProps extends AladinProps {
   embedded?: boolean;
-  footer?: ReactNode;
+  menu?: ReactNode;
 }
 
 const AladinTemplate: FunctionComponent<
   PropsWithChildren<AladinTemplateProps>
-> = ({ embedded = false, footer, children, ...props }) => {
+> = ({ embedded = false, children, ...props }) => {
   return (
     <main
       className={styles.viewLayout}
-      style={{ ...(embedded && { "--size-height-menu": "0px" }) }}
+      data-has-menu={!!props.menu && !embedded}
     >
-      <div className={styles.aladinViewer}>
+      <AladinDisplayProvider>
         <Aladin {...props}>{children}</Aladin>
-      </div>
-
-      {footer && <footer className={styles.aladinFooter}>{footer}</footer>}
+      </AladinDisplayProvider>
     </main>
   );
 };

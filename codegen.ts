@@ -7,7 +7,7 @@ const config: CodegenConfig = {
     "./gql/": {
       documents: [
         "app/**/*.{ts,tsx}",
-        "services/api/**/*.{ts,tsx,graphql}",
+        "services/api/**/*.{ts,tsx,gql,graphql}",
         "components/**/*.{ts,tsx}",
       ],
       preset: "client",

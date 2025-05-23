@@ -1,9 +1,15 @@
 import { FC } from "react";
 import AladinTemplate from "@/components/templates/Aladin";
-import Listener from "@/components/organisms/Listener";
+import SonificationControls from "@/components/molecules/SonificationControls";
 import { notFound } from "next/navigation";
 import { initialPosition } from "@/lib/helpers";
 import { getExplorerPage } from "@/services/api/explorer";
+import dynamic from "next/dynamic";
+import AladinMenu from "@/components/organisms/AladinMenu";
+
+const Listener = dynamic(() => import("@/components/organisms/Listener"), {
+  ssr: false,
+});
 
 const ListenerPage: FC<WithSearchParams<RootProps>> = async ({
   params: { locale },
@@ -23,7 +29,13 @@ const ListenerPage: FC<WithSearchParams<RootProps>> = async ({
   };
 
   return (
-    <AladinTemplate fovRange={fovRange} layers={surveys} {...{ options }}>
+    <AladinTemplate
+      menu={<AladinMenu locale={locale} />}
+      fovRange={fovRange}
+      layers={surveys}
+      {...{ options }}
+    >
+      <SonificationControls />
       <Listener />
     </AladinTemplate>
   );

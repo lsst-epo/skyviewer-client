@@ -54,7 +54,6 @@ const useAladinKeyboardControls = () => {
 
   const handleKeyboardNavigation = (event: KeyboardEvent) => {
     if (hasFocus) {
-      console.log(event.key);
       const handler = eventMap[event.key];
 
       handler && handler();

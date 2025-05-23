@@ -7,9 +7,10 @@ import { getTourInitial, getTourPois } from "@/services/api/tours";
 import { TourProvider } from "@/contexts/Tour";
 import AladinTemplate from "@/components/templates/Aladin";
 import TourTutorial from "@/components/organisms/TourTutorial";
+import AladinMenu from "@/components/organisms/AladinMenu";
 
 const Tour: FunctionComponent<WithSearchParams<TourProps>> = async ({
-  params: { tour },
+  params: { locale, tour },
   searchParams = {},
 }) => {
   const pois = await getTourPois(tour);
@@ -33,6 +34,7 @@ const Tour: FunctionComponent<WithSearchParams<TourProps>> = async ({
 
   return (
     <AladinTemplate
+      menu={<AladinMenu locale={locale} />}
       disableInteraction={true}
       layers={surveys}
       options={{ ...initial, backgroundColor: "rgb(0,0,0)" }}

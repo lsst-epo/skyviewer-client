@@ -13,7 +13,8 @@
       "go_to_tours": "Go to tours",
       "start_tour": "Start the tour",
       "lets_start": "Let's start",
-      "skip_intro": "Skip intro"
+      "skip_intro": "Skip intro",
+      "cancel": "Cancel"
     }
   },
   "guided-experiences": {
@@ -81,6 +82,18 @@
     "view_scale_announce": "You are looking at {{fraction}} of Rubin's footprint"
   },
   "menu": {
+    "search": {
+      "submit": "Search",
+      "open": "Open search",
+      "placeholder": "Enter your search...",
+      "clear": "Clear search input",
+      "take_a_tour": "Don't know what to look for? <1>Take a tour</1>",
+      "instructions": "Skyviewer searches common names of astronomical objects, e.g. “M49” or “Messier 49,” using the <0>SIMBAD</0> and <1>NED</1> astronomical databases. Skyviewer can also search on coordinate locations of objects using right ascension (RA) and declination (DEC) in decimal format, e.g. “186.2 7.0.”",
+      "error_object": "Skyviewer couldn't find “{{search}}”",
+      "error_coordinate": "Try a valid ra/dec decimal coordinate, ex. 186.2 7.0",
+      "found_object": "Skyviewer found object <0>“{{name}}”</0> at <1>{{position}}</1>",
+      "found_position": "Skyviewer found location <0>{{position}}</0>"
+    },
     "main": {
       "open": "Open main menu",
       "title": "Main menu",
@@ -121,6 +134,21 @@
         "facebook": "Facebook",
         "twitterX": "X",
         "linkedin": "LinkedIn"
+      }
+    },
+    "display": {
+      "title": "Display",
+      "cta": "Configure the Skyviewer",
+      "layers": {
+        "title": "Change survey layers"
+      },
+      "coordinates": {
+        "title": "Coordinate format",
+        "options": {
+          "d": "Decimal",
+          "s": "Sexagesimal"
+        },
+        "example": "Ex. {{example}}"
       }
     },
     "quick-access": {

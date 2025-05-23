@@ -38,16 +38,7 @@ export const getGuidedExperiences = async () => {
                 title
               }
               previewImage {
-                width
-                height
-                additional {
-                  AltTextEN
-                  AltTextES
-                }
-                url {
-                  directUrlOriginal
-                  directUrlPreview
-                }
+                ...CantoAssetMinimal
               }
             }
           }

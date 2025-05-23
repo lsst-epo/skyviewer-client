@@ -1,7 +1,7 @@
-import { FC, useState, MouseEvent } from "react";
+import { FC, useState, MouseEvent, Fragment } from "react";
 import clsx from "clsx/lite";
 import { usePathname, useSearchParams } from "next/navigation";
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { IoIosClose, IoMdShare } from "react-icons/io";
@@ -32,9 +32,9 @@ const Share: FC<ShareProps> = ({ className }) => {
   const { t } = useTranslation();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const baseUrl = new URL(pathname, env.NEXT_PUBLIC_BASE_URL);
+  const baseUrl = new URL(pathname, env.NEXT_PUBLIC_BASE_URL).toString();
   const [viewUrl, setViewUrl] = useState(
-    `${baseUrl}?${new URLSearchParams(searchParams).toString}`
+    `${baseUrl}?${new URLSearchParams(searchParams).toString()}`
   );
 
   const imageType = "png";
@@ -44,12 +44,10 @@ const Share: FC<ShareProps> = ({ className }) => {
 
   const urlToShare = () => {
     if (!isLoading) {
-      const url = `${baseUrl.href}?${currentViewAsParams(aladin).toString()}`;
-
-      return url;
+      return `${baseUrl}?${currentViewAsParams(aladin).toString()}`;
     }
 
-    return baseUrl.href;
+    return baseUrl;
   };
 
   const imageBlob = async () => {
@@ -194,11 +192,11 @@ const Share: FC<ShareProps> = ({ className }) => {
   ];
 
   return (
-    <Menu as="div" className={styles.shareMenu}>
+    <Popover as="div" className={styles.shareMenu}>
       {({ open, close }) => {
         return (
           <>
-            <MenuButton
+            <PopoverButton
               as={IconButton}
               className={className}
               icon={open ? <IoIosClose /> : <IoMdShare />}
@@ -208,35 +206,30 @@ const Share: FC<ShareProps> = ({ className }) => {
             />
             <AnimatePresence>
               {open && (
-                <MenuItems
-                  static
-                  as={motion.div}
-                  initial={{ opacity: 0, translateX: -100 }}
-                  animate={{ opacity: 1, translateX: 0 }}
-                  exit={{ opacity: 0, translateX: -100 }}
-                  transition={{ duration: 0.2 }}
-                  className={styles.shareMenuItems}
-                  onClick={close}
-                >
-                  {generateShareButtons(close).map(({ label, item }) => {
-                    return (
-                      <MenuItem
-                        key={label}
-                        as={WithButtonLabel}
-                        showLabel
-                        label={label}
-                      >
-                        {item}
-                      </MenuItem>
-                    );
-                  })}
-                </MenuItems>
+                <PopoverPanel static as={Fragment}>
+                  <motion.div
+                    onClick={close}
+                    className={styles.shareMenuItems}
+                    initial={{ opacity: 0, translateX: -100 }}
+                    animate={{ opacity: 1, translateX: 0 }}
+                    exit={{ opacity: 0, translateX: -100 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {generateShareButtons(close).map(({ label, item }) => {
+                      return (
+                        <WithButtonLabel key={label} showLabel label={label}>
+                          {item}
+                        </WithButtonLabel>
+                      );
+                    })}
+                  </motion.div>
+                </PopoverPanel>
               )}
             </AnimatePresence>
           </>
         );
       }}
-    </Menu>
+    </Popover>
   );
 };
 

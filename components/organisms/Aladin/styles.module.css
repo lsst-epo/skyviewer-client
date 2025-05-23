@@ -1,4 +1,8 @@
-.aladinContainer {
+.aladinWrapper {
+  position: relative;
+}
+
+.aladin {
   transition: opacity var(--time-transition-base) var(--time-transition-slow);
   position: absolute !important; /* stylelint-disable-line declaration-no-important */
   inset: 0;

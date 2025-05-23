@@ -1,13 +1,14 @@
 "use client";
 import { FC, MouseEventHandler, useState } from "react";
-import { useEventListener } from "usehooks-ts";
 import {
   autoPlacement,
   autoUpdate,
   offset,
   useFloating,
 } from "@floating-ui/react-dom";
-import { Dialog, DialogPanel } from "@headlessui/react";
+
+import { useEventListener, useOnClickOutside } from "usehooks-ts";
+import useAladinEvent from "@/hooks/useAladinEvent";
 import { useTranslation } from "react-i18next";
 import Stack from "@rubin-epo/epo-react-lib/Stack";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
@@ -15,6 +16,7 @@ import { useAladin } from "@/contexts/Aladin";
 import { viewAsParams } from "@/lib/aladin/helpers";
 import IconButton from "@/components/atomic/IconButton";
 import styles from "./styles.module.css";
+import { useAladinDisplay } from "@/contexts/AladinDisplay";
 
 interface AladinScreenPosition {
   screen: [number, number];
@@ -22,20 +24,25 @@ interface AladinScreenPosition {
   aladin: [number, number];
 }
 
-const formatCoordinate = (coo: string): [string, string] => {
+const formatCoordinate = (
+  coo: string,
+  display: "d" | "s"
+): [string, string] => {
   const splitter = coo.includes("+") ? "+" : "-";
-
+  const sign = splitter === "-" ? "-" : "";
   const [ra, dec] = coo.split(splitter);
 
-  return [
-    ra.padEnd(11, "0"),
-    `${splitter === "-" ? "-" : ""}${dec.padEnd(11, "0")}`,
-  ];
+  if (display === "d") {
+    return [ra, `${sign}${dec}`];
+  } else {
+    return [ra.padEnd(11, "0"), `${sign}${dec.padEnd(11, "0")}`];
+  }
 };
 
 const CurrentPositionPopover: FC = () => {
   const { t } = useTranslation();
   const [position, setPosition] = useState<AladinScreenPosition>();
+  const { display } = useAladinDisplay();
   const { aladin, A, isLoading } = useAladin({
     callbacks: {
       onRightClickMove: () => undefined,
@@ -43,7 +50,7 @@ const CurrentPositionPopover: FC = () => {
   });
 
   const {
-    refs: { setFloating, setReference },
+    refs: { floating, setFloating, setReference },
     floatingStyles,
   } = useFloating({
     whileElementsMounted: autoUpdate,
@@ -62,33 +69,60 @@ const CurrentPositionPopover: FC = () => {
     ],
   });
 
-  const handleRightClick = (event: MouseEvent) => {
-    if (!isLoading) {
-      event.preventDefault();
-      event.stopPropagation();
+  const closeContextMenu = () => {
+    setPosition(undefined);
+  };
 
-      const { clientX, clientY, offsetX, offsetY } = event;
+  const handleClick = ({ detail: { state, type, xy } }: AladinCanvasEvent) => {
+    const closeActions = ["click", "mousedown", "wheel"];
 
-      const frame = aladin.getFrame();
-      const position = aladin?.pix2world(offsetX, offsetY, frame);
-      const coo = A.coo(...position, 6);
-      coo.setFrame(frame);
+    if (type && closeActions.includes(type) && !!position) {
+      closeContextMenu();
+      return;
+    }
 
-      setPosition({
-        screen: [clientX, clientY],
-        aladin: position,
-        formatted: formatCoordinate(coo.format("s")),
-      });
+    if (state.rightClickPressed) {
+      if (type === "mousemove") {
+        closeContextMenu();
+        return;
+      }
+
+      if (!isLoading && xy) {
+        const { coordinateFormat } = display;
+        let precision = 5;
+
+        if (coordinateFormat === "s") {
+          precision++;
+        }
+
+        const { x, y } = xy;
+        const frame = aladin?.getFrame();
+        const position = aladin?.pix2world(x, y, frame);
+        const coo = A?.coo(...position, precision);
+        coo.setFrame(frame);
+
+        setPosition({
+          screen: [x, y],
+          aladin: position,
+          formatted: formatCoordinate(
+            coo.format(coordinateFormat),
+            coordinateFormat
+          ),
+        });
+      }
     }
   };
 
-  useEventListener("contextmenu", handleRightClick);
-
-  const handleClose = (value: boolean) => {
-    if (!value) {
-      setPosition(undefined);
+  const handleKeydown = (event: KeyboardEvent) => {
+    if (event.key === "Escape") {
+      closeContextMenu();
     }
   };
+
+  useAladinEvent("zoom.changed", closeContextMenu);
+  useAladinEvent("Event", handleClick);
+  useOnClickOutside(floating, closeContextMenu);
+  useEventListener("keydown", handleKeydown);
 
   const handleCopyLink: MouseEventHandler = async () => {
     const { origin, pathname } = window.location;
@@ -106,42 +140,32 @@ const CurrentPositionPopover: FC = () => {
       console.error(error.message);
     }
 
-    handleClose(false);
+    closeContextMenu();
   };
 
   return (
-    <Dialog
-      className={styles.dialog}
-      open={!!position?.aladin}
-      onClose={handleClose}
-    >
-      <div
-        className={styles.anchor}
-        style={{ top: position?.screen[1], left: position?.screen[0] }}
-        ref={setReference}
-      ></div>
-
-      {position?.aladin && (
-        <DialogPanel
-          as="div"
-          className={styles.panel}
-          ref={setFloating}
-          style={floatingStyles}
-        >
+    !!position?.aladin && (
+      <>
+        <div
+          className={styles.anchor}
+          style={{ top: position?.screen[1], left: position?.screen[0] }}
+          ref={setReference}
+        ></div>
+        <div className={styles.panel} ref={setFloating} style={floatingStyles}>
           <Stack className={styles.text} space="0">
-            <pre>ra: {position.formatted[0]}</pre>
-            <pre>dec: {position.formatted[1]}</pre>
+            <pre>ra: {position?.formatted[0]}</pre>
+            <pre>dec: {position?.formatted[1]}</pre>
           </Stack>
           <IconButton
             className={styles.copy}
             onClick={handleCopyLink}
-            disabled={!position.aladin}
+            disabled={!position?.aladin}
             text={t("controls.get_a_link")}
             icon={<IconComposer size={14} icon="ShareCopyUrl" />}
           />
-        </DialogPanel>
-      )}
-    </Dialog>
+        </div>
+      </>
+    )
   );
 };
 

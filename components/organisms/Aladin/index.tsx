@@ -3,6 +3,7 @@
 import {
   FunctionComponent,
   PropsWithChildren,
+  ReactNode,
   RefCallback,
   useCallback,
   useMemo,
@@ -13,11 +14,12 @@ import defaultOptions, {
   defaultHiPSOptions,
 } from "@/fixtures/defaultAladinOptions";
 import { SurveyLayer } from "@/lib/schema/survey";
-import { useOnClickOutside } from "@/hooks/listeners";
+import { useOnClickOutside } from "usehooks-ts";
 import AladinContext, { defaultValue } from "@/contexts/Aladin";
 import styles from "./styles.module.css";
 
 export interface AladinProps {
+  menu?: ReactNode;
   fovRange?: Array<number>;
   options?: AladinOptions;
   disableInteraction?: boolean;
@@ -30,27 +32,24 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
   disableInteraction = false,
   options = {},
   layers,
+  menu,
 }) => {
   const A = useRef<A | null>(null);
   const aladin = useRef<Aladin | null>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
 
   const [hasFocus, setFocus] = useState(false);
   const [isLoading, setLoading] = useState(true);
-  const [node, setNode] = useState<HTMLDivElement | null>(null);
 
   const onFocus = () => {
-    if (!hasFocus) {
-      setFocus(true);
-    }
+    setFocus(true);
   };
 
   const onBlur = () => {
-    if (hasFocus) {
-      setFocus(false);
-    }
+    setFocus(false);
   };
 
-  useOnClickOutside(node, onBlur);
+  useOnClickOutside(ref, onBlur);
 
   const onMounted = useCallback<RefCallback<HTMLDivElement>>((node) => {
     if (node) {
@@ -86,8 +85,8 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
 
           A.current = global;
           aladin.current = instance;
+          ref.current = node;
           setLoading(false);
-          setNode(node);
         });
       });
     }
@@ -95,7 +94,7 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
     return () => {
       A.current = null;
       aladin.current = null;
-      setNode(null);
+      ref.current = null;
     };
   }, []);
 
@@ -112,17 +111,20 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
 
   return (
     <AladinContext.Provider value={value}>
-      <div
-        className={styles.aladinContainer}
-        data-loaded={!isLoading}
-        data-allow-interaction={!disableInteraction}
-        ref={onMounted}
-        onFocus={onFocus}
-        onClick={onFocus}
-        onBlur={onBlur}
-        tabIndex={-1}
-      />
-      {children}
+      {menu}
+      <div className={styles.aladinWrapper}>
+        <div
+          className={styles.aladin}
+          data-loaded={!isLoading}
+          data-allow-interaction={!disableInteraction}
+          ref={onMounted}
+          onFocus={onFocus}
+          onClick={onFocus}
+          onBlur={onBlur}
+          role="presentation"
+        />
+        {children}
+      </div>
     </AladinContext.Provider>
   );
 };
