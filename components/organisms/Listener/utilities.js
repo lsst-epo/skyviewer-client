@@ -32,21 +32,6 @@ export function shiftStarTint(rgbValues) {
   return [r, g, b];
 }
 
-export function automaticWalk(p, aladin) {
-  // TODO: Can we use the image width and height instead of these two methods?
-  const [ra, dec] = aladin.getRaDec();
-  const [pixelX, pixelY] = aladin.world2pix(ra, dec);
-  const angle = p.map(p.noise(parameters.noiseOffset), 0, 1, -p.PI, p.PI);
-  const dx = parameters.walkSpeed * p.cos(angle);
-  const dy = parameters.walkSpeed * p.sin(angle);
-  const newworldX = pixelX + dx;
-  const newworldY = pixelY + dy;
-  const [newRa, newDec] = aladin.pix2world(newworldX, newworldY);
-  aladin.gotoRaDec(newRa, newDec);
-  // aladin.animateToRaDec(newRa, newDec, 0.1);
-  parameters.noiseOffset += parameters.noiseScale;
-}
-
 export function controlledWalk(p, aladin) {
   // TODO: Can we use the image width and height instead of these two methods?
   const [ra, dec] = aladin.getRaDec();
