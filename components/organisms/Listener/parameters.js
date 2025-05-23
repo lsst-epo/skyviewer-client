@@ -16,6 +16,7 @@ const parameters = {
   hue_offset: 300, // Hue offset for color conversion
   directionX: 1, // Number of pixels to move along the x-axis when using the arrow keys
   directionY: 1, // Number of pixels to move along the y-axis when using the arrow keys
+  boundarySetps: 20, // Number of steps to take before checking for boundaries
 };
 
 export default parameters;
