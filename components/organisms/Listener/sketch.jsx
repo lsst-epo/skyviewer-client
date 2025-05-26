@@ -78,14 +78,17 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
       };
 
       p.draw = () => {
-        // console.log(aladin.getFov());
         p.clear(); // Clear the canvas before drawing the empty circle and star to avoid ghosting
 
         if (p.frameCount % 60 === 0) {
           // Get the current RA/Dec from Aladin and update points
           const [ra, dec] = aladin.getRaDec();
-          pointSearcherRef.current.makeSubset([ra, dec]);
-          pointSearcherRef.current.findNeighbours([ra, dec]);
+          const [FOVra, FOVdec] = aladin.getFov();
+          const FOVRadius = Math.sqrt(
+            Math.pow(FOVra / 2, 2) + Math.pow(FOVdec / 2, 2)
+          );
+          pointSearcherRef.current.makeSubset([ra, dec], FOVRadius);
+          pointSearcherRef.current.findNeighbours([ra, dec], FOVRadius);
         }
 
         // Draw the empty circle without tint
