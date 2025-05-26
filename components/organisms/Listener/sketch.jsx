@@ -84,14 +84,8 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         if (p.frameCount % 60 === 0) {
           // Get the current RA/Dec from Aladin and update points
           const [ra, dec] = aladin.getRaDec();
-          pointSearcherRef.current.makeSubset(
-            [ra, dec],
-            parameters.subsetRadius
-          );
-          pointSearcherRef.current.findNeighbours(
-            [ra, dec],
-            parameters.targetRadius
-          );
+          pointSearcherRef.current.makeSubset([ra, dec]);
+          pointSearcherRef.current.findNeighbours([ra, dec]);
         }
 
         // Draw the empty circle without tint
