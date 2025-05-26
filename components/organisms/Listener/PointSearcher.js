@@ -124,6 +124,7 @@ class Node {
 class KDTree {
   constructor(points) {
     this.root = this.buildTree(points);
+    this.length = points.length;
   }
 
   buildTree(points) {
