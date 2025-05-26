@@ -7,6 +7,7 @@ import { controlledWalk, shiftStarTint, areArrowsPressed } from "./utilities";
 import parameters from "./parameters";
 import PixelSynth from "./PixelSynth";
 import Walker from "./Walker";
+import PointSearcher from "./PointSearcher";
 
 const Sketch = ({ pixelColor, cardinalSums }) => {
   const sketchRef = useRef(null);
@@ -18,6 +19,8 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
   const starRef = useRef(null);
   const synthRef = useRef(null);
   const walkerRef = useRef(null);
+  const pointSearcherRef = useRef(null);
+  // const [fov, setFov] = useState(aladin.getFov());
   // Initialize synth
   useEffect(() => {
     // Create reference to the synth class
@@ -30,7 +33,7 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
     currentCardinalSums.current = cardinalSums;
     // Update synth frequency when color changes and mouse is pressed
     if (synthRef.current && parameters.mouseIsPressed) {
-      synthRef.current.playNote(pixelColor);
+      synthRef.current.playNote(pixelColor); // TODO: Do we actually need this? It's also happening on line 113
     }
   }, [pixelColor, cardinalSums]);
 
@@ -41,6 +44,12 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
       walkerRef.current.boundaryCheck();
     }
   }, [cardinalSums]);
+
+  useEffect(() => {
+    if (pointSearcherRef.current) {
+      pointSearcherRef.current.updatePoints();
+    }
+  }, []); // TODO: Add a dependency for FOV, PixelColor, CardinalSums, etc.
 
   // Create the sketch only once
   useEffect(() => {
@@ -60,11 +69,16 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         p.loadImage("/sonification/rubin-star.png", (img) => {
           starRef.current = img;
         });
-        // Initialize the walker with p and aladin
+        // Initialize the walker with p5 instance and aladin
         walkerRef.current = new Walker(p, aladin);
+        // Initialize the point searcher with p5 instance
+        pointSearcherRef.current = new PointSearcher(p);
+        // Get the initial points from the point searcher on first load
+        // pointSearcherRef.current.getPoints(); // TODO: Figure out what arguments to pass in
       };
 
       p.draw = () => {
+        // console.log(aladin.getFov());
         p.clear(); // Clear the canvas before drawing the empty circle and star to avoid ghosting
         // Draw the empty circle without tint
         if (emptyCircleRef.current) {
