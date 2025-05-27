@@ -114,3 +114,31 @@ export function areArrowsPressed(p) {
     p.keyIsDown(p.DOWN_ARROW)
   );
 }
+
+export function raDecDistance(ra1, dec1, ra2, dec2) {
+  // Convert degrees to radians
+  const ra1Rad = ra1 * (Math.PI / 180);
+  const dec1Rad = dec1 * (Math.PI / 180);
+  const ra2Rad = ra2 * (Math.PI / 180);
+  const dec2Rad = dec2 * (Math.PI / 180);
+
+  // Apply the spherical law of cosines
+  const deltaRa = ra2Rad - ra1Rad;
+  const cosD =
+    Math.sin(dec1Rad) * Math.sin(dec2Rad) +
+    Math.cos(dec1Rad) * Math.cos(dec2Rad) * Math.cos(deltaRa);
+
+  // acos can sometimes be outside [-1, 1] due to floating point errors
+  const d = Math.acos(Math.max(-1, Math.min(1, cosD)));
+
+  // Convert back to degrees
+  return d * (180 / Math.PI);
+}
+
+export function mapValueToHue(value, minValue, maxValue, hueCutoff = 300) {
+  let norm = (value - minValue) / (maxValue - minValue);
+  norm = Math.max(0, Math.min(1, norm)); // Clamp to [0, 1]
+  const hue = Math.round(((((hueCutoff + norm) * 360) % 360) * 255) / 360);
+
+  return hue;
+}

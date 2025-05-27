@@ -1,4 +1,6 @@
 import testPoints from "./ngvs_test_fakestars_modified.json";
+import parameters from "./parameters";
+import { mapValueToHue } from "./utilities";
 
 class PointSearcher {
   constructor(p, aladin) {
@@ -36,7 +38,7 @@ class PointSearcher {
       point: [point.RAdeg, point.DEdeg],
       id: point.id,
       gmag: point.gmag,
-      gR: point.g_r,
+      gRColor: point.g_r,
       flag: point.flag,
     }));
     this.tree = new KDTree(formattedPoints);
@@ -64,14 +66,9 @@ class PointSearcher {
     );
 
     // Find new nearest neighbours (present in current but not in previous)
-    if (this.previousNearestNeighbourIDs.length === 0) {
-      this.newNearestNeighbours = [];
-    } else {
-      this.newNearestNeighbours = this.nearestNeighbours.filter(
-        (neighbour) => !this.previousNearestNeighbourIDs.includes(neighbour.id)
-      );
-    }
-
+    this.newNearestNeighbours = this.nearestNeighbours.filter(
+      (neighbour) => !this.previousNearestNeighbourIDs.includes(neighbour.id)
+    );
     // Add animations for new nearest neighbours
     if (this.newNearestNeighbours && this.newNearestNeighbours.length > 0) {
       for (const neighbour of this.newNearestNeighbours) {
@@ -94,13 +91,17 @@ class PointSearcher {
   addAnimation(neighbour) {
     // Calculate color based on magnitude and color index
     const magnitude = neighbour.gmag;
-    const colorIndex = neighbour.gR;
+    const colorIndex = neighbour.gRColor;
 
     // Map magnitude to brightness (brighter stars = higher brightness)
-    const brightness = this.p.map(magnitude, 15, 20, 255, 50);
+    const brightness = 75;
 
     // Map color index to hue (bluer = lower hue, redder = higher hue)
-    const hue = this.p.map(colorIndex, -0.5, 1.5, 200, 0);
+    const hue = mapValueToHue(
+      colorIndex,
+      parameters.minGRColour,
+      parameters.maxGRColour
+    );
 
     this.animations.push({
       x: neighbour.point[0],
@@ -109,7 +110,7 @@ class PointSearcher {
       opacity: 255, // Initial opacity
       hue: hue,
       brightness: brightness,
-      saturation: 100,
+      saturation: 0,
     });
   }
 
@@ -136,6 +137,24 @@ class PointSearcher {
         this.animations.splice(i, 1); // Remove this animation
       }
     }
+    // DELETE BELOW //////////////////////
+    // Draw nearest neighbours
+    // this.p.colorMode(this.p.RGB); // Ensure RGB mode for these points
+    // this.p.fill(255, 0, 0); // Red color for nearest neighbours
+    // this.p.noStroke(); // No outline for these ellipses
+    // for (const neighbour of this.nearestNeighbours) {
+    //   if (neighbour && neighbour.point) {
+    //     const canvasCoords = this.aladin.world2pix(
+    //       neighbour.point[0],
+    //       neighbour.point[1]
+    //     );
+    //     if (canvasCoords) {
+    //       // Ensure coordinates are valid
+    //       this.p.ellipse(canvasCoords[0], canvasCoords[1], 5, 5); // Draw a 5x5 ellipse
+    //     }
+    //   }
+    // }
+    // DELETE ABOEVE //////////////////////
     // Reset color mode to RGB
     this.p.colorMode(this.p.RGB);
   }
@@ -150,7 +169,7 @@ class PointSearcher {
   // Find points within color range
   findPointsByColor(minColor, maxColor) {
     return this.subsetPoints.filter(
-      (point) => point.gR >= minColor && point.gR <= maxColor
+      (point) => point.gRColor >= minColor && point.gRColor <= maxColor
     );
   }
 
@@ -170,14 +189,14 @@ class PointSearcher {
 }
 
 class Node {
-  constructor(point, axis, id, gmag, gR, flag) {
+  constructor(point, axis, id, gmag, gRColor, flag) {
     this.point = point;
     this.left = null;
     this.right = null;
     this.axis = axis;
     this.id = id;
     this.gmag = gmag;
-    this.gR = gR;
+    this.gRColor = gRColor;
     this.flag = flag;
   }
 }
@@ -214,7 +233,7 @@ class KDTree {
         axis,
         points[median].id,
         points[median].gmag,
-        points[median].gR,
+        points[median].gRColor,
         points[median].flag
       );
 
@@ -270,7 +289,7 @@ class KDTree {
             dist,
             id: node.id,
             gmag: node.gmag,
-            gR: node.gR,
+            gRColor: node.gRColor,
             flag: node.flag,
           });
           bestNodes.sort((a, b) => a.dist - b.dist);
@@ -280,7 +299,7 @@ class KDTree {
             dist,
             id: node.id,
             gmag: node.gmag,
-            gR: node.gR,
+            gRColor: node.gRColor,
             flag: node.flag,
           };
           bestNodes.sort((a, b) => a.dist - b.dist);
@@ -336,7 +355,7 @@ class KDTree {
           point: node.point,
           id: node.id,
           gmag: node.gmag,
-          gR: node.gR,
+          gRColor: node.gRColor,
           flag: node.flag,
         });
       }
