@@ -1,4 +1,5 @@
 const parameters = {
+  targetRadiusPX: 50, // Radius of the target circle
   minBrightness: 50, // Minimum brightness threshold
   maxBrightness: 1.0, // Maximum brightness threshold
   brightness_boost: 1.2, // Brightness boost factor
@@ -17,6 +18,11 @@ const parameters = {
   directionX: 1, // Number of pixels to move along the x-axis when using the arrow keys
   directionY: 1, // Number of pixels to move along the y-axis when using the arrow keys
   boundarySetps: 20, // Number of steps to take before checking for boundaries
+  instruments: ["harp", "piano", "guitar"], // instruemtns with premade samples
+  audioContext: null, // Reference to the audio context
+  audioBuffers: {}, // Object to store multiple audio buffers
+  minGRColour: 0, // Minimum green-red color value
+  maxGRColour: 0.8, // Maximum green-red color value
 };
 
 export default parameters;
