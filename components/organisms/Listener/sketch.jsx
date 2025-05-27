@@ -71,8 +71,8 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         });
         // Initialize the walker with p5 instance and aladin
         walkerRef.current = new Walker(p, aladin);
-        // Initialize the point searcher with p5 instance
-        pointSearcherRef.current = new PointSearcher(p);
+        // Initialize the point searcher with p5 instance and aladin
+        pointSearcherRef.current = new PointSearcher(p, aladin);
         // Get the initial points from the point searcher on first load
         // pointSearcherRef.current.getPoints(); // TODO: Figure out what arguments to pass in
       };
@@ -84,11 +84,15 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
           // Get the current RA/Dec from Aladin and update points
           const [ra, dec] = aladin.getRaDec();
           const [FOVra, FOVdec] = aladin.getFov();
-          const FOVRadius = Math.sqrt(
-            Math.pow(FOVra / 2, 2) + Math.pow(FOVdec / 2, 2)
-          );
+          const FOVRadius =
+            Math.sqrt(Math.pow(FOVra / 2, 2) + Math.pow(FOVdec / 2, 2)) / 11; // TODO: Figure out why I had to divide by 11
           pointSearcherRef.current.makeSubset([ra, dec], FOVRadius);
           pointSearcherRef.current.findNeighbours([ra, dec], FOVRadius);
+        }
+
+        // Update and draw animations
+        if (pointSearcherRef.current) {
+          pointSearcherRef.current.updateAndDrawAnimations();
         }
 
         // Draw the empty circle without tint

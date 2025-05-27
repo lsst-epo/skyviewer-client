@@ -1,8 +1,9 @@
-import testPoints from "./ngvs_test_fakestars.json";
+import testPoints from "./ngvs_test_fakestars_modified.json";
 
 class PointSearcher {
-  constructor(p) {
+  constructor(p, aladin) {
     this.p = p; // Store p5 instance
+    this.aladin = aladin; // Store Aladin instance
     this.tree = null;
     this.radius_subset = 0.1; // Radius in degrees for finding the subset of points
     this.radius_neighbours = this.radius_subset / 2; // Radius for finding the nearest neighbours
@@ -14,11 +15,14 @@ class PointSearcher {
     this.nearestPoint = undefined; // Object to store the nearest neighbour
     this.previousNearestNeighbourIDs = []; // Store IDs of previous nearest neighbours
     this.newNearestNeighbours = []; // Store new nearest neighbours
-    // Make variables for Ra/Dec and Zoom and have them equal the Ra/Dec at the time of an update. Make a method that updates the points and have it check the Ra/Dec and Zoom and update the points accordingly if there's been a change/enough of a change.
-    // Put the update method in a useEffect and not in the draw loop.
 
-    // Initialize the tree with points from parameters, maybe we do this is the setup loop instead here.
-    // this.updatePoints();
+    // Animation properties
+    this.animations = []; // Array to store active animations
+    this.animationSpeed = 2; // Speed of animation expansion
+    this.animationFadeSpeed = 10; // Speed of animation fade out
+    this.maxAnimationSize = 100; // Maximum size of animation circles
+
+    // Initialize the tree with points from parameters
     this.getPoints();
   }
 
@@ -32,7 +36,7 @@ class PointSearcher {
       point: [point.RAdeg, point.DEdeg],
       id: point.id,
       gmag: point.gmag,
-      gR: point.gR,
+      gR: point.g_r,
       flag: point.flag,
     }));
     this.tree = new KDTree(formattedPoints);
@@ -45,7 +49,7 @@ class PointSearcher {
   }
 
   findNeighbours(targetPoint, radius = this.radius_neighbours) {
-    this.radius_neighbours = radius;
+    this.radius_neighbours = radius; // TODO: This equals this.radius_subset?
 
     // Find nearest neighbours using the KDTree
     this.nearestNeighbours = this.subsetTree.kNearest(
@@ -68,6 +72,13 @@ class PointSearcher {
       );
     }
 
+    // Add animations for new nearest neighbours
+    if (this.newNearestNeighbours && this.newNearestNeighbours.length > 0) {
+      for (const neighbour of this.newNearestNeighbours) {
+        this.addAnimation(neighbour);
+      }
+    }
+
     // Update the previous nearest neighbours
     this.previousNearestNeighbourIDs = currentNearestNeighbourIDs;
 
@@ -77,6 +88,56 @@ class PointSearcher {
     } else {
       this.nearestPoint = undefined;
     }
+  }
+
+  // Add a new animation for a point
+  addAnimation(neighbour) {
+    // Calculate color based on magnitude and color index
+    const magnitude = neighbour.gmag;
+    const colorIndex = neighbour.gR;
+
+    // Map magnitude to brightness (brighter stars = higher brightness)
+    const brightness = this.p.map(magnitude, 15, 20, 255, 50);
+
+    // Map color index to hue (bluer = lower hue, redder = higher hue)
+    const hue = this.p.map(colorIndex, -0.5, 1.5, 200, 0);
+
+    this.animations.push({
+      x: neighbour.point[0],
+      y: neighbour.point[1],
+      size: 0, // Initial size
+      opacity: 255, // Initial opacity
+      hue: hue,
+      brightness: brightness,
+      saturation: 100,
+    });
+  }
+
+  // Update and draw all active animations
+  updateAndDrawAnimations() {
+    this.p.noFill();
+    for (let i = this.animations.length - 1; i >= 0; i--) {
+      const anim = this.animations[i];
+
+      // Convert RA/Dec to canvas coordinates
+      const canvasCoords = this.aladin.world2pix(anim.x, anim.y);
+
+      // Draw the circle with HSB color
+      this.p.colorMode(this.p.HSB);
+      this.p.stroke(anim.hue, anim.saturation, anim.brightness, anim.opacity);
+      this.p.ellipse(canvasCoords[0], canvasCoords[1], anim.size);
+
+      // Update the animation state
+      anim.size += this.animationSpeed; // Increase size
+      anim.opacity -= this.animationFadeSpeed; // Decrease opacity
+
+      // Remove the animation if it's complete
+      if (anim.opacity <= 0 || anim.size >= this.maxAnimationSize) {
+        this.animations.splice(i, 1); // Remove this animation
+      }
+    }
+    // Reset color mode to RGB
+    this.p.colorMode(this.p.RGB);
   }
 
   // Find points within magnitude range
