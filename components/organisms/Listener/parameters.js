@@ -1,5 +1,6 @@
 const parameters = {
-  targetRadiusPX: 50, // Radius of the target circle
+  targetPointPX: [756, 223.5], // Target point for the middle of the screen in pixles [x, y]
+  targetRadiusPX: 50, // Radius of the target circle in pixels
   minBrightness: 50, // Minimum brightness threshold
   maxBrightness: 1.0, // Maximum brightness threshold
   brightness_boost: 1.2, // Brightness boost factor
@@ -19,6 +20,8 @@ const parameters = {
   directionY: 1, // Number of pixels to move along the y-axis when using the arrow keys
   boundarySetps: 20, // Number of steps to take before checking for boundaries
   instruments: ["harp", "piano", "guitar"], // instruemtns with premade samples
+  startNote: 60, // Starting MIDI note for the instruments
+  pointSizeScale: 20, // Scale factor for point size
   audioContext: null, // Reference to the audio context
   audioBuffers: {}, // Object to store multiple audio buffers
   minGRColour: 0, // Minimum green-red color value
