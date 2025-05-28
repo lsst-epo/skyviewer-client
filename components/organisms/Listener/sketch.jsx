@@ -8,11 +8,13 @@ import {
   shiftStarTint,
   areArrowsPressed,
   raDecDistance,
+  loadAudio,
 } from "./utilities";
 import parameters from "./parameters";
 import PixelSynth from "./PixelSynth";
 import Walker from "./Walker";
 import PointSearcher from "./PointSearcher";
+import SamplePlayer from "./SamplePlayer";
 
 const Sketch = ({ pixelColor, cardinalSums }) => {
   const sketchRef = useRef(null);
@@ -25,7 +27,7 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
   const synthRef = useRef(null);
   const walkerRef = useRef(null);
   const pointSearcherRef = useRef(null);
-  // const [fov, setFov] = useState(aladin.getFov());
+  const samplePlayerRef = useRef(null);
   // Initialize synth
   useEffect(() => {
     // Create reference to the synth class
@@ -67,6 +69,17 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         p.createCanvas(size[0], size[1]);
         // Make the canvas non-interactive
         p.canvas.style.pointerEvents = "none";
+        const audioPromises = [];
+        for (const instrument of parameters.instruments) {
+          for (let i = parameters.midiMin; i <= parameters.midiMax; i++) {
+            audioPromises.push(
+              loadAudio(
+                `${instrument}_${i}`,
+                `/sonification/sounds/${instrument}/${i}.mp3`
+              )
+            );
+          }
+        }
         // Load the rubin empty circle and star images
         p.loadImage("/sonification/rubin-circle-empty.png", (img) => {
           emptyCircleRef.current = img;
@@ -84,6 +97,7 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         ); // TDOD: Make these variables that get updated in the setup loop
         // Get the initial points from the point searcher on first load
         // pointSearcherRef.current.getPoints(); // TODO: Figure out what arguments to pass in
+        samplePlayerRef.current = new SamplePlayer(aladin);
       };
 
       p.draw = () => {
@@ -112,6 +126,14 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         // Update and draw animations
         if (pointSearcherRef.current) {
           pointSearcherRef.current.updateAndDrawAnimations();
+        }
+        if (
+          pointSearcherRef.current.newNearestNeighbours &&
+          pointSearcherRef.current.newNearestNeighbours.length > 0
+        ) {
+          const pointsToTrigger =
+            pointSearcherRef.current.newNearestNeighbours.slice(0, 8); // Limit to at most 8 points
+          samplePlayerRef.current.triggerPoints(pointsToTrigger);
         }
 
         // Draw the empty circle without tint

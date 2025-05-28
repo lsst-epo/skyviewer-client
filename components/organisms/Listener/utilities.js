@@ -115,6 +115,19 @@ export function areArrowsPressed(p) {
   );
 }
 
+export function loadAudio(name, url) {
+  parameters.audioContext =
+    parameters.audioContext ||
+    new (window.AudioContext || window.webkitAudioContext)();
+  fetch(url)
+    .then((response) => response.arrayBuffer())
+    .then((data) => parameters.audioContext.decodeAudioData(data))
+    .then((buffer) => {
+      parameters.audioBuffers[name] = buffer; // Store the buffer with a key
+    })
+    .catch((error) => console.error(`Error loading audio (${name}):`, error));
+}
+
 export function raDecDistance(ra1, dec1, ra2, dec2) {
   // Convert degrees to radians
   const ra1Rad = ra1 * (Math.PI / 180);
