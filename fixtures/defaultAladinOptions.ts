@@ -3,7 +3,7 @@ export const defaultHiPSOptions: HiPSOptions = {
   maxOrder: 11,
 };
 
-export const defaultAladinOptions: AladinOptions = {
+export const staticAladinOptions: AladinOptions = {
   cooFrame: "ICRSd",
   showReticle: false,
   showZoomControl: false,
@@ -19,4 +19,4 @@ export const defaultAladinOptions: AladinOptions = {
   showContextMenu: false,
 };
 
-export default defaultAladinOptions;
+export default staticAladinOptions;

@@ -7,12 +7,14 @@ export interface AladinContext {
   hasFocus: boolean;
   aladin: Aladin;
   A: A;
+  saveOptions: (options: Partial<AladinOptions>) => void;
 }
 export interface AladinContextDefault {
   isLoading: true;
   hasFocus: false;
   aladin?: undefined;
   A?: undefined;
+  saveOptions?: undefined;
 }
 
 export const defaultValue: AladinContextDefault = {

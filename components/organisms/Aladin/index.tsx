@@ -10,11 +10,11 @@ import {
   useRef,
   useState,
 } from "react";
-import defaultOptions, {
+import staticAladinOptions, {
   defaultHiPSOptions,
 } from "@/fixtures/defaultAladinOptions";
 import { SurveyLayer } from "@/lib/schema/survey";
-import { useOnClickOutside } from "usehooks-ts";
+import { useLocalStorage, useOnClickOutside } from "usehooks-ts";
 import AladinContext, { defaultValue } from "@/contexts/Aladin";
 import styles from "./styles.module.css";
 
@@ -34,6 +34,11 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
   layers,
   menu,
 }) => {
+  const [savedAladinOptions, setSavedAladinOptions] =
+    useLocalStorage<AladinOptions>("aladin-options", {
+      cooFrame: staticAladinOptions.cooFrame,
+    });
+
   const A = useRef<A | null>(null);
   const aladin = useRef<Aladin | null>(null);
   const ref = useRef<HTMLDivElement | null>(null);
@@ -58,7 +63,8 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
 
         global.init.then(() => {
           const instance = global.aladin(node, {
-            ...defaultOptions,
+            ...staticAladinOptions,
+            ...savedAladinOptions,
             ...options,
           });
 
@@ -98,6 +104,13 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
     };
   }, []);
 
+  const handleSaveOptions = useCallback(
+    (options: Partial<AladinOptions>) => {
+      setSavedAladinOptions({ ...savedAladinOptions, ...options });
+    },
+    [setSavedAladinOptions]
+  );
+
   const value = useMemo(() => {
     return isLoading || !aladin.current || !A.current
       ? defaultValue
@@ -106,6 +119,7 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
           A: A.current,
           hasFocus,
           isLoading,
+          saveOptions: handleSaveOptions,
         };
   }, [isLoading, hasFocus]);
 

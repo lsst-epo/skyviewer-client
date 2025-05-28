@@ -14,7 +14,7 @@ const CoordinateFormat: FC = () => {
   const example = useRef<Coo>();
   const { t } = useTranslation();
 
-  const { aladin } = useAladin({
+  const { aladin, isLoading, saveOptions } = useAladin({
     callbacks: {
       onLoaded: ({ A, aladin }) => {
         setFrame(aladin.getFrame());
@@ -24,7 +24,10 @@ const CoordinateFormat: FC = () => {
   });
 
   useAladinEvent("frame.changed", ({ detail }) => {
-    setFrame(detail.cooFrame.label);
+    if (!isLoading) {
+      setFrame(detail.cooFrame.label);
+      saveOptions({ cooFrame: detail.cooFrame.label });
+    }
   });
 
   const values: Array<Partial<CooFrame>> = ["ICRS", "ICRSd"];
