@@ -159,7 +159,7 @@ const TourIntro: FC<TourIntroProps> = ({
           <VerticalDivider className={styles.divider} />
           <FactContent
             className={styles.factContent}
-            title={factsHeading}
+            title={factsHeading || undefined}
             paragraphs={factsContentBlocks}
           />
         </div>

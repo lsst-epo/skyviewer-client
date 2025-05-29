@@ -58,7 +58,7 @@ export const Tour = z.object({
   introHeading: z.string(),
   introSubheading: z.string(),
   introContentBlocks: z.array(textBlock),
-  factsHeading: z.string(),
+  factsHeading: z.string().nullable(),
   factsContentBlocks: z.array(textBlock),
 });
 
