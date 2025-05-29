@@ -93,16 +93,9 @@ class SamplePlayer {
     const midiNote = this.midiNumbers[midiNoteIndex];
     const sampleIndex = midiNote - parameters.midiMin;
 
-    // console.log('playing',midiNoteIndex,  midiNote, sampleIndex, sampleNames[sampleIndex], 'at', volValue**this.amp_scale);
     if (midiNote >= parameters.midiMin && midiNote < parameters.midiMax) {
-      // this.playSound(buffers[sampleIndex], volValue**this.amp_scale);     //WASNT WORKING, NO SOUND
-
-      // sounds[sampleIndex].play(); //using p5
-      // sounds[sampleIndex].setVolume(volValue*0.5);
-
       // using web audio api
       this.playAudio(`${instrument}_${midiNote}`, volValue, pan);
-      // console.log(`Playing audio: harp_${midiNote} at volume: ${volValue}`);
     }
     this.last_sample_index = sampleIndex;
     this.last_midi_note = midiNote;
@@ -112,33 +105,37 @@ class SamplePlayer {
     if (points && points.length > 0) {
       for (const point of points) {
         const pointPX = this.aladin.world2pix(point.point[0], point.point[1]);
-        const pointFreqData = linearMap(point.gRColor ** 0.4, 0, 1, 0, 1); // Map br color to frequency
-        // TODO: Is this correct?
+        const pointFreqData = linearMap(
+          point.gRColor,
+          parameters.minGRColour,
+          parameters.maxGRColour,
+          0,
+          1,
+          true
+        ); // Map br color to frequency
         const pointAmplitude = linearMap(
           point.gmag,
+          parameters.gmagMax,
+          parameters.gmagMin,
           0,
-          parameters.pointSizeScale,
-          0,
-          0.75
+          0.75,
+          true
         ); // Map size to amplitude
         const instrument = pointTypeToInstrument[point.flag] || "harp"; // Default to 'harp' if type is not found
-        // console.log('triggering', pointFreqData, pointAmplitude, point.flag, instrument);
         let pan = 0;
-        // target_radius is the radius of the circle, same as is used in PointSearcher.
-        // tartget_point and point.point is pixelX. Need to use aladin to convert here
-        // need to go through the points and update all the names
         const distanceFromTarget = pointPX[0] - parameters.targetPointPX[0];
         pan = linearMap(
           distanceFromTarget,
           -parameters.targetRadiusPX,
           parameters.targetRadiusPX,
           -1,
-          1
+          1,
+          true
         );
         pan = Math.min(Math.max(pan, -1), 1); // Ensure pan stays within the valid range
         this.playSample(
-          pointFreqData,
-          0.05 + pointAmplitude ** 0.5,
+          pointFreqData ** parameters.freqScaling,
+          0.05 + pointAmplitude ** parameters.ampScaling,
           instrument,
           pan
         ); // Play the sample with the mapped values
