@@ -102,8 +102,9 @@ export function mapHueToRange(hue, offset) {
   return shiftedHue / 360;
 }
 
-export function linearMap(value, inMin, inMax, outMin, outMax) {
-  return ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+export function linearMap(value, inMin, inMax, outMin, outMax, clamp = false) {
+  const map = ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+  return clamp ? Math.max(outMin, Math.min(outMax, map)) : map;
 }
 
 export function areArrowsPressed(p) {
