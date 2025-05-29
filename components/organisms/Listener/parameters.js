@@ -21,11 +21,14 @@ const parameters = {
   boundarySetps: 20, // Number of steps to take before checking for boundaries
   instruments: ["harp", "piano", "guitar"], // instruemtns with premade samples
   startNote: 60, // Starting MIDI note for the instruments
-  pointSizeScale: 20, // Scale factor for point size
   audioContext: null, // Reference to the audio context
   audioBuffers: {}, // Object to store multiple audio buffers
   minGRColour: 0, // Minimum green-red color value
   maxGRColour: 0.8, // Maximum green-red color value
+  gmagMin: 9, // Minimum gmag value
+  gmagMax: 23, // Maximum gmag value
+  freqScaling: 0.4, // Frequency scaling factor
+  ampScaling: 0.5,
 };
 
 export default parameters;
