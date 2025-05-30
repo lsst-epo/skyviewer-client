@@ -1,11 +1,12 @@
 "use client";
 import { FC, PropsWithChildren } from "react";
 import { useTranslation } from "react-i18next";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useMediaQuery } from "usehooks-ts";
 import { NextStep, NextStepProvider, type Tour } from "nextstepjs";
 import { completeTutorial, steps, tourTutorialTitle } from "@/lib/tutorial";
 import TutorialCard from "../TutorialCard";
 import styles from "./styles.module.css";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const TourTutorial: FC<PropsWithChildren> = ({ children }) => {
   const { push } = useRouter();
@@ -13,10 +14,25 @@ const TourTutorial: FC<PropsWithChildren> = ({ children }) => {
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
   const { t } = useTranslation();
+  const matches = useMediaQuery("(width < 1130px)", {
+    defaultValue: false,
+    initializeWithValue: false,
+  });
+
   const tutorial: Tour = {
     tour: tourTutorialTitle,
     steps: steps.map((step, i) => {
-      return { ...step, content: t("tours.tutorial.step", { context: i }) };
+      let side = step.side;
+
+      if (step.selector?.includes("share")) {
+        side = matches ? "top-right" : "bottom-left";
+      }
+
+      return {
+        ...step,
+        side,
+        content: t("tours.tutorial.step", { context: i }),
+      };
     }),
   };
 
