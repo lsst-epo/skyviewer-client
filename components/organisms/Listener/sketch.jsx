@@ -51,13 +51,6 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
       walkerRef.current.boundaryCheck();
     }
   }, [cardinalSums]);
-
-  useEffect(() => {
-    if (pointSearcherRef.current) {
-      pointSearcherRef.current.updatePoints();
-    }
-  }, []); // TODO: Add a dependency for FOV, PixelColor, CardinalSums, etc.
-
   // Create the sketch only once
   useEffect(() => {
     if (!aladin) return;
@@ -104,13 +97,17 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         p.clear(); // Clear the canvas before drawing the empty circle and star to avoid ghosting
 
         const [ra, dec] = aladin.getRaDec();
-        const [FOVra, FOVdec] = aladin.getFov();
+        parameters.fovRadius = aladin.getFov();
         if (p.frameCount % 60 === 0) {
           // Get the current RA/Dec from Aladin and update points
-          const FOVRadius = Math.sqrt(
-            Math.pow(FOVra / 2, 2) + Math.pow(FOVdec / 2, 2)
+          parameters.fovRadius = Math.sqrt(
+            Math.pow(parameters.fovRadius[0] / 2, 2) +
+              Math.pow(parameters.fovRadius[1] / 2, 2)
           );
-          pointSearcherRef.current.makeSubset([ra, dec], FOVRadius);
+          pointSearcherRef.current.makeSubset([ra, dec], parameters.fovRadius);
+        }
+        if (p.frameCount % 120 === 0) {
+          pointSearcherRef.current.getPoints(); // Update points every 120 frames
         }
         const eastPoint = aladin.pix2world(
           p.width / 2 + parameters.targetRadiusPX,
