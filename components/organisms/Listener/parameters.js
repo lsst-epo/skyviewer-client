@@ -33,13 +33,19 @@ const parameters = {
   // API parameters, need to set with intial values
   currentRaDec: [0, 0], // Current RA and Dec coordinates
   lastRaDec: [0, 0], // Last RA and Dec coordinates at time of API call
-  fovRadius: [0, 0], // Field of View radius in Ra/Dec
-  queryRadius: 0, // Radius for querying points in Ra/Dec
-  querryFOVFactor: 1, // Factor to multiply FOVRadius
+  fov: [0, 0], // Field of View in pixels [width, height]
+  fovRadius: 0, // Field of View radius in Ra/Dec
+  queryFOVFactor: 1, // Factor to multiply FOVRadius
+  querygmagMin: 12, // Minimum gmag for querying points
+  querygmagMax: 23, // Maximum gmag for querying points
+  fovLimits: {
+    min: 0.02, // Minimum FOV limit
+    max: 17.5, // Maximum FOV limit
+  },
 };
 
 export default parameters;
 
 // feed lastRADEC & currentRADEC into raDecDistance(), compare output to FOVRadius-tartgetRadiusRaDec
 // if output of raDecDistance() is greater than FOVRadius-tartgetRadiusRaDec, then call API
-// create parameter used to multiply the FOVRadius and QuerryRadius
+// create parameter used to multiply the FOVRadius and QueryRadius
