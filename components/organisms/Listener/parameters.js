@@ -28,7 +28,18 @@ const parameters = {
   gmagMin: 9, // Minimum gmag value
   gmagMax: 23, // Maximum gmag value
   freqScaling: 0.4, // Frequency scaling factor
-  ampScaling: 0.5,
+  ampScaling: 0.5, // Amplitude scaling factor
+  maxSampleVolume: 0.4, // Maximum volume for samples
+  // API parameters, need to set with intial values
+  currentRaDec: [0, 0], // Current RA and Dec coordinates
+  lastRaDec: [0, 0], // Last RA and Dec coordinates at time of API call
+  fovRadius: [0, 0], // Field of View radius in Ra/Dec
+  queryRadius: 0, // Radius for querying points in Ra/Dec
+  querryFOVFactor: 1, // Factor to multiply FOVRadius
 };
 
 export default parameters;
+
+// feed lastRADEC & currentRADEC into raDecDistance(), compare output to FOVRadius-tartgetRadiusRaDec
+// if output of raDecDistance() is greater than FOVRadius-tartgetRadiusRaDec, then call API
+// create parameter used to multiply the FOVRadius and QuerryRadius
