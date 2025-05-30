@@ -1,7 +1,6 @@
 "use client";
 import { FC } from "react";
 import { useStep } from "@/lib/tutorial";
-import ShareTour from "./Share";
 import TourBack from "./Back";
 import TourNext from "./Next";
 import styles from "./styles.module.css";
@@ -12,7 +11,6 @@ const TourControls: FC<{ className?: string }> = ({ className }) => {
 
   return (
     <nav className={clsx(styles.navigation, className)}>
-      <ShareTour />
       <div
         data-active-tutorial-step={active}
         className={styles.navigationButtons}

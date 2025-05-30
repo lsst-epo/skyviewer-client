@@ -6,7 +6,7 @@
 }
 
 .shareButton {
-  composes: shareButton from "../../ShareButton/styles.module.css";
+  composes: shareButton from "@/components/molecules/ShareButton/styles.module.css";
 }
 
 .twitter {
@@ -32,8 +32,23 @@
   gap: var(--size-spacing-2xs);
   list-style: none;
   position: absolute;
-  bottom: calc(var(--size-spacing-l) + var(--size-spacing-2xs));
   font-size: 0.75rem;
   opacity: 0;
   z-index: -1;
+
+  &[data-side="top"] {
+    bottom: calc(var(--size-spacing-l) + var(--size-spacing-2xs));
+  }
+
+  &[data-side="bottom"] {
+    top: calc(var(--size-spacing-l) + var(--size-spacing-2xs));
+  }
+
+  &[data-alignment="left"] {
+    right: 0;
+
+    .itemLabel {
+      flex-direction: row-reverse;
+    }
+  }
 }
