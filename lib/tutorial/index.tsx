@@ -1,5 +1,6 @@
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 import { type Step, useNextStep } from "nextstepjs";
+import { useMediaQuery } from "usehooks-ts";
 
 export const tourTutorialTitle = "tourTutorial";
 
@@ -44,6 +45,11 @@ const stripIdSelector = (selector?: string) => {
 };
 
 export const useStep = (stepIndex: number) => {
+  const matches = useMediaQuery("width < 1130px", {
+    defaultValue: false,
+    initializeWithValue: false,
+  });
+
   const { currentStep, currentTour } = useNextStep();
   const step = steps[stepIndex];
 

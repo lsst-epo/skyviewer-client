@@ -1,6 +1,6 @@
 .tourOverlay {
   display: grid;
-  grid-template: "orientation" 1fr "description" 50% "controls" min-content / 1fr;
+  grid-template: "controls" 1fr "description" 50% "navigation" min-content / 1fr;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -9,26 +9,33 @@
     gap: var(--size-spacing-2xs);
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: minmax(0, 1fr);
-    grid-template-areas: "orientation controls description";
+    grid-template-areas: "controls navigation description";
     align-items: flex-end;
     padding: var(--size-spacing-s);
   }
 }
 
-.orientation {
-  grid-area: orientation;
-  justify-self: flex-end;
-  margin-block-start: var(--size-spacing-s);
-  margin-inline-end: var(--size-spacing-s);
+.controls {
+  grid-area: controls;
+  display: flex;
+  padding: var(--size-spacing-xs);
+  align-items: flex-end;
+  gap: var(--size-spacing-xs);
+  flex-direction: column;
 
   @media (--desktop-small) {
-    place-self: flex-start flex-start;
-    margin: 0;
+    align-items: flex-start;
+    place-self: stretch stretch;
+    justify-content: space-between;
+    padding: 0;
   }
 }
 
-.controls {
-  grid-area: controls;
+.orientation {
+}
+
+.navigation {
+  grid-area: navigation;
   z-index: var(--elevation-element-header);
 
   @media (--desktop-small) {
