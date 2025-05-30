@@ -118,7 +118,7 @@ class SamplePlayer {
           parameters.gmagMax,
           parameters.gmagMin,
           0,
-          0.75,
+          1,
           true
         ); // Map size to amplitude
         const instrument = pointTypeToInstrument[point.flag] || "harp"; // Default to 'harp' if type is not found
@@ -135,7 +135,9 @@ class SamplePlayer {
         pan = Math.min(Math.max(pan, -1), 1); // Ensure pan stays within the valid range
         this.playSample(
           pointFreqData ** parameters.freqScaling,
-          0.05 + pointAmplitude ** parameters.ampScaling,
+          0.05 +
+            parameters.maxSampleVolume *
+              pointAmplitude ** parameters.ampScaling,
           instrument,
           pan
         ); // Play the sample with the mapped values
