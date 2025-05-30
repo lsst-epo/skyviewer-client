@@ -1,12 +1,13 @@
 import testPoints from "./ngvs_test_fakestars_modified.json";
 import parameters from "./parameters";
-import { mapValueToHue } from "./utilities";
+import { linearMap, mapValueToHue } from "./utilities";
 
 class PointSearcher {
   constructor(p, aladin) {
     this.p = p; // Store p5 instance
     this.aladin = aladin; // Store Aladin instance
     this.tree = null;
+    this.ready = false; // Add ready flag
     this.radius_subset = 0.1; // Radius in degrees for finding the subset of points
     this.radius_neighbours = this.radius_subset / 2; // Radius for finding the nearest neighbours
     this.k_neighbours = 50; // Number of nearest neighbours to find in subset
@@ -25,15 +26,29 @@ class PointSearcher {
     this.maxAnimationSize = 100; // Maximum size of animation circles
 
     // Initialize the tree with points from parameters
-    this.getPoints();
+    this.initialize();
+  }
+
+  async initialize() {
+    await this.getPoints();
+    this.ready = true;
   }
 
   updatePoints() {
     // this.getPoints();
   }
 
-  getPoints() {
-    // Use the test points from the JSON file
+  async getPoints() {
+    const queryRadius = parameters.queryFOVFactor * parameters.fovRadius;
+    const queryMag = linearMap(
+      parameters.fovRadius,
+      parameters.fovLimits.max,
+      parameters.fovLimits.min,
+      parameters.querygmagMin,
+      parameters.querygmagMax,
+      false
+    );
+    // For now, using test points, but this will be replaced with an API call
     const formattedPoints = testPoints.map((point) => ({
       point: [point.RAdeg, point.DEdeg],
       id: point.id,
@@ -44,14 +59,20 @@ class PointSearcher {
     this.tree = new KDTree(formattedPoints);
   }
 
-  makeSubset(targetPoint, radius = this.radius_subset) {
+  async makeSubset(targetPoint, radius = this.radius_subset) {
+    if (!this.ready) {
+      await this.initialize();
+    }
     this.radius_subset = radius;
     this.subsetPoints = this.tree.range(targetPoint, radius);
     this.subsetTree = new KDTree(this.subsetPoints);
   }
 
-  findNeighbours(targetPoint, radius = this.radius_neighbours) {
-    this.radius_neighbours = radius; // TODO: This equals this.radius_subset?
+  async findNeighbours(targetPoint, radius = this.radius_neighbours) {
+    if (!this.ready) {
+      await this.initialize();
+    }
+    this.radius_neighbours = radius;
 
     // Find nearest neighbours using the KDTree
     this.nearestNeighbours = this.subsetTree.kNearest(
@@ -154,7 +175,22 @@ class PointSearcher {
     //     }
     //   }
     // }
-    // DELETE ABOEVE //////////////////////
+
+    // // Draw subset points in blue
+    // this.p.fill(0, 0, 255); // Blue color for subset points
+    // for (const point of this.subsetPoints) {
+    //   if (point && point.point) {
+    //     const canvasCoords = this.aladin.world2pix(
+    //       point.point[0],
+    //       point.point[1]
+    //     );
+    //     if (canvasCoords) {
+    //       // Ensure coordinates are valid
+    //       this.p.ellipse(canvasCoords[0], canvasCoords[1], 3, 3); // Draw a slightly smaller 3x3 ellipse
+    //     }
+    //   }
+    // }
+    // DELETE ABOVE //////////////////////
     // Reset color mode to RGB
     this.p.colorMode(this.p.RGB);
   }
