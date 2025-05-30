@@ -1,7 +1,7 @@
 "use client";
 import { FC } from "react";
 import AladinOverlay from "@/components/atomic/AladinOverlay";
-import Share from "./Share";
+import Share from "../../organisms/Share";
 import Zoom from "../Controls/Zoom";
 import Orientation from "./Orientation";
 import ToggleGrid from "./ToggleGrid";

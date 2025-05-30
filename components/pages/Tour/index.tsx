@@ -1,5 +1,5 @@
 "use client";
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { useNextStep } from "nextstepjs";
 import { useSearchParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
@@ -12,13 +12,15 @@ import { useTour } from "@/contexts/Tour";
 import PoiSlideout from "@/components/molecules/PoiSlideout";
 import PoiHeader from "@/components/molecules/PoiHeader";
 import AudioControls from "@/components/molecules/AudioControls";
-import styles from "./styles.module.css";
 import ViewScale from "@/components/molecules/ExplorerControls/ViewScale";
+import ShareTour from "@/components/organisms/TourControls/Share";
+import styles from "./styles.module.css";
 
 const TourPage: FC<{ title: string | null }> = ({ title }) => {
   const {
     i18n: { language },
   } = useTranslation();
+  const [openOverride, setOpenOverride] = useState(true);
   const { isPending, currentPoi, position } = useTour();
   const { startNextStep } = useNextStep();
   const searchParams = useSearchParams();
@@ -30,15 +32,28 @@ const TourPage: FC<{ title: string | null }> = ({ title }) => {
     }
   }, []);
 
+  const isMoving = isPending || !currentPoi;
+
+  useEffect(() => {
+    if (!isMoving && !openOverride) {
+      setOpenOverride(true);
+    }
+  }, [isMoving]);
+
   return (
     <AladinOverlay space="0" className={styles.tourOverlay}>
-      <Orientation
-        className={styles.orientation}
-        size="var(--size-spacing-l)"
-      />
+      <div className={styles.controls}>
+        <Orientation
+          className={styles.orientation}
+          size="var(--size-spacing-l)"
+        />
+        <ShareTour />
+      </div>
       <PoiSlideout
         className={styles.description}
-        open={!isPending && !!currentPoi}
+        open={isMoving ? false : openOverride}
+        disableToggle={isMoving}
+        onOpenChange={setOpenOverride}
       >
         <PoiHeader
           tour={title || undefined}
@@ -63,7 +78,7 @@ const TourPage: FC<{ title: string | null }> = ({ title }) => {
           )}
         </div>
       </PoiSlideout>
-      <TourControls className={styles.controls} />
+      <TourControls className={styles.navigation} />
       <div className={styles.viewScaleContainer}>
         <ViewScale className={styles.viewScale} />
       </div>
