@@ -20,7 +20,7 @@ const AladinOverlay: FunctionComponent<
       className={clsx(styles.aladinOverlay, wrapperClassName)}
       data-loaded={!isLoading}
     >
-      <div className={classNames(className, styles.aladinOverlayInner)}>
+      <div className={classNames(styles.aladinOverlayInner, className)}>
         {children}
       </div>
     </div>
