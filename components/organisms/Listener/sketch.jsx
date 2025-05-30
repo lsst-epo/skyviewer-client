@@ -97,12 +97,12 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         p.clear(); // Clear the canvas before drawing the empty circle and star to avoid ghosting
 
         const [ra, dec] = aladin.getRaDec();
-        parameters.fovRadius = aladin.getFov();
+        parameters.fov = aladin.getFov();
         if (p.frameCount % 60 === 0) {
           // Get the current RA/Dec from Aladin and update points
           parameters.fovRadius = Math.sqrt(
-            Math.pow(parameters.fovRadius[0] / 2, 2) +
-              Math.pow(parameters.fovRadius[1] / 2, 2)
+            Math.pow(parameters.fov[0] / 2, 2) +
+              Math.pow(parameters.fov[1] / 2, 2)
           );
           pointSearcherRef.current.makeSubset([ra, dec], parameters.fovRadius);
         }
