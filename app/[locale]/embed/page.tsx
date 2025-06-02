@@ -5,11 +5,13 @@ import EmbeddedExplorer from "@/components/organisms/Embedded";
 import CurrentPositionPopover from "@/components/organisms/CurrentPositionPopover";
 import { initialPosition } from "@/lib/helpers";
 import { getEmbedPage } from "@/services/api/embed";
+import { setRequestLocale } from "next-intl/server";
 
 const EmbeddedPage: FunctionComponent<WithSearchParams<RootProps>> = async ({
   params: { locale },
   searchParams = {},
 }) => {
+  setRequestLocale(locale);
   const data = await getEmbedPage(locale);
 
   if (!data) {

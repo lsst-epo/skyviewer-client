@@ -2,10 +2,12 @@ import { FunctionComponent } from "react";
 import { notFound } from "next/navigation";
 import { getTourMetadata } from "@/services/api/tours";
 import TourLanding from "@/components/pages/TourLanding";
+import { setRequestLocale } from "next-intl/server";
 
 const TourLandingPage: FunctionComponent<TourProps> = async ({
-  params: { tour },
+  params: { tour, locale },
 }) => {
+  setRequestLocale(locale);
   const data = await getTourMetadata({ slug: tour });
 
   if (!data) {

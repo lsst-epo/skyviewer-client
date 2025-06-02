@@ -1,14 +1,7 @@
-import { i18nRouter } from "next-i18n-router";
-import { languages, fallbackLng, cookieName } from "@/lib/i18n/settings";
-import { NextRequest } from "next/server";
+import createMiddleware from "next-intl/middleware";
+import { routing } from "@/lib/i18n/routing";
 
-export function middleware(request: NextRequest) {
-  return i18nRouter(request, {
-    locales: languages,
-    defaultLocale: fallbackLng,
-    localeCookie: cookieName,
-  });
-}
+export default createMiddleware(routing);
 
 // only applies this middleware to files in the app directory
 export const config = {

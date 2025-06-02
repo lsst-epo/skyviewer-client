@@ -78,7 +78,7 @@
     "lodash": "^4.17.21",
     "motion": "^12.4.10",
     "next": "^14.2.25",
-    "next-i18n-router": "^5.5.1",
+    "next-intl": "^4.1.0",
     "next-view-transitions": "^0.3.4",
     "nextstepjs": "^2.0.0",
     "p5": "^2.0.1",

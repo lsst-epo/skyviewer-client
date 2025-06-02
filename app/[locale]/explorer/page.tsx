@@ -7,11 +7,13 @@ import { getExplorerPage } from "@/services/api/explorer";
 import CurrentPositionPopover from "@/components/organisms/CurrentPositionPopover";
 import AladinMenu from "@/components/organisms/AladinMenu";
 import DisplayMenu from "@/components/organisms/AladinMenu/Display";
+import { setRequestLocale } from "next-intl/server";
 
 const ExplorerPage: FC<WithSearchParams<RootProps>> = async ({
   params: { locale },
   searchParams = {},
 }) => {
+  setRequestLocale(locale);
   const data = await getExplorerPage(locale);
 
   if (!data) {

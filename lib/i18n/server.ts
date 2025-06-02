@@ -1,11 +1,10 @@
 "server-only";
 
-import { cache } from "react";
-import { cookies, headers } from "next/headers";
 import { createInstance } from "i18next";
 import { initReactI18next } from "react-i18next/initReactI18next";
 import { loadResources } from "./index";
-import { cookieName, fallbackLng, getOptions } from "./settings";
+import { getOptions } from "./settings";
+import { getLocale } from "next-intl/server";
 
 const initI18next = async (lng: string, ns: string | string[]) => {
   // on server side we create a new instance for each render, because during compilation everything seems to be executed in parallel
@@ -17,20 +16,12 @@ const initI18next = async (lng: string, ns: string | string[]) => {
   return i18nInstance;
 };
 
-export const getLocale = cache(() => {
-  return (
-    headers().get("x-next-i18n-router-locale") ||
-    cookies().get(cookieName)?.value ||
-    fallbackLng
-  );
-});
-
 async function useTranslation(
   lng?: string,
   ns: string | string[] = "translation",
   options: any = {}
 ) {
-  const locale = lng || getLocale();
+  const locale = lng || (await getLocale());
   const i18nextInstance = await initI18next(locale, ns);
 
   return {

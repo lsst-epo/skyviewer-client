@@ -2,7 +2,7 @@ import { FC, PropsWithChildren, ReactNode } from "react";
 import { IoArrowBackSharp } from "react-icons/io5";
 import Center from "@rubin-epo/epo-react-lib/Center";
 import Stack from "@rubin-epo/epo-react-lib/Stack";
-import { getLocale, useTranslation } from "@/lib/i18n/server";
+import { useTranslation } from "@/lib/i18n/server";
 import ViewTransition from "@/components/atomic/ViewTransition";
 import BlockTitle from "@/components/atomic/BlockTitle";
 import TransitionButtonish from "@/components/molecules/TransitionButtonish";
@@ -16,7 +16,7 @@ interface GuidedExperienceLandingProps {
 const GuidedExperienceLanding: FC<
   PropsWithChildren<GuidedExperienceLandingProps>
 > = async ({ title, children }) => {
-  const { t } = await useTranslation(getLocale());
+  const { t } = await useTranslation();
 
   return (
     <FullwidthWithNav
