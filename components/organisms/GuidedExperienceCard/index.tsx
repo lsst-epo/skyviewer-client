@@ -1,16 +1,16 @@
 import { FC, Suspense } from "react";
 import Image, { ImageProps } from "next/image";
+import { getLocale } from "next-intl/server";
 import clsx from "clsx/lite";
 import Frame from "@rubin-epo/epo-react-lib/Frame";
 import Stack from "@rubin-epo/epo-react-lib/Stack";
 import { Link } from "next-view-transitions";
-import { addLocaleUriSegment } from "@/lib/i18n";
-import { useTranslation, getLocale } from "@/lib/i18n/server";
+import { useTranslation } from "@/lib/i18n/server";
 import { getTourCount } from "@/services/api/guidedExperiences";
 import Ribbon from "@/components/atomic/Ribbon";
 import styles from "./styles.module.css";
 import ViewTransition from "@/components/atomic/ViewTransition";
-
+import { getPathname } from "@/lib/i18n/navigation";
 interface GuidedExperienceCardProps {
   title: string;
   id: string;
@@ -20,7 +20,7 @@ interface GuidedExperienceCardProps {
 }
 
 const RibbonContent: FC<{ slug: string }> = async ({ slug }) => {
-  const { t } = await useTranslation(getLocale());
+  const { t } = await useTranslation();
   const count = await getTourCount(slug);
 
   return (
@@ -39,20 +39,18 @@ const RibbonContent: FC<{ slug: string }> = async ({ slug }) => {
   );
 };
 
-const GuidedExperienceCard: FC<GuidedExperienceCardProps> = ({
+const GuidedExperienceCard: FC<GuidedExperienceCardProps> = async ({
   title,
   slug,
   image,
   className,
 }) => {
+  const locale = await getLocale();
+  const path = getPathname({ href: { pathname: slug }, locale });
   return (
     <Stack className={clsx(styles.card, className)}>
       <h2 className={styles.title}>
-        <Link
-          className={styles.link}
-          href={addLocaleUriSegment(getLocale(), slug)}
-          prefetch
-        >
+        <Link className={styles.link} href={path} prefetch>
           <ViewTransition name={`${slug}-title`}>{title}</ViewTransition>
         </Link>
       </h2>

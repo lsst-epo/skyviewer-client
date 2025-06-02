@@ -6,7 +6,7 @@ import { fallbackLng } from "@/lib/i18n/settings";
 import { siteFromLocale, localeFromSite } from "@/lib/i18n/site";
 import queryAPI from "@/services/api/client";
 import previewSession from "@/services/sessions/preview";
-import { addLocaleUriSegment } from "@/lib/i18n";
+import { getPathname } from "@/lib/i18n/navigation";
 
 const PREVIEW_SECRET_TOKEN = env.CRAFT_SECRET_TOKEN;
 const CRAFT_HOMEPAGE_URI = "__home__";
@@ -21,12 +21,6 @@ const Query = graphql(`
   }
 `);
 
-function isCraftPreview(params: URLSearchParams): boolean {
-  return (
-    !!params.get("x-craft-preview") || !!params.get("x-craft-live-preview")
-  );
-}
-
 export async function GET(request: NextRequest): Promise<NextResponse> {
   const { searchParams } = request.nextUrl;
   const secret = searchParams.get("secret");
@@ -36,11 +30,6 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
   );
   const locale = localeFromSite(site);
   const uri = searchParams.get("uri");
-
-  // Check that this request came from Craft
-  if (!isCraftPreview(searchParams)) {
-    return new NextResponse("Invalid client", { status: 401 });
-  }
 
   // Check the secret and next parameters
   // This secret should only be known to this route handler and the CMS
@@ -69,7 +58,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
   previewSession().start({ previewToken });
 
-  const segments: Array<String> = [];
+  const segments: Array<String> = [""];
 
   if (data.entry.uri !== CRAFT_HOMEPAGE_URI) {
     segments.push(data.entry.uri);
@@ -83,7 +72,12 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
   // Redirect to the path from the fetched entry
   // We don't redirect to searchParams.uri as that might lead to open redirect vulnerabilities
-  const redirectPath = addLocaleUriSegment(locale, segments.join("/"));
+
+  const redirectPath = getPathname({
+    href: { pathname: segments.join("/") },
+    locale,
+    forcePrefix: true,
+  });
 
   redirect(redirectPath, RedirectType.replace);
 }

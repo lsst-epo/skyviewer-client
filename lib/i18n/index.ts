@@ -36,30 +36,3 @@ const shiftToSegments = (segments: Array<string>) => {
     shiftToSegments(segments);
   }
 };
-
-export const addLocaleUriSegment = (
-  locale: string,
-  uri: string,
-  options: {
-    includeLeadingSlash?: boolean;
-  } = { includeLeadingSlash: true }
-) => {
-  const segments = uri.split("/");
-
-  shiftToSegments(segments);
-
-  if (segments[0] === locale) {
-    return segments.join("/");
-  } else {
-    if (!isDefaultLocale(locale)) {
-      segments.unshift(locale);
-    }
-
-    const { includeLeadingSlash = true } = options;
-    if (includeLeadingSlash) {
-      segments.unshift("");
-    }
-
-    return segments.join("/");
-  }
-};
