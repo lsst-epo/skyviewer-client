@@ -42,6 +42,8 @@ const parameters = {
     min: 0.02, // Minimum FOV limit
     max: 17.5, // Maximum FOV limit
   },
+  queryRadius: 0, // Qery radius for API calls
+  queryMag: 0, // Query magnitude for API calls
 };
 
 export default parameters;
