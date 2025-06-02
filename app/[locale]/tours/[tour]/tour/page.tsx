@@ -8,11 +8,13 @@ import { TourProvider } from "@/contexts/Tour";
 import AladinTemplate from "@/components/templates/Aladin";
 import TourTutorial from "@/components/organisms/TourTutorial";
 import AladinMenu from "@/components/organisms/AladinMenu";
+import { setRequestLocale } from "next-intl/server";
 
 const Tour: FunctionComponent<WithSearchParams<TourProps>> = async ({
   params: { locale, tour },
   searchParams = {},
 }) => {
+  setRequestLocale(locale);
   const pois = await getTourPois(tour);
 
   const { poi = "1" } = searchParams;

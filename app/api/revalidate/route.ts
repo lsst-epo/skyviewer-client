@@ -1,9 +1,10 @@
 import { revalidatePath, revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 import { languages } from "@/lib/i18n/settings";
-import { addLocaleUriSegment } from "@/lib/i18n";
 import tagStore from "@/services/api/tags";
 import { env } from "@/env";
+import { getPathname } from "@/lib/i18n/navigation";
+import { isDefaultLocale } from "@/lib/i18n";
 
 const REVALIDATE_SECRET_TOKEN = env.CRAFT_REVALIDATE_SECRET_TOKEN;
 const CRAFT_HOMEPAGE_URI = "__home__";
@@ -33,7 +34,11 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       const parts: Array<string> =
         uri === CRAFT_HOMEPAGE_URI ? [] : uri.split("/");
 
-      const path = addLocaleUriSegment(locale, parts.join("/"));
+      const path = getPathname({
+        href: `/${parts.join("/")}`,
+        locale,
+        forcePrefix: !isDefaultLocale(locale),
+      });
       const dataTag = tagStore[parts[0]];
 
       if (dataTag) {

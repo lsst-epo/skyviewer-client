@@ -6,6 +6,7 @@ import { initialPosition } from "@/lib/helpers";
 import { getExplorerPage } from "@/services/api/explorer";
 import dynamic from "next/dynamic";
 import AladinMenu from "@/components/organisms/AladinMenu";
+import { setRequestLocale } from "next-intl/server";
 
 const Listener = dynamic(() => import("@/components/organisms/Listener"), {
   ssr: false,
@@ -15,6 +16,7 @@ const ListenerPage: FC<WithSearchParams<RootProps>> = async ({
   params: { locale },
   searchParams = {},
 }) => {
+  setRequestLocale(locale);
   const data = await getExplorerPage(locale);
 
   if (!data) {

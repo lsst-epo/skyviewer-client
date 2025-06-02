@@ -8,8 +8,7 @@ import {
   FacebookButton,
   TwitterXButton,
 } from "@rubin-epo/epo-react-lib/Share";
-import { getLocale, useTranslation } from "@/lib/i18n/server";
-import { addLocaleUriSegment } from "@/lib/i18n";
+import { useTranslation } from "@/lib/i18n/server";
 import ViewTransition from "@/components/atomic/ViewTransition";
 import BlockTitle from "@/components/atomic/BlockTitle";
 import TransitionButtonish from "@/components/molecules/TransitionButtonish";
@@ -17,6 +16,8 @@ import Cover from "@/components/molecules/Cover";
 import FullwidthWithNav from "@/components/templates/FullwidthWithNav";
 import styles from "./styles.module.css";
 import { env } from "@/env";
+import { getPathname } from "@/lib/i18n/navigation";
+import { getLocale } from "next-intl/server";
 
 interface TourSummaryProps {
   tour: string;
@@ -24,10 +25,9 @@ interface TourSummaryProps {
 
 const TourSummary: FC<TourSummaryProps> = async ({ tour }) => {
   const { t } = await useTranslation();
-  const url = `${env.NEXT_PUBLIC_BASE_URL}${addLocaleUriSegment(
-    getLocale(),
-    `/tours/${tour}`
-  )}`;
+  const locale = await getLocale();
+  const path = getPathname({ href: { pathname: `/tours/${tour}` }, locale });
+  const url = new URL(path, env.NEXT_PUBLIC_BASE_URL).toString();
 
   return (
     <FullwidthWithNav

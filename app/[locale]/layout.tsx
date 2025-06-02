@@ -1,10 +1,13 @@
 import "@/styles/styles.scss";
 import { FunctionComponent, PropsWithChildren } from "react";
+import { hasLocale } from "next-intl";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { ViewTransitions } from "next-view-transitions";
 import StyledComponentsRegistry from "@rubin-epo/epo-react-lib/StyledComponentsRegistry";
 import { SourceSansPro } from "@/lib/fonts";
 import { fallbackLng, languages } from "@/lib/i18n/settings";
+import { routing } from "@/lib/i18n/routing";
 import { serverTranslation } from "@/lib/i18n/server";
 import I18NextClientProvider from "@/contexts/i18next";
 import SkeletonGlobal from "@/components/organisms/SkeletonGlobal";
@@ -53,6 +56,10 @@ const RootLayout: FunctionComponent<PropsWithChildren<RootProps>> = ({
   children,
   params: { locale = fallbackLng },
 }) => {
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
   return (
     <ViewTransitions>
       <html lang={locale}>

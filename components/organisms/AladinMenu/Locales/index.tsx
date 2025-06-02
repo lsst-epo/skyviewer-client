@@ -1,31 +1,34 @@
 "use client";
-import { FC } from "react";
+import { FC, useEffect, useTransition } from "react";
 import { useTranslation } from "react-i18next";
-import { fallbackLng, languages } from "@/lib/i18n/settings";
-import { usePathname, useRouter } from "next/navigation";
+import { languages } from "@/lib/i18n/settings";
+import { redirect, usePathname, useRouter } from "@/lib/i18n/navigation";
 import { MenuItemRadio } from "@rubin-epo/epo-react-lib/SlideoutMenu";
 import Submenu from "../Submenu";
+import { useLocale } from "next-intl";
 
 const LocalesMenu: FC = () => {
+  const [isPending, startTransition] = useTransition();
+  const currentLocale = useLocale();
   const {
     t,
-    i18n: { language, changeLanguage },
+    i18n: { changeLanguage },
   } = useTranslation();
   const pathname = usePathname();
   const router = useRouter();
 
+  useEffect(() => {
+    if (!isPending) {
+      changeLanguage(currentLocale);
+      router.refresh();
+    }
+  }, [isPending]);
+
   const handleLocaleChange = (locale: string) => {
-    if (locale !== language) {
-      const parts = pathname?.split("/") || [];
-      parts.shift();
-
-      if (language !== fallbackLng) {
-        parts.shift();
-      }
-
-      const route = `/${locale}/${parts.join("/")}`;
-      changeLanguage(locale);
-      router.push(route);
+    if (locale !== currentLocale) {
+      startTransition(() => {
+        redirect({ href: { pathname }, locale, forcePrefix: true });
+      });
     }
   };
 
@@ -40,7 +43,7 @@ const LocalesMenu: FC = () => {
           return (
             <MenuItemRadio
               key={locale}
-              isChecked={locale === language}
+              isChecked={locale === currentLocale}
               onCheckCallback={(close) => {
                 handleLocaleChange(locale);
 
@@ -48,8 +51,9 @@ const LocalesMenu: FC = () => {
                   setOpen(false);
                 }
               }}
-              text={t(`menu.locales.options.${locale}`)}
-            />
+            >
+              {t(`menu.locales.options.${locale}`)}
+            </MenuItemRadio>
           );
         })
       }
