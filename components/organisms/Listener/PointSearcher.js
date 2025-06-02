@@ -39,8 +39,8 @@ class PointSearcher {
   }
 
   async getPoints() {
-    const queryRadius = parameters.queryFOVFactor * parameters.fovRadius;
-    const queryMag = linearMap(
+    parameters.queryRadius = parameters.queryFOVFactor * parameters.fovRadius;
+    parameters.queryMag = linearMap(
       parameters.fovRadius,
       parameters.fovLimits.max,
       parameters.fovLimits.min,
