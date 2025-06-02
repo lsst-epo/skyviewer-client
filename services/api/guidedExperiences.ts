@@ -1,7 +1,7 @@
 import z from "zod";
 import { graphql } from "@/gql";
+import { getLocale } from "next-intl/server";
 import queryAPI from "@/services/api/client";
-import { getLocale } from "@/lib/i18n/server";
 import { siteFromLocale } from "@/lib/i18n/site";
 import { MinimalAssetSchema } from "@/lib/schema/canto";
 
@@ -23,7 +23,7 @@ const guidedExperiencesSchema = z.array(
 );
 
 export const getGuidedExperiences = async () => {
-  const site = siteFromLocale(getLocale());
+  const site = siteFromLocale(await getLocale());
 
   const Query = graphql(`
     query GuidedExperiencesPage($site: [String]) {
@@ -75,7 +75,7 @@ export const getGuidedExperiences = async () => {
 };
 
 export const getTourCount = async (category: string): Promise<number> => {
-  const site = siteFromLocale(getLocale());
+  const site = siteFromLocale(await getLocale());
 
   const Query = graphql(`
     query TourCount($site: [String], $section: [String]) {

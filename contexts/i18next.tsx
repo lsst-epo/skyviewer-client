@@ -1,4 +1,5 @@
 "use client";
+import { NextIntlClientProvider } from "next-intl";
 import useClientTranslation from "@/lib/i18n/client";
 import { fallbackLng } from "@/lib/i18n/settings";
 import { FunctionComponent, PropsWithChildren } from "react";
@@ -9,7 +10,11 @@ const I18NextClientProvider: FunctionComponent<
 > = ({ locale = fallbackLng, children }) => {
   const { i18n } = useClientTranslation(locale);
 
-  return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
+  return (
+    <NextIntlClientProvider locale={locale}>
+      <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
+    </NextIntlClientProvider>
+  );
 };
 
 I18NextClientProvider.displayName = "i18next.Provider";

@@ -1,7 +1,8 @@
 "use client";
 import { FC, PropsWithChildren } from "react";
 import { useTranslation } from "react-i18next";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, usePathname } from "@/lib/i18n/navigation";
+import { useSearchParams } from "next/navigation";
 import { useMediaQuery } from "usehooks-ts";
 import { NextStep, NextStepProvider, type Tour } from "nextstepjs";
 import { completeTutorial, steps, tourTutorialTitle } from "@/lib/tutorial";

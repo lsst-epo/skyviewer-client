@@ -4,13 +4,13 @@ import { Link } from "next-view-transitions";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 import { MinimalAsset } from "@/lib/schema/canto";
 import { assetAlt } from "@/lib/canto/metadata";
-import { addLocaleUriSegment } from "@/lib/i18n";
 import { useTranslation } from "@/lib/i18n/server";
 import DotMeter from "@/components/molecules/DotMeter";
 import ViewTransition from "@/components/atomic/ViewTransition";
 import TourAttributes from "../TourAttributes";
 import styles from "./styles.module.css";
 import ThumbnailImage from "@/components/molecules/ThumbnailImage";
+import { getPathname } from "@/lib/i18n/navigation";
 
 interface TourCardProps {
   title?: ReactNode;
@@ -39,7 +39,7 @@ const TourCard: FC<TourCardProps> = async ({
   const titleWithLink = uri ? (
     <Link
       className={styles.link}
-      href={addLocaleUriSegment(locale, uri)}
+      href={getPathname({ href: { pathname: uri }, locale })}
       prefetch
     >
       {title}

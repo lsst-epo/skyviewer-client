@@ -1,7 +1,7 @@
 "server-only";
 import z from "zod";
 import { graphql } from "@/gql";
-import { getLocale } from "@/lib/i18n/server";
+import { getLocale } from "next-intl/server";
 import { siteFromLocale } from "@/lib/i18n/site";
 import queryAPI from "@/services/api/client";
 import { Poi, Tour, TourCard, TourInitial, TourMetadata } from "./schema";
@@ -56,7 +56,7 @@ export const getAllTours = async ({ locale }: { locale: string }) => {
 };
 
 export const getTourMetadata = async ({ slug }: { slug: string }) => {
-  const site = siteFromLocale(getLocale());
+  const site = siteFromLocale(await getLocale());
 
   const query = graphql(`
     query TourMetadata($site: [String], $slug: [String]) {
@@ -115,7 +115,7 @@ export const getTourMetadata = async ({ slug }: { slug: string }) => {
 };
 
 export const getTour = async ({ slug }: { slug: string }) => {
-  const site = siteFromLocale(getLocale());
+  const site = siteFromLocale(await getLocale());
 
   const query = graphql(`
     query Tour($site: [String], $slug: [String]) {
@@ -181,7 +181,7 @@ export const getTourInitial = async ({
   tour: string;
   offset: number;
 }) => {
-  const site = siteFromLocale(getLocale());
+  const site = siteFromLocale(await getLocale());
 
   const Query = graphql(`
     query TourInitial($site: [String], $slug: [String], $offset: Int) {
@@ -233,7 +233,7 @@ export const getTourInitial = async ({
 };
 
 export const getTourPois = async (tour: string) => {
-  const site = siteFromLocale(getLocale());
+  const site = siteFromLocale(await getLocale());
 
   const Query = graphql(`
     query TourPoi($site: [String], $slug: [String]) {
