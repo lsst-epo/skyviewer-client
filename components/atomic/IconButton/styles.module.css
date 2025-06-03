@@ -12,10 +12,12 @@
   pointer-events: initial;
   touch-action: manipulation;
 
-  --color-background-button: #313333;
-  --color-background-button-hover: #313333;
-  --color-text-button: var(--color-font-invert);
-  --color-outline-button: #0f8fff;
+  &[data-style-as="primary"] {
+    --color-background-button: #313333;
+    --color-background-button-hover: #313333;
+    --color-text-button: var(--color-font-invert);
+    --color-outline-button: #0f8fff;
+  }
 
   &[data-style-as="secondary"] {
     --color-background-button: #e6e6e6;

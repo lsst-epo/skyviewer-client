@@ -155,6 +155,7 @@ const CurrentPositionPopover: FC = () => {
             <pre>dec: {position?.formatted[1]}</pre>
           </Stack>
           <IconButton
+            styleAs="none"
             className={styles.copy}
             onClick={handleCopyLink}
             disabled={!position?.aladin}

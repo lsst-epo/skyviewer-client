@@ -35,7 +35,7 @@ const ExplorerControls: FC = () => {
         </ControlStack>
         <ControlStack position="bottom left">
           <FullscreenToggle />
-          <Share />
+          <Share embed />
         </ControlStack>
       </div>
       <ControlStack
