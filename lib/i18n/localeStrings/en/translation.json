@@ -49,7 +49,8 @@
       "step_0": "This is the southern sky above the observatory, which is located in Chile.",
       "step_1": "Move between the objects with the “next” and “back” buttons.",
       "step_2": "Share a stop along this tour with the “Share” button",
-      "step_3": "Press “next” to start the tour",
+      "step_3": "You can go to the Explorer from this menu or change other settings here.",
+      "step_4": "Press “next” to start the tour",
       "skip": "Skip tutorial",
       "complete": "Got it!",
       "current_step": "{{step}} of {{total}}"
@@ -152,7 +153,8 @@
           "s": "Sexagesimal"
         },
         "example": "Ex. {{example}}"
-      }
+      },
+      "clear": "Clear all settings"
     },
     "quick-access": {
       "title": "Quick Access",
