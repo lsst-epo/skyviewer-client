@@ -1,4 +1,4 @@
-import testPoints from "./ngvs_test_fakestars_modified.json";
+import testPoints from "./testPoints";
 import parameters from "./parameters";
 import { linearMap, mapValueToHue } from "./utilities";
 
