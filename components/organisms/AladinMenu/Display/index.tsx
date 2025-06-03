@@ -1,12 +1,12 @@
 "use client";
 import { FC } from "react";
+import { IoIosClose, IoIosSettings } from "react-icons/io";
 import { MenuItem } from "@rubin-epo/epo-react-lib/SlideoutMenu";
 import { useTranslation } from "react-i18next";
 import Submenu from "../Submenu";
 import { SurveyLayer } from "@/lib/schema/survey";
 import Layers from "./Layers";
 import CoordinateFormat from "./CoordinateFormat";
-import { IoIosSettings } from "react-icons/io";
 
 interface DisplayMenuProps {
   layers?: Array<SurveyLayer>;
@@ -17,6 +17,7 @@ const DisplayMenu: FC<DisplayMenuProps> = ({ layers }) => {
 
   const handleClearSettings = () => {
     localStorage.clear();
+    window.location.reload();
   };
 
   return (
@@ -27,9 +28,12 @@ const DisplayMenu: FC<DisplayMenuProps> = ({ layers }) => {
     >
       {layers && <Layers layers={layers} />}
       <CoordinateFormat />
-      <MenuItem type="button" onClick={handleClearSettings}>
-        Clear settings
-      </MenuItem>
+      <MenuItem
+        type="button"
+        onClick={handleClearSettings}
+        text={t("menu.display.clear")}
+        icon={<IoIosClose />}
+      />
     </Submenu>
   );
 };

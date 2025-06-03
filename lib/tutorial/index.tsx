@@ -1,6 +1,5 @@
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 import { type Step, useNextStep } from "nextstepjs";
-import { useMediaQuery } from "usehooks-ts";
 
 export const tourTutorialTitle = "tourTutorial";
 
@@ -35,6 +34,14 @@ export const steps: Array<Step> = [
     ...commonProps,
     icon: null,
     title: "Step 4",
+    content: null,
+    selector: "header > button",
+    side: "top-left",
+  },
+  {
+    ...commonProps,
+    icon: null,
+    title: "Step 5",
     content: null,
     selector: "#nextButton",
   },
