@@ -24,7 +24,6 @@
   backdrop-filter: blur(2px);
   color: var(--color-font-invert);
   width: 100%;
-  /* opacity: 0; */
   padding: var(--size-spacing-s);
   transform: translateY(100%);
   transition: var(--time-transition-slow) transform,
