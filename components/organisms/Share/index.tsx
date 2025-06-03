@@ -4,7 +4,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { IoIosClose, IoIosCode, IoMdShare } from "react-icons/io";
+import { IoIosClose, IoMdShare } from "react-icons/io";
 import { FaXTwitter, FaFacebookF, FaLinkedinIn } from "react-icons/fa6";
 import { BsEnvelope } from "react-icons/bs";
 import {
@@ -233,8 +233,13 @@ const Share: FC<ShareProps> = ({
 
     if (embed) {
       buttons.push({
-        label: "Embed",
-        item: <EmbedButton label="Embed" onShare={close} />,
+        label: t("menu.share.options.embed.cta"),
+        item: (
+          <EmbedButton
+            label={t("menu.share.options.embed.cta")}
+            onShare={close}
+          />
+        ),
       });
     }
 

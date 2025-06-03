@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Switch as BaseSwitch, SwitchProps } from "@headlessui/react";
+import { Switch as BaseSwitch, type SwitchProps } from "@headlessui/react";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 

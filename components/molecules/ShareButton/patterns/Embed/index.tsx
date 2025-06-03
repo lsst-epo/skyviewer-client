@@ -1,11 +1,11 @@
 "use client";
-import { IoIosCode } from "react-icons/io";
+import { IoIosCode, IoIosClose } from "react-icons/io";
 import ShareButton from "../..";
 import { forwardRef, MouseEventHandler, useState } from "react";
-import { Dialog, DialogPanel } from "@headlessui/react";
+import { CloseButton, Dialog, DialogPanel } from "@headlessui/react";
+import Center from "@rubin-epo/epo-react-lib/Center";
 import EmbedGenerator from "@/components/molecules/EmbedGenerator";
 import styles from "./styles.module.css";
-import Center from "@rubin-epo/epo-react-lib/Center";
 
 interface EmbedProps {
   onShare: () => void;
@@ -21,8 +21,6 @@ const EmbedButton = forwardRef<HTMLButtonElement, EmbedProps>(
       setOpen(true);
     };
 
-    const handleClose = () => {};
-
     return (
       <>
         <ShareButton
@@ -34,6 +32,9 @@ const EmbedButton = forwardRef<HTMLButtonElement, EmbedProps>(
         <Dialog open={open} className={styles.dialog} onClose={setOpen}>
           <Center maxWidth="50ch" gutter="var(--size-spacing-xs)">
             <DialogPanel className={styles.panel}>
+              <CloseButton className={styles.close}>
+                <IoIosClose size="1.5em" />
+              </CloseButton>
               <EmbedGenerator />
             </DialogPanel>
           </Center>
