@@ -50,4 +50,6 @@ const ExplorerPage: FC<WithSearchParams<RootProps>> = async ({
   );
 };
 
+export const dynamic = "force-dynamic";
+
 export default ExplorerPage;

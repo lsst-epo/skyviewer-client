@@ -38,4 +38,6 @@ const EmbeddedPage: FunctionComponent<WithSearchParams<RootProps>> = async ({
   );
 };
 
+export const dynamic = "force-dynamic";
+
 export default EmbeddedPage;
