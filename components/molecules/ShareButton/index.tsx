@@ -9,6 +9,7 @@ const ShareButton = forwardRef<
 >(({ className, text, children, ...props }, ref) => {
   return (
     <IconButton
+      styleAs="none"
       className={clsx(styles.shareButton, className)}
       {...{ text, ref, ...props }}
     />

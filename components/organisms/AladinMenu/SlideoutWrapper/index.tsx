@@ -18,6 +18,7 @@ const SlideoutWrapper: FC<PropsWithChildren<{ className?: string }>> = ({
   return (
     <>
       <IconButton
+        styleAs="none"
         className={styles.button}
         id="menuToggle"
         icon={<IoMenu />}

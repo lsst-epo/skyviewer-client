@@ -1,0 +1,47 @@
+.embed {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--size-spacing-2xs);
+}
+
+.description {
+  font-size: 80%;
+}
+
+.output {
+  --size-gap-output: var(--size-spacing-3xs);
+  --size-height-output: calc(4lh + calc(var(--size-gap-output) * 2));
+
+  background-color: var(--color-rubin-gray-300);
+  border: 1px solid currentColor;
+  padding: var(--size-gap-output);
+  min-height: var(--size-height-output);
+  height: var(--size-height-output);
+  max-height: 50dvh;
+  font-size: 80%;
+  overflow-y: scroll;
+  scrollbar-color: currentColor transparent;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+  resize: vertical;
+}
+
+.buttons {
+  display: flex;
+  gap: var(--size-spacing-stack);
+}
+
+.caption {
+  font-size: 80%;
+}
