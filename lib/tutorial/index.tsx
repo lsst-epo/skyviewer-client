@@ -45,11 +45,6 @@ const stripIdSelector = (selector?: string) => {
 };
 
 export const useStep = (stepIndex: number) => {
-  const matches = useMediaQuery("width < 1130px", {
-    defaultValue: false,
-    initializeWithValue: false,
-  });
-
   const { currentStep, currentTour } = useNextStep();
   const step = steps[stepIndex];
 
@@ -62,8 +57,8 @@ export const useStep = (stepIndex: number) => {
 const tutorialSessionKey = "hasCompletedTutorial";
 
 export const hasCompletedTutorial = () => {
-  return sessionStorage.getItem(tutorialSessionKey) === "true";
+  return localStorage.getItem(tutorialSessionKey) === "true";
 };
 export const completeTutorial = () => {
-  sessionStorage.setItem(tutorialSessionKey, "true");
+  localStorage.setItem(tutorialSessionKey, "true");
 };
