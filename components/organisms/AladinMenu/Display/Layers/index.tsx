@@ -1,4 +1,4 @@
-import { Description, Field, Label, Switch } from "@headlessui/react";
+import { Description, Field, Label } from "@headlessui/react";
 import { MenuGroup } from "@rubin-epo/epo-react-lib/SlideoutMenu";
 import { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -6,6 +6,7 @@ import { useAladin } from "@/contexts/Aladin";
 import { SurveyLayer } from "@/lib/schema/survey";
 import { fadeLayer } from "@/lib/aladin/animation";
 import styles from "./styles.module.css";
+import Switch from "@/components/atomic/Switch";
 
 type ToggleState = Record<string, boolean>;
 interface LayersProps {
@@ -79,7 +80,6 @@ const Layers: FC<LayersProps> = ({ layers }) => {
               {!isLast && (
                 <Switch
                   style={{ "--time-duration-toggle": duration }}
-                  className={styles.switch}
                   onChange={(checked) => handleToggle(checked, layer)}
                   checked={!!toggles[id]}
                 />

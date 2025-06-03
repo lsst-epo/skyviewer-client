@@ -8,7 +8,7 @@ import classNames from "clsx/lite";
 import styles from "./styles.module.css";
 
 export interface IconButtonProps extends ComponentProps<"button"> {
-  styleAs?: "primary" | "secondary";
+  styleAs?: "primary" | "secondary" | "none";
   text: string;
   icon: ReactNode;
 }

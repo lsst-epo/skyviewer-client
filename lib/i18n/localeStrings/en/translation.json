@@ -136,7 +136,19 @@
         "url": "Get URL",
         "facebook": "Facebook",
         "twitterX": "X",
-        "linkedin": "LinkedIn"
+        "linkedin": "LinkedIn",
+        "embed": {
+          "cta": "Embed",
+          "current_position": {
+            "label": "Use current position",
+            "description": "Enabling this will initialize the embed at your current position and zoom level"
+          },
+          "preview": "Preview the embed",
+          "preview_title": "Preview Skyviewer Embed",
+          "copy": "Copy the embed",
+          "copied": "Copied!",
+          "instructions": "Paste this code block into your sites HTML to display an embedded version of the Skyviewer"
+        }
       }
     },
     "display": {

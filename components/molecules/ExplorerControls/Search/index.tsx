@@ -185,6 +185,7 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
   return (
     <>
       <IconButton
+        styleAs="none"
         text={t("menu.search.open")}
         onClick={toggleSearchBar}
         icon={<IoSearchOutline />}

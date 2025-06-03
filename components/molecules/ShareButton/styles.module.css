@@ -15,6 +15,7 @@
 
   --color-background-button: var(--color-rubin-teal-300);
   --color-background-button-hover: var(--color-rubin-teal-600);
+  --color-outline-button: #0f8fff;
 }
 
 .twitter {
