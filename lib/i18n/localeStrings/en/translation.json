@@ -47,9 +47,9 @@
     "title": "Astronomical Tours",
     "tutorial": {
       "step_0": "This is the southern sky above the observatory, which is located in Chile.",
-      "step_1": "Move between the objects with the “next” and “back” buttons. You can also pause and resume the tours.",
-      "step_2": "Share your favorite objects with the world using the “Share” button",
-      "step_3": "Let’s start the tour by hitting the button “Next”",
+      "step_1": "Move between the objects with the “next” and “back” buttons.",
+      "step_2": "Share a stop along this tour with the “Share” button",
+      "step_3": "Press “next” to start the tour",
       "skip": "Skip tutorial",
       "complete": "Got it!",
       "current_step": "{{step}} of {{total}}"
@@ -80,8 +80,8 @@
     "fullscreen_open": "Open in fullscreen",
     "fullscreen_close": "Exit fullscreen",
     "return_to_initial": "Return to initial view",
-    "view_scale": "You are looking at <1>{{fraction}}</1> of Rubin's footprint",
-    "view_scale_announce": "You are looking at {{fraction}} of Rubin's footprint"
+    "view_scale": "You are looking at <1>~{{fraction}}</1> of Rubin's field of view",
+    "view_scale_announce": "You are looking at ~{{fraction}} of Rubin's field of view"
   },
   "menu": {
     "search": {

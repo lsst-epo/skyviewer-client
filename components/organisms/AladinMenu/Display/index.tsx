@@ -1,5 +1,6 @@
 "use client";
 import { FC } from "react";
+import { MenuItem } from "@rubin-epo/epo-react-lib/SlideoutMenu";
 import { useTranslation } from "react-i18next";
 import Submenu from "../Submenu";
 import { SurveyLayer } from "@/lib/schema/survey";
@@ -13,6 +14,11 @@ interface DisplayMenuProps {
 
 const DisplayMenu: FC<DisplayMenuProps> = ({ layers }) => {
   const { t } = useTranslation();
+
+  const handleClearSettings = () => {
+    localStorage.clear();
+  };
+
   return (
     <Submenu
       title={t("menu.display.title")}
@@ -21,6 +27,9 @@ const DisplayMenu: FC<DisplayMenuProps> = ({ layers }) => {
     >
       {layers && <Layers layers={layers} />}
       <CoordinateFormat />
+      <MenuItem type="button" onClick={handleClearSettings}>
+        Clear settings
+      </MenuItem>
     </Submenu>
   );
 };
