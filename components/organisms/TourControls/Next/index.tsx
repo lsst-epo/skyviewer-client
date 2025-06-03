@@ -7,7 +7,7 @@ import TourControl from "@/components/molecules/TourControl";
 import styles from "./styles.module.css";
 
 const TourNext: FC = () => {
-  const { id, active } = useStep(3);
+  const { id, active } = useStep(4);
   const { t } = useTranslation();
   const { nextPoi, isPending } = useTour();
 
