@@ -1,0 +1,27 @@
+.dialog {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.panel {
+  background-color: rgba(0 0 0 / 70%);
+  backdrop-filter: blur(2px);
+  color: var(--color-font-invert);
+  width: 100%;
+  padding: var(--size-spacing-s);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-spacing-3xs);
+}
+
+.close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  align-self: end;
+}

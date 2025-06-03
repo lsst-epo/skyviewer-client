@@ -1,3 +1,5 @@
+/* stylelint-disable-line declaration-no-important */
+
 .dialog {
   position: absolute;
   inset: 0;
@@ -31,10 +33,9 @@
   --color-background-button: transparent;
   --color-background-button-hover: var(--color-rubin-gray-100);
   --color-outline-button: transparent;
+  --color-text-button: var(--color-font-primary);
 
-  color: var(--color-font-primary);
-  aspect-ratio: unset;
-  border-radius: 0;
+  border-radius: 0 !important;
   height: auto;
 
   & > svg {

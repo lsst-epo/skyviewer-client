@@ -22,6 +22,7 @@ import WithButtonLabel from "@/components/atomic/WithButtonLabel";
 import IconButton from "@/components/atomic/IconButton";
 import LinkToView from "@/components/molecules/ShareButton/patterns/LinkToView";
 import GetImageButton from "@/components/molecules/ShareButton/patterns/DownloadImage";
+import EmbedButton from "@/components/molecules/ShareButton/patterns/Embed";
 import styles from "./styles.module.css";
 
 type Side = "top" | "bottom";
@@ -34,6 +35,7 @@ interface ShareProps {
   email?: boolean;
   image?: boolean;
   link?: boolean;
+  embed?: boolean;
   position?: `${Side} ${Alignment}`;
 }
 
@@ -44,6 +46,7 @@ const Share: FC<ShareProps> = ({
   email = true,
   link = true,
   image = true,
+  embed = false,
   position = "top right",
   url,
 }) => {
@@ -223,6 +226,18 @@ const Share: FC<ShareProps> = ({
           <GetImageButton
             label={t("menu.share.options.image.cta")}
             onShare={onImageShare}
+          />
+        ),
+      });
+    }
+
+    if (embed) {
+      buttons.push({
+        label: t("menu.share.options.embed.cta"),
+        item: (
+          <EmbedButton
+            label={t("menu.share.options.embed.cta")}
+            onShare={close}
           />
         ),
       });
