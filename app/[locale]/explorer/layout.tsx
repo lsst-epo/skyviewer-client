@@ -17,4 +17,6 @@ const ExplorerLayout: FC<PropsWithChildren> = ({ children }) => {
   return <>{children}</>;
 };
 
+export const dynamic = "force-dynamic";
+
 export default ExplorerLayout;

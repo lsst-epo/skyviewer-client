@@ -51,5 +51,6 @@ const Tour: FunctionComponent<WithSearchParams<TourProps>> = async ({
     </AladinTemplate>
   );
 };
+export const dynamic = "force-dynamic";
 
 export default Tour;
