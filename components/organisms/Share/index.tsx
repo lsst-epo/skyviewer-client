@@ -4,7 +4,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { IoIosClose, IoMdShare } from "react-icons/io";
+import { IoIosClose, IoIosCode, IoMdShare } from "react-icons/io";
 import { FaXTwitter, FaFacebookF, FaLinkedinIn } from "react-icons/fa6";
 import { BsEnvelope } from "react-icons/bs";
 import {
@@ -22,6 +22,7 @@ import WithButtonLabel from "@/components/atomic/WithButtonLabel";
 import IconButton from "@/components/atomic/IconButton";
 import LinkToView from "@/components/molecules/ShareButton/patterns/LinkToView";
 import GetImageButton from "@/components/molecules/ShareButton/patterns/DownloadImage";
+import EmbedButton from "@/components/molecules/ShareButton/patterns/Embed";
 import styles from "./styles.module.css";
 
 type Side = "top" | "bottom";
@@ -34,6 +35,7 @@ interface ShareProps {
   email?: boolean;
   image?: boolean;
   link?: boolean;
+  embed?: boolean;
   position?: `${Side} ${Alignment}`;
 }
 
@@ -44,6 +46,7 @@ const Share: FC<ShareProps> = ({
   email = true,
   link = true,
   image = true,
+  embed = false,
   position = "top right",
   url,
 }) => {
@@ -225,6 +228,13 @@ const Share: FC<ShareProps> = ({
             onShare={onImageShare}
           />
         ),
+      });
+    }
+
+    if (embed) {
+      buttons.push({
+        label: "Embed",
+        item: <EmbedButton label="Embed" onShare={close} />,
       });
     }
 

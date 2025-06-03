@@ -1,0 +1,25 @@
+.embed {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.description {
+  font-size: 80%;
+}
+
+.output {
+  border: 1px solid currentColor;
+  padding: var(--size-spacing-3xs);
+  font-size: 80%;
+}
