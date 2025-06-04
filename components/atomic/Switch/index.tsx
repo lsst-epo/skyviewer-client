@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Switch as BaseSwitch, type SwitchProps } from "@headlessui/react";
-import clsx from "clsx";
+
+import clsx from "clsx/lite";
 import styles from "./styles.module.css";
 
 const Switch: FC<SwitchProps> = ({ className, ...props }) => {

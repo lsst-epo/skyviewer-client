@@ -8,16 +8,16 @@ import {
   FacebookButton,
   TwitterXButton,
 } from "@rubin-epo/epo-react-lib/Share";
+import { getLocale } from "next-intl/server";
 import { useTranslation } from "@/lib/i18n/server";
 import ViewTransition from "@/components/atomic/ViewTransition";
 import BlockTitle from "@/components/atomic/BlockTitle";
 import TransitionButtonish from "@/components/molecules/TransitionButtonish";
 import Cover from "@/components/molecules/Cover";
 import FullwidthWithNav from "@/components/templates/FullwidthWithNav";
-import styles from "./styles.module.css";
 import { env } from "@/env";
 import { getPathname } from "@/lib/i18n/navigation";
-import { getLocale } from "next-intl/server";
+import styles from "./styles.module.css";
 
 interface TourSummaryProps {
   tour: string;

@@ -8,11 +8,11 @@ import {
   useEffect,
   useState,
 } from "react";
-import { useRouter } from "@/lib/i18n/navigation";
 import { useSearchParams } from "next/navigation";
 import { useAudioPlayerContext } from "react-use-audio-player";
-import { getTourPois } from "@/services/api/tours";
 import { useAladin } from "./Aladin";
+import { getTourPois } from "@/services/api/tours";
+import { useRouter } from "@/lib/i18n/navigation";
 import { isAtLocation } from "@/lib/aladin/helpers";
 import { adjustPositionForScreen, panAndZoom } from "@/lib/aladin/animation";
 

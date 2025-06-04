@@ -1,6 +1,6 @@
+import { useEventListener } from "usehooks-ts";
 import { useAladin } from "@/contexts/Aladin";
 import { pan } from "@/lib/aladin/animation";
-import { useEventListener } from "usehooks-ts";
 
 const useAladinKeyboardControls = () => {
   const { aladin, hasFocus } = useAladin();

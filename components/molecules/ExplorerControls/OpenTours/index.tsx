@@ -1,7 +1,7 @@
 "use client";
 import { FC } from "react";
-import IconButton from "@/components/atomic/IconButton";
 import { useTranslation } from "react-i18next";
+import IconButton from "@/components/atomic/IconButton";
 import IconComposer from "@/components/svg/IconComposer";
 import { getPathname } from "@/lib/i18n/navigation";
 

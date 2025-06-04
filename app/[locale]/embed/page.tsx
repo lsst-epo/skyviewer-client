@@ -1,11 +1,11 @@
 import { FunctionComponent } from "react";
 import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
 import AladinTemplate from "@/components/templates/Aladin";
 import EmbeddedExplorer from "@/components/organisms/Embedded";
 import CurrentPositionPopover from "@/components/organisms/CurrentPositionPopover";
 import { initialPosition } from "@/lib/helpers";
 import { getEmbedPage } from "@/services/api/embed";
-import { setRequestLocale } from "next-intl/server";
 
 const EmbeddedPage: FunctionComponent<WithSearchParams<RootProps>> = async ({
   params: { locale },

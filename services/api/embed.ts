@@ -1,10 +1,10 @@
 "server-only";
+import { z } from "zod";
 import { graphql } from "@/gql";
 import queryAPI from "@/services/api/client";
 import { siteFromLocale } from "@/lib/i18n/site";
 import { surveyLayerSchema } from "@/lib/schema/survey";
 import { ra, dec, fov } from "@/lib/schema/astro";
-import { z } from "zod";
 
 const embedSchema = z
   .object({

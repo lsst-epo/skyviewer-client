@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
 import { getGuidedExperiences } from "@/services/api/guidedExperiences";
 import GuidedExperiencesPage from "@/components/pages/GuidedExperiences";
-import { setRequestLocale } from "next-intl/server";
 
 const GuidedExperiences: FC<RootProps> = async ({ params: { locale } }) => {
   setRequestLocale(locale);

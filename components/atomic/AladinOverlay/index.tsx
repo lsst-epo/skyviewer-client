@@ -1,8 +1,8 @@
 "use client";
 import { FunctionComponent, PropsWithChildren } from "react";
-import classNames, { clsx } from "clsx/lite";
-import styles from "./styles.module.css";
+import clsx from "clsx/lite";
 import { useAladin } from "@/contexts/Aladin";
+import styles from "./styles.module.css";
 
 interface AladinOverlayProps {
   space?: string;
@@ -20,7 +20,7 @@ const AladinOverlay: FunctionComponent<
       className={clsx(styles.aladinOverlay, wrapperClassName)}
       data-loaded={!isLoading}
     >
-      <div className={classNames(styles.aladinOverlayInner, className)}>
+      <div className={clsx(styles.aladinOverlayInner, className)}>
         {children}
       </div>
     </div>

@@ -1,11 +1,11 @@
 "use client";
 import { FC, useEffect, useTransition } from "react";
 import { useTranslation } from "react-i18next";
+import { MenuItemRadio } from "@rubin-epo/epo-react-lib/SlideoutMenu";
+import { useLocale } from "next-intl";
+import Submenu from "../Submenu";
 import { languages } from "@/lib/i18n/settings";
 import { redirect, usePathname, useRouter } from "@/lib/i18n/navigation";
-import { MenuItemRadio } from "@rubin-epo/epo-react-lib/SlideoutMenu";
-import Submenu from "../Submenu";
-import { useLocale } from "next-intl";
 
 const LocalesMenu: FC = () => {
   const [isPending, startTransition] = useTransition();
