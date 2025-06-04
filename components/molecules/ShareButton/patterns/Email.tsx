@@ -1,8 +1,8 @@
 "use client";
 import { forwardRef } from "react";
 import { EmailShareButton } from "react-share";
-import IconComposer from "@/components/svg/IconComposer";
 import { useTranslation } from "react-i18next";
+import IconComposer from "@/components/svg/IconComposer";
 import WithButtonLabel from "@/components/atomic/WithButtonLabel";
 import styles from "../styles.module.css";
 

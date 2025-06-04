@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import IconButton from "@/components/atomic/IconButton";
-import styles from "./styles.module.css";
 import parameters from "@/components/organisms/Listener/parameters";
+import styles from "./styles.module.css";
 
 const PlayPauseButton = () => {
   const [isPlaying, setIsPlaying] = useState(false);

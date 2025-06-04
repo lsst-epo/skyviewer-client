@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
-import TourSummary from "@/components/pages/TourSummary";
 import { setRequestLocale } from "next-intl/server";
+import TourSummary from "@/components/pages/TourSummary";
 
 const SummaryPage: FunctionComponent<TourProps> = ({
   params: { tour, locale },

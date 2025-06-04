@@ -1,9 +1,9 @@
 "use client";
 import { IoIosCode, IoIosClose } from "react-icons/io";
-import ShareButton from "../..";
 import { forwardRef, MouseEventHandler, useState } from "react";
 import { CloseButton, Dialog, DialogPanel } from "@headlessui/react";
 import Center from "@rubin-epo/epo-react-lib/Center";
+import ShareButton from "../..";
 import EmbedGenerator from "@/components/molecules/EmbedGenerator";
 import styles from "./styles.module.css";
 

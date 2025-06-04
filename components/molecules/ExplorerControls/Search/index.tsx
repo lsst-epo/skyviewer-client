@@ -12,6 +12,8 @@ import {
 } from "motion/react";
 import { IoSearchOutline, IoClose } from "react-icons/io5";
 import Skeleton from "react-loading-skeleton";
+
+import clsx from "clsx/lite";
 import { useRouter } from "@/lib/i18n/navigation";
 import { viewAsParams } from "@/lib/aladin/helpers";
 import { position } from "@/lib/schema/astro";
@@ -19,7 +21,6 @@ import useAladinMove from "@/hooks/useAladinMove";
 import { useAladin } from "@/contexts/Aladin";
 import IconButton from "@/components/atomic/IconButton";
 import styles from "./styles.module.css";
-import clsx from "clsx";
 
 const TargetSchema = z
   .string()

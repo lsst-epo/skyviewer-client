@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import PropTypes from "prop-types";
-import Checkbox from "@/components/atomic/Checkbox";
 import Slider from "@rubin-epo/epo-react-lib/HorizontalSlider";
+import Checkbox from "@/components/atomic/Checkbox";
 import IconComposer from "@/components/svg/IconComposer";
 import FiltersMenu from "@/components/global/FiltersMenu";
 

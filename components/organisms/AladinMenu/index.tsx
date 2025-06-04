@@ -1,15 +1,15 @@
 import { FC, PropsWithChildren } from "react";
-import classnames from "clsx";
+import classnames from "clsx/lite";
 import { Link } from "next-view-transitions";
-import VisuallyHidden from "@/components/atomic/VisuallyHidden";
-import IconComposer from "@/components/svg/IconComposer";
-import styles from "./styles.module.css";
-import { useTranslation } from "@/lib/i18n/server";
+import { MenuGroup } from "@rubin-epo/epo-react-lib/SlideoutMenu";
 import SlideoutWrapper from "./SlideoutWrapper";
 import QuickAccess from "./QuickAccess";
 import LocalesMenu from "./Locales";
-import { MenuGroup } from "@rubin-epo/epo-react-lib/SlideoutMenu";
 import AboutMenu from "./About";
+import VisuallyHidden from "@/components/atomic/VisuallyHidden";
+import IconComposer from "@/components/svg/IconComposer";
+import { useTranslation } from "@/lib/i18n/server";
+import styles from "./styles.module.css";
 
 interface AladinMenuProps {
   closeUrl?: string;

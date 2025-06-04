@@ -3,9 +3,9 @@ import { FC, PropsWithChildren, useId, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { SlideoutMenu } from "@rubin-epo/epo-react-lib/SlideoutMenu";
 import { IoMenu } from "react-icons/io5";
+import clsx from "clsx/lite";
 import IconButton from "@/components/atomic/IconButton";
 import styles from "./styles.module.css";
-import clsx from "clsx";
 
 const SlideoutWrapper: FC<PropsWithChildren<{ className?: string }>> = ({
   children,

@@ -1,7 +1,7 @@
-import { getGuidedExperiences } from "@/services/api/guidedExperiences";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { FC, PropsWithChildren } from "react";
+import { getGuidedExperiences } from "@/services/api/guidedExperiences";
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getGuidedExperiences();

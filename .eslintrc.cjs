@@ -46,6 +46,20 @@ module.exports = {
         allowObject: true,
       },
     ],
+    "import/order": [
+      "error",
+      {
+        pathGroups: [
+          {
+            pattern: "*.module.{css,scss}",
+            group: "unknown",
+            patternOptions: { matchBase: true },
+            position: "after",
+          },
+        ],
+        // warnOnUnassignedImports: true,
+      },
+    ],
     "jsx-quotes": 2,
     "block-scoped-var": 0,
     "comma-dangle": 0,
@@ -101,6 +115,7 @@ module.exports = {
     "plugin:jsx-a11y/recommended",
     "plugin:react/recommended",
     "plugin:import/errors",
+    "plugin:import/typescript",
   ],
   overrides: [
     {
@@ -111,4 +126,10 @@ module.exports = {
       },
     },
   ],
+  settings: {
+    "import/resolver": {
+      typescript: true,
+      node: true,
+    },
+  },
 };

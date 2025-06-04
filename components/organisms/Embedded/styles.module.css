@@ -3,8 +3,15 @@
 }
 
 .viewScale {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+
   @media (--tablet-max) {
-    width: 100%;
+    position: static;
+    justify-self: stretch;
+    transform: none;
   }
 }
 
@@ -13,17 +20,6 @@
     position: relative;
     height: 100%;
     pointer-events: none;
-  }
-}
-
-.viewScaleContainer {
-  @media (--tablet-max) {
-    position: static;
-    justify-self: stretch;
-
-    &[data-horizontal] {
-      transform: none;
-    }
   }
 }
 

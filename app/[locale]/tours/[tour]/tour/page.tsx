@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { FunctionComponent } from "react";
 import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
 import { AudioPlayerProvider } from "@/contexts/AudioPlayer";
 import TourPage from "@/components/pages/Tour";
 import { getTourInitial, getTourPois } from "@/services/api/tours";
@@ -8,7 +9,6 @@ import { TourProvider } from "@/contexts/Tour";
 import AladinTemplate from "@/components/templates/Aladin";
 import TourTutorial from "@/components/organisms/TourTutorial";
 import AladinMenu from "@/components/organisms/AladinMenu";
-import { setRequestLocale } from "next-intl/server";
 
 const Tour: FunctionComponent<WithSearchParams<TourProps>> = async ({
   params: { locale, tour },

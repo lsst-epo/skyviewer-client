@@ -1,5 +1,5 @@
-import { roundToStep, simplifiedFraction } from "@/lib/utilities";
 import { describe, expect, it } from "vitest";
+import { roundToStep, simplifiedFraction } from "@/lib/utilities";
 
 describe(roundToStep, () => {
   const input = 102.32123123;

@@ -1,7 +1,7 @@
 "use client";
 import { TfiDownload } from "react-icons/tfi";
-import ShareButton from "..";
 import { forwardRef } from "react";
+import ShareButton from "..";
 
 interface GetImageProps {
   onShare: () => void;

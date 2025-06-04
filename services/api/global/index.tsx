@@ -1,8 +1,8 @@
+import { z } from "zod";
+import tagStore from "../tags";
 import { graphql } from "@/gql";
 import { siteFromLocale } from "@/lib/i18n/site";
 import queryAPI from "@/services/api/client";
-import tagStore from "../tags";
-import { z } from "zod";
 import { MinimalAssetSchema } from "@/lib/schema/canto";
 
 const logoSchema = z

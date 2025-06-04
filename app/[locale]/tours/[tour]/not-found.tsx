@@ -1,5 +1,5 @@
-import Cover from "@/components/molecules/Cover";
 import Buttonish from "@rubin-epo/epo-react-lib/Buttonish";
+import Cover from "@/components/molecules/Cover";
 
 const TourNotFound = () => {
   return (
