@@ -5,8 +5,8 @@ import { useTranslation } from "react-i18next";
 import { useAladin } from "@/contexts/Aladin";
 import { SurveyLayer } from "@/lib/schema/survey";
 import { fadeLayer } from "@/lib/aladin/animation";
-import styles from "./styles.module.css";
 import Switch from "@/components/atomic/Switch";
+import styles from "./styles.module.css";
 
 type ToggleState = Record<string, boolean>;
 interface LayersProps {

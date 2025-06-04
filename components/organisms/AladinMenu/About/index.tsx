@@ -1,13 +1,13 @@
 import { FC, Suspense } from "react";
 import Stack from "@rubin-epo/epo-react-lib/Stack";
 import { MenuGroup } from "@rubin-epo/epo-react-lib/SlideoutMenu";
+import Skeleton from "react-loading-skeleton";
 import Submenu from "../Submenu";
 import { getProperties } from "@/services/aladin";
 import { getGlobalData } from "@/services/api/global";
 import SurveyMetadata from "@/components/molecules/SurveyMetadata";
-import styles from "./styles.module.css";
 import { useTranslation } from "@/lib/i18n/server";
-import Skeleton from "react-loading-skeleton";
+import styles from "./styles.module.css";
 
 interface AboutProps {
   properties?: Array<string>;

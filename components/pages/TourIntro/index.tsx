@@ -14,8 +14,8 @@ import ThumbnailImage from "@/components/molecules/ThumbnailImage";
 import IntroContent from "@/components/molecules/IntroContent";
 import FactContent from "@/components/molecules/FactContent";
 import TransitionButtonish from "@/components/molecules/TransitionButtonish";
-import styles from "./styles.module.css";
 import { hasCompletedTutorial } from "@/lib/tutorial";
+import styles from "./styles.module.css";
 
 type TourIntroProps = NonNullable<Awaited<ReturnType<typeof getTour>>>;
 

@@ -2,9 +2,9 @@
 import { FunctionComponent } from "react";
 import { IoIosAdd, IoIosRemove } from "react-icons/io";
 
+import { useTranslation } from "react-i18next";
 import { useAladin } from "@/contexts/Aladin";
 import IconButton from "@/components/atomic/IconButton";
-import { useTranslation } from "react-i18next";
 
 const Zoom: FunctionComponent = () => {
   const { t } = useTranslation();

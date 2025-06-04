@@ -1,9 +1,9 @@
 "use client";
 import { FC } from "react";
-import IconButton from "@/components/atomic/IconButton";
-import { useAladin } from "@/contexts/Aladin";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 import { useTranslation } from "react-i18next";
+import IconButton from "@/components/atomic/IconButton";
+import { useAladin } from "@/contexts/Aladin";
 import useAladinMove from "@/hooks/useAladinMove";
 
 const ReturnToInital: FC = () => {

@@ -8,10 +8,10 @@ import {
 } from "@floating-ui/react-dom";
 
 import { useEventListener, useOnClickOutside } from "usehooks-ts";
-import useAladinEvent from "@/hooks/useAladinEvent";
 import { useTranslation } from "react-i18next";
 import Stack from "@rubin-epo/epo-react-lib/Stack";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
+import useAladinEvent from "@/hooks/useAladinEvent";
 import { useAladin } from "@/contexts/Aladin";
 import { frameMap, viewAsParams } from "@/lib/aladin/helpers";
 import IconButton from "@/components/atomic/IconButton";

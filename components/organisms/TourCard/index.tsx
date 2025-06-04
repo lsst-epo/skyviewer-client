@@ -2,15 +2,15 @@ import { FC, ReactNode } from "react";
 import clsx from "clsx/lite";
 import { Link } from "next-view-transitions";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
+import TourAttributes from "../TourAttributes";
 import { MinimalAsset } from "@/lib/schema/canto";
 import { assetAlt } from "@/lib/canto/metadata";
 import { useTranslation } from "@/lib/i18n/server";
 import DotMeter from "@/components/molecules/DotMeter";
 import ViewTransition from "@/components/atomic/ViewTransition";
-import TourAttributes from "../TourAttributes";
-import styles from "./styles.module.css";
 import ThumbnailImage from "@/components/molecules/ThumbnailImage";
 import { getPathname } from "@/lib/i18n/navigation";
+import styles from "./styles.module.css";
 
 interface TourCardProps {
   title?: ReactNode;

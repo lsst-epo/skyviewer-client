@@ -4,9 +4,9 @@ import { IoMdSkipForward } from "react-icons/io";
 
 import { type CardComponentProps } from "nextstepjs";
 import Stack from "@rubin-epo/epo-react-lib/Stack";
-import styles from "./styles.module.css";
 import { useTranslation } from "react-i18next";
 import clsx from "clsx/lite";
+import styles from "./styles.module.css";
 
 const TutorialCard: FC<CardComponentProps> = ({
   step,

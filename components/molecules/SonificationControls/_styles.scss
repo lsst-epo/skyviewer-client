@@ -23,11 +23,11 @@
     justify-content: center;
     width: var(--size-spacing-l);
     height: var(--size-spacing-l);
-    background-color: var(--color-font-primary);
     color: var(--color-font-invert);
+    pointer-events: initial;
+    background-color: var(--color-font-primary);
     border-radius: 50%;
     transition: background-color 0.4s color 0.4s;
-    pointer-events: initial;
 
     &:focus {
       outline: 2px solid var(--color-font-invert);

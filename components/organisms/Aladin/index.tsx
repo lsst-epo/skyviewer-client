@@ -10,11 +10,11 @@ import {
   useRef,
   useState,
 } from "react";
+import { useLocalStorage, useOnClickOutside } from "usehooks-ts";
 import staticAladinOptions, {
   defaultHiPSOptions,
 } from "@/fixtures/defaultAladinOptions";
 import { SurveyLayer } from "@/lib/schema/survey";
-import { useLocalStorage, useOnClickOutside } from "usehooks-ts";
 import AladinContext, { defaultValue } from "@/contexts/Aladin";
 import styles from "./styles.module.css";
 

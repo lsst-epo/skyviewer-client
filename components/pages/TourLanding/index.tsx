@@ -1,12 +1,12 @@
 import { FC } from "react";
 import { getImageProps } from "next/image";
 import { IoArrowBackSharp, IoArrowForwardSharp } from "react-icons/io5";
-import { getTourMetadata } from "@/services/api/tours";
-import { assetAlt } from "@/lib/canto/metadata";
-import { useTranslation } from "@/lib/i18n/server";
 import Center from "@rubin-epo/epo-react-lib/Center";
 import Stack from "@rubin-epo/epo-react-lib/Stack";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
+import { getTourMetadata } from "@/services/api/tours";
+import { assetAlt } from "@/lib/canto/metadata";
+import { useTranslation } from "@/lib/i18n/server";
 import ViewTransition from "@/components/atomic/ViewTransition";
 import TransitionButtonish from "@/components/molecules/TransitionButtonish";
 import DotMeter from "@/components/molecules/DotMeter";

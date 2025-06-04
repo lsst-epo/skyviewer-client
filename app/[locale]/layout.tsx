@@ -5,13 +5,13 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ViewTransitions } from "next-view-transitions";
 import StyledComponentsRegistry from "@rubin-epo/epo-react-lib/StyledComponentsRegistry";
+import Script from "next/script";
 import { SourceSansPro } from "@/lib/fonts";
 import { fallbackLng, languages } from "@/lib/i18n/settings";
 import { routing } from "@/lib/i18n/routing";
 import { serverTranslation } from "@/lib/i18n/server";
 import I18NextClientProvider from "@/contexts/i18next";
 import SkeletonGlobal from "@/components/organisms/SkeletonGlobal";
-import Script from "next/script";
 import { env } from "@/env";
 import { getGlobalData } from "@/services/api/global";
 

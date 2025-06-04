@@ -1,10 +1,10 @@
 "use client";
 
-import { useAladin } from "@/contexts/Aladin";
-import { fadeLayer } from "@/lib/aladin/animation";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 import { useSearchParams } from "next/navigation";
 import { FC, useRef, useState } from "react";
+import { fadeLayer } from "@/lib/aladin/animation";
+import { useAladin } from "@/contexts/Aladin";
 import styles from "./styles.module.css";
 
 const ToggleImageLayer: FC = () => {

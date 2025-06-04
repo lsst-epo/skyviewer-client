@@ -1,7 +1,7 @@
-import { fallbackLng } from "@/lib/i18n/settings";
-import { getExplorerPage } from "@/services/api/explorer";
 import { Metadata } from "next";
 import { FC, PropsWithChildren } from "react";
+import { fallbackLng } from "@/lib/i18n/settings";
+import { getExplorerPage } from "@/services/api/explorer";
 
 export const generateMetadata = async ({
   params: { locale = fallbackLng },

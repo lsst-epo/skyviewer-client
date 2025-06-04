@@ -1,13 +1,13 @@
-import { useAladin } from "@/contexts/Aladin";
 import {
   MenuGroup,
   MenuItemRadio,
 } from "@rubin-epo/epo-react-lib/SlideoutMenu";
 import { FC, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useAladin } from "@/contexts/Aladin";
 import { frameMap } from "@/lib/aladin/helpers";
-import styles from "./styles.module.css";
 import useAladinEvent from "@/hooks/useAladinEvent";
+import styles from "./styles.module.css";
 
 const CoordinateFormat: FC = () => {
   const [frame, setFrame] = useState<CooFrame>();

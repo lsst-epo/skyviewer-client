@@ -3,10 +3,10 @@ import clsx from "clsx/lite";
 import { TwitterShareButton } from "react-share";
 import { FaXTwitter } from "react-icons/fa6";
 
-import styles from "../styles.module.css";
 import { forwardRef } from "react";
-import WithButtonLabel from "@/components/atomic/WithButtonLabel";
 import { useTranslation } from "react-i18next";
+import WithButtonLabel from "@/components/atomic/WithButtonLabel";
+import styles from "../styles.module.css";
 
 interface TwitterShareProps {
   title?: string;

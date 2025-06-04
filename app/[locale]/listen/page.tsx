@@ -1,12 +1,12 @@
 import { FC } from "react";
+import { notFound } from "next/navigation";
+import dynamic from "next/dynamic";
+import { setRequestLocale } from "next-intl/server";
 import AladinTemplate from "@/components/templates/Aladin";
 import SonificationControls from "@/components/molecules/SonificationControls";
-import { notFound } from "next/navigation";
 import { initialPosition } from "@/lib/helpers";
 import { getExplorerPage } from "@/services/api/explorer";
-import dynamic from "next/dynamic";
 import AladinMenu from "@/components/organisms/AladinMenu";
-import { setRequestLocale } from "next-intl/server";
 
 const Listener = dynamic(() => import("@/components/organisms/Listener"), {
   ssr: false,

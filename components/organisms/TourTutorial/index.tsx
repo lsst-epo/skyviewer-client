@@ -1,12 +1,12 @@
 "use client";
 import { FC, PropsWithChildren } from "react";
 import { useTranslation } from "react-i18next";
-import { useRouter, usePathname } from "@/lib/i18n/navigation";
 import { useSearchParams } from "next/navigation";
 import { useMediaQuery } from "usehooks-ts";
 import { NextStep, NextStepProvider, type Tour } from "nextstepjs";
-import { completeTutorial, steps, tourTutorialTitle } from "@/lib/tutorial";
 import TutorialCard from "../TutorialCard";
+import { completeTutorial, steps, tourTutorialTitle } from "@/lib/tutorial";
+import { useRouter, usePathname } from "@/lib/i18n/navigation";
 import styles from "./styles.module.css";
 
 const TourTutorial: FC<PropsWithChildren> = ({ children }) => {

@@ -1,5 +1,6 @@
 import { FC, PropsWithChildren } from "react";
-import clsx from "clsx";
+
+import clsx from "clsx/lite";
 
 import styles from "./styles.module.css";
 const VisuallyHidden: FC<PropsWithChildren<{ className?: string }>> = ({

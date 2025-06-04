@@ -1,8 +1,8 @@
 "use client";
 
-import { useAladin } from "@/contexts/Aladin";
 import { useEffect, useRef } from "react";
 import { useIsomorphicLayoutEffect } from "usehooks-ts";
+import { useAladin } from "@/contexts/Aladin";
 
 const useAladinEvent = <K extends keyof AladinEventMap>(
   event: K,
