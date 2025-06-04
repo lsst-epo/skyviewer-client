@@ -1,5 +1,5 @@
 "use client";
-import clsx from "clsx";
+import clsx from "clsx/lite";
 import { FC } from "react";
 import { useAudioPlayerContext } from "react-use-audio-player";
 import {
@@ -9,11 +9,11 @@ import {
   IoIosVolumeOff,
 } from "react-icons/io";
 import HorizontalSlider from "@rubin-epo/epo-react-lib/HorizontalSlider";
-import styles from "./styles.module.css";
-import IconButton from "@/components/atomic/IconButton";
 import { useTranslation } from "react-i18next";
 import { useEventListener, useSessionStorage } from "usehooks-ts";
+import IconButton from "@/components/atomic/IconButton";
 import { roundToStep } from "@/lib/utilities";
+import styles from "./styles.module.css";
 
 interface VolumeProps {
   className?: string;

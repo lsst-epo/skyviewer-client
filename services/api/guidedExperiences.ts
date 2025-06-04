@@ -1,6 +1,6 @@
 import z from "zod";
-import { graphql } from "@/gql";
 import { getLocale } from "next-intl/server";
+import { graphql } from "@/gql";
 import queryAPI from "@/services/api/client";
 import { siteFromLocale } from "@/lib/i18n/site";
 import { MinimalAssetSchema } from "@/lib/schema/canto";

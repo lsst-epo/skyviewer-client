@@ -1,9 +1,9 @@
 "use client";
 
-import { useAladin } from "@/contexts/Aladin";
-import { pan, panAndZoom, zoom } from "@/lib/aladin/animation";
 import { useReducedMotion } from "motion/react";
 import { useCallback } from "react";
+import { useAladin } from "@/contexts/Aladin";
+import { pan, panAndZoom, zoom } from "@/lib/aladin/animation";
 
 interface MovementProps {
   ra: number;

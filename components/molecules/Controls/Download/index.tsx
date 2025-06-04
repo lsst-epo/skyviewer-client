@@ -1,10 +1,10 @@
 "use client";
 import { FunctionComponent } from "react";
 import { saveAs } from "file-saver";
-import IconButton from "@/components/atomic/IconButton";
-import { useAladin } from "@/contexts/Aladin";
 import { useTranslation } from "react-i18next";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
+import IconButton from "@/components/atomic/IconButton";
+import { useAladin } from "@/contexts/Aladin";
 
 interface DownloadProps {
   className?: string;

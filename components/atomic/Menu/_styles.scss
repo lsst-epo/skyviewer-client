@@ -11,9 +11,9 @@
   z-index: var(--elevation-element-dialog);
   width: 100vw;
   height: 100vh;
+  pointer-events: all;
   background-color: var(--black);
   transition: left 0.4s ease-in-out;
-  pointer-events: all;
 
   @include base.respond(functions.break(mobile), min) {
     background-color: transparent;

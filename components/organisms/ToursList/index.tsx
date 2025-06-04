@@ -1,8 +1,8 @@
 import { FC, Suspense } from "react";
+import Skeleton from "react-loading-skeleton";
+import TourCard from "../TourCard";
 import { getAllTours } from "@/services/api/tours";
 import ScrollingList from "@/components/molecules/ScrollingList";
-import TourCard from "../TourCard";
-import Skeleton from "react-loading-skeleton";
 
 const ToursListContent: FC<{ locale: string }> = async (props) => {
   const tours = await getAllTours(props);

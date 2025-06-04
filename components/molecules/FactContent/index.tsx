@@ -1,8 +1,8 @@
-import BlockTitle from "@/components/atomic/BlockTitle";
-import TextBlock from "@/components/atomic/TextBlock";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 import Stack from "@rubin-epo/epo-react-lib/Stack";
 import { FC } from "react";
+import TextBlock from "@/components/atomic/TextBlock";
+import BlockTitle from "@/components/atomic/BlockTitle";
 
 interface FactContentProps {
   title?: string;

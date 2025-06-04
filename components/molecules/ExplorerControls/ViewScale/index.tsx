@@ -1,6 +1,7 @@
 "use client";
 import { FC, useEffect, useState } from "react";
-import clsx from "clsx";
+
+import clsx from "clsx/lite";
 import { Trans, useTranslation } from "react-i18next";
 import { announce } from "@react-aria/live-announcer";
 import { useDebounceValue } from "usehooks-ts";

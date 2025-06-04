@@ -1,7 +1,7 @@
 import { forwardRef, PropsWithChildren } from "react";
 import { clsx } from "clsx/lite";
-import styles from "./styles.module.css";
 import IconButton, { IconButtonProps } from "@/components/atomic/IconButton";
+import styles from "./styles.module.css";
 
 const ShareButton = forwardRef<
   HTMLButtonElement,

@@ -38,12 +38,7 @@ const EmbeddedExplorer: FunctionComponent = () => {
           <Zoom />
         </ControlStack>
       </div>
-      <ControlStack
-        className={styles.viewScaleContainer}
-        position="bottom center"
-      >
-        <ViewScale className={styles.viewScale} />
-      </ControlStack>
+      <ViewScale className={styles.viewScale} />
     </AladinOverlay>
   );
 };

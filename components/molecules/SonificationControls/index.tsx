@@ -1,9 +1,9 @@
 "use client";
 import { FC } from "react";
-import AladinOverlay from "@/components/atomic/AladinOverlay";
 import Zoom from "../Controls/Zoom";
 import ControlStack from "../Controls/Stack";
 import PlayPauseButton from "./PlayPauseButton/index";
+import AladinOverlay from "@/components/atomic/AladinOverlay";
 
 const SonificationControls: FC = () => {
   return (

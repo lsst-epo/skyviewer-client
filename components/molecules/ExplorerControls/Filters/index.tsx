@@ -1,6 +1,6 @@
 import { FunctionComponent, useState } from "react";
-import Checkbox from "@/components/atomic/Checkbox";
 import Slider from "@rubin-epo/epo-react-lib/HorizontalSlider";
+import Checkbox from "@/components/atomic/Checkbox";
 import IconComposer from "@/components/svg/IconComposer";
 import FiltersMenu from "@/components/global/FiltersMenu";
 import defaultFilters, {

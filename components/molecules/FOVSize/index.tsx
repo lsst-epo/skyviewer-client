@@ -1,8 +1,8 @@
 import { FunctionComponent } from "react";
-import styles from "./styles.module.css";
+import classNames from "clsx/lite";
 import { useAladin } from "@/contexts/Aladin";
 import { getLinearScale } from "@/lib/utilities";
-import classNames from "clsx/lite";
+import styles from "./styles.module.css";
 
 const FOVSize: FunctionComponent<{ fov?: number; className?: string }> = ({
   fov,

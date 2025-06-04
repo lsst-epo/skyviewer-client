@@ -1,11 +1,11 @@
 "server-only";
 import z from "zod";
-import { graphql } from "@/gql";
 import { getLocale } from "next-intl/server";
+import tagStore from "../tags";
+import { Poi, Tour, TourCard, TourInitial, TourMetadata } from "./schema";
+import { graphql } from "@/gql";
 import { siteFromLocale } from "@/lib/i18n/site";
 import queryAPI from "@/services/api/client";
-import { Poi, Tour, TourCard, TourInitial, TourMetadata } from "./schema";
-import tagStore from "../tags";
 import { surveyLayerSchema } from "@/lib/schema/survey";
 
 export const getAllTours = async ({ locale }: { locale: string }) => {

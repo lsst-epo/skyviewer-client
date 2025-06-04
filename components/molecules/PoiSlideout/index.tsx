@@ -1,11 +1,11 @@
 "use client";
-import clsx from "clsx";
+import clsx from "clsx/lite";
 import { FC, PropsWithChildren } from "react";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { Checkbox } from "@headlessui/react";
 
-import styles from "./styles.module.css";
 import { useTranslation } from "react-i18next";
+import styles from "./styles.module.css";
 
 interface PoiSlideoutInterface {
   open: boolean;

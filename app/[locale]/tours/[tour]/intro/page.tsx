@@ -1,9 +1,9 @@
 import { FunctionComponent, Suspense } from "react";
 
-import { getTour } from "@/services/api/tours";
 import { notFound } from "next/navigation";
-import TourIntro from "@/components/pages/TourIntro";
 import { setRequestLocale } from "next-intl/server";
+import { getTour } from "@/services/api/tours";
+import TourIntro from "@/components/pages/TourIntro";
 
 const TourIntroPage: FunctionComponent<WithSearchParams<TourProps>> = async ({
   params: { tour, locale },
