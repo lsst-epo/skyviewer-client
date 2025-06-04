@@ -1,10 +1,10 @@
 "use client";
 import { FunctionComponent } from "react";
+import { useTranslation } from "react-i18next";
+import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 import IconButton from "@/components/atomic/IconButton";
 import { useAladin } from "@/contexts/Aladin";
-import { useTranslation } from "react-i18next";
 import { hasWebShare, webShare } from "@/lib/utilities";
-import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 
 interface ShareImageProps {
   className?: string;

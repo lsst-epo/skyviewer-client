@@ -1,5 +1,5 @@
-import { svgInternalShape } from "@/components/shapes/svg";
 import defaultProps from "./defaultProps";
+import { svgInternalShape } from "@/components/shapes/svg";
 
 export default function Nebula({ className, fill = "currentColor" }) {
   const uniqueProps = {

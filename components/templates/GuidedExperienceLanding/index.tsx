@@ -2,11 +2,11 @@ import { FC, PropsWithChildren, ReactNode } from "react";
 import { IoArrowBackSharp } from "react-icons/io5";
 import Center from "@rubin-epo/epo-react-lib/Center";
 import Stack from "@rubin-epo/epo-react-lib/Stack";
+import FullwidthWithNav from "../FullwidthWithNav";
 import { useTranslation } from "@/lib/i18n/server";
 import ViewTransition from "@/components/atomic/ViewTransition";
 import BlockTitle from "@/components/atomic/BlockTitle";
 import TransitionButtonish from "@/components/molecules/TransitionButtonish";
-import FullwidthWithNav from "../FullwidthWithNav";
 import styles from "./styles.module.css";
 
 interface GuidedExperienceLandingProps {

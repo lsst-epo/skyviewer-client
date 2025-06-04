@@ -1,13 +1,14 @@
 "use client";
 import { FC } from "react";
-import clsx from "clsx";
+
+import clsx from "clsx/lite";
 import { IoMdPause, IoMdPlay } from "react-icons/io";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
-import formatDuration from "@/lib/duration";
 import { useAudioPlayerContext } from "react-use-audio-player";
-import IconButton from "@/components/atomic/IconButton";
 import SeekBar from "./SeekBar";
 import Volume from "./Volume";
+import IconButton from "@/components/atomic/IconButton";
+import formatDuration from "@/lib/duration";
 import styles from "./styles.module.css";
 
 interface AudioControls {

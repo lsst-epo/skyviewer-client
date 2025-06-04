@@ -2,9 +2,9 @@
 
 import { createInstance } from "i18next";
 import { initReactI18next } from "react-i18next/initReactI18next";
-import { loadResources } from "./index";
-import { getOptions } from "./settings";
 import { getLocale } from "next-intl/server";
+import { getOptions } from "./settings";
+import { loadResources } from "./index";
 
 const initI18next = async (lng: string, ns: string | string[]) => {
   // on server side we create a new instance for each render, because during compilation everything seems to be executed in parallel

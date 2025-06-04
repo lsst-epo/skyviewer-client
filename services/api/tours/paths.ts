@@ -1,9 +1,9 @@
 "server-only";
+import z from "zod";
+import tagStore from "../tags";
 import { graphql } from "@/gql";
 import queryAPI from "@/services/api/client";
 import { siteFromLocale } from "@/lib/i18n/site";
-import z from "zod";
-import tagStore from "../tags";
 
 const Tours = z
   .array(

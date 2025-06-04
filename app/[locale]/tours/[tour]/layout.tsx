@@ -1,9 +1,9 @@
-import { assetAlt } from "@/lib/canto/metadata";
-import { getTourMetadata } from "@/services/api/tours";
-import { getToursPaths } from "@/services/api/tours/paths";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { FC, PropsWithChildren } from "react";
+import { assetAlt } from "@/lib/canto/metadata";
+import { getTourMetadata } from "@/services/api/tours";
+import { getToursPaths } from "@/services/api/tours/paths";
 
 export const generateStaticParams = async ({
   params: { locale },

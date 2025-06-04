@@ -16,9 +16,9 @@
 .source-details-modal {
   position: absolute;
   z-index: var(--elevation-element-dialog);
+  visibility: hidden;
   margin-top: -115px;
   margin-left: 27px;
-  visibility: hidden;
   background-color: var(--neutral10);
   transition: top 0.3s linear, left 0.3s linear;
 
@@ -39,7 +39,6 @@
   }
 
   .close-button {
-    color: var(--white);
     position: absolute;
     top: 1px;
     right: 0;
@@ -48,6 +47,7 @@
     padding: 5px;
     margin-top: -10px;
     margin-right: -10px;
+    color: var(--white);
     background-color: var(--color-rubin-red-200);
     border-radius: 50%;
   }

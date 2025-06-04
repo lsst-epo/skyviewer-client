@@ -8,9 +8,9 @@ import { Link } from "next-view-transitions";
 import { useTranslation } from "@/lib/i18n/server";
 import { getTourCount } from "@/services/api/guidedExperiences";
 import Ribbon from "@/components/atomic/Ribbon";
-import styles from "./styles.module.css";
 import ViewTransition from "@/components/atomic/ViewTransition";
 import { getPathname } from "@/lib/i18n/navigation";
+import styles from "./styles.module.css";
 interface GuidedExperienceCardProps {
   title: string;
   id: string;

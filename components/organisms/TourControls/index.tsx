@@ -1,10 +1,10 @@
 "use client";
 import { FC } from "react";
-import { useStep } from "@/lib/tutorial";
+import clsx from "clsx/lite";
 import TourBack from "./Back";
 import TourNext from "./Next";
+import { useStep } from "@/lib/tutorial";
 import styles from "./styles.module.css";
-import clsx from "clsx/lite";
 
 const TourControls: FC<{ className?: string }> = ({ className }) => {
   const { id, active } = useStep(1);

@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from "react";
 import Stack, { type StackProps } from "@rubin-epo/epo-react-lib/Stack";
-import clsx from "clsx";
+import clsx from "clsx/lite";
 import styles from "./styles.module.css";
 
 type VerticalAlignment = "top" | "middle" | "bottom";

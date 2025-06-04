@@ -1,6 +1,6 @@
-import { serverTranslation } from "@/lib/i18n/server";
 import { Metadata } from "next";
 import { FC, PropsWithChildren } from "react";
+import { serverTranslation } from "@/lib/i18n/server";
 
 export async function generateMetadata({
   params: { locale },

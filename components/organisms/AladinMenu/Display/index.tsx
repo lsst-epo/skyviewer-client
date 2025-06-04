@@ -4,9 +4,9 @@ import { IoIosClose, IoIosSettings } from "react-icons/io";
 import { MenuItem } from "@rubin-epo/epo-react-lib/SlideoutMenu";
 import { useTranslation } from "react-i18next";
 import Submenu from "../Submenu";
-import { SurveyLayer } from "@/lib/schema/survey";
 import Layers from "./Layers";
 import CoordinateFormat from "./CoordinateFormat";
+import { SurveyLayer } from "@/lib/schema/survey";
 
 interface DisplayMenuProps {
   layers?: Array<SurveyLayer>;

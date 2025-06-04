@@ -2,7 +2,6 @@
 import { useEffect, useRef } from "react";
 import P5 from "p5";
 import PropTypes from "prop-types";
-import { useAladin } from "@/contexts/Aladin";
 import {
   controlledWalk,
   shiftStarTint,
@@ -15,6 +14,7 @@ import PixelSynth from "./PixelSynth";
 import Walker from "./Walker";
 import PointSearcher from "./PointSearcher";
 import SamplePlayer from "./SamplePlayer";
+import { useAladin } from "@/contexts/Aladin";
 
 const Sketch = ({ pixelColor, cardinalSums }) => {
   const sketchRef = useRef(null);

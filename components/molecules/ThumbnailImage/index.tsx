@@ -2,9 +2,9 @@
 import { FC, useState } from "react";
 import Image, { ImageProps } from "next/image";
 import Frame from "@rubin-epo/epo-react-lib/Frame";
-import styles from "./styles.module.css";
 import clsx from "clsx/lite";
 import Skeleton from "react-loading-skeleton";
+import styles from "./styles.module.css";
 
 interface ThumbnailImageProps {
   image?: ImageProps;
