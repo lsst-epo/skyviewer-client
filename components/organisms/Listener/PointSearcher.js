@@ -1,4 +1,4 @@
-import testPoints from "./testPoints";
+import testPoints from "./testPointsLive";
 import parameters from "./parameters";
 import { linearMap, mapValueToHue } from "./utilities";
 
