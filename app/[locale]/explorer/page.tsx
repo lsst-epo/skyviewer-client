@@ -3,16 +3,12 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import AladinTemplate from "@/components/templates/Aladin";
 import Controls from "@/components/molecules/ExplorerControls";
-import { initialPosition } from "@/lib/helpers";
 import { getExplorerPage } from "@/services/api/explorer";
 import CurrentPositionPopover from "@/components/organisms/CurrentPositionPopover";
 import AladinMenu from "@/components/organisms/AladinMenu";
 import DisplayMenu from "@/components/organisms/AladinMenu/Display";
 
-const ExplorerPage: FC<WithSearchParams<RootProps>> = async ({
-  params: { locale },
-  searchParams = {},
-}) => {
+const ExplorerPage: FC<RootProps> = async ({ params: { locale } }) => {
   setRequestLocale(locale);
   const data = await getExplorerPage(locale);
 
@@ -21,11 +17,6 @@ const ExplorerPage: FC<WithSearchParams<RootProps>> = async ({
   }
 
   const { surveys, fovRange, ...configuredOptions } = data;
-
-  const options = {
-    ...initialPosition(searchParams, { fovRange, ...configuredOptions }),
-    backgroundColor: "rgb(0,0,0)",
-  };
 
   const properties = surveys.map(({ survey }) => {
     const { pathname, origin } = new URL(survey.path);
@@ -42,14 +33,13 @@ const ExplorerPage: FC<WithSearchParams<RootProps>> = async ({
       }
       fovRange={fovRange}
       layers={surveys}
-      {...{ options }}
+      options={configuredOptions}
+      initializeWithParams
     >
       <Controls />
       <CurrentPositionPopover />
     </AladinTemplate>
   );
 };
-
-export const dynamic = "force-dynamic";
 
 export default ExplorerPage;

@@ -17,6 +17,4 @@ const ListenerLayout: FunctionComponent<PropsWithChildren<RootProps>> = ({
   return <>{children}</>;
 };
 
-export const dynamic = "force-dynamic";
-
 export default ListenerLayout;

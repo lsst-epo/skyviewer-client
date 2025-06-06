@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import { setRequestLocale } from "next-intl/server";
 import AladinTemplate from "@/components/templates/Aladin";
 import SonificationControls from "@/components/molecules/SonificationControls";
-import { initialPosition } from "@/lib/helpers";
 import { getExplorerPage } from "@/services/api/explorer";
 import AladinMenu from "@/components/organisms/AladinMenu";
 
@@ -12,10 +11,7 @@ const Listener = dynamic(() => import("@/components/organisms/Listener"), {
   ssr: false,
 });
 
-const ListenerPage: FC<WithSearchParams<RootProps>> = async ({
-  params: { locale },
-  searchParams = {},
-}) => {
+const ListenerPage: FC<RootProps> = async ({ params: { locale } }) => {
   setRequestLocale(locale);
   const data = await getExplorerPage(locale);
 
@@ -25,17 +21,13 @@ const ListenerPage: FC<WithSearchParams<RootProps>> = async ({
 
   const { surveys, fovRange, ...configuredOptions } = data;
 
-  const options = {
-    ...initialPosition(searchParams, { fovRange, ...configuredOptions }),
-    backgroundColor: "rgb(0,0,0)",
-  };
-
   return (
     <AladinTemplate
       menu={<AladinMenu locale={locale} />}
       fovRange={fovRange}
       layers={surveys}
-      {...{ options }}
+      options={configuredOptions}
+      initializeWithParams
     >
       <SonificationControls />
       <Listener />
