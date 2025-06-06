@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
 "use client";
+import { useSearchParams } from "next/navigation";
 import {
   FunctionComponent,
   PropsWithChildren,
@@ -14,6 +15,7 @@ import { useLocalStorage, useOnClickOutside } from "usehooks-ts";
 import staticAladinOptions, {
   defaultHiPSOptions,
 } from "@/fixtures/defaultAladinOptions";
+import { clientInitialPosition } from "@/lib/helpers";
 import { SurveyLayer } from "@/lib/schema/survey";
 import AladinContext, { defaultValue } from "@/contexts/Aladin";
 import styles from "./styles.module.css";
@@ -23,6 +25,7 @@ export interface AladinProps {
   fovRange?: Array<number>;
   options?: AladinOptions;
   disableInteraction?: boolean;
+  initializeWithParams?: boolean;
   layers: Array<SurveyLayer>;
 }
 
@@ -30,10 +33,14 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
   children,
   fovRange,
   disableInteraction = false,
+  initializeWithParams = false,
   options = {},
   layers,
   menu,
 }) => {
+  const searchParams = useSearchParams();
+  const position = clientInitialPosition({ searchParams, fovRange });
+
   const [savedAladinOptions, setSavedAladinOptions] =
     useLocalStorage<AladinOptions>("aladin-options", {
       cooFrame: staticAladinOptions.cooFrame,
@@ -66,6 +73,7 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
             ...staticAladinOptions,
             ...savedAladinOptions,
             ...options,
+            ...(initializeWithParams && position),
           });
 
           if (fovRange) {
