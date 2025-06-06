@@ -1,4 +1,5 @@
 import z from "zod";
+import { ReadonlyURLSearchParams } from "next/navigation";
 import clamp from "lodash/clamp";
 import { position } from "./schema/astro";
 
@@ -31,4 +32,32 @@ export const initialPosition = (
     .default({ fov, target });
 
   return positionSchema.parse(searchParams);
+};
+
+export const clientInitialPosition = ({
+  searchParams,
+  fovRange = [0, 180],
+}: {
+  searchParams: ReadonlyURLSearchParams;
+  fovRange?: Array<number>;
+}) => {
+  return z
+    .object({
+      fov: z.coerce
+        .number()
+        .min(fovRange[0])
+        .max(fovRange[1])
+        .catch(({ input }) => {
+          return clamp(input, fovRange[0], fovRange[1]);
+        })
+        .optional(),
+      target: z
+        .string()
+        .transform((val) => val.split(" ").map(parseFloat))
+        .pipe(position)
+        .transform((val) => val.join(" "))
+        .optional(),
+    })
+    .optional()
+    .safeParse(Object.fromEntries(searchParams)).data;
 };

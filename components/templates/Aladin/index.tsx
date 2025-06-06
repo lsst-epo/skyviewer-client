@@ -1,4 +1,9 @@
-import { FunctionComponent, PropsWithChildren, ReactNode } from "react";
+import {
+  FunctionComponent,
+  PropsWithChildren,
+  ReactNode,
+  Suspense,
+} from "react";
 import Aladin, { AladinProps } from "@/components/organisms/Aladin";
 import styles from "./styles.module.css";
 
@@ -15,7 +20,9 @@ const AladinTemplate: FunctionComponent<
       className={styles.viewLayout}
       data-has-menu={!!props.menu && !embedded}
     >
-      <Aladin {...props}>{children}</Aladin>
+      <Suspense>
+        <Aladin {...props}>{children}</Aladin>
+      </Suspense>
     </main>
   );
 };

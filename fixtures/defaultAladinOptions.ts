@@ -4,6 +4,7 @@ export const defaultHiPSOptions: HiPSOptions = {
 };
 
 export const staticAladinOptions: AladinOptions = {
+  backgroundColor: "rgb(0,0,0)",
   cooFrame: "ICRSd",
   showReticle: false,
   showZoomControl: false,
