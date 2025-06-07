@@ -96,7 +96,7 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
       p.draw = () => {
         p.clear(); // Clear the canvas before drawing the empty circle and star to avoid ghosting
 
-        const [ra, dec] = aladin.getRaDec();
+        parameters.currentRaDec = aladin.getRaDec();
         parameters.fov = aladin.getFov();
         if (p.frameCount % 60 === 0) {
           // Get the current RA/Dec from Aladin and update points
@@ -104,9 +104,12 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
             Math.pow(parameters.fov[0] / 2, 2) +
               Math.pow(parameters.fov[1] / 2, 2)
           );
-          pointSearcherRef.current.makeSubset([ra, dec], parameters.fovRadius);
+          pointSearcherRef.current.makeSubset(
+            [parameters.currentRaDec[0], parameters.currentRaDec[1]],
+            parameters.fovRadius
+          );
         }
-        if (p.frameCount % 120 === 0) {
+        if (p.frameCount % 600 === 0) {
           pointSearcherRef.current.getPoints(); // Update points every 120 frames
         }
         const eastPoint = aladin.pix2world(
@@ -114,12 +117,15 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
           p.height / 2
         ); // TODO: Replace 50 with variable tied to circle
         const tartgetRadiusRaDec = raDecDistance(
-          ra,
-          dec,
+          parameters.currentRaDec[0],
+          parameters.currentRaDec[1],
           eastPoint[0],
           eastPoint[1]
         );
-        pointSearcherRef.current.findNeighbours([ra, dec], tartgetRadiusRaDec);
+        pointSearcherRef.current.findNeighbours(
+          [parameters.currentRaDec[0], parameters.currentRaDec[1]],
+          tartgetRadiusRaDec
+        );
         // Update and draw animations
         if (pointSearcherRef.current) {
           pointSearcherRef.current.updateAndDrawAnimations();

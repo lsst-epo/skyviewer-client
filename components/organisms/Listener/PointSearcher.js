@@ -1,6 +1,8 @@
-import testPoints from "./testPoints";
 import parameters from "./parameters";
 import { linearMap, mapValueToHue } from "./utilities";
+import { env } from "@/env";
+
+const apiToken = env.NEXT_PUBLIC_ASTRO_OBJECTS_API_TOKEN;
 
 class PointSearcher {
   constructor(p, aladin) {
@@ -48,15 +50,49 @@ class PointSearcher {
       parameters.querygmagMax,
       false
     );
-    // For now, using test points, but this will be replaced with an API call
-    const formattedPoints = testPoints.map((point) => ({
-      point: [point.RAdeg, point.DEdeg],
-      id: point.id,
-      gmag: point.gmag,
-      gRColor: point.g_r,
-      flag: point.flag,
-    }));
-    this.tree = new KDTree(formattedPoints);
+    try {
+      const query = `
+        query GetRangeOfAstroObjects {
+          getRangeOfAstroObjects(ra: ${parameters.currentRaDec[0]}, dec: ${parameters.currentRaDec[1]}, radius: ${parameters.queryRadius}, mag: ${parameters.queryMag}) {
+            RAdeg
+            DECdeg
+            id
+            gmag
+            g_r
+            flag
+          }
+        }
+      `;
+
+      const response = await fetch(
+        "https://us-central1-skyviewer.cloudfunctions.net/astro-object-api",
+        {
+          method: "POST",
+          headers: {
+            Authorization: apiToken,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ query }),
+        }
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      const data = result.data.getRangeOfAstroObjects;
+      const formattedPoints = data.map((point) => ({
+        point: [point.RAdeg, point.DECdeg],
+        id: point.id,
+        gmag: point.gmag,
+        gRColor: point.g_r,
+        flag: point.flag,
+      }));
+      this.tree = new KDTree(formattedPoints);
+    } catch (error) {
+      console.error("Error fetching points:", error);
+      throw error; // Re-throw the error to handle it at a higher level
+    }
   }
 
   async makeSubset(targetPoint, radius = this.radius_subset) {
@@ -160,36 +196,47 @@ class PointSearcher {
     }
     // DELETE BELOW //////////////////////
     // Draw nearest neighbours
-    // this.p.colorMode(this.p.RGB); // Ensure RGB mode for these points
-    // this.p.fill(255, 0, 0); // Red color for nearest neighbours
-    // this.p.noStroke(); // No outline for these ellipses
-    // for (const neighbour of this.nearestNeighbours) {
-    //   if (neighbour && neighbour.point) {
-    //     const canvasCoords = this.aladin.world2pix(
-    //       neighbour.point[0],
-    //       neighbour.point[1]
-    //     );
-    //     if (canvasCoords) {
-    //       // Ensure coordinates are valid
-    //       this.p.ellipse(canvasCoords[0], canvasCoords[1], 5, 5); // Draw a 5x5 ellipse
-    //     }
-    //   }
-    // }
+    this.p.colorMode(this.p.RGB); // Ensure RGB mode for these points
+    this.p.fill(255, 0, 0); // Red color for nearest neighbours
+    this.p.noStroke(); // No outline for these ellipses
+    for (const neighbour of this.nearestNeighbours) {
+      if (neighbour && neighbour.point) {
+        const canvasCoords = this.aladin.world2pix(
+          neighbour.point[0],
+          neighbour.point[1]
+        );
+        if (canvasCoords) {
+          // Ensure coordinates are valid
+          this.p.ellipse(canvasCoords[0], canvasCoords[1], 5, 5); // Draw a 5x5 ellipse
+        }
+      }
+    }
 
-    // // Draw subset points in blue
-    // this.p.fill(0, 0, 255); // Blue color for subset points
-    // for (const point of this.subsetPoints) {
-    //   if (point && point.point) {
-    //     const canvasCoords = this.aladin.world2pix(
-    //       point.point[0],
-    //       point.point[1]
-    //     );
-    //     if (canvasCoords) {
-    //       // Ensure coordinates are valid
-    //       this.p.ellipse(canvasCoords[0], canvasCoords[1], 3, 3); // Draw a slightly smaller 3x3 ellipse
-    //     }
-    //   }
-    // }
+    // Draw subset points in blue
+    this.p.fill(0, 0, 255); // Blue color for subset points
+    for (const point of this.subsetPoints) {
+      if (point && point.point) {
+        const canvasCoords = this.aladin.world2pix(
+          point.point[0],
+          point.point[1]
+        );
+        if (canvasCoords) {
+          // Ensure coordinates are valid
+          this.p.ellipse(canvasCoords[0], canvasCoords[1], 3, 3); // Draw a slightly smaller 3x3 ellipse
+        }
+      }
+    }
+
+    // Draw nearest neighbours count
+    this.p.fill(255); // White text
+    this.p.textSize(16);
+    this.p.text(`Nearest Neighbours: ${this.nearestNeighbours.length}`, 20, 30);
+    this.p.text(
+      `New Nearest Neighbours: ${this.newNearestNeighbours.length}`,
+      20,
+      50
+    );
+    this.p.text(`Subset Points: ${this.subsetPoints.length}`, 20, 70);
     // DELETE ABOVE //////////////////////
     // Reset color mode to RGB
     this.p.colorMode(this.p.RGB);
