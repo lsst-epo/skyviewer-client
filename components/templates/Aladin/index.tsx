@@ -5,8 +5,8 @@ import {
   Suspense,
 } from "react";
 import Aladin, { AladinProps } from "@/components/organisms/Aladin";
-import styles from "./styles.module.css";
 import { env } from "@/env";
+import styles from "./styles.module.css";
 
 interface AladinTemplateProps extends AladinProps {
   embedded?: boolean;
