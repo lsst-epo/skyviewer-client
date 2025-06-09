@@ -115,6 +115,10 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
             }
           });
 
+          if (debug) {
+            console.info(instance);
+          }
+
           A.current = global;
           aladin.current = instance;
           ref.current = node;
