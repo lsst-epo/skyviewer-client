@@ -14,7 +14,8 @@
       "start_tour": "Start the tour",
       "lets_start": "Let's start",
       "skip_intro": "Skip intro",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "listen": "Listen"
     }
   },
   "guided-experiences": {
