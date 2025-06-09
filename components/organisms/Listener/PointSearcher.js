@@ -21,7 +21,6 @@ class PointSearcher {
     this.previousNearestNeighbourIDs = []; // Store IDs of previous nearest neighbours
     this.newNearestNeighbours = []; // Store new nearest neighbours
 
-
     // Animation properties
     this.animations = []; // Array to store active animations
     this.animationSpeed = 2; // Speed of animation expansion
@@ -100,10 +99,9 @@ class PointSearcher {
 
       const result = await response.json();
       const data = result.data.getRangeOfAstroObjects;
-      
+
       // Handle case where no data is returned
       if (!data) {
-        console.log('No astronomical objects found in the specified range');
         this.tree = new KDTree([]);
         return;
       }
