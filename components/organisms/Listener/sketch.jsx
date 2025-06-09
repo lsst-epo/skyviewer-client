@@ -6,7 +6,6 @@ import {
   controlledWalk,
   shiftStarTint,
   areArrowsPressed,
-  raDecDistance,
   loadAudio,
 } from "./utilities";
 import parameters from "./parameters";
@@ -84,10 +83,7 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         walkerRef.current = new Walker(p, aladin);
         // Initialize the point searcher with p5 instance and aladin
         pointSearcherRef.current = new PointSearcher(p, aladin);
-        pointSearcherRef.current.makeSubset(
-          [58.22810300000001, -36.72068300000001],
-          0.025
-        ); // TDOD: Make these variables that get updated in the setup loop
+        pointSearcherRef.current.makeSubset([186.46515, 7.15508], 0.025); // TDOD: Make these variables that get updated in the setup loop
         // Get the initial points from the point searcher on first load
         // pointSearcherRef.current.getPoints(); // TODO: Figure out what arguments to pass in
         samplePlayerRef.current = new SamplePlayer(aladin);
@@ -95,49 +91,24 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
 
       p.draw = () => {
         p.clear(); // Clear the canvas before drawing the empty circle and star to avoid ghosting
-
+        // Update the current RA/Dec from Aladin
         parameters.currentRaDec = aladin.getRaDec();
+        // Update the FOV from Aladin
         parameters.fov = aladin.getFov();
+        // Update the FOV and subset every 60 frames (1 second) TODO: Change when this gets updated to distance instead of time?
         if (p.frameCount % 60 === 0) {
-          // Get the current RA/Dec from Aladin and update points
-          parameters.fovRadius = Math.sqrt(
-            Math.pow(parameters.fov[0] / 2, 2) +
-              Math.pow(parameters.fov[1] / 2, 2)
-          );
-          pointSearcherRef.current.makeSubset(
-            [parameters.currentRaDec[0], parameters.currentRaDec[1]],
-            parameters.fovRadius
-          );
+          pointSearcherRef.current.updateFOVAndSubset();
         }
-        if (p.frameCount % 600 === 0) {
-          pointSearcherRef.current.getPoints(); // Update points every 120 frames
-        }
-        const eastPoint = aladin.pix2world(
-          p.width / 2 + parameters.targetRadiusPX,
-          p.height / 2
-        ); // TODO: Replace 50 with variable tied to circle
-        const tartgetRadiusRaDec = raDecDistance(
-          parameters.currentRaDec[0],
-          parameters.currentRaDec[1],
-          eastPoint[0],
-          eastPoint[1]
+        // Check to see if we should make a call to the API to get new points
+        pointSearcherRef.current.updatePoints();
+        // Update neighbors based on current position and target radius
+        pointSearcherRef.current.updateNeighbors();
+        // Update and draw animations for points entering the circle
+        pointSearcherRef.current.updateAndDrawAnimations();
+        // Trigger sounds for points entering the circle
+        samplePlayerRef.current.triggerNewNearestNeighbors(
+          pointSearcherRef.current
         );
-        pointSearcherRef.current.findNeighbours(
-          [parameters.currentRaDec[0], parameters.currentRaDec[1]],
-          tartgetRadiusRaDec
-        );
-        // Update and draw animations
-        if (pointSearcherRef.current) {
-          pointSearcherRef.current.updateAndDrawAnimations();
-        }
-        if (
-          pointSearcherRef.current.newNearestNeighbours &&
-          pointSearcherRef.current.newNearestNeighbours.length > 0
-        ) {
-          const pointsToTrigger =
-            pointSearcherRef.current.newNearestNeighbours.slice(0, 8); // Limit to at most 8 points
-          samplePlayerRef.current.triggerPoints(pointsToTrigger);
-        }
 
         // Draw the empty circle without tint
         if (emptyCircleRef.current) {
