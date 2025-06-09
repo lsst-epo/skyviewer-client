@@ -27,6 +27,7 @@ export interface AladinProps {
   disableInteraction?: boolean;
   initializeWithParams?: boolean;
   layers: Array<SurveyLayer>;
+  debug?: boolean;
 }
 
 export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
@@ -37,6 +38,7 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
   options = {},
   layers,
   menu,
+  debug = false,
 }) => {
   const searchParams = useSearchParams();
   const position = clientInitialPosition({ searchParams, fovRange });
@@ -76,6 +78,12 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
             ...(initializeWithParams && position),
           });
 
+          if (debug) {
+            instance.on("layerChanged", (layer, stack, action) => {
+              console.info({ layer, stack, action });
+            });
+          }
+
           if (fovRange) {
             instance.setFoVRange(fovRange[0], fovRange[1]);
           }
@@ -85,10 +93,14 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
               ...defaultHiPSOptions,
               ...survey,
               successCallback: () => {
-                console.info("Loaded", { path, ...survey });
+                if (debug) {
+                  console.info("Loaded", { path, ...survey });
+                }
               },
               errorCallback: () => {
-                console.info("Error loading", { path, ...survey });
+                if (debug) {
+                  console.info("Error loading", { path, ...survey });
+                }
               },
             });
 
