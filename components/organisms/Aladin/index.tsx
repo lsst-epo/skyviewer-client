@@ -84,6 +84,12 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
             const hips = global.HiPS(path, {
               ...defaultHiPSOptions,
               ...survey,
+              successCallback: () => {
+                console.info("Loaded", { path, ...survey });
+              },
+              errorCallback: () => {
+                console.info("Error loading", { path, ...survey });
+              },
             });
 
             if (i === 0) {
