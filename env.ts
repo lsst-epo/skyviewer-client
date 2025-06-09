@@ -16,12 +16,15 @@ export const env = createEnv({
     NEXT_PUBLIC_BASE_URL: z.string().url(),
     NEXT_PUBLIC_API_URL: z.string().url(),
     NEXT_PUBLIC_ASTRO_API_URL: z.string().url(),
+    NEXT_PUBLIC_ASTRO_OBJECTS_API_TOKEN: z.string().min(1),
   },
   // For Next.js >= 13.4.4, you only need to destructure client variables:
   experimental__runtimeEnv: {
     NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
     NEXT_PUBLIC_ASTRO_API_URL: process.env.NEXT_PUBLIC_ASTRO_API_URL,
+    NEXT_PUBLIC_ASTRO_OBJECTS_API_TOKEN:
+      process.env.NEXT_PUBLIC_ASTRO_OBJECTS_API_TOKEN,
     NODE_ENV: process.env.NODE_ENV,
   },
 });
