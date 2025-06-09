@@ -145,6 +145,16 @@ class SamplePlayer {
     }
   }
 
+  triggerNewNearestNeighbors(pointSearcher) {
+    if (
+      pointSearcher.newNearestNeighbours &&
+      pointSearcher.newNearestNeighbours.length > 0
+    ) {
+      const pointsToTrigger = pointSearcher.newNearestNeighbours.slice(0, 8); // Limit to at most 8 points
+      this.triggerPoints(pointsToTrigger);
+    }
+  }
+
   playAudio(name, volume = 1.0, pan = 0.0) {
     if (parameters.audioBuffers[name]) {
       const source = parameters.audioContext.createBufferSource();

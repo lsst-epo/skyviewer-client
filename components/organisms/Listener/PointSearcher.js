@@ -1,5 +1,5 @@
 import parameters from "./parameters";
-import { linearMap, mapValueToHue } from "./utilities";
+import { linearMap, mapValueToHue, raDecDistance } from "./utilities";
 import { env } from "@/env";
 
 const apiToken = env.NEXT_PUBLIC_ASTRO_OBJECTS_API_TOKEN;
@@ -37,7 +37,10 @@ class PointSearcher {
   }
 
   updatePoints() {
-    // this.getPoints();
+    // Update points every 600 frames (10 seconds)
+    if (this.p.frameCount % 600 === 0) {
+      this.getPoints();
+    }
   }
 
   async getPoints() {
@@ -242,32 +245,44 @@ class PointSearcher {
     this.p.colorMode(this.p.RGB);
   }
 
-  // Find points within magnitude range
-  findPointsByMagnitude(minMag, maxMag) {
-    return this.subsetPoints.filter(
-      (point) => point.gmag >= minMag && point.gmag <= maxMag
+  updateFOVAndSubset() {
+    // Calculate FOV radius from the current FOV
+    const fovRadius = Math.sqrt(
+      Math.pow(parameters.fov[0] / 2, 2) + Math.pow(parameters.fov[1] / 2, 2)
+    );
+
+    // Update the parameters FOV radius
+    parameters.fovRadius = fovRadius;
+
+    // Use current RA/Dec from parameters and update the subset
+    this.makeSubset(
+      [parameters.currentRaDec[0], parameters.currentRaDec[1]],
+      fovRadius
     );
   }
 
-  // Find points within color range
-  findPointsByColor(minColor, maxColor) {
-    return this.subsetPoints.filter(
-      (point) => point.gRColor >= minColor && point.gRColor <= maxColor
+  calculateTargetRadius() {
+    // Convert the target radius point from pixels to world coordinates
+    const eastPoint = this.aladin.pix2world(
+      this.p.width / 2 + parameters.targetRadiusPX,
+      this.p.height / 2
+    );
+
+    // Calculate the angular distance between current position and target radius point
+    return raDecDistance(
+      parameters.currentRaDec[0],
+      parameters.currentRaDec[1],
+      eastPoint[0],
+      eastPoint[1]
     );
   }
 
-  // Find points by flag
-  findPointsByFlag(flag) {
-    return this.subsetPoints.filter((point) => point.flag === flag);
-  }
-
-  // Example of a method that uses p5
-  drawPoints(points, color = { r: 255, g: 255, b: 255 }) {
-    this.p.noStroke();
-    this.p.fill(color.r, color.g, color.b);
-    for (const point of points) {
-      this.p.ellipse(point.point[0], point.point[1], 5, 5);
-    }
+  updateNeighbors() {
+    const targetRadius = this.calculateTargetRadius();
+    this.findNeighbours(
+      [parameters.currentRaDec[0], parameters.currentRaDec[1]],
+      targetRadius
+    );
   }
 }
 
