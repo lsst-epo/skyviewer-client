@@ -21,6 +21,7 @@ class PointSearcher {
     this.previousNearestNeighbourIDs = []; // Store IDs of previous nearest neighbours
     this.newNearestNeighbours = []; // Store new nearest neighbours
 
+
     // Animation properties
     this.animations = []; // Array to store active animations
     this.animationSpeed = 2; // Speed of animation expansion
@@ -36,9 +37,24 @@ class PointSearcher {
     this.ready = true;
   }
 
-  updatePoints() {
-    // Update points every 600 frames (10 seconds)
-    if (this.p.frameCount % 600 === 0) {
+  shouldUpdatePoints() {
+    // Make a center point for the first time
+    if (!this.centerPoint) {
+      this.centerPoint = parameters.currentRaDec;
+      return;
+    }
+    // Calculate distance from center of our current point set
+    const distanceFromCenter = raDecDistance(
+      parameters.currentRaDec[0],
+      parameters.currentRaDec[1],
+      this.centerPoint[0],
+      this.centerPoint[1]
+    );
+
+    // If we're approaching the edge of our query radius (within 20% of the radius)
+    const radiusThreshold = parameters.queryRadius * 0.8;
+    if (distanceFromCenter > radiusThreshold) {
+      this.centerPoint = parameters.currentRaDec;
       this.getPoints();
     }
   }
@@ -84,6 +100,14 @@ class PointSearcher {
 
       const result = await response.json();
       const data = result.data.getRangeOfAstroObjects;
+      
+      // Handle case where no data is returned
+      if (!data) {
+        console.log('No astronomical objects found in the specified range');
+        this.tree = new KDTree([]);
+        return;
+      }
+
       const formattedPoints = data.map((point) => ({
         point: [point.RAdeg, point.DECdeg],
         id: point.id,
@@ -112,6 +136,20 @@ class PointSearcher {
       await this.initialize();
     }
     this.radius_neighbours = radius;
+
+    // Check if subsetTree exists, if not create it
+    if (!this.subsetTree) {
+      await this.makeSubset(targetPoint, radius);
+    }
+
+    // If still no subsetTree after trying to create it, return empty results
+    if (!this.subsetTree) {
+      this.nearestNeighbours = [];
+      this.newNearestNeighbours = [];
+      this.previousNearestNeighbourIDs = [];
+      this.nearestPoint = undefined;
+      return;
+    }
 
     // Find nearest neighbours using the KDTree
     this.nearestNeighbours = this.subsetTree.kNearest(

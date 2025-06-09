@@ -99,8 +99,8 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         if (p.frameCount % 60 === 0) {
           pointSearcherRef.current.updateFOVAndSubset();
         }
-        // Check to see if we should make a call to the API to get new points
-        pointSearcherRef.current.updatePoints();
+        // Check if we need to update points based on position or FOV changes
+        pointSearcherRef.current.shouldUpdatePoints();
         // Update neighbors based on current position and target radius
         pointSearcherRef.current.updateNeighbors();
         // Update and draw animations for points entering the circle
