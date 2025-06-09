@@ -50,7 +50,7 @@ const GuidedExperienceCard: FC<GuidedExperienceCardProps> = async ({
   return (
     <Stack className={clsx(styles.card, className)}>
       <h2 className={styles.title}>
-        <Link className={styles.link} href={path} prefetch>
+        <Link className={styles.link} href={path}>
           <ViewTransition name={`${slug}-title`}>{title}</ViewTransition>
         </Link>
       </h2>
