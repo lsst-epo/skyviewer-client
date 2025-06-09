@@ -14,6 +14,8 @@ class PointSearcher {
     this.radius_neighbours = this.radius_subset / 2; // Radius for finding the nearest neighbours
     this.k_neighbours = 50; // Number of nearest neighbours to find in subset
 
+    this.prevFOV = parameters.fov; // Previous FOV dimensions
+    this.isFOVUpdating = false; // Flag to indicate if FOV is updating
     this.subsetPoints = []; // Subset of points within the radius
     this.subsetTree = null; // KDTree for the subset
     this.nearestNeighbours = []; // Array to store the nearest neighbours
@@ -26,6 +28,8 @@ class PointSearcher {
     this.animationSpeed = 2; // Speed of animation expansion
     this.animationFadeSpeed = 10; // Speed of animation fade out
     this.maxAnimationSize = 100; // Maximum size of animation circles
+    this.fovDebounceTime = 500; // Debounce time for FOV changes in milliseconds
+    this.fovUpdateTimeout = null; // Track the FOV update timeout
 
     // Initialize the tree with points from parameters
     this.initialize();
@@ -42,19 +46,35 @@ class PointSearcher {
       this.centerPoint = parameters.currentRaDec;
       return;
     }
-    // Calculate distance from center of our current point set
-    const distanceFromCenter = raDecDistance(
-      parameters.currentRaDec[0],
-      parameters.currentRaDec[1],
-      this.centerPoint[0],
-      this.centerPoint[1]
-    );
+    if (this.prevFOV !== parameters.fov) {
+      this.isFOVUpdating = true;
+      // Clear any existing timeout
+      if (this.fovUpdateTimeout) {
+        clearTimeout(this.fovUpdateTimeout);
+      }
+      this.fovUpdateTimeout = setTimeout(() => {
+        this.getPoints().then(() => {
+          this.isFOVUpdating = false;
+          this.prevFOV = parameters.fov;
+          this.fovUpdateTimeout = null;
+        });
+      }, this.fovDebounceTime);
+    }
+    if (!this.isFOVUpdating) {
+      // Calculate distance from center of our current point set
+      const distanceFromCenter = raDecDistance(
+        parameters.currentRaDec[0],
+        parameters.currentRaDec[1],
+        this.centerPoint[0],
+        this.centerPoint[1]
+      );
 
-    // If we're approaching the edge of our query radius (within 20% of the radius)
-    const radiusThreshold = parameters.queryRadius * 0.8;
-    if (distanceFromCenter > radiusThreshold) {
-      this.centerPoint = parameters.currentRaDec;
-      this.getPoints();
+      // If we're approaching the edge of our query radius (within 20% of the radius)
+      const radiusThreshold = parameters.queryRadius * 0.8;
+      if (distanceFromCenter > radiusThreshold) {
+        this.centerPoint = parameters.currentRaDec;
+        this.getPoints();
+      }
     }
   }
 
