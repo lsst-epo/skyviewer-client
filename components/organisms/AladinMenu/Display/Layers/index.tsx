@@ -20,7 +20,13 @@ const Layers: FC<LayersProps> = ({ layers, debug = false }) => {
 
   const setToggleState = ({ aladin }: { aladin: Aladin }) => {
     const config: ToggleState = {};
-    aladin.getStackLayers().forEach((name) => {
+    const stack = aladin.getStackLayers();
+
+    if (debug) {
+      console.info({ stack });
+    }
+
+    stack.forEach((name) => {
       const layer =
         name === "base"
           ? aladin.getBaseImageLayer()
@@ -42,12 +48,16 @@ const Layers: FC<LayersProps> = ({ layers, debug = false }) => {
 
   const duration = 0.3;
 
-  const handleToggle = (checked: boolean, layer: SurveyLayer) => {
+  const handleToggle = ({
+    checked,
+    opacity,
+    id,
+  }: {
+    checked: boolean;
+    opacity: number;
+    id: string;
+  }) => {
     if (!isLoading) {
-      const {
-        id,
-        survey: { opacity },
-      } = layer;
       const hips = aladin?.getOverlayImageLayer(id);
       const from = checked ? 0 : opacity;
       const to = checked ? opacity : 0;
@@ -68,6 +78,7 @@ const Layers: FC<LayersProps> = ({ layers, debug = false }) => {
             survey: { title, description },
           } = layer;
           const isLast = i === layers.length - 1;
+          const key = isLast ? "base" : id;
           return (
             <Field as="li" className={styles.item} key={id}>
               <div>
@@ -81,8 +92,14 @@ const Layers: FC<LayersProps> = ({ layers, debug = false }) => {
               {(!isLast || debug) && (
                 <Switch
                   style={{ "--time-duration-toggle": duration }}
-                  onChange={(checked) => handleToggle(checked, layer)}
-                  checked={!!toggles[id]}
+                  onChange={(checked) =>
+                    handleToggle({
+                      checked,
+                      opacity: layer.survey.opacity,
+                      id: isLast ? "base" : id,
+                    })
+                  }
+                  checked={!!toggles[key]}
                 />
               )}
             </Field>
