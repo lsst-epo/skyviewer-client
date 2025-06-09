@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
+import { env } from "@/env";
 import AladinTemplate from "@/components/templates/Aladin";
 import Controls from "@/components/molecules/ExplorerControls";
 import { getExplorerPage } from "@/services/api/explorer";
@@ -28,7 +29,7 @@ const ExplorerPage: FC<RootProps> = async ({ params: { locale } }) => {
     <AladinTemplate
       menu={
         <AladinMenu backgroundColor="primary" {...{ properties, locale }}>
-          <DisplayMenu layers={surveys} />
+          <DisplayMenu layers={surveys} debug={env.CLOUD_ENV === "DEV"} />
         </AladinMenu>
       }
       fovRange={fovRange}

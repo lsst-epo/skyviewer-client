@@ -10,9 +10,10 @@ import { SurveyLayer } from "@/lib/schema/survey";
 
 interface DisplayMenuProps {
   layers?: Array<SurveyLayer>;
+  debug?: boolean;
 }
 
-const DisplayMenu: FC<DisplayMenuProps> = ({ layers }) => {
+const DisplayMenu: FC<DisplayMenuProps> = ({ layers, debug = false }) => {
   const { t } = useTranslation();
 
   const handleClearSettings = () => {
@@ -26,7 +27,7 @@ const DisplayMenu: FC<DisplayMenuProps> = ({ layers }) => {
       cta={t("menu.display.cta")}
       icon={<IoIosSettings />}
     >
-      {layers && <Layers layers={layers} />}
+      {layers && <Layers {...{ debug, layers }} />}
       <CoordinateFormat />
       <MenuItem
         type="button"
