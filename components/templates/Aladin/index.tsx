@@ -6,6 +6,7 @@ import {
 } from "react";
 import Aladin, { AladinProps } from "@/components/organisms/Aladin";
 import styles from "./styles.module.css";
+import { env } from "@/env";
 
 interface AladinTemplateProps extends AladinProps {
   embedded?: boolean;
@@ -21,7 +22,9 @@ const AladinTemplate: FunctionComponent<
       data-has-menu={!!props.menu && !embedded}
     >
       <Suspense>
-        <Aladin {...props}>{children}</Aladin>
+        <Aladin {...props} debug={env.CLOUD_ENV === "DEV"}>
+          {children}
+        </Aladin>
       </Suspense>
     </main>
   );
