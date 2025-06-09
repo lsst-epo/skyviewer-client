@@ -7,6 +7,7 @@ export const env = createEnv({
     NODE_ENV: z.enum(["development", "test", "production"]).default("test"),
   },
   server: {
+    CLOUD_ENV: z.enum(["PROD", "INT", "DEV"]).default("DEV"),
     CRAFT_REVALIDATE_SECRET_TOKEN: z.string().min(1),
     CRAFT_SECRET_TOKEN: z.string().min(1),
     PLAUSIBLE_DOMAIN: z.string().min(1).optional(),
