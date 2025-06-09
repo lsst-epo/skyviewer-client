@@ -1,6 +1,6 @@
 const parameters = {
   targetPointPX: [756, 223.5], // Target point for the middle of the screen in pixles [x, y]
-  targetRadiusPX: 50, // Radius of the target circle in pixels
+  targetRadiusPX: 50, // Radius of the target circle in pixels //TODO: Is hardcoding this okay?
   minBrightness: 50, // Minimum brightness threshold
   maxBrightness: 1.0, // Maximum brightness threshold
   brightness_boost: 1.2, // Brightness boost factor
