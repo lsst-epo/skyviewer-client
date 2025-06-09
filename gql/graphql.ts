@@ -2266,6 +2266,8 @@ export type Query = {
   /** Entries within the guidedExperiences section. */
   guidedExperiencesEntries: Maybe<Array<Maybe<GuidedExperiencesSectionEntryUnion>>>;
   ping: Maybe<Scalars['String']['output']>;
+  /** Entries within the skysynth section. */
+  skysynthEntries: Maybe<Array<Maybe<SkysynthSectionEntryUnion>>>;
   /** Entries within the surveys section. */
   surveysEntries: Maybe<Array<Maybe<SurveysSectionEntryUnion>>>;
   /** Entries within the tours section. */
@@ -3195,6 +3197,85 @@ export type QueryGlobalSetsArgs = {
 
 
 export type QueryGuidedExperiencesEntriesArgs = {
+  after: InputMaybe<Scalars['String']['input']>;
+  ancestorDist: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf: InputMaybe<Scalars['Int']['input']>;
+  astroImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  astroObjectId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorGroup: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  backgroundImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before: InputMaybe<Scalars['String']['input']>;
+  characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  descendantDist: InputMaybe<Scalars['Int']['input']>;
+  descendantOf: InputMaybe<Scalars['Int']['input']>;
+  description: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  duration: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  factsHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  fov: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMax: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMin: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants: InputMaybe<Scalars['Boolean']['input']>;
+  icon: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
+  introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves: InputMaybe<Scalars['Boolean']['input']>;
+  level: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  path: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore: InputMaybe<Scalars['Int']['input']>;
+  postDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  ra: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId: InputMaybe<Scalars['Int']['input']>;
+  target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QuerySkysynthEntriesArgs = {
   after: InputMaybe<Scalars['String']['input']>;
   ancestorDist: InputMaybe<Scalars['Int']['input']>;
   ancestorOf: InputMaybe<Scalars['Int']['input']>;
@@ -9055,6 +9136,730 @@ export type SiteInfo_GlobalSetLogoArgs = {
   whereNull: InputMaybe<Scalars['String']['input']>;
 };
 
+export type SkysynthSectionEntryUnion = Skysynth_Skysynth_Entry;
+
+export type Skysynth_Skysynth_Entry = ElementInterface & EntryInterface & {
+  __typename?: 'skysynth_skysynth_Entry';
+  /** Return a number of related elements for a field. */
+  _count: Maybe<Scalars['Int']['output']>;
+  /** The entry’s ancestors, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  ancestors: Array<EntryInterface>;
+  /** Whether the element is archived. */
+  archived: Maybe<Scalars['Boolean']['output']>;
+  /** Returns the entry’s canonical ID. */
+  canonicalId: Maybe<Scalars['Int']['output']>;
+  /** Returns the entry’s canonical UUID. */
+  canonicalUid: Maybe<Scalars['String']['output']>;
+  /** The entry’s children, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  children: Array<EntryInterface>;
+  /** The date the element was created. */
+  dateCreated: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated: Maybe<Scalars['DateTime']['output']>;
+  dec: Maybe<Scalars['Number']['output']>;
+  /** The entry’s descendants, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  descendants: Array<EntryInterface>;
+  /** The draft ID (from the `drafts` table). */
+  draftId: Maybe<Scalars['Int']['output']>;
+  /** The name of the draft. */
+  draftName: Maybe<Scalars['String']['output']>;
+  /** The notes for the draft. */
+  draftNotes: Maybe<Scalars['String']['output']>;
+  /** Whether the element is enabled. */
+  enabled: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the element is enabled for the site. */
+  enabledForSite: Maybe<Scalars['Boolean']['output']>;
+  /** The expiry date of the entry. */
+  expiryDate: Maybe<Scalars['DateTime']['output']>;
+  fov: Maybe<Scalars['Number']['output']>;
+  fovMax: Maybe<Scalars['Number']['output']>;
+  fovMin: Maybe<Scalars['Number']['output']>;
+  /** The ID of the entity */
+  id: Maybe<Scalars['ID']['output']>;
+  /** Returns whether this is a draft. */
+  isDraft: Maybe<Scalars['Boolean']['output']>;
+  /** Returns whether this is a revision. */
+  isRevision: Maybe<Scalars['Boolean']['output']>;
+  /** Returns whether this is an unpublished draft. */
+  isUnpublishedDraft: Maybe<Scalars['Boolean']['output']>;
+  /** The language of the site element is associated with. */
+  language: Maybe<Scalars['String']['output']>;
+  /** The element’s level within its structure */
+  level: Maybe<Scalars['Int']['output']>;
+  /** The element’s left position within its structure. */
+  lft: Maybe<Scalars['Int']['output']>;
+  /** The same element in other locales. */
+  localized: Array<EntryInterface>;
+  /** Returns the next element relative to this one, from a given set of criteria. */
+  next: Maybe<EntryInterface>;
+  /** The entry’s parent, if the section is a structure. */
+  parent: Maybe<EntryInterface>;
+  /** The entry’s post date. */
+  postDate: Maybe<Scalars['DateTime']['output']>;
+  /** Returns the previous element relative to this one, from a given set of criteria. */
+  prev: Maybe<EntryInterface>;
+  ra: Maybe<Scalars['Number']['output']>;
+  /** The revision ID (from the `revisions` table). */
+  revisionId: Maybe<Scalars['Int']['output']>;
+  /** The revision notes (from the `revisions` table). */
+  revisionNotes: Maybe<Scalars['String']['output']>;
+  /** The element’s right position within its structure. */
+  rgt: Maybe<Scalars['Int']['output']>;
+  /** The element’s structure’s root ID */
+  root: Maybe<Scalars['Int']['output']>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore: Maybe<Scalars['Int']['output']>;
+  /** The handle of the section that contains the entry. */
+  sectionHandle: Scalars['String']['output'];
+  /** The ID of the section that contains the entry. */
+  sectionId: Scalars['Int']['output'];
+  /** The handle of the site the element is associated with. */
+  siteHandle: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug: Maybe<Scalars['String']['output']>;
+  /**
+   * Returns the entry’s canonical ID.
+   * @deprecated this field has been deprecated since Craft 3.7.7. Use `canonicalId` instead.
+   */
+  sourceId: Maybe<Scalars['Int']['output']>;
+  /**
+   * Returns the entry’s canonical UUID.
+   * @deprecated this field has been deprecated since Craft 3.7.7. Use `canonicalUid` instead.
+   */
+  sourceUid: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status: Maybe<Scalars['String']['output']>;
+  /** The element’s structure ID. */
+  structureId: Maybe<Scalars['Int']['output']>;
+  surveys: Array<Maybe<Surveys_MatrixField>>;
+  /** The element’s title. */
+  title: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed: Maybe<Scalars['Boolean']['output']>;
+  /** The handle of the entry type that contains the entry. */
+  typeHandle: Scalars['String']['output'];
+  /** The ID of the entry type that contains the entry. */
+  typeId: Scalars['Int']['output'];
+  /** The UID of the entity */
+  uid: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri: Maybe<Scalars['String']['output']>;
+  /** The element’s full URL */
+  url: Maybe<Scalars['String']['output']>;
+};
+
+
+export type Skysynth_Skysynth_Entry_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+export type Skysynth_Skysynth_EntryAncestorsArgs = {
+  after: InputMaybe<Scalars['String']['input']>;
+  ancestorDist: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf: InputMaybe<Scalars['Int']['input']>;
+  astroImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  astroObjectId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorGroup: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  backgroundImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before: InputMaybe<Scalars['String']['input']>;
+  characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  descendantDist: InputMaybe<Scalars['Int']['input']>;
+  descendantOf: InputMaybe<Scalars['Int']['input']>;
+  description: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  duration: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  factsHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  fov: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMax: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMin: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants: InputMaybe<Scalars['Boolean']['input']>;
+  icon: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
+  introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves: InputMaybe<Scalars['Boolean']['input']>;
+  level: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  path: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore: InputMaybe<Scalars['Int']['input']>;
+  postDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  ra: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
+  section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId: InputMaybe<Scalars['Int']['input']>;
+  target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Skysynth_Skysynth_EntryChildrenArgs = {
+  after: InputMaybe<Scalars['String']['input']>;
+  ancestorDist: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf: InputMaybe<Scalars['Int']['input']>;
+  astroImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  astroObjectId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorGroup: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  backgroundImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before: InputMaybe<Scalars['String']['input']>;
+  characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  descendantDist: InputMaybe<Scalars['Int']['input']>;
+  descendantOf: InputMaybe<Scalars['Int']['input']>;
+  description: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  duration: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  factsHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  fov: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMax: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMin: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants: InputMaybe<Scalars['Boolean']['input']>;
+  icon: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
+  introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves: InputMaybe<Scalars['Boolean']['input']>;
+  level: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  path: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore: InputMaybe<Scalars['Int']['input']>;
+  postDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  ra: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
+  section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId: InputMaybe<Scalars['Int']['input']>;
+  target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Skysynth_Skysynth_EntryDescendantsArgs = {
+  after: InputMaybe<Scalars['String']['input']>;
+  ancestorDist: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf: InputMaybe<Scalars['Int']['input']>;
+  astroImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  astroObjectId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorGroup: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  backgroundImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before: InputMaybe<Scalars['String']['input']>;
+  characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  descendantDist: InputMaybe<Scalars['Int']['input']>;
+  descendantOf: InputMaybe<Scalars['Int']['input']>;
+  description: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  duration: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  factsHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  fov: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMax: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMin: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants: InputMaybe<Scalars['Boolean']['input']>;
+  icon: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
+  introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves: InputMaybe<Scalars['Boolean']['input']>;
+  level: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  path: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore: InputMaybe<Scalars['Int']['input']>;
+  postDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  ra: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
+  section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId: InputMaybe<Scalars['Int']['input']>;
+  target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Skysynth_Skysynth_EntryLocalizedArgs = {
+  after: InputMaybe<Scalars['String']['input']>;
+  ancestorDist: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf: InputMaybe<Scalars['Int']['input']>;
+  astroImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  astroObjectId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorGroup: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  backgroundImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before: InputMaybe<Scalars['String']['input']>;
+  characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  descendantDist: InputMaybe<Scalars['Int']['input']>;
+  descendantOf: InputMaybe<Scalars['Int']['input']>;
+  description: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  duration: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  factsHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  fov: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMax: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMin: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants: InputMaybe<Scalars['Boolean']['input']>;
+  icon: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
+  introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves: InputMaybe<Scalars['Boolean']['input']>;
+  level: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  path: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore: InputMaybe<Scalars['Int']['input']>;
+  postDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  ra: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
+  section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId: InputMaybe<Scalars['Int']['input']>;
+  target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Skysynth_Skysynth_EntryNextArgs = {
+  after: InputMaybe<Scalars['String']['input']>;
+  ancestorDist: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf: InputMaybe<Scalars['Int']['input']>;
+  astroImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  astroObjectId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorGroup: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  backgroundImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before: InputMaybe<Scalars['String']['input']>;
+  characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  descendantDist: InputMaybe<Scalars['Int']['input']>;
+  descendantOf: InputMaybe<Scalars['Int']['input']>;
+  description: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  duration: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  factsHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  fov: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMax: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMin: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants: InputMaybe<Scalars['Boolean']['input']>;
+  icon: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
+  introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves: InputMaybe<Scalars['Boolean']['input']>;
+  level: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  path: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore: InputMaybe<Scalars['Int']['input']>;
+  postDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  ra: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
+  section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId: InputMaybe<Scalars['Int']['input']>;
+  target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Skysynth_Skysynth_EntryParentArgs = {
+  after: InputMaybe<Scalars['String']['input']>;
+  ancestorDist: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf: InputMaybe<Scalars['Int']['input']>;
+  astroImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  astroObjectId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorGroup: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  backgroundImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before: InputMaybe<Scalars['String']['input']>;
+  characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  descendantDist: InputMaybe<Scalars['Int']['input']>;
+  descendantOf: InputMaybe<Scalars['Int']['input']>;
+  description: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  duration: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  factsHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  fov: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMax: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMin: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants: InputMaybe<Scalars['Boolean']['input']>;
+  icon: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
+  introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves: InputMaybe<Scalars['Boolean']['input']>;
+  level: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  path: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore: InputMaybe<Scalars['Int']['input']>;
+  postDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  ra: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
+  section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId: InputMaybe<Scalars['Int']['input']>;
+  target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Skysynth_Skysynth_EntryPrevArgs = {
+  after: InputMaybe<Scalars['String']['input']>;
+  ancestorDist: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf: InputMaybe<Scalars['Int']['input']>;
+  astroImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  astroObjectId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorGroup: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  backgroundImage: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before: InputMaybe<Scalars['String']['input']>;
+  characteristics: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  complexity: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  cooFrame: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dec: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  descendantDist: InputMaybe<Scalars['Int']['input']>;
+  descendantOf: InputMaybe<Scalars['Int']['input']>;
+  description: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  duration: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  factsHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  fov: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMax: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fovMin: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants: InputMaybe<Scalars['Boolean']['input']>;
+  icon: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  imgFormat: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
+  introHeading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  introSubheading: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves: InputMaybe<Scalars['Boolean']['input']>;
+  level: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  maxOrder: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  path: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore: InputMaybe<Scalars['Int']['input']>;
+  postDate: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  ra: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
+  section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId: InputMaybe<Scalars['Int']['input']>;
+  target: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Skysynth_Skysynth_EntrySurveysArgs = {
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  primaryOwnerId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
 export type SurveysSectionEntryUnion = Surveys_Surveys_Entry;
 
 export type Surveys_MatrixField = Surveys_Layer_BlockType;
@@ -12073,7 +12878,7 @@ export type PagePreviewQueryQueryVariables = Exact<{
 }>;
 
 
-export type PagePreviewQueryQuery = { __typename?: 'Query', entry: { __typename: 'astroObjects_astroObject_Entry', uri: string | null, title: string | null } | { __typename: 'catalogs_catalog_Entry', uri: string | null, title: string | null } | { __typename: 'embed_embed_Entry', uri: string | null, title: string | null } | { __typename: 'explorer_explorer_Entry', uri: string | null, title: string | null } | { __typename: 'guidedExperiences_guidedExperiences_Entry', uri: string | null, title: string | null } | { __typename: 'surveys_surveys_Entry', uri: string | null, title: string | null } | { __typename: 'tours_tour_Entry', uri: string | null, title: string | null } | null };
+export type PagePreviewQueryQuery = { __typename?: 'Query', entry: { __typename: 'astroObjects_astroObject_Entry', uri: string | null, title: string | null } | { __typename: 'catalogs_catalog_Entry', uri: string | null, title: string | null } | { __typename: 'embed_embed_Entry', uri: string | null, title: string | null } | { __typename: 'explorer_explorer_Entry', uri: string | null, title: string | null } | { __typename: 'guidedExperiences_guidedExperiences_Entry', uri: string | null, title: string | null } | { __typename: 'skysynth_skysynth_Entry', uri: string | null, title: string | null } | { __typename: 'surveys_surveys_Entry', uri: string | null, title: string | null } | { __typename: 'tours_tour_Entry', uri: string | null, title: string | null } | null };
 
 export type EmbeddedPageQueryVariables = Exact<{
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
@@ -12101,7 +12906,7 @@ export type CatalogFragment = { __typename?: 'catalogs_catalog_Entry', id: strin
 
 export type SurveyFragment = { __typename?: 'surveys_surveys_Entry', id: string | null, description: string | null, title: string | null, path: string | null, target: string | null, fovMin: any | null, fovMax: any | null, fov: any | null, imgFormat: string | null, cooFrame: string | null, maxOrder: any | null, tileSize: string | null } & { ' $fragmentName'?: 'SurveyFragment' };
 
-export type SurveyLayerFragment = { __typename?: 'surveys_layer_BlockType', id: string | null, opacity: any | null, showOnLoad: boolean | null, survey: Array<{ __typename?: 'astroObjects_astroObject_Entry' } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embed_embed_Entry' } | { __typename?: 'explorer_explorer_Entry' } | { __typename?: 'guidedExperiences_guidedExperiences_Entry' } | (
+export type SurveyLayerFragment = { __typename?: 'surveys_layer_BlockType', id: string | null, opacity: any | null, showOnLoad: boolean | null, survey: Array<{ __typename?: 'astroObjects_astroObject_Entry' } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embed_embed_Entry' } | { __typename?: 'explorer_explorer_Entry' } | { __typename?: 'guidedExperiences_guidedExperiences_Entry' } | { __typename?: 'skysynth_skysynth_Entry' } | (
     { __typename?: 'surveys_surveys_Entry' }
     & { ' $fragmentRefs'?: { 'SurveyFragment': SurveyFragment } }
   ) | { __typename?: 'tours_tour_Entry' } | null> } & { ' $fragmentName'?: 'SurveyLayerFragment' };
@@ -12126,7 +12931,17 @@ export type TourCountQueryVariables = Exact<{
 }>;
 
 
-export type TourCountQuery = { __typename?: 'Query', entries: Array<{ __typename?: 'astroObjects_astroObject_Entry', id: string | null } | { __typename?: 'catalogs_catalog_Entry', id: string | null } | { __typename?: 'embed_embed_Entry', id: string | null } | { __typename?: 'explorer_explorer_Entry', id: string | null } | { __typename?: 'guidedExperiences_guidedExperiences_Entry', id: string | null } | { __typename?: 'surveys_surveys_Entry', id: string | null } | { __typename?: 'tours_tour_Entry', id: string | null } | null> | null };
+export type TourCountQuery = { __typename?: 'Query', entries: Array<{ __typename?: 'astroObjects_astroObject_Entry', id: string | null } | { __typename?: 'catalogs_catalog_Entry', id: string | null } | { __typename?: 'embed_embed_Entry', id: string | null } | { __typename?: 'explorer_explorer_Entry', id: string | null } | { __typename?: 'guidedExperiences_guidedExperiences_Entry', id: string | null } | { __typename?: 'skysynth_skysynth_Entry', id: string | null } | { __typename?: 'surveys_surveys_Entry', id: string | null } | { __typename?: 'tours_tour_Entry', id: string | null } | null> | null };
+
+export type SkySynthPageQueryVariables = Exact<{
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+}>;
+
+
+export type SkySynthPageQuery = { __typename?: 'Query', skysynthEntries: Array<{ __typename?: 'skysynth_skysynth_Entry', title: string | null, ra: any | null, dec: any | null, fov: any | null, fovMin: any | null, fovMax: any | null, surveys: Array<(
+      { __typename?: 'surveys_layer_BlockType' }
+      & { ' $fragmentRefs'?: { 'SurveyLayerFragment': SurveyLayerFragment } }
+    ) | null> } | null> | null };
 
 export type AllToursQueryVariables = Exact<{
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
@@ -12170,7 +12985,7 @@ export type TourPoiQueryVariables = Exact<{
 }>;
 
 
-export type TourPoiQuery = { __typename?: 'Query', toursEntries: Array<{ __typename?: 'tours_tour_Entry', tourPois: Array<{ __typename?: 'tourPois_tourPoi_BlockType', id: string | null, description: string | null, fov: any | null, ra: any | null, dec: any | null, zoomOutTime: any | null, zoomOutFov: any | null, panTime: any | null, zoomInTime: any | null, title: string | null, audio: Array<never | null> | null, survey: Array<{ __typename?: 'astroObjects_astroObject_Entry' } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embed_embed_Entry' } | { __typename?: 'explorer_explorer_Entry' } | { __typename?: 'guidedExperiences_guidedExperiences_Entry' } | (
+export type TourPoiQuery = { __typename?: 'Query', toursEntries: Array<{ __typename?: 'tours_tour_Entry', tourPois: Array<{ __typename?: 'tourPois_tourPoi_BlockType', id: string | null, description: string | null, fov: any | null, ra: any | null, dec: any | null, zoomOutTime: any | null, zoomOutFov: any | null, panTime: any | null, zoomInTime: any | null, title: string | null, audio: Array<never | null> | null, survey: Array<{ __typename?: 'astroObjects_astroObject_Entry' } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embed_embed_Entry' } | { __typename?: 'explorer_explorer_Entry' } | { __typename?: 'guidedExperiences_guidedExperiences_Entry' } | { __typename?: 'skysynth_skysynth_Entry' } | (
         { __typename?: 'surveys_surveys_Entry' }
         & { ' $fragmentRefs'?: { 'SurveyFragment': SurveyFragment } }
       ) | { __typename?: 'tours_tour_Entry' } | null> } | null> } | null> | null };
@@ -12192,6 +13007,7 @@ export const ExplorerPageDocument = {"kind":"Document","definitions":[{"kind":"O
 export const SiteGlobalsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"SiteGlobals"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"globalSets"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"siteInfo_GlobalSet"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"aboutMenuContent"}},{"kind":"Field","name":{"kind":"Name","value":"siteDescription"}},{"kind":"Field","name":{"kind":"Name","value":"siteTitle"}},{"kind":"Field","name":{"kind":"Name","value":"logo"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"key"},"value":{"kind":"StringValue","value":"scheme","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"value"},"value":{"kind":"StringValue","value":"image","block":false}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CantoAssetMinimal"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CantoAssetMinimal"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CantoDamAssetInterface"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}}]} as unknown as DocumentNode<SiteGlobalsQuery, SiteGlobalsQueryVariables>;
 export const GuidedExperiencesPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GuidedExperiencesPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"guidedExperiencesEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"guidedExperiences_guidedExperiences_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"guidedExperiences"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"guidedExperiences_experience_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"experienceCategory"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"Field","name":{"kind":"Name","value":"previewImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CantoAssetMinimal"}}]}}]}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CantoAssetMinimal"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CantoDamAssetInterface"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}}]} as unknown as DocumentNode<GuidedExperiencesPageQuery, GuidedExperiencesPageQueryVariables>;
 export const TourCountDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TourCount"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"section"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}},{"kind":"Argument","name":{"kind":"Name","value":"section"},"value":{"kind":"Variable","name":{"kind":"Name","value":"section"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<TourCountQuery, TourCountQueryVariables>;
+export const SkySynthPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"SkySynthPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"skysynthEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"skysynth_skysynth_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"surveys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SurveyLayer"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SurveyLayer"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_layer_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"opacity"}},{"kind":"Field","name":{"kind":"Name","value":"showOnLoad"}},{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}}]} as unknown as DocumentNode<SkySynthPageQuery, SkySynthPageQueryVariables>;
 export const AllToursDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AllTours"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"includeInFeed"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}},{"kind":"Argument","name":{"kind":"Name","value":"includeInFeed"},"value":{"kind":"Variable","name":{"kind":"Name","value":"includeInFeed"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"complexity"}},{"kind":"Field","name":{"kind":"Name","value":"duration"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<AllToursQuery, AllToursQueryVariables>;
 export const TourMetadataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TourMetadata"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}},{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"complexity"}},{"kind":"Field","name":{"kind":"Name","value":"duration"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"backgroundImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<TourMetadataQuery, TourMetadataQueryVariables>;
 export const TourDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Tour"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}},{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"introHeading"}},{"kind":"Field","name":{"kind":"Name","value":"introSubheading"}},{"kind":"Field","name":{"kind":"Name","value":"introContentBlocks"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"introContentBlocks_introBlock_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","alias":{"kind":"Name","value":"text"},"name":{"kind":"Name","value":"body"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"factsHeading"}},{"kind":"Field","name":{"kind":"Name","value":"factsContentBlocks"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"factsContentBlocks_factsContentBlock_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","alias":{"kind":"Name","value":"text"},"name":{"kind":"Name","value":"body"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<TourQuery, TourQueryVariables>;
