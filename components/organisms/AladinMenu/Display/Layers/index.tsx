@@ -11,9 +11,10 @@ import styles from "./styles.module.css";
 type ToggleState = Record<string, boolean>;
 interface LayersProps {
   layers: Array<SurveyLayer>;
+  debug?: boolean;
 }
 
-const Layers: FC<LayersProps> = ({ layers }) => {
+const Layers: FC<LayersProps> = ({ layers, debug = false }) => {
   const [toggles, setToggles] = useState<ToggleState>({});
   const { t } = useTranslation();
 
@@ -77,7 +78,7 @@ const Layers: FC<LayersProps> = ({ layers }) => {
                   </Description>
                 )}
               </div>
-              {!isLast && (
+              {(!isLast || debug) && (
                 <Switch
                   style={{ "--time-duration-toggle": duration }}
                   onChange={(checked) => handleToggle(checked, layer)}
