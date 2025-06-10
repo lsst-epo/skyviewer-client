@@ -283,6 +283,7 @@ interface GetViewData {
 }
 
 interface Aladin {
+  readonly addNewImageLayer: (survey: string | HiPS) => AladinImageLayer;
   readonly getRaDec: () => [number, number];
   readonly getSize: () => [number, number];
   readonly getFov: () => [number, number];

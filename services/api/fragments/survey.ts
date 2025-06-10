@@ -21,6 +21,7 @@ export const SurveyLayer = graphql(`
   fragment SurveyLayer on surveys_layer_BlockType {
     id
     opacity
+    showOnLoad
     survey {
       ...Survey
     }
