@@ -1,8 +1,3 @@
-export const defaultHiPSOptions: HiPSOptions = {
-  cooFrame: "ICRSd",
-  maxOrder: 11,
-};
-
 export const staticAladinOptions: AladinOptions = {
   backgroundColor: "rgb(0,0,0)",
   cooFrame: "ICRSd",
