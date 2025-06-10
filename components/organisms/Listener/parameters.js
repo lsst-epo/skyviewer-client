@@ -35,7 +35,7 @@ const parameters = {
   lastRaDec: [0, 0], // Last RA and Dec coordinates at time of API call
   fov: [0, 0], // Field of View in pixels [width, height]
   fovRadius: 0, // Field of View radius in Ra/Dec
-  queryFOVFactor: 1, // Factor to multiply FOVRadius
+  queryFOVFactor: 2, // Factor to multiply FOVRadius. Has to be bigger than 1
   querygmagMin: 12, // Minimum gmag for querying points
   querygmagMax: 23, // Maximum gmag for querying points
   fovLimits: {
