@@ -3,6 +3,8 @@ import { linearMap, mapValueToHue, raDecDistance } from "./utilities";
 import { env } from "@/env";
 
 const apiToken = env.NEXT_PUBLIC_ASTRO_OBJECTS_API_TOKEN;
+let getPointsRan = 0;
+let fovCheckTruthy = 0;
 
 class PointSearcher {
   constructor(p, aladin) {
@@ -46,7 +48,13 @@ class PointSearcher {
       this.centerPoint = parameters.currentRaDec;
       return;
     }
-    if (this.prevFOV !== parameters.fov) {
+    if (
+      this.prevFOV[0] !== parameters.fov[0] ||
+      this.prevFOV[1] !== parameters.fov[1]
+    ) {
+      this.prevFOV = [...parameters.fov];
+      fovCheckTruthy++;
+
       this.isFOVUpdating = true;
       // Clear any existing timeout
       if (this.fovUpdateTimeout) {
@@ -55,7 +63,6 @@ class PointSearcher {
       this.fovUpdateTimeout = setTimeout(() => {
         this.getPoints().then(() => {
           this.isFOVUpdating = false;
-          this.prevFOV = parameters.fov;
           this.fovUpdateTimeout = null;
         });
       }, this.fovDebounceTime);
@@ -79,6 +86,7 @@ class PointSearcher {
   }
 
   async getPoints() {
+    getPointsRan++;
     parameters.queryRadius = parameters.queryFOVFactor * parameters.fovRadius;
     parameters.queryMag = linearMap(
       parameters.fovRadius,
@@ -289,13 +297,12 @@ class PointSearcher {
     // Draw nearest neighbours count
     this.p.fill(255); // White text
     this.p.textSize(16);
-    this.p.text(`Nearest Neighbours: ${this.nearestNeighbours.length}`, 20, 30);
-    this.p.text(
-      `New Nearest Neighbours: ${this.newNearestNeighbours.length}`,
-      20,
-      50
-    );
-    this.p.text(`Subset Points: ${this.subsetPoints.length}`, 20, 70);
+    this.p.text(`Current FOV: ${parameters.fov}`, 20, 30);
+    this.p.text(`Previous FOV: ${this.prevFOV}`, 20, 50);
+    this.p.text(`getPoints Ran: ${getPointsRan}`, 20, 70);
+    this.p.text(`Current RA/DEC: ${parameters.currentRaDec}`, 20, 90);
+    this.p.text(`Center Point: ${this.centerPoint}`, 20, 110);
+    this.p.text(`FOV Check True: ${fovCheckTruthy}`, 20, 130);
     // DELETE ABOVE //////////////////////
     // Reset color mode to RGB
     this.p.colorMode(this.p.RGB);
