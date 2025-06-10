@@ -24,7 +24,12 @@ import styles from "./styles.module.css";
 
 const TargetSchema = z
   .string()
-  .transform((output) => output.split(" ").map(parseFloat))
+  .transform((output) => {
+    return output.split(" ").map((value) => {
+      const clean = value.replace(/(^[\s\u200b]*|[\s\u200b]*$)/g, "");
+      return parseFloat(clean);
+    });
+  })
   .pipe(position)
   .transform((output) => {
     return { ra: output[0], dec: output[1] };
