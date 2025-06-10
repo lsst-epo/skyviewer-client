@@ -13,6 +13,7 @@ class PointSearcher {
     this.aladin = aladin; // Store Aladin instance
     this.tree = null;
     this.ready = false; // Add ready flag
+    this.isInitializing = false; // Add initialization flag
     this.radius_subset = 0.1; // Radius in degrees for finding the subset of points
     this.radius_neighbours = this.radius_subset / 2; // Radius for finding the nearest neighbours
     this.k_neighbours = 50; // Number of nearest neighbours to find in subset
@@ -39,8 +40,15 @@ class PointSearcher {
   }
 
   async initialize() {
-    await this.getPoints();
-    this.ready = true;
+    if (this.isInitializing) return; // Prevent multiple simultaneous initializations
+    this.isInitializing = true;
+
+    try {
+      await this.getPoints();
+      this.ready = true;
+    } finally {
+      this.isInitializing = false;
+    }
   }
 
   shouldUpdatePoints() {
@@ -49,6 +57,12 @@ class PointSearcher {
       this.centerPoint = parameters.currentRaDec;
       return;
     }
+
+    // Don't update points if we're not ready yet
+    if (!this.ready) {
+      return;
+    }
+
     if (
       this.prevFOV[0] !== parameters.fov[0] ||
       this.prevFOV[1] !== parameters.fov[1]
@@ -62,10 +76,15 @@ class PointSearcher {
         clearTimeout(this.fovUpdateTimeout);
       }
       this.fovUpdateTimeout = setTimeout(() => {
-        this.getPoints().then(() => {
-          this.isFOVUpdating = false;
-          this.fovUpdateTimeout = null;
-        });
+        this.getPoints()
+          .then(() => {
+            this.isFOVUpdating = false;
+            this.fovUpdateTimeout = null;
+          })
+          .catch(() => {
+            this.isFOVUpdating = false;
+            this.fovUpdateTimeout = null;
+          });
       }, this.fovDebounceTime);
     }
     if (!this.isFOVUpdating) {
@@ -154,6 +173,11 @@ class PointSearcher {
       await this.initialize();
     }
     this.radius_subset = radius;
+    if (!this.tree) {
+      this.subsetPoints = [];
+      this.subsetTree = new KDTree([]);
+      return;
+    }
     this.subsetPoints = this.tree.range(targetPoint, radius);
     this.subsetTree = new KDTree(this.subsetPoints);
   }
