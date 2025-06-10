@@ -19,7 +19,7 @@ const documents = {
     "fragment CantoAssetMinimal on CantoDamAssetInterface {\n  width\n  height\n  additional {\n    AltTextEN\n    AltTextES\n  }\n  url {\n    directUrlOriginal\n    directUrlPreview\n  }\n}": types.CantoAssetMinimalFragmentDoc,
     "\n  fragment Catalog on catalogs_catalog_Entry {\n    id\n    title\n    path\n    icon {\n      ... on icons_Asset {\n        url\n      }\n    }\n  }\n": types.CatalogFragmentDoc,
     "\n  fragment Survey on surveys_surveys_Entry {\n    id\n    description\n    title\n    path\n    target\n    fovMin\n    fovMax\n    fov\n    imgFormat\n    cooFrame\n    maxOrder\n    tileSize\n  }\n": types.SurveyFragmentDoc,
-    "\n  fragment SurveyLayer on surveys_layer_BlockType {\n    id\n    opacity\n    survey {\n      ...Survey\n    }\n  }\n": types.SurveyLayerFragmentDoc,
+    "\n  fragment SurveyLayer on surveys_layer_BlockType {\n    id\n    opacity\n    showOnLoad\n    survey {\n      ...Survey\n    }\n  }\n": types.SurveyLayerFragmentDoc,
     "\n    query SiteGlobals($site: [String]) {\n      globalSets(site: $site) {\n        ... on siteInfo_GlobalSet {\n          name\n          aboutMenuContent\n          siteDescription\n          siteTitle\n          logo(where: { key: \"scheme\", value: \"image\" }) {\n            ...CantoAssetMinimal\n          }\n        }\n      }\n    }\n  ": types.SiteGlobalsDocument,
     "\n    query GuidedExperiencesPage($site: [String]) {\n      guidedExperiencesEntries(site: $site) {\n        ... on guidedExperiences_guidedExperiences_Entry {\n          title\n          guidedExperiences {\n            ... on guidedExperiences_experience_BlockType {\n              experienceCategory {\n                id\n                slug\n                title\n              }\n              previewImage {\n                ...CantoAssetMinimal\n              }\n            }\n          }\n        }\n      }\n    }\n  ": types.GuidedExperiencesPageDocument,
     "\n    query TourCount($site: [String], $section: [String]) {\n      entries(site: $site, section: $section) {\n        id\n      }\n    }\n  ": types.TourCountDocument,
@@ -72,7 +72,7 @@ export function graphql(source: "\n  fragment Survey on surveys_surveys_Entry {\
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  fragment SurveyLayer on surveys_layer_BlockType {\n    id\n    opacity\n    survey {\n      ...Survey\n    }\n  }\n"): (typeof documents)["\n  fragment SurveyLayer on surveys_layer_BlockType {\n    id\n    opacity\n    survey {\n      ...Survey\n    }\n  }\n"];
+export function graphql(source: "\n  fragment SurveyLayer on surveys_layer_BlockType {\n    id\n    opacity\n    showOnLoad\n    survey {\n      ...Survey\n    }\n  }\n"): (typeof documents)["\n  fragment SurveyLayer on surveys_layer_BlockType {\n    id\n    opacity\n    showOnLoad\n    survey {\n      ...Survey\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

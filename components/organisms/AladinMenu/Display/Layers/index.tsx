@@ -22,10 +22,6 @@ const Layers: FC<LayersProps> = ({ layers, debug = false }) => {
     const config: ToggleState = {};
     const stack = aladin.getStackLayers();
 
-    if (debug) {
-      console.info({ stack });
-    }
-
     stack.forEach((name) => {
       const layer =
         name === "base"
@@ -59,10 +55,11 @@ const Layers: FC<LayersProps> = ({ layers, debug = false }) => {
   }) => {
     if (!isLoading) {
       const hips = aladin?.getOverlayImageLayer(id);
-      const from = checked ? 0 : opacity;
-      const to = checked ? opacity : 0;
 
       if (hips) {
+        const from = checked ? 0 : hips.getOpacity();
+        const to = checked ? opacity : 0;
+
         fadeLayer({ hips, from, to, duration });
         setToggles({ ...toggles, [id]: checked });
       }

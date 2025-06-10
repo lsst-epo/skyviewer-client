@@ -12,9 +12,7 @@ import {
   useState,
 } from "react";
 import { useLocalStorage, useOnClickOutside } from "usehooks-ts";
-import staticAladinOptions, {
-  defaultHiPSOptions,
-} from "@/fixtures/defaultAladinOptions";
+import staticAladinOptions from "@/fixtures/defaultAladinOptions";
 import { clientInitialPosition } from "@/lib/helpers";
 import { SurveyLayer } from "@/lib/schema/survey";
 import AladinContext, { defaultValue } from "@/contexts/Aladin";
@@ -70,11 +68,16 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
       import("aladin-lite").then((module) => {
         const global: A = module.default;
 
+        layers.reverse();
+
+        const [base] = layers.splice(0, 1);
+
         global.init.then(() => {
           const instance = global.aladin(node, {
             ...staticAladinOptions,
             ...savedAladinOptions,
             ...options,
+            survey: base.survey.path,
             ...(initializeWithParams && position),
           });
 
@@ -88,32 +91,39 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
             instance.setFoVRange(fovRange[0], fovRange[1]);
           }
 
-          layers.reverse().forEach(({ id, survey: { path, ...survey } }, i) => {
-            const hips = global.HiPS(path, {
-              ...defaultHiPSOptions,
-              ...survey,
-              successCallback: () => {
-                if (debug) {
-                  console.info("Loaded", { path, ...survey });
-                }
+          layers.forEach(
+            ({
+              id,
+              survey: {
+                path,
+                opacity,
+                maxOrder,
+                imgFormat,
+                tileSize,
+                showOnLoad,
               },
-              errorCallback: () => {
-                if (debug) {
-                  console.info("Error loading", { path, ...survey });
-                }
-              },
-            });
+            }) => {
+              const hips = global.HiPS(path, {
+                maxOrder,
+                imgFormat,
+                tileSize,
+                successCallback: () => {
+                  if (debug) {
+                    console.info("Loaded", path);
+                  }
+                },
+                errorCallback: () => {
+                  if (debug) {
+                    console.info("Error loading", path);
+                  }
+                },
+              });
 
-            if (i === 0) {
-              if (!fovRange) {
-                instance.setFoVRange(survey.fovRange[0], survey.fovRange[1]);
-              }
+              hips.setOpacity(showOnLoad ? opacity : 0);
 
-              instance.setBaseImageLayer(hips);
-            } else {
               instance.setOverlayImageLayer(hips, id);
             }
-          });
+          );
 
           if (debug) {
             console.info(instance);
