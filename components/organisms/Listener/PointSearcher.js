@@ -5,6 +5,7 @@ import { env } from "@/env";
 const apiToken = env.NEXT_PUBLIC_ASTRO_OBJECTS_API_TOKEN;
 let getPointsRan = 0;
 let fovCheckTruthy = 0;
+let updateFOVAndSubsetRan = 0;
 
 class PointSearcher {
   constructor(p, aladin) {
@@ -77,7 +78,7 @@ class PointSearcher {
       );
 
       // If we're approaching the edge of our query radius (within 20% of the radius)
-      const radiusThreshold = parameters.queryRadius * 0.8;
+      const radiusThreshold = parameters.queryRadius - parameters.fovRadius;
       if (distanceFromCenter > radiusThreshold) {
         this.centerPoint = parameters.currentRaDec;
         this.getPoints();
@@ -303,12 +304,14 @@ class PointSearcher {
     this.p.text(`Current RA/DEC: ${parameters.currentRaDec}`, 20, 90);
     this.p.text(`Center Point: ${this.centerPoint}`, 20, 110);
     this.p.text(`FOV Check True: ${fovCheckTruthy}`, 20, 130);
+    this.p.text(`updateFOVAndSubset Ran: ${updateFOVAndSubsetRan}`, 20, 150);
     // DELETE ABOVE //////////////////////
     // Reset color mode to RGB
     this.p.colorMode(this.p.RGB);
   }
 
   updateFOVAndSubset() {
+    updateFOVAndSubsetRan++;
     // Calculate FOV radius from the current FOV
     const fovRadius = Math.sqrt(
       Math.pow(parameters.fov[0] / 2, 2) + Math.pow(parameters.fov[1] / 2, 2)
