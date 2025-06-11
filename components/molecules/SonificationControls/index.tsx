@@ -10,7 +10,7 @@ import AladinOverlay from "@/components/atomic/AladinOverlay";
 import styles from "./styles.module.css";
 
 const SonificationControls: FC = () => {
-  const [sliderValue, setSliderValue] = useState(0.5);
+  const [sliderValue, setSliderValue] = useState(parameters.walkSpeed);
 
   return (
     <AladinOverlay
@@ -27,7 +27,7 @@ const SonificationControls: FC = () => {
             <Zoom />
           </div>
         </ControlStack>
-        <ControlStack position="bottom right">
+        <ControlStack position="bottom center">
           <HorizontalSlider
             styleAs="dark"
             min={0.1}
