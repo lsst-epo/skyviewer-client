@@ -288,47 +288,47 @@ class PointSearcher {
     }
     // DELETE BELOW //////////////////////
     // Draw nearest neighbours
-    this.p.colorMode(this.p.RGB); // Ensure RGB mode for these points
-    this.p.fill(255, 0, 0); // Red color for nearest neighbours
-    this.p.noStroke(); // No outline for these ellipses
-    for (const neighbour of this.nearestNeighbours) {
-      if (neighbour && neighbour.point) {
-        const canvasCoords = this.aladin.world2pix(
-          neighbour.point[0],
-          neighbour.point[1]
-        );
-        if (canvasCoords) {
-          // Ensure coordinates are valid
-          this.p.ellipse(canvasCoords[0], canvasCoords[1], 5, 5); // Draw a 5x5 ellipse
-        }
-      }
-    }
+    // this.p.colorMode(this.p.RGB); // Ensure RGB mode for these points
+    // this.p.fill(255, 0, 0); // Red color for nearest neighbours
+    // this.p.noStroke(); // No outline for these ellipses
+    // for (const neighbour of this.nearestNeighbours) {
+    //   if (neighbour && neighbour.point) {
+    //     const canvasCoords = this.aladin.world2pix(
+    //       neighbour.point[0],
+    //       neighbour.point[1]
+    //     );
+    //     if (canvasCoords) {
+    //       // Ensure coordinates are valid
+    //       this.p.ellipse(canvasCoords[0], canvasCoords[1], 5, 5); // Draw a 5x5 ellipse
+    //     }
+    //   }
+    // }
 
-    // Draw subset points in blue
-    this.p.fill(0, 0, 255); // Blue color for subset points
-    for (const point of this.subsetPoints) {
-      if (point && point.point) {
-        const canvasCoords = this.aladin.world2pix(
-          point.point[0],
-          point.point[1]
-        );
-        if (canvasCoords) {
-          // Ensure coordinates are valid
-          this.p.ellipse(canvasCoords[0], canvasCoords[1], 3, 3); // Draw a slightly smaller 3x3 ellipse
-        }
-      }
-    }
+    // // Draw subset points in blue
+    // this.p.fill(0, 0, 255); // Blue color for subset points
+    // for (const point of this.subsetPoints) {
+    //   if (point && point.point) {
+    //     const canvasCoords = this.aladin.world2pix(
+    //       point.point[0],
+    //       point.point[1]
+    //     );
+    //     if (canvasCoords) {
+    //       // Ensure coordinates are valid
+    //       this.p.ellipse(canvasCoords[0], canvasCoords[1], 3, 3); // Draw a slightly smaller 3x3 ellipse
+    //     }
+    //   }
+    // }
 
-    // Draw nearest neighbours count
-    this.p.fill(255); // White text
-    this.p.textSize(16);
-    this.p.text(`Current FOV: ${parameters.fov}`, 20, 30);
-    this.p.text(`Previous FOV: ${this.prevFOV}`, 20, 50);
-    this.p.text(`getPoints Ran: ${getPointsRan}`, 20, 70);
-    this.p.text(`Current RA/DEC: ${parameters.currentRaDec}`, 20, 90);
-    this.p.text(`Center Point: ${this.centerPoint}`, 20, 110);
-    this.p.text(`FOV Check True: ${fovCheckTruthy}`, 20, 130);
-    this.p.text(`updateFOVAndSubset Ran: ${updateFOVAndSubsetRan}`, 20, 150);
+    // // Draw nearest neighbours count
+    // this.p.fill(255); // White text
+    // this.p.textSize(16);
+    // this.p.text(`Current FOV: ${parameters.fov}`, 20, 30);
+    // this.p.text(`Previous FOV: ${this.prevFOV}`, 20, 50);
+    // this.p.text(`getPoints Ran: ${getPointsRan}`, 20, 70);
+    // this.p.text(`Current RA/DEC: ${parameters.currentRaDec}`, 20, 90);
+    // this.p.text(`Center Point: ${this.centerPoint}`, 20, 110);
+    // this.p.text(`FOV Check True: ${fovCheckTruthy}`, 20, 130);
+    // this.p.text(`updateFOVAndSubset Ran: ${updateFOVAndSubsetRan}`, 20, 150);
     // DELETE ABOVE //////////////////////
     // Reset color mode to RGB
     this.p.colorMode(this.p.RGB);
