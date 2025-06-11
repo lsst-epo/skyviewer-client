@@ -40,7 +40,7 @@ export function controlledWalk(p, aladin) {
   let dx = 0;
   let dy = 0;
 
-  if (p.keyIsDown(p.LEFT_ARROW)) aladin.gotoRaDec(187.5, 12.5); // TODO: Revert back to dx -= 1; when done testing
+  if (p.keyIsDown(p.LEFT_ARROW)) dx -= 1;
   if (p.keyIsDown(p.RIGHT_ARROW)) dx += 1;
   if (p.keyIsDown(p.UP_ARROW)) dy -= 1;
   if (p.keyIsDown(p.DOWN_ARROW)) dy += 1;
