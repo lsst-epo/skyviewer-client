@@ -19,7 +19,7 @@ const parameters = {
   directionX: 1, // Number of pixels to move along the x-axis when using the arrow keys
   directionY: 1, // Number of pixels to move along the y-axis when using the arrow keys
   boundarySetps: 20, // Number of steps to take before checking for boundaries
-  instruments: ["harp", "piano"], // instruemtns with premade samples
+  instruments: ["harp", "glock"], // instruemtns with premade samples
   startNote: 60, // Starting MIDI note for the instruments
   audioContext: null, // Reference to the audio context
   audioBuffers: {}, // Object to store multiple audio buffers
