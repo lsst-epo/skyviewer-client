@@ -29,8 +29,8 @@ class PointSearcher {
 
     // Animation properties
     this.animations = []; // Array to store active animations
-    this.animationSpeed = 2; // Speed of animation expansion
-    this.animationFadeSpeed = 10; // Speed of animation fade out
+    this.animationSpeed = 1; // Speed of animation expansion
+    this.animationFadeSpeed = 0.009; // Speed of animation fade out
     this.maxAnimationSize = 100; // Maximum size of animation circles
     this.fovDebounceTime = 500; // Debounce time for FOV changes in milliseconds
     this.fovUpdateTimeout = null; // Track the FOV update timeout
@@ -256,7 +256,7 @@ class PointSearcher {
       x: neighbour.point[0],
       y: neighbour.point[1],
       size: 0, // Initial size
-      opacity: 255, // Initial opacity
+      opacity: 1, // Initial opacity
       hue: hue,
       brightness: brightness,
       saturation: 0,
