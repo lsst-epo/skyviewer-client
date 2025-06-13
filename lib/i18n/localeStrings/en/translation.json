@@ -83,7 +83,9 @@
     "fullscreen_close": "Exit fullscreen",
     "return_to_initial": "Return to initial view",
     "view_scale": "You are looking at <1>~{{fraction}}</1> of Rubin's field of view",
-    "view_scale_announce": "You are looking at ~{{fraction}} of Rubin's field of view"
+    "view_scale_announce": "You are looking at ~{{fraction}} of Rubin's field of view",
+    "view_scale_close": "Hide the view scale",
+    "view_scale_open": "Show the view scale"
   },
   "menu": {
     "search": {
