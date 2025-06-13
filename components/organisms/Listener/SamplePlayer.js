@@ -17,7 +17,7 @@ const noteNames = [
 ];
 
 const pointTypeToInstrument = {
-  s: "piano",
+  s: "glock",
   g: "harp",
 };
 function midi2note(midi) {
