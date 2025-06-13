@@ -36,11 +36,11 @@ const parameters = {
   fov: [0, 0], // Field of View in pixels [width, height]
   fovRadius: 0, // Field of View radius in Ra/Dec
   queryFOVFactor: 2, // Factor to multiply FOVRadius. Has to be bigger than 1
-  querygmagMin: 12, // Minimum gmag for querying points
-  querygmagMax: 23, // Maximum gmag for querying points
+  querygmagMin: 15, // Minimum gmag for querying points
+  querygmagMax: 22, // Maximum gmag for querying points
   fovLimits: {
     min: 0.02, // Minimum FOV limit
-    max: 17.5, // Maximum FOV limit
+    max: 5, // Maximum FOV limit
   },
   queryRadius: 0, // Qery radius for API calls
   queryMag: 0, // Query magnitude for API calls
