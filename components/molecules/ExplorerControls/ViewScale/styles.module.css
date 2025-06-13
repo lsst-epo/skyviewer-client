@@ -11,3 +11,27 @@
   padding-inline: var(--size-spacing-m);
   white-space: nowrap;
 }
+
+.closeButton {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+}
+
+.openButton {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s ease-in-out;
+  touch-action: manipulation;
+
+  & svg {
+    border-radius: 50%;
+    aspect-ratio: 1;
+    color: var(--color-font-invert);
+    backdrop-filter: blur(2px);
+  }
+}

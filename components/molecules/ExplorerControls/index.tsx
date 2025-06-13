@@ -38,12 +38,6 @@ const ExplorerControls: FC = () => {
           <Share embed />
         </ControlStack>
       </div>
-      {/* <ControlStack
-        className={styles.viewScaleContainer}
-        position="bottom center"
-      >
-        <ViewScale />
-      </ControlStack> */}
       <ViewScale className={styles.viewScaleContainer} />
     </AladinOverlay>
   );

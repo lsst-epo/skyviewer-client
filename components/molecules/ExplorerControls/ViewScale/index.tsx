@@ -1,11 +1,12 @@
 "use client";
 import { FC, useEffect, useState } from "react";
-
+import { IoIosClose } from "react-icons/io";
 import clsx from "clsx/lite";
 import { Trans, useTranslation } from "react-i18next";
 import { announce } from "@react-aria/live-announcer";
 import { useDebounceValue } from "usehooks-ts";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
+import { AnimatePresence, motion } from "motion/react";
 import { useAladin } from "@/contexts/Aladin";
 import { fovAreaRubinFootprint } from "@/fixtures/astro";
 import useAladinEvent from "@/hooks/useAladinEvent";
@@ -17,6 +18,7 @@ interface ViewScaleProps {
 }
 
 const ViewScale: FC<ViewScaleProps> = ({ className }) => {
+  const [showViewScale, setShowViewScale] = useState(true);
   const [fraction, setFraction] = useState<string>();
   const [announcedFraction, setAnnouncedFraction] = useDebounceValue<
     string | null
@@ -68,24 +70,60 @@ const ViewScale: FC<ViewScaleProps> = ({ className }) => {
   if (!fraction) return null;
 
   return (
-    <>
-      <div className={clsx(styles.viewScale, className)}>
-        <span>
-          <Trans
-            i18nKey="controls.view_scale"
-            values={{
-              fraction,
-            }}
-            shouldUnescape={true}
+    <AnimatePresence mode="wait">
+      {showViewScale ? (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          key="scale"
+          className={clsx(styles.viewScale, className)}
+        >
+          <button
+            className={styles.closeButton}
+            onClick={() => setShowViewScale(false)}
           >
-            You are looking at
-            <strong>{fraction}</strong>
-            of Rubin&apos;s footprint
-          </Trans>
-        </span>
-        <IconComposer icon="Info" size={14} />
-      </div>
-    </>
+            <span className="visually-hidden">
+              {t("controls.view_scale_close")}
+            </span>
+            <IoIosClose size="1.25em" />
+          </button>
+          <span>
+            <Trans
+              i18nKey="controls.view_scale"
+              values={{
+                fraction,
+              }}
+              shouldUnescape={true}
+            >
+              You are looking at
+              <strong>{fraction}</strong>
+              of Rubin&apos;s footprint
+            </Trans>
+          </span>
+          <IconComposer icon="Info" size={14} />
+        </motion.div>
+      ) : (
+        <motion.button
+          initial={{ opacity: 0.25 }}
+          animate={{ opacity: 0.5 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          whileHover={{ opacity: 1 }}
+          whileFocus={{ opacity: 1 }}
+          whileTap={{ opacity: 1 }}
+          key="button"
+          className={clsx(styles.openButton, className)}
+          onClick={() => setShowViewScale(true)}
+        >
+          <span className="visually-hidden">
+            {t("controls.view_scale_open")}
+          </span>
+          <IconComposer icon="Info" />
+        </motion.button>
+      )}
+    </AnimatePresence>
   );
 };
 
