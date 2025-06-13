@@ -1,7 +1,7 @@
 "use client";
 import { useLocale } from "next-intl";
-
-import { FC } from "react";
+import { IoMusicalNotes } from "react-icons/io5";
+import { FC, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { MenuGroup, MenuItem } from "@rubin-epo/epo-react-lib/SlideoutMenu";
 import IconComposer from "@/components/svg/IconComposer";
@@ -12,8 +12,8 @@ const QuickAccess: FC = () => {
   const pathname = usePathname();
   const { t } = useTranslation();
 
-  const linkMap: Record<string, JSX.Element> = {
-    "/explorer": (
+  const links: Record<string, ReactNode> = {
+    tours: (
       <MenuItem
         type="link"
         href={getPathname({ href: "/guided-experiences", locale })}
@@ -21,20 +21,37 @@ const QuickAccess: FC = () => {
         icon={<IconComposer icon="Suitcase" />}
       />
     ),
+    explorer: (
+      <MenuItem
+        type="link"
+        href={getPathname({ href: "/explorer", locale })}
+        text={t("menu.quick-access.links.explorer")}
+        icon={<IconComposer icon="Sparkle" />}
+      />
+    ),
+    skysynth: (
+      <MenuItem
+        type="link"
+        href={getPathname({ href: "/skysynth", locale })}
+        text={t("menu.quick-access.links.skysynth")}
+        icon={<IoMusicalNotes color="var(--turquoise50)" />}
+      />
+    ),
   };
 
-  const defaultQuickAccess = (
-    <MenuItem
-      type="link"
-      href={getPathname({ href: "/explorer", locale })}
-      text={t("menu.quick-access.links.explorer")}
-      icon={<IconComposer icon="Sparkle" />}
-    />
+  const linkList = (
+    <>
+      {Object.entries(links).map(([key, link]) => {
+        if (pathname.includes(key)) {
+          return null;
+        } else {
+          return link;
+        }
+      })}
+    </>
   );
 
-  const link = linkMap[pathname] || defaultQuickAccess;
-
-  return <MenuGroup title={t("menu.quick-access.title")}>{link}</MenuGroup>;
+  return <MenuGroup title={t("menu.quick-access.title")}>{linkList}</MenuGroup>;
 };
 
 QuickAccess.displayName = "Organism.Menu.QuickAccess";

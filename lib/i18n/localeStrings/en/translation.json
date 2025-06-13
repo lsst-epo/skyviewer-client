@@ -172,8 +172,9 @@
     "quick-access": {
       "title": "Quick Access",
       "links": {
-        "explorer": "Skyviewer Explorer",
-        "guided-experiences": "$t(guided-experiences.title)"
+        "explorer": "Explorer",
+        "guided-experiences": "$t(guided-experiences.title)",
+        "skysynth": "Skysynth"
       }
     }
   }
