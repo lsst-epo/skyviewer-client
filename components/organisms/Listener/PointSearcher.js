@@ -3,6 +3,7 @@ import { linearMap, mapValueToHue, raDecDistance } from "./utilities";
 import { env } from "@/env";
 
 const apiToken = env.NEXT_PUBLIC_ASTRO_OBJECTS_API_TOKEN;
+const apiUrl = env.NEXT_PUBLIC_ASTRO_API_URL;
 let getPointsRan = 0;
 let fovCheckTruthy = 0;
 let updateFOVAndSubsetRan = 0;
@@ -131,7 +132,7 @@ class PointSearcher {
       `;
 
       const response = await fetch(
-        "https://us-central1-skyviewer.cloudfunctions.net/astro-object-api",
+        apiUrl,
         {
           method: "POST",
           headers: {
