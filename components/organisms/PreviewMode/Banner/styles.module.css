@@ -1,0 +1,30 @@
+.previewModeBanner {
+  background-color: var(--color-rubin-orange-200);
+  color: var(--color-font-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--size-spacing-m);
+  width: 100%;
+  font-size: 0.85rem;
+  padding: 0 var(--size-spacing-2xs);
+  bottom: 0;
+  position: fixed;
+  z-index: 999;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 1ex;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-grow: 1;
+  gap: var(--size-spacing-3xs);
+}

@@ -1,0 +1,14 @@
+.button {
+  display: flex;
+  align-items: center;
+  padding: var(--size-spacing-3xs) var(--size-spacing-2xs);
+  border: 2px solid currentcolor;
+  border-radius: var(--size-spacing-2xs);
+  height: var(--size-spacing-s);
+  white-space: nowrap;
+
+  &:disabled {
+    opacity: 0.67;
+    cursor: wait;
+  }
+}
