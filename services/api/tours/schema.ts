@@ -1,5 +1,5 @@
 "server-only";
-import z from "zod";
+import { z } from "zod/v4";
 import { MinimalAssetSchema } from "@/lib/schema/canto";
 import { dec, ra } from "@/lib/schema/astro";
 import { surveyImageSchema } from "@/lib/schema/survey";

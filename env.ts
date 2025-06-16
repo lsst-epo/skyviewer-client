@@ -1,5 +1,5 @@
 import { createEnv } from "@t3-oss/env-nextjs";
-import { z } from "zod";
+import { z } from "zod/v4";
 
 const COERCED_BOOLEAN = z
   .string()
@@ -17,7 +17,7 @@ export const env = createEnv({
     CRAFT_SECRET_TOKEN: z.string().min(1),
     PLAUSIBLE_DOMAIN: z.string().min(1).optional(),
     /** if enabled, will add a forced Cache-Control header to RSC responses */
-    NEXT_RSC_CACHE_CONTROL: COERCED_BOOLEAN.optional().default("true"),
+    NEXT_RSC_CACHE_CONTROL: COERCED_BOOLEAN.optional().default(true),
   },
   client: {
     NEXT_PUBLIC_BASE_URL: z.string().url(),
