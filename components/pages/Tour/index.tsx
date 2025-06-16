@@ -43,10 +43,7 @@ const TourPage: FC<{ title: string | null }> = ({ title }) => {
   return (
     <AladinOverlay space="0" className={styles.tourOverlay}>
       <div className={styles.controls}>
-        <Orientation
-          className={styles.orientation}
-          size="var(--size-spacing-l)"
-        />
+        <Orientation size="var(--size-spacing-l)" />
         <ShareTour />
       </div>
       <PoiSlideout
