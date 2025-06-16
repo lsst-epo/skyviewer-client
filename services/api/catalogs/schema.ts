@@ -1,5 +1,5 @@
 "server-only";
-import { z } from "zod";
+import { z } from "zod/v4";
 
 const filterableCatalog = z.enum(["star", "galaxy", "nebula", "transient"]);
 const tourCatalog = z.enum(["goal", "landmark"]);

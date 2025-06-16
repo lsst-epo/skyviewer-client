@@ -1,4 +1,4 @@
-import z from "zod";
+import { z } from "zod/v4";
 import { ReadonlyURLSearchParams } from "next/navigation";
 import clamp from "lodash/clamp";
 import { position } from "./schema/astro";
@@ -14,11 +14,11 @@ export const initialPosition = (
   const positionSchema = z
     .object({
       fov: z.coerce
-        .number()
+        .number<number>()
         .min(fovRange[0])
         .max(fovRange[1])
-        .catch(({ input }) => {
-          return clamp(input, fovRange[0], fovRange[1]);
+        .catch(({ value }) => {
+          return clamp(value as number, fovRange[0], fovRange[1]);
         })
         .default(fov),
       target: z
@@ -44,11 +44,11 @@ export const clientInitialPosition = ({
   return z
     .object({
       fov: z.coerce
-        .number()
+        .number<number>()
         .min(fovRange[0])
         .max(fovRange[1])
-        .catch(({ input }) => {
-          return clamp(input, fovRange[0], fovRange[1]);
+        .catch(({ value }) => {
+          return clamp(value as number, fovRange[0], fovRange[1]);
         })
         .optional(),
       target: z

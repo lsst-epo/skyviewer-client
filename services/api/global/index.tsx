@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "zod/v4";
 import tagStore from "../tags";
 import { graphql } from "@/gql";
 import { siteFromLocale } from "@/lib/i18n/site";

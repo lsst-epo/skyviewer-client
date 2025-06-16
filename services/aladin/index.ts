@@ -1,5 +1,5 @@
 "server-only";
-import { z } from "zod";
+import { z } from "zod/v4";
 import tagStore from "@/services/api/tags";
 import { parseHIPSProperties } from "@/lib/aladin/properties";
 
@@ -8,10 +8,9 @@ const PropertiesSchema = z.object({
   obs_title: z.string().optional(),
   obs_description: z.string().optional(),
   hips_creator: z.string(),
-  hips_release_date: z
-    .string()
+  hips_release_date: z.iso
     .datetime()
-    .catch(({ input }) => new Date(input).toISOString())
+    .catch(({ value }) => new Date(value as string).toISOString())
     .transform((output) => new Date(output)),
 });
 

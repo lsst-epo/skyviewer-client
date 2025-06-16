@@ -1,4 +1,4 @@
-import z from "zod";
+import { z } from "zod/v4";
 import { getLocale } from "next-intl/server";
 import { graphql } from "@/gql";
 import queryAPI from "@/services/api/client";
