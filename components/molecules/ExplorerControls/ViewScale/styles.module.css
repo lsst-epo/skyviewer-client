@@ -1,3 +1,11 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1lh;
+  position: relative;
+}
+
 .viewScale {
   background-color: #30e0e3;
   border-radius: 5px;
@@ -10,6 +18,7 @@
   gap: 1ex;
   padding-inline: var(--size-spacing-m);
   white-space: nowrap;
+  width: 100%;
 }
 
 .closeButton {
@@ -18,20 +27,39 @@
   align-items: center;
   justify-content: center;
   touch-action: manipulation;
+  transition: 0.2s ease-out transform;
+
+  &:hover,
+  &:focus-visible {
+    transform: scale(1.25);
+  }
 }
 
 .openButton {
+  --opacity-icon: 0.5;
+  --color-outline-icon: transparent;
+
   border-radius: 50%;
   aspect-ratio: 1;
   display: flex;
   align-items: center;
-  transition: opacity 0.2s ease-in-out;
   touch-action: manipulation;
+  position: absolute;
+
+  &:hover,
+  &:focus-visible {
+    --opacity-icon: 1;
+    --color-outline-icon: currentColor;
+  }
 
   & svg {
+    opacity: var(--opacity-icon);
     border-radius: 50%;
     aspect-ratio: 1;
     color: var(--color-font-invert);
     backdrop-filter: blur(2px);
+    transition: opacity 0.2s ease-out, outline-color 0.2s ease-out;
+    outline: 2px solid;
+    outline-color: var(--color-outline-icon);
   }
 }
