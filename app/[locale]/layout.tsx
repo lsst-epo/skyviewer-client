@@ -14,6 +14,7 @@ import I18NextClientProvider from "@/contexts/i18next";
 import SkeletonGlobal from "@/components/organisms/SkeletonGlobal";
 import { env } from "@/env";
 import { getGlobalData } from "@/services/api/global";
+import PreviewMode from "@/components/organisms/PreviewMode";
 
 export const generateStaticParams = () => {
   return languages.map((locale) => {
@@ -69,7 +70,10 @@ const RootLayout: FunctionComponent<PropsWithChildren<RootProps>> = ({
         <body className={SourceSansPro.variable}>
           <I18NextClientProvider locale={locale}>
             <StyledComponentsRegistry>
-              <SkeletonGlobal>{children}</SkeletonGlobal>
+              <SkeletonGlobal>
+                <PreviewMode />
+                {children}
+              </SkeletonGlobal>
             </StyledComponentsRegistry>
           </I18NextClientProvider>
           {env.PLAUSIBLE_DOMAIN && (

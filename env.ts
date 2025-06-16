@@ -1,6 +1,11 @@
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
+const COERCED_BOOLEAN = z
+  .string()
+  // transform to boolean using preferred coercion logic
+  .transform((s) => s !== "false" && s !== "0");
+
 export const env = createEnv({
   emptyStringAsUndefined: true,
   shared: {
@@ -11,6 +16,8 @@ export const env = createEnv({
     CRAFT_REVALIDATE_SECRET_TOKEN: z.string().min(1),
     CRAFT_SECRET_TOKEN: z.string().min(1),
     PLAUSIBLE_DOMAIN: z.string().min(1).optional(),
+    /** if enabled, will add a forced Cache-Control header to RSC responses */
+    NEXT_RSC_CACHE_CONTROL: COERCED_BOOLEAN.optional().default("true"),
   },
   client: {
     NEXT_PUBLIC_BASE_URL: z.string().url(),
