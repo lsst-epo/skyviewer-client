@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import IconButton from "@/components/atomic/IconButton";
 import parameters from "@/components/organisms/Listener/parameters";
 import styles from "./styles.module.css";
@@ -16,7 +17,16 @@ const PlayPauseButton = () => {
   return (
     <IconButton
       text={isPlaying ? "Pause Sonification" : "Play Sonification"}
-      icon={isPlaying ? "Pause" : "Play"}
+      icon={
+        <Image
+          src={`/sonification/${
+            isPlaying ? "pause_icon.png" : "play_icon.png"
+          }`}
+          alt={isPlaying ? "Pause" : "Play"}
+          width={50}
+          height={50}
+        />
+      }
       onClick={handleClick}
       styleAs="primary"
       className={styles.button}
