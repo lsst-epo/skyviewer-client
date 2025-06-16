@@ -1,0 +1,59 @@
+.revalidation {
+  --size-gap-container: var(--size-spacing-3xs);
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+  flex-grow: 1;
+  height: var(--size-spacing-s);
+  gap: var(--size-gap-container);
+}
+
+.buttonWrapper {
+  position: relative;
+}
+
+.button {
+  composes: button from "../styles.module.css";
+}
+
+.panel {
+  background-color: var(--color-background-page-invert);
+  color: var(--color-font-invert);
+  padding: var(--size-spacing-3xs);
+  font-size: 80%;
+  text-wrap: pretty;
+  width: 50ch;
+  position: absolute;
+  top: calc(var(--size-spacing-2xs) * -1);
+  transform: translate(50%, -100%);
+  transition: 0.2s opacity ease-in-out;
+  opacity: 1;
+  right: 50%;
+
+  &[data-closed] {
+    opacity: 0;
+  }
+}
+
+.output {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  white-space: nowrap;
+  text-align: end;
+  position: relative;
+  overflow: hidden;
+}
+
+.outputText {
+  position: absolute;
+  right: 0;
+  transition: transform 0.2s ease-in-out, opacity 0.15s 0.05s ease-in-out;
+  transform: translateX(0);
+  opacity: 1;
+
+  &[data-closed] {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
