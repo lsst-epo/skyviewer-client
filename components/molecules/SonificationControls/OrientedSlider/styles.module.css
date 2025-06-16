@@ -1,0 +1,71 @@
+.slider {
+  position: relative;
+  user-select: none;
+  touch-action: none;
+}
+
+.slider.horizontal {
+  width: 200px;
+  height: 20px;
+}
+
+.slider.vertical {
+  width: 20px;
+  height: 155px;
+}
+
+.track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-rubin-gray-100);
+  border-radius: 4px;
+}
+
+.fill {
+  position: absolute;
+  background-color: var(--color-rubin-teal-500);
+  border-radius: 4px;
+}
+
+.horizontal .fill {
+  height: 100%;
+  left: 0;
+}
+
+.vertical .fill {
+  width: 100%;
+  bottom: 0;
+}
+
+.handle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-rubin-teal-500);
+  border: 2px solid var(--color-rubin-gray-100);
+  border-radius: 50%;
+  transition: transform 0.1s ease;
+}
+
+.horizontal .handle {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.vertical .handle {
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.handle:hover {
+  background-color: var(--color-rubin-teal-400);
+}
+
+.slider:focus {
+  outline: none;
+}
+
+.slider:focus .handle {
+  box-shadow: 0 0 0 2px var(--color-rubin-teal-300);
+}
