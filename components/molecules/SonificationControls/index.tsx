@@ -15,6 +15,7 @@ const SonificationControls: FC = () => {
   const handleSliderChange = (value: number) => {
     setSliderValue(value);
     parameters.walkSpeed = value;
+    parameters.keyboardSpeed = value;
   };
 
   return (
