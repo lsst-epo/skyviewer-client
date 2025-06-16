@@ -5,8 +5,8 @@
 }
 
 .slider.horizontal {
-  width: 200px;
-  height: 20px;
+  width: 250px;
+  height: 8px;
 }
 
 .slider.vertical {
@@ -43,7 +43,7 @@
   width: 20px;
   height: 20px;
   background-color: var(--color-rubin-teal-500);
-  border: 2px solid var(--color-rubin-gray-100);
+  /* border: 2px solid var(--color-rubin-gray-100); */
   border-radius: 50%;
   transition: transform 0.1s ease;
 }
