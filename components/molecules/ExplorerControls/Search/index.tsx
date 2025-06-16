@@ -2,7 +2,7 @@
 import { FC, FormEventHandler, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { Trans, useTranslation } from "react-i18next";
-import { z } from "zod";
+import { z } from "zod/v4";
 import { CloseButton, Dialog, DialogPanel } from "@headlessui/react";
 import {
   AnimatePresence,

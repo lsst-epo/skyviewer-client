@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "zod/v4";
 import { FunctionComponent } from "react";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";

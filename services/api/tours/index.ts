@@ -1,5 +1,5 @@
 "server-only";
-import z from "zod";
+import { z } from "zod/v4";
 import { getLocale } from "next-intl/server";
 import tagStore from "../tags";
 import { Poi, Tour, TourCard, TourInitial, TourMetadata } from "./schema";

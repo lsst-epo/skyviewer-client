@@ -1,5 +1,5 @@
 "server-only";
-import { z } from "zod";
+import { z } from "zod/v4";
 import { graphql } from "@/gql";
 import queryAPI from "@/services/api/client";
 import { siteFromLocale } from "@/lib/i18n/site";
