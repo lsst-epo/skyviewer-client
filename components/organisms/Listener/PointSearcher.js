@@ -1,12 +1,44 @@
+import { Client, cacheExchange, fetchExchange, gql } from "@urql/core";
+import { authExchange } from "@urql/exchange-auth";
 import parameters from "./parameters";
 import { linearMap, mapValueToHue, raDecDistance } from "./utilities";
 import { env } from "@/env";
 
-const apiToken = env.NEXT_PUBLIC_ASTRO_OBJECTS_API_TOKEN;
-const apiUrl = env.NEXT_PUBLIC_ASTRO_API_URL;
 let getPointsRan = 0;
 let fovCheckTruthy = 0;
 let updateFOVAndSubsetRan = 0;
+
+const query = gql`
+  query getAstroObjects($ra: Float!, $dec: Float, $radius: Float, $mag: Float) {
+    __typename
+    getRangeOfAstroObjects(ra: $ra, dec: $dec, radius: $radius, mag: $mag) {
+      RAdeg
+      DECdeg
+      id
+      gmag
+      g_r
+      flag
+    }
+  }
+`;
+
+const client = new Client({
+  url: env.NEXT_PUBLIC_ASTRO_API_URL,
+  preferGetMethod: "within-url-limit",
+  exchanges: [
+    cacheExchange,
+    authExchange(async ({ appendHeaders }) => {
+      return {
+        addAuthToOperation: (operation) => {
+          return appendHeaders(operation, {
+            Authorization: env.NEXT_PUBLIC_ASTRO_OBJECTS_API_TOKEN,
+          });
+        },
+      };
+    }),
+    fetchExchange,
+  ],
+});
 
 class PointSearcher {
   constructor(p, aladin) {
@@ -118,36 +150,16 @@ class PointSearcher {
       false
     );
     try {
-      const query = `
-        query GetRangeOfAstroObjects {
-          getRangeOfAstroObjects(ra: ${parameters.currentRaDec[0]}, dec: ${parameters.currentRaDec[1]}, radius: ${parameters.queryRadius}, mag: ${parameters.queryMag}) {
-            RAdeg
-            DECdeg
-            id
-            gmag
-            g_r
-            flag
-          }
-        }
-      `;
+      const { data, error } = await client.query(query, {
+        ra: parseFloat(parameters.currentRaDec[0].toFixed(3)),
+        dec: parseFloat(parameters.currentRaDec[1].toFixed(3)),
+        radius: parseFloat(parameters.queryRadius.toFixed(3)),
+        mag: parameters.queryMag,
+      });
 
-      const response = await fetch(
-        apiUrl,
-        {
-          method: "POST",
-          headers: {
-            Authorization: apiToken,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ query }),
-        }
-      );
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      if (error) {
+        throw new Error(error.message);
       }
-
-      const result = await response.json();
-      const data = result.data.getRangeOfAstroObjects;
 
       // Handle case where no data is returned
       if (!data) {
@@ -155,13 +167,14 @@ class PointSearcher {
         return;
       }
 
-      const formattedPoints = data.map((point) => ({
-        point: [point.RAdeg, point.DECdeg],
-        id: point.id,
-        gmag: point.gmag,
-        gRColor: point.g_r,
-        flag: point.flag,
-      }));
+      const formattedPoints =
+        data.getRangeOfAstroObjects?.map((point) => ({
+          point: [point.RAdeg, point.DECdeg],
+          id: point.id,
+          gmag: point.gmag,
+          gRColor: point.g_r,
+          flag: point.flag,
+        })) || [];
       this.tree = new KDTree(formattedPoints);
     } catch (error) {
       console.error("Error fetching points:", error);
