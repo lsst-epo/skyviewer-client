@@ -1,1 +1,179 @@
-{}
+{
+  "title": "Skyviewer",
+  "navigation": {
+    "cta": {
+      "exit": "Salir",
+      "previous": "Anterior",
+      "back": "Atrás",
+      "next": "Siguiente",
+      "pause": "Pausar",
+      "share": "Compartir",
+      "explore": "Quiero explorar",
+      "tours": "Por favor, guíame",
+      "go_to_tours": "Ir a los tours",
+      "start_tour": "Comenzar el tour",
+      "lets_start": "¡Comencemos!",
+      "skip_intro": "Saltar intro",
+      "cancel": "Cancelar"
+    }
+  },
+  "guided-experiences": {
+    "title": "Experiencias guiadas",
+    "tour_one": "Tour",
+    "tour_other": "Tours",
+    "back": "Volver a la pantalla principal"
+  },
+  "experiences": {
+    "back": "Volver a experiencias guiadas",
+    "details": {
+      "duration": {
+        "title": "Duración",
+        "attribute_other": "{{count}} minutos",
+        "attribute_one": "{{count}} minuto"
+      },
+      "complexity": {
+        "title": "Dificultad",
+        "attribute": {
+          "1": "Fácil",
+          "2": "Fácil",
+          "3": "Media",
+          "4": "Media",
+          "5": "Difícil"
+        }
+      }
+    }
+  },
+  "tours": {
+    "title": "Tours Astronómicos",
+    "tutorial": {
+      "step_0": "Este es el cielo del hemisferio sur sobre el observatorio, ubicado en Chile",
+      "step_1": "Muévete entre los objetos con los botones “siguiente” o “atrás”",
+      "step_2": "Comparte una parada de este tour con el botón “Compartir”",
+      "step_3": "Puedes ir al Explorador desde este menú o cambiar otros ajustes aquí",
+      "step_4": "Presiona “siguiente” para comenzar el tour",
+      "skip": "Saltar tutorial",
+      "complete": "¡Entendido!",
+      "current_step": "{{step}} de {{total}}"
+    }
+  },
+  "tour": {
+    "description": {
+      "location": "($t(tours.tutorial.current_step, {\"step\": {{step}}, \"total\": {{total}} }))",
+      "toggle_show": "Mostrar descripción",
+      "toggle_hide": "Ocultar descripción"
+    },
+    "summary": {
+      "title": "¡Felicitaciones!",
+      "cta": "¡Has completado el tour! Puedes compartirlo con tus amigos",
+      "back": "Volver a Tours Astronómicos"
+    }
+  },
+  "controls": {
+    "close_explorer": "Cerrar el Explorador",
+    "save_image": "Guardar esta imagen",
+    "get_a_link": "Obtener enlace",
+    "zoom_in": "Ampliar",
+    "zoom_out": "Alejar",
+    "open_in_new_tab": "Abrir en el Skyviewer",
+    "open_tours": "Abrir Tours",
+    "volume_mute": "Silenciar audio (m)",
+    "volume_unmute": "Activar audio (m)",
+    "fullscreen_open": "Abrir pantalla completa",
+    "fullscreen_close": "Salir de pantalla completa",
+    "return_to_initial": "Regresar a vista inicial",
+    "view_scale": "Estás viendo a <1>~{{fraction}}</1> del campo de visión de Rubin",
+    "view_scale_announce": "Estás viendo a ~{{fraction}} del campo de visión de Rubin"
+  },
+  "menu": {
+    "search": {
+      "submit": "Buscar",
+      "open": "Abrir búsqueda",
+      "placeholder": "Ingresa tu búsqueda…",
+      "clear": "Borrar entrada de búsqueda",
+      "take_a_tour": "¿No sabes qué buscar? <1>Haz un tour</1>",
+      "instructions": "Skyviewer busca nombres comunes de objetos astronómicos, por ejemplo “M49” o “Messier 49,” utilizando las bases de datos astronómicas de <0>SIMBAD</0> y <1>NED</1>. Skyviewer también puede buscar lugares de coordenadas de objetos utilizando la ascensión recta (RA) y la declinación (DEC) en formato decimal, ejemplo “186.2 7.0.”",
+      "error_object": "Skyviewer no pudo encontrar “{{search}}”",
+      "error_coordinate": "Prueba con una coordenada ra/dec decimal válida, por ejemplo 186.2 7.0",
+      "found_object": "Skyviewer encontró el objeto <0>“{{name}}”</0> en <1>{{position}}</1>",
+      "found_position": "Skyviewer encontró la ubicación <0>{{position}}</0>"
+    },
+    "main": {
+      "open": "Abrir menú principal",
+      "title": "Menú principal",
+      "cta": "Ajustes y más"
+    },
+    "settings": {
+      "title": "Ajustes"
+    },
+    "about": {
+      "title": "Acerca de Skyviewer",
+      "cta": "Metadatos y más",
+      "sections": {
+        "metadata": {
+          "title": "Datos de la investigación",
+          "created_by": "Creado por {{creator}}"
+        }
+      }
+    },
+    "locales": {
+      "title": "Preferencias de idioma",
+      "cta": "Selecciona tu idioma",
+      "options": {
+        "en": "Inglés",
+        "es": "Español",
+        "fr": "Francés"
+      }
+    },
+    "share": {
+      "open": "Abrir menú compartir",
+      "close": "Cerrar menú compartir",
+      "options": {
+        "image": {
+          "cta": "Descargar imagen",
+          "filename": "rubin_skyviewer_{{ra}}_{{dec}}_{{fov}}.{{extension}}"
+        },
+        "email": "Correo electrónico",
+        "url": "Obtener URL de la página",
+        "facebook": "Facebook",
+        "twitterX": "X",
+        "linkedin": "LinkedIn",
+        "embed": {
+          "cta": "Añadir",
+          "current_position": {
+            "label": "Utilizar posición actual",
+            "description": "Activar esto hará que se inicie la inserción en tu posición actual y nivel de zoom"
+          },
+          "preview": "Previsualizar la inserción",
+          "preview_title": "Previsualizar la inserción de Skyviewer",
+          "copy": "Copiar la inserción",
+          "copied": "¡Copiado!",
+          "instructions": "Pega este bloque de código en el HTML de tus sitios para visualizar una versión insertada del Skyviewer"
+        }
+      }
+    },
+    "display": {
+      "title": "Visualizar",
+      "cta": "Configurar el Skyviewer",
+      "layers": {
+        "title": "Cambiar las capas de la investigación"
+      },
+      "coordinates": {
+        "title": "Formato de coordenadas",
+        "caption": "Cambiar el formato de coordenadas RA/DEC",
+        "options": {
+          "d": "Decimal",
+          "s": "Sexagesimal"
+        },
+        "example": "Ejemplo {{example}}"
+      },
+      "clear": "Borrar todos los ajustes"
+    },
+    "quick-access": {
+      "title": "Acceso rápido",
+      "links": {
+        "explorer": "Explorador de Skyviewer",
+        "guided-experiences": "$t(guided-experiences.title)"
+      }
+    }
+  }
+}
