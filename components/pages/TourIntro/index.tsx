@@ -152,8 +152,8 @@ const TourIntro: FC<TourIntroProps> = ({
         <div className={styles.introText} data-visible={section}>
           <IntroContent
             className={styles.introContent}
-            title={introHeading}
-            subtitle={introSubheading}
+            title={introHeading ?? undefined}
+            subtitle={introSubheading ?? undefined}
             paragraphs={introContentBlocks}
           />
           <VerticalDivider className={styles.divider} />
