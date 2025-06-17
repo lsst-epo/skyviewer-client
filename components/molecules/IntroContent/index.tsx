@@ -5,8 +5,8 @@ import TextBlock from "@/components/atomic/TextBlock";
 import styles from "./styles.module.css";
 
 interface IntroContentProps {
-  title: string;
-  subtitle: string;
+  title?: string;
+  subtitle?: string;
   paragraphs: Array<{ id: string; text: string }>;
   className?: string;
 }
@@ -20,8 +20,8 @@ const IntroContent: FC<IntroContentProps> = ({
   return (
     <section className={className}>
       <Stack space="var(--size-spacing-xs)">
-        <BlockTitle>{title}</BlockTitle>
-        <span className={styles.subtitle}>{subtitle}</span>
+        {title && <BlockTitle>{title}</BlockTitle>}
+        {subtitle && <span className={styles.subtitle}>{subtitle}</span>}
         {paragraphs.map(({ id, text }) => {
           return <TextBlock key={id} text={text} />;
         })}
