@@ -6,6 +6,7 @@ import initialPointsData from "./initialPoints.json";
 import backupPointsData from "./backupPoints.json";
 import { env } from "@/env";
 
+
 const query = gql`
   query getAstroObjects($ra: Float!, $dec: Float, $radius: Float, $mag: Float) {
     __typename

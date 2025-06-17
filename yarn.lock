@@ -3140,10 +3140,10 @@
     "@urql/core" "^5.1.1"
     wonka "^6.3.2"
 
-"@urql/next@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@urql/next/-/next-1.1.1.tgz#3c20302d4b2707052eea34d27c484502c4b325d9"
-  integrity sha512-dLk4npLZeWDCevua3gM5f8WS1IyyJUsjOvUU9tnFRSjTSn2fQcgYAYZbLfpneLTg+1rYNCLgSMJMuBr95PofTQ==
+"@urql/next@^1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@urql/next/-/next-1.1.5.tgz#b63ed693153595767bfa4b3f7f37aa6326604946"
+  integrity sha512-xCNzgf6IarQ99FN4IPvj5nwkeX1z/mpO9+R54StZOK445lXlYbQnI8s4b9tNqTHbB09gt/vKE3ByRh2NLFMyfw==
 
 "@vitejs/plugin-react@^4.3.4":
   version "4.3.4"
