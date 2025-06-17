@@ -8,7 +8,7 @@ const __dirname = dirname(__filename);
 
 const jiti = createJiti(__filename);
 
-const { env } = await jiti.import("./env");
+const headers = await jiti.import("./config/headers", { default: true });
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -21,68 +21,7 @@ const nextConfig = {
     ],
     minimumCacheTTL: 3600, // 1 hour
   },
-  async headers() {
-    /** @type {Array<import("next/dist/lib/load-custom-routes").Header>} */
-    const headers = [];
-
-    /** @type {import("next/dist/lib/load-custom-routes").Header} */
-    const rscHeaders = {
-      source: "/:all*",
-      has: [
-        {
-          type: "query",
-          key: "_rsc",
-        },
-      ],
-      missing: [
-        {
-          type: "cookie",
-          key: "__prerender_bypass",
-        },
-      ],
-      headers: [
-        {
-          key: "x-rsc-cache-enabled",
-          value: `${env.NEXT_RSC_CACHE_CONTROL}`,
-        },
-      ],
-    };
-
-    if (env.NEXT_RSC_CACHE_CONTROL) {
-      headers.push({
-        source: "/api/preview",
-        has: [
-          {
-            type: "cookie",
-            key: "__prerender_bypass",
-          },
-        ],
-        headers: [
-          {
-            key: "clear-site-data",
-            value: `"cache"`,
-          },
-        ],
-      });
-
-      const cacheControl =
-        "public,max-age=3600,s-maxage=3600,stale-while-revalidate";
-      rscHeaders.headers.push(
-        {
-          key: "Cache-Control",
-          value: cacheControl,
-        },
-        {
-          key: "cache-control",
-          value: cacheControl,
-        }
-      );
-    }
-
-    headers.push(rscHeaders);
-
-    return headers;
-  },
+  headers,
   cacheMaxMemorySize: 0,
   swcMinify: true,
   compiler: {
