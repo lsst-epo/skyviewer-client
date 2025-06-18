@@ -6,3 +6,8 @@
   align-items: center;
   justify-content: center;
 } 
+
+.play {
+  position: relative;
+  left: 1px;
+}
