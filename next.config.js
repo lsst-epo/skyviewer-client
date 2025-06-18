@@ -8,6 +8,7 @@ const __dirname = dirname(__filename);
 
 const jiti = createJiti(__filename);
 
+const { env } = await jiti.import("./env");
 const headers = await jiti.import("./config/headers", { default: true });
 
 /** @type {import('next').NextConfig} */
@@ -19,7 +20,7 @@ const nextConfig = {
         hostname: "rubin.canto.com",
       },
     ],
-    minimumCacheTTL: 3600, // 1 hour
+    minimumCacheTTL: env.NEXT_IMAGE_MINIMUM_CACHE_TTL,
   },
   headers,
   cacheMaxMemorySize: 0,
