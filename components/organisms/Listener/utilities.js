@@ -107,6 +107,24 @@ export function linearMap(value, inMin, inMax, outMin, outMax, clamp = false) {
   return clamp ? Math.max(outMin, Math.min(outMax, map)) : map;
 }
 
+export function pieceWise(fovRadius) {
+  const ranges = [
+    { max: 0.04, value: 30 },
+    { max: 0.08, value: 25.5 },
+    { max: 0.16, value: 24.5 },
+    { max: 0.32, value: 22.5 },
+    { max: 0.64, value: 21 },
+    { max: 1.28, value: 19 },
+    { max: 2.56, value: 18.5 },
+    { max: 5.12, value: 18 },
+  ];
+
+  if (fovRadius <= 0) return undefined;
+
+  const range = ranges.find((r) => fovRadius <= r.max);
+  return range ? range.value : 17.5;
+}
+
 export function areArrowsPressed(p) {
   return (
     p.keyIsDown(p.LEFT_ARROW) ||

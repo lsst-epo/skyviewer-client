@@ -31,7 +31,7 @@ const parameters = {
   ampScaling: 0.5, // Amplitude scaling factor
   maxSampleVolume: 0.4, // Maximum volume for samples
   // API parameters, need to set with intial values
-  currentRaDec: [0, 0], // Current RA and Dec coordinates
+  currentRaDec: [187.77035, 8.07268], // Current RA and Dec coordinates
   lastRaDec: [0, 0], // Last RA and Dec coordinates at time of API call
   fov: [0, 0], // Field of View in pixels [width, height]
   fovRadius: 0, // Field of View radius in Ra/Dec
@@ -42,7 +42,7 @@ const parameters = {
     min: 0.02, // Minimum FOV limit
     max: 5, // Maximum FOV limit
   },
-  queryRadius: 0, // Qery radius for API calls
+  queryRadius: 1.0427847363184868, // Qery radius for API calls
   queryMag: 0, // Query magnitude for API calls
 };
 
