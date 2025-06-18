@@ -1,12 +1,10 @@
 import { Client, cacheExchange, fetchExchange, gql } from "@urql/core";
 import { authExchange } from "@urql/exchange-auth";
 import parameters from "./parameters";
-import { linearMap, mapValueToHue, raDecDistance } from "./utilities";
+import { pieceWise, mapValueToHue, raDecDistance } from "./utilities";
+import initialPointsData from "./initialPoints.json";
+import backupPointsData from "./backupPoints.json";
 import { env } from "@/env";
-
-let getPointsRan = 0;
-let fovCheckTruthy = 0;
-let updateFOVAndSubsetRan = 0;
 
 const query = gql`
   query getAstroObjects($ra: Float!, $dec: Float, $radius: Float, $mag: Float) {
@@ -52,6 +50,7 @@ class PointSearcher {
     this.k_neighbours = 50; // Number of nearest neighbours to find in subset
 
     this.prevFOV = parameters.fov; // Previous FOV dimensions
+    this.centerPoint = parameters.currentRaDec; // Center point for the current query
     this.isFOVUpdating = false; // Flag to indicate if FOV is updating
     this.subsetPoints = []; // Subset of points within the radius
     this.subsetTree = null; // KDTree for the subset
@@ -72,40 +71,57 @@ class PointSearcher {
     this.initialize();
   }
 
+  useJSONFile(pointsData) {
+    // Format the JSON data to match the expected structure
+    const formattedPoints =
+      pointsData.data.getRangeOfAstroObjects?.map((point) => ({
+        point: [point.RAdeg, point.DECdeg],
+        id: point.id,
+        gmag: point.gmag,
+        gRColor: point.g_r,
+        flag: point.flag,
+      })) || [];
+
+    this.tree = new KDTree(formattedPoints);
+  }
+
   async initialize() {
     if (this.isInitializing) return; // Prevent multiple simultaneous initializations
     this.isInitializing = true;
 
     try {
-      await this.getPoints();
+      this.useJSONFile(initialPointsData);
       this.ready = true;
     } finally {
       this.isInitializing = false;
     }
   }
 
-  shouldUpdatePoints() {
-    // Make a center point for the first time
-    if (!this.centerPoint) {
-      this.centerPoint = parameters.currentRaDec;
-      return;
-    }
+  updateFOVRadius() {
+    parameters.fovRadius = Math.sqrt(
+      Math.pow(parameters.fov[0] / 2, 2) + Math.pow(parameters.fov[1] / 2, 2)
+    );
+    parameters.queryRadius = parameters.queryFOVFactor * parameters.fovRadius;
+  }
 
+  shouldUpdatePoints() {
     // Don't update points if we're not ready yet
     if (!this.ready) {
       return;
     }
 
     if (
-      this.prevFOV[0] !== parameters.fov[0] ||
-      this.prevFOV[1] !== parameters.fov[1]
+      parameters.fov[0] < this.prevFOV[0] / 2 ||
+      parameters.fov[1] > this.prevFOV[1] * 2
     ) {
       this.prevFOV = [...parameters.fov];
-      fovCheckTruthy++;
 
       this.isFOVUpdating = true;
-      // Clear any existing timeout
-      if (this.fovUpdateTimeout) {
+      if (parameters.fovRadius > 3) {
+        this.useJSONFile(backupPointsData);
+        this.isFOVUpdating = false;
+      } else if (this.fovUpdateTimeout) {
+        // Clear any existing timeout
         clearTimeout(this.fovUpdateTimeout);
       }
       this.fovUpdateTimeout = setTimeout(() => {
@@ -128,7 +144,6 @@ class PointSearcher {
         this.centerPoint[0],
         this.centerPoint[1]
       );
-
       // If we're approaching the edge of our query radius (within 20% of the radius)
       const radiusThreshold = parameters.queryRadius - parameters.fovRadius;
       if (distanceFromCenter > radiusThreshold) {
@@ -139,16 +154,8 @@ class PointSearcher {
   }
 
   async getPoints() {
-    getPointsRan++;
-    parameters.queryRadius = parameters.queryFOVFactor * parameters.fovRadius;
-    parameters.queryMag = linearMap(
-      parameters.fovRadius,
-      parameters.fovLimits.max,
-      parameters.fovLimits.min,
-      parameters.querygmagMin,
-      parameters.querygmagMax,
-      false
-    );
+    parameters.queryMag = pieceWise(parameters.fovRadius);
+
     try {
       const { data, error } = await client.query(query, {
         ra: parseFloat(parameters.currentRaDec[0].toFixed(3)),
@@ -177,8 +184,10 @@ class PointSearcher {
         })) || [];
       this.tree = new KDTree(formattedPoints);
     } catch (error) {
-      console.error("Error fetching points:", error);
-      throw error; // Re-throw the error to handle it at a higher level
+      console.error("Error fetching points from API:", error);
+
+      // Use JSON data as fallback
+      this.useJSONFile(backupPointsData);
     }
   }
 
@@ -336,32 +345,20 @@ class PointSearcher {
     // // Draw nearest neighbours count
     // this.p.fill(255); // White text
     // this.p.textSize(16);
-    // this.p.text(`Current FOV: ${parameters.fov}`, 20, 30);
     // this.p.text(`Previous FOV: ${this.prevFOV}`, 20, 50);
-    // this.p.text(`getPoints Ran: ${getPointsRan}`, 20, 70);
     // this.p.text(`Current RA/DEC: ${parameters.currentRaDec}`, 20, 90);
     // this.p.text(`Center Point: ${this.centerPoint}`, 20, 110);
-    // this.p.text(`FOV Check True: ${fovCheckTruthy}`, 20, 130);
-    // this.p.text(`updateFOVAndSubset Ran: ${updateFOVAndSubsetRan}`, 20, 150);
+    // this.p.text(`FOC Radius: ${parameters.fovRadius}`, 20, 170);
+    // this.p.text(`Subset Points Length: ${this.subsetPoints.length}`, 20, 190);
     // DELETE ABOVE //////////////////////
     // Reset color mode to RGB
     this.p.colorMode(this.p.RGB);
   }
 
   updateFOVAndSubset() {
-    updateFOVAndSubsetRan++;
-    // Calculate FOV radius from the current FOV
-    const fovRadius = Math.sqrt(
-      Math.pow(parameters.fov[0] / 2, 2) + Math.pow(parameters.fov[1] / 2, 2)
-    );
-
-    // Update the parameters FOV radius
-    parameters.fovRadius = fovRadius;
-
-    // Use current RA/Dec from parameters and update the subset
     this.makeSubset(
       [parameters.currentRaDec[0], parameters.currentRaDec[1]],
-      fovRadius
+      parameters.fovRadius
     );
   }
 

@@ -82,8 +82,9 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         // Initialize the walker with p5 instance and aladin
         walkerRef.current = new Walker(p, aladin);
         // Initialize the point searcher with p5 instance and aladin
+        parameters.fov = aladin.getFov();
         pointSearcherRef.current = new PointSearcher(p, aladin);
-        pointSearcherRef.current.makeSubset([186.46515, 7.15508], 0.025); // TDOD: Make these variables that get updated in the setup loop
+        // pointSearcherRef.current.makeSubset([186.46515, 7.15508], 0.025); // TDOD: Make these variables that get updated in the setup loop
         // Get the initial points from the point searcher on first load
         // pointSearcherRef.current.getPoints(); // TODO: Figure out what arguments to pass in
         samplePlayerRef.current = new SamplePlayer(aladin);
@@ -99,6 +100,8 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         if (p.frameCount % 60 === 0) {
           pointSearcherRef.current.updateFOVAndSubset();
         }
+        // Update FOV Radius and Query Radios
+        pointSearcherRef.current.updateFOVRadius();
         // Check if we need to update points based on position or FOV changes
         pointSearcherRef.current.shouldUpdatePoints();
         // Update neighbors based on current position and target radius
