@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
+import { IoMdPause, IoMdPlay } from "react-icons/io";
 import IconButton from "@/components/atomic/IconButton";
 import parameters from "@/components/organisms/Listener/parameters";
 import styles from "./styles.module.css";
@@ -18,14 +18,7 @@ const PlayPauseButton = () => {
     <IconButton
       text={isPlaying ? "Pause Sonification" : "Play Sonification"}
       icon={
-        <Image
-          src={`/sonification/${
-            isPlaying ? "pause_icon.png" : "play_icon.png"
-          }`}
-          alt={isPlaying ? "Pause" : "Play"}
-          width={50}
-          height={50}
-        />
+        isPlaying ? <IoMdPause /> : <IoMdPlay className={styles.play}/>
       }
       onClick={handleClick}
       styleAs="primary"
