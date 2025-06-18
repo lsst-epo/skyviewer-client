@@ -18,6 +18,11 @@ export const env = createEnv({
     PLAUSIBLE_DOMAIN: z.string().min(1).optional(),
     /** if enabled, will add a forced Cache-Control header to RSC responses */
     NEXT_RSC_CACHE_CONTROL: COERCED_BOOLEAN.optional().default(true),
+    NEXT_IMAGE_MINIMUM_CACHE_TTL: z.coerce
+      .number()
+      .int()
+      .catch(3600)
+      .default(3600),
   },
   client: {
     NEXT_PUBLIC_BASE_URL: z.string().url(),
