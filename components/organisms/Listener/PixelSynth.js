@@ -3,8 +3,8 @@ import parameters from "./parameters";
 
 class PixelSynth {
   constructor() {
-    this.audioContext = new (window.AudioContext ||
-      window.webkitAudioContext)();
+    // Use shared audio context instead of creating our own
+    this.audioContext = null;
     this.start_note = 60;
     this.setHarmony("major pentatonic");
     this.noteFrequencies = this.midiNumbers.map(midiToFrequency);
@@ -17,7 +17,7 @@ class PixelSynth {
     this.limiterNode = null; // New limiter node
     this.frequencyScale = 1;
     this.amplitudeScale = 1.5;
-    this.setupReverb();
+    // Don't call setupReverb here - audio context isn't available yet
   }
 
   setHarmony(harmony) {
@@ -70,6 +70,9 @@ class PixelSynth {
   }
 
   async setupReverb() {
+    // Use shared audio context from parameters
+    this.audioContext = parameters.audioContext;
+
     // Create impulse response for reverb
     const sampleRate = this.audioContext.sampleRate;
     const length = sampleRate * 2; // 2 seconds of reverb
@@ -93,6 +96,14 @@ class PixelSynth {
   }
 
   playNote(rgbValues) {
+    // Use shared audio context from parameters
+    this.audioContext = parameters.audioContext;
+
+    // Setup reverb if not already done
+    if (!this.reverbNode) {
+      this.setupReverb();
+    }
+
     // Create new oscillator if one doesn't exist
     if (!this.oscillator) {
       this.oscillator = this.audioContext.createOscillator();

@@ -27,11 +27,6 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
   const walkerRef = useRef(null);
   const pointSearcherRef = useRef(null);
   const samplePlayerRef = useRef(null);
-  // Initialize synth
-  useEffect(() => {
-    // Create reference to the synth class
-    synthRef.current = new PixelSynth();
-  }, []);
 
   // Update the current color when pixelColor changes
   useEffect(() => {
@@ -88,6 +83,8 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         // Get the initial points from the point searcher on first load
         // pointSearcherRef.current.getPoints(); // TODO: Figure out what arguments to pass in
         samplePlayerRef.current = new SamplePlayer(aladin);
+        // Initialize the synth after audio context is available
+        synthRef.current = new PixelSynth();
       };
 
       p.draw = () => {
