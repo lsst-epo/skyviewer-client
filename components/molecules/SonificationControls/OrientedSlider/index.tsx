@@ -23,26 +23,33 @@ const OrientedSlider: FC<OrientedSliderProps> = ({
 }) => {
   const [isDragging, setIsDragging] = useState(false);
 
+  const calculateValue = useCallback(
+    (clientX: number, clientY: number, rect: DOMRect) => {
+      let newValue: number;
+      if (orientation === "horizontal") {
+        const percentage = (clientX - rect.left) / rect.width;
+        newValue = min + (max - min) * Math.max(0, Math.min(1, percentage));
+      } else {
+        const percentage = 1 - (clientY - rect.top) / rect.height;
+        newValue = min + (max - min) * Math.max(0, Math.min(1, percentage));
+      }
+
+      newValue = Math.round(newValue / step) * step;
+      return newValue;
+    },
+    [min, max, step, orientation]
+  );
+
   const handleMouseMove = useCallback(
     (e: React.MouseEvent) => {
       if (!isDragging) return;
 
       const sliderElement = e.currentTarget as HTMLElement;
       const rect = sliderElement.getBoundingClientRect();
-
-      let newValue: number;
-      if (orientation === "horizontal") {
-        const percentage = (e.clientX - rect.left) / rect.width;
-        newValue = min + (max - min) * Math.max(0, Math.min(1, percentage));
-      } else {
-        const percentage = 1 - (e.clientY - rect.top) / rect.height;
-        newValue = min + (max - min) * Math.max(0, Math.min(1, percentage));
-      }
-
-      newValue = Math.round(newValue / step) * step;
+      const newValue = calculateValue(e.clientX, e.clientY, rect);
       onChange(newValue);
     },
-    [isDragging, min, max, step, onChange, orientation]
+    [isDragging, calculateValue, onChange]
   );
 
   const handleMouseDown = useCallback(
@@ -61,6 +68,38 @@ const OrientedSlider: FC<OrientedSliderProps> = ({
     setIsDragging(false);
   }, []);
 
+  // Touch event handlers
+  const handleTouchStart = useCallback(
+    (e: React.TouchEvent) => {
+      e.preventDefault();
+      setIsDragging(true);
+      const touch = e.touches[0];
+      const sliderElement = e.currentTarget as HTMLElement;
+      const rect = sliderElement.getBoundingClientRect();
+      const newValue = calculateValue(touch.clientX, touch.clientY, rect);
+      onChange(newValue);
+    },
+    [calculateValue, onChange]
+  );
+
+  const handleTouchMove = useCallback(
+    (e: React.TouchEvent) => {
+      if (!isDragging) return;
+      e.preventDefault();
+
+      const touch = e.touches[0];
+      const sliderElement = e.currentTarget as HTMLElement;
+      const rect = sliderElement.getBoundingClientRect();
+      const newValue = calculateValue(touch.clientX, touch.clientY, rect);
+      onChange(newValue);
+    },
+    [isDragging, calculateValue, onChange]
+  );
+
+  const handleTouchEnd = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
   const percentage = ((value - min) / (max - min)) * 100;
 
   return (
@@ -70,6 +109,9 @@ const OrientedSlider: FC<OrientedSliderProps> = ({
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseLeave}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
       role="slider"
       aria-valuemin={min}
       aria-valuemax={max}
