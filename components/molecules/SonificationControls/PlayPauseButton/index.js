@@ -17,9 +17,7 @@ const PlayPauseButton = () => {
   return (
     <IconButton
       text={isPlaying ? "Pause Sonification" : "Play Sonification"}
-      icon={
-        isPlaying ? <IoMdPause /> : <IoMdPlay className={styles.play}/>
-      }
+      icon={isPlaying ? <IoMdPause /> : <IoMdPlay className={styles.play} />}
       onClick={handleClick}
       styleAs="primary"
       className={styles.button}

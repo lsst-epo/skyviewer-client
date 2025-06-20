@@ -1,8 +1,8 @@
 "use server";
 
+import { redirect, RedirectType } from "next/navigation";
 import { env } from "@/env";
 import revalidateUri from "@/services/revalidation";
-import { redirect, RedirectType } from "next/navigation";
 
 export default async function revalidate({
   uri,
