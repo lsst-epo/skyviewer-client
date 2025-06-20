@@ -10,6 +10,7 @@ import VisuallyHidden from "@/components/atomic/VisuallyHidden";
 import IconComposer from "@/components/svg/IconComposer";
 import { useTranslation } from "@/lib/i18n/server";
 import styles from "./styles.module.css";
+import { getPathname } from "@/lib/i18n/navigation";
 
 interface AladinMenuProps {
   closeUrl?: string;
@@ -26,6 +27,7 @@ const AladinMenu: FC<PropsWithChildren<AladinMenuProps>> = async ({
   children,
 }) => {
   const { t } = await useTranslation(locale);
+  const path = getPathname({ href: closeUrl, locale });
 
   return (
     <header
@@ -40,7 +42,7 @@ const AladinMenu: FC<PropsWithChildren<AladinMenuProps>> = async ({
         </MenuGroup>
         <QuickAccess />
       </SlideoutWrapper>
-      <Link href={closeUrl} className={styles.closeButton}>
+      <Link href={path} className={styles.closeButton}>
         <VisuallyHidden>{t("controls.close_explorer")}</VisuallyHidden>
         <IconComposer icon="Close" />
       </Link>
