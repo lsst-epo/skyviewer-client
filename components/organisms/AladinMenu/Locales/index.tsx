@@ -1,11 +1,11 @@
 "use client";
-import { FC, useEffect, useTransition } from "react";
+import { FC, useTransition } from "react";
 import { useTranslation } from "react-i18next";
 import { MenuItemRadio } from "@rubin-epo/epo-react-lib/SlideoutMenu";
 import { useLocale } from "next-intl";
 import Submenu from "../Submenu";
 import { languages } from "@/lib/i18n/settings";
-import { redirect, usePathname, useRouter } from "@/lib/i18n/navigation";
+import { redirect, usePathname } from "@/lib/i18n/navigation";
 
 const LocalesMenu: FC = () => {
   const [isPending, startTransition] = useTransition();
@@ -15,18 +15,11 @@ const LocalesMenu: FC = () => {
     i18n: { changeLanguage },
   } = useTranslation();
   const pathname = usePathname();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!isPending) {
-      changeLanguage(currentLocale);
-      router.refresh();
-    }
-  }, [isPending]);
 
   const handleLocaleChange = (locale: string) => {
     if (locale !== currentLocale) {
       startTransition(() => {
+        changeLanguage(locale);
         redirect({ href: { pathname }, locale, forcePrefix: true });
       });
     }
@@ -45,10 +38,12 @@ const LocalesMenu: FC = () => {
               key={locale}
               isChecked={locale === currentLocale}
               onCheckCallback={(close) => {
-                handleLocaleChange(locale);
+                if (!isPending) {
+                  handleLocaleChange(locale);
 
-                if (close) {
-                  setOpen(false);
+                  if (close) {
+                    setOpen(false);
+                  }
                 }
               }}
             >
