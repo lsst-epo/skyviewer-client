@@ -9,8 +9,8 @@ import AboutMenu from "./About";
 import VisuallyHidden from "@/components/atomic/VisuallyHidden";
 import IconComposer from "@/components/svg/IconComposer";
 import { useTranslation } from "@/lib/i18n/server";
-import styles from "./styles.module.css";
 import { getPathname } from "@/lib/i18n/navigation";
+import styles from "./styles.module.css";
 
 interface AladinMenuProps {
   closeUrl?: string;
