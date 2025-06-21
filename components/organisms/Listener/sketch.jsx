@@ -45,27 +45,6 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
       walkerRef.current.boundaryCheck();
     }
   }, [cardinalSums]);
-
-  // Handle Aladin resize events
-  // useEffect(() => {
-  //   if (!aladin || !p5Instance.current) return;
-
-  //   const handleResize = (width, height) => {
-  //     if (p5Instance.current && p5Instance.current.resizeCanvas) {
-  //       p5Instance.current.resizeCanvas(width, height);
-  //       parameters.targetPointPX[0] = width / 2; // Center the target point in the canvas
-  //       parameters.targetPointPX[1] = height / 2; // Center the target point in the canvas
-  //     }
-  //   };
-
-  //   // Listen for resize events from Aladin
-  //   aladin.on("resizeChanged", handleResize);
-
-  //   return () => {
-  //     aladin.off("resizeChanged", handleResize);
-  //   };
-  // }, [aladin, p5Instance.current]);
-
   // Create the sketch only once
   useEffect(() => {
     if (!aladin) return;
