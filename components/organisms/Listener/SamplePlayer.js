@@ -113,7 +113,7 @@ class SamplePlayer {
           1,
           true
         ); // Map br color to frequency
-        const pointAmplitude = linearMap(
+        let pointAmplitude = linearMap(
           point.gmag,
           parameters.gmagMax,
           parameters.gmagMin,
@@ -121,6 +121,9 @@ class SamplePlayer {
           1,
           true
         ); // Map size to amplitude
+        if (point.flag === "s") {
+          pointAmplitude *= 0.1; // Scale down amplitude for stars
+        }
         const instrument = pointTypeToInstrument[point.flag] || "harp"; // Default to 'harp' if type is not found
         let pan = 0;
         const distanceFromTarget = pointPX[0] - parameters.targetPointPX[0];
@@ -135,7 +138,7 @@ class SamplePlayer {
         pan = Math.min(Math.max(pan, -1), 1); // Ensure pan stays within the valid range
         this.playSample(
           pointFreqData ** parameters.freqScaling,
-          0.05 +
+          0.025 +
             parameters.maxSampleVolume *
               pointAmplitude ** parameters.ampScaling,
           instrument,

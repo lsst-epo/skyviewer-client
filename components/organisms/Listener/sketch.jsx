@@ -54,6 +54,8 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
       p.setup = () => {
         // Create the canvas with the same size as the aladin image
         p.createCanvas(size[0], size[1]);
+        parameters.targetPointPX[0] = size[0] / 2; // Center the target point in the canvas
+        parameters.targetPointPX[1] = size[1] / 2; // Center the target point in the canvas
         // Make the canvas non-interactive
         p.canvas.style.pointerEvents = "none";
         const audioPromises = [];
