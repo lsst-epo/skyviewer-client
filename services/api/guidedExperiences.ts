@@ -74,12 +74,12 @@ export const getGuidedExperiences = async () => {
   return { title, experiences };
 };
 
-export const getTourCount = async (category: string): Promise<number> => {
+export const getCount = async (category: string): Promise<number> => {
   const site = siteFromLocale(await getLocale());
 
   const Query = graphql(`
-    query TourCount($site: [String], $section: [String]) {
-      entries(site: $site, section: $section) {
+    query ExperienceCount($site: [String], $section: [String]) {
+      entries(site: $site, section: $section, includeInFeed: true) {
         id
       }
     }

@@ -6,7 +6,7 @@ import Frame from "@rubin-epo/epo-react-lib/Frame";
 import Stack from "@rubin-epo/epo-react-lib/Stack";
 import { Link } from "next-view-transitions";
 import { useTranslation } from "@/lib/i18n/server";
-import { getTourCount } from "@/services/api/guidedExperiences";
+import { getCount } from "@/services/api/guidedExperiences";
 import Ribbon from "@/components/atomic/Ribbon";
 import ViewTransition from "@/components/atomic/ViewTransition";
 import { getPathname } from "@/lib/i18n/navigation";
@@ -21,7 +21,7 @@ interface GuidedExperienceCardProps {
 
 const RibbonContent: FC<{ slug: string }> = async ({ slug }) => {
   const { t } = await useTranslation();
-  const count = await getTourCount(slug);
+  const count = await getCount(slug);
 
   return (
     <>
