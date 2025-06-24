@@ -1,7 +1,7 @@
 import "@/styles/styles.scss";
 import { FunctionComponent, PropsWithChildren } from "react";
 import { hasLocale } from "next-intl";
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { ViewTransitions } from "next-view-transitions";
 import StyledComponentsRegistry from "@rubin-epo/epo-react-lib/StyledComponentsRegistry";
@@ -34,7 +34,6 @@ export async function generateMetadata({
       default: title,
       template: `%s | ${title}`,
     },
-    manifest: "/site.webmanifest",
     metadataBase: new URL(env.NEXT_PUBLIC_BASE_URL),
     alternates: { canonical: "./" },
     openGraph: {
@@ -52,6 +51,10 @@ export async function generateMetadata({
     },
   };
 }
+
+export const generateViewport = (): Viewport => {
+  return { themeColor: "#1f2121" };
+};
 
 const RootLayout: FunctionComponent<PropsWithChildren<RootProps>> = ({
   children,
