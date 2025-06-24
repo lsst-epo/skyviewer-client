@@ -1,0 +1,5 @@
+.fullscreenToggle {
+  @media (display-mode: standalone) {
+    display: none;
+  }
+}

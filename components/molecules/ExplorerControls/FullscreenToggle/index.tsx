@@ -1,10 +1,12 @@
 "use client";
 import { FC, useCallback, useState } from "react";
+import clsx from "clsx";
 import screenfull from "screenfull";
 import { useTranslation } from "react-i18next";
 import { IoMdExpand, IoIosClose } from "react-icons/io";
 import { useAladin } from "@/contexts/Aladin";
 import IconButton from "@/components/atomic/IconButton";
+import styles from "./styles.module.css";
 
 interface FullscreenToggleProps {
   className?: string;
@@ -45,7 +47,7 @@ const FullscreenToggle: FC<FullscreenToggleProps> = ({ className }) => {
       })}
       onClick={toggleFullscreen}
       disabled={isLoading}
-      className={className}
+      className={clsx(styles.fullscreenToggle, className)}
     />
   );
 };
