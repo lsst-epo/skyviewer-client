@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import P5 from "p5";
 import PropTypes from "prop-types";
 import {
@@ -21,6 +21,7 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
   const currentColor = useRef(pixelColor);
   const currentCardinalSums = useRef(cardinalSums);
   const { aladin } = useAladin();
+  const [isP5Ready, setIsP5Ready] = useState(false);
   const emptyCircleRef = useRef(null);
   const starRef = useRef(null);
   const synthRef = useRef(null);
@@ -45,6 +46,27 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
       walkerRef.current.boundaryCheck();
     }
   }, [cardinalSums]);
+
+  // Resize the P5 canvas when Aladin's size changes
+  useEffect(() => {
+    if (!aladin || !isP5Ready) return;
+
+    const handleResize = (width, height) => {
+      if (p5Instance.current && p5Instance.current.resizeCanvas) {
+        p5Instance.current.resizeCanvas(width, height); // Resize the P5 canvas to match Aladin's size
+        parameters.targetPointPX[0] = width / 2; // Recenter the target point in the canvas
+        parameters.targetPointPX[1] = height / 2; // Recenter the target point in the canvas
+      }
+    };
+
+    // Listen for resize events from Aladin
+    aladin.on("resizeChanged", handleResize);
+
+    return () => {
+      aladin.off("resizeChanged", handleResize);
+    };
+  }, [aladin, isP5Ready]);
+
   // Create the sketch only once
   useEffect(() => {
     if (!aladin) return;
@@ -87,6 +109,8 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         samplePlayerRef.current = new SamplePlayer(aladin);
         // Initialize the synth after audio context is available
         synthRef.current = new PixelSynth();
+        // Mark P5 as ready after setup is complete
+        setIsP5Ready(true);
       };
 
       p.draw = () => {
@@ -156,6 +180,7 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
     }, sketchRef.current);
 
     return () => {
+      setIsP5Ready(false);
       p5Instance.current.remove();
     };
   }, [aladin]); // Add aladin as dependency
