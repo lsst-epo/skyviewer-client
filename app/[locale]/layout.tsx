@@ -53,7 +53,7 @@ export async function generateMetadata({
 }
 
 export const generateViewport = (): Viewport => {
-  return { themeColor: "#1f2121" };
+  return { themeColor: "#000000" };
 };
 
 const RootLayout: FunctionComponent<PropsWithChildren<RootProps>> = ({
