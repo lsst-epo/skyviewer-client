@@ -33,7 +33,7 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
       { src: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
     ],
     shortcuts: [
-      { name: t("navigation.cta.explore"), url: "/explore" },
+      { name: t("navigation.cta.explore"), url: "/explorer" },
       { name: t("navigation.cta.tours"), url: "/guided-experiences" },
       { name: t("navigation.cta.listen"), url: "/skysynth" },
     ],
