@@ -2,6 +2,7 @@ import { FC, PropsWithChildren } from "react";
 import classnames from "clsx/lite";
 import { Link } from "next-view-transitions";
 import { MenuGroup } from "@rubin-epo/epo-react-lib/SlideoutMenu";
+import NetworkState from "../NetworkState";
 import SlideoutWrapper from "./SlideoutWrapper";
 import QuickAccess from "./QuickAccess";
 import LocalesMenu from "./Locales";
@@ -42,6 +43,7 @@ const AladinMenu: FC<PropsWithChildren<AladinMenuProps>> = async ({
         </MenuGroup>
         <QuickAccess />
       </SlideoutWrapper>
+      <NetworkState />
       <Link href={path} className={styles.closeButton}>
         <VisuallyHidden>{t("controls.close_explorer")}</VisuallyHidden>
         <IconComposer icon="Close" />

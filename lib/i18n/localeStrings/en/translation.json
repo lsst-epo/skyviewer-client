@@ -187,5 +187,9 @@
     "revalidate_error": "There was a problem revalidating this page",
     "revalidate_tooltip": "If your page uses an external resource like NOIRLab's news and image feed, requesting revalidation may update content on the page.",
     "exit": "Exit preview mode"
+  },
+  "network": {
+    "offline": "Skyviewer is offline",
+    "limited_connection": "Network connection is limited"
   }
 }
