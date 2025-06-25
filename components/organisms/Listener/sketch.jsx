@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import P5 from "p5";
 import PropTypes from "prop-types";
 import {
@@ -14,6 +14,7 @@ import Walker from "./Walker";
 import PointSearcher from "./PointSearcher";
 import SamplePlayer from "./SamplePlayer";
 import { useAladin } from "@/contexts/Aladin";
+import useAladinEvent from "@/hooks/useAladinEvent";
 
 const Sketch = ({ pixelColor, cardinalSums }) => {
   const sketchRef = useRef(null);
@@ -47,25 +48,22 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
     }
   }, [cardinalSums]);
 
-  // Resize the P5 canvas when Aladin's size changes
-  useEffect(() => {
-    if (!aladin || !isP5Ready) return;
-
-    const handleResize = (width, height) => {
-      if (p5Instance.current && p5Instance.current.resizeCanvas) {
-        p5Instance.current.resizeCanvas(width, height); // Resize the P5 canvas to match Aladin's size
-        parameters.targetPointPX[0] = width / 2; // Recenter the target point in the canvas
-        parameters.targetPointPX[1] = height / 2; // Recenter the target point in the canvas
+  const handleResize = useCallback(
+    ({ detail }) => {
+      if (aladin) {
+        const size = aladin.getSize();
+        if (p5Instance.current && p5Instance.current.resizeCanvas) {
+          p5Instance.current.resizeCanvas(size[0], size[1]); // Resize the P5 canvas to match Aladin's size
+          parameters.targetPointPX[0] = size[0] / 2; // Recenter the target point in the canvas
+          parameters.targetPointPX[1] = size[1] / 2; // Recenter the target point in the canvas
+        }
       }
-    };
+    },
+    [aladin]
+  );
 
-    // Listen for resize events from Aladin
-    aladin.on("resizeChanged", handleResize);
-
-    return () => {
-      aladin.off("resizeChanged", handleResize);
-    };
-  }, [aladin, isP5Ready]);
+  // Listen for zoom changes which indicates a resize
+  useAladinEvent("zoom.changed", handleResize);
 
   // Create the sketch only once
   useEffect(() => {
