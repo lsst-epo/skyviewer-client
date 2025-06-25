@@ -50,7 +50,7 @@ export const hasWebShare = (data?: ShareData): boolean => {
 export const shouldShare = () => {
   if (typeof window === "undefined") return false;
 
-  return navigator.userAgent.includes("Mobi");
+  return navigator.userAgent.includes("Mobi") && !!navigator.share;
 };
 
 export const webShare = async ({
