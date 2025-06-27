@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["dom", "dom.iterable", "esnext", "webworker"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -24,6 +24,11 @@
     ],
     "strictNullChecks": true
   },
+  "types": [
+    // This allows Serwist to type `window.serwist`.
+    "@serwist/next/typings"
+  ],
+
   "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "public/service-worker.js"]
 }

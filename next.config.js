@@ -2,6 +2,7 @@ import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { createJiti } from "jiti";
 import createNextIntlPlugin from "next-intl/plugin";
+import withSerwistInit from "@serwist/next";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -40,5 +41,13 @@ const nextConfig = {
   },
 };
 
-const withNextIntl = createNextIntlPlugin("./lib/i18n/request.ts");
-export default withNextIntl(nextConfig);
+const withNextIntl = createNextIntlPlugin("./lib/i18n/request.ts")(nextConfig);
+
+const withSerwist = withSerwistInit({
+  swSrc: "app/service-worker.ts",
+  swDest: "public/sw.js",
+  reloadOnOnline: false,
+  disable: env.NODE_ENV === "development",
+})(withNextIntl);
+
+export default withSerwist;
