@@ -14,8 +14,8 @@ import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 import { useAladin } from "@/contexts/Aladin";
 import { frameMap, viewAsParams } from "@/lib/aladin/helpers";
 import IconButton from "@/components/atomic/IconButton";
-import styles from "./styles.module.css";
 import useAladinContextMenu from "@/hooks/useAladinContextMenu";
+import styles from "./styles.module.css";
 
 interface AladinScreenPosition {
   screen: [number, number];
