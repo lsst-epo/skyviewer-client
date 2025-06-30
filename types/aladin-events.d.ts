@@ -8,7 +8,15 @@ interface ZoomChangedDetail {
 }
 interface CanvasEventDetail {
   state: { mode: number; dragging: boolean; rightClickPressed?: boolean };
-  type?: "mousemove" | "mouseout" | "mousedown" | "click" | "wheel";
+  type?:
+    | "mousemove"
+    | "mouseout"
+    | "mousedown"
+    | "click"
+    | "wheel"
+    | "touchstart"
+    | "touchend"
+    | "touchmove";
   xy?: { x: number; y: number };
 }
 interface FrameChangedDetail {
