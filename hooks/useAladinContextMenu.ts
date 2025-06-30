@@ -1,9 +1,9 @@
 "use client";
 
 import { useEventListener } from "usehooks-ts";
-import { useAladin } from "@/contexts/Aladin";
-import useAladinEvent from "./useAladinEvent";
 import { useRef } from "react";
+import useAladinEvent from "./useAladinEvent";
+import { useAladin } from "@/contexts/Aladin";
 
 const useAladinContextMenu = ({
   onOpen,
