@@ -38,3 +38,7 @@ yarn-error.log*
 .env
 
 certificates
+
+# Serwist
+public/sw.js
+public/swe-worker*
