@@ -7,15 +7,15 @@ import {
   useFloating,
 } from "@floating-ui/react-dom";
 
-import { useEventListener, useOnClickOutside } from "usehooks-ts";
+import { useOnClickOutside } from "usehooks-ts";
 import { useTranslation } from "react-i18next";
 import Stack from "@rubin-epo/epo-react-lib/Stack";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
-import useAladinEvent from "@/hooks/useAladinEvent";
 import { useAladin } from "@/contexts/Aladin";
 import { frameMap, viewAsParams } from "@/lib/aladin/helpers";
 import IconButton from "@/components/atomic/IconButton";
 import styles from "./styles.module.css";
+import useAladinContextMenu from "@/hooks/useAladinContextMenu";
 
 interface AladinScreenPosition {
   screen: [number, number];
@@ -71,56 +71,32 @@ const CurrentPositionPopover: FC = () => {
     setPosition(undefined);
   };
 
-  const handleClick = ({
-    detail: { state, type, xy },
-  }: AladinEventMap["Event"]) => {
-    const closeActions = ["click", "mousedown", "wheel"];
+  const openContextMenu = ({ x, y }: { x: number; y: number }) => {
+    if (!isLoading) {
+      const frame = aladin.getFrame();
+      const format = frameMap[frame];
 
-    if (type && closeActions.includes(type) && !!position) {
-      closeContextMenu();
-      return;
-    }
+      let precision = 5;
 
-    if (state.rightClickPressed) {
-      if (type === "mousemove") {
-        closeContextMenu();
-        return;
+      if (format === "s") {
+        precision++;
       }
 
-      if (!isLoading && xy) {
-        const frame = aladin.getFrame();
-        const format = frameMap[frame];
+      const position = aladin.pix2world(x, y, frame);
+      const coo = A.coo(...position, precision);
+      coo.setFrame(frame);
 
-        let precision = 5;
-
-        if (format === "s") {
-          precision++;
-        }
-
-        const { x, y } = xy;
-        const position = aladin.pix2world(x, y, frame);
-        const coo = A.coo(...position, precision);
-        coo.setFrame(frame);
-
-        setPosition({
-          screen: [x, y],
-          aladin: position,
-          formatted: formatCoordinate(coo.format(format), format),
-        });
-      }
+      setPosition({
+        screen: [x, y],
+        aladin: position,
+        formatted: formatCoordinate(coo.format(format), format),
+      });
     }
   };
 
-  const handleKeydown = (event: KeyboardEvent) => {
-    if (event.key === "Escape") {
-      closeContextMenu();
-    }
-  };
+  useAladinContextMenu({ onOpen: openContextMenu, onClose: closeContextMenu });
 
-  useAladinEvent("zoom.changed", closeContextMenu);
-  useAladinEvent("Event", handleClick);
   useOnClickOutside(floating, closeContextMenu);
-  useEventListener("keydown", handleKeydown);
 
   const handleCopyLink: MouseEventHandler = async () => {
     const { origin, pathname } = window.location;
@@ -134,11 +110,11 @@ const CurrentPositionPopover: FC = () => {
 
     try {
       await navigator.clipboard.writeText(path);
+
+      closeContextMenu();
     } catch (error) {
       console.error(error.message);
     }
-
-    closeContextMenu();
   };
 
   return (
