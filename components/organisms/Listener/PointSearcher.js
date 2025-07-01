@@ -183,6 +183,10 @@ class PointSearcher {
           flag: point.flag,
         })) || [];
       this.tree = new KDTree(formattedPoints);
+      this.makeSubset(
+        [parameters.currentRaDec[0], parameters.currentRaDec[1]],
+        parameters.fovRadius
+      );
     } catch (error) {
       console.error("Error fetching points from API:", error);
 
