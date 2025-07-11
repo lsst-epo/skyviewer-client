@@ -5,6 +5,7 @@ import ControlStack from "../Controls/Stack";
 import ReturnToInitial from "../ExplorerControls/ReturnToInitial";
 import PlayPauseButton from "./PlayPauseButton/index";
 import OrientedSlider from "./OrientedSlider";
+import HelpPanel from "./HelpPanel";
 import parameters from "@/components/organisms/Listener/parameters";
 import AladinOverlay from "@/components/atomic/AladinOverlay";
 import styles from "./styles.module.css";
@@ -24,6 +25,9 @@ const SonificationControls: FC = () => {
       space="var(--size-spacing-xs) var(--size-spacing-s) var(--size-spacing-xs) var(--size-spacing-xs)"
     >
       <div className={styles.controlsWrapper}>
+        <ControlStack position="top left">
+          <HelpPanel />
+        </ControlStack>
         <ControlStack position="top right">
           <PlayPauseButton />
         </ControlStack>
