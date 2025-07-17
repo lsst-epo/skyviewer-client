@@ -1,5 +1,5 @@
 export const fallbackLng = "en";
-export const languages = [fallbackLng, "es"];
+export const languages = [fallbackLng, "es", "ja"];
 export const defaultNS = "translation";
 export const namespaces = [defaultNS, "epo-react-lib"];
 export const cookieName = "NEXT_LOCALE";
