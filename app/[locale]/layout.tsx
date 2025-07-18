@@ -1,4 +1,5 @@
 import "@/styles/styles.scss";
+import clsx from "clsx/lite";
 import { FunctionComponent, PropsWithChildren } from "react";
 import { hasLocale } from "next-intl";
 import { Metadata, Viewport } from "next";
@@ -15,7 +16,6 @@ import SkeletonGlobal from "@/components/organisms/SkeletonGlobal";
 import { env } from "@/env";
 import { getGlobalData } from "@/services/api/global";
 import PreviewMode from "@/components/organisms/PreviewMode";
-import clsx from "clsx/lite";
 
 export const generateStaticParams = () => {
   return languages.map((locale) => {
