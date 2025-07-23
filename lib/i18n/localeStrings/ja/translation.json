@@ -1,0 +1,191 @@
+{
+  "title": "スカイビューワー",
+  "navigation": {
+    "cta": {
+      "exit": "やめる",
+      "previous": "戻る",
+      "back": "前へ",
+      "next": "次へ",
+      "pause": "一時停止",
+      "share": "共有",
+      "explore": "探索",
+      "tours": "ガイドツアー",
+      "go_to_tours": "ツアーツアー",
+      "start_tour": "始める",
+      "lets_start": "始めよう",
+      "skip_intro": "説明をスキップする",
+      "cancel": "キャンセル",
+      "listen": "音で楽しむ"
+    }
+  },
+  "guided-experiences": {
+    "title": "ガイドツアー",
+    "tour_one": "ツアー",
+    "tour_other": "ツアー",
+    "back": "メイン画面に戻る"
+  },
+  "experiences": {
+    "back": "ガイドツアーに戻る",
+    "details": {
+      "duration": {
+        "title": "所要時間",
+        "attribute_other": "{{count}} 分",
+        "attribute_one": "{{count}} 分"
+      },
+      "complexity": {
+        "title": "難易度",
+        "attribute": {
+          "1": "易しい",
+          "2": "易しい",
+          "3": "ほどほど",
+          "4": "ほどほど",
+          "5": "難しい"
+        }
+      }
+    }
+  },
+  "tours": {
+    "title": "天体観測ツアー",
+    "tutorial": {
+      "step_0": "ルービン天文台のあるチリから見える南半球の星空です。",
+      "step_1": "{{next}} ボタンと {{back}} ボタンを押すことでおすすめの天体を移動できます。",
+      "step_2": "気になる天体 {{share}} ボタンで共有することができます。",
+      "step_3": "自分で自由に遊べる Explorer やその他の設定の変更はここから。",
+      "step_4": "{{next}} ボタンを押すとツアーが始まります。",
+      "skip": "チュートリアルをスキップする。",
+      "complete": "チュートリアル終了！",
+      "current_step": "{{step}} / {{total}} "
+    }
+  },
+  "tour": {
+    "description": {
+      "location": "($t(tours.tutorial.current_step,{\"step\":{{step}},\"total\":{{total}}}))",
+      "toggle_show": "説明を表示する",
+      "toggle_hide": "説明を隠す"
+    },
+    "summary": {
+      "title": "おめでとうございます。",
+      "cta": "ツアー終了です。友達と共有できます。",
+      "back": "天体観測ツアーに戻る。"
+    }
+  },
+  "controls": {
+    "close_explorer": "探索モードを閉じる。",
+    "save_image": "画像を保存する。",
+    "get_a_link": "リンクを取得する。",
+    "zoom_in": "拡大",
+    "zoom_out": "縮小",
+    "open_in_new_tab": "スカイビューワーで開く",
+    "open_tours": "ツアーを開く",
+    "volume_mute": "消音 (m)",
+    "volume_unmute": "消音を解除 (m)",
+    "fullscreen_open": "フルスクリーンで表示",
+    "fullscreen_close": "フルスクリーンをやめる",
+    "return_to_initial": "初期画面に戻る",
+    "view_scale": "LSSTカメラの視野のおよそ <1>{{fraction}}</1> を表示",
+    "view_scale_announce": "LSSTカメラの視野のおよそ {{fraction}} を表示",
+    "view_scale_close": "スケールを非表示にする",
+    "view_scale_open": "スケールを表示する"
+  },
+  "menu": {
+    "search": {
+      "submit": "検索",
+      "open": "検索を開く",
+      "placeholder": "Enter your search...",
+      "clear": "入力をクリアする",
+      "take_a_tour": "何を見たらいいかわからない場合は <1>ツアー</1> に参加してみましょう。",
+      "instructions": "スカイビューワーは天体の一般的な名称 (\"M49\" や \"Messier 49\") にも一部対応しています（<0>SIMBAD</0> や <1>NED</1> に登録されているもの）。スカイビューは赤経赤緯などの座標による検索にも対応しています。 (\"186.2 7.0.\")",
+      "error_object": "\"{{search}}\" が見つかりませんでした。",
+      "error_coordinate": "正しい座標を試してください。 ex. 186.2 7.0",
+      "found_object": "<0>\"{{name}}\"</0> が <1>{{position}}</1> に見つかりました。",
+      "found_position": "<0>{{position}}</0> に場所が見つかりました。"
+    },
+    "main": {
+      "open": "メインメニューを開く",
+      "title": "メインメニュー",
+      "cta": "設定とその他"
+    },
+    "settings": {
+      "title": "設定"
+    },
+    "about": {
+      "title": "スカイビューワーについて",
+      "cta": "メタデータなど",
+      "sections": {
+        "metadata": {
+          "title": "サーベイデータ",
+          "created_by": "{{creator}} により制作"
+        }
+      }
+    },
+    "locales": {
+      "title": "言語選択",
+      "cta": "言語を選んでくさい",
+      "options": {
+        "en": "英語",
+        "es": "スペイン語",
+        "fr": "フランス語"
+      }
+    },
+    "share": {
+      "open": "共有メニューを開く",
+      "close": "共有メニューを閉じる",
+      "options": {
+        "image": {
+          "cta": "画像を取得",
+          "filename": "rubin_skyviewer_{{ra}}_{{dec}}_{{fov}}.{{extension}}"
+        },
+        "email": "電子メール",
+        "url": "URL を取得",
+        "facebook": "Facebook",
+        "twitterX": "X",
+        "linkedin": "LinkedIn",
+        "embed": {
+          "cta": "埋め込みリンク",
+          "current_position": {
+            "label": "現在の座標を使う",
+            "description": "これを有効にすることで埋め込みリンクは現在の場所とズームでスカイビューワーを始めることができます。"
+          },
+          "preview": "埋め込みをプレビューする",
+          "preview_title": "埋め込みをプレビューする",
+          "copy": "埋め込みリンクをコピーする",
+          "copied": "コピー完了！",
+          "instructions": "このコードブロックを HTML に貼り付けることでスカイビューワーを埋め込むことができます。"
+        }
+      }
+    },
+    "display": {
+      "title": "表示",
+      "cta": "スカイビューワーの設定を変える",
+      "layers": {
+        "title": "表示するレイヤーを変える。"
+      },
+      "coordinates": {
+        "title": "座標の形式",
+        "caption": "座標の形式を60進法（Sexagesimal）か10進法（Decimal）から選ぶ",
+        "options": {
+          "d": "10進法 (Decimal)",
+          "s": "60進法 (Sexagesimal)"
+        },
+        "example": "例 {{example}}"
+      },
+      "clear": "すべての設定を初期化する"
+    },
+    "quick-access": {
+      "title": "クイックアクセス",
+      "links": {
+        "explorer": "探索モード",
+        "guided-experiences": "$t(guided-experiences.title)",
+        "skysynth": "Skysynth"
+      }
+    }
+  },
+  "preview_mode": {
+    "is_enabled": "プレビューモード中",
+    "revalidate": "Revalidate",
+    "revalidate_success": "{{pathname}} was revalidated",
+    "revalidate_error": "There was a problem revalidating this page",
+    "revalidate_tooltip": "If your page uses an external resource like NOIRLab's news and image feed, requesting revalidation may update content on the page.",
+    "exit": "Exit preview mode"
+  }
+}

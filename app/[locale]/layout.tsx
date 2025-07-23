@@ -1,4 +1,5 @@
 import "@/styles/styles.scss";
+import clsx from "clsx/lite";
 import { FunctionComponent, PropsWithChildren } from "react";
 import { hasLocale } from "next-intl";
 import { Metadata, Viewport } from "next";
@@ -6,7 +7,7 @@ import { notFound } from "next/navigation";
 import { ViewTransitions } from "next-view-transitions";
 import StyledComponentsRegistry from "@rubin-epo/epo-react-lib/StyledComponentsRegistry";
 import Script from "next/script";
-import { SourceSansPro } from "@/lib/fonts";
+import { SourceSansPro, NotoSansJapanese } from "@/lib/fonts";
 import { fallbackLng, languages } from "@/lib/i18n/settings";
 import { routing } from "@/lib/i18n/routing";
 import { serverTranslation } from "@/lib/i18n/server";
@@ -70,7 +71,9 @@ const RootLayout: FunctionComponent<PropsWithChildren<RootProps>> = ({
         <head>
           <link rel="shortcut icon" href="/favicon.ico" />
         </head>
-        <body className={SourceSansPro.variable}>
+        <body
+          className={clsx(SourceSansPro.variable, NotoSansJapanese.variable)}
+        >
           <I18NextClientProvider locale={locale}>
             <StyledComponentsRegistry>
               <SkeletonGlobal>
