@@ -1,0 +1,125 @@
+.dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+}
+
+.panel {
+  --color-background-button: #e6e6e6;
+  --color-text-button: var(--color-font-primary);
+  --color-background-button-hover: var(--color-background-button);
+  --color-outline-button: var(--color-font-invert);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-spacing-xs);
+
+  position: fixed;
+  top: var(--size-height-menu, var(--size-spacing-l));
+  left: 0;
+  height: calc(100dvh - var(--size-height-menu, var(--size-spacing-l)));
+  padding: var(--size-spacing-xs);
+  width: min(60ch, 90dvw);
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  background-color: rgba(0 0 0 / 70%);
+  backdrop-filter: blur(2px) brightness(0.67);
+  z-index: -1;
+}
+
+.toggleButton {
+  --color-background-button: #e6e6e6;
+  --color-text-button: var(--color-font-primary);
+  --color-background-button-hover: var(--color-background-button);
+  --color-outline-button: var(--color-font-invert);
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-spacing-3xs);
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  --size-height-help: var(--size-spacing-l);
+
+  background-color: rgba(0 0 0 / 0.9);
+  border-radius: calc(var(--size-height-help) / 2);
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--size-spacing-s);
+  position: relative;
+  overflow-y: auto;
+  color: white;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--size-spacing-s);
+  padding-bottom: var(--size-spacing-xs);
+  border-bottom: 1px solid #707070;
+}
+
+.headerNoBorder {
+  border-bottom: none;
+  margin-top: var(--size-spacing-s);
+  margin-bottom: var(--size-spacing-4xs);
+}
+
+.title {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: white;
+}
+
+.textContent {
+  flex-grow: 1;
+  line-height: 1.6;
+  color: white;
+  font-size: 0.9em;
+}
+
+.cancelButton {
+  font-weight: lighter;
+  font-size: 80%;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: var(--size-spacing-xs);
+  border-radius: var(--size-spacing-2xs);
+
+  &:hover {
+    background-color: rgba(255 255 255 / 0.1);
+  }
+}
+
+.externalLink {
+  color: var(--color-rubin-teal-300, #00babc);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-rubin-teal-200, #33c8ca);
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: 2px solid var(--color-rubin-teal-300, #00babc);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
