@@ -1,15 +1,32 @@
 import { Client, cacheExchange, fetchExchange, gql } from "@urql/core";
 import { authExchange } from "@urql/exchange-auth";
 import parameters from "./parameters";
-import { pieceWise, mapValueToHue, raDecDistance } from "./utilities";
+import {
+  pieceWiseMag,
+  pieceWiseLimit,
+  mapValueToHue,
+  raDecDistance,
+} from "./utilities";
 import initialPointsData from "./initialPoints.json";
 import backupPointsData from "./backupPoints.json";
 import { env } from "@/env";
 
 const query = gql`
-  query getAstroObjects($ra: Float!, $dec: Float, $radius: Float, $mag: Float) {
+  query getAstroObjects(
+    $ra: Float!
+    $dec: Float
+    $radius: Float
+    $mag: Float
+    $limit: Int
+  ) {
     __typename
-    getRangeOfAstroObjects(ra: $ra, dec: $dec, radius: $radius, mag: $mag) {
+    getRangeOfAstroObjects(
+      ra: $ra
+      dec: $dec
+      radius: $radius
+      mag: $mag
+      limit: $limit
+    ) {
       RAdeg
       DECdeg
       id
@@ -154,7 +171,8 @@ class PointSearcher {
   }
 
   async getPoints() {
-    parameters.queryMag = pieceWise(parameters.fovRadius);
+    parameters.queryMag = pieceWiseMag(parameters.fovRadius);
+    parameters.queryLimit = pieceWiseLimit(parameters.fovRadius);
 
     try {
       const { data, error } = await client.query(query, {
@@ -162,6 +180,7 @@ class PointSearcher {
         dec: parseFloat(parameters.currentRaDec[1].toFixed(3)),
         radius: parseFloat(parameters.queryRadius.toFixed(3)),
         mag: parameters.queryMag,
+        limit: parameters.queryLimit,
       });
 
       if (error) {
@@ -343,9 +362,9 @@ class PointSearcher {
     // }
 
     // // Draw nearest neighbours count
-    // this.p.fill(255); // White text
-    // this.p.textSize(16);
-    // this.p.text(`Previous FOV: ${this.prevFOV}`, 20, 50);
+    this.p.fill(255); // White text
+    this.p.textSize(16);
+    this.p.text(`Number of points: ${this.tree.length}`, 20, 50);
     // this.p.text(`Current RA/DEC: ${parameters.currentRaDec}`, 20, 90);
     // this.p.text(`Center Point: ${this.centerPoint}`, 20, 110);
     // this.p.text(`FOC Radius: ${parameters.fovRadius}`, 20, 170);

@@ -44,6 +44,7 @@ const parameters = {
   },
   queryRadius: 1.0427847363184868, // Qery radius for API calls
   queryMag: 0, // Query magnitude for API calls
+  queryLimit: 0, // Query limit for API calls
 };
 
 export default parameters;
