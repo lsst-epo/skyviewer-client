@@ -119,7 +119,7 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         parameters.fov = aladin.getFov();
         // Update the FOV and subset every 60 frames (1 second) TODO: Change when this gets updated to distance instead of time?
         if (p.frameCount % 60 === 0) {
-          pointSearcherRef.current.updateFOVAndSubset();
+          pointSearcherRef.current.updateSubset();
         }
         // Update FOV Radius and Query Radios
         pointSearcherRef.current.updateFOVRadius();

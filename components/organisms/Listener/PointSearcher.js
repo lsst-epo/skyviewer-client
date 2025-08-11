@@ -100,6 +100,10 @@ class PointSearcher {
       })) || [];
 
     this.tree = new KDTree(formattedPoints);
+    this.makeSubset(
+      [parameters.currentRaDec[0], parameters.currentRaDec[1]],
+      parameters.fovRadius
+    );
   }
 
   async initialize() {
@@ -161,7 +165,7 @@ class PointSearcher {
         this.centerPoint[0],
         this.centerPoint[1]
       );
-      // If we're approaching the edge of our query radius (within 20% of the radius)
+      // If we're approaching the edge of our query radius
       const radiusThreshold = parameters.queryRadius - parameters.fovRadius;
       if (distanceFromCenter > radiusThreshold) {
         this.centerPoint = parameters.currentRaDec;
@@ -202,6 +206,10 @@ class PointSearcher {
           flag: point.flag,
         })) || [];
       this.tree = new KDTree(formattedPoints);
+      this.makeSubset(
+        [parameters.currentRaDec[0], parameters.currentRaDec[1]],
+        parameters.fovRadius
+      );
     } catch (error) {
       console.error("Error fetching points from API:", error);
 
@@ -260,8 +268,11 @@ class PointSearcher {
     this.newNearestNeighbours = this.nearestNeighbours.filter(
       (neighbour) => !this.previousNearestNeighbourIDs.includes(neighbour.id)
     );
-    // Add animations for new nearest neighbours
-    if (this.newNearestNeighbours && this.newNearestNeighbours.length > 0) {
+    if (
+      this.newNearestNeighbours &&
+      this.newNearestNeighbours.length > 0 &&
+      !parameters.inTheVoid // Only add animations if not in the void
+    ) {
       for (const neighbour of this.newNearestNeighbours) {
         this.addAnimation(neighbour);
       }
@@ -364,17 +375,18 @@ class PointSearcher {
     // // Draw nearest neighbours count
     this.p.fill(255); // White text
     this.p.textSize(16);
-    this.p.text(`Number of points: ${this.tree.length}`, 20, 50);
+    this.p.text(`Number of points: ${this.tree.length}`, 20, 150);
+    this.p.text(`queryMag: ${parameters.queryMag}`, 20, 170);
     // this.p.text(`Current RA/DEC: ${parameters.currentRaDec}`, 20, 90);
     // this.p.text(`Center Point: ${this.centerPoint}`, 20, 110);
-    // this.p.text(`FOC Radius: ${parameters.fovRadius}`, 20, 170);
+    // this.p.text(`FOV: ${parameters.fov}`, 20, 170);
     // this.p.text(`Subset Points Length: ${this.subsetPoints.length}`, 20, 190);
     // DELETE ABOVE //////////////////////
     // Reset color mode to RGB
     this.p.colorMode(this.p.RGB);
   }
 
-  updateFOVAndSubset() {
+  updateSubset() {
     this.makeSubset(
       [parameters.currentRaDec[0], parameters.currentRaDec[1]],
       parameters.fovRadius
