@@ -108,38 +108,16 @@ export function linearMap(value, inMin, inMax, outMin, outMax, clamp = false) {
 }
 
 export function pieceWiseMag(fovRadius) {
-  const ranges = [
-    { max: 0.04, value: 35 },
-    { max: 0.08, value: 35 },
-    { max: 0.16, value: 24.5 },
-    { max: 0.32, value: 22.5 },
-    { max: 0.64, value: 21 },
-    { max: 1.28, value: 19 },
-    { max: 2.56, value: 18.5 },
-    { max: 5.12, value: 18 },
-  ];
-
   if (fovRadius <= 0) return undefined;
 
-  const range = ranges.find((r) => fovRadius <= r.max);
+  const range = parameters.magnitudeRanges.find((r) => fovRadius <= r.max);
   return range ? range.value : 17.5;
 }
 
 export function pieceWiseLimit(fovRadius) {
-  const ranges = [
-    { max: 0.04, value: 1000 },
-    { max: 0.08, value: 2000 },
-    { max: 0.16, value: 4000 },
-    { max: 0.32, value: 6000 },
-    { max: 0.64, value: 7000 },
-    { max: 1.28, value: 7000 },
-    { max: 2.56, value: 8000 },
-    { max: 5.12, value: 8000 },
-  ];
-
   if (fovRadius <= 0) return undefined;
 
-  const range = ranges.find((r) => fovRadius <= r.max);
+  const range = parameters.limitRanges.find((r) => fovRadius <= r.max);
   return range ? range.value : 8000;
 }
 

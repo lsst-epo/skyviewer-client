@@ -49,7 +49,7 @@ class SamplePlayer {
         this.midiNumbers = [0, 2, 4, 7, 9, 12, 14, 16, 19, 21];
         break;
       case "minor pentatonic":
-        this.midiNumbers = [0, 3, 5, 7, 0, 12, 15, 17, 19, 22];
+        this.midiNumbers = [0, 3, 5, 7, 10, 12, 15, 17, 19, 22];
         break;
       case "whole tone":
         this.midiNumbers = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
@@ -151,7 +151,8 @@ class SamplePlayer {
   triggerNewNearestNeighbors(pointSearcher) {
     if (
       pointSearcher.newNearestNeighbours &&
-      pointSearcher.newNearestNeighbours.length > 0
+      pointSearcher.newNearestNeighbours.length > 0 &&
+      !parameters.inTheVoid // Only trigger points if not in the void
     ) {
       const pointsToTrigger = pointSearcher.newNearestNeighbours.slice(0, 8); // Limit to at most 8 points
       this.triggerPoints(pointsToTrigger);
