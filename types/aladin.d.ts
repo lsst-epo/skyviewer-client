@@ -245,6 +245,10 @@ interface AladinCatalog {
   filterFn: (source: AladinSource) => boolean;
 }
 
+interface AladinWasm {
+  readonly isRendering: () => boolean;
+}
+
 interface AladinView {
   aladinDiv: HTMLDivElement;
   imageCanvas: HTMLCanvasElement;
@@ -262,22 +266,24 @@ interface AladinView {
     showLabels: boolean;
     thickness: number;
   };
+  wasm: AladinWasm;
 }
 
+type AladinImageExportType = "image/png" | "image/jpeg" | "image/webp";
 interface GetViewData {
   (
     dataType: "url",
-    imgType?: "image/png" | "image/jpeg" | "image/webp",
+    imgType?: AladinImageExportType,
     withLogo?: boolean
   ): Promise<string>;
   (
     dataType: "arraybuffer",
-    imgType?: "image/png" | "image/jpeg" | "image/webp",
+    imgType?: AladinImageExportType,
     withLogo?: boolean
   ): Promise<ArrayBuffer>;
   (
     dataType: "blob",
-    imgType?: "image/png" | "image/jpeg" | "image/webp",
+    imgType?: AladinImageExportType,
     withLogo?: boolean
   ): Promise<Blob>;
 }
