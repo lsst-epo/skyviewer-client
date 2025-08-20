@@ -65,9 +65,9 @@ const parameters = {
     { max: 0.16, value: 4000 },
     { max: 0.32, value: 6000 },
     { max: 0.64, value: 7000 },
-    { max: 1.28, value: 7000 },
-    { max: 2.56, value: 8000 },
-    { max: 5.12, value: 8000 },
+    { max: 1.28, value: 6000 },
+    { max: 2.56, value: 4000 },
+    { max: 5.12, value: 2000 },
   ], // Piecewise limit ranges
 };
 

@@ -20,7 +20,7 @@ const query = gql`
     $limit: Int
   ) {
     __typename
-    getRangeOfAstroObjects(
+    getRangeOfAstroObjectsWithLimit(
       ra: $ra
       dec: $dec
       radius: $radius
@@ -91,7 +91,7 @@ class PointSearcher {
   useJSONFile(pointsData) {
     // Format the JSON data to match the expected structure
     const formattedPoints =
-      pointsData.data.getRangeOfAstroObjects?.map((point) => ({
+      pointsData.data.getRangeOfAstroObjectsWithLimit?.map((point) => ({
         point: [point.RAdeg, point.DECdeg],
         id: point.id,
         gmag: point.gmag,
@@ -198,7 +198,7 @@ class PointSearcher {
       }
 
       const formattedPoints =
-        data.getRangeOfAstroObjects?.map((point) => ({
+        data.getRangeOfAstroObjectsWithLimit?.map((point) => ({
           point: [point.RAdeg, point.DECdeg],
           id: point.id,
           gmag: point.gmag,
