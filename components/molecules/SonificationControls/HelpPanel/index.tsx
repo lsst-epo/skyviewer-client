@@ -137,13 +137,19 @@ const HelpPanel: FC<HelpPanelProps> = ({ buttonClassName, className }) => {
                       <li>
                         {t(
                           "help.step4",
-                          "Use your arrow keys to move in any direction."
+                          "Use your arrow keys, or the WASD keys to move in any direction."
                         )}
                       </li>
                       <li>
                         {t(
                           "help.step5",
                           "Or, click and drag with your mouse or trackpad (or tap and drag on a touchscreen) to explore freely."
+                        )}
+                      </li>
+                      <li>
+                        {t(
+                          "help.step6",
+                          "Scroll your mouse or press the plus (+) and minus (-) buttons to zoom in and out."
                         )}
                       </li>
                     </ul>
