@@ -373,10 +373,10 @@ class PointSearcher {
     // }
 
     // // Draw nearest neighbours count
-    this.p.fill(255); // White text
-    this.p.textSize(16);
-    this.p.text(`Number of points: ${this.tree.length}`, 20, 150);
-    this.p.text(`queryMag: ${parameters.queryMag}`, 20, 170);
+    // this.p.fill(255); // White text
+    // this.p.textSize(16);
+    // this.p.text(`Number of points: ${this.tree.length}`, 20, 150);
+    // this.p.text(`queryMag: ${parameters.queryMag}`, 20, 170);
     // this.p.text(`Current RA/DEC: ${parameters.currentRaDec}`, 20, 90);
     // this.p.text(`Center Point: ${this.centerPoint}`, 20, 110);
     // this.p.text(`FOV: ${parameters.fov}`, 20, 170);

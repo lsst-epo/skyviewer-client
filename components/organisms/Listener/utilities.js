@@ -40,10 +40,18 @@ export function controlledWalk(p, aladin) {
   let dx = 0;
   let dy = 0;
 
-  if (p.keyIsDown(p.LEFT_ARROW)) dx -= 1;
-  if (p.keyIsDown(p.RIGHT_ARROW)) dx += 1;
-  if (p.keyIsDown(p.UP_ARROW)) dy -= 1;
-  if (p.keyIsDown(p.DOWN_ARROW)) dy += 1;
+  if (p.keyIsDown(p.LEFT_ARROW) || p.keyIsDown('a')) {
+    dx -= 1;
+  }
+  if (p.keyIsDown(p.RIGHT_ARROW) || p.keyIsDown('d')) {
+    dx += 1;
+  }
+  if (p.keyIsDown(p.UP_ARROW) || p.keyIsDown('w')) {
+    dy -= 1;
+  }
+  if (p.keyIsDown(p.DOWN_ARROW) || p.keyIsDown('s')) {
+    dy += 1;
+  }
 
   // Normalize diagonal movement
   if (dx !== 0 && dy !== 0) {
@@ -126,7 +134,11 @@ export function areArrowsPressed(p) {
     p.keyIsDown(p.LEFT_ARROW) ||
     p.keyIsDown(p.RIGHT_ARROW) ||
     p.keyIsDown(p.UP_ARROW) ||
-    p.keyIsDown(p.DOWN_ARROW)
+    p.keyIsDown(p.DOWN_ARROW) ||
+    p.keyIsDown('w') ||
+    p.keyIsDown('a') ||
+    p.keyIsDown('s') ||
+    p.keyIsDown('d')
   );
 }
 
