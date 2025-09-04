@@ -18,7 +18,10 @@ const parameters = {
   hue_offset: 300, // Hue offset for color conversion
   directionX: 1, // Number of pixels to move along the x-axis when using the arrow keys
   directionY: 1, // Number of pixels to move along the y-axis when using the arrow keys
-  boundarySetps: 20, // Number of steps to take before checking for boundaries
+  boundarySteps: 20, // Number of steps to take before checking for boundaries
+  voidSteps: 150, // Number of steps until we move the user back to lastGoodPosition
+  inTheVoid: false, // Whether the user is in the void
+  lastGoodPosition: [0, 0], // Last position where cardinal directions were all non-black,in Ra/Dec
   instruments: ["harp", "glock"], // instruemtns with premade samples
   startNote: 60, // Starting MIDI note for the instruments
   audioContext: null, // Reference to the audio context
@@ -32,6 +35,7 @@ const parameters = {
   maxSampleVolume: 0.4, // Maximum volume for samples
   // API parameters, need to set with intial values
   currentRaDec: [187.77035, 8.07268], // Current RA and Dec coordinates
+  startingPosition: [187.77035, 8.07268], // Starting position in Ra/Dec
   lastRaDec: [0, 0], // Last RA and Dec coordinates at time of API call
   fov: [0, 0], // Field of View in pixels [width, height]
   fovRadius: 0, // Field of View radius in Ra/Dec
@@ -44,6 +48,27 @@ const parameters = {
   },
   queryRadius: 1.0427847363184868, // Qery radius for API calls
   queryMag: 0, // Query magnitude for API calls
+  queryLimit: 0, // Query limit for API calls
+  magnitudeRanges: [
+    { max: 0.04, value: 35 },
+    { max: 0.08, value: 35 },
+    { max: 0.16, value: 24.5 },
+    { max: 0.32, value: 22.5 },
+    { max: 0.64, value: 21 },
+    { max: 1.28, value: 19 },
+    { max: 2.56, value: 18.5 },
+    { max: 5.12, value: 18 },
+  ], // Piecewise magnitude ranges
+  limitRanges: [
+    { max: 0.04, value: 1000 },
+    { max: 0.08, value: 2000 },
+    { max: 0.16, value: 4000 },
+    { max: 0.32, value: 6000 },
+    { max: 0.64, value: 7000 },
+    { max: 1.28, value: 6000 },
+    { max: 2.56, value: 4000 },
+    { max: 5.12, value: 2000 },
+  ], // Piecewise limit ranges
 };
 
 export default parameters;

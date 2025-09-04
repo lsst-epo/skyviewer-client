@@ -6,8 +6,10 @@ class Walker {
     this.aladin = aladin;
     this.cardinalSums = [0, 0, 0, 0];
     this.cardinalSumsCount = [0, 0, 0, 0];
+    this.voidCounter = 0;
     this.directionX = 1;
     this.directionY = 1;
+    this.resettingPosition = false;
   }
 
   walk() {
@@ -30,34 +32,76 @@ class Walker {
   }
 
   cardinalSumCounter() {
-    for (let i = 0; i < this.cardinalSums.length; i++) {
-      if (this.cardinalSums[i] === 0) {
-        this.cardinalSumsCount[i]++;
+    if (!this.resettingPosition) {
+      // Store the latest time every cardinal direction was non-black
+      if (this.cardinalSums.every((sum) => sum !== 0)) {
+        parameters.lastGoodPosition = this.aladin.getRaDec();
+      }
+      // Update void count if all cardinal sums are black
+      if (this.cardinalSums.every((sum) => sum === 0)) {
+        // Set inTheVoid to true if we're in the void
+        parameters.inTheVoid = true;
+        this.voidCounter++;
       } else {
-        // TODO: Change this so it adds 1 if it's negative and goes to 0 if it's positive
-        this.cardinalSumsCount[i] = Math.min(this.cardinalSumsCount[i], 0);
+        // Set inTheVoid to false if we're not in the void
+        parameters.inTheVoid = false;
+        // Reset the void counter since we're not in the void
+        this.voidCounter = 0;
+        // Check cardinal directions and update sums, we only need to check this if we're not in the void
+        for (let i = 0; i < this.cardinalSums.length; i++) {
+          if (this.cardinalSums[i] === 0) {
+            this.cardinalSumsCount[i]++;
+          } else {
+            this.cardinalSumsCount[i] = Math.min(this.cardinalSumsCount[i], 0);
+          }
+        }
       }
     }
   }
 
   boundaryCheck() {
-    // Check if all values are over 20
-    // TODO: Should we be checking to see if this.cardinalSums is 0 instead?
-    const checkAll = this.cardinalSumsCount.every(
-      (value) => value >= parameters.boundarySetps
-    );
-    if (checkAll) {
-      // TODO: Move back to somewhere on the canvas (use the return to initial view from explorer or store the last useable value?)
+    // Go to last good position if stuck in the void for too long
+    if (this.voidCounter >= parameters.voidSteps) {
+      this.resettingPosition = true;
+      // Reset the void counter
+      this.voidCounter = 0;
+      // Reset the cardinal sums count
+      this.cardinalSumsCount = [0, 0, 0, 0];
+      // Check to see if we have a last good position
+      if (
+        parameters.lastGoodPosition[0] !== 0 &&
+        parameters.lastGoodPosition[1] !== 0
+      ) {
+        this.aladin.animateToRaDec(
+          parameters.lastGoodPosition[0],
+          parameters.lastGoodPosition[1],
+          0.5,
+          () => {
+            this.resettingPosition = false;
+          }
+        );
+        // Go to starting position if we don't have a last good position
+      } else {
+        this.aladin.animateToRaDec(
+          parameters.startingPosition[0],
+          parameters.startingPosition[1],
+          0.5,
+          () => {
+            this.resettingPosition = false;
+          }
+        );
+      }
     }
-
-    for (let i = 0; i < this.cardinalSumsCount.length; i++) {
-      if (this.cardinalSumsCount[i] >= parameters.boundarySetps) {
-        if (i % 2 === 0) {
-          this.directionY *= -1;
-          this.cardinalSumsCount[i] = -1 * parameters.boundarySetps;
-        } else {
-          this.directionX *= -1;
-          this.cardinalSumsCount[i] = -1 * parameters.boundarySetps;
+    if (!this.resettingPosition) {
+      for (let i = 0; i < this.cardinalSumsCount.length; i++) {
+        if (this.cardinalSumsCount[i] >= parameters.boundarySteps) {
+          if (i % 2 === 0) {
+            this.directionY *= -1;
+            this.cardinalSumsCount[i] = -1 * parameters.boundarySteps;
+          } else {
+            this.directionX *= -1;
+            this.cardinalSumsCount[i] = -1 * parameters.boundarySteps;
+          }
         }
       }
     }

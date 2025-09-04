@@ -40,10 +40,18 @@ export function controlledWalk(p, aladin) {
   let dx = 0;
   let dy = 0;
 
-  if (p.keyIsDown(p.LEFT_ARROW)) dx -= 1;
-  if (p.keyIsDown(p.RIGHT_ARROW)) dx += 1;
-  if (p.keyIsDown(p.UP_ARROW)) dy -= 1;
-  if (p.keyIsDown(p.DOWN_ARROW)) dy += 1;
+  if (p.keyIsDown(p.LEFT_ARROW) || p.keyIsDown('a')) {
+    dx -= 1;
+  }
+  if (p.keyIsDown(p.RIGHT_ARROW) || p.keyIsDown('d')) {
+    dx += 1;
+  }
+  if (p.keyIsDown(p.UP_ARROW) || p.keyIsDown('w')) {
+    dy -= 1;
+  }
+  if (p.keyIsDown(p.DOWN_ARROW) || p.keyIsDown('s')) {
+    dy += 1;
+  }
 
   // Normalize diagonal movement
   if (dx !== 0 && dy !== 0) {
@@ -107,22 +115,18 @@ export function linearMap(value, inMin, inMax, outMin, outMax, clamp = false) {
   return clamp ? Math.max(outMin, Math.min(outMax, map)) : map;
 }
 
-export function pieceWise(fovRadius) {
-  const ranges = [
-    { max: 0.04, value: 30 },
-    { max: 0.08, value: 25.5 },
-    { max: 0.16, value: 24.5 },
-    { max: 0.32, value: 22.5 },
-    { max: 0.64, value: 21 },
-    { max: 1.28, value: 19 },
-    { max: 2.56, value: 18.5 },
-    { max: 5.12, value: 18 },
-  ];
-
+export function pieceWiseMag(fovRadius) {
   if (fovRadius <= 0) return undefined;
 
-  const range = ranges.find((r) => fovRadius <= r.max);
+  const range = parameters.magnitudeRanges.find((r) => fovRadius <= r.max);
   return range ? range.value : 17.5;
+}
+
+export function pieceWiseLimit(fovRadius) {
+  if (fovRadius <= 0) return undefined;
+
+  const range = parameters.limitRanges.find((r) => fovRadius <= r.max);
+  return range ? range.value : 8000;
 }
 
 export function areArrowsPressed(p) {
@@ -130,7 +134,11 @@ export function areArrowsPressed(p) {
     p.keyIsDown(p.LEFT_ARROW) ||
     p.keyIsDown(p.RIGHT_ARROW) ||
     p.keyIsDown(p.UP_ARROW) ||
-    p.keyIsDown(p.DOWN_ARROW)
+    p.keyIsDown(p.DOWN_ARROW) ||
+    p.keyIsDown('w') ||
+    p.keyIsDown('a') ||
+    p.keyIsDown('s') ||
+    p.keyIsDown('d')
   );
 }
 

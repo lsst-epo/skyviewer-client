@@ -1,15 +1,32 @@
 import { Client, cacheExchange, fetchExchange, gql } from "@urql/core";
 import { authExchange } from "@urql/exchange-auth";
 import parameters from "./parameters";
-import { pieceWise, mapValueToHue, raDecDistance } from "./utilities";
+import {
+  pieceWiseMag,
+  pieceWiseLimit,
+  mapValueToHue,
+  raDecDistance,
+} from "./utilities";
 import initialPointsData from "./initialPoints.json";
 import backupPointsData from "./backupPoints.json";
 import { env } from "@/env";
 
 const query = gql`
-  query getAstroObjects($ra: Float!, $dec: Float, $radius: Float, $mag: Float) {
+  query getAstroObjects(
+    $ra: Float!
+    $dec: Float
+    $radius: Float
+    $mag: Float
+    $limit: Int
+  ) {
     __typename
-    getRangeOfAstroObjects(ra: $ra, dec: $dec, radius: $radius, mag: $mag) {
+    getRangeOfAstroObjectsWithLimit(
+      ra: $ra
+      dec: $dec
+      radius: $radius
+      mag: $mag
+      limit: $limit
+    ) {
       RAdeg
       DECdeg
       id
@@ -74,7 +91,7 @@ class PointSearcher {
   useJSONFile(pointsData) {
     // Format the JSON data to match the expected structure
     const formattedPoints =
-      pointsData.data.getRangeOfAstroObjects?.map((point) => ({
+      pointsData.data.getRangeOfAstroObjectsWithLimit?.map((point) => ({
         point: [point.RAdeg, point.DECdeg],
         id: point.id,
         gmag: point.gmag,
@@ -83,6 +100,10 @@ class PointSearcher {
       })) || [];
 
     this.tree = new KDTree(formattedPoints);
+    this.makeSubset(
+      [parameters.currentRaDec[0], parameters.currentRaDec[1]],
+      parameters.fovRadius
+    );
   }
 
   async initialize() {
@@ -144,7 +165,7 @@ class PointSearcher {
         this.centerPoint[0],
         this.centerPoint[1]
       );
-      // If we're approaching the edge of our query radius (within 20% of the radius)
+      // If we're approaching the edge of our query radius
       const radiusThreshold = parameters.queryRadius - parameters.fovRadius;
       if (distanceFromCenter > radiusThreshold) {
         this.centerPoint = parameters.currentRaDec;
@@ -154,7 +175,8 @@ class PointSearcher {
   }
 
   async getPoints() {
-    parameters.queryMag = pieceWise(parameters.fovRadius);
+    parameters.queryMag = pieceWiseMag(parameters.fovRadius);
+    parameters.queryLimit = pieceWiseLimit(parameters.fovRadius);
 
     try {
       const { data, error } = await client.query(query, {
@@ -162,6 +184,7 @@ class PointSearcher {
         dec: parseFloat(parameters.currentRaDec[1].toFixed(3)),
         radius: parseFloat(parameters.queryRadius.toFixed(3)),
         mag: parameters.queryMag,
+        limit: parameters.queryLimit,
       });
 
       if (error) {
@@ -175,7 +198,7 @@ class PointSearcher {
       }
 
       const formattedPoints =
-        data.getRangeOfAstroObjects?.map((point) => ({
+        data.getRangeOfAstroObjectsWithLimit?.map((point) => ({
           point: [point.RAdeg, point.DECdeg],
           id: point.id,
           gmag: point.gmag,
@@ -183,6 +206,10 @@ class PointSearcher {
           flag: point.flag,
         })) || [];
       this.tree = new KDTree(formattedPoints);
+      this.makeSubset(
+        [parameters.currentRaDec[0], parameters.currentRaDec[1]],
+        parameters.fovRadius
+      );
     } catch (error) {
       console.error("Error fetching points from API:", error);
 
@@ -241,8 +268,11 @@ class PointSearcher {
     this.newNearestNeighbours = this.nearestNeighbours.filter(
       (neighbour) => !this.previousNearestNeighbourIDs.includes(neighbour.id)
     );
-    // Add animations for new nearest neighbours
-    if (this.newNearestNeighbours && this.newNearestNeighbours.length > 0) {
+    if (
+      this.newNearestNeighbours &&
+      this.newNearestNeighbours.length > 0 &&
+      !parameters.inTheVoid // Only add animations if not in the void
+    ) {
       for (const neighbour of this.newNearestNeighbours) {
         this.addAnimation(neighbour);
       }
@@ -345,17 +375,18 @@ class PointSearcher {
     // // Draw nearest neighbours count
     // this.p.fill(255); // White text
     // this.p.textSize(16);
-    // this.p.text(`Previous FOV: ${this.prevFOV}`, 20, 50);
+    // this.p.text(`Number of points: ${this.tree.length}`, 20, 150);
+    // this.p.text(`queryMag: ${parameters.queryMag}`, 20, 170);
     // this.p.text(`Current RA/DEC: ${parameters.currentRaDec}`, 20, 90);
     // this.p.text(`Center Point: ${this.centerPoint}`, 20, 110);
-    // this.p.text(`FOC Radius: ${parameters.fovRadius}`, 20, 170);
+    // this.p.text(`FOV: ${parameters.fov}`, 20, 170);
     // this.p.text(`Subset Points Length: ${this.subsetPoints.length}`, 20, 190);
     // DELETE ABOVE //////////////////////
     // Reset color mode to RGB
     this.p.colorMode(this.p.RGB);
   }
 
-  updateFOVAndSubset() {
+  updateSubset() {
     this.makeSubset(
       [parameters.currentRaDec[0], parameters.currentRaDec[1]],
       parameters.fovRadius

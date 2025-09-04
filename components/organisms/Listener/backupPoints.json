@@ -6,16 +6,13 @@
       "dec": 8.726624996432312,
       "radius": 11.150919178089264,
       "mag": 17.5,
-      "fov": [
-        10,
-        4.9338624338624335
-      ],
+      "fov": [10, 4.9338624338624335],
       "fovRadius": 5.575459589044632
     }
   },
   "data": {
     "__typename": "Query",
-    "getRangeOfAstroObjects": [
+    "getRangeOfAstroObjectsWithLimit": [
       {
         "RAdeg": 185.2082045461,
         "DECdeg": 8.9786191488,
