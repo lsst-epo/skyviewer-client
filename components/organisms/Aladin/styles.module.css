@@ -13,9 +13,6 @@
   height: 100%;
   will-change: opacity;
 
-  :global(.aladin-logo-container) {
-    display: none;
-  }
 
   :global(.aladin-table) {
     display: none;
@@ -28,4 +25,13 @@
   &[data-allow-interaction="false"] {
     pointer-events: none;
   }
+
+  :global(.aladin-logo-container) {
+    @media (--mobile-max) {
+      & {
+        bottom: 50px;
+      }
+    }
+  }
+
 }
