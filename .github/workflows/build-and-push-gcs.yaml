@@ -78,6 +78,7 @@ jobs:
           # Parse container image tag to deploy
           full_tag=$(echo "$DOCKER_METADATA_OUTPUT_JSON" | jq -r '.tags[0]')
           echo "Will use tag \"$full_tag\" for deployment."
+          image_tag=$(echo "$full_tag" | cut -f2 -d:)
           echo image_tag=$(echo "$full_tag" | cut -f2 -d:) >> "$GITHUB_OUTPUT"
           echo image_name=$(echo "$full_tag" | cut -f1 -d:) >> "$GITHUB_OUTPUT"
           echo full_tag=$full_tag >> "$GITHUB_OUTPUT"
@@ -131,7 +132,7 @@ jobs:
           docker run --rm \
               --volume "$(pwd)":/app \
               ${{ steps.deploy-tag.outputs.image_name }} \
-              sh -c "yarn static:build"
+              sh -c "yarn install --frozen-lockfile && yarn static:build"
       -
         name: Upload to GCS bucket
         uses: 'google-github-actions/upload-cloud-storage@v3'
