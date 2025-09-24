@@ -78,12 +78,11 @@ jobs:
           # Parse container image tag to deploy
           full_tag=$(echo "$DOCKER_METADATA_OUTPUT_JSON" | jq -r '.tags[0]')
           echo "Will use tag \"$full_tag\" for deployment."
-          image_tag=$(echo "$full_tag" | cut -f2 -d:)
           echo image_tag=$(echo "$full_tag" | cut -f2 -d:) >> "$GITHUB_OUTPUT"
           echo image_name=$(echo "$full_tag" | cut -f1 -d:) >> "$GITHUB_OUTPUT"
           echo full_tag=$full_tag >> "$GITHUB_OUTPUT"
           echo bucket_name=skyviewer-{{ steps.deploy-info.outputs.environment_name }} >> "$GITHUB_OUTPUT"
-          echo bucket_subfolder=$image_tag-${{ steps.deploy-info.outputs.date }} >> "$GITHUB_OUTPUT"
+          echo bucket_subfolder=$(echo "$full_tag" | cut -f2 -d:)-${{ steps.deploy-info.outputs.date }} >> "$GITHUB_OUTPUT"
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3.3.0
