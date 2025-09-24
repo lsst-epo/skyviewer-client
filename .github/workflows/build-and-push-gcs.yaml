@@ -126,8 +126,12 @@ jobs:
             crane tag ${CLIENT_IMAGE}:latest ${{ steps.deploy-tag.outputs.image_tag }}
           fi
       - 
-        name: Run static build
-        run: yarn static:build
+        name: Run static build in docker container
+        run: |
+          docker run --rm \
+              --volume "$(pwd)":/app \
+              ${{ steps.deploy-tag.outputs.image_name }} \
+              sh -c "yarn static:build"
       -
         name: Upload to GCS bucket
         uses: 'google-github-actions/upload-cloud-storage@v3'
