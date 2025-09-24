@@ -133,8 +133,7 @@ jobs:
         uses: 'google-github-actions/upload-cloud-storage@v3'
         with:
           path: '.next'
-          # destination: skyviewer-{{ steps.deploy-info.outputs.environment_name }}/${{ steps.deploy-tag.outputs.image_tag }}-${{ steps.deploy-info.outputs.date }} # bucket_name/prefix
-          destination: {{ steps.deploy-tag.outputs.bucket_name }}/${{ steps.deploy-tag.outputs.bucket_subfolder }} # bucket_name/prefix
+          destination: ${{ steps.deploy-tag.outputs.bucket_name }}/${{ steps.deploy-tag.outputs.bucket_subfolder }} # bucket_name/prefix
       -
         name: Summary
         run: |
