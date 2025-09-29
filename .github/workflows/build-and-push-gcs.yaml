@@ -128,12 +128,15 @@ jobs:
       -
         name: Fetch and Set Environment Variables from Secret Manager
         if: ${{ steps.deploy-info.outputs.environment_name == 'dev' }}
+        env:
+          CLIENT_SECRET_NAME: ${{ secrets.GCP_DEV_CLIENT_SECRET_NAME }}
+          GCP_PROJECT_ID: ${{ secrets.GCP_DEV_PROJECT_ID }}
         run: |
           # The secret value must be a single-line JSON string.
-          SECRET_JSON=$(gcloud secrets versions access latest --secret=${{ secrets.GCP_DEV_CLIENT_SECRET_NAME }} --project=${{ secrets.GCP_DEV_PROJECT_ID }})
+          SECRET_JSON=$(gcloud secrets versions access latest --secret=${{ env.CLIENT_SECRET_NAME }} --project=${{ env.GCP_PROJECT_ID }})
           
           echo "Parsing JSON and setting environment variables..."
-          echo $SECRET_JSON | jq -r 'to_entries[] | "export \(.key)=\(.value)"' >> $GITHUB_ENV
+          echo "$SECRET_JSON" | jq -r 'to_entries[] | "export \(.key)=\(.value)"' >> $GITHUB_ENV
       - 
         name: Run static build in docker container
         run: |
