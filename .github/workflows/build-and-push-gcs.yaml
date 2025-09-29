@@ -125,13 +125,24 @@ jobs:
           if ! crane config ${CLIENT_IMAGE}:${{ steps.deploy-tag.outputs.image_tag }}; then
             crane tag ${CLIENT_IMAGE}:latest ${{ steps.deploy-tag.outputs.image_tag }}
           fi
+      -
+        name: Fetch and Set Environment Variables from Secret Manager
+        if: ${{ steps.deploy-info.outputs.environment_name == 'dev' }}
+        run: |
+          # The secret value must be a single-line JSON string.
+          SECRET_JSON=$(gcloud secrets versions access latest --secret=${{ secrets.GCP_DEV_CLIENT_SECRET_NAME }} --project=${{ secrets.GCP_DEV_PROJECT_ID }})
+          
+          echo "Parsing JSON and setting environment variables..."
+          echo $SECRET_JSON | jq -r 'to_entries[] | "export \(.key)=\(.value)"' >> $GITHUB_ENV
       - 
         name: Run static build in docker container
         run: |
-          docker run --rm \
-              --volume "$(pwd)":/app \
-              ${{ steps.deploy-tag.outputs.image_name }} \
-              sh -c "yarn install --frozen-lockfile && yarn static:build"
+          DOCKER_RUN_CMD="docker run --rm --volume $(pwd):/app ${{ steps.deploy-tag.outputs.image_name }} sh -c 'yarn install --frozen-lockfile && yarn static:build'"
+          for var in $(env | grep -E '^(NEXT|CRAFT)_'); do
+            DOCKER_RUN_CMD="$DOCKER_RUN_CMD -e \"$var\""
+          done
+
+          eval $DOCKER_RUN_CMD
       -
         name: Upload to GCS bucket
         uses: 'google-github-actions/upload-cloud-storage@v3'
