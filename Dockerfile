@@ -16,7 +16,7 @@ ARG RUN_BUILD="true"
 ENV RUN_BUILD=${RUN_BUILD}
 
 # Client build (which requires a secret mount)
-FROM builder as client-build-gha
+# FROM builder as client-build-gha
 
 # RUN --mount-type=secret,id=NEXT_PUBLIC_API_URL,env=NEXT_PUBLIC_API_URL \
 #     --mount-type=secret,id=NEXT_PUBLIC_BASE_URL,env=NEXT_PUBLIC_BASE_URL \
@@ -34,6 +34,9 @@ FROM builder as client-build-gha
 
 
 RUN if $RUN_BUILD;then npx update-browserslist-db@latest && yarn static:build;fi
+
+FROM scratch AS nextjs_export
+COPY --from=builder /app /
 
 # Production image, copy all the files and run next
 FROM node:20-alpine AS runner
