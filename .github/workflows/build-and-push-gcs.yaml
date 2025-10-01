@@ -17,7 +17,8 @@ on:
     branches:
       - 'develop'
       - 'main'
-
+env:
+  DOCKER_IMAGE_NAME: "nextjs-client-build"
 jobs:
   build:
     if: ${{ github.event_name == 'push' || contains(github.event.pull_request.labels.*.name, 'preview') || github.event.label.name == 'preview' }}
@@ -128,6 +129,7 @@ jobs:
           fi
       -
         name: Fetch and Set Environment Variables from Secret Manager
+        id: deploy-secrets
         if: ${{ steps.deploy-info.outputs.environment_name == 'dev' }}
         env:
           CLIENT_SECRET_NAME: ${{ secrets.GCP_DEV_CLIENT_SECRET_NAME }}
@@ -136,23 +138,108 @@ jobs:
           # The secret value must be a single-line JSON string.
           SECRET_JSON=$(gcloud secrets versions access latest --secret=${{ env.CLIENT_SECRET_NAME }} --project=${{ env.GCP_PROJECT_ID }})
           
-          echo "Parsing JSON and setting environment variables..."
-          echo "$SECRET_JSON" | jq -r 'to_entries[] | "export \(.key)=\(.value)"' >> $GITHUB_ENV
+          # Use jq to iterate over the JSON entries.
+          #    -r: raw output (no quotes)
+          #    to_entries[]: converts the JSON object to an array of objects like {"key":"KEY_NAME", "value":"KEY_VALUE"}
+          #    The result is a single string like: --secret id=KEY1,env=KEY1 --secret id=KEY2,env=KEY2 ...
+          
+          # SECRET_ARGS=$(echo "$SECRETS_JSON" | jq -r 'to_entries[] | "--secret id=\(.key),env=\(.key)"')
+          BUILD_ARGS=$(echo "$SECRETS_JSON" | jq -r 'to_entries[] | "--build-arg id=\(.key),env=\(.key)"')
+
+          # Expose the generated arguments to subsequent steps using $GITHUB_ENV
+          # echo "DOCKER_SECRET_ARGS=$SECRET_ARGS" >> $GITHUB_ENV
+          echo "DOCKER_BUILD_ARGS=$BUILD_ARGS" >> $GITHUB_ENV
+      # -
+        # name: Access Secret Manager and store JSON
+        # id: secret_access
+        # uses: google-github-actions/secret-manager-access@v2
+        # with:
+        #   secret: ${{ secrets.GCP_DEV_CLIENT_SECRET_NAME }}
+        #   version: latest
       - 
         name: Run static build in docker container
         run: |
-          DOCKER_RUN_CMD="docker run --rm --volume $(pwd):/app ${{ steps.deploy-tag.outputs.image_name }} sh -c 'yarn install --frozen-lockfile && yarn static:build'"
-          for var in $(env | grep -E '^(NEXT|CRAFT)_'); do
-            DOCKER_RUN_CMD="$DOCKER_RUN_CMD -e \"$var\""
-          done
+          docker build \
+            ${{ env.DOCKER_BUILD_ARGS }} \
+            --target client-build-gha \
+            # -t ${{ env.DOCKER_IMAGE_NAME }}:latest . \
+            --rm --volume $(pwd):/app ${{ steps.deploy-tag.outputs.image_name }} sh -c 'yarn install --frozen-lockfile && yarn static:build'
 
-          eval $DOCKER_RUN_CMD
+            # ${{ env.DOCKER_SECRET_ARGS }} \
+            # -t ${{ env.DOCKER_IMAGE_NAME }}:latest .
+          # docker buildx build \
+          #   --tag ${{ env.DOCKER_IMAGE_NAME }} \
+          #   --secret id=build_secrets,src=build_secrets.json \
+          #   --load \
+          #   .
+          # for var in $(env | grep -E '^(NEXT|CRAFT)_'); do
+          #   DOCKER_RUN_CMD="$DOCKER_RUN_CMD -e \"$var\""
+          # done
+          # DOCKER_RUN_CMD="docker build --secret ${{ steps.deploy-secrets.outputs.SECRET_JSON }} --rm --volume $(pwd):/app ${{ steps.deploy-tag.outputs.image_name }} sh -c 'yarn install --frozen-lockfile && yarn static:build'"
+          
+
+          # eval $DOCKER_RUN_CMD
+      # -
+      #   name: Extract .next folder from build stage
+      #   run: |
+      #     # Create a temporary container from the built image stage
+      #     CONTAINER_ID=$(docker create ${{ env.DOCKER_IMAGE_NAME }}:latest)
+          
+      #     # Copy the required folder (.next) from the container to the host
+      #     #    Assumes the Next.js build output is at /app/.next in the client-build stage
+      #     docker cp $CONTAINER_ID:/app/.next $ARTIFACT_DIR
+
+      #     # c. Clean up the temporary container immediately
+      #     docker rm $CONTAINER_ID
+
+      #     echo "Successfully extracted .next folder to $ARTIFACT_DIR"
       -
         name: Upload to GCS bucket
         uses: 'google-github-actions/upload-cloud-storage@v3'
         with:
           path: '.next'
           destination: ${{ steps.deploy-tag.outputs.bucket_name }}/${{ steps.deploy-tag.outputs.bucket_subfolder }} # bucket_name/prefix
+
+        
+      # The `env` section makes the GitHub Secret value available as a RUNNER environment variable.
+      # - name: Configure BuildKit Secret Source
+      #   env:
+      #     BUILD_SECRET_CONTENT: ${{ secrets.MY_BUILD_SECRET }}
+      #   run: |
+      #     # $BUILD_SECRET_CONTENT holds the actual secret string.
+      #     # We export it to $GITHUB_ENV so it's available to the build-push-action step.
+      #     # The key must be unique, so we'll use a specific prefix.
+      #     echo "BUILD_SECRET_VAR=$BUILD_SECRET_CONTENT" >> $GITHUB_ENV
+          
+      # --- Docker Build and Export (Using Secret Mount) ---
+      # - name: Build Docker Image and Export to Tar (Securely)
+      #   id: build-export
+      #   uses: docker/build-push-action@v6
+      #   with:
+      #     context: .
+      #     push: false 
+      #     outputs: type=tar,dest=/tmp/image-output.tar 
+          
+      #     # CHANGE: Replacing build-args with the SECURE 'secrets' parameter
+      #     # This securely mounts the secret content (read from the $BUILD_SECRET_VAR ENV variable)
+      #     # as a file named 'api_key' inside the builder context.
+      #     secrets: |
+      #       api_key=${{ env.BUILD_SECRET_VAR }}
+          
+      #     tags: my-app:gcs-artifact-${{ env.IMAGE_TAG_SHA }}
+          
+          # build-args is removed as it is insecure.
+      
+      # # --- Upload to GCS ---
+      # - name: Upload Docker Image Tarball to GCS
+      #   uses: google-github-actions/upload-cloud-storage@v2
+      #   with:
+      #     path: /tmp/image-output.tar
+      #     destination: ${{ env.GCS_BUCKET }}/artifacts/image-${{ env.IMAGE_TAG_SHA }}.tar
+          
+      - name: Report Success
+        run: echo "Successfully built image and uploaded artifact to gs://${{ env.GCS_BUCKET }}/artifacts/image-${{ env.IMAGE_TAG_SHA }}.tar"
+
       -
         name: Summary
         run: |
