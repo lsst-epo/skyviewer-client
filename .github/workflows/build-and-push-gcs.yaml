@@ -162,37 +162,7 @@ jobs:
           docker build \
             ${{ env.DOCKER_BUILD_ARGS }} \
             --target client-build-gha \
-            # -t ${{ env.DOCKER_IMAGE_NAME }}:latest . \
             --rm --volume $(pwd):/app ${{ steps.deploy-tag.outputs.image_name }} sh -c 'yarn install --frozen-lockfile && yarn static:build'
-
-            # ${{ env.DOCKER_SECRET_ARGS }} \
-            # -t ${{ env.DOCKER_IMAGE_NAME }}:latest .
-          # docker buildx build \
-          #   --tag ${{ env.DOCKER_IMAGE_NAME }} \
-          #   --secret id=build_secrets,src=build_secrets.json \
-          #   --load \
-          #   .
-          # for var in $(env | grep -E '^(NEXT|CRAFT)_'); do
-          #   DOCKER_RUN_CMD="$DOCKER_RUN_CMD -e \"$var\""
-          # done
-          # DOCKER_RUN_CMD="docker build --secret ${{ steps.deploy-secrets.outputs.SECRET_JSON }} --rm --volume $(pwd):/app ${{ steps.deploy-tag.outputs.image_name }} sh -c 'yarn install --frozen-lockfile && yarn static:build'"
-          
-
-          # eval $DOCKER_RUN_CMD
-      # -
-      #   name: Extract .next folder from build stage
-      #   run: |
-      #     # Create a temporary container from the built image stage
-      #     CONTAINER_ID=$(docker create ${{ env.DOCKER_IMAGE_NAME }}:latest)
-          
-      #     # Copy the required folder (.next) from the container to the host
-      #     #    Assumes the Next.js build output is at /app/.next in the client-build stage
-      #     docker cp $CONTAINER_ID:/app/.next $ARTIFACT_DIR
-
-      #     # c. Clean up the temporary container immediately
-      #     docker rm $CONTAINER_ID
-
-      #     echo "Successfully extracted .next folder to $ARTIFACT_DIR"
       -
         name: Upload to GCS bucket
         uses: 'google-github-actions/upload-cloud-storage@v3'
