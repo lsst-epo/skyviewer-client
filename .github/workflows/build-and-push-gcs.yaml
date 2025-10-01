@@ -160,7 +160,7 @@ jobs:
         name: Run static build in docker container
         run: |
           DOCKER_BUILDKIT=1 docker build \
-            ${{ env.DOCKER_BUILD_ARGS }} \
+            ${{ env.steps.deploy-secrets.outputs.DOCKER_BUILD_ARGS }} \
             --target nextjs_copy_from_build \
             --output type=local,dest=./.next \
             .
