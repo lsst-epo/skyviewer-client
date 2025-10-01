@@ -144,7 +144,7 @@ jobs:
           #    The result is a single string like: --secret id=KEY1,env=KEY1 --secret id=KEY2,env=KEY2 ...
           
           # SECRET_ARGS=$(echo "$SECRETS_JSON" | jq -r 'to_entries[] | "--secret id=\(.key),env=\(.key)"')
-          BUILD_ARGS=$(echo "$SECRETS_JSON" | jq -r 'to_entries[] | "--build-arg id=\(.key),env=\(.key)"')
+          BUILD_ARGS=$(echo "$SECRET_JSON" | jq -r 'to_entries[] | "--build-arg id=\(.key),env=\(.key)"')
 
           # Expose the generated arguments to subsequent steps using $GITHUB_ENV
           # echo "DOCKER_SECRET_ARGS=$SECRET_ARGS" >> $GITHUB_ENV
