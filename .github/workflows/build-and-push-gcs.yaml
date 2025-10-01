@@ -137,6 +137,9 @@ jobs:
         run: |
           # The secret value must be a single-line JSON string.
           SECRET_JSON=$(gcloud secrets versions access latest --secret=${{ env.CLIENT_SECRET_NAME }} --project=${{ env.GCP_PROJECT_ID }})
+
+          echo "$SECRET_JSON" | jq 'keys | length'
+
           
           # Use jq to iterate over the JSON entries.
           #    -r: raw output (no quotes)
