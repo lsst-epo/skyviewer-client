@@ -138,7 +138,11 @@ jobs:
           # The secret value must be a single-line JSON string.
           SECRET_JSON=$(gcloud secrets versions access latest --secret=${{ env.CLIENT_SECRET_NAME }} --project=${{ env.GCP_PROJECT_ID }})
 
+          # check secrest are being read
           echo "$SECRET_JSON" | jq 'keys | length'
+
+          # check Dockerfile
+          cat Dockerfile
 
           
           # Use jq to iterate over the JSON entries.
@@ -150,14 +154,14 @@ jobs:
           # BUILD_ARGS=$(echo "$SECRET_JSON" | jq -r 'to_entries[] | "--build-arg \(.key)=\(.value)"')
           BUILD_ARGS=$(echo $SECRET_JSON | jq -r -j 'to_entries[] | " --build-arg \(.key)=\(.value)"') 
 
+          # length of BUILD_ARGS
+          echo "len(BUILD_ARGS) : ${#BUILD_ARGS}"
+
           # Expose the generated arguments to subsequent steps using $GITHUB_ENV
           # echo "DOCKER_SECRET_ARGS=$SECRET_ARGS" >> $GITHUB_ENV
-          echo "DOCKER_BUILD_ARGS=$BUILD_ARGS" >> $GITHUB_ENV
+          # echo "DOCKER_BUILD_ARGS=$BUILD_ARGS" >> $GITHUB_ENV
 
-          DOCKER_BUILDKIT=1 docker build \
-            $BUILD_ARGS \
-            --target nextjs_copy_from_build \
-            --output type=local,dest=./.next .
+          DOCKER_BUILDKIT=1 docker build $BUILD_ARGS --target nextjs_copy_from_build --output type=local,dest=./.next .
       # -
         # name: Access Secret Manager and store JSON
         # id: secret_access
