@@ -35,7 +35,7 @@ ENV RUN_BUILD=${RUN_BUILD}
 
 RUN if $RUN_BUILD;then npx update-browserslist-db@latest && yarn static:build;fi
 
-FROM scratch AS nextjs_export
+FROM scratch AS nextjs_copy_from_build
 COPY --from=builder /app /
 
 # Production image, copy all the files and run next
