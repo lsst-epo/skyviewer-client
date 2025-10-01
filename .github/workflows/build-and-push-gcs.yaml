@@ -153,7 +153,7 @@ jobs:
           DOCKER_BUILDKIT=1 docker build \
             $BUILD_ARGS \
             --target nextjs_copy_from_build \
-            --output type=local,dest=./.next \
+            --output type=local,dest=./.next .
       # -
         # name: Access Secret Manager and store JSON
         # id: secret_access
