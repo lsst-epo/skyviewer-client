@@ -159,10 +159,11 @@ jobs:
       - 
         name: Run static build in docker container
         run: |
-          docker build \
+          DOCKER_BUILDKIT=1 docker build \
             ${{ env.DOCKER_BUILD_ARGS }} \
-            --target client-build-gha \
-            --rm --volume $(pwd):/app ${{ steps.deploy-tag.outputs.image_name }} sh -c 'yarn install --frozen-lockfile && yarn static:build'
+            --target nextjs_build \
+            --output type=local,dest=./.next \
+            --rm --volume $(pwd):/app ${{ steps.deploy-tag.outputs.image_name }}
       -
         name: Upload to GCS bucket
         uses: 'google-github-actions/upload-cloud-storage@v3'
