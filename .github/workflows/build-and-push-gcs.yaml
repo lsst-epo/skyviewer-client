@@ -128,7 +128,7 @@ jobs:
             crane tag ${CLIENT_IMAGE}:latest ${{ steps.deploy-tag.outputs.image_tag }}
           fi
       -
-        name: Fetch and Set Environment Variables from Secret Manager
+        name: Fetch and Set Environment Variables from Secret Manager and run docker build
         id: deploy-secrets
         if: ${{ steps.deploy-info.outputs.environment_name == 'dev' }}
         env:
@@ -149,6 +149,11 @@ jobs:
           # Expose the generated arguments to subsequent steps using $GITHUB_ENV
           # echo "DOCKER_SECRET_ARGS=$SECRET_ARGS" >> $GITHUB_ENV
           echo "DOCKER_BUILD_ARGS=$BUILD_ARGS" >> $GITHUB_ENV
+
+          DOCKER_BUILDKIT=1 docker build \
+            $BUILD_ARGS \
+            --target nextjs_copy_from_build \
+            --output type=local,dest=./.next \
       # -
         # name: Access Secret Manager and store JSON
         # id: secret_access
@@ -157,15 +162,15 @@ jobs:
         #   secret: ${{ secrets.GCP_DEV_CLIENT_SECRET_NAME }}
         #   version: latest
       - 
-        name: Run static build in docker container
-        run: |
-          DOCKER_BUILDKIT=1 docker build \
-            ${{ steps.deploy-secrets.outputs.DOCKER_BUILD_ARGS }} \
-            --target nextjs_copy_from_build \
-            --output type=local,dest=./.next \
-            .
-            # ${{ steps.deploy-tag.outputs.image_name }} .
-          # --rm --volume $(pwd):/app ${{ steps.deploy-tag.outputs.image_name }}
+        # name: Run static build in docker container
+        # run: |
+        #   DOCKER_BUILDKIT=1 docker build \
+        #     ${{ steps.deploy-secrets.outputs.DOCKER_BUILD_ARGS }} \
+        #     --target nextjs_copy_from_build \
+        #     --output type=local,dest=./.next \
+        #     .
+        #     # ${{ steps.deploy-tag.outputs.image_name }} .
+        #   # --rm --volume $(pwd):/app ${{ steps.deploy-tag.outputs.image_name }}
       -
         name: Upload to GCS bucket
         uses: 'google-github-actions/upload-cloud-storage@v3'
