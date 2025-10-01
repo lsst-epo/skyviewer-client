@@ -161,7 +161,7 @@ jobs:
         # with:
         #   secret: ${{ secrets.GCP_DEV_CLIENT_SECRET_NAME }}
         #   version: latest
-      - 
+      # - 
         # name: Run static build in docker container
         # run: |
         #   DOCKER_BUILDKIT=1 docker build \
