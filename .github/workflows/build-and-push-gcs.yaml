@@ -154,18 +154,19 @@ jobs:
           BUILD_ARGS=$(echo $SECRET_JSON | jq -r -j 'to_entries[] | " --build-arg \(.key)=\(.value)"') 
 
           # length of BUILD_ARGS
-          echo "len(BUILD_ARGS) : ${#BUILD_ARGS}"
+          # echo "len(BUILD_ARGS) : ${#BUILD_ARGS}"
 
           # Expose the generated arguments to subsequent steps using $GITHUB_ENV
           # echo "DOCKER_SECRET_ARGS=$SECRET_ARGS" >> $GITHUB_ENV
-          echo "DOCKER_BUILD_ARGS=$BUILD_ARGS" >> $GITHUB_ENV
+          # echo "DOCKER_BUILD_ARGS=$BUILD_ARGS" >> $GITHUB_ENV
+          echo "$BUILD_ARGS" >> $GITHUB_ENV
 
           # DOCKER_BUILDKIT=1 docker build $BUILD_ARGS --target nextjs_copy_from_build --output type=local,dest=./.next .
       - 
         name: Run static build in docker container
         run: |
           DOCKER_BUILDKIT=1 docker build \
-            ${{ steps.deploy-secrets.outputs.DOCKER_BUILD_ARGS }} \
+            ${{ steps.deploy-secrets.outputs.BUILD_ARGS }} \
             --target nextjs_copy_from_build \
             --output type=local,dest=./.next .
       -
