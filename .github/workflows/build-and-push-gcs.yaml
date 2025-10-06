@@ -1,6 +1,15 @@
 name: Build, Push, and Deploy
 
 on:
+  workflow_dispatch:
+    inputs:
+      bucket-name-suffix:
+        description: "Bucket name suffix in addition to image-date"
+        required: false
+        default: ''
+        type: string
+  # schedule:
+  #   - cron: 0 10 * * 1-5
   push:
     branches:
        - 'develop'
@@ -17,8 +26,8 @@ on:
     branches:
       - 'develop'
       - 'main'
-env:
-  DOCKER_IMAGE_NAME: "nextjs-client-build"
+# env:
+#   DOCKER_IMAGE_NAME: "nextjs-client-build"
 jobs:
   build:
     if: ${{ github.event_name == 'push' || contains(github.event.pull_request.labels.*.name, 'preview') || github.event.label.name == 'preview' }}
@@ -142,36 +151,27 @@ jobs:
           # The secret value must be a single-line JSON string.
           SECRET_JSON=$(gcloud secrets versions access latest --secret=${{ env.CLIENT_SECRET_NAME }} --project=${{ env.GCP_PROJECT_ID }})
 
-          # check secrest are being read
+          # check secrets are being read
           echo "$SECRET_JSON" | jq 'keys | length'
 
           # converts the JSON object to an array of objects like {"key":"KEY_NAME", "value":"KEY_VALUE"}
           # The result is a single string like: --secret id=KEY1,env=KEY1 --secret id=KEY2,env=KEY2 ...
           
-          # SECRET_ARGS=$(echo "$SECRETS_JSON" | jq -r 'to_entries[] | "--secret id=\(.key),env=\(.key)"')
-          # BUILD_ARGS=$(echo "$SECRET_JSON" | jq -r 'to_entries[] | "--build-arg \(.key)=\(.value)"')
           BUILD_ARGS=$(echo $SECRET_JSON | jq -r -j 'to_entries[] | " --build-arg \(.key)=\(.value)"') 
 
-          # length of BUILD_ARGS
-          # echo "len(BUILD_ARGS) : ${#BUILD_ARGS}"
-
           # Expose the generated arguments to subsequent steps using $GITHUB_OUTPUT
-          # echo "DOCKER_SECRET_ARGS=$SECRET_ARGS" >> $GITHUB_ENV
           echo "::add-mask::$BUILD_ARGS" # mask secret for github actions
           echo docker_build_args="$BUILD_ARGS" >> $GITHUB_ENV
-          # echo "$BUILD_ARGS" >> $GITHUB_ENV
-
-          # DOCKER_BUILDKIT=1 docker build $BUILD_ARGS --target nextjs_copy_from_build --output type=local,dest=./.next .
       - 
         name: Run static build in docker container
         run: |
-          DOCKER_BUILDKIT=1 docker build ${{ env.docker_build_args }} --target nextjs_copy_from_build --output type=local,dest=./.next .
+          DOCKER_BUILDKIT=1 docker build ${{ env.docker_build_args }} --target yarn-builder --output type=local,dest=./.next .
       -
         name: Upload to GCS bucket
         uses: 'google-github-actions/upload-cloud-storage@v3'
         with:
           path: '.next'
-          destination: '${{ steps.deploy-tag.outputs.bucket_name }}/${{ steps.deploy-tag.outputs.bucket_subfolder }}' # bucket_name/prefix
+          destination: '${{ steps.deploy-tag.outputs.bucket_name }}${{ github.event.inputs.bucket-name-suffix }}/${{ steps.deploy-tag.outputs.bucket_subfolder }}' # bucket_name/prefix
           
       - name: Report Success
         run: echo "Successfully built image and uploaded artifact to gs://${{ env.GCS_BUCKET }}/artifacts/image-${{ env.IMAGE_TAG_SHA }}.tar"
