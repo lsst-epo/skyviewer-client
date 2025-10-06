@@ -27,7 +27,7 @@ RUN npx update-browserslist-db@latest && yarn static:build
 
 # FOR GCS bucket .next folder versioning
 FROM scratch AS nextjs-copy
-COPY --from=builder /app/.next /
+COPY --from=yarn-builder /app/.next /
 
 # Production image, copy all the files and run next
 FROM node:20-alpine AS runner
