@@ -165,7 +165,7 @@ jobs:
       - 
         name: Run static build in docker container
         run: |
-          DOCKER_BUILDKIT=1 docker build ${{ env.docker_build_args }} --target yarn-builder --output type=local,dest=./.next .
+          DOCKER_BUILDKIT=1 docker build ${{ env.docker_build_args }} --target yarn-builder --output type=local,dest=./.next,src=/app/.next .
       -
         name: Upload to GCS bucket
         uses: 'google-github-actions/upload-cloud-storage@v3'
