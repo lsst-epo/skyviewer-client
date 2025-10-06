@@ -8,7 +8,7 @@ COPY . /app
 RUN apk add --no-cache libc6-compat git fontconfig
 RUN yarn install --frozen-lockfile
 
-FROM scratch AS yarn-builder
+FROM builder AS yarn-builder
 ARG NEXT_PUBLIC_API_URL
 ARG NEXT_PUBLIC_BASE_URL
 ARG NEXT_PUBLIC_ASTRO_API_URL
