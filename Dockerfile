@@ -24,7 +24,7 @@ ENV CRAFT_REVALIDATE_SECRET_TOKEN=$CRAFT_REVALIDATE_SECRET_TOKEN
 ENV NEXT_PUBLIC_ASTRO_OBJECTS_API_TOKEN=$NEXT_PUBLIC_ASTRO_OBJECTS_API_TOKEN
 
 RUN npx update-browserslist-db@latest && yarn static:build
-COPY --from=builder /app/.next /
+# COPY --from=builder /app/.next /
 
 # Production image, copy all the files and run next
 FROM node:20-alpine AS runner
