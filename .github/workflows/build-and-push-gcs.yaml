@@ -160,13 +160,17 @@ jobs:
           BUILD_ARGS=$(echo $SECRET_JSON | jq -r -j 'to_entries[] | " --build-arg \(.key)=\(.value)"') 
           # TODO: use env file passed to be mounted instead of passing args for docker build
 
+          echo "$SECRET_JSON " | jq -r 'to_entries[] | "\(.key)=\(.value)"' > .env
+
           # Expose the generated arguments to subsequent steps using $GITHUB_OUTPUT
           echo "::add-mask::$BUILD_ARGS" # mask secret for github actions
           echo docker_build_args="$BUILD_ARGS" >> $GITHUB_ENV
       - 
         name: Run static build in docker container
         run: |
-          DOCKER_BUILDKIT=1 docker build ${{ env.docker_build_args }} --target nextjs-copy --output type=local,dest=./.next .
+          DOCKER_BUILDKIT=1 docker build --target nextjs-copy --output type=local,dest=./.next .
+          # based on .env file
+          # DOCKER_BUILDKIT=1 docker build ${{ env.docker_build_args }} --target nextjs-copy --output type=local,dest=./.next .
       -
         name: Upload to GCS bucket
         uses: 'google-github-actions/upload-cloud-storage@v3'
