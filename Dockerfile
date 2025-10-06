@@ -8,15 +8,13 @@ COPY . /app
 RUN apk add --no-cache libc6-compat git fontconfig
 RUN yarn install --frozen-lockfile
 
+FROM scratch AS yarn-builder
 ARG NEXT_PUBLIC_API_URL
 ARG NEXT_PUBLIC_BASE_URL
 ARG NEXT_PUBLIC_ASTRO_API_URL
 ARG CRAFT_SECRET_TOKEN
 ARG CRAFT_REVALIDATE_SECRET_TOKEN
 ARG NEXT_PUBLIC_ASTRO_OBJECTS_API_TOKEN
-ARG RUN_BUILD="true"
-ENV RUN_BUILD=${RUN_BUILD}
-
 
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL
@@ -25,28 +23,7 @@ ENV CRAFT_SECRET_TOKEN=$CRAFT_SECRET_TOKEN
 ENV CRAFT_REVALIDATE_SECRET_TOKEN=$CRAFT_REVALIDATE_SECRET_TOKEN
 ENV NEXT_PUBLIC_ASTRO_OBJECTS_API_TOKEN=$NEXT_PUBLIC_ASTRO_OBJECTS_API_TOKEN
 
-# RUN printenv # for testing
-# Client build (which requires a secret mount)
-# FROM builder as client-build-gha
-
-# RUN --mount-type=secret,id=NEXT_PUBLIC_API_URL,env=NEXT_PUBLIC_API_URL \
-#     --mount-type=secret,id=NEXT_PUBLIC_BASE_URL,env=NEXT_PUBLIC_BASE_URL \
-#     --mount-type=secret,id=NEXT_PUBLIC_ASTRO_API_URL,env=NEXT_PUBLIC_ASTRO_API_URL \
-#     --mount-type=secret,id=CRAFT_SECRET_TOKEN,env=CRAFT_SECRET_TOKEN 
-#     if $RUN_BUILD;then \
-#         npx update-browserslist-db@latest && yarn static:build;
-#     fi
-    # if $RUN_BUILD;then \
-    # cat /tmp/secrets.json | jq -r "to_entries[] | \"export \\(.key)=\\(.value)\"" > /tmp/env_vars.sh && \
-    # source /tmp/env_vars.sh && \
-    # npx update-browserslist-db@latest && yarn static:build; \
-    # fi
-
-
-
-RUN if $RUN_BUILD;then npx update-browserslist-db@latest && yarn static:build;fi
-
-FROM scratch AS nextjs_copy_from_build
+RUN npx update-browserslist-db@latest && yarn static:build
 COPY --from=builder /app/.next /
 
 # Production image, copy all the files and run next
