@@ -82,29 +82,6 @@ jobs:
             type=semver,pattern={{major}}
             type=sha
       -
-        name: Docker meta (no new lines)
-        id: meta2
-        uses: docker/metadata-action@v5.6.1
-        with:
-          # list of Docker images to use as base name for tags
-          images: |
-            gcr.io/skyviewer/skyviewer-client-k8s,enable=${{ steps.deploy-info.outputs.environment_name == 'dev' }}
-            gcr.io/edc-int-6c5e/skyviewer-client-k8s,enable=${{ steps.deploy-info.outputs.environment_name == 'int' }}
-            gcr.io/edc-prod-eef0/skyviewer-client-k8s,enable=${{ steps.deploy-info.outputs.environment_name == 'prod' }}
-          flavor: |
-            latest=${{ github.event_name == 'push'}}
-          # generate Docker tags based on the following events/attributes
-          tags: |
-            type=schedule
-            type=ref,event=branch
-            type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
-            type=sha
-          sep-tags: ','
-          sep-labels: ','
-      -
         name: Parse deploy tag
         id: deploy-tag
         run: |
@@ -179,17 +156,25 @@ jobs:
 
           # Write secrets and format to .env file which will be mounted into docker build step
           echo "$SECRET_JSON " | jq -r 'to_entries[] | "\(.key)=\(.value)"' > .env
+      -
+        name: Build and push
+        uses: docker/build-push-action@v6.11.0
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          target: yarn-builder
+          cache-to: |
+            type=gha
+          cache-from: |
+            type=gha
+          build-args: |
+            BASE_TAG=k8s
       - 
         name: Run static build in docker container based on .env file
         run: |
           DOCKER_BUILDKIT=1 docker build --target nextjs-copy --output type=local,dest=./.next .
-      - name: Push intermediary docker stage image to Google Container Registry (GCR)
-        run: |
-          TAG_ARGS=$(echo "${{ steps.meta2.outputs.tags }}" | sed 's/,/ --tag=/g' | sed 's/^/--tag=/')
-          LABEL_ARGS=$(echo "${{ steps.meta2.outputs.labels }}" | sed 's/,/ --label=/g' | sed 's/^/--label=/')
-
-          docker buildx build --target yarn-builder --cache-from type=gha --cache-to type=gha,mode=max --build-arg BASE_TAG=k8s "$TAG_ARGS" "$LABEL_ARGS" --push .
-          # docker buildx build --target yarn-builder --cache-from type=gha --cache-to type=gha,mode=max --build-arg BASE_TAG=k8s --tag ${{ steps.meta2.outputs.tags }} --label ${{ steps.meta2.outputs.labels }} --push .
       -
         name: Upload to GCS bucket
         uses: 'google-github-actions/upload-cloud-storage@v3'
