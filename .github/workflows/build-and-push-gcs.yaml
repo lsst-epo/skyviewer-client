@@ -26,8 +26,7 @@ on:
     branches:
       - 'develop'
       - 'main'
-# env:
-#   DOCKER_IMAGE_NAME: "nextjs-client-build"
+
 jobs:
   build:
     if: ${{ github.event_name == 'push' || contains(github.event.pull_request.labels.*.name, 'preview') || github.event.label.name == 'preview' }}
@@ -122,6 +121,7 @@ jobs:
       #     push: true
       #     tags: ${{ steps.meta.outputs.tags }}
       #     labels: ${{ steps.meta.outputs.labels }}
+      #     target: yarn-builder
       #     cache-to: |
       #       type=gha
       #     cache-from: |
@@ -154,23 +154,24 @@ jobs:
           # check secrets are being read
           echo "$SECRET_JSON" | jq 'keys | length'
 
-          # converts the JSON object to an array of objects like {"key":"KEY_NAME", "value":"KEY_VALUE"}
-          # The result is a single string like: --secret id=KEY1,env=KEY1 --secret id=KEY2,env=KEY2 ...
-          
-          BUILD_ARGS=$(echo $SECRET_JSON | jq -r -j 'to_entries[] | " --build-arg \(.key)=\(.value)"') 
-          # TODO: use env file passed to be mounted instead of passing args for docker build
-
+          # Write secrets and format to .env file which will be mounted into docker build step
           echo "$SECRET_JSON " | jq -r 'to_entries[] | "\(.key)=\(.value)"' > .env
-
-          # Expose the generated arguments to subsequent steps using $GITHUB_OUTPUT
-          echo "::add-mask::$BUILD_ARGS" # mask secret for github actions
-          echo docker_build_args="$BUILD_ARGS" >> $GITHUB_ENV
       - 
-        name: Run static build in docker container
+        name: Run static build in docker container based on .env file
         run: |
           DOCKER_BUILDKIT=1 docker build --target nextjs-copy --output type=local,dest=./.next .
-          # based on .env file
-          # DOCKER_BUILDKIT=1 docker build ${{ env.docker_build_args }} --target nextjs-copy --output type=local,dest=./.next .
+      - name: Push intermediary docker stage image to Google Container Registry (GCR)
+        run: |
+          docker buildx build \
+          --target yarn-builder \
+          --cache-from type=gha \
+          --cache-to type=gha,mode=max \
+          --build-arg BASE_TAG=k8s \
+          --build-arg RUN_BUILD=false \
+          --tag ${{ steps.meta.outputs.tags }} \
+          --label ${{ steps.meta.outputs.labels }} \
+          --push \
+          .
       -
         name: Upload to GCS bucket
         uses: 'google-github-actions/upload-cloud-storage@v3'
@@ -191,45 +192,45 @@ jobs:
             ${{ steps.meta.outputs.tags }}
           EOT
 
-  deploy:
-    name: Trigger deploy to ${{ needs.build.outputs.environment_name }}
-    needs: build
-    runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'pull_request' }}
-    steps:
-      - name: Generate Webhook Payload
-        id: payload
-        run: |-
-          PARAMETERS=(
-            client.image.tag=${{ needs.build.outputs.image_tag }}
-            client.image.repository=${{ needs.build.outputs.image_name }}
-          )
-          DATA="{
-            \"app_name\": \"skyviewer\",
-            \"environment_name\": \"${{ needs.build.outputs.environment_name }}\",
-            \"parameters\": $(jq -c -n '$ARGS.positional' --args ${PARAMETERS[@]}),
-            \"date\": 
-          }"
-          echo "data=$(echo $DATA | jq -rc '.')" >> "$GITHUB_OUTPUT"
-      - uses: lasith-kg/dispatch-workflow@v2.0.0
-        id: dispatch
-        name: Trigger Deployment
-        with:
-          dispatch-method: repository_dispatch
-          repo: edc-deploy
-          owner: lsst-epo
-          event-type: app_update_values
-          token: ${{ secrets.EDC_DEPLOY_GITHUB_TOKEN_FOR_REST_API }}
-          workflow-inputs: ${{ steps.payload.outputs.data }}
-          discover: true
-          # can pass data via client_payload (a json string) or workflow-inputs
-          # client-payload: '{"branch": "${{ github.ref_name }}", "sha": "${{ github.sha }}", "version": "1.2.3"}'
-      - name: Await Run ID ${{ steps.dispatch.outputs.run-id }}
-        uses: Codex-/await-remote-run@v1.12.2
-        with:
-          token: ${{ secrets.EDC_DEPLOY_GITHUB_TOKEN_FOR_REST_API }}
-          repo: edc-deploy
-          owner: lsst-epo
-          run_id: ${{ steps.dispatch.outputs.run-id }}
-          run_timeout_seconds: 1500
+  # deploy:
+  #   name: Trigger deploy to ${{ needs.build.outputs.environment_name }}
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   if: ${{ github.event_name != 'pull_request' }}
+  #   steps:
+  #     - name: Generate Webhook Payload
+  #       id: payload
+  #       run: |-
+  #         PARAMETERS=(
+  #           client.image.tag=${{ needs.build.outputs.image_tag }}
+  #           client.image.repository=${{ needs.build.outputs.image_name }}
+  #         )
+  #         DATA="{
+  #           \"app_name\": \"skyviewer\",
+  #           \"environment_name\": \"${{ needs.build.outputs.environment_name }}\",
+  #           \"parameters\": $(jq -c -n '$ARGS.positional' --args ${PARAMETERS[@]}),
+  #           \"date\": 
+  #         }"
+  #         echo "data=$(echo $DATA | jq -rc '.')" >> "$GITHUB_OUTPUT"
+  #     - uses: lasith-kg/dispatch-workflow@v2.0.0
+  #       id: dispatch
+  #       name: Trigger Deployment
+  #       with:
+  #         dispatch-method: repository_dispatch
+  #         repo: edc-deploy
+  #         owner: lsst-epo
+  #         event-type: app_update_values
+  #         token: ${{ secrets.EDC_DEPLOY_GITHUB_TOKEN_FOR_REST_API }}
+  #         workflow-inputs: ${{ steps.payload.outputs.data }}
+  #         discover: true
+  #         # can pass data via client_payload (a json string) or workflow-inputs
+  #         # client-payload: '{"branch": "${{ github.ref_name }}", "sha": "${{ github.sha }}", "version": "1.2.3"}'
+  #     - name: Await Run ID ${{ steps.dispatch.outputs.run-id }}
+  #       uses: Codex-/await-remote-run@v1.12.2
+  #       with:
+  #         token: ${{ secrets.EDC_DEPLOY_GITHUB_TOKEN_FOR_REST_API }}
+  #         repo: edc-deploy
+  #         owner: lsst-epo
+  #         run_id: ${{ steps.dispatch.outputs.run-id }}
+  #         run_timeout_seconds: 1500
 
