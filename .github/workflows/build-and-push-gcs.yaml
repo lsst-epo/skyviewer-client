@@ -162,7 +162,10 @@ jobs:
           DOCKER_BUILDKIT=1 docker build --target nextjs-copy --output type=local,dest=./.next .
       - name: Push intermediary docker stage image to Google Container Registry (GCR)
         run: |
-          docker buildx build --target yarn-builder --cache-from type=gha --cache-to type=gha,mode=max --build-arg BASE_TAG=k8s --build-arg RUN_BUILD=false --tag ${{ steps.meta.outputs.tags }} --label ${{ steps.meta.outputs.labels }} --push .
+          TAG_ARGS=$(echo "$${{ steps.meta.outputs.tags }" | sed 's/^/--tag=/' | tr '\n' ' ')
+          LABEL_ARGS=$(echo "$${{ steps.meta.outputs.labels }" | sed 's/^/--label=/' | tr '\n' ' ')
+          docker buildx build --target yarn-builder --cache-from type=gha --cache-to type=gha,mode=max --build-arg BASE_TAG=k8s "$TAG_ARGS" "$LABEL_ARGS" --push .
+          # docker buildx build --target yarn-builder --cache-from type=gha --cache-to type=gha,mode=max --build-arg BASE_TAG=k8s --tag ${{ steps.meta.outputs.tags }} --label ${{ steps.meta.outputs.labels }} --push .
       -
         name: Upload to GCS bucket
         uses: 'google-github-actions/upload-cloud-storage@v3'
