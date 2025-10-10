@@ -4,7 +4,7 @@
 FROM node:20-alpine AS builder
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 WORKDIR /app
-COPY --exclude .env . /app
+COPY --exclude=.env . /app
 RUN apk add --no-cache libc6-compat git fontconfig
 RUN yarn install --frozen-lockfile
 
