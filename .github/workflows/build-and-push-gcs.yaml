@@ -29,6 +29,9 @@ on:
 
 jobs:
   build:
+    env:
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
     if: ${{ github.event_name == 'push' || contains(github.event.pull_request.labels.*.name, 'preview') || github.event.label.name == 'preview' }}
     name: Build Container Image
     runs-on: ubuntu-latest
@@ -156,6 +159,11 @@ jobs:
 
           # Write secrets and format to .env file which will be mounted into docker build step
           echo "$SECRET_JSON " | jq -r 'to_entries[] | "\(.key)=\(.value)"' > .env
+
+          # print locale
+          locale
+          # set locale
+
       -
         name: Build and push
         uses: docker/build-push-action@v6.11.0
