@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1.19
 # This file is based on the official Next.js Docker example. https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile
 
 # Rebuild the source code only when needed 
