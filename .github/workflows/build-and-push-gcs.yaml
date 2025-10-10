@@ -189,6 +189,7 @@ jobs:
         with:
           path: '.next'
           destination: '${{ steps.deploy-tag.outputs.bucket_name }}${{ github.event.inputs.bucket-name-suffix }}/${{ steps.deploy-tag.outputs.bucket_subfolder }}' # bucket_name/prefix
+          gzip: false
           
       - name: Report Success
         run: echo "Successfully built image and uploaded artifact to gs://${{ env.GCS_BUCKET }}/artifacts/image-${{ env.IMAGE_TAG_SHA }}.tar"
