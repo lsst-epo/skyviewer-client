@@ -3,8 +3,8 @@ name: Build, Push, and Deploy
 on:
   workflow_dispatch:
     inputs:
-      bucket-name-suffix:
-        description: "Bucket name suffix in addition to image-date"
+      bucket-subfolder-suffix:
+        description: "Bucket subfolder name suffix in addition to image-date"
         required: false
         default: ''
         type: string
@@ -174,7 +174,7 @@ jobs:
         uses: 'google-github-actions/upload-cloud-storage@v3'
         with:
           path: '.next'
-          destination: '${{ steps.deploy-tag.outputs.bucket_name }}${{ github.event.inputs.bucket-name-suffix }}/${{ steps.deploy-tag.outputs.bucket_subfolder }}' # bucket_name/prefix
+          destination: '${{ steps.deploy-tag.outputs.bucket_name }}/${{ steps.deploy-tag.outputs.bucket_subfolder }}${{ github.event.inputs.bucket-subfolder-suffix }}' # bucket_name/prefix
           gzip: false
           
       - name: Report Success
@@ -204,6 +204,7 @@ jobs:
             client.image.repository=${{ needs.build.outputs.image_name }}
             global.gcsFuse.bucketName=${{ needs.build.outputs.bucketname }}
             global.gcsFuse.bucketFolder=${{ needs.build.outputs.bucketfolder }}
+            global.gcsFuse.bucketFolderSuffix=${{ github.event.inputs.bucket-subfolder-suffix }}
           )
           DATA="{
             \"app_name\": \"skyviewer\",
