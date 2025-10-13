@@ -14,7 +14,6 @@ on:
     branches:
        - 'develop'
        - 'main'
-       - '332-gcs-build' # temporary for testing
     tags:
       - 'v*'
   pull_request:
@@ -118,22 +117,6 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v2.1.2'
       -
         run: gcloud --quiet auth configure-docker
-      # -
-      #   name: Build and push
-      #   uses: docker/build-push-action@v6.11.0
-      #   with:
-      #     context: .
-      #     push: true
-      #     tags: ${{ steps.meta.outputs.tags }}
-      #     labels: ${{ steps.meta.outputs.labels }}
-      #     target: yarn-builder
-      #     cache-to: |
-      #       type=gha
-      #     cache-from: |
-      #       type=gha
-      #     build-args: |
-      #       BASE_TAG=k8s
-      #       RUN_BUILD=false
       -
         uses: imjasonh/setup-crane@v0.4
         if: ${{ github.event_name == 'pull_request' }}
