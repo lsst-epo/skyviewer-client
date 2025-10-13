@@ -50,16 +50,21 @@ jobs:
           if ${{ github.ref_type == 'tag'}}; then
             environment_name="prod"
             credentials_json='${{ secrets.PIPELINE_EPO_PROD_PROJECT }}'
+            project="edc-prod-eef0"
           elif ${{ contains(github.ref_name, 'main') || contains(github.base_ref, 'main') }}; then
             environment_name="int"
             credentials_json='${{ secrets.SKYVIEWER_INT_SERVICE_ACCOUNT }}'
+            project="edc-int-6c5e"
           else
             environment_name="dev"
             credentials_json='${{ secrets.DEV_SA_KEY }}'
+            project="skyviewer"
           fi
           echo environment_name=$environment_name >> "$GITHUB_OUTPUT"
           echo credentials_json=$credentials_json >> "$GITHUB_OUTPUT"
           echo date=$(date +'%Y%m%d') >> $GITHUB_OUTPUT
+          echo project=$project >> "$GITHUB_OUTPUT"
+          echo appname="skyviewer" >> $GITHUB_OUTPUT
       -
         name: Docker meta
         id: meta
@@ -127,13 +132,9 @@ jobs:
       -
         name: Fetch and Set Environment Variables from Secret Manager
         id: deploy-secrets
-        if: ${{ steps.deploy-info.outputs.environment_name == 'dev' }}
-        env:
-          CLIENT_SECRET_NAME: ${{ secrets.GCP_DEV_CLIENT_SECRET_NAME }}
-          GCP_PROJECT_ID: ${{ secrets.GCP_DEV_PROJECT_ID }}
         run: |
           # The secret value must be a single-line JSON string.
-          SECRET_JSON=$(gcloud secrets versions access latest --secret=${{ env.CLIENT_SECRET_NAME }} --project=${{ env.GCP_PROJECT_ID }})
+          SECRET_JSON=$(gcloud secrets versions access latest --secret=${{ steps.deploy-info.outputs.appname }}-${{ steps.deploy-info.outputs.environment_name }} --project=${{ steps.deploy-info.outputs.project }})
 
           # check secrets are being read
           echo "$SECRET_JSON" | jq 'keys | length'
