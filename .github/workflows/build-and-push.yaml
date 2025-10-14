@@ -137,7 +137,7 @@ jobs:
         id: deploy-secrets
         run: |
           # Get appropriate secret name
-          SECRET_NAME=$(gcloud secrets list --filter="labels.environment:${{ steps.deploy-info.outputs.environment_name }} AND labels.deployment:${{ steps.deploy-info.outputs.deployment }}" --project=${{ steps.deploy-info.outputs.project }}) --format="value(name)")
+          SECRET_NAME=$(gcloud secrets list --filter="labels.environment:${{ steps.deploy-info.outputs.environment_name }} AND labels.deployment:${{ steps.deploy-info.outputs.deployment }}" --project=${{ steps.deploy-info.outputs.project }} --format="value(name)")
           # The secret value must be a single-line JSON string.
           SECRET_JSON=$(gcloud secrets versions access latest --secret=$SECRET_NAME --project=${{ steps.deploy-info.outputs.project }})
 
