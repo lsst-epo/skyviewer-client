@@ -196,7 +196,7 @@ jobs:
             client.image.repository=${{ needs.build.outputs.image_name }}
             global.gcsFuse.bucketName=${{ needs.build.outputs.bucketname }}
             global.gcsFuse.bucketFolder=${{ needs.build.outputs.bucketfolder }}
-            global.gcsFuse.bucketFolderSuffix=${{ github.event.inputs.bucket-subfolder-suffix }}
+            global.gcsFuse.bucketFolderSuffix="${{ github.event.inputs.bucket-subfolder-suffix }}"
           )
           DATA="{
             \"app_name\": \"skyviewer\",
