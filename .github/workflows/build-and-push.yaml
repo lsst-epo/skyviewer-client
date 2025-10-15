@@ -191,7 +191,7 @@ jobs:
             client.image.tag=${{ needs.build.outputs.image_tag }}
             client.image.repository=${{ needs.build.outputs.image_name }}
             global.gcsFuse.bucketName=${{ needs.build.outputs.bucketname }}
-            global.gcsFuse.bucketFolder=${{ needs.build.outputs.bucketfolder }}
+            global.gcsFuse.bucketFolder=${{ needs.build.outputs.bucketfolder }}/.next
             global.gcsFuse.bucketFolderSuffix="${{ github.event.inputs.bucket-subfolder-suffix }}"
           )
           DATA="{
