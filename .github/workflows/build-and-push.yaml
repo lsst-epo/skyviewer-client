@@ -202,7 +202,7 @@ jobs:
             \"app_name\": \"skyviewer\",
             \"environment_name\": \"${{ needs.build.outputs.environment_name }}\",
             \"parameters\": $(jq -c -n '$ARGS.positional' --args ${PARAMETERS[@]}),
-            \"date\": 
+            \"date\": \"\"
           }"
           echo "data=$(echo $DATA | jq -rc '.')" >> "$GITHUB_OUTPUT"
       - uses: lasith-kg/dispatch-workflow@v2.0.0
