@@ -14,6 +14,7 @@ on:
     branches:
        - 'develop'
        - 'main'
+       - '332-2-gcs-build'
     tags:
       - 'v*'
   pull_request:
@@ -50,15 +51,12 @@ jobs:
           if ${{ github.ref_type == 'tag'}}; then
             environment_name="prod"
             credentials_json='${{ secrets.PIPELINE_EPO_PROD_PROJECT }}'
-            project="edc-prod-eef0"
           elif ${{ contains(github.ref_name, 'main') || contains(github.base_ref, 'main') }}; then
             environment_name="int"
             credentials_json='${{ secrets.SKYVIEWER_INT_SERVICE_ACCOUNT }}'
-            project="edc-int-6c5e"
           else
             environment_name="dev"
             credentials_json='${{ secrets.DEV_SA_KEY }}'
-            project="skyviewer" 
           fi
           deploymentname="skyviewer-client"
           echo environment_name=$environment_name >> "$GITHUB_OUTPUT"
@@ -136,9 +134,9 @@ jobs:
         id: deploy-secrets
         run: |
           # Get appropriate secret name
-          SECRET_NAME=$(gcloud secrets list --filter="labels.environment:${{ steps.deploy-info.outputs.environment_name }} AND labels.deployment:${{ steps.deploy-info.outputs.deployment }}" --project=${{ steps.deploy-info.outputs.project }} --format="value(name)")
+          SECRET_NAME=$(gcloud secrets list --filter="labels.environment:${{ steps.deploy-info.outputs.environment_name }} AND labels.deployment:${{ steps.deploy-info.outputs.deployment }}" --format="value(name)")
           # The secret value must be a single-line JSON string.
-          SECRET_JSON=$(gcloud secrets versions access latest --secret=$SECRET_NAME --project=${{ steps.deploy-info.outputs.project }})
+          SECRET_JSON=$(gcloud secrets versions access latest --secret=$SECRET_NAME)
 
           # check secrets are being read
           echo "$SECRET_JSON" | jq 'keys | length'
