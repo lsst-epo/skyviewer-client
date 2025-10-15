@@ -14,7 +14,6 @@ on:
     branches:
        - 'develop'
        - 'main'
-       - '332-2-gcs-build'
     tags:
       - 'v*'
   pull_request:
@@ -134,7 +133,7 @@ jobs:
         id: deploy-secrets
         run: |
           # Get appropriate secret name
-          SECRET_NAME=$(gcloud secrets list --filter="labels.environment:${{ steps.deploy-info.outputs.environment_name }} AND labels.deployment:${{ steps.deploy-info.outputs.deployment }}" --format="value(name)")
+          SECRET_NAME=$(gcloud secrets list --filter="labels.deployment:${{ steps.deploy-info.outputs.deployment }}" --format="value(name)")
           # The secret value must be a single-line JSON string.
           SECRET_JSON=$(gcloud secrets versions access latest --secret=$SECRET_NAME)
 
