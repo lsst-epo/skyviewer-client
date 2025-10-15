@@ -14,7 +14,6 @@ on:
     branches:
        - 'develop'
        - 'main'
-       - '332-2-gcs-build'
     tags:
       - 'v*'
   pull_request:
