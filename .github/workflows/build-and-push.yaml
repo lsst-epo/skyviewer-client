@@ -207,7 +207,6 @@ jobs:
           gcloud storage objects update gs://$BUCKET_NAME/$BUCKET_PREFIX/.next/server/app/sitemap_index.xml.body --temporary-hold
           gcloud storage objects update gs://$BUCKET_NAME/$BUCKET_PREFIX/.next/server/app/sitemap_index.xml.meta --temporary-hold
       -
-      -
         name: Summary
         run: |
           cat <<-EOT >> "$GITHUB_STEP_SUMMARY"
