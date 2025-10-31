@@ -175,7 +175,7 @@ jobs:
           BUCKET_PREFIX: ${{ steps.deploy-tag.outputs.bucket_subfolder }}${{ github.event.inputs.bucket-subfolder-suffix }}
           BUCKET_NAME: ${{ steps.deploy-tag.outputs.bucket_name }}
         run: |
-          gcloud storage buckets update gs://$BUCKET_NAME --lifecycle-file=- << EOM
+          cat > lifecycle.json <<EOF
           {
             "rule": [
               {
@@ -193,7 +193,9 @@ jobs:
               }
             ]
           }
-          EOM
+          EOF
+          gcloud storage buckets update gs://$BUCKET_NAME --lifecycle-file=lifecycle.json
+          rm lifecycle.json
       - name: Add object holds
         env: 
           BUCKET_PREFIX: ${{ steps.deploy-tag.outputs.bucket_subfolder }}${{ github.event.inputs.bucket-subfolder-suffix }}
