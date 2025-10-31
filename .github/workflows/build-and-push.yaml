@@ -200,13 +200,9 @@ jobs:
           BUCKET_PREFIX: ${{ steps.deploy-tag.outputs.bucket_subfolder }}${{ github.event.inputs.bucket-subfolder-suffix }}
           BUCKET_NAME: ${{ steps.deploy-tag.outputs.bucket_name }}
         run: |
-          # These files often do not exist
-          gcloud storage objects update gs://$BUCKET_NAME/$BUCKET_PREFIX/.next/server/app/robots.txt --temporary-hold || true
-          gcloud storage objects update gs://$BUCKET_NAME/$BUCKET_PREFIX/.next/server/app/robots.txt.body --temporary-hold || true
-          gcloud storage objects update gs://$BUCKET_NAME/$BUCKET_PREFIX/.next/server/app/robots.txt.meta --temporary-hold || true
-          gcloud storage objects update gs://$BUCKET_NAME/$BUCKET_PREFIX/.next/server/app/sitemap_index.xml --temporary-hold || true
-          gcloud storage objects update gs://$BUCKET_NAME/$BUCKET_PREFIX/.next/server/app/sitemap_index.xml.body --temporary-hold || true
-          gcloud storage objects update gs://$BUCKET_NAME/$BUCKET_PREFIX/.next/server/app/sitemap_index.xml.meta --temporary-hold || true
+          gcloud storage objects update gs://$BUCKET_NAME/$BUCKET_PREFIX/.next/cache/fetch-cache/ --temporary-hold || true
+          gcloud storage objects update gs://$BUCKET_NAME/$BUCKET_PREFIX/.next/cache/images/ --temporary-hold || true
+          gcloud storage objects update gs://$BUCKET_NAME/$BUCKET_PREFIX/.next/server/app/ --temporary-hold || true
       -
         name: Summary
         run: |
