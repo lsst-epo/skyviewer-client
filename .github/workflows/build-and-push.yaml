@@ -152,16 +152,23 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           target: runner
           cache-to: |
-            type=gha
+            type=gha,mode=max
           cache-from: |
             type=gha
           build-args: |
             BASE_TAG=k8s
       - 
         name: Run static build in docker container based on .env file
-        run: |
-          docker version
-          DOCKER_BUILDKIT=1 docker build --target nextjs-copy --output type=local,dest=./.next .
+        uses: docker/build-push-action@v6.18.0
+        with:
+          context: .
+          push: false
+          target: nextjs-copy
+          outputs: type=local,dest=./.next
+          build-args: |
+            RUN_BUILD=false
+          cache-from: |
+            type=gha
       -
         name: Upload to GCS bucket
         uses: 'google-github-actions/upload-cloud-storage@v3'
