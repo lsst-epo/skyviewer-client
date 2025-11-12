@@ -14,7 +14,6 @@ on:
     branches:
        - 'develop'
        - 'main'
-       - '351-lifecycle-policies'
     tags:
       - 'v*'
   pull_request:
@@ -195,14 +194,6 @@ jobs:
           EOF
           gcloud storage buckets update gs://$BUCKET_NAME --lifecycle-file=lifecycle.json
           rm lifecycle.json
-      # - name: Add object holds (not possible on folders)
-      #   env: 
-      #     BUCKET_PREFIX: ${{ steps.deploy-tag.outputs.bucket_subfolder }}${{ github.event.inputs.bucket-subfolder-suffix }}
-      #     BUCKET_NAME: ${{ steps.deploy-tag.outputs.bucket_name }}
-      #   run: |
-      #     # gcloud storage objects update gs://$BUCKET_NAME/$BUCKET_PREFIX/.next/cache/fetch-cache/ --temporary-hold || true
-      #     # gcloud storage objects update gs://$BUCKET_NAME/$BUCKET_PREFIX/.next/cache/images/ --temporary-hold || true
-      #     # gcloud storage objects update gs://$BUCKET_NAME/$BUCKET_PREFIX/.next/server/app/ --temporary-hold || true
       -
         name: Summary
         run: |
