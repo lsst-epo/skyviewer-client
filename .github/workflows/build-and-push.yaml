@@ -14,6 +14,7 @@ on:
     branches:
        - 'develop'
        - 'main'
+       - '357-lifecycle-addition'
     tags:
       - 'v*'
   pull_request:
@@ -181,9 +182,13 @@ jobs:
           BUCKET_PREFIX: ${{ steps.deploy-tag.outputs.bucket_subfolder }}${{ github.event.inputs.bucket-subfolder-suffix }}
           BUCKET_NAME: ${{ steps.deploy-tag.outputs.bucket_name }}
         run: |
-          cat > lifecycle.json <<EOF
+          # Get current lifecycle policies
+          gcloud storage buckets describe gs://$BUCKET_NAME --format="json(lifecycle_config)" > current_lifecycle.json
+
+
+          cat > new_lifecycle.json <<EOF
           {
-            "lifecycle": {
+            "lifecycle_config": {
                "rule": [
                 {
                   "action": {
@@ -201,7 +206,16 @@ jobs:
             }
           }
           EOF
-          gcloud storage buckets update gs://$BUCKET_NAME --lifecycle-file=lifecycle.json
+
+          # merge two jsons
+          jq -s '
+          .[0].lifecycle_config.rule[0].condition.matchesPrefix +=
+          .[1].lifecycle_config.rule[0].condition.matchesPrefix
+          |
+          .[0] | { lifecycle: .lifecycle_config }
+          ' current_lifecycle.json new_lifecycle.json > final_lifecycle.json
+
+          gcloud storage buckets update gs://$BUCKET_NAME --lifecycle-file=final_lifecycle.json
           rm lifecycle.json
       -
         name: Summary
