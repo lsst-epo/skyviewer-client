@@ -178,7 +178,7 @@ jobs:
           gzip: false
       - name: Add lifecycle Policies
         env:
-          BUCKET_PREFIX: ${{ steps.deploy-tag.outputs.bucket_subfolder }}${{ github.event.inputs.bucket-subfolder-suffix }}
+          BUCKET_FOLDER_PREFIX: ${{ steps.deploy-tag.outputs.bucket_subfolder }}${{ github.event.inputs.bucket-subfolder-suffix }}
           BUCKET_NAME: ${{ steps.deploy-tag.outputs.bucket_name }}
         run: |
           cat > lifecycle.json <<EOF
@@ -192,8 +192,8 @@ jobs:
                   "condition": {
                     "age": 1,
                     "matchesPrefix": [
-                      "$BUCKET_PREFIX/.next/cache/fetch-cache/",
-                      "$BUCKET_PREFIX/.next/cache/images/"
+                      "$BUCKET_FOLDER_PREFIX/.next/cache/fetch-cache/",
+                      "$BUCKET_FOLDER_PREFIX/.next/cache/images/"
                     ]
                   }
                 }
