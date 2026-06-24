@@ -22,6 +22,7 @@ export const SurveyLayer = graphql(`
     id
     opacity
     showOnLoad
+    optionalLayer
     survey {
       ...Survey
     }

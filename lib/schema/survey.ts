@@ -65,6 +65,7 @@ export const surveyLayerSchema = z
   .object({
     id: z.string(),
     opacity: z.coerce.number().min(0).max(1).default(1).catch(1),
+    optionalLayer: z.boolean().default(true).catch(true),
     showOnLoad: z.boolean().default(true).catch(true),
     survey: z
       .array(surveyImageSchema)
@@ -72,8 +73,8 @@ export const surveyLayerSchema = z
       .max(1)
       .transform((output) => output[0]),
   })
-  .transform(({ id, opacity, showOnLoad, survey }) => {
-    return { id, survey: { opacity, showOnLoad, ...survey } };
+  .transform(({ id, opacity, showOnLoad, survey, optionalLayer }) => {
+    return { id, survey: { opacity, optionalLayer, showOnLoad, ...survey } };
   });
 
 export type SurveyLayer = z.infer<typeof surveyLayerSchema>;
