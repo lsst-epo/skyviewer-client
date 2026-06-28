@@ -55,6 +55,26 @@ const client = new Client({
   ],
 });
 
+// Temporary fallback while upstream catalog IDs may be null.
+function buildFallbackPointId(point) {
+  const ra = Number(point.RAdeg).toFixed(6);
+  const dec = Number(point.DECdeg).toFixed(6);
+  const gmag = Number(point.gmag).toFixed(3);
+  const gRColor = Number(point.g_r).toFixed(3);
+  const flag = point.flag ?? "na";
+  return `fallback:${ra}:${dec}:${gmag}:${gRColor}:${flag}`;
+}
+
+function normalizeCatalogPoint(point) {
+  return {
+    point: [point.RAdeg, point.DECdeg],
+    id: point.id ?? buildFallbackPointId(point),
+    gmag: point.gmag,
+    gRColor: point.g_r,
+    flag: point.flag,
+  };
+}
+
 class PointSearcher {
   constructor(p, aladin) {
     this.p = p; // Store p5 instance
@@ -90,16 +110,30 @@ class PointSearcher {
 
   useJSONFile(pointsData) {
     // Format the JSON data to match the expected structure
+    // Previous mapping kept for quick rollback once upstream IDs are restored:
+    // const formattedPoints =
+    //   pointsData.data.getRangeOfAstroObjectsWithLimit?.map((point) => ({
+    //     point: [point.RAdeg, point.DECdeg],
+    //     id: point.id,
+    //     gmag: point.gmag,
+    //     gRColor: point.g_r,
+    //     flag: point.flag,
+    //   })) || [];
     const formattedPoints =
-      pointsData.data.getRangeOfAstroObjectsWithLimit?.map((point) => ({
-        point: [point.RAdeg, point.DECdeg],
-        id: point.id,
-        gmag: point.gmag,
-        gRColor: point.g_r,
-        flag: point.flag,
-      })) || [];
+      pointsData.data.getRangeOfAstroObjectsWithLimit?.map(
+        normalizeCatalogPoint
+      ) || [];
 
     this.tree = new KDTree(formattedPoints);
+    // Previous mapping kept for quick rollback once upstream IDs are restored:
+    // const formattedPoints =
+    //   data.getRangeOfAstroObjectsWithLimit?.map((point) => ({
+    //     point: [point.RAdeg, point.DECdeg],
+    //     id: point.id,
+    //     gmag: point.gmag,
+    //     gRColor: point.g_r,
+    //     flag: point.flag,
+    //   })) || [];
     this.makeSubset(
       [parameters.currentRaDec[0], parameters.currentRaDec[1]],
       parameters.fovRadius
@@ -146,6 +180,7 @@ class PointSearcher {
         clearTimeout(this.fovUpdateTimeout);
       }
       this.fovUpdateTimeout = setTimeout(() => {
+        this.prevFOV = [...parameters.fov];
         this.getPoints()
           .then(() => {
             this.isFOVUpdating = false;
@@ -188,6 +223,7 @@ class PointSearcher {
       });
 
       if (error) {
+        console.error("Error fetching points from API:", error);
         throw new Error(error.message);
       }
 
@@ -196,15 +232,8 @@ class PointSearcher {
         this.tree = new KDTree([]);
         return;
       }
-
       const formattedPoints =
-        data.getRangeOfAstroObjectsWithLimit?.map((point) => ({
-          point: [point.RAdeg, point.DECdeg],
-          id: point.id,
-          gmag: point.gmag,
-          gRColor: point.g_r,
-          flag: point.flag,
-        })) || [];
+        data.getRangeOfAstroObjectsWithLimit?.map(normalizeCatalogPoint) || [];
       this.tree = new KDTree(formattedPoints);
       this.makeSubset(
         [parameters.currentRaDec[0], parameters.currentRaDec[1]],
@@ -341,46 +370,46 @@ class PointSearcher {
     }
     // DELETE BELOW //////////////////////
     // Draw nearest neighbours
-    // this.p.colorMode(this.p.RGB); // Ensure RGB mode for these points
-    // this.p.fill(255, 0, 0); // Red color for nearest neighbours
-    // this.p.noStroke(); // No outline for these ellipses
-    // for (const neighbour of this.nearestNeighbours) {
-    //   if (neighbour && neighbour.point) {
-    //     const canvasCoords = this.aladin.world2pix(
-    //       neighbour.point[0],
-    //       neighbour.point[1]
-    //     );
-    //     if (canvasCoords) {
-    //       // Ensure coordinates are valid
-    //       this.p.ellipse(canvasCoords[0], canvasCoords[1], 5, 5); // Draw a 5x5 ellipse
-    //     }
-    //   }
-    // }
+    this.p.colorMode(this.p.RGB); // Ensure RGB mode for these points
+    this.p.fill(255, 0, 0); // Red color for nearest neighbours
+    this.p.noStroke(); // No outline for these ellipses
+    for (const neighbour of this.nearestNeighbours) {
+      if (neighbour && neighbour.point) {
+        const canvasCoords = this.aladin.world2pix(
+          neighbour.point[0],
+          neighbour.point[1]
+        );
+        if (canvasCoords) {
+          // Ensure coordinates are valid
+          this.p.ellipse(canvasCoords[0], canvasCoords[1], 5, 5); // Draw a 5x5 ellipse
+        }
+      }
+    }
 
-    // // Draw subset points in blue
-    // this.p.fill(0, 0, 255); // Blue color for subset points
-    // for (const point of this.subsetPoints) {
-    //   if (point && point.point) {
-    //     const canvasCoords = this.aladin.world2pix(
-    //       point.point[0],
-    //       point.point[1]
-    //     );
-    //     if (canvasCoords) {
-    //       // Ensure coordinates are valid
-    //       this.p.ellipse(canvasCoords[0], canvasCoords[1], 3, 3); // Draw a slightly smaller 3x3 ellipse
-    //     }
-    //   }
-    // }
+    // Draw subset points in blue
+    this.p.fill(0, 0, 255); // Blue color for subset points
+    for (const point of this.subsetPoints) {
+      if (point && point.point) {
+        const canvasCoords = this.aladin.world2pix(
+          point.point[0],
+          point.point[1]
+        );
+        if (canvasCoords) {
+          // Ensure coordinates are valid
+          this.p.ellipse(canvasCoords[0], canvasCoords[1], 3, 3); // Draw a slightly smaller 3x3 ellipse
+        }
+      }
+    }
 
-    // // Draw nearest neighbours count
-    // this.p.fill(255); // White text
-    // this.p.textSize(16);
-    // this.p.text(`Number of points: ${this.tree.length}`, 20, 150);
-    // this.p.text(`queryMag: ${parameters.queryMag}`, 20, 170);
-    // this.p.text(`Current RA/DEC: ${parameters.currentRaDec}`, 20, 90);
-    // this.p.text(`Center Point: ${this.centerPoint}`, 20, 110);
-    // this.p.text(`FOV: ${parameters.fov}`, 20, 170);
-    // this.p.text(`Subset Points Length: ${this.subsetPoints.length}`, 20, 190);
+    // Draw nearest neighbours count
+    this.p.fill(255); // White text
+    this.p.textSize(16);
+    this.p.text(`Current RA/DEC: ${parameters.currentRaDec}`, 20, 90);
+    this.p.text(`Center Point: ${this.centerPoint}`, 20, 110);
+    this.p.text(`FOV: ${parameters.fov}`, 20, 130);
+    this.p.text(`Number of points: ${this.tree.length}`, 20, 150);
+    this.p.text(`queryMag: ${parameters.queryMag}`, 20, 170);
+    this.p.text(`Subset Points Length: ${this.subsetPoints.length}`, 20, 190);
     // DELETE ABOVE //////////////////////
     // Reset color mode to RGB
     this.p.colorMode(this.p.RGB);
