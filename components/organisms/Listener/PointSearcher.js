@@ -29,7 +29,7 @@ const query = gql`
     ) {
       RAdeg
       DECdeg
-      id
+      objectid
       gmag
       g_r
       flag
@@ -54,26 +54,6 @@ const client = new Client({
     fetchExchange,
   ],
 });
-
-// Temporary fallback while upstream catalog IDs may be null.
-function buildFallbackPointId(point) {
-  const ra = Number(point.RAdeg).toFixed(6);
-  const dec = Number(point.DECdeg).toFixed(6);
-  const gmag = Number(point.gmag).toFixed(3);
-  const gRColor = Number(point.g_r).toFixed(3);
-  const flag = point.flag ?? "na";
-  return `fallback:${ra}:${dec}:${gmag}:${gRColor}:${flag}`;
-}
-
-function normalizeCatalogPoint(point) {
-  return {
-    point: [point.RAdeg, point.DECdeg],
-    id: point.id ?? buildFallbackPointId(point),
-    gmag: point.gmag,
-    gRColor: point.g_r,
-    flag: point.flag,
-  };
-}
 
 class PointSearcher {
   constructor(p, aladin) {
@@ -110,30 +90,16 @@ class PointSearcher {
 
   useJSONFile(pointsData) {
     // Format the JSON data to match the expected structure
-    // Previous mapping kept for quick rollback once upstream IDs are restored:
-    // const formattedPoints =
-    //   pointsData.data.getRangeOfAstroObjectsWithLimit?.map((point) => ({
-    //     point: [point.RAdeg, point.DECdeg],
-    //     id: point.id,
-    //     gmag: point.gmag,
-    //     gRColor: point.g_r,
-    //     flag: point.flag,
-    //   })) || [];
     const formattedPoints =
-      pointsData.data.getRangeOfAstroObjectsWithLimit?.map(
-        normalizeCatalogPoint,
-      ) || [];
+      pointsData.data.getRangeOfAstroObjectsWithLimit?.map((point) => ({
+        point: [point.RAdeg, point.DECdeg],
+        id: point.objectid,
+        gmag: point.gmag,
+        gRColor: point.g_r,
+        flag: point.flag,
+      })) || [];
 
     this.tree = new KDTree(formattedPoints);
-    // Previous mapping kept for quick rollback once upstream IDs are restored:
-    // const formattedPoints =
-    //   data.getRangeOfAstroObjectsWithLimit?.map((point) => ({
-    //     point: [point.RAdeg, point.DECdeg],
-    //     id: point.id,
-    //     gmag: point.gmag,
-    //     gRColor: point.g_r,
-    //     flag: point.flag,
-    //   })) || [];
     this.makeSubset(
       [parameters.currentRaDec[0], parameters.currentRaDec[1]],
       parameters.fovRadius,
@@ -233,7 +199,13 @@ class PointSearcher {
         return;
       }
       const formattedPoints =
-        data.getRangeOfAstroObjectsWithLimit?.map(normalizeCatalogPoint) || [];
+        data.getRangeOfAstroObjectsWithLimit?.map((point) => ({
+          point: [point.RAdeg, point.DECdeg],
+          id: point.objectid,
+          gmag: point.gmag,
+          gRColor: point.g_r,
+          flag: point.flag,
+        })) || [];
       this.tree = new KDTree(formattedPoints);
       this.makeSubset(
         [parameters.currentRaDec[0], parameters.currentRaDec[1]],
