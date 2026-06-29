@@ -409,21 +409,28 @@ class PointSearcher {
         if (canvasCoords) {
           // Ensure coordinates are valid
           this.p.ellipse(canvasCoords[0], canvasCoords[1], 3, 3); // Draw a slightly smaller 3x3 ellipse
-        }
-      }
+        } 
+      } 
     }
 
     // Draw nearest neighbours count
     this.p.fill(255); // White text
     this.p.textSize(16);
-    this.p.text(`Current RA/DEC: ${parameters.currentRaDec}`, 20, 90);
-    this.p.text(`Center Point: ${this.centerPoint}`, 20, 110);
-    this.p.text(`FOV: ${parameters.fov}`, 20, 130);
+    const formatCoordinateList = (coords) =>
+      coords.map((value) => Number(value).toFixed(2)).join(", ");
+    const formattedRaDec = formatCoordinateList(parameters.currentRaDec);
+    const formattedCenterPoint = formatCoordinateList(this.centerPoint);
+    const formattedFov = formatCoordinateList(parameters.fov);
+    this.p.text(`Current RA/DEC: ${formattedRaDec}`, 20, 90);
+    this.p.text(`Center Point: ${formattedCenterPoint}`, 20, 110);
+    this.p.text(`FOV: ${formattedFov}`, 20, 130);
+    this.p.text(`FOV Radius: ${parameters.fovRadius.toFixed(3)}`, 20, 150);
+    this.p.text(`Query Radius: ${parameters.queryRadius.toFixed(3)}`, 20, 170);
     if (this.tree) {
-      this.p.text(`Number of points: ${this.tree.length}`, 20, 150);
+      this.p.text(`Number of points: ${this.tree.length}`, 20, 190);
     }
-    this.p.text(`queryMag: ${parameters.queryMag}`, 20, 170);
-    this.p.text(`Subset Points Length: ${this.subsetPoints.length}`, 20, 190);
+    this.p.text(`queryMag: ${parameters.queryMag}`, 20, 210);
+    this.p.text(`Subset Points Length: ${this.subsetPoints.length}`, 20, 230);
   }
 }
 
