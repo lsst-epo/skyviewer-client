@@ -7,7 +7,7 @@ import {
   mapValueToHue,
   raDecDistance,
 } from "./utilities";
-import initialPointsData from "./initialPoints.json";
+// import initialPointsData from "./initialPoints.json";
 import backupPointsData from "./backupPoints.json";
 import { env } from "@/env";
 
@@ -111,7 +111,8 @@ class PointSearcher {
     this.isInitializing = true;
 
     try {
-      this.useJSONFile(initialPointsData);
+      // this.useJSONFile(initialPointsData);
+      this.getPoints(); // Fetch points from the API on initialization
       this.ready = true;
     } finally {
       this.isInitializing = false;
@@ -138,13 +139,13 @@ class PointSearcher {
       this.prevFOV = [...parameters.fov];
 
       this.isFOVUpdating = true;
-      if (parameters.fovRadius > 3) {
-        this.useJSONFile(backupPointsData);
-        this.isFOVUpdating = false;
-      } else if (this.fovUpdateTimeout) {
-        // Clear any existing timeout
-        clearTimeout(this.fovUpdateTimeout);
-      }
+      // if (parameters.fovRadius > 3) {
+      //   this.useJSONFile(backupPointsData);
+      //   this.isFOVUpdating = false;
+      // } else if (this.fovUpdateTimeout) {
+      //   // Clear any existing timeout
+      //   clearTimeout(this.fovUpdateTimeout);
+      // }
       this.fovUpdateTimeout = setTimeout(() => {
         this.prevFOV = [...parameters.fov];
         this.getPoints()
@@ -418,7 +419,9 @@ class PointSearcher {
     this.p.text(`Current RA/DEC: ${parameters.currentRaDec}`, 20, 90);
     this.p.text(`Center Point: ${this.centerPoint}`, 20, 110);
     this.p.text(`FOV: ${parameters.fov}`, 20, 130);
-    this.p.text(`Number of points: ${this.tree.length}`, 20, 150);
+    if (this.tree) {
+      this.p.text(`Number of points: ${this.tree.length}`, 20, 150);
+    }
     this.p.text(`queryMag: ${parameters.queryMag}`, 20, 170);
     this.p.text(`Subset Points Length: ${this.subsetPoints.length}`, 20, 190);
   }
