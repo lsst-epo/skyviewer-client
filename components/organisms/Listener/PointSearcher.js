@@ -343,7 +343,7 @@ class PointSearcher {
     }
 
     // Additional diagnostics for debugging
-    this.drawOnScreenDiagnostics();
+    // this.drawOnScreenDiagnostics();
 
     // Reset color mode to RGB
     this.p.colorMode(this.p.RGB);
@@ -409,8 +409,8 @@ class PointSearcher {
         if (canvasCoords) {
           // Ensure coordinates are valid
           this.p.ellipse(canvasCoords[0], canvasCoords[1], 3, 3); // Draw a slightly smaller 3x3 ellipse
-        } 
-      } 
+        }
+      }
     }
 
     // Draw nearest neighbours count
