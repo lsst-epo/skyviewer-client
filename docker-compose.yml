@@ -1,0 +1,13 @@
+services:
+  client:
+    build:
+      context: .
+      target: runner
+    ports:
+      - "3000:8080"
+    env_file:
+      - .env.local
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: /app/skyviewer-dev-sa-key.json
+    volumes:
+      - ./skyviewer-dev-sa-key.json:/app/skyviewer-dev-sa-key.json:ro
