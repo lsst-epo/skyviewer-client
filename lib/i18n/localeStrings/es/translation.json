@@ -92,6 +92,12 @@
       "placeholder": "Ingresa tu búsqueda…",
       "clear": "Borrar entrada de búsqueda",
       "take_a_tour": "¿No sabes qué buscar? <1>Haz un tour</1>",
+      "quick_links" : {
+        "list_header": "Dirígete a:",
+        "item_1": "<0>Un Océano de Estrellas</0>",
+        "item_2": "<0>Cofre de Tesoros Cósmicos</0> (el Cúmulo de Virgo)",
+        "treasure_chest_chart": "¿Buscas algo específico en el Cofre de Tesoros Cósmicos? Consulta nuestro <0>mapa de búsqueda</0>"
+      },
       "instructions": "Skyviewer busca nombres comunes de objetos astronómicos, por ejemplo “M49” o “Messier 49,” utilizando las bases de datos astronómicas de <0>SIMBAD</0> y <1>NED</1>. Skyviewer también puede buscar lugares de coordenadas de objetos utilizando la ascensión recta (RA) y la declinación (DEC) en formato decimal, ejemplo “186.2 7.0.”",
       "error_object": "Skyviewer no pudo encontrar “{{search}}”",
       "error_coordinate": "Prueba con una coordenada ra/dec decimal válida, por ejemplo 186.2 7.0",
