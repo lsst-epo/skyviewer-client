@@ -307,6 +307,63 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
                     <Link href="/tours">Take a tour</Link>
                   </Trans>
                 </div>
+
+                <div className={styles.helpText}>
+                  <Trans i18nKey="menu.search.quick_links.list_header">Go straight to:</Trans>
+                  <ul>
+                    <li>
+                      <Trans
+                      i18nKey="menu.search.quick_links.item_1"
+                      components={[
+                        <a
+                          href="/explorer?target=224.76873+-39.61698&fov=3.60"
+                          hrefLang="en"
+                        />
+                      ]}>
+                        <a href="/explorer?target=224.76873+-39.61698&fov=3.60">
+                          Ocean of Stars
+                        </a>
+                      </Trans>
+                    </li>
+                    <li>
+                      <Trans
+                      i18nKey="menu.search.quick_links.item_2"
+                      components={[
+                        <a
+                        href="/explorer?target=187.77035+8.07268&fov=2.00"
+                        hrefLang="en"
+                        />
+                      ]}
+                      >
+                        <a href="/explorer?target=187.77035+8.07268&fov=2.00">
+                          Cosmic Treasure Chest (the Virgo Cluster)
+                        </a>
+                      </Trans>
+                    </li>
+                    <ul>
+                      <li>
+                        <Trans i18nKey="menu.search.quick_links.treasure_chest_chart"
+                        components={[
+                          <a
+                            href="https://rubinobservatory.org/gallery/collections/first-look-gallery/qe2do9iu6h1gbdg4bsgc1o083u"
+                            hrefLang="en"
+                            target="_blank"
+                            rel="noreferrer"
+                          />,
+                        ]}
+                        >
+                          Looking for something specific in the
+                          Cosmic Treasure Chest?
+                        <a
+                            href="https://rubinobservatory.org/gallery/collections/first-look-gallery/qe2do9iu6h1gbdg4bsgc1o083u"
+                            target="_blank"
+                            rel="noreferrer"
+                          />Check our finder chart.</Trans>
+                      </li>
+                    </ul>
+                  </ul>
+                </div>
+
                 <div id={id} className={styles.helpText}>
                   <Trans
                     i18nKey="menu.search.instructions"
