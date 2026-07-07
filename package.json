@@ -70,6 +70,7 @@
     "clsx": "^2.1.1",
     "file-saver": "^2.0.5",
     "focus-trap": "^6.1.2",
+    "google-auth-library": "^10.9.0",
     "graphql": "^16.9.0",
     "graphql-request": "6",
     "gsap": "^3.12.7",

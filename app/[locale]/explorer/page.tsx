@@ -20,7 +20,10 @@ const ExplorerPage: FC<RootProps> = async ({ params: { locale } }) => {
   const { surveys, fovRange, ...configuredOptions } = data;
 
   const properties = surveys.map(({ survey }) => {
-    const { pathname, origin } = new URL(survey.path);
+    const absolute = survey.path.startsWith("http")
+      ? survey.path
+      : `${env.NEXT_PUBLIC_BASE_URL}${survey.path}`;
+    const { pathname, origin } = new URL(absolute);
 
     return new URL(`${pathname}/properties`, origin).toString();
   });
