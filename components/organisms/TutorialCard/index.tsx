@@ -49,7 +49,7 @@ const TutorialCard: FC<CardComponentProps> = ({
           className={clsx(styles.control, styles.skipButton)}
           onClick={skipTour}
         >
-          Skip
+          {t("tours.tutorial.skip")}
           <IoMdSkipForward />
         </button>
       </Stack>
