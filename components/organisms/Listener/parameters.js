@@ -21,6 +21,7 @@ const parameters = {
   boundarySteps: 20, // Number of steps to take before checking for boundaries
   voidSteps: 150, // Number of steps until we move the user back to lastGoodPosition
   inTheVoid: false, // Whether the user is in the void
+  resettingPosition: false, // True while animating to a new position (void rescue or navigation), pauses boundary/void tracking
   lastGoodPosition: [0, 0], // Last position where cardinal directions were all non-black,in Ra/Dec
   instruments: ["harp", "glock"], // instruemtns with premade samples
   startNote: 60, // Starting MIDI note for the instruments

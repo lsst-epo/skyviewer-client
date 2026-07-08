@@ -125,8 +125,10 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         }
         // Update FOV Radius and Query Radios
         pointSearcherRef.current.updateFOVRadius();
-        // Check if we need to update points based on position or FOV changes
-        pointSearcherRef.current.shouldUpdatePoints();
+        // Check if we need to update points based on position or FOV changes is we're not currently resetting position (i.e., animating to a new position)
+        if (!parameters.resettingPosition) {
+          pointSearcherRef.current.shouldUpdatePoints();
+        }
         // Update neighbors based on current position and target radius
         pointSearcherRef.current.updateNeighbors();
         // Update and draw animations for points entering the circle
