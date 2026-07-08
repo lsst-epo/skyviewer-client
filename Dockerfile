@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.19
 # Rebuild the source code only when needed 
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 WORKDIR /app
 COPY --exclude=.env . /app
 RUN apk add --no-cache libc6-compat git fontconfig
@@ -15,7 +15,7 @@ FROM scratch AS nextjs-copy
 COPY --from=yarn-builder /app/.next /
 
 # Production image, copy all the files and run next
-FROM node:20-alpine AS runner
+FROM node:22-alpine AS runner
 WORKDIR /app
 
 RUN apk add --no-cache fontconfig
