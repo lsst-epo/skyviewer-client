@@ -24,3 +24,12 @@ type TourParams = {
 interface TourProps {
   params: TourParams & RootParams;
 }
+
+type ExportFileType = "png" | "jpg" | "jpeg" | "webp";
+
+type ExportParams = {
+  fileType: ExportFileType;
+};
+interface ExportProps {
+  params: ExportParams & RootParams;
+}
