@@ -19,6 +19,7 @@ export const getGlobalData = async ({ locale }: { locale: string }) => {
         ... on siteInfo_GlobalSet {
           name
           aboutMenuContent
+          faqMenuContent
           siteDescription
           siteTitle
           logo(where: { key: "scheme", value: "image" }) {

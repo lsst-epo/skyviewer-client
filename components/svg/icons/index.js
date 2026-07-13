@@ -1,4 +1,5 @@
 import Compass from "./Compass";
+import Faq from "./Faq";
 import Filters from "./Filters";
 import Galaxy from "./Galaxy";
 import Grid from "./Grid";
@@ -14,6 +15,7 @@ import MapSearch from "./MapSearch";
 
 export default {
   Compass,
+  Faq,
   Filters,
   Galaxy,
   Grid,

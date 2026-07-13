@@ -112,6 +112,9 @@
     "settings": {
       "title": "Ajustes"
     },
+    "general": {
+      "title": "General"
+    },
     "about": {
       "title": "Acerca de Skyviewer",
       "cta": "Metadatos y más",
@@ -121,6 +124,10 @@
           "created_by": "Creado por {{creator}}"
         }
       }
+    },
+    "faq": {
+      "title": "FAQ",
+      "cta": "Preguntas frecuentes"
     },
     "locales": {
       "title": "Preferencias de idioma",

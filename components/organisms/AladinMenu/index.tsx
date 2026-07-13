@@ -7,6 +7,7 @@ import SlideoutWrapper from "./SlideoutWrapper";
 import QuickAccess from "./QuickAccess";
 import LocalesMenu from "./Locales";
 import AboutMenu from "./About";
+import FAQMenu from "./FAQ";
 import VisuallyHidden from "@/components/atomic/VisuallyHidden";
 import IconComposer from "@/components/svg/IconComposer";
 import { useTranslation } from "@/lib/i18n/server";
@@ -38,8 +39,11 @@ const AladinMenu: FC<PropsWithChildren<AladinMenuProps>> = async ({
       <SlideoutWrapper>
         <MenuGroup title={t("menu.settings.title")}>
           <LocalesMenu />
-          <AboutMenu {...{ properties, locale }} />
           {children}
+        </MenuGroup>
+        <MenuGroup title={t("menu.general.title")}>
+          <FAQMenu {...{ locale }}/>
+          <AboutMenu {...{ properties, locale }} />
         </MenuGroup>
         <QuickAccess />
       </SlideoutWrapper>
