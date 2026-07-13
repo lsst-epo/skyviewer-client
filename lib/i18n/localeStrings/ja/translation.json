@@ -114,6 +114,9 @@
     "settings": {
       "title": "設定"
     },
+    "general": {
+      "title": "一般"
+    },
     "about": {
       "title": "スカイビューワーについて",
       "cta": "メタデータなど",
@@ -123,6 +126,10 @@
           "created_by": "{{creator}} により制作"
         }
       }
+    },
+    "faq": {
+      "title": "FAQ",
+      "cta": "よくある質問と答え"
     },
     "locales": {
       "title": "言語選択",
