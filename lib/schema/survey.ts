@@ -1,6 +1,7 @@
 "server-only";
 
 import { z } from "zod/v4";
+import { env } from "@/env";
 
 const imgFormat: HiPSImageFormat = "png";
 const cooFrame: CooFrame = "ICRS";
@@ -53,8 +54,14 @@ export const surveyImageSchema = z
     path: z.string(),
   })
   .transform(({ fovMin, fovMax, ...output }) => {
+    const path =
+      env.CLOUD_ENV === "DEV"
+        ? output.path.replace("https://storage.googleapis.com/", "/api/gcs/")
+        : output.path;
+
     return {
       ...output,
+      path,
       fovRange: [fovMin, fovMax],
     };
   });
