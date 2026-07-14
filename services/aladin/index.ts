@@ -2,6 +2,7 @@
 import { z } from "zod/v4";
 import tagStore from "@/services/api/tags";
 import { parseHIPSProperties } from "@/lib/aladin/properties";
+import { getAuthHeaders } from "@/lib/gcs/auth";
 
 const PropertiesSchema = z.object({
   collection: z.string().optional(),
@@ -17,7 +18,10 @@ const PropertiesSchema = z.object({
 export type SurveyProperties = z.infer<typeof PropertiesSchema>;
 
 export const getProperties = async (path: string) => {
+  const authHeaders = await getAuthHeaders(path);
+
   const response = await fetch(path, {
+    headers: authHeaders,
     next: { tags: [tagStore.surveys], revalidate: 60 * 60 * 24 },
   });
 

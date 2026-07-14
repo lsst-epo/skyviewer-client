@@ -1,0 +1,14 @@
+services:
+  client:
+    build:
+      context: .
+      target: builder
+    command: yarn dev
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.local
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: /app/skyviewer-dev-sa-key.json
+    volumes:
+      - ./skyviewer-dev-sa-key.json:/app/skyviewer-dev-sa-key.json:ro
