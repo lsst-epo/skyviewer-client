@@ -18,6 +18,21 @@
       "listen": "Versión sonora"
     }
   },
+  "skysynth-navigation": {
+    "open": "Navegación",
+    "title": "Navegación",
+    "close": "Cerrar",
+    "destinations": {
+      "cosmic-treasure-chest": {
+        "label": "Cofre de Tesoros Cósmicos (el Cúmulo de Virgo)",
+        "description": "Región sur del Cúmulo de Virgo"
+      },
+      "ocean-of-stars": {
+        "label": "Un Océano de Estrellas",
+        "description": "Un campo estelar cerca de nuestro plano galáctico"
+      }
+    }
+  },
   "guided-experiences": {
     "title": "Experiencias guiadas",
     "tour_one": "Tour",
@@ -92,7 +107,7 @@
       "placeholder": "Ingresa tu búsqueda…",
       "clear": "Borrar entrada de búsqueda",
       "take_a_tour": "¿No sabes qué buscar? <1>Haz un tour</1>",
-      "quick_links" : {
+      "quick_links": {
         "list_header": "Dirígete a:",
         "item_1": "<0>Un Océano de Estrellas</0>",
         "item_2": "<0>Cofre de Tesoros Cósmicos</0> (el Cúmulo de Virgo)",

@@ -10,7 +10,7 @@ export interface Destination {
 const destinations: Destination[] = [
   {
     id: "cosmic-treasure-chest",
-    label: "Cosmic Treasure Chest",
+    label: "Cosmic Treasure Chest (the Virgo Cluster)",
     description: "Southern region of the Virgo Cluster",
     ra: 187.77035,
     dec: 8.07268,

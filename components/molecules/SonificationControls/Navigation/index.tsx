@@ -73,7 +73,7 @@ const Navigation: FC<NavigationProps> = ({ buttonClassName, className }) => {
     <>
       <IconButton
         styleAs="primary"
-        text={t("navigation.open", "Navigation")}
+        text={t("skysynth-navigation.open", "Navigation")}
         onClick={toggleNavigation}
         icon={<IconComposer icon="Pin" />}
         className={clsx(styles.toggleButton, buttonClassName)}
@@ -95,7 +95,7 @@ const Navigation: FC<NavigationProps> = ({ buttonClassName, className }) => {
                 <div className={styles.content}>
                   <div className={styles.header}>
                     <h2 className={styles.title}>
-                      {t("navigation.title", "Navigation")}
+                      {t("skysynth-navigation.title", "Navigation")}
                     </h2>
                     <CloseButton
                       as={motion.button}
@@ -104,9 +104,9 @@ const Navigation: FC<NavigationProps> = ({ buttonClassName, className }) => {
                       animate={{ x: 0, opacity: 1 }}
                       exit={{ x: 15, opacity: 0 }}
                       transition={animations.dialog.transition}
-                      key={t("navigation.close", "Close")}
+                      key={t("skysynth-navigation.close", "Close")}
                     >
-                      {t("navigation.close", "Close")}
+                      {t("skysynth-navigation.close", "Close")}
                     </CloseButton>
                   </div>
                   <div className={styles.textContent}>
@@ -121,14 +121,14 @@ const Navigation: FC<NavigationProps> = ({ buttonClassName, className }) => {
                           >
                             <span className={styles.destinationLabel}>
                               {t(
-                                `navigation.destinations.${destination.id}.label`,
+                                `skysynth-navigation.destinations.${destination.id}.label`,
                                 destination.label,
                               )}
                             </span>
                             {destination.description && (
                               <span className={styles.destinationDescription}>
                                 {t(
-                                  `navigation.destinations.${destination.id}.description`,
+                                  `skysynth-navigation.destinations.${destination.id}.description`,
                                   destination.description,
                                 )}
                               </span>
