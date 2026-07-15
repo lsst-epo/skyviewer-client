@@ -73,12 +73,12 @@ const Layers: FC<LayersProps> = ({ layers, debug = false }) => {
             id,
             survey: { title, description, optionalLayer },
           } = layer;
-          if(optionalLayer && debug) {
-            console.info(`[Debug] Layer ${title} is non-optional layer.`)
+          if(!optionalLayer && debug) {
+            console.info(`[Debug] Layer ${title} is a non-optional layer.`)
           }
           const isLast = i === layers.length - 1;
           const key = isLast ? "base" : id;
-          return ( optionalLayer &&
+          return (
             <Field as="li" className={styles.item} key={id}>
               <div>
                 <Label className={styles.label}>{title}</Label>
@@ -88,7 +88,7 @@ const Layers: FC<LayersProps> = ({ layers, debug = false }) => {
                   </Description>
                 )}
               </div>
-              {(!isLast || debug) && (
+              {(debug || (!isLast && optionalLayer)) && (
                 <Switch
                   style={{ "--time-duration-toggle": duration }}
                   onChange={(checked) =>
