@@ -1,6 +1,7 @@
 "use client";
 import { ChangeEventHandler, FC, useCallback, useState } from "react";
 import Sketch from "./sketch";
+import parameters from "./parameters";
 import AladinOverlay from "@/components/atomic/AladinOverlay";
 import { useAladin } from "@/contexts/Aladin";
 
@@ -117,10 +118,13 @@ const Listener: FC = () => {
       const size = aladin.getSize();
       const x = Math.floor(size[0] / 2);
       const y = Math.floor(size[1] / 2);
+      const layer = aladin.getOverlayImageLayer(parameters.selectedLayerId);
+
+      if (!layer) return;
 
       const average = samplePixels({
         cells: buildSample({ size: sampleSize, start: [x, y] }),
-        layer: aladin.getBaseImageLayer(),
+        layer,
       });
 
       if (average) {
@@ -131,7 +135,7 @@ const Listener: FC = () => {
       const sums = getCardinalPixels({
         center: [x, y],
         distance: 50,
-        layer: aladin.getBaseImageLayer(),
+        layer,
         sampleSize: cardinalSampleSize,
       });
       setCardinalSums(sums);

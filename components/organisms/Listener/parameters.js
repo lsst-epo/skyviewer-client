@@ -68,6 +68,8 @@ const parameters = {
     { max: 2.56, value: 4000 },
     { max: 5.12, value: 2000 },
   ], // Piecewise limit ranges
+
+  selectedLayerId: "base", // Layer ids for aladin.getOverlayImageLayer(parameters.selectedLayerId)
 };
 
 export default parameters;

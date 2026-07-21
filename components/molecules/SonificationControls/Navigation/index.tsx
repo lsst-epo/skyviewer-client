@@ -36,12 +36,13 @@ const Navigation: FC<NavigationProps> = ({ buttonClassName, className }) => {
     setOpen(!isOpen);
   };
 
-  const handleDestinationClick = ({ ra, dec }: Destination) => {
+  const handleDestinationClick = ({ ra, dec, layerId }: Destination) => {
     if (isLoading) return;
 
     closeNavigation();
     // Pause the walker's movement and void/boundary tracking while we travel
     parameters.resettingPosition = true;
+    parameters.selectedLayerId = layerId;
     goToPosition({
       ra,
       dec,
