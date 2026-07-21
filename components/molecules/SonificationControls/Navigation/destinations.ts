@@ -11,7 +11,7 @@ export interface Destination {
 const destinations: Destination[] = [
   {
     id: "cosmic-treasure-chest",
-    layerId: "15603",
+    layerId: "base",
     label: "Cosmic Treasure Chest (the Virgo Cluster)",
     description: "Southern region of the Virgo Cluster",
     ra: 187.77035,
@@ -19,7 +19,7 @@ const destinations: Destination[] = [
   },
   {
     id: "ocean-of-stars",
-    layerId: "base",
+    layerId: "15642",
     label: "Ocean of Stars",
     description: "A stellar field near our Galactic plane",
     ra: 225.53899,
