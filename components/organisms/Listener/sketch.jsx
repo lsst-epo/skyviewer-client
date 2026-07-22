@@ -59,7 +59,7 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         }
       }
     },
-    [aladin]
+    [aladin],
   );
 
   // Listen for zoom changes which indicates a resize
@@ -84,8 +84,8 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
             audioPromises.push(
               loadAudio(
                 `${instrument}_${i}`,
-                `/sonification/sounds/${instrument}/${i}.mp3`
-              )
+                `/sonification/sounds/${instrument}/${i}.mp3`,
+              ),
             );
           }
         }
@@ -99,8 +99,10 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         // Initialize the walker with p5 instance and aladin
         walkerRef.current = new Walker(p, aladin);
         // Initialize the point searcher with p5 instance and aladin
+        parameters.currentRaDec = aladin.getRaDec();
         parameters.fov = aladin.getFov();
         pointSearcherRef.current = new PointSearcher(p, aladin);
+        pointSearcherRef.current.updateFOVRadius();
         // pointSearcherRef.current.makeSubset([186.46515, 7.15508], 0.025); // TDOD: Make these variables that get updated in the setup loop
         // Get the initial points from the point searcher on first load
         // pointSearcherRef.current.getPoints(); // TODO: Figure out what arguments to pass in
@@ -123,15 +125,17 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         }
         // Update FOV Radius and Query Radios
         pointSearcherRef.current.updateFOVRadius();
-        // Check if we need to update points based on position or FOV changes
-        pointSearcherRef.current.shouldUpdatePoints();
+        // Check if we need to update points based on position or FOV changes is we're not currently resetting position (i.e., animating to a new position)
+        if (!parameters.resettingPosition) {
+          pointSearcherRef.current.shouldUpdatePoints();
+        }
         // Update neighbors based on current position and target radius
         pointSearcherRef.current.updateNeighbors();
         // Update and draw animations for points entering the circle
         pointSearcherRef.current.updateAndDrawAnimations();
         // Trigger sounds for points entering the circle
         samplePlayerRef.current.triggerNewNearestNeighbors(
-          pointSearcherRef.current
+          pointSearcherRef.current,
         );
 
         // Draw the empty circle without tint

@@ -18,6 +18,21 @@
       "listen": "Listen"
     }
   },
+  "skysynth-navigation": {
+    "open": "Navigation",
+    "title": "Navigation",
+    "close": "Close",
+    "destinations": {
+      "cosmic-treasure-chest": {
+        "label": "Cosmic Treasure Chest (the Virgo Cluster)",
+        "description": "Southern region of the Virgo Cluster"
+      },
+      "ocean-of-stars": {
+        "label": "Ocean of Stars",
+        "description": "A stellar field near our Galactic plane"
+      }
+    }
+  },
   "guided-experiences": {
     "title": "Guided Experiences",
     "tour_one": "Tour",
@@ -94,7 +109,7 @@
       "placeholder": "Enter your search...",
       "clear": "Clear search input",
       "take_a_tour": "Don't know what to look for? <1>Take a tour</1>",
-      "quick_links" : {
+      "quick_links": {
         "list_header": "Go straight to:",
         "item_1": "<0>Ocean of Stars</0>",
         "item_2": "<0>Cosmic Treasure Chest</0> (the Virgo Cluster)",

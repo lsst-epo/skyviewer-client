@@ -3,31 +3,33 @@ import parameters from "./parameters.js";
 export function shiftStarTint(rgbValues) {
   const currentBrightness = Math.max(
     (rgbValues[0] + rgbValues[1] + rgbValues[2]) / 3,
-    1
+    1,
   );
   if (currentBrightness < parameters.minBrightness) {
     parameters.brightness_scaleFactor = Math.min(
       parameters.minBrightness / currentBrightness,
-      2
+      2,
     );
+  } else {
+    parameters.brightness_scaleFactor = 1;
   }
   const r = Math.min(
     rgbValues[0] *
       parameters.brightness_scaleFactor *
       parameters.brightness_boost,
-    255
+    255,
   );
   const g = Math.min(
     rgbValues[1] *
       parameters.brightness_scaleFactor *
       parameters.brightness_boost,
-    255
+    255,
   );
   const b = Math.min(
     rgbValues[2] *
       parameters.brightness_scaleFactor *
       parameters.brightness_boost,
-    255
+    255,
   );
   return [r, g, b];
 }
@@ -40,16 +42,16 @@ export function controlledWalk(p, aladin) {
   let dx = 0;
   let dy = 0;
 
-  if (p.keyIsDown(p.LEFT_ARROW) || p.keyIsDown('a')) {
+  if (p.keyIsDown(p.LEFT_ARROW) || p.keyIsDown("a")) {
     dx -= 1;
   }
-  if (p.keyIsDown(p.RIGHT_ARROW) || p.keyIsDown('d')) {
+  if (p.keyIsDown(p.RIGHT_ARROW) || p.keyIsDown("d")) {
     dx += 1;
   }
-  if (p.keyIsDown(p.UP_ARROW) || p.keyIsDown('w')) {
+  if (p.keyIsDown(p.UP_ARROW) || p.keyIsDown("w")) {
     dy -= 1;
   }
-  if (p.keyIsDown(p.DOWN_ARROW) || p.keyIsDown('s')) {
+  if (p.keyIsDown(p.DOWN_ARROW) || p.keyIsDown("s")) {
     dy += 1;
   }
 
@@ -135,10 +137,10 @@ export function areArrowsPressed(p) {
     p.keyIsDown(p.RIGHT_ARROW) ||
     p.keyIsDown(p.UP_ARROW) ||
     p.keyIsDown(p.DOWN_ARROW) ||
-    p.keyIsDown('w') ||
-    p.keyIsDown('a') ||
-    p.keyIsDown('s') ||
-    p.keyIsDown('d')
+    p.keyIsDown("w") ||
+    p.keyIsDown("a") ||
+    p.keyIsDown("s") ||
+    p.keyIsDown("d")
   );
 }
 
