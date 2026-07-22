@@ -9,10 +9,11 @@ class Walker {
     this.voidCounter = 0;
     this.directionX = 1;
     this.directionY = 1;
-    this.resettingPosition = false;
   }
 
   walk() {
+    // Don't fight the animation while moving to a new position
+    if (parameters.resettingPosition) return;
     const [ra, dec] = this.aladin.getRaDec();
     const [pixelX, pixelY] = this.aladin.world2pix(ra, dec);
     const angle = this.p.map(
@@ -32,7 +33,7 @@ class Walker {
   }
 
   cardinalSumCounter() {
-    if (!this.resettingPosition) {
+    if (!parameters.resettingPosition) {
       // Store the latest time every cardinal direction was non-black
       if (this.cardinalSums.every((sum) => sum !== 0)) {
         parameters.lastGoodPosition = this.aladin.getRaDec();
@@ -62,7 +63,7 @@ class Walker {
   boundaryCheck() {
     // Go to last good position if stuck in the void for too long
     if (this.voidCounter >= parameters.voidSteps) {
-      this.resettingPosition = true;
+      parameters.resettingPosition = true;
       // Reset the void counter
       this.voidCounter = 0;
       // Reset the cardinal sums count
@@ -77,7 +78,7 @@ class Walker {
           parameters.lastGoodPosition[1],
           0.5,
           () => {
-            this.resettingPosition = false;
+            parameters.resettingPosition = false;
           }
         );
         // Go to starting position if we don't have a last good position
@@ -87,12 +88,12 @@ class Walker {
           parameters.startingPosition[1],
           0.5,
           () => {
-            this.resettingPosition = false;
+            parameters.resettingPosition = false;
           }
         );
       }
     }
-    if (!this.resettingPosition) {
+    if (!parameters.resettingPosition) {
       for (let i = 0; i < this.cardinalSumsCount.length; i++) {
         if (this.cardinalSumsCount[i] >= parameters.boundarySteps) {
           if (i % 2 === 0) {

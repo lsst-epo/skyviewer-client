@@ -21,27 +21,26 @@ const parameters = {
   boundarySteps: 20, // Number of steps to take before checking for boundaries
   voidSteps: 150, // Number of steps until we move the user back to lastGoodPosition
   inTheVoid: false, // Whether the user is in the void
+  resettingPosition: false, // True while animating to a new position (void rescue or navigation), pauses boundary/void tracking
   lastGoodPosition: [0, 0], // Last position where cardinal directions were all non-black,in Ra/Dec
   instruments: ["harp", "glock"], // instruemtns with premade samples
   startNote: 60, // Starting MIDI note for the instruments
   audioContext: null, // Reference to the audio context
   audioBuffers: {}, // Object to store multiple audio buffers
   minGRColour: 0, // Minimum green-red color value
-  maxGRColour: 0.8, // Maximum green-red color value
-  gmagMin: 9, // Minimum gmag value
-  gmagMax: 23, // Maximum gmag value
+  maxGRColour: 1.6, // Maximum green-red color value
+  gmagMin: 16, // Minimum gmag value
+  gmagMax: 28, // Maximum gmag value
   freqScaling: 0.4, // Frequency scaling factor
-  ampScaling: 0.5, // Amplitude scaling factor
+  ampScaling: 1, // Amplitude scaling factor
   maxSampleVolume: 0.4, // Maximum volume for samples
   // API parameters, need to set with intial values
   currentRaDec: [187.77035, 8.07268], // Current RA and Dec coordinates
   startingPosition: [187.77035, 8.07268], // Starting position in Ra/Dec
   lastRaDec: [0, 0], // Last RA and Dec coordinates at time of API call
   fov: [0, 0], // Field of View in pixels [width, height]
-  fovRadius: 0, // Field of View radius in Ra/Dec
+  fovRadius: 3.718, // Field of View radius in Ra/Dec
   queryFOVFactor: 2, // Factor to multiply FOVRadius. Has to be bigger than 1
-  querygmagMin: 15, // Minimum gmag for querying points
-  querygmagMax: 22, // Maximum gmag for querying points
   fovLimits: {
     min: 0.02, // Minimum FOV limit
     max: 5, // Maximum FOV limit
@@ -53,22 +52,24 @@ const parameters = {
     { max: 0.04, value: 35 },
     { max: 0.08, value: 35 },
     { max: 0.16, value: 24.5 },
-    { max: 0.32, value: 22.5 },
-    { max: 0.64, value: 21 },
+    { max: 0.32, value: 23 },
+    { max: 0.64, value: 22 },
     { max: 1.28, value: 19 },
     { max: 2.56, value: 18.5 },
     { max: 5.12, value: 18 },
   ], // Piecewise magnitude ranges
   limitRanges: [
-    { max: 0.04, value: 1000 },
-    { max: 0.08, value: 2000 },
-    { max: 0.16, value: 4000 },
+    { max: 0.04, value: 2000 },
+    { max: 0.08, value: 3000 },
+    { max: 0.16, value: 5000 },
     { max: 0.32, value: 6000 },
     { max: 0.64, value: 7000 },
     { max: 1.28, value: 6000 },
     { max: 2.56, value: 4000 },
     { max: 5.12, value: 2000 },
   ], // Piecewise limit ranges
+
+  selectedLayerId: "15642", // Layer ids for aladin.getOverlayImageLayer(parameters.selectedLayerId)
 };
 
 export default parameters;

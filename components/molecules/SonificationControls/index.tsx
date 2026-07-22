@@ -2,7 +2,7 @@
 import { FC, useState } from "react";
 import Zoom from "../Controls/Zoom";
 import ControlStack from "../Controls/Stack";
-import ReturnToInitial from "../ExplorerControls/ReturnToInitial";
+import Navigation from "./Navigation";
 import PlayPauseButton from "./PlayPauseButton/index";
 import OrientedSlider from "./OrientedSlider";
 import HelpPanel from "./HelpPanel";
@@ -33,7 +33,7 @@ const SonificationControls: FC = () => {
         </ControlStack>
         <ControlStack position="middle right">
           <div className={styles.centeredControls}>
-            <ReturnToInitial />
+            <Navigation />
             <Zoom />
           </div>
         </ControlStack>

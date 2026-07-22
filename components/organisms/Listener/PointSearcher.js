@@ -7,7 +7,7 @@ import {
   mapValueToHue,
   raDecDistance,
 } from "./utilities";
-import initialPointsData from "./initialPoints.json";
+// import initialPointsData from "./initialPoints.json";
 import backupPointsData from "./backupPoints.json";
 import { env } from "@/env";
 
@@ -29,7 +29,7 @@ const query = gql`
     ) {
       RAdeg
       DECdeg
-      id
+      objectid
       gmag
       g_r
       flag
@@ -93,7 +93,7 @@ class PointSearcher {
     const formattedPoints =
       pointsData.data.getRangeOfAstroObjectsWithLimit?.map((point) => ({
         point: [point.RAdeg, point.DECdeg],
-        id: point.id,
+        id: point.objectid,
         gmag: point.gmag,
         gRColor: point.g_r,
         flag: point.flag,
@@ -102,7 +102,7 @@ class PointSearcher {
     this.tree = new KDTree(formattedPoints);
     this.makeSubset(
       [parameters.currentRaDec[0], parameters.currentRaDec[1]],
-      parameters.fovRadius
+      parameters.fovRadius,
     );
   }
 
@@ -111,7 +111,8 @@ class PointSearcher {
     this.isInitializing = true;
 
     try {
-      this.useJSONFile(initialPointsData);
+      // this.useJSONFile(initialPointsData);
+      this.getPoints(); // Fetch points from the API on initialization
       this.ready = true;
     } finally {
       this.isInitializing = false;
@@ -120,7 +121,7 @@ class PointSearcher {
 
   updateFOVRadius() {
     parameters.fovRadius = Math.sqrt(
-      Math.pow(parameters.fov[0] / 2, 2) + Math.pow(parameters.fov[1] / 2, 2)
+      Math.pow(parameters.fov[0] / 2, 2) + Math.pow(parameters.fov[1] / 2, 2),
     );
     parameters.queryRadius = parameters.queryFOVFactor * parameters.fovRadius;
   }
@@ -138,14 +139,15 @@ class PointSearcher {
       this.prevFOV = [...parameters.fov];
 
       this.isFOVUpdating = true;
-      if (parameters.fovRadius > 3) {
-        this.useJSONFile(backupPointsData);
-        this.isFOVUpdating = false;
-      } else if (this.fovUpdateTimeout) {
-        // Clear any existing timeout
-        clearTimeout(this.fovUpdateTimeout);
-      }
+      // if (parameters.fovRadius > 3) {
+      //   this.useJSONFile(backupPointsData);
+      //   this.isFOVUpdating = false;
+      // } else if (this.fovUpdateTimeout) {
+      //   // Clear any existing timeout
+      //   clearTimeout(this.fovUpdateTimeout);
+      // }
       this.fovUpdateTimeout = setTimeout(() => {
+        this.prevFOV = [...parameters.fov];
         this.getPoints()
           .then(() => {
             this.isFOVUpdating = false;
@@ -163,7 +165,7 @@ class PointSearcher {
         parameters.currentRaDec[0],
         parameters.currentRaDec[1],
         this.centerPoint[0],
-        this.centerPoint[1]
+        this.centerPoint[1],
       );
       // If we're approaching the edge of our query radius
       const radiusThreshold = parameters.queryRadius - parameters.fovRadius;
@@ -188,6 +190,7 @@ class PointSearcher {
       });
 
       if (error) {
+        console.error("Error fetching points from API:", error);
         throw new Error(error.message);
       }
 
@@ -196,11 +199,10 @@ class PointSearcher {
         this.tree = new KDTree([]);
         return;
       }
-
       const formattedPoints =
         data.getRangeOfAstroObjectsWithLimit?.map((point) => ({
           point: [point.RAdeg, point.DECdeg],
-          id: point.id,
+          id: point.objectid,
           gmag: point.gmag,
           gRColor: point.g_r,
           flag: point.flag,
@@ -208,7 +210,7 @@ class PointSearcher {
       this.tree = new KDTree(formattedPoints);
       this.makeSubset(
         [parameters.currentRaDec[0], parameters.currentRaDec[1]],
-        parameters.fovRadius
+        parameters.fovRadius,
       );
     } catch (error) {
       console.error("Error fetching points from API:", error);
@@ -256,17 +258,17 @@ class PointSearcher {
     this.nearestNeighbours = this.subsetTree.kNearest(
       targetPoint,
       this.k_neighbours,
-      radius
+      radius,
     );
 
     // Get the IDs of the current nearest neighbours
     const currentNearestNeighbourIDs = this.nearestNeighbours.map(
-      (point) => point.id
+      (point) => point.id,
     );
 
     // Find new nearest neighbours (present in current but not in previous)
     this.newNearestNeighbours = this.nearestNeighbours.filter(
-      (neighbour) => !this.previousNearestNeighbourIDs.includes(neighbour.id)
+      (neighbour) => !this.previousNearestNeighbourIDs.includes(neighbour.id),
     );
     if (
       this.newNearestNeighbours &&
@@ -302,7 +304,7 @@ class PointSearcher {
     const hue = mapValueToHue(
       colorIndex,
       parameters.minGRColour,
-      parameters.maxGRColour
+      parameters.maxGRColour,
     );
 
     this.animations.push({
@@ -339,49 +341,10 @@ class PointSearcher {
         this.animations.splice(i, 1); // Remove this animation
       }
     }
-    // DELETE BELOW //////////////////////
-    // Draw nearest neighbours
-    // this.p.colorMode(this.p.RGB); // Ensure RGB mode for these points
-    // this.p.fill(255, 0, 0); // Red color for nearest neighbours
-    // this.p.noStroke(); // No outline for these ellipses
-    // for (const neighbour of this.nearestNeighbours) {
-    //   if (neighbour && neighbour.point) {
-    //     const canvasCoords = this.aladin.world2pix(
-    //       neighbour.point[0],
-    //       neighbour.point[1]
-    //     );
-    //     if (canvasCoords) {
-    //       // Ensure coordinates are valid
-    //       this.p.ellipse(canvasCoords[0], canvasCoords[1], 5, 5); // Draw a 5x5 ellipse
-    //     }
-    //   }
-    // }
 
-    // // Draw subset points in blue
-    // this.p.fill(0, 0, 255); // Blue color for subset points
-    // for (const point of this.subsetPoints) {
-    //   if (point && point.point) {
-    //     const canvasCoords = this.aladin.world2pix(
-    //       point.point[0],
-    //       point.point[1]
-    //     );
-    //     if (canvasCoords) {
-    //       // Ensure coordinates are valid
-    //       this.p.ellipse(canvasCoords[0], canvasCoords[1], 3, 3); // Draw a slightly smaller 3x3 ellipse
-    //     }
-    //   }
-    // }
+    // Additional diagnostics for debugging
+    // this.drawOnScreenDiagnostics();
 
-    // // Draw nearest neighbours count
-    // this.p.fill(255); // White text
-    // this.p.textSize(16);
-    // this.p.text(`Number of points: ${this.tree.length}`, 20, 150);
-    // this.p.text(`queryMag: ${parameters.queryMag}`, 20, 170);
-    // this.p.text(`Current RA/DEC: ${parameters.currentRaDec}`, 20, 90);
-    // this.p.text(`Center Point: ${this.centerPoint}`, 20, 110);
-    // this.p.text(`FOV: ${parameters.fov}`, 20, 170);
-    // this.p.text(`Subset Points Length: ${this.subsetPoints.length}`, 20, 190);
-    // DELETE ABOVE //////////////////////
     // Reset color mode to RGB
     this.p.colorMode(this.p.RGB);
   }
@@ -389,7 +352,7 @@ class PointSearcher {
   updateSubset() {
     this.makeSubset(
       [parameters.currentRaDec[0], parameters.currentRaDec[1]],
-      parameters.fovRadius
+      parameters.fovRadius,
     );
   }
 
@@ -397,7 +360,7 @@ class PointSearcher {
     // Convert the target radius point from pixels to world coordinates
     const eastPoint = this.aladin.pix2world(
       this.p.width / 2 + parameters.targetRadiusPX,
-      this.p.height / 2
+      this.p.height / 2,
     );
 
     // Calculate the angular distance between current position and target radius point
@@ -405,7 +368,7 @@ class PointSearcher {
       parameters.currentRaDec[0],
       parameters.currentRaDec[1],
       eastPoint[0],
-      eastPoint[1]
+      eastPoint[1],
     );
   }
 
@@ -413,8 +376,61 @@ class PointSearcher {
     const targetRadius = this.calculateTargetRadius();
     this.findNeighbours(
       [parameters.currentRaDec[0], parameters.currentRaDec[1]],
-      targetRadius
+      targetRadius,
     );
+  }
+
+  drawOnScreenDiagnostics() {
+    // Draw nearest neighbours
+    this.p.colorMode(this.p.RGB); // Ensure RGB mode for these points
+    this.p.fill(255, 0, 0); // Red color for nearest neighbours
+    this.p.noStroke(); // No outline for these ellipses
+    for (const neighbour of this.nearestNeighbours) {
+      if (neighbour && neighbour.point) {
+        const canvasCoords = this.aladin.world2pix(
+          neighbour.point[0],
+          neighbour.point[1],
+        );
+        if (canvasCoords) {
+          // Ensure coordinates are valid
+          this.p.ellipse(canvasCoords[0], canvasCoords[1], 5, 5); // Draw a 5x5 ellipse
+        }
+      }
+    }
+
+    // Draw subset points in blue
+    this.p.fill(0, 0, 255); // Blue color for subset points
+    for (const point of this.subsetPoints) {
+      if (point && point.point) {
+        const canvasCoords = this.aladin.world2pix(
+          point.point[0],
+          point.point[1],
+        );
+        if (canvasCoords) {
+          // Ensure coordinates are valid
+          this.p.ellipse(canvasCoords[0], canvasCoords[1], 3, 3); // Draw a slightly smaller 3x3 ellipse
+        }
+      }
+    }
+
+    // Draw nearest neighbours count
+    this.p.fill(255); // White text
+    this.p.textSize(16);
+    const formatCoordinateList = (coords) =>
+      coords.map((value) => Number(value).toFixed(2)).join(", ");
+    const formattedRaDec = formatCoordinateList(parameters.currentRaDec);
+    const formattedCenterPoint = formatCoordinateList(this.centerPoint);
+    const formattedFov = formatCoordinateList(parameters.fov);
+    this.p.text(`Current RA/DEC: ${formattedRaDec}`, 20, 90);
+    this.p.text(`Center Point: ${formattedCenterPoint}`, 20, 110);
+    this.p.text(`FOV: ${formattedFov}`, 20, 130);
+    this.p.text(`FOV Radius: ${parameters.fovRadius.toFixed(3)}`, 20, 150);
+    this.p.text(`Query Radius: ${parameters.queryRadius.toFixed(3)}`, 20, 170);
+    if (this.tree) {
+      this.p.text(`Number of points: ${this.tree.length}`, 20, 190);
+    }
+    this.p.text(`queryMag: ${parameters.queryMag}`, 20, 210);
+    this.p.text(`Subset Points Length: ${this.subsetPoints.length}`, 20, 230);
   }
 }
 
@@ -464,7 +480,7 @@ class KDTree {
         points[median].id,
         points[median].gmag,
         points[median].gRColor,
-        points[median].flag
+        points[median].flag,
       );
 
       if (root === null) {
