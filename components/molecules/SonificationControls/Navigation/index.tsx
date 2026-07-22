@@ -25,6 +25,7 @@ interface NavigationProps {
 const Navigation: FC<NavigationProps> = ({ buttonClassName, className }) => {
   const { t } = useTranslation();
   const [isOpen, setOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>("ocean-of-stars");
   const { isLoading } = useAladin();
   const goToPosition = useAladinMove();
 
@@ -36,9 +37,10 @@ const Navigation: FC<NavigationProps> = ({ buttonClassName, className }) => {
     setOpen(!isOpen);
   };
 
-  const handleDestinationClick = ({ ra, dec, layerId }: Destination) => {
+  const handleDestinationClick = ({ id, ra, dec, layerId }: Destination) => {
     if (isLoading) return;
 
+    setSelectedId(id);
     closeNavigation();
     // Pause the walker's movement and void/boundary tracking while we travel
     parameters.resettingPosition = true;
@@ -116,7 +118,12 @@ const Navigation: FC<NavigationProps> = ({ buttonClassName, className }) => {
                         <li key={destination.id}>
                           <button
                             type="button"
-                            className={styles.destinationButton}
+                            className={clsx(
+                              styles.destinationButton,
+                              selectedId === destination.id &&
+                                styles.destinationButtonSelected,
+                            )}
+                            aria-pressed={selectedId === destination.id}
                             disabled={isLoading}
                             onClick={() => handleDestinationClick(destination)}
                           >
