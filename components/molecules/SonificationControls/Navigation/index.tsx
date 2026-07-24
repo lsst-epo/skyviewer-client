@@ -10,7 +10,7 @@ import {
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 
 import clsx from "clsx/lite";
-import destinations, { Destination } from "./destinations";
+import { Destination } from "./destinations";
 import IconButton from "@/components/atomic/IconButton";
 import parameters from "@/components/organisms/Listener/parameters";
 import { useAladin } from "@/contexts/Aladin";
@@ -18,16 +18,47 @@ import useAladinMove from "@/hooks/useAladinMove";
 import styles from "./styles.module.css";
 
 interface NavigationProps {
+  layers: any;
   buttonClassName?: string;
   className?: string;
 }
 
-const Navigation: FC<NavigationProps> = ({ buttonClassName, className }) => {
+function generateDestinations(layers: []): Destination[] {
+  if (!layers?.length) return [];
+
+  return [...layers]
+    // reversing to match how the layers are loaded into Aladin in order to get the correct base layer
+    .reverse() 
+    .map((layer, index) => {
+      const [ra, dec] = layer.survey.target
+        .split(" ")
+        .map(Number);
+
+      return {
+        id: layer.survey.id,
+        layerId: index === 0 ? "base" : layer.id,
+        label: layer.survey.title,
+        description: layer.survey.description,
+        ra,
+        dec,
+      };
+    }
+  );
+};
+
+const Navigation: FC<NavigationProps> = ({ layers, buttonClassName, className }) => {
   const { t } = useTranslation();
   const [isOpen, setOpen] = useState(false);
-  const [selectedId, setSelectedId] = useState<string | null>("ocean-of-stars");
   const { isLoading } = useAladin();
   const goToPosition = useAladinMove();
+
+  // SOSHTODO: DELETE
+  console.log("[Navigation] layers: ", layers);
+  const destinations: Destination[] = generateDestinations(layers);
+  // SOSHTODO: DELETE
+  console.log("[Navigation] destinations: ", destinations);
+
+  const [selectedId, setSelectedId] = useState<string | null>(destinations[1].id);
 
   const closeNavigation = () => {
     setOpen(false);
@@ -39,12 +70,18 @@ const Navigation: FC<NavigationProps> = ({ buttonClassName, className }) => {
 
   const handleDestinationClick = ({ id, ra, dec, layerId }: Destination) => {
     if (isLoading) return;
+    // SOSHTODO: DELETE
+    console.log(`[Navigation] destinationClicked: ${id} ${ra} ${dec} ${layerId}`);
 
     setSelectedId(id);
+    // SOSHTODO: DELETE
+    console.log("[Navigation] selectedId: ", selectedId);
     closeNavigation();
     // Pause the walker's movement and void/boundary tracking while we travel
     parameters.resettingPosition = true;
     parameters.selectedLayerId = layerId;
+    // SOSHTODO: DELETE
+    console.log("[Navigation] selectedLayerId: ", parameters.selectedLayerId);
     goToPosition({
       ra,
       dec,

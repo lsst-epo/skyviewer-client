@@ -20,6 +20,7 @@ const SkySynthPage: FC<RootProps> = async ({ params: { locale } }) => {
   }
 
   const { surveys, fovRange, ...configuredOptions } = data;
+  console.log("[Skysynth page] surveys: ", surveys);
 
   return (
     <AladinTemplate
@@ -29,7 +30,7 @@ const SkySynthPage: FC<RootProps> = async ({ params: { locale } }) => {
       options={configuredOptions}
       initializeWithParams
     >
-      <SonificationControls />
+      <SonificationControls surveys={surveys}/>
       <Listener />
     </AladinTemplate>
   );

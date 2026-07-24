@@ -10,7 +10,13 @@ import parameters from "@/components/organisms/Listener/parameters";
 import AladinOverlay from "@/components/atomic/AladinOverlay";
 import styles from "./styles.module.css";
 
-const SonificationControls: FC = () => {
+interface SonificationControlsProps {
+  surveys: any;
+}
+
+const SonificationControls: FC<SonificationControlsProps> = ({surveys}) => {
+  // SOSHTODO: DELETE
+  console.log("[SonificationControls] surveys: ", surveys);
   const [sliderValue, setSliderValue] = useState(parameters.walkSpeed);
 
   const handleSliderChange = (value: number) => {
@@ -33,7 +39,7 @@ const SonificationControls: FC = () => {
         </ControlStack>
         <ControlStack position="middle right">
           <div className={styles.centeredControls}>
-            <Navigation />
+            <Navigation layers={surveys}/>
             <Zoom />
           </div>
         </ControlStack>
