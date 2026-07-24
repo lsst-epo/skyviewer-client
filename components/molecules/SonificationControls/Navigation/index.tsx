@@ -85,6 +85,14 @@ const Navigation: FC<NavigationProps> = ({
     initialDestination?.id ?? null,
   );
 
+  // SOSHTODO: DELETE
+  console.log("[Navigation] layers: ", layers);
+  const destinations: Destination[] = generateDestinations(layers);
+  // SOSHTODO: DELETE
+  console.log("[Navigation] destinations: ", destinations);
+
+  const [selectedId, setSelectedId] = useState<string | null>(destinations[1].id);
+
   const closeNavigation = () => {
     setOpen(false);
   };
