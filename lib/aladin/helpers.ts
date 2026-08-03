@@ -40,6 +40,18 @@ export const bindAladinEvents = (
   });
 };
 
+export const forceHiPSMinOrder = (hips: HiPS, minOrder: number): HiPS => {
+  // Aladin overwrites the `minOrder` construction option with the value parsed
+  // from the survey's properties file, falling back to 0 when the file omits
+  // hips_order_min. Injecting the key into the properties before they are
+  // parsed is the only way to make a user-supplied minimum order stick.
+  const parseProperties = hips._parseProperties.bind(hips);
+  hips._parseProperties = (properties = {}) =>
+    parseProperties({ hips_order_min: minOrder, ...properties });
+
+  return hips;
+};
+
 export function getPixelPosition(
   aladin: Aladin,
   { ra, dec }: { ra: number; dec: number }

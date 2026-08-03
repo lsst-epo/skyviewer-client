@@ -41,6 +41,7 @@ interface AladinImage {
 interface HiPS extends AladinImage {
   getAvailableFormats: () => Array<string>;
   isPlanetaryBody: () => boolean;
+  _parseProperties: (properties?: Record<string, unknown>) => void;
 }
 
 type AladinColorMaps =
@@ -89,10 +90,10 @@ interface GridOptions {
 
 /** Options for configuring the Aladin Lite instance. */
 interface AladinOptions {
-  /** URL or ID of the survey to use
+  /** URL or ID of the survey to use, or an already constructed HiPS
    * @default "CDS/P/DSS2/color"
    */
-  survey?: string;
+  survey?: string | HiPS;
   /** Array of URLs for the survey images. This replaces the survey parameter. */
   surveyUrl?: Array<string>;
   /** A list of predefined HiPS for the Aladin instance. This option is used for searching for a HiPS in a list of surveys This list can have string item (either a CDS ID or an HiPS url) or an object that describes the HiPS more exhaustively. See the example below to see the different form that this item can have to describe a HiPS. */
