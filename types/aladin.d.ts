@@ -249,10 +249,23 @@ interface AladinCatalog {
 interface AladinView {
   aladinDiv: HTMLDivElement;
   imageCanvas: HTMLCanvasElement;
+  catalogCanvas: HTMLCanvasElement;
   imageLayers: Map<string, AladinImageLayer>;
   fov: number;
   minFoV: number;
   maxFoV: number;
+  /** deltaY of the wheel event currently being handled */
+  delta: number;
+  /** The active projection; `fov` is the widest field of view it can render */
+  projection?: { fov: number };
+  zoom: {
+    apply: (options: {
+      start?: number;
+      stop?: number;
+      duration?: number;
+    }) => void;
+  };
+  throttledTouchPadZoom?: () => void;
   catalogs: Array<AladinCatalog>;
   gridCfg: {
     color: Record<"r" | "g" | "b", number>;

@@ -14,7 +14,7 @@ import {
 import { useLocalStorage, useOnClickOutside } from "usehooks-ts";
 import staticAladinOptions from "@/fixtures/defaultAladinOptions";
 import { clientInitialPosition } from "@/lib/helpers";
-import { forceHiPSMinOrder } from "@/lib/aladin/helpers";
+import { forceHiPSMinOrder, tameWheelZoom } from "@/lib/aladin/helpers";
 import { SurveyLayer } from "@/lib/schema/survey";
 import AladinContext, { defaultValue } from "@/contexts/Aladin";
 import styles from "./styles.module.css";
@@ -116,6 +116,8 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
             survey: createHiPS(base.survey, { isBase: true }),
             ...(initializeWithParams && position),
           });
+
+          tameWheelZoom(instance);
 
           if (debug) {
             instance.on("layerChanged", (layer, stack, action) => {
