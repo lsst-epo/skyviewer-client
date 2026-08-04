@@ -22,7 +22,10 @@ RUN apk add --no-cache fontconfig
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 
-COPY --from=builder --chown=nextjs:nodejs /app/ ./
+# Copy from yarn-builder so the image contains the built .next output and is
+# self-contained (the upstream pipeline copies .next in from a GCS bucket
+# instead, via the nextjs-copy stage above)
+COPY --from=yarn-builder --chown=nextjs:nodejs /app/ ./
 
 USER nextjs
 
