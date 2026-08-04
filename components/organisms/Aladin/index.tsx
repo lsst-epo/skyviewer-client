@@ -65,6 +65,16 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
 
   const onMounted = useCallback<RefCallback<HTMLDivElement>>((node) => {
     if (node) {
+      if ("serviceWorker" in navigator) {
+        // Serves already-seen HiPS tiles from the browser cache without the
+        // revalidation round trip the tile server's cache-control demands;
+        // see public/hips-tile-cache-sw.js. Purely an optimization, so
+        // registration failures are ignored.
+        navigator.serviceWorker.register("/hips-tile-cache-sw.js").catch(() => {
+          // noop
+        });
+      }
+
       import("aladin-lite").then((module) => {
         const global: A = module.default;
 
