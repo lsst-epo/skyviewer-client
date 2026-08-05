@@ -102,7 +102,7 @@ class PointSearcher {
     this.tree = new KDTree(formattedPoints);
     this.makeSubset(
       [parameters.currentRaDec[0], parameters.currentRaDec[1]],
-      parameters.fovRadius,
+      parameters.fovRadius
     );
   }
 
@@ -121,7 +121,7 @@ class PointSearcher {
 
   updateFOVRadius() {
     parameters.fovRadius = Math.sqrt(
-      Math.pow(parameters.fov[0] / 2, 2) + Math.pow(parameters.fov[1] / 2, 2),
+      Math.pow(parameters.fov[0] / 2, 2) + Math.pow(parameters.fov[1] / 2, 2)
     );
     parameters.queryRadius = parameters.queryFOVFactor * parameters.fovRadius;
   }
@@ -165,7 +165,7 @@ class PointSearcher {
         parameters.currentRaDec[0],
         parameters.currentRaDec[1],
         this.centerPoint[0],
-        this.centerPoint[1],
+        this.centerPoint[1]
       );
       // If we're approaching the edge of our query radius
       const radiusThreshold = parameters.queryRadius - parameters.fovRadius;
@@ -210,7 +210,7 @@ class PointSearcher {
       this.tree = new KDTree(formattedPoints);
       this.makeSubset(
         [parameters.currentRaDec[0], parameters.currentRaDec[1]],
-        parameters.fovRadius,
+        parameters.fovRadius
       );
     } catch (error) {
       console.error("Error fetching points from API:", error);
@@ -258,17 +258,17 @@ class PointSearcher {
     this.nearestNeighbours = this.subsetTree.kNearest(
       targetPoint,
       this.k_neighbours,
-      radius,
+      radius
     );
 
     // Get the IDs of the current nearest neighbours
     const currentNearestNeighbourIDs = this.nearestNeighbours.map(
-      (point) => point.id,
+      (point) => point.id
     );
 
     // Find new nearest neighbours (present in current but not in previous)
     this.newNearestNeighbours = this.nearestNeighbours.filter(
-      (neighbour) => !this.previousNearestNeighbourIDs.includes(neighbour.id),
+      (neighbour) => !this.previousNearestNeighbourIDs.includes(neighbour.id)
     );
     if (
       this.newNearestNeighbours &&
@@ -304,7 +304,7 @@ class PointSearcher {
     const hue = mapValueToHue(
       colorIndex,
       parameters.minGRColour,
-      parameters.maxGRColour,
+      parameters.maxGRColour
     );
 
     this.animations.push({
@@ -352,7 +352,7 @@ class PointSearcher {
   updateSubset() {
     this.makeSubset(
       [parameters.currentRaDec[0], parameters.currentRaDec[1]],
-      parameters.fovRadius,
+      parameters.fovRadius
     );
   }
 
@@ -360,7 +360,7 @@ class PointSearcher {
     // Convert the target radius point from pixels to world coordinates
     const eastPoint = this.aladin.pix2world(
       this.p.width / 2 + parameters.targetRadiusPX,
-      this.p.height / 2,
+      this.p.height / 2
     );
 
     // Calculate the angular distance between current position and target radius point
@@ -368,7 +368,7 @@ class PointSearcher {
       parameters.currentRaDec[0],
       parameters.currentRaDec[1],
       eastPoint[0],
-      eastPoint[1],
+      eastPoint[1]
     );
   }
 
@@ -376,7 +376,7 @@ class PointSearcher {
     const targetRadius = this.calculateTargetRadius();
     this.findNeighbours(
       [parameters.currentRaDec[0], parameters.currentRaDec[1]],
-      targetRadius,
+      targetRadius
     );
   }
 
@@ -389,7 +389,7 @@ class PointSearcher {
       if (neighbour && neighbour.point) {
         const canvasCoords = this.aladin.world2pix(
           neighbour.point[0],
-          neighbour.point[1],
+          neighbour.point[1]
         );
         if (canvasCoords) {
           // Ensure coordinates are valid
@@ -404,7 +404,7 @@ class PointSearcher {
       if (point && point.point) {
         const canvasCoords = this.aladin.world2pix(
           point.point[0],
-          point.point[1],
+          point.point[1]
         );
         if (canvasCoords) {
           // Ensure coordinates are valid
@@ -480,7 +480,7 @@ class KDTree {
         points[median].id,
         points[median].gmag,
         points[median].gRColor,
-        points[median].flag,
+        points[median].flag
       );
 
       if (root === null) {

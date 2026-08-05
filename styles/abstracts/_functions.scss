@@ -20,7 +20,7 @@
 
 // encode colors
 @function encode-color($string) {
-  @if type-of($string) == "color" {
+  @if meta.type-of($string) == "color" {
     $hex: string.slice(color.ie-hex-str($string), 4);
     $string: string.unquote("#{$hex}");
   }
@@ -42,10 +42,10 @@
   $max-vw: break(130),
   $min-vw: break(60)
 ) {
-  @return calc(
-    #{$min-value} + #{strip-unit($max-value - $min-value)} *
-      (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}
-  );
+  $delta: strip-unit($max-value - $min-value);
+  $range: strip-unit($max-vw - $min-vw);
+
+  @return calc(#{$min-value} + #{$delta} * (100vw - #{$min-vw}) / #{$range});
 }
 
 // get value from tokens colors map

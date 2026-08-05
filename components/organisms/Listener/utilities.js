@@ -3,12 +3,12 @@ import parameters from "./parameters.js";
 export function shiftStarTint(rgbValues) {
   const currentBrightness = Math.max(
     (rgbValues[0] + rgbValues[1] + rgbValues[2]) / 3,
-    1,
+    1
   );
   if (currentBrightness < parameters.minBrightness) {
     parameters.brightness_scaleFactor = Math.min(
       parameters.minBrightness / currentBrightness,
-      2,
+      2
     );
   } else {
     parameters.brightness_scaleFactor = 1;
@@ -17,19 +17,19 @@ export function shiftStarTint(rgbValues) {
     rgbValues[0] *
       parameters.brightness_scaleFactor *
       parameters.brightness_boost,
-    255,
+    255
   );
   const g = Math.min(
     rgbValues[1] *
       parameters.brightness_scaleFactor *
       parameters.brightness_boost,
-    255,
+    255
   );
   const b = Math.min(
     rgbValues[2] *
       parameters.brightness_scaleFactor *
       parameters.brightness_boost,
-    255,
+    255
   );
   return [r, g, b];
 }

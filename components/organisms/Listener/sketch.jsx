@@ -59,7 +59,7 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         }
       }
     },
-    [aladin],
+    [aladin]
   );
 
   // Listen for zoom changes which indicates a resize
@@ -84,8 +84,8 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
             audioPromises.push(
               loadAudio(
                 `${instrument}_${i}`,
-                `/sonification/sounds/${instrument}/${i}.mp3`,
-              ),
+                `/sonification/sounds/${instrument}/${i}.mp3`
+              )
             );
           }
         }
@@ -135,7 +135,7 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
         pointSearcherRef.current.updateAndDrawAnimations();
         // Trigger sounds for points entering the circle
         samplePlayerRef.current.triggerNewNearestNeighbors(
-          pointSearcherRef.current,
+          pointSearcherRef.current
         );
 
         // Draw the empty circle without tint
