@@ -28,7 +28,13 @@ export const env = createEnv({
     NEXT_PUBLIC_BASE_URL: z.string().url(),
     NEXT_PUBLIC_API_URL: z.string().url(),
     NEXT_PUBLIC_ASTRO_API_URL: z.string().url(),
-    NEXT_PUBLIC_ASTRO_OBJECTS_API_TOKEN: z.string().min(1),
+    /** only the browser sends this, and its value is substituted into the
+     * bundle when the image is built, so the server never reads it. Optional
+     * so a deployment does not have to carry a second copy at runtime purely
+     * to get past this check — a copy that could only ever drift from the one
+     * compiled in. Unlike NEXT_PUBLIC_ASTRO_API_URL, which lib/fetch.js does
+     * read on the server and so stays required */
+    NEXT_PUBLIC_ASTRO_OBJECTS_API_TOKEN: z.string().min(1).optional(),
   },
   // For Next.js >= 13.4.4, you only need to destructure client variables:
   experimental__runtimeEnv: {
