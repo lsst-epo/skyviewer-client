@@ -1,0 +1,14 @@
+# Keep the build context to what the image is built from. Note .env is
+# deliberately NOT excluded: the yarn-builder stage bind-mounts it, so it has
+# to be present in the context (the builder stage excludes it from its COPY).
+.git
+.github
+node_modules
+.next
+out
+coverage
+.vscode
+.idea
+*.log
+.DS_Store
+architecture
