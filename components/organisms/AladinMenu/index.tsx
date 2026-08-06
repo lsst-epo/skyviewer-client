@@ -42,7 +42,7 @@ const AladinMenu: FC<PropsWithChildren<AladinMenuProps>> = async ({
           {children}
         </MenuGroup>
         <MenuGroup title={t("menu.general.title")}>
-          <FAQMenu {...{ locale }}/>
+          <FAQMenu {...{ locale }} />
           <AboutMenu {...{ properties, locale }} />
         </MenuGroup>
         <QuickAccess />

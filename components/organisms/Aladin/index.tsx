@@ -101,7 +101,7 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
                 imgFormat,
                 tileSize,
                 showOnLoad,
-                optionalLayer
+                optionalLayer,
               },
             }) => {
               const hips = global.HiPS(path, {
@@ -121,7 +121,7 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
               });
 
               let effectiveOpacity = opacity;
-              if(optionalLayer) {
+              if (optionalLayer) {
                 effectiveOpacity = showOnLoad ? opacity : 0;
               }
 

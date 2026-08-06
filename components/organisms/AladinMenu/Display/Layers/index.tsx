@@ -73,8 +73,8 @@ const Layers: FC<LayersProps> = ({ layers, debug = false }) => {
             id,
             survey: { title, description, optionalLayer },
           } = layer;
-          if(!optionalLayer && debug) {
-            console.info(`[Debug] Layer ${title} is a non-optional layer.`)
+          if (!optionalLayer && debug) {
+            console.info(`[Debug] Layer ${title} is a non-optional layer.`);
           }
           const isLast = i === layers.length - 1;
           const key = isLast ? "base" : id;

@@ -121,7 +121,7 @@ const Navigation: FC<NavigationProps> = ({ buttonClassName, className }) => {
                             className={clsx(
                               styles.destinationButton,
                               selectedId === destination.id &&
-                                styles.destinationButtonSelected,
+                                styles.destinationButtonSelected
                             )}
                             aria-pressed={selectedId === destination.id}
                             disabled={isLoading}
@@ -130,14 +130,14 @@ const Navigation: FC<NavigationProps> = ({ buttonClassName, className }) => {
                             <span className={styles.destinationLabel}>
                               {t(
                                 `skysynth-navigation.destinations.${destination.id}.label`,
-                                destination.label,
+                                destination.label
                               )}
                             </span>
                             {destination.description && (
                               <span className={styles.destinationDescription}>
                                 {t(
                                   `skysynth-navigation.destinations.${destination.id}.description`,
-                                  destination.description,
+                                  destination.description
                                 )}
                               </span>
                             )}
