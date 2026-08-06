@@ -111,6 +111,7 @@
         "list_header": "Dirígete a:",
         "item_1": "<0>Un Océano de Estrellas</0>",
         "item_2": "<0>Cofre de Tesoros Cósmicos</0> (el Cúmulo de Virgo)",
+        "item_3": "<0>COSMOS</0>",
         "treasure_chest_chart": "¿Buscas algo específico en el Cofre de Tesoros Cósmicos? Consulta nuestro <0>mapa de búsqueda</0>"
       },
       "instructions": "Skyviewer busca nombres comunes de objetos astronómicos, por ejemplo “M49” o “Messier 49,” utilizando las bases de datos astronómicas de <0>SIMBAD</0> y <1>NED</1>. Skyviewer también puede buscar lugares de coordenadas de objetos utilizando la ascensión recta (RA) y la declinación (DEC) en formato decimal, ejemplo “186.2 7.0.”",
