@@ -113,6 +113,7 @@
         "list_header": "Go straight to:",
         "item_1": "<0>Ocean of Stars</0>",
         "item_2": "<0>Cosmic Treasure Chest</0> (the Virgo Cluster)",
+        "item_3": "<0>COSMOS</0>",
         "treasure_chest_chart": "Looking for something specific in the Cosmic Treasure Chest? Check our <0>finder chart</0>"
       },
       "instructions": "Skyviewer searches common names of astronomical objects, e.g. “M49” or “Messier 49,” using the <0>SIMBAD</0> and <1>NED</1> astronomical databases. Skyviewer can also search on coordinate locations of objects using right ascension (RA) and declination (DEC) in decimal format, e.g. “186.2 7.0.”",
