@@ -12,9 +12,13 @@ import styles from "./styles.module.css";
 
 interface SonificationControlsProps {
   surveys: any;
+  target: string;
 }
 
-const SonificationControls: FC<SonificationControlsProps> = ({surveys}) => {
+const SonificationControls: FC<SonificationControlsProps> = ({
+  surveys,
+  target,
+}) => {
   // SOSHTODO: DELETE
   console.log("[SonificationControls] surveys: ", surveys);
   const [sliderValue, setSliderValue] = useState(parameters.walkSpeed);
@@ -39,7 +43,7 @@ const SonificationControls: FC<SonificationControlsProps> = ({surveys}) => {
         </ControlStack>
         <ControlStack position="middle right">
           <div className={styles.centeredControls}>
-            <Navigation layers={surveys}/>
+            <Navigation layers={surveys} target={target} />
             <Zoom />
           </div>
         </ControlStack>

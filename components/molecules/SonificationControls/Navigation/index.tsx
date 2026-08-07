@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { CloseButton, Dialog, DialogPanel } from "@headlessui/react";
 import {
@@ -19,6 +19,7 @@ import styles from "./styles.module.css";
 
 interface NavigationProps {
   layers: any;
+  target: string;
   buttonClassName?: string;
   className?: string;
 }
@@ -26,31 +27,49 @@ interface NavigationProps {
 function generateDestinations(layers: []): Destination[] {
   if (!layers?.length) return [];
 
-  return [...layers]
-    // reversing to match how the layers are loaded into Aladin in order to get the correct base layer
-    .reverse() 
-    .map((layer, index) => {
-      const [ra, dec] = layer.survey.target
-        .split(" ")
-        .map(Number);
+  return (
+    [...layers]
+      // reversing to match how the layers are loaded into Aladin in order to get the correct base layer
+      .reverse()
+      .map((layer, index) => {
+        const [ra, dec] = layer.survey.target.split(" ").map(Number);
 
-      return {
-        id: layer.survey.id,
-        layerId: index === 0 ? "base" : layer.id,
-        label: layer.survey.title,
-        description: layer.survey.description,
-        ra,
-        dec,
-      };
-    }
+        return {
+          id: layer.survey.id,
+          layerId: index === 0 ? "base" : layer.id,
+          label: layer.survey.title,
+          description: layer.survey.description,
+          ra,
+          dec,
+        };
+      })
   );
-};
+}
 
-const Navigation: FC<NavigationProps> = ({ layers, buttonClassName, className }) => {
+function findDestinationByTarget(
+  destinations: Destination[],
+  target: string,
+): Destination | undefined {
+  const [targetRa, targetDec] = target.split(" ").map(Number);
+
+  return destinations.find(
+    (destination) =>
+      // Comparing the RA and DEC we get on load to the ones in destinations. Should we be rounding these numbers?
+      destination.ra === targetRa && destination.dec === targetDec,
+  );
+}
+
+const Navigation: FC<NavigationProps> = ({
+  layers,
+  target,
+  buttonClassName,
+  className,
+}) => {
   const { t } = useTranslation();
   const [isOpen, setOpen] = useState(false);
   const { isLoading } = useAladin();
   const goToPosition = useAladinMove();
+  const hasInitializedLayer = useRef(false);
 
   // SOSHTODO: DELETE
   console.log("[Navigation] layers: ", layers);
@@ -58,7 +77,18 @@ const Navigation: FC<NavigationProps> = ({ layers, buttonClassName, className })
   // SOSHTODO: DELETE
   console.log("[Navigation] destinations: ", destinations);
 
-  const [selectedId, setSelectedId] = useState<string | null>(destinations[1].id);
+  const initialDestination =
+    findDestinationByTarget(destinations, target) ?? destinations[0];
+
+  // Only sync layer on first render — later updates come from handleDestinationClick
+  if (initialDestination && !hasInitializedLayer.current) {
+    parameters.selectedLayerId = initialDestination.layerId;
+    hasInitializedLayer.current = true;
+  }
+
+  const [selectedId, setSelectedId] = useState<string | null>(
+    initialDestination?.id ?? null,
+  );
 
   const closeNavigation = () => {
     setOpen(false);
@@ -71,7 +101,9 @@ const Navigation: FC<NavigationProps> = ({ layers, buttonClassName, className })
   const handleDestinationClick = ({ id, ra, dec, layerId }: Destination) => {
     if (isLoading) return;
     // SOSHTODO: DELETE
-    console.log(`[Navigation] destinationClicked: ${id} ${ra} ${dec} ${layerId}`);
+    console.log(
+      `[Navigation] destinationClicked: ${id} ${ra} ${dec} ${layerId}`,
+    );
 
     setSelectedId(id);
     // SOSHTODO: DELETE
