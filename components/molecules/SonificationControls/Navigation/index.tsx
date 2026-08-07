@@ -70,12 +70,7 @@ const Navigation: FC<NavigationProps> = ({
   const { isLoading } = useAladin();
   const goToPosition = useAladinMove();
   const hasInitializedLayer = useRef(false);
-
-  // SOSHTODO: DELETE
-  console.log("[Navigation] layers: ", layers);
   const destinations: Destination[] = generateDestinations(layers);
-  // SOSHTODO: DELETE
-  console.log("[Navigation] destinations: ", destinations);
 
   const initialDestination =
     findDestinationByTarget(destinations, target) ?? destinations[0];
@@ -100,20 +95,14 @@ const Navigation: FC<NavigationProps> = ({
 
   const handleDestinationClick = ({ id, ra, dec, layerId }: Destination) => {
     if (isLoading) return;
-    // SOSHTODO: DELETE
-    console.log(
-      `[Navigation] destinationClicked: ${id} ${ra} ${dec} ${layerId}`,
-    );
-
+    
     setSelectedId(id);
-    // SOSHTODO: DELETE
-    console.log("[Navigation] selectedId: ", selectedId);
+    
     closeNavigation();
     // Pause the walker's movement and void/boundary tracking while we travel
     parameters.resettingPosition = true;
     parameters.selectedLayerId = layerId;
-    // SOSHTODO: DELETE
-    console.log("[Navigation] selectedLayerId: ", parameters.selectedLayerId);
+    
     goToPosition({
       ra,
       dec,

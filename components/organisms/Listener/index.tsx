@@ -118,8 +118,6 @@ const Listener: FC = () => {
       const size = aladin.getSize();
       const x = Math.floor(size[0] / 2);
       const y = Math.floor(size[1] / 2);
-      // SOSHTODO: DELETE
-      // console.log("Getting pixels from layer: ", parameters.selectedLayerId);
       const layer = aladin.getOverlayImageLayer(parameters.selectedLayerId);
 
       if (!layer) return;

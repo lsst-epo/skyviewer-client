@@ -19,8 +19,6 @@ const SonificationControls: FC<SonificationControlsProps> = ({
   surveys,
   target,
 }) => {
-  // SOSHTODO: DELETE
-  console.log("[SonificationControls] surveys: ", surveys);
   const [sliderValue, setSliderValue] = useState(parameters.walkSpeed);
 
   const handleSliderChange = (value: number) => {
