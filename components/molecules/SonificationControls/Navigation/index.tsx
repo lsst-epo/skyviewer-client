@@ -88,8 +88,6 @@ const Navigation: FC<NavigationProps> = ({
   // SOSHTODO: DELETE
   console.log("[Navigation] layers: ", layers);
   const destinations: Destination[] = generateDestinations(layers);
-  // SOSHTODO: DELETE
-  console.log("[Navigation] destinations: ", destinations);
 
   const initialDestination =
     findDestinationByTarget(destinations, target) ?? destinations[0];
