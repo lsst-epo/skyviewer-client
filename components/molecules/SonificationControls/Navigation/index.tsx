@@ -91,7 +91,18 @@ const Navigation: FC<NavigationProps> = ({
   // SOSHTODO: DELETE
   console.log("[Navigation] destinations: ", destinations);
 
-  const [selectedId, setSelectedId] = useState<string | null>(destinations[1].id);
+  const initialDestination =
+    findDestinationByTarget(destinations, target) ?? destinations[0];
+
+  // Only sync layer on first render — later updates come from handleDestinationClick
+  if (initialDestination && !hasInitializedLayer.current) {
+    parameters.selectedLayerId = initialDestination.layerId;
+    hasInitializedLayer.current = true;
+  }
+
+  const [selectedId, setSelectedId] = useState<string | null>(
+    initialDestination?.id ?? null,
+  );
 
   const closeNavigation = () => {
     setOpen(false);
