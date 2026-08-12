@@ -313,6 +313,20 @@ const Search: FC<SearchProps> = ({ buttonClassName, className }) => {
                   <ul>
                     <li>
                       <Trans
+                      i18nKey="menu.search.quick_links.item_3"
+                      components={[
+                        <a
+                          href="/explorer?target=150.117360+3.199100&fov=1.11"
+                          hrefLang="en"
+                        />
+                      ]}>
+                        <a href="/explorer?target=150.117360+3.199100&fov=1.11">
+                          COSMOS
+                        </a>
+                      </Trans>
+                    </li>
+                    <li>
+                      <Trans
                       i18nKey="menu.search.quick_links.item_1"
                       components={[
                         <a

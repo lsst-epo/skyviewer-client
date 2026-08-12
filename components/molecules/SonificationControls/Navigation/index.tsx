@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { CloseButton, Dialog, DialogPanel } from "@headlessui/react";
 import {
@@ -10,24 +10,100 @@ import {
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 
 import clsx from "clsx/lite";
-import destinations, { Destination } from "./destinations";
+import { Destination } from "./destinations";
 import IconButton from "@/components/atomic/IconButton";
 import parameters from "@/components/organisms/Listener/parameters";
 import { useAladin } from "@/contexts/Aladin";
 import useAladinMove from "@/hooks/useAladinMove";
 import styles from "./styles.module.css";
-
 interface NavigationProps {
+  layers: any;
+  target: string;
   buttonClassName?: string;
   className?: string;
 }
 
-const Navigation: FC<NavigationProps> = ({ buttonClassName, className }) => {
+type Survey = {
+  opacity: number,
+  optionalLayer: boolean,
+  showOnLoad: true,
+  id: string,
+  title: string,
+  description: string,
+  fov?: number,
+  target: string,
+  imgFormat?: string,
+  cooFrame?: String,
+  maxOrder?: number,
+  tileSize?: number,
+  fovRange?: any
+};
+
+type SurveyLayer = {
+  id: string,
+  survey: Survey,
+};
+
+function generateDestinations(layers: SurveyLayer[]): Destination[] {
+  if (!layers?.length) return [];
+
+  return (
+    [...layers]
+      // reversing to match how the layers are loaded into Aladin in order to get the correct base layer
+      .reverse()
+      .map((layer, index) => {
+        const [ra, dec] = layer.survey.target.split(" ").map(Number);
+
+        return {
+          id: layer.survey.id,
+          layerId: index === 0 ? "base" : layer.id,
+          label: layer.survey.title,
+          description: layer.survey.description,
+          ra,
+          dec,
+        };
+      })
+  );
+}
+
+function findDestinationByTarget(
+  destinations: Destination[],
+  target: string,
+): Destination | undefined {
+  const [targetRa, targetDec] = target.split(" ").map(Number);
+
+  return destinations.find(
+    (destination) =>
+      // Comparing the RA and DEC we get on load to the ones in destinations. Should we be rounding these numbers?
+      destination.ra === targetRa && destination.dec === targetDec,
+  );
+}
+
+const Navigation: FC<NavigationProps> = ({
+  layers,
+  target,
+  buttonClassName,
+  className,
+}) => {
   const { t } = useTranslation();
   const [isOpen, setOpen] = useState(false);
-  const [selectedId, setSelectedId] = useState<string | null>("ocean-of-stars");
   const { isLoading } = useAladin();
   const goToPosition = useAladinMove();
+  const hasInitializedLayer = useRef(false);
+  const destinations: Destination[] = generateDestinations(layers);
+
+  const initialDestination =
+    findDestinationByTarget(destinations, target) ?? destinations[0];
+
+  // Only sync layer on first render — later updates come from handleDestinationClick
+  if (initialDestination && !hasInitializedLayer.current) {
+    parameters.selectedLayerId = initialDestination.layerId;
+    hasInitializedLayer.current = true;
+  }
+
+  const [selectedId, setSelectedId] = useState<string | null>(
+    initialDestination?.id ?? null,
+  );
 
   const closeNavigation = () => {
     setOpen(false);
@@ -41,10 +117,12 @@ const Navigation: FC<NavigationProps> = ({ buttonClassName, className }) => {
     if (isLoading) return;
 
     setSelectedId(id);
+
     closeNavigation();
     // Pause the walker's movement and void/boundary tracking while we travel
     parameters.resettingPosition = true;
     parameters.selectedLayerId = layerId;
+
     goToPosition({
       ra,
       dec,
