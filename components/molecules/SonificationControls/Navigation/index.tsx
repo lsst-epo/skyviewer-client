@@ -16,7 +16,6 @@ import parameters from "@/components/organisms/Listener/parameters";
 import { useAladin } from "@/contexts/Aladin";
 import useAladinMove from "@/hooks/useAladinMove";
 import styles from "./styles.module.css";
-
 interface NavigationProps {
   layers: any;
   target: string;
@@ -24,7 +23,28 @@ interface NavigationProps {
   className?: string;
 }
 
-function generateDestinations(layers: []): Destination[] {
+type Survey = {
+  opacity: number,
+  optionalLayer: boolean,
+  showOnLoad: true,
+  id: string,
+  title: string,
+  description: string,
+  fov?: number,
+  target: string,
+  imgFormat?: string,
+  cooFrame?: String,
+  maxOrder?: number,
+  tileSize?: number,
+  fovRange?: any
+};
+
+type SurveyLayer = {
+  id: string,
+  survey: Survey,
+};
+
+function generateDestinations(layers: SurveyLayer[]): Destination[] {
   if (!layers?.length) return [];
 
   return (
@@ -112,14 +132,14 @@ const Navigation: FC<NavigationProps> = ({
 
   const handleDestinationClick = ({ id, ra, dec, layerId }: Destination) => {
     if (isLoading) return;
-    
+
     setSelectedId(id);
-    
+
     closeNavigation();
     // Pause the walker's movement and void/boundary tracking while we travel
     parameters.resettingPosition = true;
     parameters.selectedLayerId = layerId;
-    
+
     goToPosition({
       ra,
       dec,
