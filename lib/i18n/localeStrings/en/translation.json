@@ -18,7 +18,7 @@
       "listen": "Listen"
     }
   },
-  "skysynth-navigation": {
+  "destination-picker": {
     "open": "Navigation",
     "title": "Navigation",
     "close": "Close",

@@ -1,5 +1,16 @@
 import { graphql } from "@/gql";
 
+export const NavPoisFragment = graphql(`
+  fragment NavPois on navPois_navPoi_BlockType {
+    id
+    navPoiTitle
+    navPoiDescription
+    ra
+    dec
+    enabledInNavigation
+  }
+`);
+
 export const SurveyFragment = graphql(`
   fragment Survey on surveys_surveys_Entry {
     id
@@ -14,6 +25,9 @@ export const SurveyFragment = graphql(`
     cooFrame
     maxOrder
     tileSize
+    navPois {
+      ...NavPois
+    }
   }
 `);
 
