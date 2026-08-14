@@ -6,14 +6,22 @@ import ControlStack from "../Controls/Stack";
 import Orientation from "./Orientation";
 import ToggleGrid from "./ToggleGrid";
 import FullscreenToggle from "./FullscreenToggle";
-import ReturnToInital from "./ReturnToInitial";
 import Search from "./Search";
 import ViewScale from "./ViewScale";
 import AladinOverlay from "@/components/atomic/AladinOverlay";
+import DestinationPicker from "@/components/molecules/DestinationPicker"
 import useAladinKeyboardControls from "@/hooks/useAladinKeyboardControls";
 import styles from "./styles.module.css";
 
-const ExplorerControls: FC = () => {
+interface ExplorerControlsProps {
+  surveys: any;
+  target: string;
+}
+
+const ExplorerControls: FC<ExplorerControlsProps> = ({
+  surveys,
+  target,
+}) => {
   useAladinKeyboardControls();
 
   return (
@@ -27,7 +35,7 @@ const ExplorerControls: FC = () => {
         </ControlStack>
         <ControlStack className={styles.viewControls} position="top right">
           <Orientation />
-          <ReturnToInital />
+          <DestinationPicker layers={surveys} target={target} />
           <ToggleGrid />
         </ControlStack>
         <ControlStack position="middle right">

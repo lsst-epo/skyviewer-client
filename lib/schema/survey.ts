@@ -2,6 +2,7 @@
 
 import { z } from "zod/v4";
 import { env } from "@/env";
+import { ra, dec } from "@/lib/schema/astro";
 
 const imgFormat: HiPSImageFormat = "png";
 const cooFrame: CooFrame = "ICRS";
@@ -18,6 +19,17 @@ const defaults = {
   tileSize,
 };
 
+export const navPoiSchema = z.object({
+  id: z.string(),
+  navPoiTitle: z.string(),
+  navPoiDescription: z.string().nullable(),
+  ra,
+  dec,
+  enabledInNavigation: z.boolean(),
+});
+
+export type NavPoi = z.infer<typeof navPoiSchema>;
+
 export const surveyImageSchema = z
   .object({
     id: z.string(),
@@ -27,31 +39,32 @@ export const surveyImageSchema = z
     fov: z.coerce.number().catch(defaults.fov).default(defaults.fov),
     target: z.string().catch(defaults.target).default(defaults.target),
     imgFormat: z
-      .enum(["jpeg", "png", "fits", "webp"])
-      .catch(defaults.imgFormat)
-      .default(defaults.imgFormat),
+    .enum(["jpeg", "png", "fits", "webp"])
+    .catch(defaults.imgFormat)
+    .default(defaults.imgFormat),
     cooFrame: z
-      .enum(["j2000", "equatorial", "ICRS", "ICRSd", "gal", "galactic"])
-      .catch(defaults.cooFrame)
-      .default(defaults.cooFrame),
+    .enum(["j2000", "equatorial", "ICRS", "ICRSd", "gal", "galactic"])
+    .catch(defaults.cooFrame)
+    .default(defaults.cooFrame),
     maxOrder: z
-      .number()
-      .min(0)
-      .max(12)
-      .catch(defaults.maxOrder)
-      .default(defaults.maxOrder),
+    .number()
+    .min(0)
+    .max(12)
+    .catch(defaults.maxOrder)
+    .default(defaults.maxOrder),
     tileSize: z
-      .union([
-        z.literal(32),
-        z.literal(64),
-        z.literal(128),
-        z.literal(256),
-        z.literal(512),
-      ])
-      .catch(defaults.tileSize)
-      .default(defaults.tileSize),
+    .union([
+      z.literal(32),
+      z.literal(64),
+      z.literal(128),
+      z.literal(256),
+      z.literal(512),
+    ])
+    .catch(defaults.tileSize)
+    .default(defaults.tileSize),
     title: z.string().nullable().optional(),
     path: z.string(),
+    navPois: z.array(navPoiSchema).default([]),
   })
   .transform(({ fovMin, fovMax, ...output }) => {
     const path =
