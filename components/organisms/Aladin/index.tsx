@@ -148,11 +148,24 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
       aladin.current = null;
       ref.current = null;
     };
+    // exhaustively: debug, initializeWithParams, layers, options, position,
+    // savedAladinOptions, signature, zoomRange. All of them are read to build
+    // the instance once and must not re-run this: it is a ref callback, so a
+    // new identity makes React call it with null and then the node again,
+    // building a second aladin. Aladin instances cannot be destroyed (View
+    // .redraw re-arms its own requestAnimationFrame and nothing releases the
+    // WebGL context), so that leaks contexts until the browser refuses more.
+    // Later changes go through the swap effect above instead
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSaveOptions = useCallback(
     (options: Partial<AladinOptions>) => {
-      setSavedAladinOptions({ ...savedAladinOptions, ...options });
+      // merge through the updater rather than the captured value: this
+      // callback is memoized on a stable setter, so it would keep merging
+      // into the savedAladinOptions of the render that created it and drop
+      // every option saved since
+      setSavedAladinOptions((saved) => ({ ...saved, ...options }));
     },
     [setSavedAladinOptions]
   );
@@ -167,7 +180,9 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
           isLoading,
           saveOptions: handleSaveOptions,
         };
-  }, [isLoading, hasFocus]);
+    // the refs are deliberately not dependencies — they are populated during
+    // initialization, and isLoading flipping false is what republishes them
+  }, [isLoading, hasFocus, handleSaveOptions]);
 
   return (
     <AladinContext.Provider value={value}>
