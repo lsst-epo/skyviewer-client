@@ -55,6 +55,56 @@ export const getAllTours = async ({ locale }: { locale: string }) => {
   return tours;
 };
 
+// TODO: Look into combining this with the above fragment
+export const getToursByCategory = async ({ locale, categorySlug }:
+  { locale: string, categorySlug: string }) => {
+  const site = siteFromLocale(locale);
+
+  const query = graphql(`
+    query ToursByCategory($site: [String], $includeInFeed: Boolean, $categorySlug: [String]) {
+      toursEntries(site: $site, includeInFeed: $includeInFeed, relatedToCategories: {slug: $categorySlug}) {
+        ... on tours_tour_Entry {
+          id
+          complexity
+          duration
+          title
+          uri
+          thumbnail {
+            width
+            height
+            additional {
+              AltTextEN
+              AltTextES
+            }
+            url {
+              directUrlOriginal
+              directUrlPreview
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  const { data } = await queryAPI({
+    query,
+    variables: {
+      site: [site],
+      includeInFeed: true,
+      categorySlug: [categorySlug],
+    },
+    fetchOptions: {
+      next: { tags: [tagStore.tours] },
+    },
+  });
+
+  if (!data || !data.toursEntries) return [];
+
+  const { data: tours = [] } = z.array(TourCard).safeParse(data.toursEntries);
+
+  return tours;
+};
+
 export const getTourMetadata = async ({ slug }: { slug: string }) => {
   const site = siteFromLocale(await getLocale());
 

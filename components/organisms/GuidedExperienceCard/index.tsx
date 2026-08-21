@@ -46,7 +46,10 @@ const GuidedExperienceCard: FC<GuidedExperienceCardProps> = async ({
   className,
 }) => {
   const locale = await getLocale();
-  const path = getPathname({ href: { pathname: slug }, locale });
+
+  // The hardcoded tours/ is required to hit a different route segment
+  const path = getPathname({ href: { pathname: `tours/${slug}` }, locale });
+
   return (
     <Stack className={clsx(styles.card, className)}>
       <h2 className={styles.title}>
