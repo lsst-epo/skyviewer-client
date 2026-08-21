@@ -184,6 +184,21 @@
         }
       }
     },
+    "skysynth-help": {
+      "open": "Help",
+      "title_1": "How it works",
+      "close": "Close",
+      "text": " Explore the Universe through sound. This interactive experience transforms NSF-DOE Vera C. Rubin Observatory's deep view of the night sky into an evolving soundscape, where color becomes pitch and brightness becomes volume.",
+      "title_2": "To begin your exploration",
+      "step_1": "Press Play to start drifting across Rubin's vast field of view.",
+      "step_2": "Use the slider at the bottom of the screen to control how fast you move.",
+      "step_3": "Press Pause to take control manually.",
+      "step_4": "Use your arrow keys, or the WASD keys to move in any direction.",
+      "step_5": "Or, click and drag with your mouse or trackpad (or tap and drag on a touchscreen) to explore freely.",
+      "step_6": "Scroll your mouse or press the plus (+) and minus (-) buttons to zoom in and out.",
+      "step_7": "To jump to a point of interest, press the Navigation button on the right side of the screen",
+      "learn_more": "Learn more about the Skysynth sonification"
+    },
     "display": {
       "title": "Display",
       "cta": "Configure the Skyviewer",
