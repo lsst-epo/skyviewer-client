@@ -49,24 +49,24 @@ const parameters = {
   queryMag: 0, // Query magnitude for API calls
   queryLimit: 0, // Query limit for API calls
   magnitudeRanges: [
-    { max: 0.04, value: 35 },
-    { max: 0.08, value: 35 },
-    { max: 0.16, value: 24.5 },
-    { max: 0.32, value: 23 },
-    { max: 0.64, value: 22 },
-    { max: 1.28, value: 19 },
-    { max: 2.56, value: 18.5 },
-    { max: 5.12, value: 18 },
+    { max: 0.04, value: 28 },
+    { max: 0.08, value: 26 },
+    { max: 0.16, value: 24 },
+    { max: 0.32, value: 22 },
+    { max: 0.64, value: 20 },
+    { max: 1.28, value: 18 },
+    { max: 2.56, value: 17 },
+    { max: 5.12, value: 16 },
   ], // Piecewise magnitude ranges
   limitRanges: [
-    { max: 0.04, value: 2000 },
-    { max: 0.08, value: 3000 },
-    { max: 0.16, value: 5000 },
-    { max: 0.32, value: 6000 },
-    { max: 0.64, value: 7000 },
-    { max: 1.28, value: 6000 },
-    { max: 2.56, value: 4000 },
-    { max: 5.12, value: 2000 },
+    { max: 0.04, value: 10000 },
+    { max: 0.08, value: 10000 },
+    { max: 0.16, value: 10000 },
+    { max: 0.32, value: 10000 },
+    { max: 0.64, value: 10000 },
+    { max: 1.28, value: 10000 },
+    { max: 2.56, value: 10000 },
+    { max: 5.12, value: 10000 },
   ], // Piecewise limit ranges
 
   selectedLayerId: "base", // overwritten once by Navigation on skysynth load
