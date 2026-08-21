@@ -182,6 +182,21 @@
         }
       }
     },
+    "skysynth-help": {
+      "open": "",
+      "title_1": "",
+      "close": "",
+      "text": "",
+      "title_2": "",
+      "step_1": "",
+      "step_2": "",
+      "step_3": "",
+      "step_4": "",
+      "step_5": "",
+      "step_6": "",
+      "step_7": "",
+      "learn_more": ""
+    },
     "display": {
       "title": "Visualizar",
       "cta": "Configurar el Skyviewer",
