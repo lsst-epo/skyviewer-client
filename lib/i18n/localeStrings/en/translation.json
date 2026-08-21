@@ -81,7 +81,8 @@
     "summary": {
       "title": "Congratulations",
       "cta": "You have completed the tour! You can share it with your friends",
-      "back": "Back to astronomical tours"
+      "back": "Back to all tours",
+      "view_all_tours": "View all tours"
     }
   },
   "controls": {

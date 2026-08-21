@@ -17,6 +17,7 @@ import { clientInitialPosition } from "@/lib/helpers";
 import { SurveyLayer } from "@/lib/schema/survey";
 import AladinContext, { defaultValue } from "@/contexts/Aladin";
 import styles from "./styles.module.css";
+import { useGlobalDataContext } from "@/contexts/GlobalData";
 
 export interface AladinProps {
   menu?: ReactNode;
@@ -26,6 +27,7 @@ export interface AladinProps {
   initializeWithParams?: boolean;
   layers: Array<SurveyLayer>;
   debug?: boolean;
+  embedded?: boolean;
 }
 
 export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
@@ -37,7 +39,9 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
   layers,
   menu,
   debug = false,
+  embedded
 }) => {
+  const { embedded: isEmbedded } = useGlobalDataContext();
   const searchParams = useSearchParams();
   const position = clientInitialPosition({ searchParams, fovRange });
 
@@ -168,24 +172,28 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
           saveOptions: handleSaveOptions,
         };
   }, [isLoading, hasFocus]);
-
   return (
-    <AladinContext.Provider value={value}>
-      {menu}
-      <div className={styles.aladinWrapper}>
-        <div
-          className={styles.aladin}
-          data-loaded={!isLoading}
-          data-allow-interaction={!disableInteraction}
-          ref={onMounted}
-          onFocus={onFocus}
-          onClick={onFocus}
-          onBlur={onBlur}
-          role="presentation"
-        />
-        {children}
-      </div>
-    </AladinContext.Provider>
+    <main
+      className={styles.viewLayout}
+      data-has-menu={!!menu && (!embedded && !isEmbedded)}
+    >
+      <AladinContext.Provider value={value}>
+        { (!embedded && !isEmbedded) && menu }
+        <div className={styles.aladinWrapper}>
+          <div
+            className={styles.aladin}
+            data-loaded={!isLoading}
+            data-allow-interaction={!disableInteraction}
+            ref={onMounted}
+            onFocus={onFocus}
+            onClick={onFocus}
+            onBlur={onBlur}
+            role="presentation"
+          />
+          {children}
+        </div>
+      </AladinContext.Provider>
+    </main>
   );
 };
 

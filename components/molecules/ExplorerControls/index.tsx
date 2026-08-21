@@ -1,17 +1,16 @@
 "use client";
 import { FC } from "react";
-import Share from "../../organisms/Share";
 import Zoom from "../Controls/Zoom";
 import ControlStack from "../Controls/Stack";
 import Orientation from "./Orientation";
 import ToggleGrid from "./ToggleGrid";
-import FullscreenToggle from "./FullscreenToggle";
 import ReturnToInital from "./ReturnToInitial";
 import Search from "./Search";
 import ViewScale from "./ViewScale";
 import AladinOverlay from "@/components/atomic/AladinOverlay";
 import useAladinKeyboardControls from "@/hooks/useAladinKeyboardControls";
 import styles from "./styles.module.css";
+import ContextualActions from "./ContextualActions";
 
 const ExplorerControls: FC = () => {
   useAladinKeyboardControls();
@@ -34,8 +33,11 @@ const ExplorerControls: FC = () => {
           <Zoom />
         </ControlStack>
         <ControlStack position="bottom left">
-          <FullscreenToggle />
-          <Share embed />
+          <ContextualActions 
+            showFullscreenAction
+            showShareAction
+            shareEmbed
+          />
         </ControlStack>
       </div>
       <div className={styles.viewScaleContainer}>

@@ -81,7 +81,8 @@
     "summary": {
       "title": "¡Felicitaciones!",
       "cta": "¡Has completado el tour! Puedes compartirlo con tus amigos",
-      "back": "Volver a Tours Astronómicos"
+      "back": "Volver a Tours",
+      "view_all_tours": "View all tours"
     }
   },
   "controls": {

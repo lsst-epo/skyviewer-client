@@ -2,16 +2,13 @@
 import { FunctionComponent } from "react";
 import AladinOverlay from "@/components/atomic/AladinOverlay";
 import Zoom from "@/components/molecules/Controls/Zoom";
-import Share from "@/components/organisms/Share";
-import OpenCurrentView from "@/components/molecules/ExplorerControls/OpenCurrentView";
 import ControlStack from "@/components/molecules/Controls/Stack";
-import FullscreenToggle from "@/components/molecules/ExplorerControls/FullscreenToggle";
 import ReturnToInital from "@/components/molecules/ExplorerControls/ReturnToInitial";
 import ViewScale from "@/components/molecules/ExplorerControls/ViewScale";
-import OpenTours from "@/components/molecules/ExplorerControls/OpenTours";
 import useAladinKeyboardControls from "@/hooks/useAladinKeyboardControls";
 import Search from "@/components/molecules/ExplorerControls/Search";
 import styles from "./styles.module.css";
+import ContextualActions from "@/components/molecules/ExplorerControls/ContextualActions";
 
 const EmbeddedExplorer: FunctionComponent = () => {
   useAladinKeyboardControls();
@@ -29,10 +26,12 @@ const EmbeddedExplorer: FunctionComponent = () => {
           <ReturnToInital />
         </ControlStack>
         <ControlStack position="bottom left">
-          <OpenTours />
-          <OpenCurrentView />
-          <FullscreenToggle />
-          <Share />
+          <ContextualActions
+            showOpenToursAction
+            showOpenCurrentViewAction
+            showFullscreenAction
+            showShareAction
+          />
         </ControlStack>
         <ControlStack position="middle right">
           <Zoom />

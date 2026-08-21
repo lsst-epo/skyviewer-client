@@ -13,8 +13,10 @@ import PoiSlideout from "@/components/molecules/PoiSlideout";
 import PoiHeader from "@/components/molecules/PoiHeader";
 import AudioControls from "@/components/molecules/AudioControls";
 import ViewScale from "@/components/molecules/ExplorerControls/ViewScale";
-import ShareTour from "@/components/organisms/TourControls/Share";
 import styles from "./styles.module.css";
+import { useGlobalDataContext } from "@/contexts/GlobalData";
+import ControlStack from "@/components/molecules/Controls/Stack";
+import ContextualActions from "@/components/molecules/ExplorerControls/ContextualActions";
 
 const TourPage: FC<{ title: string | null }> = ({ title }) => {
   const {
@@ -25,6 +27,7 @@ const TourPage: FC<{ title: string | null }> = ({ title }) => {
   const { startNextStep } = useNextStep();
   const searchParams = useSearchParams();
   const poi = searchParams.get("poi");
+  const { embedded } = useGlobalDataContext();
 
   useEffect(() => {
     if (!poi && !hasCompletedTutorial()) {
@@ -44,7 +47,13 @@ const TourPage: FC<{ title: string | null }> = ({ title }) => {
     <AladinOverlay space="0" className={styles.tourOverlay}>
       <div className={styles.controls}>
         <Orientation size="var(--size-spacing-l)" />
-        <ShareTour />
+        <ControlStack position="bottom left">
+          <ContextualActions 
+            showOpenCurrentViewAction={embedded}
+            showFullscreenAction={embedded}
+            showShareTourAction
+          />
+        </ControlStack>
       </div>
       <PoiSlideout
         className={styles.description}

@@ -66,7 +66,8 @@
     "summary": {
       "title": "おめでとうございます。",
       "cta": "ツアー終了です。友達と共有できます。",
-      "back": "天体観測ツアーに戻る。"
+      "back": "天体観測ツアーに戻る。",
+      "view_all_tours": "View all tours"
     }
   },
   "controls": {

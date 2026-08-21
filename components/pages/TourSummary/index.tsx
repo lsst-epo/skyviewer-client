@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FunctionComponent } from "react";
 import { IoArrowBackSharp } from "react-icons/io5";
 import Center from "@rubin-epo/epo-react-lib/Center";
 import Stack from "@rubin-epo/epo-react-lib/Stack";
@@ -21,9 +21,13 @@ import styles from "./styles.module.css";
 
 interface TourSummaryProps {
   tour: string;
+  embedded: boolean;
 }
 
-const TourSummary: FC<TourSummaryProps> = async ({ tour }) => {
+const TourSummary: FunctionComponent<TourSummaryProps> = async ({ 
+    tour,
+    embedded
+}) => {
   const { t } = await useTranslation();
   const locale = await getLocale();
   const path = getPathname({ href: { pathname: `/tours/${tour}` }, locale });
@@ -34,7 +38,7 @@ const TourSummary: FC<TourSummaryProps> = async ({ tour }) => {
       className={styles.container}
       navigation={
         <TransitionButtonish icon={<IoArrowBackSharp />} href="/tours" prefetch>
-          {t("tour.summary.back")}
+          {embedded ? t("tour.summary.view_all_tours") : t("tour.summary.back")}
         </TransitionButtonish>
       }
     >
