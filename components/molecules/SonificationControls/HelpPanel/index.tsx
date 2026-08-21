@@ -66,7 +66,7 @@ const HelpPanel: FC<HelpPanelProps> = ({ buttonClassName, className }) => {
     <>
       <IconButton
         styleAs="primary"
-        text={t("help.open", "Help")}
+        text={t("skysynth-help.open", "Help")}
         onClick={toggleHelpPanel}
         icon={<IoHelpCircleOutline />}
         className={clsx(styles.toggleButton, buttonClassName)}
@@ -88,7 +88,7 @@ const HelpPanel: FC<HelpPanelProps> = ({ buttonClassName, className }) => {
                 <div className={styles.content}>
                   <div className={styles.header}>
                     <h2 className={styles.title}>
-                      {t("help.title1", "How it works")}
+                      {t("skysynth-help.title_1", "How it works")}
                     </h2>
                     <CloseButton
                       as={motion.button}
@@ -97,59 +97,65 @@ const HelpPanel: FC<HelpPanelProps> = ({ buttonClassName, className }) => {
                       animate={{ x: 0, opacity: 1 }}
                       exit={{ x: 15, opacity: 0 }}
                       transition={animations.dialog.transition}
-                      key={t("help.close", "Close")}
+                      key={t("skysynth-help.close", "Close")}
                     >
-                      {t("help.close", "Close")}
+                      {t("skysynth-help.close", "Close")}
                     </CloseButton>
                   </div>
 
                   <div className={styles.textContent}>
                     {t(
-                      "help.text",
+                      "skysynth-help.text",
                       " Explore the Universe through sound. This interactive experience transforms NSF-DOE Vera C. Rubin Observatory's deep view of the night sky into an evolving soundscape, where color becomes pitch and brightness becomes volume.",
                     )}
                   </div>
                   <div className={clsx(styles.header, styles.headerNoBorder)}>
                     <h2 className={styles.title}>
-                      {t("help.title2", "To begin your exploration")}
+                      {t("skysynth-help.title_2", "To begin your exploration")}
                     </h2>
                   </div>
                   <div className={styles.textContent}>
                     <ul>
                       <li>
                         {t(
-                          "help.step1",
+                          "skysynth-help.step_1",
                           "Press Play to start drifting across Rubin's vast field of view.",
                         )}
                       </li>
                       <li>
                         {t(
-                          "help.step2",
+                          "skysynth-help.step_2",
                           "Use the slider at the bottom of the screen to control how fast you move.",
                         )}
                       </li>
                       <li>
                         {t(
-                          "help.step3",
+                          "skysynth-help.step_3",
                           "Press Pause to take control manually.",
                         )}
                       </li>
                       <li>
                         {t(
-                          "help.step4",
+                          "skysynth-help.step_4",
                           "Use your arrow keys, or the WASD keys to move in any direction.",
                         )}
                       </li>
                       <li>
                         {t(
-                          "help.step5",
+                          "skysynth-help.step_5",
                           "Or, click and drag with your mouse or trackpad (or tap and drag on a touchscreen) to explore freely.",
                         )}
                       </li>
                       <li>
                         {t(
-                          "help.step6",
+                          "skysynth-help.step_6",
                           "Scroll your mouse or press the plus (+) and minus (-) buttons to zoom in and out.",
+                        )}
+                      </li>
+                      <li>
+                        {t(
+                          "skysynth-help.step_7",
+                          "To jump to a point of interest, press the Navigation button on the right side of the screen",
                         )}
                       </li>
                     </ul>
@@ -162,7 +168,7 @@ const HelpPanel: FC<HelpPanelProps> = ({ buttonClassName, className }) => {
                       className={styles.externalLink}
                     >
                       {t(
-                        "help.learn_more",
+                        "skysynth-help.learn_more",
                         "Learn more about the Skysynth sonification",
                       )}
                     </a>
