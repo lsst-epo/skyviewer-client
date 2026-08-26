@@ -41,7 +41,20 @@ const SonificationControls: FC<SonificationControlsProps> = ({
         </ControlStack>
         <ControlStack position="middle right">
           <div className={styles.centeredControls}>
-            <DestinationPicker layers={surveys} target={target} />
+            <DestinationPicker
+              layers={surveys}
+              target={target}
+              onInitialDestination={(destination) => {
+                parameters.selectedLayerId = destination.layerId;
+              }}
+              onDestinationSelected={(destination) => {
+                parameters.resettingPosition = true;
+                parameters.selectedLayerId = destination.layerId;
+              }}
+              onNavigationComplete={() => {
+                parameters.resettingPosition = false;
+              }}
+            />
             <Zoom />
           </div>
         </ControlStack>

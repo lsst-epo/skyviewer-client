@@ -12,17 +12,9 @@ import clsx from "clsx/lite";
 
 import type { SurveyLayer } from "@/lib/schema/survey";
 import IconButton from "@/components/atomic/IconButton";
-import parameters from "@/components/organisms/Listener/parameters";
 import { useAladin } from "@/contexts/Aladin";
 import useAladinMove from "@/hooks/useAladinMove";
 import styles from "./styles.module.css";
-
-interface DestinationPickerProps {
-  layers: SurveyLayer[];
-  target: string;
-  buttonClassName?: string;
-  className?: string;
-}
 
 interface Destination {
   id: string;
@@ -33,28 +25,40 @@ interface Destination {
   dec: number;
 }
 
+interface DestinationPickerProps {
+  layers: SurveyLayer[];
+  target: string;
+  buttonClassName?: string;
+  className?: string;
+  onInitialDestination?: (destination: Destination) => void;
+  onDestinationSelected?: (destination: Destination) => void;
+  onNavigationComplete?: (destination: Destination) => void;
+}
+
 function generateDestinations(layers: SurveyLayer[]): Destination[] {
   if (!layers?.length) return [];
 
-  return [...layers]
+  return (
+    [...layers]
       // reversing to match how the layers are loaded into Aladin in order to get the correct base layer
       .reverse()
       .flatMap((layer, layerIndex) => {
         if (!layer.survey.navPois.length) return [];
 
         return layer.survey.navPois
-        .filter((navPoi) => navPoi.enabledInNavigation)
-        .map((navPoi) => {
-          return {
-            id: navPoi.id,
-            layerId: layerIndex === 0 ? "base" : layer.id,
-            label: navPoi.navPoiTitle,
-            description: navPoi.navPoiDescription || "",
-            ra: navPoi.ra,
-            dec: navPoi.dec,
-          };
-        });
-      });
+          .filter((navPoi) => navPoi.enabledInNavigation)
+          .map((navPoi) => {
+            return {
+              id: navPoi.id,
+              layerId: layerIndex === 0 ? "base" : layer.id,
+              label: navPoi.navPoiTitle,
+              description: navPoi.navPoiDescription || "",
+              ra: navPoi.ra,
+              dec: navPoi.dec,
+            };
+          });
+      })
+  );
 }
 
 function findDestinationByTarget(
@@ -75,6 +79,9 @@ const DestinationPicker: FC<DestinationPickerProps> = ({
   target,
   buttonClassName,
   className,
+  onInitialDestination,
+  onDestinationSelected,
+  onNavigationComplete,
 }) => {
   const { t } = useTranslation();
   const [isOpen, setOpen] = useState(false);
@@ -88,7 +95,7 @@ const DestinationPicker: FC<DestinationPickerProps> = ({
 
   // Only sync layer on first render — later updates come from handleDestinationClick
   if (initialDestination && !hasInitializedLayer.current) {
-    parameters.selectedLayerId = initialDestination.layerId;
+    onInitialDestination?.(initialDestination);
     hasInitializedLayer.current = true;
   }
 
@@ -104,22 +111,22 @@ const DestinationPicker: FC<DestinationPickerProps> = ({
     setOpen(!isOpen);
   };
 
-  const handleDestinationClick = ({ id, ra, dec, layerId }: Destination) => {
+  const handleDestinationClick = (destination: Destination) => {
+    const { id, ra, dec } = destination;
+
     if (isLoading) return;
 
     setSelectedId(id);
 
     closeDestinationPicker();
     // Pause the walker's movement and void/boundary tracking while we travel
-    parameters.resettingPosition = true;
-    parameters.selectedLayerId = layerId;
+    onDestinationSelected?.(destination);
 
     goToPosition({
       ra,
       dec,
       onComplete: () => {
-        parameters.resettingPosition = false;
-        // TODO: We shouuld reset the RA/DEC in parameters and run getPoints() here
+        onNavigationComplete?.(destination);
       },
     });
   };
@@ -156,12 +163,14 @@ const DestinationPicker: FC<DestinationPickerProps> = ({
             static
             open={isOpen}
             className={clsx(styles.dialog, className)}
-            onClose={closeDestinationPicker}>
+            onClose={closeDestinationPicker}
+          >
             <DialogPanel className={styles.panel}>
               <motion.div className={styles.backdrop} {...animations.dialog} />
               <motion.div
                 className={styles.contentWrapper}
-                {...animations.dialog}>
+                {...animations.dialog}
+              >
                 <div className={styles.content}>
                   <div className={styles.header}>
                     <h2 className={styles.title}>
@@ -174,7 +183,8 @@ const DestinationPicker: FC<DestinationPickerProps> = ({
                       animate={{ x: 0, opacity: 1 }}
                       exit={{ x: 15, opacity: 0 }}
                       transition={animations.dialog.transition}
-                      key={t("destination-picker.close", "Close")}>
+                      key={t("destination-picker.close", "Close")}
+                    >
                       {t("destination-picker.close", "Close")}
                     </CloseButton>
                   </div>
@@ -191,7 +201,8 @@ const DestinationPicker: FC<DestinationPickerProps> = ({
                             )}
                             aria-pressed={selectedId === destination.id}
                             disabled={isLoading}
-                            onClick={() => handleDestinationClick(destination)}>
+                            onClick={() => handleDestinationClick(destination)}
+                          >
                             <span className={styles.destinationLabel}>
                               {t(
                                 `destination-picker.destinations.${destination.id}.label`,
