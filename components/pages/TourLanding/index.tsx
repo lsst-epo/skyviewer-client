@@ -25,11 +25,14 @@ function getBackgroundImage(srcSet = "") {
   return `image-set(${imageSet})`;
 }
 
-type TourLandingProps = NonNullable<
+type TourMetadataProps = NonNullable<
   Awaited<ReturnType<typeof getTourMetadata>>
 >;
 
+type TourLandingProps = TourMetadataProps & TourProps;
+
 const TourLanding: FC<TourLandingProps> = async ({
+  params: {tourCategory, locale},
   title,
   slug,
   complexity,
@@ -52,7 +55,6 @@ const TourLanding: FC<TourLandingProps> = async ({
     quality: 90,
   });
   const backgroundImage = getBackgroundImage(srcSet);
-
   return (
     <>
       <div
@@ -62,7 +64,8 @@ const TourLanding: FC<TourLandingProps> = async ({
       <FullwidthWithNav
         navigation={
           <>
-            <TransitionButtonish icon={<IoArrowBackSharp />} href="/tours">
+          {/* TODO: This is brittle. Will we always be reaching a tour from a tour category? Reassess requirements and revisit. */}
+            <TransitionButtonish icon={<IoArrowBackSharp />} href={`/${locale}/tours/${tourCategory}`}>
               {t("navigation.cta.back")}
             </TransitionButtonish>
             <TransitionButtonish

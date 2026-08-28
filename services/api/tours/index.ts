@@ -8,12 +8,17 @@ import { siteFromLocale } from "@/lib/i18n/site";
 import queryAPI from "@/services/api/client";
 import { surveyLayerSchema } from "@/lib/schema/survey";
 
-export const getAllTours = async ({ locale }: { locale: string }) => {
+export type GetToursParams = {
+  locale: string,
+  categorySlug?: string
+};
+
+export const getTours = async ({locale, categorySlug}: GetToursParams) => {
   const site = siteFromLocale(locale);
 
   const query = graphql(`
-    query AllTours($site: [String], $includeInFeed: Boolean) {
-      toursEntries(site: $site, includeInFeed: $includeInFeed) {
+    query ToursByCategory($site: [String], $includeInFeed: Boolean, $categorySlug: [String]){
+      toursEntries(site: $site, includeInFeed: $includeInFeed, relatedToCategories: {slug: $categorySlug}) {
         ... on tours_tour_Entry {
           id
           complexity
@@ -42,6 +47,7 @@ export const getAllTours = async ({ locale }: { locale: string }) => {
     variables: {
       site: [site],
       includeInFeed: true,
+      categorySlug: categorySlug ? [categorySlug] : null,
     },
     fetchOptions: {
       next: { tags: [tagStore.tours] },
@@ -53,6 +59,7 @@ export const getAllTours = async ({ locale }: { locale: string }) => {
   const { data: tours = [] } = z.array(TourCard).safeParse(data.toursEntries);
 
   return tours;
+
 };
 
 export const getTourMetadata = async ({ slug }: { slug: string }) => {

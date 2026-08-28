@@ -74,22 +74,27 @@ export const getGuidedExperiences = async () => {
   return { title, experiences };
 };
 
-export const getCount = async (category: string): Promise<number> => {
+export const getCount = async (categorySlug: string): Promise<number> => {
   const site = siteFromLocale(await getLocale());
 
-  const Query = graphql(`
-    query ExperienceCount($site: [String], $section: [String]) {
-      entries(site: $site, section: $section, includeInFeed: true) {
+  const query = graphql(`
+    query ExperienceCount($site: [String], $categorySlug: [String]) {
+      entries(
+        site: $site
+        relatedToCategories: {slug: $categorySlug}
+        includeInFeed: true
+      ) {
         id
+        title
       }
     }
   `);
 
   const { data } = await queryAPI({
-    query: Query,
+    query: query,
     variables: {
       site: [site],
-      section: [category],
+      categorySlug: [categorySlug],
     },
   });
 

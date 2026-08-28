@@ -42,6 +42,8 @@ export const TourCard = z.object({
   thumbnail,
 });
 
+export type TourCardType = z.infer<typeof TourCard>;
+
 export const TourMetadata = z.object({
   slug: z.string(),
   title: z.string(),
@@ -61,6 +63,8 @@ export const Tour = z.object({
   factsHeading: z.string().nullable(),
   factsContentBlocks: z.array(textBlock),
 });
+
+export type TourType = z.infer<typeof Tour>;
 
 export const TourInitial = z
   .object({
