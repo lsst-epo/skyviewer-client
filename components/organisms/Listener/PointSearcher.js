@@ -112,6 +112,7 @@ class PointSearcher {
 
     try {
       // this.useJSONFile(initialPointsData);
+      this.updateFOVRadius(); // Update the FOV radius
       this.getPoints(); // Fetch points from the API on initialization
       this.ready = true;
     } finally {
