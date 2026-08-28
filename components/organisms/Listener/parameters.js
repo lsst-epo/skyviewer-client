@@ -49,14 +49,14 @@ const parameters = {
   queryMag: 0, // Query magnitude for API calls
   queryLimit: 0, // Query limit for API calls
   magnitudeRanges: [
-    { max: 0.04, value: 28 },
+    { max: 0.04, value: 30 },
     { max: 0.08, value: 26 },
     { max: 0.16, value: 24 },
-    { max: 0.32, value: 22 },
-    { max: 0.64, value: 20 },
-    { max: 1.28, value: 18 },
-    { max: 2.56, value: 17 },
-    { max: 5.12, value: 16 },
+    { max: 0.32, value: 22.5 },
+    { max: 0.64, value: 21 },
+    { max: 1.28, value: 19.5 },
+    { max: 2.56, value: 18.5 },
+    { max: 5.12, value: 18 },
   ], // Piecewise magnitude ranges
   limitRanges: [
     { max: 0.04, value: 10000 },
