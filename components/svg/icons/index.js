@@ -4,6 +4,7 @@ import Filters from "./Filters";
 import Galaxy from "./Galaxy";
 import Grid from "./Grid";
 import Nebula from "./Nebula";
+import PinToPin from "./PinToPin";
 import Share from "./Share";
 import Skip from "./Skip";
 import Sort from "./Sort";
@@ -20,6 +21,7 @@ export default {
   Galaxy,
   Grid,
   Nebula,
+  PinToPin,
   Share,
   Skip,
   Sort,
