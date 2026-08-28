@@ -7,8 +7,8 @@ import {
   TargetAndTransition,
   Transition,
 } from "motion/react";
-import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
 import clsx from "clsx/lite";
+import IconComposer from "components/svg/IconComposer";
 
 import type { SurveyLayer } from "@/lib/schema/survey";
 import IconButton from "@/components/atomic/IconButton";
@@ -147,7 +147,7 @@ const DestinationPicker: FC<DestinationPickerProps> = ({
         styleAs="primary"
         text={t("destination-picker.open", "Navigation")}
         onClick={toggleDestinationPicker}
-        icon={<IconComposer icon="Pin" />}
+        icon={<IconComposer icon="PinToPin" />}
         className={clsx(styles.toggleButton, buttonClassName)}
       />
       <AnimatePresence>
