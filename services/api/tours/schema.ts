@@ -44,7 +44,6 @@ export const TourCard = z.object({
 
 export type TourCardType = z.infer<typeof TourCard>;
 
-
 export const TourMetadata = z.object({
   slug: z.string(),
   title: z.string(),

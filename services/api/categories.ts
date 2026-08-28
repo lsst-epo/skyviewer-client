@@ -1,10 +1,10 @@
 import { getLocale } from "next-intl/server";
+import { z } from "zod/v4";
 import { graphql } from "@/gql";
 import queryAPI from "@/services/api/client";
 import { siteFromLocale } from "@/lib/i18n/site";
-import { z } from "zod/v4";
 
-export const CategorySchema = z.object({                                                                                                       
+export const CategorySchema = z.object({
   title: z.string(),                                                                                                                           
 });
 
@@ -31,11 +31,8 @@ export const getCategoryBySlug = async (categorySlug: string) => {
 
   const { title } = data.category;
 
-  const { data: category } = CategorySchema.safeParse(data.category);
-
   if (!title ) {
     return;
-  }
-  
+  }  
   return title;
 };

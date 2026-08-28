@@ -8,60 +8,16 @@ import { siteFromLocale } from "@/lib/i18n/site";
 import queryAPI from "@/services/api/client";
 import { surveyLayerSchema } from "@/lib/schema/survey";
 
-export const getAllTours = async ({ locale }: { locale: string }) => {
-  const site = siteFromLocale(locale);
-
-  const query = graphql(`
-    query AllTours($site: [String], $includeInFeed: Boolean) {
-      toursEntries(site: $site, includeInFeed: $includeInFeed) {
-        ... on tours_tour_Entry {
-          id
-          complexity
-          duration
-          title
-          uri
-          thumbnail {
-            width
-            height
-            additional {
-              AltTextEN
-              AltTextES
-            }
-            url {
-              directUrlOriginal
-              directUrlPreview
-            }
-          }
-        }
-      }
-    }
-  `);
-
-  const { data } = await queryAPI({
-    query,
-    variables: {
-      site: [site],
-      includeInFeed: true,
-    },
-    fetchOptions: {
-      next: { tags: [tagStore.tours] },
-    },
-  });
-
-  if (!data || !data.toursEntries) return [];
-
-  const { data: tours = [] } = z.array(TourCard).safeParse(data.toursEntries);
-
-  return tours;
+export type GetToursParams = {
+  locale: string,
+  categorySlug?: string
 };
 
-// TODO: Look into combining this with the above fragment
-export const getToursByCategory = async ({ locale, categorySlug }:
-  { locale: string, categorySlug: string }) => {
+export const getTours = async ({locale, categorySlug}: GetToursParams) => {
   const site = siteFromLocale(locale);
 
   const query = graphql(`
-    query ToursByCategory($site: [String], $includeInFeed: Boolean, $categorySlug: [String]) {
+    query ToursByCategory($site: [String], $includeInFeed: Boolean, $categorySlug: [String]){
       toursEntries(site: $site, includeInFeed: $includeInFeed, relatedToCategories: {slug: $categorySlug}) {
         ... on tours_tour_Entry {
           id
@@ -91,7 +47,7 @@ export const getToursByCategory = async ({ locale, categorySlug }:
     variables: {
       site: [site],
       includeInFeed: true,
-      categorySlug: [categorySlug],
+      categorySlug: categorySlug ? [categorySlug] : null,
     },
     fetchOptions: {
       next: { tags: [tagStore.tours] },
@@ -103,6 +59,7 @@ export const getToursByCategory = async ({ locale, categorySlug }:
   const { data: tours = [] } = z.array(TourCard).safeParse(data.toursEntries);
 
   return tours;
+
 };
 
 export const getTourMetadata = async ({ slug }: { slug: string }) => {

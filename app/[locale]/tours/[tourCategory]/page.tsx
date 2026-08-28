@@ -4,7 +4,7 @@ import ViewTransition from "@/components/atomic/ViewTransition";
 import GuidedExperienceLanding from "@/components/templates/GuidedExperienceLanding";
 import ToursList from "@/components/organisms/ToursList";
 import { getCategoryBySlug } from "@/services/api/categories";
-import { getToursByCategory } from "@/services/api/tours";
+import { getTours } from "@/services/api/tours";
 
 const TourCategoryPage: FC<TourCategoryProps> = async (
   { params: { locale, tourCategory } }) => {
@@ -12,7 +12,7 @@ const TourCategoryPage: FC<TourCategoryProps> = async (
   setRequestLocale(locale);
 
   const categoryTitle = await getCategoryBySlug(tourCategory);
-  const tours = await getToursByCategory({locale,  categorySlug: tourCategory});
+  const tours = await getTours({locale,  categorySlug: tourCategory});
 
   return (
     <GuidedExperienceLanding

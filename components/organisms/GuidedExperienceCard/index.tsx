@@ -47,7 +47,8 @@ const GuidedExperienceCard: FC<GuidedExperienceCardProps> = async ({
 }) => {
   const locale = await getLocale();
 
-  // The hardcoded tours/ is required to hit a different route segment
+  /* Hardcoding "tours/" in the path is required to build a valid path because
+  that route segment isn't currently hierarchically available from here */
   const path = getPathname({ href: { pathname: `tours/${slug}` }, locale });
 
   return (

@@ -32,7 +32,7 @@ type TourMetadataProps = NonNullable<
 type TourLandingProps = TourMetadataProps & TourProps;
 
 const TourLanding: FC<TourLandingProps> = async ({
-  params: {tour, tourCategory, locale},
+  params: {tourCategory, locale},
   title,
   slug,
   complexity,
