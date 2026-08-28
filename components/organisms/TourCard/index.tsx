@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react";
+
 import clsx from "clsx/lite";
 import { Link } from "next-view-transitions";
 import IconComposer from "@rubin-epo/epo-react-lib/IconComposer";
@@ -15,6 +16,7 @@ import styles from "./styles.module.css";
 interface TourCardProps {
   title?: ReactNode;
   uri?: string;
+  categorySlug?: string,
   duration?: number;
   complexity?: number;
   thumbnail?: MinimalAsset;
@@ -24,6 +26,7 @@ interface TourCardProps {
 const TourCard: FC<TourCardProps> = async ({
   title,
   uri,
+  categorySlug = '',
   duration = 0,
   complexity = 1,
   thumbnail,
@@ -34,12 +37,13 @@ const TourCard: FC<TourCardProps> = async ({
     i18n: { language: locale },
   } = await useTranslation();
   const hasLink = !!uri;
-  const slug = hasLink ? uri.split("/").pop() : undefined;
+  const tourSlug = hasLink ? uri.split("/").pop() : undefined;
+  const path = getPathname({ locale, href: { pathname: `${categorySlug}/${tourSlug}` } });
 
   const titleWithLink = uri ? (
     <Link
       className={styles.link}
-      href={getPathname({ href: { pathname: uri }, locale })}
+      href={path}
       prefetch
     >
       {title}
@@ -48,7 +52,7 @@ const TourCard: FC<TourCardProps> = async ({
     title
   );
 
-  const DetailsWrapper = slug ? ViewTransition : "div";
+  const DetailsWrapper = tourSlug ? ViewTransition : "div";
 
   return (
     <div className={clsx(styles.card, className)}>
@@ -65,7 +69,7 @@ const TourCard: FC<TourCardProps> = async ({
         }
         className={styles.image}
       />
-      <DetailsWrapper name={slug} className={styles.details}>
+      <DetailsWrapper name={tourSlug} className={styles.details}>
         <h3 className={styles.title}>{titleWithLink}</h3>
         <TourAttributes
           attributes={[

@@ -16,14 +16,12 @@ import parameters from "@/components/organisms/Listener/parameters";
 import { useAladin } from "@/contexts/Aladin";
 import useAladinMove from "@/hooks/useAladinMove";
 import styles from "./styles.module.css";
-
 interface DestinationPickerProps {
   layers: SurveyLayer[];
   target: string;
   buttonClassName?: string;
   className?: string;
 }
-
 interface Destination {
   id: string;
   layerId: string;
@@ -81,6 +79,7 @@ const DestinationPicker: FC<DestinationPickerProps> = ({
   const { isLoading } = useAladin();
   const goToPosition = useAladinMove();
   const hasInitializedLayer = useRef(false);
+
   const destinations: Destination[] = generateDestinations(layers);
 
   const initialDestination =
