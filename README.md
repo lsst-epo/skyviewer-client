@@ -1,4 +1,8 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Skyviewer Client
+
+## 🌟 A Note to External Contributors 🌟
+
+*Please read the [CONTRIBUTING.md](/CONTRIBUTING.md) prior to opening a PR.*
 
 ## Getting Started
 
@@ -75,12 +79,3 @@ yarn fix
 ```bash
 yarn bs
 ```
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
