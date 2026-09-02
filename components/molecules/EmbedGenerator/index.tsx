@@ -37,7 +37,7 @@ const buildIframe = (src: string) => {
     "max-height: 100%",
   ].join("; ");
 
-  return `<iframe src="${src}" allowed="${allowed}" sandbox="${sandbox}" style="${style}"></iframe>`;
+  return `<iframe src="${src}" allow="${allowed}" sandbox="${sandbox}" style="${style}"></iframe>`;
 };
 
 const EmbedGenerator: FC = () => {
