@@ -1397,6 +1397,7 @@ export type EntryCriteriaInput = {
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   /** Narrows the query results based on the elements’ titles. */
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   /** Narrows the query results based on the entries’ entry type handles. */
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Narrows the query results based on the entries’ entry types, per the types’ IDs. */
@@ -1599,6 +1600,7 @@ export type EntryInterfaceAncestorsArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1681,6 +1683,7 @@ export type EntryInterfaceChildrenArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1763,6 +1766,7 @@ export type EntryInterfaceDescendantsArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1845,6 +1849,7 @@ export type EntryInterfaceLocalizedArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1927,6 +1932,7 @@ export type EntryInterfaceNextArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2009,6 +2015,7 @@ export type EntryInterfaceParentArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2091,6 +2098,7 @@ export type EntryInterfacePrevArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2483,6 +2491,7 @@ export type QueryAstroObjectsEntriesArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2562,6 +2571,7 @@ export type QueryCatalogsEntriesArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2791,6 +2801,7 @@ export type QueryEmbedEntriesArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2872,6 +2883,7 @@ export type QueryEntriesArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2953,6 +2965,7 @@ export type QueryEntryArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3034,6 +3047,7 @@ export type QueryEntryCountArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3113,6 +3127,7 @@ export type QueryExplorerEntriesArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3153,6 +3168,7 @@ export type QueryGlobalSetArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteTitle: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  surveyMetaData: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   unique: InputMaybe<Scalars['Boolean']['input']>;
@@ -3191,6 +3207,7 @@ export type QueryGlobalSetsArgs = {
   siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteTitle: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  surveyMetaData: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   unique: InputMaybe<Scalars['Boolean']['input']>;
@@ -3268,6 +3285,7 @@ export type QueryGuidedExperiencesEntriesArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3347,6 +3365,7 @@ export type QuerySkysynthEntriesArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3426,6 +3445,7 @@ export type QuerySurveysEntriesArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3505,6 +3525,7 @@ export type QueryToursEntriesArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4352,6 +4373,7 @@ export type AstroObjects_AstroObject_EntryAncestorsArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4479,6 +4501,7 @@ export type AstroObjects_AstroObject_EntryChildrenArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4560,6 +4583,7 @@ export type AstroObjects_AstroObject_EntryDescendantsArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4641,6 +4665,7 @@ export type AstroObjects_AstroObject_EntryLocalizedArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4722,6 +4747,7 @@ export type AstroObjects_AstroObject_EntryNextArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4803,6 +4829,7 @@ export type AstroObjects_AstroObject_EntryParentArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4884,6 +4911,7 @@ export type AstroObjects_AstroObject_EntryPrevArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5318,6 +5346,7 @@ export type Catalogs_Catalog_EntryAncestorsArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5399,6 +5428,7 @@ export type Catalogs_Catalog_EntryChildrenArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5480,6 +5510,7 @@ export type Catalogs_Catalog_EntryDescendantsArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5607,6 +5638,7 @@ export type Catalogs_Catalog_EntryLocalizedArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5688,6 +5720,7 @@ export type Catalogs_Catalog_EntryNextArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5769,6 +5802,7 @@ export type Catalogs_Catalog_EntryParentArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5850,6 +5884,7 @@ export type Catalogs_Catalog_EntryPrevArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6052,6 +6087,7 @@ export type Embed_Embed_EntryAncestorsArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6133,6 +6169,7 @@ export type Embed_Embed_EntryChildrenArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6214,6 +6251,7 @@ export type Embed_Embed_EntryDescendantsArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6295,6 +6333,7 @@ export type Embed_Embed_EntryLocalizedArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6376,6 +6415,7 @@ export type Embed_Embed_EntryNextArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6457,6 +6497,7 @@ export type Embed_Embed_EntryParentArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6538,6 +6579,7 @@ export type Embed_Embed_EntryPrevArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6776,6 +6818,7 @@ export type Explorer_Explorer_EntryAncestorsArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6857,6 +6900,7 @@ export type Explorer_Explorer_EntryChildrenArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6938,6 +6982,7 @@ export type Explorer_Explorer_EntryDescendantsArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7019,6 +7064,7 @@ export type Explorer_Explorer_EntryLocalizedArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7100,6 +7146,7 @@ export type Explorer_Explorer_EntryNextArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7181,6 +7228,7 @@ export type Explorer_Explorer_EntryParentArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7262,6 +7310,7 @@ export type Explorer_Explorer_EntryPrevArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8105,6 +8154,7 @@ export type GuidedExperiences_GuidedExperiences_EntryAncestorsArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8186,6 +8236,7 @@ export type GuidedExperiences_GuidedExperiences_EntryChildrenArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8267,6 +8318,7 @@ export type GuidedExperiences_GuidedExperiences_EntryDescendantsArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8384,6 +8436,7 @@ export type GuidedExperiences_GuidedExperiences_EntryLocalizedArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8465,6 +8518,7 @@ export type GuidedExperiences_GuidedExperiences_EntryNextArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8546,6 +8600,7 @@ export type GuidedExperiences_GuidedExperiences_EntryParentArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8627,6 +8682,7 @@ export type GuidedExperiences_GuidedExperiences_EntryPrevArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8928,6 +8984,66 @@ export type IntroContentBlocks_IntroBlock_BlockType_CountArgs = {
   field: Scalars['String']['input'];
 };
 
+export type NavPois_MatrixField = NavPois_NavPoi_BlockType;
+
+export type NavPois_NavPoi_BlockType = ElementInterface & MatrixBlockInterface & {
+  __typename?: 'navPois_navPoi_BlockType';
+  /** Return a number of related elements for a field. */
+  _count: Maybe<Scalars['Int']['output']>;
+  /** Whether the element is archived. */
+  archived: Maybe<Scalars['Boolean']['output']>;
+  /** The date the element was created. */
+  dateCreated: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated: Maybe<Scalars['DateTime']['output']>;
+  dec: Maybe<Scalars['Number']['output']>;
+  /** Whether the element is enabled. */
+  enabled: Maybe<Scalars['Boolean']['output']>;
+  enabledInNavigation: Maybe<Scalars['Boolean']['output']>;
+  /** The ID of the field that owns the matrix block. */
+  fieldId: Scalars['Int']['output'];
+  /** The ID of the entity */
+  id: Maybe<Scalars['ID']['output']>;
+  /** The language of the site element is associated with. */
+  language: Maybe<Scalars['String']['output']>;
+  navPoiDescription: Maybe<Scalars['String']['output']>;
+  navPoiTitle: Maybe<Scalars['String']['output']>;
+  /** The ID of the primary owner of the Matrix block. */
+  primaryOwnerId: Scalars['Int']['output'];
+  ra: Maybe<Scalars['Number']['output']>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore: Maybe<Scalars['Int']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug: Maybe<Scalars['String']['output']>;
+  /** The sort order of the matrix block within the owner element field. */
+  sortOrder: Maybe<Scalars['Int']['output']>;
+  /** The element’s status. */
+  status: Maybe<Scalars['String']['output']>;
+  /** The element’s title. */
+  title: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed: Maybe<Scalars['Boolean']['output']>;
+  /** The handle of the matrix block’s type. */
+  typeHandle: Scalars['String']['output'];
+  /** The ID of the matrix block’s type. */
+  typeId: Scalars['Int']['output'];
+  /** The UID of the entity */
+  uid: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri: Maybe<Scalars['String']['output']>;
+};
+
+
+export type NavPois_NavPoi_BlockType_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
 export type PoiAstroObject_PoiAstroObject_BlockType = ElementInterface & MatrixBlockInterface & {
   __typename?: 'poiAstroObject_poiAstroObject_BlockType';
   /** Return a number of related elements for a field. */
@@ -9055,6 +9171,7 @@ export type PoiAstroObject_PoiAstroObject_BlockTypeAstroObjectArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9101,6 +9218,7 @@ export type SiteInfo_GlobalSet = ElementInterface & GlobalSetInterface & {
   slug: Maybe<Scalars['String']['output']>;
   /** The element’s status. */
   status: Maybe<Scalars['String']['output']>;
+  surveyMetaData: Maybe<Scalars['String']['output']>;
   /** The element’s title. */
   title: Maybe<Scalars['String']['output']>;
   /** Whether the element has been soft-deleted. */
@@ -9333,6 +9451,7 @@ export type Skysynth_Skysynth_EntryAncestorsArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9414,6 +9533,7 @@ export type Skysynth_Skysynth_EntryChildrenArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9495,6 +9615,7 @@ export type Skysynth_Skysynth_EntryDescendantsArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9576,6 +9697,7 @@ export type Skysynth_Skysynth_EntryLocalizedArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9657,6 +9779,7 @@ export type Skysynth_Skysynth_EntryNextArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9738,6 +9861,7 @@ export type Skysynth_Skysynth_EntryParentArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9819,6 +9943,7 @@ export type Skysynth_Skysynth_EntryPrevArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9997,6 +10122,7 @@ export type Surveys_Layer_BlockTypeSurveyArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -10060,6 +10186,7 @@ export type Surveys_Surveys_Entry = ElementInterface & EntryInterface & {
   /** The same element in other locales. */
   localized: Array<EntryInterface>;
   maxOrder: Maybe<Scalars['Number']['output']>;
+  navPois: Array<Maybe<NavPois_MatrixField>>;
   /** Returns the next element relative to this one, from a given set of criteria. */
   next: Maybe<EntryInterface>;
   /** The entry’s parent, if the section is a structure. */
@@ -10201,6 +10328,7 @@ export type Surveys_Surveys_EntryAncestorsArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -10282,6 +10410,7 @@ export type Surveys_Surveys_EntryChildrenArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -10368,6 +10497,7 @@ export type Surveys_Surveys_EntryDescendantsArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -10454,12 +10584,49 @@ export type Surveys_Surveys_EntryLocalizedArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   unique: InputMaybe<Scalars['Boolean']['input']>;
   uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Surveys_Surveys_EntryNavPoisArgs = {
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  primaryOwnerId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
@@ -10535,6 +10702,7 @@ export type Surveys_Surveys_EntryNextArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -10616,6 +10784,7 @@ export type Surveys_Surveys_EntryParentArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -10697,6 +10866,7 @@ export type Surveys_Surveys_EntryPrevArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -11110,6 +11280,7 @@ export type TourPois_TourPoi_BlockTypeSurveyArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12099,6 +12270,7 @@ export type Tours_Tour_Entry = ElementInterface & EntryInterface & {
   thumbnail: Maybe<Array<Maybe<CantoDamAssetInterface>>>;
   /** The element’s title. */
   title: Maybe<Scalars['String']['output']>;
+  tourCategory: Array<Maybe<CategoryInterface>>;
   tourPois: Array<Maybe<TourPois_MatrixField>>;
   /** Whether the element has been soft-deleted. */
   trashed: Maybe<Scalars['Boolean']['output']>;
@@ -12192,6 +12364,7 @@ export type Tours_Tour_EntryAncestorsArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12296,6 +12469,7 @@ export type Tours_Tour_EntryChildrenArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12377,6 +12551,7 @@ export type Tours_Tour_EntryDescendantsArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12530,6 +12705,7 @@ export type Tours_Tour_EntryLocalizedArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12611,6 +12787,7 @@ export type Tours_Tour_EntryNextArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12692,6 +12869,7 @@ export type Tours_Tour_EntryParentArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12773,6 +12951,7 @@ export type Tours_Tour_EntryPrevArgs = {
   thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   tileSize: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tourCategory: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   type: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12841,6 +13020,56 @@ export type Tours_Tour_EntryThumbnailArgs = {
 };
 
 
+export type Tours_Tour_EntryTourCategoryArgs = {
+  ancestorDist: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf: InputMaybe<Scalars['Int']['input']>;
+  dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist: InputMaybe<Scalars['Int']['input']>;
+  descendantOf: InputMaybe<Scalars['Int']['input']>;
+  editable: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder: InputMaybe<Scalars['Boolean']['input']>;
+  group: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants: InputMaybe<Scalars['Boolean']['input']>;
+  id: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse: InputMaybe<Scalars['Boolean']['input']>;
+  language: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves: InputMaybe<Scalars['Boolean']['input']>;
+  level: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<Scalars['String']['input']>;
+  positionedAfter: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore: InputMaybe<Scalars['Int']['input']>;
+  preferSites: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf: InputMaybe<Scalars['Int']['input']>;
+  ref: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets: InputMaybe<Array<InputMaybe<AssetCriteriaInput>>>;
+  relatedToCategories: InputMaybe<Array<InputMaybe<CategoryCriteriaInput>>>;
+  relatedToEntries: InputMaybe<Array<InputMaybe<EntryCriteriaInput>>>;
+  relatedToTags: InputMaybe<Array<InputMaybe<TagCriteriaInput>>>;
+  relatedToUsers: InputMaybe<Array<InputMaybe<UserCriteriaInput>>>;
+  search: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions: InputMaybe<SearchTermOptions>;
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId: InputMaybe<Scalars['Int']['input']>;
+  thumbnail: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique: InputMaybe<Scalars['Boolean']['input']>;
+  uri: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  varietyHandle: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  withStructure: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
 export type Tours_Tour_EntryTourPoisArgs = {
   dateCreated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12884,6 +13113,14 @@ export type PagePreviewQueryQueryVariables = Exact<{
 
 export type PagePreviewQueryQuery = { __typename?: 'Query', entry: { __typename: 'astroObjects_astroObject_Entry', uri: string | null, title: string | null } | { __typename: 'catalogs_catalog_Entry', uri: string | null, title: string | null } | { __typename: 'embed_embed_Entry', uri: string | null, title: string | null } | { __typename: 'explorer_explorer_Entry', uri: string | null, title: string | null } | { __typename: 'guidedExperiences_guidedExperiences_Entry', uri: string | null, title: string | null } | { __typename: 'skysynth_skysynth_Entry', uri: string | null, title: string | null } | { __typename: 'surveys_surveys_Entry', uri: string | null, title: string | null } | { __typename: 'tours_tour_Entry', uri: string | null, title: string | null } | null };
 
+export type CategoryTitleQueryVariables = Exact<{
+  site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+  categorySlug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+}>;
+
+
+export type CategoryTitleQuery = { __typename?: 'Query', category: { __typename?: 'guidedExperienceType_Category', title: string | null } | { __typename?: 'tourTheme_Category', title: string | null } | { __typename?: 'tourVariety_Category', title: string | null } | null };
+
 export type EmbeddedPageQueryVariables = Exact<{
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
 }>;
@@ -12908,7 +13145,12 @@ export type CantoAssetMinimalFragment = {};
 
 export type CatalogFragment = { __typename?: 'catalogs_catalog_Entry', id: string | null, title: string | null, path: string | null, icon: Array<{ __typename?: 'astroImages_Asset' } | { __typename?: 'cantoDam_Asset' } | { __typename?: 'icons_Asset', url: string | null } | { __typename?: 'tourImages_Asset' } | null> } & { ' $fragmentName'?: 'CatalogFragment' };
 
-export type SurveyFragment = { __typename?: 'surveys_surveys_Entry', id: string | null, description: string | null, title: string | null, path: string | null, target: string | null, fovMin: any | null, fovMax: any | null, fov: any | null, imgFormat: string | null, cooFrame: string | null, maxOrder: any | null, tileSize: string | null } & { ' $fragmentName'?: 'SurveyFragment' };
+export type NavPoisFragment = { __typename?: 'navPois_navPoi_BlockType', id: string | null, navPoiTitle: string | null, navPoiDescription: string | null, ra: any | null, dec: any | null, enabledInNavigation: boolean | null } & { ' $fragmentName'?: 'NavPoisFragment' };
+
+export type SurveyFragment = { __typename?: 'surveys_surveys_Entry', id: string | null, description: string | null, title: string | null, path: string | null, target: string | null, fovMin: any | null, fovMax: any | null, fov: any | null, imgFormat: string | null, cooFrame: string | null, maxOrder: any | null, tileSize: string | null, navPois: Array<(
+    { __typename?: 'navPois_navPoi_BlockType' }
+    & { ' $fragmentRefs'?: { 'NavPoisFragment': NavPoisFragment } }
+  ) | null> } & { ' $fragmentName'?: 'SurveyFragment' };
 
 export type SurveyLayerFragment = { __typename?: 'surveys_layer_BlockType', id: string | null, opacity: any | null, showOnLoad: boolean | null, optionalLayer: boolean | null, survey: Array<{ __typename?: 'astroObjects_astroObject_Entry' } | { __typename?: 'catalogs_catalog_Entry' } | { __typename?: 'embed_embed_Entry' } | { __typename?: 'explorer_explorer_Entry' } | { __typename?: 'guidedExperiences_guidedExperiences_Entry' } | { __typename?: 'skysynth_skysynth_Entry' } | (
     { __typename?: 'surveys_surveys_Entry' }
@@ -12920,7 +13162,7 @@ export type SiteGlobalsQueryVariables = Exact<{
 }>;
 
 
-export type SiteGlobalsQuery = { __typename?: 'Query', globalSets: Array<{ __typename?: 'siteInfo_GlobalSet', name: string, aboutMenuContent: string | null, faqMenuContent: string | null, siteDescription: string | null, siteTitle: string | null, logo: Array<never | null> | null } | null> | null };
+export type SiteGlobalsQuery = { __typename?: 'Query', globalSets: Array<{ __typename?: 'siteInfo_GlobalSet', name: string, aboutMenuContent: string | null, faqMenuContent: string | null, siteDescription: string | null, siteTitle: string | null, surveyMetaData: string | null, logo: Array<never | null> | null } | null> | null };
 
 export type GuidedExperiencesPageQueryVariables = Exact<{
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
@@ -12931,11 +13173,11 @@ export type GuidedExperiencesPageQuery = { __typename?: 'Query', guidedExperienc
 
 export type ExperienceCountQueryVariables = Exact<{
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
-  section: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+  categorySlug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
 }>;
 
 
-export type ExperienceCountQuery = { __typename?: 'Query', entries: Array<{ __typename?: 'astroObjects_astroObject_Entry', id: string | null } | { __typename?: 'catalogs_catalog_Entry', id: string | null } | { __typename?: 'embed_embed_Entry', id: string | null } | { __typename?: 'explorer_explorer_Entry', id: string | null } | { __typename?: 'guidedExperiences_guidedExperiences_Entry', id: string | null } | { __typename?: 'skysynth_skysynth_Entry', id: string | null } | { __typename?: 'surveys_surveys_Entry', id: string | null } | { __typename?: 'tours_tour_Entry', id: string | null } | null> | null };
+export type ExperienceCountQuery = { __typename?: 'Query', entries: Array<{ __typename?: 'astroObjects_astroObject_Entry', id: string | null, title: string | null } | { __typename?: 'catalogs_catalog_Entry', id: string | null, title: string | null } | { __typename?: 'embed_embed_Entry', id: string | null, title: string | null } | { __typename?: 'explorer_explorer_Entry', id: string | null, title: string | null } | { __typename?: 'guidedExperiences_guidedExperiences_Entry', id: string | null, title: string | null } | { __typename?: 'skysynth_skysynth_Entry', id: string | null, title: string | null } | { __typename?: 'surveys_surveys_Entry', id: string | null, title: string | null } | { __typename?: 'tours_tour_Entry', id: string | null, title: string | null } | null> | null };
 
 export type SkySynthPageQueryVariables = Exact<{
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
@@ -12947,13 +13189,14 @@ export type SkySynthPageQuery = { __typename?: 'Query', skysynthEntries: Array<{
       & { ' $fragmentRefs'?: { 'SurveyLayerFragment': SurveyLayerFragment } }
     ) | null> } | null> | null };
 
-export type AllToursQueryVariables = Exact<{
+export type ToursByCategoryQueryVariables = Exact<{
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
   includeInFeed: InputMaybe<Scalars['Boolean']['input']>;
+  categorySlug: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
 }>;
 
 
-export type AllToursQuery = { __typename?: 'Query', toursEntries: Array<{ __typename?: 'tours_tour_Entry', id: string | null, complexity: any | null, duration: any | null, title: string | null, uri: string | null, thumbnail: Array<never | null> | null } | null> | null };
+export type ToursByCategoryQuery = { __typename?: 'Query', toursEntries: Array<{ __typename?: 'tours_tour_Entry', id: string | null, complexity: any | null, duration: any | null, title: string | null, uri: string | null, thumbnail: Array<never | null> | null } | null> | null };
 
 export type TourMetadataQueryVariables = Exact<{
   site: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
@@ -13003,18 +13246,20 @@ export type ToursPathsQuery = { __typename?: 'Query', toursEntries: Array<{ __ty
 
 export const CantoAssetMinimalFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CantoAssetMinimal"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CantoDamAssetInterface"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}}]} as unknown as DocumentNode<CantoAssetMinimalFragment, unknown>;
 export const CatalogFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Catalog"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"catalogs_catalog_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"icons_Asset"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]} as unknown as DocumentNode<CatalogFragment, unknown>;
-export const SurveyFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}}]} as unknown as DocumentNode<SurveyFragment, unknown>;
-export const SurveyLayerFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SurveyLayer"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_layer_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"opacity"}},{"kind":"Field","name":{"kind":"Name","value":"showOnLoad"}},{"kind":"Field","name":{"kind":"Name","value":"optionalLayer"}},{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}}]} as unknown as DocumentNode<SurveyLayerFragment, unknown>;
+export const NavPoisFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"NavPois"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"navPois_navPoi_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"navPoiTitle"}},{"kind":"Field","name":{"kind":"Name","value":"navPoiDescription"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"enabledInNavigation"}}]}}]} as unknown as DocumentNode<NavPoisFragment, unknown>;
+export const SurveyFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}},{"kind":"Field","name":{"kind":"Name","value":"navPois"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"NavPois"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"NavPois"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"navPois_navPoi_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"navPoiTitle"}},{"kind":"Field","name":{"kind":"Name","value":"navPoiDescription"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"enabledInNavigation"}}]}}]} as unknown as DocumentNode<SurveyFragment, unknown>;
+export const SurveyLayerFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SurveyLayer"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_layer_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"opacity"}},{"kind":"Field","name":{"kind":"Name","value":"showOnLoad"}},{"kind":"Field","name":{"kind":"Name","value":"optionalLayer"}},{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"NavPois"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"navPois_navPoi_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"navPoiTitle"}},{"kind":"Field","name":{"kind":"Name","value":"navPoiDescription"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"enabledInNavigation"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}},{"kind":"Field","name":{"kind":"Name","value":"navPois"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"NavPois"}}]}}]}}]} as unknown as DocumentNode<SurveyLayerFragment, unknown>;
 export const PagePreviewQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"PagePreviewQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"uri"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entry"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}},{"kind":"Argument","name":{"kind":"Name","value":"uri"},"value":{"kind":"Variable","name":{"kind":"Name","value":"uri"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]}}]} as unknown as DocumentNode<PagePreviewQueryQuery, PagePreviewQueryQueryVariables>;
-export const EmbeddedPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"EmbeddedPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"embedEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"embed_embed_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"surveys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SurveyLayer"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SurveyLayer"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_layer_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"opacity"}},{"kind":"Field","name":{"kind":"Name","value":"showOnLoad"}},{"kind":"Field","name":{"kind":"Name","value":"optionalLayer"}},{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}}]} as unknown as DocumentNode<EmbeddedPageQuery, EmbeddedPageQueryVariables>;
-export const ExplorerPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ExplorerPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"explorerEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"explorer_explorer_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"surveys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SurveyLayer"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SurveyLayer"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_layer_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"opacity"}},{"kind":"Field","name":{"kind":"Name","value":"showOnLoad"}},{"kind":"Field","name":{"kind":"Name","value":"optionalLayer"}},{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}}]} as unknown as DocumentNode<ExplorerPageQuery, ExplorerPageQueryVariables>;
-export const SiteGlobalsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"SiteGlobals"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"globalSets"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"siteInfo_GlobalSet"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"aboutMenuContent"}},{"kind":"Field","name":{"kind":"Name","value":"faqMenuContent"}},{"kind":"Field","name":{"kind":"Name","value":"siteDescription"}},{"kind":"Field","name":{"kind":"Name","value":"siteTitle"}},{"kind":"Field","name":{"kind":"Name","value":"logo"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"key"},"value":{"kind":"StringValue","value":"scheme","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"value"},"value":{"kind":"StringValue","value":"image","block":false}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CantoAssetMinimal"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CantoAssetMinimal"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CantoDamAssetInterface"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}}]} as unknown as DocumentNode<SiteGlobalsQuery, SiteGlobalsQueryVariables>;
+export const CategoryTitleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"CategoryTitle"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"categorySlug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"category"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}},{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"categorySlug"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]}}]} as unknown as DocumentNode<CategoryTitleQuery, CategoryTitleQueryVariables>;
+export const EmbeddedPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"EmbeddedPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"embedEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"embed_embed_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"surveys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SurveyLayer"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"NavPois"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"navPois_navPoi_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"navPoiTitle"}},{"kind":"Field","name":{"kind":"Name","value":"navPoiDescription"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"enabledInNavigation"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}},{"kind":"Field","name":{"kind":"Name","value":"navPois"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"NavPois"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SurveyLayer"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_layer_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"opacity"}},{"kind":"Field","name":{"kind":"Name","value":"showOnLoad"}},{"kind":"Field","name":{"kind":"Name","value":"optionalLayer"}},{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}}]} as unknown as DocumentNode<EmbeddedPageQuery, EmbeddedPageQueryVariables>;
+export const ExplorerPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ExplorerPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"explorerEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"explorer_explorer_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"surveys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SurveyLayer"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"NavPois"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"navPois_navPoi_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"navPoiTitle"}},{"kind":"Field","name":{"kind":"Name","value":"navPoiDescription"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"enabledInNavigation"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}},{"kind":"Field","name":{"kind":"Name","value":"navPois"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"NavPois"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SurveyLayer"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_layer_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"opacity"}},{"kind":"Field","name":{"kind":"Name","value":"showOnLoad"}},{"kind":"Field","name":{"kind":"Name","value":"optionalLayer"}},{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}}]} as unknown as DocumentNode<ExplorerPageQuery, ExplorerPageQueryVariables>;
+export const SiteGlobalsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"SiteGlobals"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"globalSets"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"siteInfo_GlobalSet"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"aboutMenuContent"}},{"kind":"Field","name":{"kind":"Name","value":"faqMenuContent"}},{"kind":"Field","name":{"kind":"Name","value":"siteDescription"}},{"kind":"Field","name":{"kind":"Name","value":"siteTitle"}},{"kind":"Field","name":{"kind":"Name","value":"surveyMetaData"}},{"kind":"Field","name":{"kind":"Name","value":"logo"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"key"},"value":{"kind":"StringValue","value":"scheme","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"value"},"value":{"kind":"StringValue","value":"image","block":false}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CantoAssetMinimal"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CantoAssetMinimal"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CantoDamAssetInterface"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}}]} as unknown as DocumentNode<SiteGlobalsQuery, SiteGlobalsQueryVariables>;
 export const GuidedExperiencesPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GuidedExperiencesPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"guidedExperiencesEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"guidedExperiences_guidedExperiences_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"guidedExperiences"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"guidedExperiences_experience_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"experienceCategory"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"Field","name":{"kind":"Name","value":"previewImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CantoAssetMinimal"}}]}}]}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CantoAssetMinimal"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CantoDamAssetInterface"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}}]} as unknown as DocumentNode<GuidedExperiencesPageQuery, GuidedExperiencesPageQueryVariables>;
-export const ExperienceCountDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ExperienceCount"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"section"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}},{"kind":"Argument","name":{"kind":"Name","value":"section"},"value":{"kind":"Variable","name":{"kind":"Name","value":"section"}}},{"kind":"Argument","name":{"kind":"Name","value":"includeInFeed"},"value":{"kind":"BooleanValue","value":true}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<ExperienceCountQuery, ExperienceCountQueryVariables>;
-export const SkySynthPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"SkySynthPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"skysynthEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"skysynth_skysynth_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"surveys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SurveyLayer"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SurveyLayer"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_layer_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"opacity"}},{"kind":"Field","name":{"kind":"Name","value":"showOnLoad"}},{"kind":"Field","name":{"kind":"Name","value":"optionalLayer"}},{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}}]} as unknown as DocumentNode<SkySynthPageQuery, SkySynthPageQueryVariables>;
-export const AllToursDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AllTours"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"includeInFeed"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}},{"kind":"Argument","name":{"kind":"Name","value":"includeInFeed"},"value":{"kind":"Variable","name":{"kind":"Name","value":"includeInFeed"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"complexity"}},{"kind":"Field","name":{"kind":"Name","value":"duration"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<AllToursQuery, AllToursQueryVariables>;
+export const ExperienceCountDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ExperienceCount"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"categorySlug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}},{"kind":"Argument","name":{"kind":"Name","value":"relatedToCategories"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"categorySlug"}}}]}},{"kind":"Argument","name":{"kind":"Name","value":"includeInFeed"},"value":{"kind":"BooleanValue","value":true}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]}}]} as unknown as DocumentNode<ExperienceCountQuery, ExperienceCountQueryVariables>;
+export const SkySynthPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"SkySynthPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"skysynthEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"skysynth_skysynth_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"surveys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SurveyLayer"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"NavPois"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"navPois_navPoi_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"navPoiTitle"}},{"kind":"Field","name":{"kind":"Name","value":"navPoiDescription"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"enabledInNavigation"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}},{"kind":"Field","name":{"kind":"Name","value":"navPois"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"NavPois"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SurveyLayer"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_layer_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"opacity"}},{"kind":"Field","name":{"kind":"Name","value":"showOnLoad"}},{"kind":"Field","name":{"kind":"Name","value":"optionalLayer"}},{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}}]} as unknown as DocumentNode<SkySynthPageQuery, SkySynthPageQueryVariables>;
+export const ToursByCategoryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ToursByCategory"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"includeInFeed"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"categorySlug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}},{"kind":"Argument","name":{"kind":"Name","value":"includeInFeed"},"value":{"kind":"Variable","name":{"kind":"Name","value":"includeInFeed"}}},{"kind":"Argument","name":{"kind":"Name","value":"relatedToCategories"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"categorySlug"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"complexity"}},{"kind":"Field","name":{"kind":"Name","value":"duration"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<ToursByCategoryQuery, ToursByCategoryQueryVariables>;
 export const TourMetadataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TourMetadata"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}},{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"complexity"}},{"kind":"Field","name":{"kind":"Name","value":"duration"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"backgroundImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<TourMetadataQuery, TourMetadataQueryVariables>;
 export const TourDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Tour"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}},{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"AltTextEN"}},{"kind":"Field","name":{"kind":"Name","value":"AltTextES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}},{"kind":"Field","name":{"kind":"Name","value":"directUrlPreview"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"introHeading"}},{"kind":"Field","name":{"kind":"Name","value":"introSubheading"}},{"kind":"Field","name":{"kind":"Name","value":"introContentBlocks"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"introContentBlocks_introBlock_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","alias":{"kind":"Name","value":"text"},"name":{"kind":"Name","value":"body"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"factsHeading"}},{"kind":"Field","name":{"kind":"Name","value":"factsContentBlocks"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"factsContentBlocks_factsContentBlock_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","alias":{"kind":"Name","value":"text"},"name":{"kind":"Name","value":"body"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<TourQuery, TourQueryVariables>;
-export const TourInitialDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TourInitial"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"offset"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}},{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"surveys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SurveyLayer"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tourPois"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"1"}},{"kind":"Argument","name":{"kind":"Name","value":"offset"},"value":{"kind":"Variable","name":{"kind":"Name","value":"offset"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tourPois_tourPoi_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}}]}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SurveyLayer"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_layer_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"opacity"}},{"kind":"Field","name":{"kind":"Name","value":"showOnLoad"}},{"kind":"Field","name":{"kind":"Name","value":"optionalLayer"}},{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}}]} as unknown as DocumentNode<TourInitialQuery, TourInitialQueryVariables>;
-export const TourPoiDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TourPoi"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}},{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tourPois"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tourPois_tourPoi_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","alias":{"kind":"Name","value":"title"},"name":{"kind":"Name","value":"poiTitle"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"audio"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"key"},"value":{"kind":"StringValue","value":"scheme","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"value"},"value":{"kind":"StringValue","value":"audio","block":false}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"DurationTime"}},{"kind":"Field","name":{"kind":"Name","value":"FileTypeExtension"}}]}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"TitleEN"}},{"kind":"Field","name":{"kind":"Name","value":"TitleES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}},{"kind":"Field","name":{"kind":"Name","value":"zoomOutTime"}},{"kind":"Field","name":{"kind":"Name","value":"zoomOutFov"}},{"kind":"Field","name":{"kind":"Name","value":"panTime"}},{"kind":"Field","name":{"kind":"Name","value":"zoomInTime"}}]}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}}]}}]} as unknown as DocumentNode<TourPoiQuery, TourPoiQueryVariables>;
+export const TourInitialDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TourInitial"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"offset"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}},{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"surveys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SurveyLayer"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tourPois"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"1"}},{"kind":"Argument","name":{"kind":"Name","value":"offset"},"value":{"kind":"Variable","name":{"kind":"Name","value":"offset"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tourPois_tourPoi_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}}]}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"NavPois"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"navPois_navPoi_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"navPoiTitle"}},{"kind":"Field","name":{"kind":"Name","value":"navPoiDescription"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"enabledInNavigation"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}},{"kind":"Field","name":{"kind":"Name","value":"navPois"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"NavPois"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SurveyLayer"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_layer_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"opacity"}},{"kind":"Field","name":{"kind":"Name","value":"showOnLoad"}},{"kind":"Field","name":{"kind":"Name","value":"optionalLayer"}},{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}}]}}]} as unknown as DocumentNode<TourInitialQuery, TourInitialQueryVariables>;
+export const TourPoiDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TourPoi"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}},{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tourPois"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tourPois_tourPoi_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","alias":{"kind":"Name","value":"title"},"name":{"kind":"Name","value":"poiTitle"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"audio"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"key"},"value":{"kind":"StringValue","value":"scheme","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"value"},"value":{"kind":"StringValue","value":"audio","block":false}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"DurationTime"}},{"kind":"Field","name":{"kind":"Name","value":"FileTypeExtension"}}]}},{"kind":"Field","name":{"kind":"Name","value":"additional"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"TitleEN"}},{"kind":"Field","name":{"kind":"Name","value":"TitleES"}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"directUrlOriginal"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"survey"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Survey"}}]}},{"kind":"Field","name":{"kind":"Name","value":"zoomOutTime"}},{"kind":"Field","name":{"kind":"Name","value":"zoomOutFov"}},{"kind":"Field","name":{"kind":"Name","value":"panTime"}},{"kind":"Field","name":{"kind":"Name","value":"zoomInTime"}}]}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"NavPois"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"navPois_navPoi_BlockType"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"navPoiTitle"}},{"kind":"Field","name":{"kind":"Name","value":"navPoiDescription"}},{"kind":"Field","name":{"kind":"Name","value":"ra"}},{"kind":"Field","name":{"kind":"Name","value":"dec"}},{"kind":"Field","name":{"kind":"Name","value":"enabledInNavigation"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Survey"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"surveys_surveys_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"fovMin"}},{"kind":"Field","name":{"kind":"Name","value":"fovMax"}},{"kind":"Field","name":{"kind":"Name","value":"fov"}},{"kind":"Field","name":{"kind":"Name","value":"imgFormat"}},{"kind":"Field","name":{"kind":"Name","value":"cooFrame"}},{"kind":"Field","name":{"kind":"Name","value":"maxOrder"}},{"kind":"Field","name":{"kind":"Name","value":"tileSize"}},{"kind":"Field","name":{"kind":"Name","value":"navPois"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"NavPois"}}]}}]}}]} as unknown as DocumentNode<TourPoiQuery, TourPoiQueryVariables>;
 export const ToursPathsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ToursPaths"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"site"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"toursEntries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"site"},"value":{"kind":"Variable","name":{"kind":"Name","value":"site"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"tours_tour_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]}}]} as unknown as DocumentNode<ToursPathsQuery, ToursPathsQueryVariables>;

@@ -17,7 +17,7 @@ const ExplorerPage: FC<RootProps> = async ({ params: { locale } }) => {
     notFound();
   }
 
-  const { surveys, fovRange, ...configuredOptions } = data;
+  const { surveys, fovRange, target, ...configuredOptions } = data;
 
   const properties = surveys.map(({ survey }) => {
     const absolute = survey.path.startsWith("http")
@@ -37,10 +37,10 @@ const ExplorerPage: FC<RootProps> = async ({ params: { locale } }) => {
       }
       fovRange={fovRange}
       layers={surveys}
-      options={configuredOptions}
+      options={{...configuredOptions, target}}
       initializeWithParams
     >
-      <Controls />
+      <Controls surveys={surveys} target={target} />
       <CurrentPositionPopover />
     </AladinTemplate>
   );

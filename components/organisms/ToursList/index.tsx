@@ -1,26 +1,16 @@
 import { FC, Suspense } from "react";
 import Skeleton from "react-loading-skeleton";
 import TourCard from "../TourCard";
-import { getAllTours } from "@/services/api/tours";
 import ScrollingList from "@/components/molecules/ScrollingList";
+import { TourCardType } from "@/services/api/tours/schema";
+interface ToursListProps {
+  categorySlug?: string,
+  tours?: TourCardType[]
+}
 
-const ToursListContent: FC<{ locale: string }> = async (props) => {
-  const tours = await getAllTours(props);
-
-  return (
-    <>
-      {tours.map(({ id, ...props }, i) => {
-        return (
-          <li key={i}>
-            <TourCard {...props} />
-          </li>
-        );
-      })}
-    </>
-  );
-};
-
-const ToursList: FC<{ locale: string }> = (props) => {
+const ToursList: FC<ToursListProps> = (
+  {categorySlug, tours}
+) => {
   const SkeletonCards = new Array(4).fill(undefined);
 
   return (
@@ -32,7 +22,8 @@ const ToursList: FC<{ locale: string }> = (props) => {
               return (
                 <li key={i}>
                   <TourCard
-                    {...props}
+                    {...tours}
+                    categorySlug={categorySlug}
                     title={<Skeleton width="12ch" height="1lh" />}
                   />
                 </li>
@@ -41,7 +32,13 @@ const ToursList: FC<{ locale: string }> = (props) => {
           </>
         }
       >
-        <ToursListContent {...props} />
+       {tours && tours.map(({...props }, i) => {
+        return (
+          <li key={i}>
+            <TourCard {...props} categorySlug={categorySlug}/>
+          </li>
+        );
+      })}
       </Suspense>
     </ScrollingList>
   );

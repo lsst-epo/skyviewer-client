@@ -22,6 +22,7 @@ export const getGlobalData = async ({ locale }: { locale: string }) => {
           faqMenuContent
           siteDescription
           siteTitle
+          surveyMetaData
           logo(where: { key: "scheme", value: "image" }) {
             ...CantoAssetMinimal
           }

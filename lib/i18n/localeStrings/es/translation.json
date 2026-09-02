@@ -18,7 +18,7 @@
       "listen": "Versión sonora"
     }
   },
-  "skysynth-navigation": {
+  "destination-picker": {
     "open": "Navegación",
     "title": "Navegación",
     "close": "Cerrar",
@@ -81,7 +81,7 @@
     "summary": {
       "title": "¡Felicitaciones!",
       "cta": "¡Has completado el tour! Puedes compartirlo con tus amigos",
-      "back": "Volver a Tours Astronómicos"
+      "back": "Volver a Experiencias Guiadas"
     }
   },
   "controls": {
@@ -182,6 +182,21 @@
         }
       }
     },
+    "skysynth-help": {
+      "open": "Ayuda",
+      "title_1": "Cómo funciona",
+      "close": "Cerrar",
+      "text": "Explora el Universo a través del sonido. Esta experiencia interactiva transforma la vista profunda del cielo nocturno captada por el Observatorio Vera C. Rubin de NSF-DOE en un paisaje sonoro en constante evolución, donde el color se convierte en tono y el brillo, en volumen.",
+      "title_2": "Comienza tu exploración",
+      "step_1": "Pulsa el icono de reproducción para comenzar a recorrer el enorme campo de visión de Rubin.",
+      "step_2": "Utiliza el control deslizante en la parte inferior de la pantalla para ajustar la velocidad de desplazamiento.",
+      "step_3": "Pulsa el icono de pausa para detener el recorrido y explorar por tu cuenta.",
+      "step_4": "En tu teclado, utiliza las teclas de flechas o W-A-S-D para desplazarte en cualquier dirección.",
+      "step_5": "También puedes hacer clic y arrastrar con el mouse o trackpad, o tocar y arrastrar en una pantalla táctil, para explorar libremente.",
+      "step_6": "Desplaza la rueda del mouse o pulsa los botones más (+) y menos (-) para acercar o alejar la vista.",
+      "step_7": "Para ir directamente a un punto de interés, pulsa el icono de ubicación (Navegación), ubicado en la parte derecha de la pantalla.",
+      "learn_more": "Más información sobre la sonificación de Skysynth"
+    },
     "display": {
       "title": "Visualizar",
       "cta": "Configurar el Skyviewer",
@@ -203,7 +218,8 @@
       "title": "Acceso rápido",
       "links": {
         "explorer": "Explorador de Skyviewer",
-        "guided-experiences": "$t(guided-experiences.title)"
+        "guided-experiences": "$t(guided-experiences.title)",
+        "skysynth": "Skysynth"
       }
     }
   }
