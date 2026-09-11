@@ -107,12 +107,13 @@ class SamplePlayer {
         const pointPX = this.aladin.world2pix(point.point[0], point.point[1]);
         const pointFreqData = linearMap(
           point.gRColor,
-          parameters.minGRColour,
           parameters.maxGRColour,
+          parameters.minGRColour,
           0,
           1,
           true
         ); // Map br color to frequency
+        console.log(`Triggered point: ${point.flag}, gRColor: ${point.gRColor}`);
         let pointAmplitude = linearMap(
           point.gmag,
           parameters.gmagMax,
@@ -121,8 +122,18 @@ class SamplePlayer {
           1,
           true
         ); // Map size to amplitude
+        // console.log(`Point: ${point.flag}, gmag: ${point.gmag}, amplitude: ${pointAmplitude.toFixed(2)}`);
+        let minStarVolume = 0.001;
+        let minGalVolume = 0.05;
+        let maxStarVolume = 0.25;
+        let maxGalVolume = 4;
+        let masStarGalGain = 1.5;
+
+        let maxVolume = maxGalVolume;
+        let minVolume = minGalVolume;
         if (point.flag === "s") {
-          pointAmplitude *= 0.1; // Scale down amplitude for stars
+          minVolume = minStarVolume;
+          maxVolume = maxStarVolume;
         }
         const instrument = pointTypeToInstrument[point.flag] || "harp"; // Default to 'harp' if type is not found
         let pan = 0;
@@ -136,14 +147,15 @@ class SamplePlayer {
           true
         );
         pan = Math.min(Math.max(pan, -1), 1); // Ensure pan stays within the valid range
+        
+        let amplitude_scaled = masStarGalGain * (minVolume + (maxVolume - minVolume)  * pointAmplitude ** parameters.ampScaling);
         this.playSample(
           pointFreqData ** parameters.freqScaling,
-          0.025 +
-            parameters.maxSampleVolume *
-              pointAmplitude ** parameters.ampScaling,
+          amplitude_scaled,
           instrument,
           pan
         ); // Play the sample with the mapped values
+        console.log(`Triggered point: ${point.flag}, gmag: ${point.gmag}, amplitude: ${pointAmplitude.toFixed(2)}, played amplitude: ${amplitude_scaled} `);
       }
     }
   }
@@ -171,6 +183,7 @@ class SamplePlayer {
       pannerNode.connect(parameters.audioContext.destination); // Connect the PannerNode to the destination
 
       gainNode.gain.value = volume; // Set the volume (0.0 to 1.0)
+      console.log(`Playing sample: ${name}, volume: ${volume.toFixed(2)}, pan: ${pan.toFixed(2)}`);
       pannerNode.pan.value = pan; // Set the pan (-1.0 for full left, 1.0 for full right)
 
       source.start(0);
