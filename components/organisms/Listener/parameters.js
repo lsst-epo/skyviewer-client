@@ -29,12 +29,11 @@ const parameters = {
   audioBuffers: {}, // Object to store multiple audio buffers
   minGRColour: 0, // Minimum green-red color value
   maxGRColour: 1.6, // Maximum green-red color value
-  gmagMin: 8, // Minimum gmag value
-  gmagMax: 26, // Maximum gmag value
+  gmagMin: 16, // Minimum gmag value
+  gmagMax: 28, // Maximum gmag value
   freqScaling: 0.4, // Frequency scaling factor
-  ampScaling: 4, // Amplitude scaling factor
-  maxSampleVolume: 1, // Maximum volume for samples
-  pixelMasGain: 1.5,
+  ampScaling: 1, // Amplitude scaling factor
+  maxSampleVolume: 0.4, // Maximum volume for samples
   // API parameters, need to set with intial values
   currentRaDec: [187.77035, 8.07268], // Current RA and Dec coordinates
   startingPosition: [187.77035, 8.07268], // Starting position in Ra/Dec

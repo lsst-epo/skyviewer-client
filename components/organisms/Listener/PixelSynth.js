@@ -156,7 +156,7 @@ class PixelSynth {
     const amplitude = linearMap(brightness, 0, 255, 0, 1); // Map brightness to a range of 0 to 1
     // let amplitude = 1;
 
-    this.updateOscillator(freqData, parameters.pixelMasGain * amplitude ** this.amplitudeScale);
+    this.updateOscillator(freqData, 1 * amplitude ** this.amplitudeScale);
   }
 
   updateOscillator(freqData, amplitude) {

@@ -82,13 +82,13 @@ class SamplePlayer {
         break;
     }
     this.midiNumbers = this.midiNumbers.map(
-      (number) => number + parameters.startNote - 12,
+      (number) => number + parameters.startNote - 12
     );
   }
 
   playSample(pitchValue, volValue, instrument, pan = 0) {
     const midiNoteIndex = Math.floor(
-      linearMap(pitchValue, 0, 1, 0, this.midiNumbers.length - 1),
+      linearMap(pitchValue, 0, 1, 0, this.midiNumbers.length - 1)
     ); // map the star's size to an index in the midiNumbers array
     const midiNote = this.midiNumbers[midiNoteIndex];
     const sampleIndex = midiNote - parameters.midiMin;
@@ -107,31 +107,22 @@ class SamplePlayer {
         const pointPX = this.aladin.world2pix(point.point[0], point.point[1]);
         const pointFreqData = linearMap(
           point.gRColor,
-          parameters.maxGRColour,
           parameters.minGRColour,
+          parameters.maxGRColour,
           0,
           1,
-          true,
+          true
         ); // Map br color to frequency
-        const pointAmplitude = linearMap(
+        let pointAmplitude = linearMap(
           point.gmag,
           parameters.gmagMax,
           parameters.gmagMin,
           0,
           1,
-          true,
+          true
         ); // Map size to amplitude
-        const minStarVolume = 0.001;
-        const minGalVolume = 0.05;
-        const maxStarVolume = 0.25;
-        const maxGalVolume = 4;
-        const masStarGalGain = 1.5;
-
-        let maxVolume = maxGalVolume;
-        let minVolume = minGalVolume;
         if (point.flag === "s") {
-          minVolume = minStarVolume;
-          maxVolume = maxStarVolume;
+          pointAmplitude *= 0.1; // Scale down amplitude for stars
         }
         const instrument = pointTypeToInstrument[point.flag] || "harp"; // Default to 'harp' if type is not found
         let pan = 0;
@@ -142,19 +133,16 @@ class SamplePlayer {
           parameters.targetRadiusPX,
           -1,
           1,
-          true,
+          true
         );
         pan = Math.min(Math.max(pan, -1), 1); // Ensure pan stays within the valid range
-
-        const amplitudeScaled =
-          masStarGalGain *
-          (minVolume +
-            (maxVolume - minVolume) * pointAmplitude ** parameters.ampScaling);
         this.playSample(
           pointFreqData ** parameters.freqScaling,
-          amplitudeScaled,
+          0.025 +
+            parameters.maxSampleVolume *
+              pointAmplitude ** parameters.ampScaling,
           instrument,
-          pan,
+          pan
         ); // Play the sample with the mapped values
       }
     }
