@@ -65,7 +65,7 @@ class PixelSynth {
         break;
     }
     this.midiNumbers = this.midiNumbers.map(
-      (number) => number + this.start_note - 12
+      (number) => number + this.start_note - 12,
     );
   }
 
@@ -114,7 +114,7 @@ class PixelSynth {
       this.oscillatorGainNode = this.audioContext.createGain();
       this.oscillatorGainNode.gain.setValueAtTime(
         0,
-        this.audioContext.currentTime
+        this.audioContext.currentTime,
       );
 
       this.dryGainNode = this.audioContext.createGain();
@@ -156,7 +156,10 @@ class PixelSynth {
     const amplitude = linearMap(brightness, 0, 255, 0, 1); // Map brightness to a range of 0 to 1
     // let amplitude = 1;
 
-    this.updateOscillator(freqData, 1 * amplitude ** this.amplitudeScale);
+    this.updateOscillator(
+      freqData,
+      parameters.pixelMasGain * amplitude ** this.amplitudeScale,
+    );
   }
 
   updateOscillator(freqData, amplitude) {
@@ -171,18 +174,18 @@ class PixelSynth {
         0,
         1,
         0,
-        this.noteFrequencies.length
-      )
+        this.noteFrequencies.length,
+      ),
     ); // Map to note pitches
     noteIndex = Math.max(
       0,
-      Math.min(noteIndex, this.noteFrequencies.length - 1)
+      Math.min(noteIndex, this.noteFrequencies.length - 1),
     ); // Ensure the index is within bounds
     const frequency = this.noteFrequencies[noteIndex]; // Get the corresponding frequency
 
     this.oscillator.frequency.setValueAtTime(
       frequency,
-      this.audioContext.currentTime
+      this.audioContext.currentTime,
     );
   }
 
@@ -195,7 +198,7 @@ class PixelSynth {
       this.oscillatorGainNode.gain.setTargetAtTime(
         ampCon,
         this.audioContext.currentTime,
-        1
+        1,
       );
     }
   }
