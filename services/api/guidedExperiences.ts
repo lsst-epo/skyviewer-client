@@ -10,7 +10,7 @@ const guidedExperiencesSchema = z.array(
     .object({
       experienceCategory: z
         .array(
-          z.object({ id: z.string(), slug: z.string(), title: z.string() })
+          z.object({ id: z.string(), slug: z.string(), title: z.string() }),
         )
         .transform((output) => output[0]),
       previewImage: z
@@ -19,7 +19,7 @@ const guidedExperiencesSchema = z.array(
     })
     .transform(({ experienceCategory, previewImage }) => {
       return { ...experienceCategory, previewImage };
-    })
+    }),
 );
 
 export const getGuidedExperiences = async () => {
@@ -28,10 +28,10 @@ export const getGuidedExperiences = async () => {
   const Query = graphql(`
     query GuidedExperiencesPage($site: [String]) {
       guidedExperiencesEntries(site: $site) {
-        ... on guidedExperiences_guidedExperiences_Entry {
+        ... on guidedExperiences_Entry {
           title
           guidedExperiences {
-            ... on guidedExperiences_experience_BlockType {
+            ... on experience_Entry {
               experienceCategory {
                 id
                 slug
@@ -81,7 +81,7 @@ export const getCount = async (categorySlug: string): Promise<number> => {
     query ExperienceCount($site: [String], $categorySlug: [String]) {
       entries(
         site: $site
-        relatedToCategories: {slug: $categorySlug}
+        relatedToCategories: { slug: $categorySlug }
         includeInFeed: true
       ) {
         id
