@@ -20,7 +20,7 @@ export async function getToursPaths({ locale }: { locale: string }) {
   const query = graphql(`
     query ToursPaths($site: [String]) {
       toursEntries(site: $site) {
-        ... on tours_tour_Entry {
+        ... on tour_Entry {
           slug
         }
       }
