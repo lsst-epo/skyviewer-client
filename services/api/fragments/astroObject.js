@@ -1,7 +1,7 @@
 import { getImageFields } from "@/services/api/fragments/image";
 
 export const astroObjectContentFragment = `
-fragment astroObjectContentFragment on astroObjects_astroObject_Entry {
+fragment astroObjectContentFragment on astroObject_Entry {
     title
     astroObjectId
     ra

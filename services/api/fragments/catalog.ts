@@ -1,7 +1,7 @@
 import { graphql } from "@/gql";
 
 export const catalogFragment = graphql(`
-  fragment Catalog on catalogs_catalog_Entry {
+  fragment Catalog on catalog_Entry {
     id
     title
     path

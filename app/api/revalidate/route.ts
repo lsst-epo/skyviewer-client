@@ -25,6 +25,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
   }
 
   if (uri) {
+    console.log("[Revalidate Request]: ", uri);
     revalidate(uri);
 
     return NextResponse.json({ revalidated: true, now: Date.now() });

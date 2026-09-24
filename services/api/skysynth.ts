@@ -30,7 +30,7 @@ export const getSkySynthPage = async (locale: string) => {
   const Query = graphql(`
     query SkySynthPage($site: [String]) {
       skysynthEntries(site: $site) {
-        ... on skysynth_skysynth_Entry {
+        ... on skysynth_Entry {
           title
           ra
           dec
