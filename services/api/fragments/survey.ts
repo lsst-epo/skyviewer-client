@@ -1,7 +1,7 @@
 import { graphql } from "@/gql";
 
 export const NavPoisFragment = graphql(`
-  fragment NavPois on navPois_navPoi_BlockType {
+  fragment NavPois on navPoi_Entry {
     id
     navPoiTitle
     navPoiDescription
@@ -12,7 +12,7 @@ export const NavPoisFragment = graphql(`
 `);
 
 export const SurveyFragment = graphql(`
-  fragment Survey on surveys_surveys_Entry {
+  fragment Survey on surveys_Entry {
     id
     description
     title
@@ -32,7 +32,7 @@ export const SurveyFragment = graphql(`
 `);
 
 export const SurveyLayer = graphql(`
-  fragment SurveyLayer on surveys_layer_BlockType {
+  fragment SurveyLayer on layer_Entry {
     id
     opacity
     showOnLoad
