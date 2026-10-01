@@ -68,9 +68,12 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
       import("aladin-lite").then((module) => {
         const global: A = module.default;
 
-        layers.reverse();
-
-        const [base] = layers.splice(0, 1);
+        // last layer is the base and the rest stack on top in reverse
+        // order. Copy rather than mutate: the Display menu renders from
+        // this same array and re-renders once aladin has loaded, so
+        // reversing and splicing in place made it re-draw against a
+        // reordered list with its base entry removed
+        const [base, ...overlays] = [...layers].reverse();
 
         global.init.then(() => {
           const instance = global.aladin(node, {
@@ -91,7 +94,7 @@ export const Aladin: FunctionComponent<PropsWithChildren<AladinProps>> = ({
             instance.setFoVRange(fovRange[0], fovRange[1]);
           }
 
-          layers.forEach(
+          overlays.forEach(
             ({
               id,
               survey: {
