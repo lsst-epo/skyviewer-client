@@ -10,15 +10,15 @@ import { surveyLayerSchema } from "@/lib/schema/survey";
 
 export type GetToursParams = {
   locale: string,
-  categorySlug?: string
+  category?: string
 };
 
-export const getTours = async ({locale, categorySlug}: GetToursParams) => {
+export const getTours = async ({locale, category}: GetToursParams) => {
   const site = siteFromLocale(locale);
 
   const query = graphql(`
-    query ToursByCategory($site: [String], $includeInFeed: Boolean, $categorySlug: [String]){
-      toursEntries(site: $site, includeInFeed: $includeInFeed, relatedToCategories: {slug: $categorySlug}) {
+    query ToursByCategory($site: [String], $includeInFeed: Boolean, $category: [QueryArgument]){
+      toursEntries(site: $site, includeInFeed: $includeInFeed, tourCategory: $category) {
         ... on tour_Entry {
           id
           complexity
@@ -47,7 +47,7 @@ export const getTours = async ({locale, categorySlug}: GetToursParams) => {
     variables: {
       site: [site],
       includeInFeed: true,
-      categorySlug: categorySlug ? [categorySlug] : null,
+      category: category ? [category] : null,
     },
     fetchOptions: {
       next: { tags: [tagStore.tours] },

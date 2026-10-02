@@ -37,13 +37,13 @@ const GuidedExperiences: FC<GuidedExperiencesProps> = async ({
           </PageTitle>
         </Center>
         <div className={styles.cardGrid}>
-          {experiences.map(({ id, slug, title, previewImage }) => {
+          {experiences.map(({ id, title, tourCategory, previewImage }) => {
             const { width, height } = previewImage;
 
             return (
               <GuidedExperienceCard
                 key={id}
-                {...{ id, slug, title }}
+                {...{ id, tourCategory, title }}
                 image={{
                   width,
                   height,
