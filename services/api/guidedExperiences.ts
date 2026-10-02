@@ -8,17 +8,15 @@ import { MinimalAssetSchema } from "@/lib/schema/canto";
 const guidedExperiencesSchema = z.array(
   z
     .object({
-      experienceCategory: z
-        .array(
-          z.object({ id: z.string(), slug: z.string(), title: z.string() }),
-        )
-        .transform((output) => output[0]),
+      id: z.string(),
+      title: z.string(),
+      tourCategory: z.string(),
       previewImage: z
         .array(MinimalAssetSchema)
         .transform((output) => output[0]),
     })
-    .transform(({ experienceCategory, previewImage }) => {
-      return { ...experienceCategory, previewImage };
+    .transform(({ id, title, tourCategory, previewImage }) => {
+      return { id, title, tourCategory, previewImage };
     }),
 );
 
@@ -32,11 +30,9 @@ export const getGuidedExperiences = async () => {
           title
           guidedExperiences {
             ... on experience_Entry {
-              experienceCategory {
-                id
-                slug
-                title
-              }
+              id
+              title
+              tourCategory
               previewImage {
                 ...CantoAssetMinimal
               }
@@ -78,10 +74,10 @@ export const getCount = async (categorySlug: string): Promise<number> => {
   const site = siteFromLocale(await getLocale());
 
   const query = graphql(`
-    query ExperienceCount($site: [String], $categorySlug: [String]) {
+    query TourCount($site: [String], $categorySlug: [QueryArgument]) {
       entries(
         site: $site
-        relatedToCategories: { slug: $categorySlug }
+        tourCategory: $categorySlug
         includeInFeed: true
       ) {
         id

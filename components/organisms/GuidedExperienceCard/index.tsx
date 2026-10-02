@@ -14,14 +14,16 @@ import styles from "./styles.module.css";
 interface GuidedExperienceCardProps {
   title: string;
   id: string;
-  slug: string;
+  tourCategory: string;
   image: ImageProps;
   className?: string;
 }
 
-const RibbonContent: FC<{ slug: string }> = async ({ slug }) => {
+const RibbonContent: FC<{ tourCategory: string }> = async ({
+  tourCategory
+}) => {
   const { t } = await useTranslation();
-  const count = await getCount(slug);
+  const count = await getCount(tourCategory);
 
   return (
     <>
@@ -41,7 +43,7 @@ const RibbonContent: FC<{ slug: string }> = async ({ slug }) => {
 
 const GuidedExperienceCard: FC<GuidedExperienceCardProps> = async ({
   title,
-  slug,
+  tourCategory,
   image,
   className,
 }) => {
@@ -49,13 +51,13 @@ const GuidedExperienceCard: FC<GuidedExperienceCardProps> = async ({
 
   /* Hardcoding "tours/" in the path is required to build a valid path because
   that route segment isn't currently hierarchically available from here */
-  const path = getPathname({ href: { pathname: `tours/${slug}` }, locale });
+  const path = getPathname({ href: { pathname: `tours/${tourCategory}` }, locale });
 
   return (
     <Stack className={clsx(styles.card, className)}>
       <h2 className={styles.title}>
         <Link className={styles.link} href={path}>
-          <ViewTransition name={`${slug}-title`}>{title}</ViewTransition>
+          <ViewTransition name={`${tourCategory}-title`}>{title}</ViewTransition>
         </Link>
       </h2>
 
@@ -63,7 +65,7 @@ const GuidedExperienceCard: FC<GuidedExperienceCardProps> = async ({
         <Image {...image} />
         <Ribbon className={styles.ribbon}>
           <Suspense fallback={null}>
-            <RibbonContent slug={slug} />
+            <RibbonContent tourCategory={tourCategory} />
           </Suspense>
         </Ribbon>
       </Frame>
