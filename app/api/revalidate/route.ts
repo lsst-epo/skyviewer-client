@@ -27,6 +27,14 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
   if (uri) {
     revalidate(uri);
 
+    /** If a tour is being revalidated under the /tours path,
+     * revalidate the /guided-experiences page as well to update
+     * the tour counts there.
+    */
+    if (uri.split("/")[0] === "tours") {
+      revalidate("guided-experiences");
+    }
+
     return NextResponse.json({ revalidated: true, now: Date.now() });
   }
 
