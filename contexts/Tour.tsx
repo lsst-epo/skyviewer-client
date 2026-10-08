@@ -6,17 +6,20 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import { useSearchParams } from "next/navigation";
 import { useAudioPlayerContext } from "react-use-audio-player";
 import { useAladin } from "./Aladin";
+import { useGlobalDataContext } from "./GlobalData";
 import { getTourPois } from "@/services/api/tours";
 import { useRouter } from "@/lib/i18n/navigation";
 import { isAtLocation } from "@/lib/aladin/helpers";
 import { adjustPositionForScreen, panAndZoom } from "@/lib/aladin/animation";
-import { useGlobalDataContext } from "./GlobalData";
+import { addCat } from "@/components/organisms/Catalogs/utilities";
 
+import type { Catalog } from "@/services/api/catalogs/schema";
 type PoiSteps = NonNullable<Awaited<ReturnType<typeof getTourPois>>>;
 type PoiStep = PoiSteps[number];
 
@@ -44,6 +47,17 @@ interface TourProviderProps {
 
 interface UseTourProps {}
 
+// `title` is a name that a carried over from an earlier catalog implementation.
+// Each marker sets its own shape from Craft but this is kept as a fallback value.
+const HIGHLIGHT_CATALOG: Catalog = {
+  title: "rubinCircle",
+  isHipsCatalog: false,
+  scaleWithSky: true,
+};
+
+const MARKER_MAX_STEP_MS = 500; // The longest a marker should be delayed
+const MARKER_MAX_POPULATION_TIME_MS = 2500; // The maximum time to allow for all markers to be added
+
 export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
   pois,
   children,
@@ -58,12 +72,69 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
 
   const [currentPoi, setCurrentPoi] = useState<number | null>(poi || null);
   const [isPending, setPending] = useState(false);
+
+  const highlightCatalogRef = useRef<AladinCatalog | null>(null);
+  const highlightCatIsAddedRef = useRef(false);
+  const highlightTimersRef = useRef<Array<ReturnType<typeof setTimeout>>>([]);
+  const aladinRef = useRef<A | null>(null);
+  const currentPoiRef = useRef(currentPoi);
+  currentPoiRef.current = currentPoi;
+
   const { load, stop } = useAudioPlayerContext();
+
+  const clearHighlightTimers = useCallback(() => {
+    highlightTimersRef.current.forEach((timer) => clearTimeout(timer));
+    highlightTimersRef.current = [];
+  }, []);
+
+  const setHighlights = useCallback(
+    (poiNumber: number | null) => {
+      const catalog = highlightCatalogRef.current;
+      const A = aladinRef.current;
+
+      if (!catalog || !A) return;
+
+      clearHighlightTimers();
+      catalog.removeAll();
+
+      if (poiNumber === null) return;
+
+      const markers = pois[poiNumber - 1]?.highlightMarkers ?? [];
+
+      if (markers.length > 0) {
+        // Ensure long lists of markers don't cause an exessive marker population time
+        const delay = Math.min(
+          MARKER_MAX_POPULATION_TIME_MS / markers.length,
+          MARKER_MAX_STEP_MS,
+        );
+
+        highlightTimersRef.current = markers.map(
+          ({ ra, dec, title, markerSizeFactor, markerShape }, i) => {
+            return setTimeout(
+              () =>
+                catalog.addSources(
+                  A.source(ra, dec, { title, markerSizeFactor, markerShape }),
+                ),
+              (i + 1) * delay,
+            );
+          },
+        );
+      }
+    },
+    [pois, clearHighlightTimers],
+  );
+
+  useEffect(() => {
+    setHighlights(currentPoi);
+
+    return clearHighlightTimers;
+  }, [currentPoi, setHighlights, clearHighlightTimers]);
 
   const onLoaded = useCallback<
     NonNullable<AdditionalAladinCallbacks["onLoaded"]>
   >(
-    ({ aladin, A }) => {
+    async ({ aladin, A }) => {
+      aladinRef.current = A;
       pois.forEach(({ survey }, i) => {
         if (survey) {
           const active = poi || 1;
@@ -87,8 +158,16 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
       if (poi) {
         startTransition({ between: [null, poi], aladin });
       }
+
+      if (!highlightCatIsAddedRef.current) {
+        highlightCatIsAddedRef.current = true;
+
+        const catalog = await addCat(A, aladin, HIGHLIGHT_CATALOG);
+        highlightCatalogRef.current = catalog;
+        setHighlights(currentPoiRef.current);
+      }
     },
-    [poi]
+    [poi],
   );
 
   const { isLoading, aladin } = useAladin({ callbacks: { onLoaded } });
@@ -180,6 +259,8 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
     const summaryEmbedParams = embedded ? "?embedded=true" : "";
     if (!isPending) {
       setPending(true);
+      clearHighlightTimers();
+      highlightCatalogRef.current?.removeAll();
 
       if (to > limit) {
         push(`summary${summaryEmbedParams}`);
@@ -239,8 +320,7 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
         previousPoi,
         currentPoi: currentPoi === null ? undefined : pois[currentPoi - 1],
         position: { current: currentPoi || undefined, total: limit },
-      }}
-    >
+      }}>
       {children}
     </TourContext.Provider>
   );
