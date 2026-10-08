@@ -90,10 +90,10 @@ const Sketch = ({ pixelColor, cardinalSums }) => {
           }
         }
         // Load the rubin empty circle and star images
-        p.loadImage("/sonification/rubin-circle-empty.png", (img) => {
+        p.loadImage("/shapes/rubin-circle-empty.png", (img) => {
           emptyCircleRef.current = img;
         });
-        p.loadImage("/sonification/rubin-star.png", (img) => {
+        p.loadImage("/shapes/rubin-star.png", (img) => {
           starRef.current = img;
         });
         // Initialize the walker with p5 instance and aladin

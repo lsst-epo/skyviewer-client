@@ -3,6 +3,7 @@ import { z } from "zod/v4";
 import { MinimalAssetSchema } from "@/lib/schema/canto";
 import { dec, ra } from "@/lib/schema/astro";
 import { surveyImageSchema } from "@/lib/schema/survey";
+import { markerShapeSchema } from "@/services/api/catalogs/schema";
 
 const complexity = z.coerce.number();
 const duration = z.coerce.number();
@@ -84,6 +85,16 @@ export const AstroObject = z.object({
   characteristics: z.string().nullable(),
 });
 
+export const HighlightMarker = z.object({
+  title: z.string(),
+  ra,
+  dec,
+  markerSizeFactor: z.coerce.number(),
+  markerShape: markerShapeSchema.catch("rubinCircle"),
+});
+
+export type HighlightMarkerType = z.infer<typeof HighlightMarker>;
+
 export const Poi = z.object({
   id: z.string(),
   title: z.string(),
@@ -120,4 +131,8 @@ export const Poi = z.object({
     .min(0)
     .max(1)
     .transform((output) => output[0]),
+  highlightMarkers: z
+    .array(HighlightMarker)
+    .nullish()
+    .transform((output) => output ?? []),
 });

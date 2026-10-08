@@ -9,16 +9,24 @@ import queryAPI from "@/services/api/client";
 import { surveyLayerSchema } from "@/lib/schema/survey";
 
 export type GetToursParams = {
-  locale: string,
-  category?: string
+  locale: string;
+  category?: string;
 };
 
-export const getTours = async ({locale, category}: GetToursParams) => {
+export const getTours = async ({ locale, category }: GetToursParams) => {
   const site = siteFromLocale(locale);
 
   const query = graphql(`
-    query ToursByCategory($site: [String], $includeInFeed: Boolean, $category: [QueryArgument]){
-      toursEntries(site: $site, includeInFeed: $includeInFeed, tourCategory: $category) {
+    query ToursByCategory(
+      $site: [String]
+      $includeInFeed: Boolean
+      $category: [QueryArgument]
+    ) {
+      toursEntries(
+        site: $site
+        includeInFeed: $includeInFeed
+        tourCategory: $category
+      ) {
         ... on tour_Entry {
           id
           complexity
@@ -59,7 +67,6 @@ export const getTours = async ({locale, category}: GetToursParams) => {
   const { data: tours = [] } = z.array(TourCard).safeParse(data.toursEntries);
 
   return tours;
-
 };
 
 export const getTourMetadata = async ({ slug }: { slug: string }) => {
@@ -274,6 +281,9 @@ export const getTourPois = async (tour: string) => {
               zoomOutFov
               panTime
               zoomInTime
+              highlightMarkers {
+                ...HighlightMarkers
+              }
             }
           }
         }

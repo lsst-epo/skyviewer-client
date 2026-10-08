@@ -238,6 +238,7 @@ interface AladinCatalog {
   readonly show: () => void;
   readonly hide: () => void;
   readonly remove: (source: AladinSource) => void;
+  readonly removeAll: () => void;
   readonly reportChange: () => void;
 
   name: string;
@@ -384,12 +385,43 @@ type CatalogSourceShape =
   | "triangle"
   | "square";
 
+// Called once per source when sources are added to a catalog
+type CatalogSourceShapeFactory = (
+  source: AladinSource
+) => HTMLCanvasElement
+| HTMLImageElement
+| CatalogSourceShape
+| undefined;
+
+interface AladinViewParams {
+  /** [width, height] of the view in degrees */
+  fov: [number, number];
+  width: number;
+  height: number;
+}
+
+// Called every frame for each visible source; Aladin uses this form when the
+// function declares 2+ params (checked via `fn.length`, so no defaults/rest)
+// This is not well defined in the API reference docs,
+// but Claude was able to surface it by looking at the source
+// and examples in the repo.
+type CatalogSourceShapeFn = (
+  source: AladinSource & { x: number; y: number },
+  renderingContext: CanvasRenderingContext2D,
+  viewParams: AladinViewParams
+) => void;
+
 interface AladinCatalogOptions {
   url: string;
   name?: string;
   color?: string;
   sourceSize?: number;
-  shape?: CatalogSourceShape | HTMLCanvasElement | HTMLImageElement; // JPEG/PNG also supported, but how?
+  shape?:
+    | CatalogSourceShape
+    | HTMLCanvasElement
+    | HTMLImageElement
+    | CatalogSourceShapeFactory
+    | CatalogSourceShapeFn; // JPEG/PNG also supported, but how?
   limit?: number;
   onClick?: "showTable" | "showPopup" | ((...args: any) => void);
   readOnly?: boolean;

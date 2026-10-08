@@ -12,9 +12,13 @@ import { Catalog } from "@/services/api/catalogs/schema";
 
 interface CatalogProps {
   catalogs?: Array<Catalog>;
+  onCatalogsAdded?: (catalogs: AladinCatalog[]) => void
 }
 
-const Catalogs: FunctionComponent<CatalogProps> = ({ catalogs }) => {
+const Catalogs: FunctionComponent<CatalogProps> = ({
+  catalogs,
+  onCatalogsAdded
+}) => {
   const [sourceData, setSourceData] = useState<any>(null);
   const [additionalSourceData, setAdditionalSourceData] = useState<
     Record<string, any>
@@ -22,8 +26,11 @@ const Catalogs: FunctionComponent<CatalogProps> = ({ catalogs }) => {
 
   const showSourceDetails: ObjectClickedCallback = async (event) => {
     if (!event) return;
+
     const { data, ra, dec } = event;
     const { id } = data;
+    if (!id) return;
+
     const additionalData = additionalSourceData[id];
     const position = pixelPosition({ ra, dec });
 
@@ -68,12 +75,13 @@ const Catalogs: FunctionComponent<CatalogProps> = ({ catalogs }) => {
   }, [sourceData]);
 
   const onLoaded = useCallback(
-    ({ aladin, A }) => {
+   async ({ aladin, A }) => {
       if (catalogs) {
-        addCats(A, aladin, catalogs);
+        const addedCatalogs = await addCats(A, aladin, catalogs);
+        onCatalogsAdded?.(addedCatalogs)
       }
     },
-    [catalogs]
+    [catalogs, onCatalogsAdded]
   );
 
   const { aladin } = useAladin({
