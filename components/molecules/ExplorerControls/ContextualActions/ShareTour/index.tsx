@@ -4,7 +4,7 @@ import { useMediaQuery } from "usehooks-ts";
 import { usePathname, useSearchParams } from "next/navigation";
 import { env } from "@/env";
 import { useStep } from "@/lib/tutorial";
-import Share from "@/components/organisms/Share";
+import Share from "@/components/molecules/ExplorerControls/ContextualActions/Share";
 
 interface ShareTourProps {
   className?: string;

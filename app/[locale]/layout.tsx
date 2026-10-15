@@ -1,6 +1,6 @@
 import "@/styles/styles.scss";
 import clsx from "clsx/lite";
-import { FunctionComponent, PropsWithChildren } from "react";
+import { FunctionComponent, PropsWithChildren, Suspense } from "react";
 import { hasLocale } from "next-intl";
 import { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
@@ -16,6 +16,7 @@ import SkeletonGlobal from "@/components/organisms/SkeletonGlobal";
 import { env } from "@/env";
 import { getGlobalData } from "@/services/api/global";
 import PreviewMode from "@/components/organisms/PreviewMode";
+import { GlobalDataProvider } from "@/contexts/GlobalData";
 
 export const generateStaticParams = () => {
   return languages.map((locale) => {
@@ -75,12 +76,16 @@ const RootLayout: FunctionComponent<PropsWithChildren<RootProps>> = ({
           className={clsx(SourceSansPro.variable, NotoSansJapanese.variable)}
         >
           <I18NextClientProvider locale={locale}>
-            <StyledComponentsRegistry>
-              <SkeletonGlobal>
-                <PreviewMode />
-                {children}
-              </SkeletonGlobal>
-            </StyledComponentsRegistry>
+            <Suspense fallback={null}>
+              <GlobalDataProvider>
+                <StyledComponentsRegistry>
+                  <SkeletonGlobal>
+                    <PreviewMode />
+                    {children}
+                  </SkeletonGlobal>
+                </StyledComponentsRegistry>
+              </GlobalDataProvider>
+            </Suspense>
           </I18NextClientProvider>
           {env.PLAUSIBLE_DOMAIN && (
             <Script
