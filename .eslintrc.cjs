@@ -123,6 +123,7 @@ module.exports = {
       rules: {
         "no-undef": "off",
         "no-redeclare": "off",
+        "react/prop-types": "off"
       },
     },
   ],

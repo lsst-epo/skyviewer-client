@@ -1,11 +1,10 @@
 "use client";
 import { FC } from "react";
-import Share from "../../organisms/Share";
 import Zoom from "../Controls/Zoom";
 import ControlStack from "../Controls/Stack";
 import Orientation from "./Orientation";
 import ToggleGrid from "./ToggleGrid";
-import FullscreenToggle from "./FullscreenToggle";
+import ContextualActions from "./ContextualActions";
 import Search from "./Search";
 import ViewScale from "./ViewScale";
 import AladinOverlay from "@/components/atomic/AladinOverlay";
@@ -42,8 +41,11 @@ const ExplorerControls: FC<ExplorerControlsProps> = ({
           <Zoom />
         </ControlStack>
         <ControlStack position="bottom left">
-          <FullscreenToggle />
-          <Share embed />
+          <ContextualActions
+            showFullscreenAction
+            showShareAction
+            shareEmbed
+          />
         </ControlStack>
       </div>
       <div className={styles.viewScaleContainer}>

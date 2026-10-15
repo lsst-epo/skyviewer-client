@@ -15,6 +15,7 @@ import { getTourPois } from "@/services/api/tours";
 import { useRouter } from "@/lib/i18n/navigation";
 import { isAtLocation } from "@/lib/aladin/helpers";
 import { adjustPositionForScreen, panAndZoom } from "@/lib/aladin/animation";
+import { useGlobalDataContext } from "./GlobalData";
 
 type PoiSteps = NonNullable<Awaited<ReturnType<typeof getTourPois>>>;
 type PoiStep = PoiSteps[number];
@@ -47,6 +48,7 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
   pois,
   children,
 }) => {
+  const { embedded } = useGlobalDataContext();
   const { push, prefetch } = useRouter();
   const searchParams = useSearchParams();
 
@@ -175,11 +177,12 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
   };
 
   const startTransition = ({ between: [from, to], aladin }: Transition) => {
+    const summaryEmbedParams = embedded ? "?embedded=true" : "";
     if (!isPending) {
       setPending(true);
 
       if (to > limit) {
-        push("summary");
+        push(`summary${summaryEmbedParams}`);
         return;
       }
 
@@ -189,7 +192,7 @@ export const TourProvider: FC<PropsWithChildren<TourProviderProps>> = ({
       }
 
       if (to === limit) {
-        prefetch("summary");
+        prefetch(`summary${summaryEmbedParams}`);
       }
 
       queueAudio({
