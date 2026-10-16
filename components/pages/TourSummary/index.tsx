@@ -1,3 +1,4 @@
+"use client";
 import { FunctionComponent } from "react";
 import { IoArrowBackSharp } from "react-icons/io5";
 import Center from "@rubin-epo/epo-react-lib/Center";
@@ -8,8 +9,7 @@ import {
   FacebookButton,
   TwitterXButton,
 } from "@rubin-epo/epo-react-lib/Share";
-import { getLocale } from "next-intl/server";
-import { useTranslation } from "@/lib/i18n/server";
+import { useTranslation } from "react-i18next";
 import ViewTransition from "@/components/atomic/ViewTransition";
 import BlockTitle from "@/components/atomic/BlockTitle";
 import TransitionButtonish from "@/components/molecules/TransitionButtonish";
@@ -17,21 +17,23 @@ import Cover from "@/components/molecules/Cover";
 import FullwidthWithNav from "@/components/templates/FullwidthWithNav";
 import { env } from "@/env";
 import { getPathname } from "@/lib/i18n/navigation";
+import { useGlobalDataContext } from "@/contexts/GlobalData";
 import styles from "./styles.module.css";
 
 interface TourSummaryProps {
   tour: string;
-  embedded: boolean;
 }
 
-const TourSummary: FunctionComponent<TourSummaryProps> = async ({
+const TourSummary: FunctionComponent<TourSummaryProps> = ({
     tour,
-    embedded
 }) => {
-  const { t } = await useTranslation();
-  const locale = await getLocale();
+  const {
+    t,
+    i18n: { language: locale },
+  } = useTranslation();
   const path = getPathname({ href: { pathname: `/tours/${tour}` }, locale });
   const url = new URL(path, env.NEXT_PUBLIC_BASE_URL).toString();
+  const { embedded } = useGlobalDataContext();
 
   return (
     <FullwidthWithNav

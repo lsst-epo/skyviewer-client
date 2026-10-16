@@ -4,11 +4,9 @@ import TourSummary from "@/components/pages/TourSummary";
 
 const SummaryPage: FunctionComponent<WithSearchParams<TourProps>> = ({
   params: { tour, locale },
-  searchParams
 }) => {
-  const isEmbedded = (searchParams?.embedded === "true");
   setRequestLocale(locale);
-  return <TourSummary {...{ tour }} embedded={isEmbedded} />;
+  return <TourSummary {...{ tour }}/>;
 };
 
 export default SummaryPage;
