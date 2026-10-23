@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.19
 # Rebuild the source code only when needed 
-FROM node:20-alpine AS builder
+FROM node:26.12.1-alpine AS builder
 WORKDIR /app
 COPY --exclude=.env . /app
 RUN apk add --no-cache libc6-compat git fontconfig
