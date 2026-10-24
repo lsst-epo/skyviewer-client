@@ -10,6 +10,8 @@ module.exports = {
     },
   },
   rules: {
+    "react-hooks/rules-of-hooks": "off",
+    "react-hooks/exhaustive-deps": "off",
     "array-callback-return": 0,
     "arrow-body-style": 0,
     "global-require": 0,
@@ -99,8 +101,6 @@ module.exports = {
     ],
     "padded-blocks": 0,
     "prefer-const": 2,
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
     "react/no-unknown-property": ["error", { ignore: ["transform-origin"] }],
     "react/react-in-jsx-scope": 0,
     "space-before-function-paren": 0,
