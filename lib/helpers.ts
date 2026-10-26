@@ -41,7 +41,7 @@ export const clientInitialPosition = ({
   searchParams: ReadonlyURLSearchParams;
   fovRange?: Array<number>;
 }) => {
-  return z
+  const initialPosition = z
     .object({
       fov: z.coerce
         .number<number>()
@@ -60,4 +60,12 @@ export const clientInitialPosition = ({
     })
     .optional()
     .safeParse(Object.fromEntries(searchParams)).data;
+  /**
+   * todo: upgrade zod so this hacky workaround isn't necessary
+   */
+  if(initialPosition && Number.isNaN(initialPosition.fov)) {
+    return {}
+  } else {
+    return initialPosition;
+  }
 };
