@@ -18,7 +18,7 @@ FROM scratch AS nextjs-copy
 COPY --from=yarn-builder /app/.next /
 
 # Production image, copy all the files and run next
-FROM node:26.12.1-alpine  AS runner
+FROM yarn-builder AS runner
 WORKDIR /app
 
 RUN apk add --no-cache fontconfig
