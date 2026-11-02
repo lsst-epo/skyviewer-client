@@ -287,6 +287,9 @@ export const getTourPois = async (tour: string) => {
       site: [site],
       slug: [tour],
     },
+   fetchOptions: {
+      next: { tags: [tagStore.tours] },
+    },
   });
 
   if (!data || !data.toursEntries) return [];
