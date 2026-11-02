@@ -14,7 +14,6 @@ import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-
  */
 const documents = {
     "\n  query PagePreviewQuery($site: [String], $uri: [String]) {\n    entry(site: $site, uri: $uri) {\n      __typename\n      uri\n      title\n    }\n  }\n": types.PagePreviewQueryDocument,
-    "\n    query CategoryTitle($site: [String], $categorySlug: [String]) {\n      category(site: $site, slug: $categorySlug) {\n        title\n      }\n    }\n  ": types.CategoryTitleDocument,
     "\n    query EmbeddedPage($site: [String]) {\n      embedEntries(site: $site) {\n        ... on embed_Entry {\n          title\n          ra\n          dec\n          fov\n          fovMin\n          fovMax\n          surveys {\n            ...SurveyLayer\n          }\n        }\n      }\n    }\n  ": types.EmbeddedPageDocument,
     "\n    query ExplorerPage($site: [String]) {\n      explorerEntries(site: $site) {\n        ... on explorer_Entry {\n          title\n          ra\n          dec\n          fov\n          fovMin\n          fovMax\n          surveys {\n            ...SurveyLayer\n          }\n        }\n      }\n    }\n  ": types.ExplorerPageDocument,
     "fragment CantoAssetMinimal on CantoDamAssetInterface {\n  width\n  height\n  additional {\n    AltTextEN\n    AltTextES\n  }\n  url {\n    directUrlOriginal\n    directUrlPreview\n  }\n}": types.CantoAssetMinimalFragmentDoc,
@@ -52,10 +51,6 @@ export function graphql(source: string): unknown;
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  query PagePreviewQuery($site: [String], $uri: [String]) {\n    entry(site: $site, uri: $uri) {\n      __typename\n      uri\n      title\n    }\n  }\n"): (typeof documents)["\n  query PagePreviewQuery($site: [String], $uri: [String]) {\n    entry(site: $site, uri: $uri) {\n      __typename\n      uri\n      title\n    }\n  }\n"];
-/**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
- */
-export function graphql(source: "\n    query CategoryTitle($site: [String], $categorySlug: [String]) {\n      category(site: $site, slug: $categorySlug) {\n        title\n      }\n    }\n  "): (typeof documents)["\n    query CategoryTitle($site: [String], $categorySlug: [String]) {\n      category(site: $site, slug: $categorySlug) {\n        title\n      }\n    }\n  "];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
